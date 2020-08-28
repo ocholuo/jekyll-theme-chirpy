@@ -10,6 +10,8 @@ tags: [Interview]
 
 ---
 
+![osi](https://i.imgur.com/7zUs1h2.gif)
+
 1. What is information security and how is it achieved?
 
 2. What are the core principles of information security?
@@ -63,9 +65,10 @@ security field?
 # Network security
 
 44. Explain what **Address Resolution Protocol** is.  
-    1.  Data link-layer protocol 
-    2.  resolve IP addresses to MAC addresses 
-    3.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use 
+    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](https://i.imgur.com/QUoHIre.jpg)
+    2.  Data link-layer protocol 
+    3.  resolve IP addresses to MAC addresses 
+    4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use 
         1.  ARP request
         2.  ARP reply
         3.  vulnerability with ARP:
@@ -74,24 +77,24 @@ security field?
             - Attackers can easily create ARP reply packets with spoofed or bogus MAC addresses, reply and poison the ARP cache on systems in the network.  Gratuitous ARP
 
 
-1.  What port does **ping** work over?
+45. What port does **ping** work over?
     1.  ping test uses ICMP
     2.  no real ports being used. 
     3.  ICMP basically roofs, or sits on top of, the IP address. not a layer four protocol.
 
 
-2.  Do you prefer **filtered ports or closed ports** on your firewall?
+46. Do you prefer **filtered ports or closed ports** on your firewall?
     1.  For small company servers or back-end systems or intranet sites I will choose to close ports (REJECT).
     2.  The reason for that is because those server are not usually targeted by DDoS attacks and also because the external apps that requires to consume services hosted in the the servers can quickly report failures instead to hang the connections during minutes.
 
 
-3.  How exactly does **traceroute/tracert** work at the protocol level?
+47. How exactly does **traceroute/tracert** work at the protocol level?
     1.  Traceroute (tracert) works by sending a packet to an open UDP port on a destination machine. 
     2.  The router then discards the packet and sends off an ICMP notification packet to the original host with the message that the TTL expired from the router.
     3.  Traceroute transmits packets with small TTL (Time To Live) values. The TTL is an IP header field that is used to prevent packets from running into endless loops. When a router that handles the packet subtracts one from the packet's TTL. The packet expires and it's discarded when the TTL reaches zero.
 
 
-4.  What are Linux’s strengths and weaknesses vs. Windows?
+48. What are Linux’s strengths and weaknesses vs. Windows?
     1.  Price
     2.  Ease Of Use
     3.  Reliability. Linux is notoriously reliable and secure.
@@ -100,7 +103,7 @@ security field?
     6.  Security
 
 
-5.  What is a firewall? And provide an example of how a firewall can be bypassed by an outsider to
+49. What is a firewall? And provide an example of how a firewall can be bypassed by an outsider to
 access the corporate network.
     1.  PACKET-FILTERING FIREWALLS
         1.  examines the packet source and destination IP address
@@ -218,7 +221,7 @@ Fail2ban
 What is Cross-Site Request Forgery? And how to defend against it?
 
 When an attacker gets a victim's browser to make requests with the victim's credentials
-Example: if an image tag (`<img>`) points to a URL with an associated action, e.g. https://foo.com/logout
+Example: if an image tag (<img>) points to a URL with an associated action, e.g. https://foo.com/logout
 Defense includes but are not limited to:
 check origins header & referer header
 check CSRF tokens or nonce
