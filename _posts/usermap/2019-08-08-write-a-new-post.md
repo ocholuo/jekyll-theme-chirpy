@@ -1,5 +1,5 @@
 ---
-title: Writing a New Post
+title: 2. Writing a New Post
 author: Cotes Chung
 date: 2019-08-08 14:10:00 -0400
 categories: [Blogging, Tutorial]
