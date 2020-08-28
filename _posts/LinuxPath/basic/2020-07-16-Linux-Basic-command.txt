@@ -1,0 +1,2884 @@
+<!-- ---
+title: Linux - Basic command
+date: 2020-07-16 11:11:11 -0400
+categories: [Linux, Basic]
+tags: [Linux, Sysadmin, OnePage]
+math: true
+image: 
+--- -->
+
+# Linux - Basic command
+
+[toc]
+
+---
+
+# total
+
+- 处理目录的常用命令
+  - `ls`: 列出目录
+  - `cd`：切换目录
+  - `pwd`：显示目前的目录
+  - `mkdir`：创建一个新的目录
+  - `rmdir`：删除一个空的目录
+  - `cp`: 复制文件或目录
+  - `rm`: 移除文件或目录
+  - `mv`: 移动文件与目录、文件重命名
+
+- 查看文件的内容：
+  - `cat ` 由第一行开始显示文件内容
+  - `tac ` 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！
+  - `nl  ` 显示的时候，顺道输出行号！
+  - `more` 一页一页的显示文件内容
+  - `less` 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+  - `head` 只看头几行
+  - `tail` 只看尾巴几行
+
+---
+
+## Linux 文件与目录管理
+- Linux的目录结构为树状结构，最顶级的目录为根目录 /。
+- 其他目录通过挂载可以将它们添加到树中，通过解除挂载可以移除它们。
+
+- 绝对路径：由根目录 / 写起，例如： /usr/share/doc 这个目录。
+- 相对路径：不是由 / 写起，例如由 /usr/share/doc 要到 /usr/share/man 底下时，可以写成: `cd ../man`
+
+- 处理目录的常用命令
+  - `ls`: 列出目录
+  - `cd`：切换目录
+  - `pwd`：显示目前的目录
+  - `mkdir`：创建一个新的目录
+  - `rmdir`：删除一个空的目录
+  - `cp`: 复制文件或目录
+  - `rm`: 移除文件或目录
+  - `mv`: 移动文件与目录、文件重命名
+  - `man [命令]`: 来查看各个命令的使用文档，如 ：man cp。
+
+---
+
+1. ls (列出目录)
+
+```c
+[root@www ~]# ls [-aAdfFhilnrRSt] 目录名称
+[root@www ~]# ls [--color={never,auto,always}] 目录名称
+[root@www ~]# ls [--full-time] 目录名称
+
+-a ：全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来(常用)
+-d ：仅列出目录本身，而不是列出目录内的文件数据(常用)
+-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)
+
+//将家目录下的所有文件列出来(含属性与隐藏档)
+[root@www ~]# ls -al ~
+```
+---
+
+2. cd (切换目录) Change Directory
+
+```c
+cd [相对路径或绝对路径]
+//使用 mkdir 命令创建w3cschool.cn目录
+[root@www ~]# mkdir w3cschool.cn
+
+//使用绝对路径切换到w3cschool.cn目录
+[root@www ~]# cd /root/w3cschool.cn/
+
+//使用相对路径切换到w3cschool.cn目录
+[root@www ~]# cd ./w3cschool.cn/
+
+//表示回到自己的家目录, /root 这个目录
+[root@www w3cschool.cn]# cd ~
+
+//表示去到目前的上一级目录，亦即是 /root 的上一级目录的意思；
+[root@www ~]# cd ..
+```
+---
+
+3. pwd (显示目前所在的目录) Print Working Directory的缩写
+
+```c
+[root@www ~]# pwd [-P]
+-P: 显示出确实的路径，而非使用连结 (link) 路径。
+
+//单纯显示出目前的工作目录：
+[root@www ~]# pwd
+/root
+
+//显示出实际的工作目录，而非连结档本身的目录名而已
+[root@www ~]# cd /var/mail   //注意，/var/mail是一个连结档
+[root@www mail]# pwd
+/var/mail         //列出目前的工作目录
+[root@www mail]# pwd -P
+/var/spool/mail   //有没有加 -P 差很多～
+[root@www mail]# ls -ld /var/mail
+lrwxrwxrwx 1 root root 10 Sep  4 17:54 /var/mail -> spool/mail
+//因为 /var/mail 是连结档，连结到 /var/spool/mail
+//所以，加上 pwd -P 的选项后，会不以连结档的数据显示，而是显示正确的完整路径啊！
+```
+---
+
+4. mkdir (创建新目录) make directory
+
+```c
+mkdir [-mp] 目录名称
+-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～
+-p ：帮助你直接将所需要的目录(包含上一级目录)递回创建起来！
+
+//创建权限为rwx--x--x的目录
+[root@www tmp]# mkdir -m 711 test2
+[root@www tmp]# ls -l
+drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
+drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
+//如果没有加上 -m 来强制配置属性，系统会使用默认属性。
+
+
+//到/tmp底下尝试创建数个新目录看看：
+[root@www ~]# cd /tmp
+[root@www tmp]# mkdir test  //创建一名为 test 的新目录
+
+[root@www tmp]# mkdir test1/test2/test3/test4
+mkdir: cannot create directory `test1/test2/test3/test4`:  
+No such file or directory       //没办法直接创建此目录啊
+
+//加了这个 -p 的选项，可以自行帮你创建多层目录
+[root@www tmp]# mkdir -p test1/test2/test3/test4
+```
+
+---
+
+5. rmdir (删除空的目录)
+
+```c
+rmdir [-p] 目录名称
+-p ：连同上一级『空的』目录也一起删除
+
+//删除 w3cschool.cn 目录
+[root@www tmp]# rmdir w3cschool.cn/
+
+//将於mkdir范例中创建的目录(/tmp底下)删除掉！
+
+[root@www tmp]# ls -l  
+drwxr-xr-x  3 root  root 4096 Jul 18 12:50 test
+drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
+[root@www tmp]# rmdir test  //可直接删除掉，没问题
+[root@www tmp]# rmdir test1 //因为尚有内容，所以无法删除
+rmdir: `test1`: Directory not empty
+
+//利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 一次删除。
+[root@www tmp]# rmdir -p test1/test2/test3/test4
+[root@www tmp]# ls -l     
+drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
+//要注意的是，这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录。
+```
+
+---
+
+6. cp (复制文件或目录)
+
+```
+cp 即拷贝文件和目录。
+[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)
+[root@www ~]# cp [options] source1 source2 source3 .... directory
+-a ：相当於 -pdr 的意思 (常用)
+-d ：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；
+-f ：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；
+-i ：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)
+-l ：进行硬式连结(hard link)的连结档创建，而非复制文件本身；
+-p ：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；
+-r ：递回持续复制，用於目录的复制行为；(常用)
+-s ：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；
+-u ：若 destination 比 source 旧才升级 destination ！
+
+//用root身份，将家目录下的 .bashrc 复制到 /tmp 下，并更名为 bashrc
+[root@www ~]# cp ~/.bashrc /tmp/bashrc
+[root@www ~]# cp -i ~/.bashrc /tmp/bashrc
+cp: overwrite `/tmp/bashrc`? n  
+//n不覆盖，y为覆盖
+```
+
+--
+
+7. rm (移除文件或目录)
+
+```
+rm [-fir] 文件或目录
+-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；
+-i ：互动模式，在删除前会询问使用者是否动作
+-r ：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！
+
+//将刚刚在 cp 的范例中创建的 bashrc 删除掉！
+[root@www tmp]# rm -i bashrc
+rm: remove regular file `bashrc`? y
+//加上 -i 的选项就会主动询问，避免你删除到错误的档名！
+```
+
+---
+
+8. mv (移动文件与目录，或修改名称)
+
+```c
+[root@www ~]# mv [-fiu] source destination
+[root@www ~]# mv [options] source1 source2 source3 .... directory
+-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
+-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
+-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)
+
+//复制一文件，创建一目录，将文件移动到目录中
+[root@www ~]# cd /tmp
+[root@www tmp]# cp ~/.bashrc bashrc
+[root@www tmp]# mkdir mvtest
+//移动
+[root@www tmp]# mv bashrc mvtest
+
+//将刚刚的目录名称更名为 mvtest2
+[root@www tmp]# mv mvtest mvtest2
+```
+
+---
+
+## Linux 文件内容查看
+- 查看文件的内容：
+  - `cat ` 由第一行开始显示文件内容
+  - `tac ` 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！
+  - `nl  ` 显示的时候，顺道输出行号！
+  - `more` 一页一页的显示文件内容
+  - `less` 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+  - `head` 只看头几行
+  - `tail` 只看尾巴几行
+
+---
+
+### 1. `cat` 由第一行开始显示文件内容
+
+```c
+cat [-AbEnTv]
+-A ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；
+-b ：列出行号，仅针对非空白行做行号显示，空白行不标行号！   //= nl
+-E ：将结尾的断行字节 $ 显示出来；
+-n ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；
+-T ：将 [tab] 按键以 ^I 显示出来；
+-v ：列出一些看不出来的特殊字符
+
+//检看 /etc/issue 这个文件的内容：
+[root@www ~]# cat /etc/issue
+CentOS release 6.4 (Final)
+Kernel \r on an \m
+```
+
+---
+
+### 2. `tac` 与cat相反，文件内容从最后一行开始显示
+- tac 是 cat 的倒着写！如：
+
+```
+[root@www ~]# tac /etc/issue
+Kernel \r on an \m
+CentOS release 6.4 (Final)
+```
+
+### 3. `nl` 显示行号
+
+```c
+nl [-bnw] 文件
+-b ：指定行号指定的方式，主要有两种：
+-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)；
+-b t ：如果有空行，空的那一行不要列出行号(默认值)；
+-n ：列出行号表示的方法，主要有三种：
+-n ln ：行号在萤幕的最左方显示；
+-n rn ：行号在自己栏位的最右方显示，且不加 0 ；
+-n rz ：行号在自己栏位的最右方显示，且加 0 ；
+-w ：行号栏位的占用的位数。
+
+//用 nl 列出 /etc/issue 的内容
+[root@www ~]# nl /etc/issue
+     1  CentOS release 6.4 (Final)
+     2  Kernel \r on an \m
+
+//left number
+root@kali:~# nl -n ln abd
+1     	abddd
+2     	d
+
+//right number
+root@kali:~# nl -n rn abd
+     1	abddd
+     2	d
+root@kali:~# nl -n rz abd
+000001	abddd
+000002	d
+000003	d
+```
+---
+
+### 4. `more` 一页一页翻动
+
+```c
+[root@www ~]# more /etc/man.config
+#
+# Generated automatically from man.conf.in by the
+# configure script.
+#
+# man.conf from man-1.6d
+--More--(28%)  //重点在这一行, 光标会在这里等待你的命令
+
+//有几个按键可以按的：
+空白键 (space)：代表向下翻一页；
+Enter        ：代表向下翻『一行』；
+/字串         ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；
+:f           ：立刻显示出档名以及目前显示的行数；
+q            ：代表立刻离开 more ，不再显示该文件内容。
+b 或 [ctrl]-b ：代表往回翻页，不过这动作只对文件有用，对管线无用。
+```
+
+---
+
+### 5. `less` 一页一页翻动
+
+```
+//输出/etc/man.config文件的内容：
+[root@www ~]# less /etc/man.config
+#
+# Generated automatically from man.conf.in by the
+# configure script.
+#
+# man.conf from man-1.6d
+....(中间省略)....
+:  
+//这里可以等待你输入命令！
+//less运行时可以输入的命令有：
+
+空白键    ：向下翻动一页；
+[pagedown]：向下翻动一页；
+[pageup]  ：向上翻动一页；
+/字串      ：向下搜寻『字串』的功能；
+?字串      ：向上搜寻『字串』的功能；
+n         ：重复前一个搜寻 (与 / 或 ? 有关)
+N         ：反向的重复前一个搜寻 (与 / 或 ? 有关)
+q         ：离开 less 这个程序；
+```
+---
+
+### 5. `head` 取出文件前面几行
+
+```c
+head [-n number] 文件
+-n ：后面接数字，代表显示几行的意思
+
+[root@www ~]# head /etc/man.config
+//默认显示前面 10 行
+//若要显示前 20 行:
+[root@www ~]# head -n 20 /etc/man.config
+```
+---
+
+### 6. `tail` 取出文件后面几行
+
+```c
+tail [-n number] 文件
+-n ：后面接数字，代表显示几行的意思
+-f ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测
+
+[root@www ~]# tail /etc/man.config
+//默认显示前面 10 行
+//若要显示前 20 行:
+[root@www ~]# tail -n 20 /etc/man.config
+```
+
+## Linux文件筛选
+
+### `sort` filter the text
+- sort是在Linux里非常常用的一个命令，管排序的
+
+1. sort的工作原理
+    - sort将文件的每一行作为一个单位，相互比较
+    - 比较原则: 从首字符向后，依次按ASCII码值进行比较，最后按升序输出。
+
+```py
+------------------------------------------------
+$ cat data.txt
+banana
+apple
+pear
+orange
+------------------------------------------------
+1. sort # 将文件的每一行作为一个单位，相互比较
+    - 比较原则: 从首字符向后，依次按ASCII码值进行比较，最后按升序输出。
+
+$ sort data.txt
+apple
+banana
+orange
+pear
+pear
+------------------------------------------------
+2. sort -u # 在输出行中去除重复行。
+
+$ sort -u data.txt
+apple
+banana
+orange
+pear
+# pear由于重复被 -u 删除了。
+------------------------------------------------
+3. sort -r # sort默认的排序方式是升序，-r 改成降序
+
+$ cat number.txt
+1
+3
+2
+$ sort number.txt
+1
+2
+3
+$ sort -r number.txt
+3
+2
+1
+------------------------------------------------
+4. sort -o # 将结果写入原文件
+- sort默认是把结果输出到标准输出
+- 所以需要用重定向才能将结果写入文件: sort filename > newfile。
+- 但如果你想把排序结果输出到原文件中，用重定向不行。
+- -o: 成功解决了这个问题，让你放心的将结果写入原文件。
+- 这或许也是-o比重定向的唯一优势所在。
+
+$ sort -r number.txt > number.txt
+$ cat number.txt
+$                      # 将number清空了。
+
+$ cat number.txt
+1
+3
+5
+2
+4
+$ sort -r number.txt -o number.txt
+$ cat number.txt
+5
+4
+3
+2
+1
+------------------------------------------------
+5. sort -n # 以数值来排序
+- 10比2小的情况。由于排序程序将这些数字按字符来排序了，1和2，1小，所以就将10放在2前面喽。
+- sort -n 要以数值来排序
+
+$ cat number.txt
+1
+10
+2
+$ sort number.txt
+1
+10
+2
+$ sort -n number.txt
+1
+2
+10
+------------------------------------------------
+6. sort -t <间隔符号> -k <指定列数>
+
+$ cat facebook.txt
+banana:30:5.5
+apple:10:2.5
+pear:90:2.3
+orange:20:3.4
+
+# 这个文件有三列，列与列之间用冒号隔开了
+# 第一列表示水果类型，第二列表示水果数量，第三列表示水果价格。
+# 以水果数量来排序(以第二列来排序)，如何利用sort实现？
+# sort -t: 后面可以设定<间隔符号>（是不是想起了cut和paste的-d选项，共鸣～～）
+# sort -k: 指定列数。
+
+$ sort -n -k 2 -t : facebook.txt
+apple:10:2.5
+orange:20:3.4
+banana:30:5.5
+pear:90:2.3
+# 使用冒号作为间隔符，并针对第二列来进行数值升序排序
+------------------------------------------------
+7. -k 选项的具体语法格式
+- -k选项的语法格式：
+[ FStart [ .CStart ] ] [ Modifier ] [ , [ FEnd [ .CEnd ] ][ Modifier ] ]
+
+- 这个语法格式可以被其中的逗号（“，”）分为两大部分，Start部分和End部分。
+
+- 先给你灌输一个思想，那就是“如果不设定End部分，那么就认为End被设定为行尾”。这个概念很重要的，但往往你不会重视它。
+
+- Start部分也由三部分组成，其中的Modifier部分就是我们之前说过的类似n和r的选项部分。我们重点说说Start部分的FStart和C.Start。
+
+- C.Start也是可以省略的，省略的话就表示从本域的开头部分开始。之前例子中的-k 2和-k 3就是省略了C.Start的例子喽。
+
+- FStart.CStart，其中FStart就是表示使用的域，而CStart则表示在FStart域中从第几个字符开始算“排序首字符”。
+
+- 同理，在End部分中，你可以设定FEnd.CEnd，如果你省略.CEnd，则表示结尾到“域尾”，即本域的最后一个字符。或者，如果你将CEnd设定为0(零)，也是表示结尾到“域尾”。
+------------------------------------------------
+8. 其他的sort常用选项
+- `-f`: 会将小写字母都转换为大写字母来进行比较，亦即忽略大小写
+- `-c`: 会检查文件是否已排好序，如果乱序，则输出第一个乱序的行的相关信息，最后返回1
+- `-C`: 会检查文件是否已排好序，如果乱序，不输出内容，仅返回1
+- `-M`: 会以月份来排序，比如JAN小于FEB等等
+- `-b`: 会忽略每一行前面的所有空白部分，从第一个可见字符开始比较。
+
+# 第一个域是公司名称，第二个域是公司人数，第三个域是员工平均工资。
+$ cat facebook.txt
+google 110 5000
+baidu 100 5000
+guge 50 3000
+sohu 100 4500
+
+
+# 让这个文件按公司(第一个域)的字母顺序排序
+$ sort -t ‘ ‘ -k 1 facebook.txt
+baidu 100 5000
+google 110 5000
+guge 50 3000
+sohu 100 4500
+# 其实此处并不严格，稍后你就会知道 !!!!!!
+
+
+# 让facebook.txt按照公司人数排序
+$ sort -n -t ‘ ‘ -k 2 facebook.txt
+guge 50 3000
+baidu 100 5000
+sohu 100 4500
+google 110 5000
+# 但是，baidu和sohu的公司人数相同，都是100人
+# 按照默认规矩，是从第一个域开始进行升序排序，baidu在sohu前面。
+
+
+# 想让facebook.txt按照公司人数排序
+# 人数相同的按照员工平均工资升序排序：
+$ sort -n -t ‘ ‘ -k 2 -k 3 facebook.txt
+guge 50 3000
+sohu 100 4500
+baidu 100 5000
+google 110 5000
+# 加了一个-k2 -k3就解决了问题。
+# sort支持这种设定，就是说设定域排序的优先级，先以第2个域进行排序，如果相同，再以第3个域进行排序。
+#（如果你愿意，可以一直这么写下去，设定很多个排序优先级）
+
+
+# 让facebook.txt按照员工工资降序排序
+# 如果员工人数相同的，则按照公司人数升序排序
+$ sort -n -t ‘ ‘ -k 3r -k 2 facebook.txt
+baidu 100 5000
+google 110 5000
+sohu 100 4500
+guge 50 3000
+# 在-k 3后面加上了一个小写字母r。
+# r和-r选项的作用是一样的，就是表示逆序
+# 因为sort默认按照升序排序，所以加上r表示第三个域按照降序排序。
+# 还可以加上n，就表示对这个域进行排序时，要按照数值大小进行排序
+$ sort -t ‘ ‘ -k 3nr -k 2n facebook.txt
+baidu 100 5000
+google 110 5000
+sohu 100 4500
+guge 50 3000
+# 去掉了最前面的-n选项，而是将它加入到了每一个-k选项中了。
+
+# 从公司英文名称的第二个字母开始进行排序：
+$ sort -t ‘ ‘ -k 1.2 facebook.txt
+baidu 100 5000
+sohu 100 4500
+google 110 5000
+guge 50 3000
+# 使用-k 1.2，这就表示对第一个域的第二个字符开始到本域的最后一个字符为止的字符串进行排序。
+# baidu因为第二个字母是a而名列榜首
+# sohu和 google第二个字符都是o，但sohu的h在google的o前面，所以两者分别排在第二和第三。
+# guge只能屈居第四了。
+
+
+# 只针对公司英文名称的第二个字母进行排序，如果相同的按照员工工资进行降序排序：
+$ sort -t ‘ ‘ -k 1.2,1.2 -k 3,3nr facebook.txt
+baidu 100 5000
+google 110 5000
+sohu 100 4500
+guge 50 3000
+# 由于只对第二个字母进行排序，所以用 -k 1.2,1.2, 表示“只”对第二个字母进行排序。（用 -k 1.2 不行，因为你省略了End部分，这就意味着你将对从第二个字母起到本域最后一个字符为止的字符串进行排序）。
+# 对于员工工资进行排序，也使用了-k 3,3，这是最准确的表述，表示“只”对本域进行排序，因为如果省略了后面的3，就变成了“对第3个域开始到最后一个域位置的内容进行排序” 了。
+------------------------------------------------
+9. 在modifier部分还可以用到哪些选项？
+- 可以用到b、d、f、i、n 或 r。
+- n: according to the Number
+- r: revers
+- b: 忽略本域的签到空白符号。
+- d: 对本域按照字典顺序排序（即，只考虑空白和字母）。
+- f: 对本域忽略大小写进行排序。
+- i: 忽略“不可打印字符”，只针对可打印字符进行排序。（有些ASCII就是不可打印字符，比如\a是报警，\b是退格，\n是换行，\r是回车等等）
+------------------------------------------------
+10. -k和-u联合使用的例子：
+
+$ cat facebook.txt
+google 110 5000
+baidu 100 5000
+guge 50 3000
+sohu 100 4500
+
+$ sort -n -k 2 facebook.txt
+guge 50 3000
+baidu 100 5000
+sohu 100 4500
+google 110 5000
+
+$ sort -n -k 2 -u facebook.txt
+guge 50 3000
+baidu 100 5000
+google 110 5000
+
+# 当设定以公司员工域进行数值排序，然后加-u后，sohu一行就被删除了！
+# 原来-u只识别用-k设定的域，发现相同，就将后续相同的行都删除。
+$ sort  -k 1 -u facebook.txt
+baidu 100 5000
+google 110 5000
+guge 50 3000
+sohu 100 4500
+
+$ sort  -k 1.1,1.1 -u facebook.txt
+baidu 100 5000
+google 110 5000
+sohu 100 4500
+# 开头字符是g的guge就没有幸免于难。
+
+$ sort -n -k 2 -k 3 -u facebook.txt
+guge 50 3000
+sohu 100 4500
+baidu 100 5000
+google 110 5000
+# 设置了两层排序优先级的情况下，使用-u就没有删除任何行。
+# -u是会权衡所有-k选项，将都相同的才会删除，只要其中有一级不同都不会轻易删除的:)（不信，你可以自己加一行sina 100 4500试试看）
+------------------------------------------------
+11 最诡异的排序：
+
+$ sort -n -k 2.2,3.1 facebook.txt
+guge 50 3000
+baidu 100 5000
+sohu 100 4500
+google 110 5000
+# 以 <第二个域的第二个字符>到<第三个域的第一个字符>部分进行排序。
+# 第一行，会提取0 3，第二行提取00 5，第三行提取00 4，第四行提取10 5
+# 又因为sort认为0小于00小于000小于0000….
+# 因此0 3肯定是在第一个。10 5肯定是在最后一个。但为什么00 5却在00 4前面呢？（你可以自己做实验思考一下。）
+答案揭晓：原来“跨域的设定是个假象”
+# sort只会比较第二个域的第二个字符到第二个域的最后一个字符的部分，而不会把第三个域的开头字符纳入比较范围。
+# 当发现00和00相同时，sort就会自动比较第一个域去了。当然baidu在sohu前面了。用一个范例即可证实：
+$ sort -n -k 2.2,3.1 -k 1,1r facebook.txt
+guge 50 3000
+sohu 100 4500
+baidu 100 5000
+google 110 5000
+------------------------------------------------
+12. sort命令后会看到+1 -2这些符号
+
+On older systems, `sort’ supports an obsolete origin-zero syntax `+POS1 [-POS2]‘ for specifying sort keys.  POSIX 1003.1-2001 (*note Standards conformance::) does not allow this; use `-k’ instead.
+
+原来，这种古老的表示方式已经被淘汰了，以后可以理直气壮的鄙视使用这种表示方法的脚本喽！
+
+（为了防止古老脚本的存在，在这再说一下这种表示方法，加号表示Start部分，减号表示End部分。最最重要的一点是，这种方式方法是从0开始计数的，以前所说的第一个域，在此被表示为第0个域。以前的第2个字符，在此表示为第1个字符。明白？）
+------------------------------------------------
+- sort command: like `cat`, displays the contents of the file however it sorts the file lexicographically 词典上 by lines (it reorders them alphabetically so that matching ones are together).
+- |: is a pipe that redirects the output from one command into another.
+- uniq command: reports or omits 省略 repeated lines and by passing it the `-u` argument to report only unique lines.
+
+$ cat data.txt
+NN4e37KW2tkIb3dC9ZHyOPdq1FqZwq9h
+jpEYciZvDIs6MLPhYoOGWQHNIoQZzE5q
+3rpovhi1CyT7RUTunW30goGek5Q5Fu66
+JOaWd4uAPii4Jc19AP2McmBNRzBYDAkO
+JOaWd4uAPii4Jc19AP2McmBNRzBYDAkO
+...
+tx7tQ6kgeJnC446CHbiJY7fyRwrwuhrs
+
+$ sort data.txt | uniq -u
+```
+
+[toc]
+
+
+
+# 命令
+
+- `ls`: 列出目录
+- `cd`：切换目录
+- `pwd`：显示目前的目录
+- `mkdir`：创建一个新的目录
+- `rmdir`：删除一个空的目录
+- `cp`: 复制文件或目录
+- `rm`: 移除文件或目录
+- `mv`: 移动文件与目录、文件重命名
+
+- 查看文件的内容：
+- `cat ` 由第一行开始显示文件内容
+- `tac ` 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！
+- `nl  ` 显示的时候，顺道输出行号！
+- `more` 一页一页的显示文件内容
+- `less` 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+- `head` 只看头几行
+- `tail` 只看尾巴几行
+
+# navigation
+
+
+## Wildcards
+a shell feature that makes these commands so powerful. Since the shell uses filenames so much, it provides `special characters: wildcards` to help you *rapidly specify groups of filenames*.
+`Wildcards`: allow you to select filenames based on patterns of characters.
+
+The table below lists the wildcards and what they select:
+- `*` : Matches any characters
+- `?` : Matches any single character
+- `[characters]` : Matches any character that is a member of the set characters. The set of characters may also be expressed as a POSIX character class such as one of the following:
+  - [:alnum:]	Alphanumeric characters
+  - [:alpha:]	Alphabetic characters
+  - [:digit:]	Numerals
+  - [:upper:]	Uppercase alphabetic characters
+  - [:lower:]	Lowercase alphabetic characters
+- `[!characters]` : Matches any character that is not a member of the set characters
+
+
+Using wildcards, it is possible to construct very sophisticated selection criteria for filenames.
+some examples of patterns and what they match:
+
+Examples of wildcard matching
+Pattern |	Matches
+--|--
+`*`                             | All filenames
+`g*`                            | All filenames begin with the character "g"
+`b*.txt`                        | All filenames begin with the character "b" and end with the characters ".txt"
+`Data???`                       | Any filename begins with the characters "Data" followed by exactly 3 more characters
+`[abc]* `                       | Any filename begins with "a" or "b" or "c" followed by any other characters
+`[[:upper:]]*`                  | Any filename begins with an uppercase letter. This is an example of a character class.
+`BACKUP.[[:digit:]][[:digit:]]` | Any filename begins with the characters "BACKUP." followed by exactly two numerals.
+`*[![:lower:]]`                 | Any filename does not end with a lowercase letter.
+
+
+```py
+$ cp *.txt text_files(directory)
+# Copy all files in the current working directory with names ending with the characters ".txt"
+# to an existing directory named text_files.
+
+$ mv my_dir ../*.bak my_new_dir
+# Move the subdirectory my_dir and all the files ending in ".bak" in the current working directory's parent directory
+# to an existing directory named my_new_dir.
+
+$ rm *~
+# Delete all files in the current working directory that end with the character "~". Some applications create backup files using this naming scheme. Using this command will clean them out of a directory.
+```
+---
+
+## I/O Redirection
+many commands print their output on the display.
+By using some special notations we can redirect the output of many commands to files, devices, the input of other commands.
+
+### Standard Output `$ ls > file_list.txt`
+Most command line programs display their results to a facility called standard output.
+- By default, standard output: directs its contents to the display.
+- To redirect standard output to a file, use ">": `$ ls > file_list.txt`
+  - the results are written in a file named file_list.txt.
+  - no results appear on the display.
+  - Each time the command is repeated, file_list.txt is overwritten from the beginning.
+- If you want the new results to be appended to the file instead, use ">>": `$ ls >> file_list.txt`
+  - the new results are added to the end of the file
+- If the file does not exist, the file will be created.
+
+### Standard Input `$ sort < file_list.txt`
+Many commands can accept input from a facility called standard input.
+- By default, standard input gets its contents from the keyboard
+- To redirect standard input from a file instead of the keyboard, use "<": `$ sort < file_list.txt`
+  - The results are output on the display
+  - We could redirect standard output to another file like this:
+  - $ sort `< file_list.txt` `> sorted_file_list.txt`
+
+the order of the redirection does not matter.
+- The only requirement is that the `redirection operators` (the "<" and ">") must appear after the other options and arguments in the command.
+
+### Pipelines `ls -l | less`
+The most useful and powerful thing you can do with I/O redirection is to `connect multiple commands together` with `pipelines`.
+With pipelines, the standard output of one command is fed into the standard input of another.
+
+`cat poorly_formatted_report.txt | fmt | pr | lpr`
+- use cat to read the file and output it to standard output, which is piped into the standard input of fmt.
+- fmt formats the text into neat paragraphs and outputs it to standard output, which is piped into the standard input of pr.
+- pr splits the text neatly into pages and outputs it to standard output, which is piped into the standard input of lpr.
+- lpr takes its standard input and sends it to the printer.
+
+`cat unsorted_list_with_dupes.txt | sort | uniq | pr | lpr`
+- an unsorted list of data with duplicate entries.
+- cat sends the list into sort which sorts it and feeds it into uniq which removes any duplicates.
+- Next pr and lpr are used to paginate and print the list.
+
+- Viewing the contents of tar files Often you will see software distributed as a gzipped tar file.
+- This is a traditional Unix style tape archive file (created with tar) that has been compressed with gzip.
+- You can recognize these files by their traditional file extensions, ".tar.gz" or ".tgz".
+
+to view the directory of such a file on a Linux system:
+`tar tzvf name_of_file.tar.gz | less`
+
+
+```py
+$ ls -l | less
+# make any command have scrolling output.
+# the output of the ls command is fed into less.
+
+$ ls -lt | head  
+# Displays the 10 newest files in the current directory.
+
+$ du | sort -nr  
+# Displays a list of directories and how much space they consume
+# sorted from the largest to the smallest.
+
+$ find . -type f -print | wc -l
+# Displays the total number of files in the current working directory and all of its subdirectories.
+```
+
+### Filters
+One kind of program frequently used in `pipelines` is  `filters`.
+`Filters` take standard input and perform an operation upon it and send the results to standard output. In this way, they can be combined to process information in powerful ways. Here are some of the common programs that can act as filters:
+
+
+#### `sort` Sorts standard input
+- Sorts standard input,
+- outputs the sorted result on standard output.
+
+#### `uniq` removes duplicate lines of data
+- Given a sorted stream of data from standard input,
+- removes duplicate lines of data (i.e. makes sure every line is unique).
+---
+
+#### `grep` outputs line that contains specified pattern
+- Examines each line of data it receives from standard input  
+- outputs every line that contains a specified pattern of characters.
+
+global search regular expression(RE) and print out the line
+全面搜索正则表达式并把行打印出来
+强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。
+
+##### 选项
+
+```
+-a 不要忽略二进制数据。
+-A<显示列数> 除了显示符合范本样式的那一行之外，并显示该行之后的内容。
+-b 在显示符合范本样式的那一行之外，并显示该行之前的内容。
+-c 计算符合范本样式的列数。
+-C<显示列数>或-<显示列数>  除了显示符合范本样式的那一列之外，并显示该列之前后的内容。
+-d<进行动作> 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作。
+-e<范本样式> 指定字符串作为查找文件内容的范本样式。
+-E 将范本样式为延伸的普通表示法来使用，意味着使用能使用扩展正则表达式。
+-f<范本文件> 指定范本文件，其内容有一个或多个范本样式，让grep查找符合范本条件的文件内容，格式为每一列的范本样式。
+-F 将范本样式视为固定字符串的列表。
+-G 将范本样式视为普通的表示法来使用。
+-h 在显示符合范本样式的那一列之前，不标示该列所属的文件名称。
+-H 在显示符合范本样式的那一列之前，标示该列的文件名称。
+-i 忽略字符大小写的差别。
+-l 列出文件内容符合指定的范本样式的文件名称。
+-L 列出文件内容不符合指定的范本样式的文件名称。
+-n 在显示符合范本样式的那一列之前，标示出该列的编号。
+-q 不显示任何信息。
+-R/-r 此参数的效果和指定“-d recurse”参数相同。
+-s 不显示错误信息。
+-v 反转查找。
+-w 只显示全字符合的列。
+-x 只显示全列符合的列。
+-y 此参数效果跟“-i”相同。
+-o 只输出文件中匹配到的部分。
+```
+
+##### 搜索一个单词，命令返回一个包含“match_pattern”的文本行：
+
+```c
+grep match_pattern file_name
+grep "match_pattern" file_name
+```
+
+##### 在多个文件中查找：
+
+```c
+grep "match_pattern" file_1 file_2 file_3
+```
+
+##### 输出除之外的所有行 `-v` 选项：
+
+```c
+grep -v "match_pattern" file_name
+```
+
+##### 标记匹配颜色 `--color=auto` 选项：
+
+```c
+grep "match_pattern" file_name --color=auto
+```
+
+##### 使用正则表达式 `-E` 选项：
+
+```c
+grep -E "[1-9]+"
+// 或
+egrep "[1-9]+"
+```
+
+##### 只输出文件中匹配到的部分 `-o` 选项：
+
+```c
+echo this is a test line. | grep -o -E "[a-z]+\."
+line.
+
+echo this is a test line. | egrep -o "[a-z]+\."
+line.
+```
+
+##### 统计 文件或者文本中包含匹配字符串的 行数 `-c` 选项：
+
+```c
+grep -c "text" file_name
+```
+
+##### 输出 包含匹配字符串的 行数 `-n` 选项：
+
+```c
+grep "text" -n file_name
+// 或
+cat file_name | grep "text" -n
+
+// 多个文件
+grep "text" -n file_1 file_2
+```
+
+##### 打印 样式匹配所位于的字符或字节偏移 `-b -o`：
+
+```c
+echo gun is not unix | grep -b -o "not"
+7:not
+
+// 一行中字符串的字符便宜是从该行的第一个字符开始计算，起始值为0。选项 -b -o 一般总是配合使用。
+```
+
+##### 搜索多个文件 并 查找匹配文本在哪些文件中：
+
+```c
+grep -l "text" file1 file2 file3...
+```
+
+#### grep递归搜索文件
+
+##### 在多级目录中对文本进行递归搜索 `-r -n`：
+
+```c
+grep "text" . -r -n
+# .表示当前目录。
+```
+
+##### 忽略匹配样式中的字符大小写 `-i`:
+
+```c
+echo "hello world" | grep -i "HELLO"
+hello
+```
+
+##### 选项 `-e` 制动多个匹配样式：
+
+```c
+echo this is a text line | grep -e "is" -e "line" -o
+
+is
+line
+```
+
+##### 使用`-f`选项来匹配多个样式，在样式文件中逐行写出需要匹配的字符。
+
+```c
+cat patfile
+aaa
+bbb
+
+echo aaa bbb ccc ddd eee | grep -f patfile -o
+```
+
+##### 在grep搜索结果中包括`--include`或者排除`--exclude-from`指定文件：
+
+```c
+# 只在 目录中 所有的.php和.html文件中 递归搜索字符"main()"
+grep "main()" . -r --include *.{php,html}
+
+# 在 搜索结果中 排除 所有README文件
+grep "main()" . -r --exclude "README"
+
+# 在 搜索结果中 排除 filelist文件列表里的文件
+grep "main()" . -r --exclude-from filelist
+```
+
+##### 使用0值字节后缀的grep与xargs `-lZ`：
+
+```c
+#测试文件：
+echo "aaa" > file1
+echo "bbb" > file2
+echo "aaa" > file3
+
+grep "aaa" file* -lZ | xargs -0 rm
+
+# 执行后会删除file1和file3，grep输出用-Z选项来指定以0值字节作为终结符文件名（\0），xargs -0 读取输入并用0值字节终结符分隔文件名，然后删除匹配文件，-Z通常和-l结合使用。
+```
+
+##### grep静默输出 `-q`：
+
+```c
+grep -q "test" filename
+
+#不会输出任何信息，如果命令运行成功返回0，失败则返回非0值。一般用于条件测试。
+```
+
+##### 打印出匹配文本之前或者之后的行：
+
+```c
+#显示匹配某个结果之后的3行，使用 -A 选项：
+seq 10 | grep "5" -A 3
+5
+6
+7
+8
+
+#显示匹配某个结果之前的3行，使用 -B 选项：
+seq 10 | grep "5" -B 3
+2
+3
+4
+5
+
+#显示匹配某个结果的前三行和后三行，使用 -C 选项：
+seq 10 | grep "5" -C 3
+2
+3
+4
+5
+6
+7
+8
+
+#如果匹配结果有多个，会用“--”作为各匹配结果之间的分隔符：
+echo -e "a\nb\nc\na\nb\nc" | grep a -A 1
+a
+b
+--
+a
+b
+```
+
+---
+
+#### `fmt` outputs formatted text
+- Reads text from standard input,  
+- outputs formatted text on standard output.
+
+#### `pr` preparation for printing
+- Takes text input from standard input
+- splits the data into pages with page breaks, headers and footers in preparation for printing.
+
+#### `head` Outputs the first few lines
+- Outputs the first few lines of its input.
+- Useful for getting the header of a file.
+
+#### `tail` Outputs the last few lines
+- Outputs the last few lines of its input. U
+- seful for things like getting the most recent entries from a log file.
+
+#### `tr`
+- Translates characters.
+- Can be used to perform tasks such as upper/lowercase conversions or changing line termination characters from one type to another (for example, converting DOS text files into Unix style text files).
+
+#### `sed` Stream editor
+- Stream editor.
+- perform more sophisticated text translations than tr.
+
+#### `awk` constructing filters
+- An entire programming language designed for constructing filters. Extremely powerful.
+
+---
+
+## Expansion
+Each time you type a command line and press the enter key, bash performs several processes upon the text before it carries out your command. We have seen a couple of cases of how a simple character sequence, for example \*, can have a lot of meaning to the shell.
+The process that makes this happen is called `expansion`.
+With expansion, you type something and it is expanded into something else before the shell acts upon it.
+
+```py
+echo is a shell builtin, prints out its text arguments on standard output:
+$ echo this is a test
+this is a test
+# Any argument passed to echo gets displayed. Let's try another example:
+
+$ echo *
+Desktop Documents ls-output.txt Music Pictures Public Templates Videos
+# Why didn't echo print *
+# wildcards, the * character means match any characters in a filename
+# the shell expands the * into something else (in this instance, the names of the files in the current working directory) before the echo command is executed.
+# When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the echo command never saw the \*, only its expanded result. Knowing this, we can see that echo behaved as expected.
+```
+
+### Pathname Expansion
+The mechanism by which wildcards work is called `pathname expansion`.
+
+```py
+$ ls
+Desktop
+ls-output.txt
+Documents Music
+Pictures
+Public
+Templates
+Videos
+
+$ echo D*
+Desktop Documents
+
+$ echo *s
+Documents Pictures Templates Videos
+
+$ echo [[:upper:]]*
+Desktop Documents Music Pictures Public Templates Videos
+
+$ echo /usr/*/share
+/usr/kerberos/share /usr/local/share
+```
+
+### Tilde 波浪字符 Expansion `~`
+the tilde `/'tɪldə/` character (“~”): When used at the beginning of a word, it expands into the name of the home directory of the named user, or if no user is named, the home directory of the current user:
+```py
+$ echo ~
+/home/me
+
+If user “foo” has an account, then:
+$ echo ~foo
+/home/foo
+```
+
+### Arithmetic Expansion `$((expression))`
+- The shell allows arithmetic to be performed by expansion.
+- to use the shell prompt as a calculator: 	$((expression))
+
+```py
+Arithmetic expansion only supports integers (whole numbers, no decimals), but can perform quite a number of different operations.
+$ echo $((2 + 2))
+4
+
+
+Spaces are not significant in arithmetic expressions and expressions may be nested. For example, to multiply five squared by three:
+$ echo $(($((5**2)) * 3))
+75
+
+Single parentheses may be used to group "multiple subexpressions". get the same result using a single expansion instead of two:
+$ echo $(((5**2) * 3))
+75
+
+Here is an example using the division and remainder operators. Notice the effect of integer division:
+$ echo Five divided by two equals $((5/2))
+Five divided by two equals 2
+$ echo with $((5%2)) left over.
+with 1 left over.
+```
+
+### Brace 托架 Expansion `a{1,2,y}b`
+- Perhaps the strangest expansion is called brace expansion.
+- you can create multiple text strings from a pattern containing `braces`.
+- atterns to be brace expanded may contain a `preamble` and a `postscript`.
+- The brace expression itself may contain either a comma-separated list of strings, or a range of integers or single characters.
+- The pattern may not contain embedded whitespace.
+
+```py
+$ echo Front-{A,B,C}-Back
+Front-A-Back Front-B-Back Front-C-Back
+
+using a range of integers:
+$ echo Number_{1..5}
+Number_1 Number_2 Number_3 Number_4 Number_5
+
+A range of letters in reverse order:
+$ echo {Z..A}
+Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+
+Brace expansions may be nested:
+$ echo a{ A{1,2} , B{3,4} }b
+aA1b aA2b aB3b aB4b
+```
+
+So what is this good for?
+The most common application is to make lists of files or directories to be created. the directory names will sort in chronological order.
+```py
+[me@linuxbox me]$ mkdir Photos
+[me@linuxbox me]$ cd Photos
+[me@linuxbox Photos]$ mkdir {2007..2009}-0{1..9} {2007..2009}-{10..12}
+[me@linuxbox Photos]$ ls
+2007-01 2007-07 2008-01 2008-07 2009-01 2009-07
+2007-02 2007-08 2008-02 2008-08 2009-02 2009-08
+2007-03 2007-09 2008-03 2008-09 2009-03 2009-09
+2007-04 2007-10 2008-04 2008-10 2009-04 2009-10
+2007-05 2007-11 2008-05 2008-11 2009-05 2009-11
+2007-06 2007-12 2008-06 2008-12 2009-06 2009-12
+```
+
+### Parameter Expansion
+We're only going to touch briefly on parameter expansion in this lesson, but we'll be covering it more later. It's a feature that is more useful in shell scripts than directly on the command line.
+Many of its capabilities have to do with the system's ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called variables, are available for your examination.
+
+```py
+the variable named “USER” contains your user name. To invoke parameter expansion and reveal the contents of USER you would do this:
+$ echo $USER
+me
+
+To see a list of available variables, try this:
+$ printenv | less
+
+You may have noticed that with other types of expansion, if you mistype a pattern, the expansion will not take place and the echo command will simply display the mistyped pattern. With parameter expansion, if you misspell the name of a variable, the expansion will still take place, but will result in an empty string:
+
+[me@linuxbox me]$ echo $SUER
+[me@linuxbox ~]$
+```
+
+
+### Command Substitution `$ Command $(Command)`
+to use the output of a command as an expansion:
+```py
+$ echo $(ls)
+Desktop Documents ls-output.txt Music Pictures Public Templates Videos
+
+$ ls -l $(which cp)
+-rwxr-xr-x 1 root root 71516 2007-12-05 08:58 /bin/cp
+Here we passed the results of which cp as an argument to the ls command, thereby getting the listing of of the cp program without having to know its full pathname.
+
+
+not limited to just simple commands. Entire pipelines can be used (only partial output shown):
+$ file $(ls /usr/bin/* | grep bin/zip)
+/usr/bin/bunzip2:
+/usr/bin/zip:      ELF 32-bit LSB executable, Intel 80386, version 1
+(SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.15, stripped
+/usr/bin/zipcloak: ELF 32-bit LSB executable, Intel 80386, version 1
+(SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.15, stripped
+/usr/bin/zipgrep:  POSIX shell script text executable
+/usr/bin/zipinfo:  ELF 32-bit LSB executable, Intel 80386, version 1
+(SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.15, stripped
+/usr/bin/zipnote:  ELF 32-bit LSB executable, Intel 80386, version 1
+(SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.15, stripped
+/usr/bin/zipsplit: ELF 32-bit LSB executable, Intel 80386, version 1
+(SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.15, stripped
+In this example, the results of the pipeline became the argument list of the file command.
+
+There is an alternate syntax for command substitution in older shell programs which is also supported in bash. It uses back-quotes instead of the dollar sign and parentheses:
+$ ls -l `which cp`
+-rwxr-xr-x 1 root root 71516 2007-12-05 08:58 /bin/cp
+```
+
+
+### Quoting
+```py
+$ echo this is a     test
+this is a test
+# word-splitting by the shell removed extra whitespace from the echo command's list of arguments.
+
+$ echo The total is $100.00
+The total is 00.00
+# parameter expansion substituted an empty string for the value of “$1” because it was an undefined variable.
+```
+The shell provides a mechanism called quoting to selectively suppress unwanted expansions.
+
+#### Double Quotes  `$ mv "two words.txt" two_words.txt`
+The first type of quoting we will look at is double quotes. If you place text inside double quotes, all the special characters used by the shell lose their special meaning and are treated as ordinary characters.
+
+The exceptions are “$”, \\ (backslash), and \` (back- quote). This means that word-splitting, pathname expansion, tilde expansion, and brace expansion are suppressed, but parameter expansion, arithmetic expansion, and command substitution are still carried out. Using double quotes, we can cope with filenames containing embedded spaces. Say you were the unfortunate victim of a file called two words.txt. If you tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
+
+```py
+$ ls -l two words.txt
+ls: cannot access two: No such file or directory
+ls: cannot access words.txt: No such file or directory
+
+By using double quotes, you can stop the word-splitting and get the desired result; further, you can even repair the damage:
+$ ls -l "two words.txt"
+-rw-rw-r-- 1 me me 18 2008-02-20 13:03 two words.txt
+
+$ mv "two words.txt" two_words.txt
+
+There! Now we dont have to keep typing those pesky double quotes.
+Remember, parameter expansion, arithmetic expansion, and command substitution still take place within double quotes:
+
+$ echo "$USER $((2+2)) $(cal)"
+me 4
+February 2008
+Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29
+
+We should take a moment to look at the effect of double quotes on command substitution. First lets look a little deeper at how word splitting works. In our earlier example, we saw how word-splitting appears to remove extra spaces in our text:
+
+$ echo this is a     test
+this is a test
+
+# By default, word-splitting looks for the presence of spaces, tabs, and newlines (linefeed characters) and treats them as delimiters between words.
+# This means that unquoted spaces, tabs, and newlines are not considered to be part of the text.
+# They only serve as separators. Since they separate the words into different arguments, our example command line contains a command followed by four distinct arguments.
+
+If we add double quotes:
+$ echo "this is a     test"
+this is a     test
+
+word-splitting is suppressed and the embedded spaces are not treated as delimiters, rather they become part of the argument. Once the double quotes are added, our command line contains a command followed by a single argument. The fact that newlines are considered delimiters by the word-splitting mechanism causes an interesting, albeit subtle, effect on command substitution. Consider the following:
+
+
+$ echo $(cal)
+February 2008 Su Mo Tu We Th Fr Sa 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+
+$ echo "$(cal)"
+February 2008
+Su Mo Tu We Th Fr Sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29
+
+- In the first instance, the unquoted command substitution resulted in a command line containing thirty-eight arguments.
+- In the second, a command line with one argument that includes the embedded spaces and newlines.
+```
+
+#### Single Quotes
+to suppress all expansions, use single quotes.
+
+```py
+$ echo text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
+text /home/me/ls-output.txt a b foo 4 me
+
+$ echo "text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER"
+text ~/*.txt {a,b} foo 4 me
+
+$ echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'
+text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
+```
+As you can see, with each succeeding level of quoting, more and more of the expansions are suppressed.
+
+
+### Escaping Characters
+Sometimes you only want to quote a single character. To do this, you can precede a character with a backslash, which in this context is called the escape character.
+```py
+done inside double quotes to selectively prevent an expansion:
+$ echo "The balance for user $USER is: \$5.00"
+The balance for user me is: $5.00
+
+to use escaping to eliminate the special meaning of a character in a filename.
+For example, it is possible to use characters in filenames that normally have special meaning to the shell. To include a special character in a filename you can to this:
+$ mv bad\&filename good_filename
+
+To allow a backslash character to appear, escape it by typing “\\”.
+Note that within single quotes, the backslash loses its special meaning and is treated as an ordinary character.
+```
+
+### More Backslash Tricks
+in addition to command line options consisting of a dash and a single letter, there are also long option names that begin with two dashes.
+
+For example
+the following are equivalent:
+ls -r
+ls --reverse
+
+
+Why do they support both? The short form is for lazy typists on the command line and the long form is mostly for scripts though some options may only be long form.
+I sometimes use obscure options, and I find the long form useful if I have to review a script again months after I wrote it. Seeing the long form helps me understand what the option does, saving me a trip to the man page. A little more typing now, a lot less work later. Laziness is maintained.
+
+As you might suspect, using the long form options can make a single command line very long. To combat this problem, you can use a backslash to `get the shell to ignore a newline character` like this:
+
+ls -l \
+   --reverse \
+   --human-readable \
+   --full-time
+
+Using the backslash in this way allows us to embed newlines in our command. Note that for this trick to work, the newline must be typed immediately after the backslash.
+If you put a space after the backslash, the space will be ignored, not the newline.
+Backslashes are also used to insert special characters into our text. These are called backslash escape characters. Here are the common ones:
+
+Escape Character | Name | Possible Uses
+---|---|---
+\n  | newline   | Adding blank lines to text
+\t  | tab       | Inserting horizontal tabs to text
+\a  | alert     | Makes your terminal beep
+\\  | backslash | Inserts a backslash
+\f  | formfeed  | Sending this to your printer ejects the page
+
+The use of the backslash escape characters is very common. This idea first appeared in the C programming language. Today, the shell, C++, perl, python, awk, tcl, and many other programming languages use this concept. Using the echo command with the -e option will allow us to demonstrate:
+
+```
+$ echo -e "Inserting several blank lines\n\n\n"
+Inserting several blank lines
+
+
+
+$ echo -e "Words\tseparated\tby\thorizontal\ttabs."
+Words separated   by  horizontal  tabs
+$ echo -e "\aMy computer went \"beep\"."
+
+My computer went "beep".
+
+$ echo -e "DEL C:\\WIN2K\\LEGACY_OS.EXE"
+DEL C:\WIN2K\LEGACY_OS.EXE
+```
+
+---
+
+## Commands
+Commands can be one of 4 different kinds:
+- An `executable program `like files in `/usr/bin`. Within this category, programs can be compiled binaries such as *programs written in C and C++*, or *programs written in scripting languages* such as the shell, Perl, Python, Ruby, etc.
+- A `command built into the shell itself`. bash provides a number of commands internally called *shell builtins*. example, The `cd` command is a shell builtin.
+- A `shell function`. These are miniature shell scripts incorporated into the environment. We will cover configuring the environment and writing shell functions in later lessons
+- An `alias`. Commands that you can define yourselves, built from other commands.
+
+---
+
+Identifying Commands
+It is often useful to know exactly which of the four kinds of commands is being used and Linux provides a couple of ways to find out.
+
+### `type` displays the kind of command the shell will execute
+- a shell builtin
+- displays the kind of command the shell will execute, given a particular command name.
+
+```py
+type command
+"command" is the name of the command you want to examine.
+
+$ type type
+type is a shell builtin
+
+$ type ls
+ls is aliased to `ls --color=tty'
+
+$ type cp
+cp is /bin/cp
+```
+
+### `which` To determine the exact location of a given executable
+Sometimes there is more than one version of an executable program installed on a system.
+`which` : To determine the `exact location` of a given executable
+
+```py
+$ which ls
+/bin/ls
+```
+
+which only works for `executable programs`, not `builtins` nor `aliases that are substitutes for actual executable programs`.
+
+---
+
+Getting Command Documentation
+With this knowledge of what a command is, we can now search for the documentation available for each kind of command.
+
+### help
+bash has a built-in help facility available for each of the shell builtins. To use it, type “help” followed by the name of the shell builtin. Optionally, you may add the -m option to change the format of the output. For example:
+```
+$ help -m cd
+$ commmand --help
+```
+
+### `man` manual or man page
+Most executable programs intended for command line use provide a formal piece of documentation called a manual or man page. A special paging program called man is used to view them. It is used like this:
+
+where “program” is the name of the command to view. Man pages vary somewhat in format but generally contain a title, a synopsis of the command's syntax, a description of the command's purpose, and a listing and description of each of the command's options. Man pages, however, do not usually include examples, and are intended as a reference, not a tutorial. As an example, let's try viewing the man pagefor the ls command:
+
+`$ man ls`
+
+On most Linux systems, man uses less to display the manual page, so all of the familiar less commands work while displaying the page.
+
+---
+
+
+---
+
+# Job Control
+In the previous lesson, we looked at some of the implications of Linux being a multi-user operating system. In this lesson, we will examine the multitasking nature of Linux, and how this is manipulated with the command line interface.
+
+As with any multitasking operating system, Linux executes multiple, simultaneous processes. Well, they appear simultaneous, anyway. Actually, a single processor computer can only execute one process at a time but the Linux kernel manages to give each process its turn at the processor and each appears to be running at the same time.
+
+There are several commands that can be used to control processes. They are:
+
+`ps` - list the processes running on the system
+`kill` - send a signal to one or more processes (usually to "kill" a process)
+`jobs` - an alternate way of listing your own processes
+`bg` - put a process in the background
+`fg` - put a process in the forground
+
+## A Practical Example
+While it may seem that this subject is rather obscure, it can be very practical for the average user who mostly works with the graphical user interface. You might not know this, but most (if not all) of the graphical programs can be launched from the command line.
+
+`xload` : displays a graph representing system load. a small program supplied with the X Window system
+
+$ xload
+the small xload window appears and begins to display the system load graph. Notice also that your prompt did not reappear after the program launched. The shell is waiting for the program to finish before control returns to you. If you close the xload window, the xload program terminates and the prompt returns.
+
+## Putting a Program into the Background `xload &`
+to launch the xload program again, put it in the background so that the prompt will return.
+$ xload &
+[1] 1223
+In this case, the prompt returned because the process was put in the background.
+
+Now imagine that you forgot to use the "&"
+There is still hope. You can type Ctrl-z and the process will be suspended.
+The process still exists, but is idle.
+
+To resume the process in the background, type the bg (background).
+$ xload
+[2]+ Stopped xload
+$ bg
+[2]+ xload &
+
+## Listing Your Processes `jobs` `ps`
+to display a list of the processes we have launched. To do this, we can use either the `jobs` command or the more powerful `ps` command.
+
+```py
+$ jobs
+[1]+ Running xload &
+
+$ ps
+PID TTY TIME CMD
+1211 pts/4 00:00:00 bash
+1246 pts/4 00:00:00 xload
+1247 pts/4 00:00:00 ps
+```
+
+## Killing a Process `kill`
+First, identify the process you want to kill.
+
+use either `jobs` or `ps`, to do this.
+- `jobs` : get back a job number.
+- `ps` : given a process id (PID).
+
+```py
+$ xload &
+[1] 1292
+$ jobs
+[1]+ Running xload &
+$ kill %1
+
+$ xload &
+[2] 1293
+[1] Terminated xload
+$ ps
+PID TTY TIME CMD
+1280 pts/5 00:00:00 bash
+1293 pts/5 00:00:00 xload
+1294 pts/5 00:00:00 ps
+$ kill 1293
+[2]+ Terminated xload
+```
+
+### About kill
+While the kill command is used to "kill" processes, its real purpose is to send signals to processes.
+Most of the time the signal is intended to tell the process to go away, but there is more to it than that. Programs (if they are properly written) listen for signals from the operating system and respond to them, most often to allow some graceful method of terminating.
+
+For example, a text editor might listen for any signal that indicates that the user is logging off, or that the computer is shutting down. When it receives this signal, it saves the work in progress before it exits.
+
+The kill command can send a variety of signals to processes.
+
+`kill -l`
+give you a list of the signals it supports.
+
+Signal #
+
+Name | Description
+---|---
+1	SIGHUP    | Hang up signal. Programs can listen for this signal and act upon it. This signal is sent to processes running in a terminal when you close the terminal.
+2	SIGINT    | Interrupt signal. This signal is given to processes to interrupt them. Programs can process this signal and act upon it. You can also issue this signal directly by typing Ctrl-c in the terminal window where the program is running.      
+15 SIGTERM  | Termination signal. This signal is given to processes to terminate them. Again, programs can process this signal and act upon it. This is the default signal sent by the kill command if no signal is specified.     
+9	SIGKILL   | Kill signal. This signal causes the immediate termination of the process by the Linux kernel. Programs cannot listen for this signal.
+
+---
+
+suppose a program that is hopelessly hung and you want to get rid of it.
+
+Here's what you do:
+```py
+Use the ps command to get the process id (PID) of the process you want to terminate.
+Issue a kill command for that PID.
+If the process refuses to terminate (i.e., it is ignoring the signal), send increasingly harsh signals until it does terminate.
+
+$ ps x | grep bad_program
+PID TTY STAT TIME COMMAND
+2931 pts/5 SN 0:00 bad_program
+
+$ kill -SIGTERM 2931
+$ kill -SIGKILL 2931
+```
+
+- `ps x` option: list all of my processes (even those not launched from the current terminal).
+- piped the output into `grep` to list only list the program I was interested in.
+- `kill -SIGTERM` signal to the troublesome program.
+  - the default signal sent by kill is SIGTERM
+  - kill can use the signal number instead of the signal name:
+
+$ kill -SIGTERM 2931
+$ kill 2931
+
+if the process does not terminate, force it with the SIGKILL signal:
+$ kill -SIGKILL 2931
+$ kill -9 2931
+
+
+---
+
+## Bash(Shell)基础知识
+
+在日常交际英语中，Shell可以翻译成壳，大多指能够对内部核心起到保护作用的一种装置或结构。在计算机科学中，shell其实是指：为操作者提供的、能够通过系统调用或库调用使用整个计算机资源的访问接口。
+
+它既是一种命令解析器又是一种程序设计语言。作为命令解析器，它可以解释和执行用户输入的命令，也可以自动地解释和执行预先编写好并保存在某个文本文件中的一系列的命令；作为程序设计语言，shell特别定义了各种变量和参数，并提供了许多在高级语言中才具有的控制结构，包括循环和条件分支，让我们可以像使用高级语言那样去使用shell，使之能够胜任复杂逻辑环境的应用，提高其执行效率，更容易发挥其自动化的特性。
+
+与前面的内容相似的，还有下列两个概念：交互式shell和非交互式shell
+
+交互式模式就是shell等待你的输入，并且执行你提交的命令。这种模式被称作交互式是因为shell与用户进行交互。这种模式也是大多数用户非常熟悉的：登录、执行一些命令、注销登录。当你注销登录后，shell将终止运行。
+
+shell也可以运行在另外一种模式：非交互式模式。在这种模式下，shell不与你进行交互，而是读取存放在文件中的命令，并且执行它们。当它读到文件的结尾，shell也就终止了。
+
+
+在"UNIX Like"中主要的shell类型有：
+  - Bourne shell (sh)
+  - Korn shell (ksh)
+  - Bourne Again shell (bash)
+  - POSIX shell (sh)
+  - C shell (csh)
+  - TENEX/TOPS C shell (tcsh)
+
+
+=============================================================
+Bourne Shell
+首个重要的标准Unix Shell是1970年底在V7 Unix(AT&T第7版）中引入的，并且以它的创始科技部基础条件平台——“国家气象网络计算应用节点建设”（2004DKA50730）资助者Stephen Bourne的名字命名。Bourne shell 是一个交换式的命令解释器和命令编程语言。Bourne shell可以运行为login shell或者login shell的子shell(subshell）。只有login命令可以调用Bourne shell作为一个login shell。此时，shell先读取/etc/profile文件和$HOME/.profile文件。/etc/profile文件为所有的用户定制环境，$HOME/.profile文件为本用户定制环境。最后，shell会等待读取你的输入。
+
+
+C Shell
+Bill Joy于20世纪80年代早期，在伯克利的加利福尼亚大学开发了C shell。它主要是为了让用户更容易的使用交互式功能，并把ALGOL风格的语法结构变成了C语言风格。它新增了命令历史、别名、文件名替换、作业控制等功能。
+
+Korn Shell
+有很长一段时间，只有两类shell供人们选择，Bourne shell用来编程，C shell用来交互。为了改变这种状况，AT&T的Bell实验室David Korn开发了Korn shell。ksh结合了所有的C shell的交互式特性，并融入了Bourne shell的语法。因此，Korn shell广受用户的欢迎。它还新增了数学计算，进程协作（coprocess）、行内编辑（inline editing）等功能。Korn Shell是一个交互式的命令解释器和命令编程语言.它符合POSIX标准(Portable Operating System，一个操作系统的国际标准)。但POSIX其实并不是一个操作系统(本来应被称为POS标准，但后来为了迎合UNIX，而特别的在POS后面增加了IX后缀，故而称为了POSIX标准)，而是一个目标在于方便应用程序的移植的标准，使得应用程序在源程序级别实现跨多种平台编译称为可能。
+
+Bourne Again Shell (bash)
+bash是GNU计划的一部分，用来替代Bourne shell。它用于基于GNU的系统如Linux.大多数的Linux(Red Hat,Slackware,Caldera）都以bash作为缺省的shell，并且运行sh时，其实调用的是bash，因为sh不过是bash的一个符号链接罢了。
+
+
+POSIX Shell
+POSIX shell 是Korn shell的一个变种. 当前提供POSIX shell的最大卖主是Hewlett-Packard。在HP-UX 11.0,POSIX shell 就是/bin/sh。
+
+=============================================================
+
+bash是大多数Linux系统以及Mac OS X默认的shell，它能运行于大多数Unix类操作系统之上，甚至被移植到了Microsoft Windows上的Cygwin系统中，以实现Windows的POSIX虚拟接口。
+
+bash的命令语法是Bourne shell(简称sh)命令语法的超集。数量庞大的sh脚本通常可以不经修改而直接在bash中执行，除了那些使用了sh的特殊变量或内置命令的脚本才需要修改。bash的命令语法很多来自Korn shell(ksh)和C shell(csh)，例如命令行编辑，命令历史，目录栈，$RANDOM和$PPID变量，以及POSIX的命令替换语法： $(...)。
+
+当bash作为交互的登录shell，或者是带有--login选项的非交互的shell时，只要/etc/profile文件存在，它首先读取并执行其中的命令。读取该文件之后，它以如下的顺序查找~/.bash_profile, ~/.bash_login和~/.profile, 并以此顺序从存在并且可读的第一个文件中读取并执行其中的命令。--noprofile选项可以被用来在shell启动时阻止它的这种行为。
+
+一个登录 shell 退出时，只要~/.bash_logout和/etc/bash.bash_logout文件存在，bash就会读取并执行这些文件中的命令。
+
+当一个交互的shell但不是登录shell启动时，只要~/.bashrc文件存在，bash就会从中读取并执行命令。通过使用--norc选项来阻止它的这种行为。--rcfile "file"选项将强制bash读取并执行"file"文件中的命令，而不是~/.bashrc中的。
+
+当bash以非交互的方式启动时，例如在运行一个shell脚本，bash会在环境变量中查找BASH_ENV变量，如果该变量存在则将它的值展开，使用展开的值作为一个文件的名称来读取并执行。Bash运作的过程就如同执行了下列命令：
+
+      if [ -n "$BASH_ENV" ] ; then
+
+        . "$BASH_ENV"
+
+      fi
+
+但是没有使用PATH变量的值来搜索那个文件名。
+
+如果bash以名称sh被调用，它试图尽可能地模仿sh历史版本的启动过程，同时也遵循POSIX标准。当作为交互式登录shell启动时，或者使用了--login选项启动非交互shell时，它首先以这样的顺序去尝试读取并执行/etc/profile文件和~/.profile文件中的命令。--noprofile选项可以被用来阻止这种行为。当使用命令sh来启动一个交互式的shell时，bash会查找环境ENV变量，如果已经被定义的话就展开它的值，然后使用展开后的值作为要读取和执行的文件的名称。由于使用sh启动的shell不会尝试读取和执行任何其他的启动文件，选项--rcfile就无效了。使用名称sh启动的非交互shell不会尝试读取任何其他启动文件。当以sh启动时，bash在读取启动文件之后进入posix模式。
+
+当bash以posix模式启动时，就像使用--posix选项一样，它的启动文件遵循POSIX标准。这种模式下，交互式shell展开ENV变量的并读取和执行以ENV变量值为文件名的配置文件。不会读取其他启动文件。
+
+当Bash正在使用其标准输入连接到网络的时候，它尝试判断是不是通过远程shell守护程序启动的，通常为rshd，或secure shell daemon(sshd)。如果bash发现它是由rshd启动的，并且如果~/.bashrc文件存在并可读，它将读取并执行其中的命令。如果以sh命令启动，它不会这样做了。--norc选项可以用来阻止这种行为，--rcfile选项用来强制读取另一个文件，但是通常rshd不会允许它们被指定或者以那些选项被调度启动。
+
+如果shell是以与有效用户(组)ID而不是真实用户(组)ID来启动的，并且没有-p选项，那么，不会读取启动文件，也不会从环境中继承shell函数，如果环境变量中有SHELLOPTS，BASHOPTS，CDPATH和GLOBIGNORE的话，则忽略，将有效用户ID被设置为真实用户ID。如果支持-p选项，则启动时的行为是类似的, 但是不会重置有效用户ID。
+
+
+
+对于任何一款Linux发行版操作系统而言，bash不过就是一个应用程序而已，只不过这个应用程序十分特殊罢了。而在Linux中，对于bash自身而言，它就是一个外部命令而已。下面我们简单来看看这个外部命令的作用吧。
+
+bash：外部命令，命令文件存放的路径为：/bin/bash，全称为：GNU Bourne-Again SHell
+
+使用格式：bash [options] [file]
+
+```py
+命令描述：
+- Bash是一种sh兼容的，可以从标准输入或文件中读取并执行命令的命令语言解释程序。Bash也融合了Korn和C shell的一些有用的特性。
+- Bash是一种一致性实现的Shell和遵循IEEE POSIX规范的实用工具。默认的，bash被配置为与POSIX一致。
+
+常用选项：
+
+      -c string：
+
+        如果有 -c 选项，那么将从"string"中读取命令。如果string后面有参数(argument)，它们将分配给从$0开始的位置参数。
+
+      -i：
+
+        如果有-i选项，shell将交互地执行(interactive)。
+
+      -l：
+
+        选项使得bash以类似登录shell(login shell)的方式启动。
+
+      -r：
+
+        如果有-r选项，shell成为受限的(restricted)。
+
+      -s：
+
+        如果有-s选项，或者如果选项处理完以后，没有参数剩余，那么命令将从标准输入读取。这个选项允许在启动一个交互shell时可以设置位置参数。
+
+      -D：
+
+        向标准输出打印一个以$为前导的，以双引号引用的字符串列表。这是在当前语言环境不是C或POSIX时，脚本中用于完成语言转换的字符串。这暗指-n选项；不会执行命令。
+
+      [-+]O [shopt_option]
+
+        shopt_option是一个shopt内置命令可接受的选项。如果有shopt_option，-O将设置那个选项的值；+O取消它。如果没有给出shopt_option，被shopt接受的shell选项的名称和值将会显示在标准输出上。如果启动选项是+O，输出将显示为一种可以重用为输入的格式。
+
+      --：
+
+        "--"标志选项的结束，禁止其余的选项处理。任何"--"之后的参数将作为文件名和参数对待。参数-与此等价。
+
+Bash也解释一些多字符的选项。这些选项必须在单字符选项被识别之前出现在命令行。
+
+      --debugger：
+
+        为shell启动之前被执行的调试器配置文件做准备。打开展开调试模式和shell功能追踪。
+
+      --dump-po-strings：
+
+        等价于-D，但是输出是GNU gettext po(可移植对象)文件格式
+
+      --dump-strings：
+
+        等价于-D
+
+      --help：
+
+        在标准输出显示用法信息并成功退出
+
+      --init-file file
+
+      --rcfile file：
+
+        如果shell是交互的，执行file中的而不是标准的个人初始化文件~/.bashrc中的命令
+
+      --login：
+
+        等价于 -l
+
+      --noediting：
+
+        如果shell是交互的，不使用GNU readline库来读取命令行。
+
+      --noprofile：
+
+        不读取系统全局的启动文件/etc/profile或者任何个人初始化文件~/.bash_profile, ~/.bash_login,或~/.profile 。默认情况下，bash在作为登录shell被调用时就会读取这些文件
+
+--norc：
+如果shell是交互的，不读取和执行个人初始化文件~/.bashrc。
+如果shell被调用为sh，这个选项是默认启用的。
+
+      --posix：
+
+        如果默认操作与POSIX 1003.2标准不同的话，改变bash的行为(posix mode)。
+
+      --restricted：
+
+        shell被限制。
+
+      --rpm-requires：
+
+        生产一个为让shell脚本运行所需的文件列表。这个暗指-n。受限于和编译时错误检测相同的限制；Backticks, [] tests, 还有evals不会被分析，可能会丢失一些依赖关系。
+
+      --verbose：
+
+        等价于 -v
+
+      --version：
+
+        在标准输出显示此bash实例的版本信息并成功退出。
+
+    参数：
+
+    如果选项处理之后仍由参数剩余，并且没有提供-s或-c选项的话，那么第一个参数将被假定成一个包含shell命令的文件的名字如果bash以这种方式启动，$0就被设置成这个文件的名字，位置参数也将被设置为剩余的参数。Bash从这个文件中读取并执行命令，然后退出。Bash的退出状态是脚步中最后一个命令的退出状态。如果没有命令被执行，退出状态为0 。首先尝试在当前目录下打开这个文件，接下来，如果文件未被发现，那么shell将为了找到脚本文件而搜索PATH中的目录。
+
+
+
+    shell中定义的一些：
+
+    下列定义在文档余下部分中通用。
+
+      blank：一个空格或是制表符
+
+      word：一个被shell视作以一个单独单元的字符串，也被称为令牌。
+
+      name：一个只能以字母或下划线开始，并且只包括字母数字和下划线的字符串，也被称为标识符。
+
+      metacharacter：元字符，一个如果不引用就将成为词的分隔符的字符，如下字符之一:
+
+        |  & ; ( ) < > space tab
+
+      control operator：控制操作符，一个拥有控制功能的令牌，如下符号之一:
+
+        || & && ; ;; ( ) | <newline>
+
+
+
+    既然shell是如此的重要而且也是如此的不可或缺，那么我们应该如何使用shell呢？其实很简单，想要学会使用shell就必须要了解shell给操作者提供了哪些功能特性。
+
+
+
+    下面就以bash为例，介绍一下它的基本功能特性：
+
+    一、命令解释：
+
+      这个功能特性可以说是任何一种shell或者会所任何一款接口程序所必须具备的基本功能，甚至应该说是其与生俱来的使命了。
+
+      那么bash是如何解释命令的呢？
+
+      1.在bash中，只有键入了回车，bash才去试图解释命令；
+
+      2.在键入回车之后，bash尝试着将整个命令行的内容按照空白字符分段，bash会认为最左侧的一段就是要执行的命令；
+
+      3.bash在确定了可能是命令的字符串之后，需要知道这是内部命令还是外部命令。所谓内部命令，就是指bash自带的命令，这样的命令通常是在bash运行起来之后就被载入内存了，因为这样的命令就是bash的一部分；所谓的外部命令，就是通过安装其他应用程序存储在外部存储器某些数据块里面的命令，与bash并没有什么直接的关系。如果本次执行的是内部命令，bash可以直接运行，然后返回执行结果和执行状态信息；如果本次执行的不是内部命令，bash就会调用内置的保存了可执行二进制文件的路径的PATH变量，读取变量中的内容，从中查找是否有与本次执行的命令相同名称的文件，如果有就执行之，如果没有，就会报告错误信息，诸如：-bash: COMMAMD: command not found。其中的"COMMAND"可能会被替换为执行的命令。如下例所示：
+
+    [root@localhost ~]# sss
+    -bash: sss: command not found
+      4.bash判断出命令类型并给予解释的时候，整个命令行中的其他字段，会被当作选择以及参数送给命令，如果都正确，则说明此命令可以正确执行，bash会按照命令要求的格式将此次命令的执行结果输出至标准输入；但如果这样的选项或参数不正确或者不能使用，则还需要按照以下两种情况对待：
+
+        1)如果是内部命令，bash会一直负责到底，帮助该命令报告错误信息；
+
+        2)如果是外部命令，就不是bash可以决定的了，通常这个时候，会由被执行的应用程序来判断选项和参数是否正确，如果不正确，会由应用程序来报告错误信息。
+
+        3)无论是内部命令还是外部命令，就算是外部命令也是由bash启动的，所以bash得对此命令是否能够成功执行、是否正常退出负责。在执行结束的时候，bash都要使用一个退出代码标识其执行的状态信息，并将该状态信息保存至一个名为"?"的特殊变量中。如果想要查看这个状态之，我们可以使用一般的变量内容的读取方法：echo $? 即可。通常来讲，这样的命令执行状态的返回值是由0-255的整数来表示，其中：
+
+        0：表示命令执行成功
+
+        1、2、127：为bash默认的错误代码
+
+        3-126：为用户可自定义的错误代码
+
+        128-255：某个命令非正常退出，而是由于接收到了某个信号才退出，这样的状态返回值为128+N，其中的"N"就表示命令接收到的信号的编号。
+
+
+
+    请参考下面的例子：
+
+[root@localhost ~]# cd -a
+-bash: cd: -a: invalid option
+cd: usage: cd [-L|-P] [dir]
+      (此处为内部命令的选项错误)
+
+[root@localhost ~]# cd /testtt
+-bash: cd: /testtt: No such file or directory
+      (此处为内部命令的参数错误)
+
+[root@localhost ~]# echo $?
+1
+      (此处为命令执行的状态返回值。一般情况下，若该返回值为"0"则表示命令成功执行，否则即为命令执行失败)
+
+[root@localhost ~]# ls --P
+ls: unrecognized option '--P'
+Try `ls --help' for more information.
+    (此处为选项错误)
+
+[root@localhost ~]# ls /testtt
+ls: cannot access /testtt: No such file or directory
+    (此处为参数错误)
+
+[root@localhost ~]# echo $?
+2
+    (此处为命令执行的状态返回值。一般情况下，若该返回值为"0"则表示命令成功执行，否则即为命令执行失败)
+
+
+
+    二、命令别名
+
+
+
+    bash给我们提供了给命令建立别名的特权，不管是系统管理员也好，普通用户也好，都可以定义别名命令，而且定义的方法非常简单：
+
+      1.可以使用alias命令来定义别名命令；
+
+      2.可以使用unalias命令取消已经定义的别名命令；
+
+      3.无论是使用alias命令定义还是unalias命令来取消，都是改了内存中的bash运行参数，因此只要bash关闭，该功能就失效了。因此，为了能够让别名命令永久有效，可以将这样的定义内容写在家目录中的.bashrc文件中，每个用户家里面都有这个文件，童叟无欺。
+
+    每一个简单命令的第一个字如果不被引号引用，bash就会对其实施被检查，看看这个命令是否有某个命令的别名。如果是，这个命令就会被对应的别名替换。字符"/"，"$"，"`"和"="以及shell任何一个shell的元字符不能出现在别名中。替换的文本内容可以包含任何的有效的shell输入，也包括shell的元字符。替换文本的第一个词也被检查是否为别名。但是如果它与被替换的别名相同，就不会再替换第二次。这意味着可以用ls作为ls -F的别名，bash不会递归地展开替换文本。如果别名的最后一个字符是空白字符，那么命令中别名之后的下一个词也将被检查是否能进行别名展开。
+
+
+
+    如果shell不是交互的，别名将不会展开，除非使用内置命令shopt设置了expand_aliases选项。
+
+    关于别名的定义和使用的规则比较混乱。Bash在执行一行中的任何命令之前，总是完整地读入一行的输入。别名在命令被读取时展开，而不是在执行的时候。因此，别名定义如果和另一个命令在同一行，那么不会起作用，除非读入了下一行。别名定义之后，同一行中的命令不会受新的别名影响。这种行为在函数执行时存在争议，因为在函数中定义的别名替换是别名被读取时才会发生，而不是函数被执行的时候，因为函数定义本身是一个复合命令。结果，在函数中定义的别名只有当这个函数执行完才会生效。为了保险起见，应当总是将别名定义放在单独的一行，不在复合命令中使用alias。
+
+    别名这个特性在有些时候会非常有用，因为依靠这个特性，我们可以：
+
+      1.将复杂的命令简单化，如：
+
+[root@localhost ~]# alias l.='ls -d .* --color=auto'
+[root@localhost ~]# alias ll='ls -l --color=auto'
+[root@localhost ~]# alias ls='ls --color=auto'
+    2.将危险的命令安全化，如：
+
+[root@localhost ~]# alias cp='cp -i'
+[root@localhost ~]# alias mv='mv -i'
+[root@localhost ~]# alias rm='rm -i'
+    3.根据自己的喜好和使用习惯来定义不同风格的命令，如：
+
+[root@localhost ~]# alias cdnet='cd /etc/sysconfig/network-scripts/'
+[root@localhost ~]# alias viht='vim /etc/httpd/conf/httpd.conf'
+(待续...)
+```
+
+
+---
+
+# usal commands
+
+## `FTP` 文件传输协议。
+- 主要就是从运行FTP服务器的计算机传输文件。可以交互使用。
+- 注意，只有安装了tcp/ip协议的机器才能使用ftp命令。
+
+命令格式：ftp [-v][-d][-i][-n][-g][-s:filename][-a][-w:windowsize][computer]
+
+```py
+-v: 不显示远程服务器响应
+-n: 禁止第一次连接的时候自动登陆
+-i: 在多个文件传输期间关闭交互提示
+-d: 允许调试、显示客户机和服务器之间传递的全部ftp命令
+-g: 不允许使用文件名通配符，文件名通配符的意思是说允许在本地文件以及路径名中使用通配字符
+-s:filename: 指定包含ftp命令的文本文件。在ftp命令启动后将自动运行这些命令。在加的参数里不能有空格。
+-a: 绑定数据连接时，使用任何的本地端口
+-w:windowsize: 忽略默认的4096传输缓冲区
+
+1. ?: 显示ftp命令的说明。后面加参数，加需要解释的命令名，不加则显示包含所有命令列表。
+2. append: 使用当前文件类型设置，将本地文件附加到远程计算机中
+  - append local-file [remote-file]
+  - local-file: 指定要添加的本地文件。
+  - remote-file: 指定要将local-file附加到远程计算机文件，省了这个则是使用本地文件名做远程文件名
+3. ascii: 默认情况下，将文件传输类型设置为ASCII
+4. bell: 响玲开关，文件传输完成后是否有玲声提醒。默认关闭。
+5. binary: 将文件传输类型设置为二进制。
+6. bye: 结束和远程计算机的ftp会话，安全断开，退出ftp.
+7. cd: 更改远程计算机上的工作目录。如cd data 其中data是要进入的远程计算机的目录。
+8. close: 结束与远程服务器的ftp会话，并返回命令解释程序。
+9. dir: 显示远程的文件以及子目录列表。如dir data local-file
+  - data: 指定要查看列表的目录，没指定的话就是当前目录。
+  - local-file: 指定要保存列表的本地文件，不指定的话就在屏幕输出。
+10. debug: 调试开关，打开的时候打印每个发送到远程计算机的命令，命令前有——> 默认关闭。
+11. disconnnect: 与远程计算机断开连接，但还保持着ftp命令提示符。
+12. get: 使用当前文件传输类型，把远程的文件拷贝到本地计算机上。
+  - get remote-file local-file
+  - remote-file是指定要复制的文件
+  - local-file是指定本地计算机上的文件名，没有指定的话则个remote-file同名。
+13. glob: 文件名通配开关
+14. hash: 转换每个传输数据快的散列标记打印("#").数据快的大小是2048字节。默认情况下是关闭的，
+15. help: 显示ftp命令的解释，如help commmand 其中command就是你要解释的命令，如果不加command这个参数的话就会显示所有命令的列表
+16. !: 这个命令差点忘记了功能是在本地计算机上运行指定命令。如! command 其中command就是你要运行的命令，如果不加command这个参数的话，则显示本地命令提示， 这时你输入exit命令就能返回到ftp了。
+17. lcd: 更改本地计算机的本地目录,在默认的时候是启动ftp的目录.这个不要觉得没用啊，在你使用ftp的时候为了传递文件不是常改变本地和远程计算机的目录吗?
+　　如lcd [directory] 其中[directory]是指定要进入的本地计算机的目录,如果你不加这个参数,就会显示出本地计算机的工作目录.
+18. literal: 向远程ftp服务器发送协商参数,报告.
+　　如lireral argument [...] 其中argument是指定要发送给远程服务器的协商参数。
+19. ls: 显示远程目录的文件和字目录.
+　　如ls remote-directory local-file
+　　其中remote-directory是指要查看的列表的目录,不指定的话显示的是当前工作目录。local-file是指定要保存列表的本地文件.不指定的话是在屏幕上输出.
+　　20)mdelete
+　　说明:删除远程计算机上的文件.如mdelete remote-file ...
+　　remote-file肯定是要删的文件啊，可以删除多个.
+　　21)mdir
+　　说明:显示远程目录的文件和子目录列表,他允许指定多个文件.
+　　如mdir remote-file ... local-file
+　　参数我想大家应该明白什么意思吧?不明白就看看前面的类似命令吧.
+　　22)mget
+　　说明:使用当前文件传输类型将多个远程文件复制到本地计算机.
+　　如mget remote-files ...
+　　其实remote-files可以指定多个，他就是指定要复制到本地计算机的远程文件.
+　　23)mkdir
+　　说明:创建远程目录.
+　　如mkdir directory 这个命令和nt下的命令提示符中的md directory一样，不多说了.
+　　24)mls
+　　说明:显示远程目录的文件和目录简表
+　　如mls remote-file ... local-file
+　　其中remote-file这个参数是必须要加的，’’-’’是使用远程计算机的当前工作目录.
+　　25)mput
+　　说明:使用当前文件传输类型,将本地文件复制到远程计算机.
+　　如mput local-files ...
+　　26)open
+　　说明:连接到指定ftp服务器上，
+　　如open computer port 其中computer一般是远程计算机的ip地址,port不用说就是指定端口了。
+　　27)prompt
+　　说明:转换提示,在多个文件传输的时候,ftp提示可以有选择的检索或保存文件，如果关闭提示,则mget和mput命令传输所有文件,在默认情况下是打开的.
+　　28)put
+　　说明:使用当前文件传输类型将本地文件复制到远程计算机中，
+　　如put local-file remote-file
+　　其中local-file是指定要复制的本地文件，
+　　remote-file是指定要复制的远程计算机上的文件名，不指定的话是和本地计算机上的文件名同名.
+　　29)pwd
+　　说明:显示远程呢感计算机上的当前目录.
+　　30)quit
+　　说明:结束与远程计算机的ftp会话,并退出ftp.
+　　31)quote
+　　说明:向远程ftp服务器发送协议,报告.期待ftp单码应答,这个命令的功能和literal相同.
+　　32)recv
+　　说明:使用当前文件传输类型将远程文件复制到本地计算机,他与get命令作用相同。
+　　33)remotehelp
+　　说明:显示远程命令的帮助.这个命令的用法和help,!一样可以参考他的用法.
+　　34)rename
+　　说明:更改远程计算机上的文件名。
+　　这个命令和nt的命令提示符的ren一样，如rename filename newfilename
+　　35)rmdir
+　　说明:删除远程目录.
+　　这个命令和nt的命令提示符的rm一样，如rmdir directory
+　　36)send
+　　说明:使用当前文件传输类型将本地文件复制到远程计算机.send和put命令的功能一样。
+　　如send local-file remote-file
+　　37)status
+　　说明:显示ftp连接和转换的当前状态
+　　38)trace
+　　说明:转换报文跟踪,运行ftp的命令时,trace将显示没个报文的理由。
+　　39)type
+　　说明:设置或显示文件传输类型.
+　　如type [type-name]
+　　其中type-name 的意思是文件传输的类型，默认是ASCII,没加这个参数就是显示当前的传输类型.
+　　40)user
+　　说明:指定连接到远程计算机的用户.
+　　如user user-name [passwd] [account]
+　　其中user-name不用说都是用来登陆计算机的用户名了，
+　　passwd是指定user-name的密码,不指定的话ftp会提示输入密码。
+　　account是指定用来登陆计算机的帐号,如不指定,ftp会提示输入帐号.
+　　41)verbose
+　　说明:转换冗余模式。这里如果打开,会显示所有ftp响应,文件传输结束的时候会显示传输的效率和统计信息,默认的情况是打开的!
+```
+
+---
+
+## `Nano` 命令
+
+```py
+- 打开或新建文件
+$ nano 文件名
+Nano是一种单模式编辑器，你可以直接输入文字。
+如果你要编辑一个像/etc/fstab一样的配置文件，请使用-w参数，例如：
+
+- 禁用自动换行
+$ nano -w /etc/fstab
+警告:这非常重要。如果在编辑配置文件时忘了加-w参数，可能会导致你的系统无法起动或产生别的异常。
+
+- 保存和退出
+  - 保存所做的修改，按下Ctrl+O。
+  - 想要退出，按下Ctrl+X。
+  - 如果你退出前没有保存所做的修改，它会提示你是否要保存。如果不要，请按N，反之，则按Y。
+  - 然后它会让你确认要保存的文件名，确认或修改后按Enter即可。
+  - 如果你没有修改好而不小心按了保存键，您可以在请求确认文件名时按Ctrl+C来取消。
+
+- 剪切和粘贴
+  - 要剪切一整行，请用Ctrl+K（按住Ctrl不放，再按下K键）。光标所在的行便消失了。要粘贴它，只需把光标移动到您所要粘贴的位置，然后按Ctrl+U即可。要移动多行，只需多按几次Ctrl+K把需要移动内容都剪切下来，然后按一次Ctrl+U就可以把刚剪切的内容全部粘贴上来。
+  - 如果你想使用更精确的剪切控制，则需要给文本做标记。移动光标到需要剪切文本的开头，按下Ctrl+6（或者Alt+A）。然后移动光标到待剪切文本的末尾：被做了标记的文本便会反白。要撤消文本标记，只需再按一次Ctrl+6。用Ctrl+K来剪切被标记的文本，用Ctrl+U来粘贴。
+
+- 搜索特定文字
+  - 当你想搜索某特定文字时，只要想成"WhereIs"而不是"Search"，事情就简单了。只要按下Ctrl+W，键入你要搜索的字符串，再按Enter就可以了。想再次搜索相同的字符串，可以直接按Alt+W。
+
+注意:在nano帮助文档里，Ctrl-键被表示为一个脱字符（^），因此Ctrl+W被写成了^W，等等。Alt-键被表示为一个M（从"Meta"而来），因此Alt+W被写成了M-W。
+```
+
+---
+
+
+## `openssl`
+
+ref
+https://wangchujiang.com/linux-command/c/openssl.html
+https://blog.csdn.net/scuyxi/article/details/54884976
+https://blog.csdn.net/as3luyuan123/article/details/16812071
+
+
+- 强大的安全套接字层密码库. 囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。
+- 在OpenSSL被曝出现严重安全漏洞后，发现多数通过SSL协议加密的网站使用名为OpenSSL的开源软件包。
+- 由于这是互联网应用最广泛的安全传输方法，被网银、在线支付、电商网站、门户网站、电子邮件等重要网站广泛使用，所以该漏洞影响范围广大。
+
+openssl中有如下约定熟成的后缀名称：
+* .key: 私有的密钥
+* .csr: 证书签名请求（证书请求文件），含有公钥信息，certificate signing request的缩写
+* .crt: 证书文件，certificate的缩写
+* .crl: 证书吊销列表，Certificate Revocation List的缩写
+* .pem: 用于导出，导入证书时候的证书的格式，有证书开头，结尾的格式
+
+- OpenSSL有两种运行模式：`交互模式`和`批处理模式`。
+  - 直接输入openssl回车进入交互模式
+  - 输入带命令选项的openssl进入批处理模式。
+
+OpenSSL整个软件包大概可以分成三个主要的功能部分：`密码算法库`、`SSL协议库`以及`应用程序`。
+
+OpenSSL的目录结构自然也是围绕这三个功能部分进行规划的。
+
+### 对称加密算法
+- OpenSSL一共提供了8种对称加密算法
+  - 7种分组加密算法: AES、DES、Blowfish、CAST、IDEA、RC2、RC5
+  - 一种流加密算法: RC4
+- 都支持电子密码本模式（ECB）、加密分组链接模式（CBC）、加密反馈模式（CFB）和输出反馈模式（OFB）四种常用的分组密码加密模式。
+- 其中AES使用的加密反馈模式（CFB）和输出反馈模式（OFB）分组长度是128位，其它算法使用的则是64位。
+- 事实上，DES算法里面不仅仅是常用的DES算法，还支持三个密钥和两个密钥3DES算法。
+
+### 非对称加密算法
+- OpenSSL一共实现了4种非对称加密算法: DH算法、RSA、DSA和椭圆曲线算法（EC）。
+  - DH: 一般用户密钥交换。
+  - RSA: 密钥交换/数字签名，当然，如果能够忍受缓慢速度，也可以用于数据加密。
+  - DSA: 一般只用于数字签名。
+
+### 信息摘要算法
+- OpenSSL实现了5种信息摘要算法: MD2、MD5、MDC2、SHA（SHA1）和RIPEMD。
+  - SHA算法事实上包括了SHA和SHA1两种信息摘要算法，
+  - 此外，OpenSSL还实现了DSS标准中规定的两种信息摘要算法DSS和DSS1。
+
+### 密钥和证书管理
+- 密钥和证书管理是PKI的一个重要组成部分，OpenSSL为之提供了丰富的功能，支持多种标准。
+- OpenSSL
+  - 实现了ASN.1的证书和密钥相关标准，提供了对证书、公钥、私钥、证书请求以及CRL等数据对象的DER、PEM和BASE64的编解码功能。
+  - 提供了产生各种公开密钥对和对称密钥的方法、函数和应用程序，同时提供了对公钥和私钥的DER编解码功能。并实现了私钥的PKCS#12和PKCS#8的编解码功能。
+  - 提供了对私钥的加密保护功能，使得密钥可以安全地进行存储和分发。
+  - 在此基础上，实现了对证书的X.509标准编解码、PKCS#12格式的编解码以及PKCS#7的编解码功能。
+  - 并提供了一种`文本数据库`，支持证书的管理功能，包括证书密钥产生、请求产生、证书签发、吊销和验证等功能。
+- 事实上，OpenSSL提供的CA应用程序就是一个小型的证书管理中心（CA），实现了证书签发的整个流程和证书管理的大部分机制。
+
+```py
+
+1. 使用 openssl 生成密码
+几乎所有 Linux 发行版都包含 openssl。可以利用它的随机功能来生成可以用作密码的随机字母字符串。
+
+$ openssl rand -base64 10
+e98oBkIuG3yAFg==
+
+OpenSSL> rand -base64 10
+Kps5xz74GCvG0A==
+
+
+2. hash应用例子
+用SHA1算法计算文件file.txt的哈西值，输出到stdout：
+$ openssl dgst -sha1 file.txt
+SHA1(file.txt)= 624adb743f2933c384667a76111f9ededae26649
+
+用SHA1算法计算文件file.txt的hash，输出到文件digest.txt：
+$ openssl sha1 -out digest.txt file.txt
+
+用DSS1(SHA1)算法为文件file.txt签名，输出到文件dsasign.bin。签名的private key必须为DSA算法产生的，保存在文件dsakey.pem中。
+$ openssl dgst -dss1 -sign dsakey.pem -out dsasign.bin file.txt
+
+用dss1算法验证file.txt的数字签名dsasign.bin，验证的private key为DSA算法产生的文件dsakey.pem。
+$ openssl dgst -dss1 -prverify dsakey.pem -signature dsasign.bin file.txt
+
+用sha1算法为文件file.txt签名,输出到文件rsasign.bin，签名的private key为RSA算法产生的文件rsaprivate.pem。
+$ openssl sha1 -sign rsaprivate.pem -out rsasign.bin file.txt
+
+用sha1算法验证file.txt的数字签名rsasign.bin，验证的public key为RSA算法生成的rsapublic.pem。
+$ openssl sha1 -verify rsapublic.pem -signature rsasign.bin file.txt
+
+
+3. 对称加密应用例子
+用DES3 CBC模式 加密文件plaintext.doc，加密结果输出到ciphertext.bin。
+$ openssl enc -des3 -salt -in plaintext.doc -out ciphertext.bin
+
+用DES3 OFB模式 解密文件ciphertext.bin，提供的口令为trousers，输出到plaintext.doc。
+注意：因为模式不同，该命令不能对以上的文件进行解密。
+$ openssl enc -des-ede3-ofb -d -in ciphertext.bin -out plaintext.doc -pass pass:trousers
+
+用Blowfish CFB模式 加密plaintext.doc，口令从环境变量PASSWORD中取，输出到ciphertext.bin。
+$ openssl bf-cfb -salt -in plaintext.doc -out ciphertext.bin -pass env:PASSWORD
+
+给文件ciphertext.bin用base64编码，输出到文件base64.txt。
+$ openssl base64 -in ciphertext.bin -out base64.txt
+
+用RC5 CBC模式 加密文件plaintext.doc，输出到ciphertext.bin，salt、key和初始化向量(iv)在命令行指定。
+$ openssl rc5 -in plaintext.doc -out ciphertext.bin -S C62CB1D49F158ADC -iv
+E9EDACA1BD7090C6 -K 89D4B1678D604FAA3DBFFD030A314B29
+
+
+4、Diffie-Hellman 应用例子
+
+使用 生成因子2和随机的1024-bit的素数 产生D0ffie-Hellman参数，输出保存到dhparam.pem
+$ openssl dhparam -out dhparam.pem -2 1024
+
+从dhparam.pem中读取Diffie-Hell参数，以C代码的形式，输出到stdout。
+$ openssl dhparam -in dhparam.pem -noout -C
+
+
+5、DSA 应用例子
+生成1024位DSA参数集，输出到dsaparam.pem。
+$ openssl dsaparam -out dsaparam.pem 1024
+
+使用参数文件dsaparam.pem生成DSA私钥匙，采用3DES加密后输出到文件dsaprivatekey.pem
+$ openssl gendsa -out dsaprivatekey.pem -des3 dsaparam.pem
+
+使用私钥匙dsaprivatekey.pem生成公钥匙，输出到dsapublickey.pem
+$ openssl dsa -in dsaprivatekey.pem -pubout -out dsapublickey.pem
+
+从dsaprivatekey.pem中读取私钥匙，解密并输入新口令进行加密，然后写回文件dsaprivatekey.pem
+$ openssl dsa -in dsaprivatekey.pem -out dsaprivatekey.pem -des3 -passin
+
+
+
+6. RSA应用例子
+产生1024位RSA私匙，用3DES加密它，口令为trousers，输出到rsaprivatekey.pem
+$ openssl genrsa -out rsaprivatekey.pem -passout pass:trousers -des3 1024
+
+从文件rsaprivatekey.pem读取私匙，用口令trousers解密，生成的公钥匙输出到文件rsapublickey.pem
+$ openssl rsa -in rsaprivatekey.pem -passin pass:trousers -pubout -out rsapubckey.pem
+
+用公钥匙rsapublickey.pem加密文件plain.txt，输出到文件cipher.txt
+$ openssl rsautl -encrypt -pubin -inkey rsapublickey.pem -in plain.txt -out cipher.txt
+
+使用私钥匙rsaprivatekey.pem解密密文cipher.txt，输出到文件plain.txt
+$ openssl rsautl -decrypt -inkey rsaprivatekey.pem -in cipher.txt -out plain.txt
+
+用私钥匙rsaprivatekey.pem给文件plain.txt签名，输出到文件signature.bin
+$ openssl rsautl -sign -inkey rsaprivatekey.pem -in plain.txt -out signature.bin
+
+用公钥匙rsapublickey.pem验证签名signature.bin，输出到文件plain.txt
+$ openssl rsautl -verify -pubin -inkey rsapublickey.pem -in signature.bin -out plain
+
+从X.509证书文件cert.pem中获取公钥匙，用3DES加密mail.txt，输出到文件mail.enc
+$ openssl smime -encrypt -in mail.txt -des3 -out mail.enc cert.pem
+
+从X.509证书文件cert.pem中获取接收人的公钥匙，用私钥匙key.pem解密S/MIME消息mail.enc，结果输出到文件mail.txt
+$ openssl smime -decrypt -in mail.enc -recip cert.pem -inkey key.pem -out mail.txt
+
+cert.pem为X.509证书文件，用私匙key,pem为mail.txt签名，证书被包含在S/MIME消息中，输出到文件mail.sgn
+$ openssl smime -sign -in mail.txt -signer cert.pem -inkey key.pem -out mail.sgn
+
+验证S/MIME消息mail.sgn，输出到文件mail.txt，签名者的证书应该作为S/MIME消息的一部分包含在mail.sgn中
+$ openssl smime -verify -in mail.sgn -out mail.txt
+
+更多实例:
+openssl version -a
+openssl help
+openssl genrsa -aes128 -out fd.key 2048 # pem format
+openssl rsa -text -in fd.key
+```
+
+### `OpenSSL -s_client`
+- `s_client` 为一个SSL/TLS客户端程序，与 `s_server` 对应
+- 它不仅能与s_server进行通信，也能与任何使用ssl协议的其他服务程序进行通信。
+
+```py
+openssl s_client [-host host] [-port port] [-connect host:port] [-verify depth] [-cert filename]
+[-certform DER|PEM] [-key filename] [-keyform DER|PEM] [-pass arg] [-CApath directory] [-CAfile filename]
+[-reconnect][-pause] [-showcerts] [-debug] [-msg] [-state] [-nbio_test] [-nbio][-crlf] [-ign_eof] [-no_ign_eof]
+[-quiet] [-ssl2] [-ssl3] [-tls1_1] [-tls1_2] [-tls1] [-dtls1] [-no_ssl2][-no_ssl3] [-no_tls1] [-no_tls1_1]
+[-no_tls1_2] [-bugs] [-cipher cipherlist] [-starttls protocol] [-engine id] [-tlsextdebug] [-no_ticket]
+[-sess_out filename] [-sess_in filename] [-rand file(s)]   
+
+说明：
+
+$ openssl s_client -ign_eof -connect localhost:30001
+$ echo BfMYroe26WYalil77FoDi9qh59eK5xNr | openssl s_client -quiet -connect localhost:30001
+
+
+-host hostip：设置服务地址。
+
+-port port：设置服务端口，默认为4433。
+
+-connect host:port："设置服务器地址和端口号"。如果没有设置，则默认为本地主机以及端口号4433。
+
+-verify depth：设置证书的验证深度。记得CA也是分层次的吧？如果对方的证书的签名CA不是Root CA,那么你可以再去验证给该CA的证书签名的CA，一直到Root CA. 目前的验证操作即使这条CA链上的某一个证书验证有问题也不会影响对更深层的CA的身份的验证。所以整个CA链上的问题都可以检查出来。当然CA的验证出问题并不会直接造成连接马上断开，好的应用程序可以让你根据验证结果决定下一步怎么走。
+
+-cert filename：使用的证书文件。如果server不要求要证书，这个可以省略。
+
+-certform DER|PEM：证书的格式，一般为DER和PEM。默认为PEM格式。
+
+-key filename：使用的证书私钥文件。
+
+-keyform DER|PEM：证书私钥文件的格式，一般为DER和PEM。默认为PEM格式。
+
+-pass arg：私钥保护口令来源，比如：-pass file:pwd.txt，将私钥保护口令存放在一个文件中，通过此选项来指定，不需要用户来输入口令。
+
+-CApath directory：设置信任CA文件所在路径，此路径中的ca文件名采用特殊的形式：xxx.0，其中xxx为CA证书持有者的哈希值，它通过x509 -hash命令获得。
+
+-CAfile filename：某文件，里面是所有你信任的CA的证书的内容。当你要建立client的证书链的时候也需要用到这个文件。
+
+-reconnect：使用同样的session-id连接同一个server五次，用来测试server的session缓冲功能是否有问题。
+
+-pause：每当读写数据时，sleep 1秒。
+
+-showcerts：显示整条server的证书的CA的证书链。否则只显示server的证书。
+
+-debug：打印所有的调试信息。
+
+-msg：用16进制显示所有的协议数据。
+
+-state：打印SSL session的状态， ssl也是一个协议，当然有状态。
+
+-nbio_test：检查非阻塞socket的I/O运行情况。
+
+-nbio：使用非阻塞socket。
+
+-crlf：把在终端输入的换行回车转化成/r/n送出去。
+
+-quiet："不打印出session和证书的信息。同时会打开-ign_eof这个选项"
+
+-ign_eof："当输入文件到达文件尾的时候并不断开连接"
+
+-no_ign_eof：当输入文件到达文件尾的时候断开连接。
+
+-ssl2、-ssl3、-tls1_1、-tls1_2、-tls1、-dtls1、-no_ssl2、-no_ssl3、-no_tls1、-no_tls1_1、-no_tls1_2：使用的协议状态值。
+
+-bugs：兼容老版本服务端的中的bug。
+
+-cipher cipherlist：由我们自己来决定选用什么加密算法，尽管是由server来决定使用什么算法列表，但它一般都会采用我们送过去的cipher列表里的第一个cipher。
+
+-starttls protocol：protocol可以为smtp或pop3，用于邮件安全传输。
+
+-engine id：硬件引擎。
+
+-tlsextdebug：打印TLS协议中服务器端接收到的额外信息值。
+
+-no_ticket：不支持RFC4507bis会话类型。
+
+-sess_out filename：输出SSL会话信息值到filename中。
+
+-sess_in filename：从filename中获取SSL Session值。
+
+-rand file(s)：指定随机数种子文件，多个文件间用分隔符分开，windows用“;”，OpenVMS用“,“，其他系统用“：”。
+
+
+连接选项：
+
+如果一个确认的连接到SSL服务器，并显示了从服务器端接收到了的数据，任何操作都被发送到服务器。当交互（这意味着没有给出B<-quiet> 、B<-ign_eof>这两个选项）的时候，如果命令行B<R>,被设置则session有可能会被重启。如果设置的是命令行B<Q>或到达了文件的结尾，连接将会被断开。
+
+注意：
+
+S_client可用于调试SSL服务器端。为了连接一个SSL HTTP服务器，命令如下：
+
+openssl s_client -connect servername:443
+
+一旦和某个SSL server建立连接之后，所有从server得到的数据都会被打印出来，所有你在终端上输入的东西也会被送给server. 这是人机交互式的。这时候不能设置-quiet和 -ign_eof这俩个选项。如果输入的某行开头字母是R，那么在这里session会重启, 如果输入的某行开头是Q，那么连接会被断开。你完成整个输入之后连接也会被断开。
+
+如果连接成功，你可以用HTTP的指令，比如"GET /"什么的去获得网页了。
+
+如果握手失败，原因可能有以下几种：
+
+1.          server需要验证你的证书，但你没有证书。
+
+2.          如果肯定不是原因1，那么就慢慢一个一个set以下几个选项：-bugs， -ssl2， -ssl3， -tls1，-no_ssl2，-no_ssl3， -no_dtls。
+
+3.          这可能是因为对方的server处理SSL有bug。
+
+有的时候，client会报错：没有证书可以使用，或者供选择的证书列表是空的。这一般是因为Server没有把给你签名的CA的名字列进它自己认为可以信任的CA列表，你可以用检查一下server的信任CA列表。有的http server只在 client给出了一个URL之后才验证client的证书，这中情况下要设置 -prexit这个选项，并且送给server一个页面请求。
+
+即使使用-cert指明使用的证书，如果server不要求验证client的证书，那么该证书也不会被验证。所以不要以为在命令行里加了-cert 的参数又连接成功就代表你的证书没有问题。
+
+如果验证server的证书有问题，就可以设置-showcerts来看看server的证书的CA链了。
+
+自从SSLv23客户端hello不能够包含压缩方法或扩展仅仅会被支持。
+
+BUGs：
+
+因为该项目有很多选项，好多用的是老的技术，c代码的s_client很难去读取为什么会被关闭。一个典型的SSL客户端项目将会更加简单的。
+
+如果服务器验证失败，B<-verify>将会退出。
+
+B<-prexit>选项是一个很小的空间。当一个session重启后，我们必须报告。
+```
+
+---
+
+## `telnet` 命令
+- telnet程序是基于 *TELNET协议* 的 远程登录客户端程序。
+  - Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。
+- telnet命令通常用来
+  - 远程登录。远程控制Web服务器
+    - 在终端电脑上使用telnet程序，用它连接到服务器。
+    - 终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样
+    - 可以在本地就能控制服务器。
+    - 要开始一个 telnet会话，必须输入用户名和密码来登录服务器。
+      - 但telnet采用明文传送报文，安全性不好，很多Linux服务器都不开放telnet服务，而改用更安全的ssh。
+      - 但仍然有很多别的系统可能采用了telnet方式来提供远程登录，因此弄清楚telnet客户端的使用方式仍是很有必要的。
+  - telnet命令还可做别的用途，比如
+    - 确定远程服务的状态，
+    - 确定远程服务器的某个端口是否能访问。
+  
+```py
+---------------------------------------------------------
+telnet[参数][主机]
+
+执行telnet指令开启终端机阶段作业，并登入远端主机。
+---------------------------------------------------------
+命令参数：
+-8 允许使用8位字符资料，包括输入与输出。
+-a 尝试自动登入远端系统。
+-b<主机别名> 使用别名指定远端主机名称。
+-c 不读取用户专属目录里的.telnetrc文件。
+-d 启动排错模式。
+-e<脱离字符> 设置脱离字符。
+-E 滤除脱离字符。
+-f 此参数的效果和指定"-F"参数相同。
+-F 使用Kerberos V5认证时，加上此参数可把本地主机的认证数据上传到远端主机。
+-k<域名> 使用Kerberos认证时，加上此参数让远端主机采用指定的领域名，而非该主机的域名。
+-K 不自动登入远端主机。
+-l<用户名称> 指定要登入远端主机的用户名称。
+-L 允许输出8位字符资料。
+-n<记录文件> 指定文件记录相关信息。
+-r 使用类似rlogin指令的用户界面。
+-S<服务类型> 设置telnet连线所需的IP TOS信息。
+-x 假设主机有支持数据加密的功能，就使用它。
+-X<认证形态> 关闭指定的认证形态。
+---------------------------------------------------------
+使用实例：
+
+实例1：远程服务器无法访问 No route to host
+$ telnet 192.168.120.209
+Trying 192.168.120.209...
+telnet: connect to address 192.168.120.209: No route to host
+telnet: Unable to connect to remote host: No route to host
+- 处理：
+  1. 确认ip地址是否正确？
+  2. 确认ip地址对应的主机是否已经开机？
+  3. 如果主机已经启动，确认路由设置是否设置正确？（使用route命令查看）
+  4. 如果主机已经启动，确认主机上是否开启了telnet服务？（使用netstat命令查看，TCP的23端口是否有LISTEN状态的行）
+  5. 如果主机已经启动telnet服务，确认防火墙是否放开了23端口的访问？（使用iptables-save查看）
+
+
+实例2：域名无法解析 failure in name resolution
+$ telnet www.baidu.com
+www.baidu.com/telnet: Temporary failure in name resolution
+- 处理：
+  1. 确认域名是否正确
+  2. 确认本机的域名解析有关的设置是否正确（/etc/resolv.conf中nameserver的设置是否正确，如果没有，可以使用nameserver 8.8.8.8）
+  3. 确认防火墙是否放开了UDP53端口的访问（DNS使用UDP协议，端口53，使用iptables-save查看）
+
+
+实例3：Connection refused
+$ telnet 192.168.120.206
+Trying 192.168.120.206...
+telnet: connect to address 192.168.120.206: Connection refused
+telnet: Unable to connect to remote host: Connection refused
+- 处理：
+  1. 确认ip地址或者主机名是否正确？
+  2. 确认端口是否正确，是否默认的23端口
+
+
+实例4：启动telnet服务 service xinetd restart
+
+[root@localhost ~]$ cd /etc/xinetd.d/
+[root@localhost xinetd.d]$ ll
+总计 124
+-rw-r--r-- 1 root root 1157 2011-05-31 chargen-dgram
+...
+-rw-r--r-- 1 root root  310 2004-09-09 klogin
+-rw-r--r-- 1 root root  323 2004-09-09 krb5-telnet
+-rw-r--r-- 1 root root  308 2004-09-09 kshell
+[root@localhost xinetd.d]$ cat krb5-telnet
+# default: off
+# description: The kerberized telnet server accepts normal telnet sessions, \
+#              but can also use Kerberos 5 authentication.
+service telnet
+{
+        flags           = REUSE
+        socket_type     = stream        
+        wait            = no
+        user            = root
+        server          = /usr/kerberos/sbin/telnetd
+        log_on_failure  += USERID
+        disable         = yes
+}
+
+1. 配置参数，通常的配置如下：
+disable = no #启用
+flags = REUSE #socket可重用
+socket_type = stream #连接方式为TCP
+wait = no #为每个请求启动一个进程
+user = root #启动服务的用户为root
+server = /usr/sbin/in.telnetd #要激活的进程
+log_on_failure += USERID #登录失败时记录登录用户名
+
+* 如果要配置允许登录的客户端列表，加入
+only_from = 192.168.0.2 #只允许192.168.0.2登录
+
+* 如果要配置禁止登录的客户端列表，加入
+no_access = 192.168.0.{2,3,4} #禁止192.168.0.2、192.168.0.3、192.168.0.4登录
+
+* 如果要设置开放时段，加入
+access_times = 9:00-12:00 13:00-17:00 # 每天只有这两个时段开放服务（我们的上班时间：P）
+
+* 如果你有两个IP地址，一个是私网的IP地址如192.168.0.2，一个是公网的IP地址如218.75.74.83，如果你希望用户只能从私网来登录telnet服务，那么加入
+bind = 192.168.0.2
+
+2. 配置端口，修改services文件：
+$ vi /etc/services
+# 找到以下两句
+telnet 23/tcp
+telnet 23/udp
+如果前面有 "#" 字符，就去掉它。
+telnet的默认端口是23，这个端口也是黑客端口扫描的主要对象，因此最好将这个端口修改掉
+修改的方法很简单，就是将23这个数字修改掉，改成大一点的数字，比如61123。
+注意，1024以下的端口号是internet保留的端口号，因此最好不要用，还应该注意不要与其它服务的端口冲突。
+
+3. 启动服务：$ service xinetd restart
+
+
+实例5：正常telnet
+$ telnet 192.168.120.204
+Trying 192.168.120.204...
+Connected to 192.168.120.204 (192.168.120.204).
+Escape character is '^]'.
+localhost (Linux release..) #1 SMP Thu Feb 9 12:45:44 EST 2012) (1)
+login: root
+Password:
+Login incorrect
+# 一般情况下不允许root从远程登录，可以先用普通账号登录，然后再用su -切到root用户。
+```
+
+### 执行telnet
+- *Windows XP*:
+  - CMD - DOS界面: `telnet IP/域名 portnumber`
+  - 端口关闭或无法连接，则显示不能打开到主机的链接，链接失败；
+  - 端口打开的情况下，链接成功，则进入telnet页面（全黑的），证明端口可用。
+
+- *Vista/Win7*: 不能使用telnet
+  - Windows 7提示：telnet不是内部或外部命令
+  - win7默认没有安装telnet服务，所以需要安装telnet服务
+    - 开始→控制面板→程序和功能→打开或关闭Windows功能， 勾选`telnet服务器`和`telnet客服端`。
+    - 如果要访问他人电脑的就安装个客服端，
+    - 如果要访问自己电脑的就需要两个都安装，自己电脑既是服务器又是客服端。
+  - 关闭Windows防火墙：开始　→　控制面板　→　Windows防火墙，在这里就可以选择是关闭还是开启防火墙。
+  - 为了安全，开启一部份端口的设置方法：
+  - 【开启】---【控制面板】--【Windows防火墙】--【高级设置】--【入站规则】--【新建规则(在界面的最右边)】---【端口】--【Tcp】--输入【特定本地端口（我这边就是输入8080）】--【允许连接】--【具体情况下可配置只允许访问的用户，这边没有配置，直接下一步】--【配置可访问的计算机，这边也没有配置，直接下一步】--【域，专用，公用都选择上，下一步】--【输入规则名称(比如我这边是要开发tomcat让外面访问，就起名TomcatServer)】--【完成即可】
+
+涉及的命令总结：
+  - ① ping + ip： 查看某一个ip地址是否能够连通，如： ping 114.80.67.193
+  - ② telnet ip port ： 查看某一个机器上的某一个端口是否可以访问，如：telnet 114.80.67.193 8080
+  - ③ 退出命令：
+    - `exit`: 退出dos窗口，
+    - `q!,wq`: Linux下退出vi编辑器
+    - `ctrl+]，之后在按q`: 退出telnet界面
+    - `quit`: 退出mysql.......
+
+### Telnet 客户端命常用命令：
+```py
+ao : 放弃输出命令。
+ayt : “Are you there”命令。
+brk : 发送信号。
+close : 使用命令 close 命令可以关闭现有的 Telnet 连接。
+display : 使用 display 命令可以查看 Telnet 客户端的当前设置。
+esc : 发送当前的转义字符。
+ip : 中断进程命令。
+
+open : 建立到主机的 Telnet 连接。
+  - 使用telnet的open子命令远程登录远程机器。
+  - 命令：open hostip[port默认为23]
+  - 在telnet提示符下输入“open 114.80.67.193”，按回车键。
+  - 再输入“n”，根据提示输入用户名和密码即可远程机器上。
+
+quit ：使用 quit 命令可以退出 Telnet 客户端。
+send : 使用 send 命令可以向 Telnet 服务器发送命令。支持以下命令：
+
+status: 查看连接状态。
+  - 输入"telnet"进入telnet，输入"status"，回车
+  - 此时显示当前已经登录到IP为114.80.67.193的机器上。
+
+synch : 执行 Telnet 同步操作。
+unset:关闭本地回显功能。
+  - 打开 本地回显: 在命令提示符中输入"telnet"，回车；然后输入"setlocalecho"，按回车键
+  - 关闭回显能力: 只要在telnet命令提示符后输入"unsetlocalecho"，回车。
+
+- 上表所列命令以外的其他命令都将以字符串的形式发送至 Telnet 服务器。
+- 例如，sendabcd 将发送字符串 abcd 至 Telnet 服务器，Telnet 会话窗口中将出现该字符串。
+```
+
+- telnet用于远程登录到网络中的计算机，并以命令行的方式远程管理计算机。
+  - 需要注意，远程机器必须 `启动telnet服务器` ，否则无法打开telnet命令。
+  - 例如：在命令提示符中输入“telnet 114.80.67.193”，按回车键，但是为了安全起见，要输入“n”并按回车键，出现登录提示符。输入登录名后，按回车键即可登录到远程机器。
+
+### Telnet语法
+
+```py
+telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
+
+-a 企图自动登录。除了用当前已登陆的用户名以外，与 -l 选项相同。
+-e 跳过字符来进入 telnet 客户提示。
+-f 客户端登录的文件名
+-l 指定远程系统上登录用的用户名称。要求远程系统支持 TELNET ENVIRON 选项。
+-t 指定终端类型。支持的终端类型仅是: vt100, vt52, ansi 和 vtnt。
+host 指定要连接的远程计算机的主机名或 IP 地址。
+port 指定端口号或服务名。
+```
+
+### Telnet典型入侵（如果以下内容不太了解，可以简单了解）
+
+　　1.Telnet典型入侵步骤
+　　步骤一：建立IPC$连接。其中sysback是前面建立的后门账号。
+　　步骤二：开启远程主机中被禁用的Telnet服务。
+　　步骤三：断开IPC$连接。
+　　步骤四：去掉NTLM验证。如果没有去除远程计算机上的NTLM验证，在登录远程计算机的时候就会失败。
+　　不过入侵者会使用各种方法使NTLM验证形同虚设。解除NTLM的方法有很多，下面列出一些常用的方法，来看看入侵者如何去除NTLM验证。
+
+　　方法一：
+
+　　首先，在本地计算机上建立一个与远程主机上相同的账号和密码。
+　　然后，通过“开始”→“程序”→“附件”找到“命令提示符”，使用鼠标右键单击“命令提示符”，然后选择“属性”
+　　在“以其他用户身份运行(U)”前面“打钩”，然后单击“确定”按钮。接着，仍然按照上述路径找到“命令提示符”，用鼠标左键单击打开，得到如图所示对话框。
+　　如图所示，键入“用户名”和“密码”。
+　　单击“确定”按钮后，得到MS-DOS界面，然后用该MS-DOS进行Telnet登录。
+　　键入“telnet 192.168.27.128”命令并回车后，在得到的界面中键入“y”表示发送密码并登录，如图所示。
+　　最后得到就是远程主机为Telnet终端用户打开的Shell，在该Shell中输入的命令将会直接在远程计算机上执行。
+　　比如，键入“net user”命令来查看远程主机上的用户列表。
+
+　　方法二：
+
+　　该方法使用工具NTLM.EXE来去除NTLM验证。首先与远程主机建立IPC$连接，然后将NTLM.EXE拷贝至远程主机，最后通过at命令使远程计算机执行NTLM.EXE。
+　　计划任务执行NTLM.EXE后，便可键入“telnet 192.168.27.128”命令来登录远程计算机。
+　　最后得到登录界面
+　　在该登录界面中键入用户名和密码，如果用户名和密码正确，便会登录到远程计算 机，得到远程计算机的Shell。
+　　成功登录。
+　　另外，还可以使用与opentelnet.exe相配套的程序resumetelnet.exe来恢复远程主机的NTLM验证，命令格式为“ResumeTelnet.exe \\server sername password”。
+　　执行后回显可知，resumetelnet.exe关闭了目标主机的Telnet服务，恢复了NTLM验证。
+　　Telnet高级入侵全攻略
+　　从前面的介绍可以看出，即使计算机使用了NTLM验证，入侵者还是能够轻松地去除NTLM验证来实现Telnet登录。如果入侵者使用23号端口登录，管理员便可以轻易地发现他们，但不幸的是，入侵者通常不会通过默认的23号端口进行Telnet连接。那么入侵者究竟如何修改Telnet端口，又如何修改Telnet服务来隐蔽行踪呢?下面举一些常见的例子来说明这一过程，并介绍一下完成这一过程所需要的工具。
+　　X-Scan：用来扫出存在NT弱口令的主机。
+　　opentelnet：用来去NTLM验证、开启Telnet服务、修改Telnet服务端口。
+　　AProMan：用来查看进程、杀死进程。
+　　instsrv：用来给主机安装服务。
+
+　　(1)AProMan简介
+　　AproMan以命令行方式查看进程、杀死进程，不会被杀毒软件查杀。举个例子，如果入侵者发现目标主机上运行有杀毒软件，会导致上传的工具被杀毒软件查杀，那么他们就会要在上传工具前关闭杀毒防火墙。使用方法如下：
+　　c:\AProMan.exe -a 显示所有进程
+　　c:\AProMan.exe -p 显示端口进程关联关系(需Administrator权限)
+　　c:\AProMan.exe -t [PID] 杀掉指定进程号的进程
+　　c:\AProMan.exe -f [FileName] 把进程及模块信息存入文件
+
+　　(2)instsrv简介
+　　instsrv是一款用命令行就可以安装、卸载服务的程序，可以自由指定服务名称和服务所执行的程序。instsrv的用法如下：
+　　安装服务：instsrv <服务名称> <执行程序的位置>
+　　卸载服务：instsrv <服务名称> REMOVE
+　　还有另一款优秀的远程服务管理工具SC。它属于命令行工具，可以在本地对远程计算机上的服务进行查询、启动、停止和删除。它的用法很简单，这里不作介绍了。下面通过实例来介绍入侵者如何实现Telnet登录并留下Telnet后门的过程。
+
+　　步骤一：扫出有NT弱口令的主机。在X-Scan的“扫描模块”中选中“NT-SERVER弱口令”。
+　　然后在“扫描参数中”指定扫描范围为“192.168.27.2到192.168.27.253”。
+　　等待一段时间后，得到扫描结果。
+
+　　步骤二：用opentelnet打开远程主机Telnet服务、修改目标主机端口、去除NTLM验证。
+
+　　无论远程主机是否开启“Telnet服务”，入侵者都可以通过工具opentelnet来解决。比如，通过“opentelnet \\192.168.27.129 administrator "" 1 66”命令为IP地址为192.168. 27.129的主机去除NTLM认证，开启Telnet服务，同时又把Telnet默认的23号登录端口改成66号端口。
+
+　　步骤三：把所需文件(instsrv.exe、AProMan.exe)拷贝到远程主机。
+　　首先建立IPC$，然后通过映射网络硬盘的方法把所需文件拷贝、粘贴到远程计算机的c:\winnt文件夹中。
+　　拷贝成功后。
+
+　　步骤四：Telnet登录。
+　　在MS-DOS中键入命令“telnet 192.168.27.129 66”来登录远程主机192.168.27.129。
+
+　　步骤五：杀死防火墙进程。
+　　如果入侵者需要把类似木马的程序拷贝到远程主机并执行，那么他们会事先关闭远程主机中的杀毒防火墙。虽然这里没有拷贝类似木马的程序到远程主机，但还是要介绍一下这一过程。当入侵者登录成功后，他们会进入到c:\winnt目录中使用AProMan程序。首先通过命令 AProMan –A查看所有进程，然后找到杀毒防火墙进程的PID，最后使用AProMan –t [PID]来杀掉杀毒防火墙。
+
+　　步骤六：另外安装更为隐蔽的Telnet服务。
+　　为了事后仍然能登录到该计算机，入侵者在第一次登录之后都会留下后门。这里来介绍一下入侵者如何通过安装系统服务的方法来让Telnet服务永远运行。在安装服务之前，有必要了解一下Windows操作系统是如何提供“Telnet服务”的。打开“计算机管理”，然后查看“Telnet服务”属性。
+　　在“Telnet 的属性”窗口中，可以看到其中“可执行文件的路径”指向“C:\WINNT\ SYSTEM32\tlntsvr.exe”。可见，程序tlntsvr.exe就是Windows系统中专门用来提供“Telnet服务”的。也就是说，如果某服务指向该程序，那么该服务就会提供Telnet服务。因此，入侵者可以自定义一个新服务，将该服务指向tlntsvr.exe，从而通过该服务提供的Telnet服务登录，这样做后，即使远程主机上的Telnet服务是被禁用的，入侵者也可以毫无阻碍的登录到远程计算机，这种方法被称之为 Telnet后门。下面就介绍一下上述过程是如何实现的。首先进入instsrv所在目录。
+　　然后使用instsrv.exe建立一个名为“SYSHEALTH”的服务，并把这个服务指向C:\WINNT z\SYSTEM32\tlntsvr.exe，根据instsrv.exe的用法，键入命令“instsrv.exe SYSHEALTH C:\WINNT\SYSTEM32\tlntsvr.exe”。
+　　一个名为“SYSHEAHTH”的服务就这样建立成功了。虽然从表面看上去该服务与远程连接不存在任何关系，但是实际上该服务是入侵者留下的Telnet后门服务。
+　　通过“计算机管理”可以看到该服务已经添加在远程计算机上。入侵者一般会把这个服务的启动类型设置成“自动”，把原来的“Telnet服务”停止并禁用。
+　　通过验证可知，虽然远程主机上的Telnet服务已经被停止并禁用，但入侵者仍然能够通过Telnet来控制远程主机。通过这些修改，即使管理员使用“netstat –n”命令来查看开放端口号也看不出66端口正在提供Telnet服务，此命令平常还可以拿来判断端口的连接情况。
+
+　　小结：telnet命令是功能强大的远程登陆命令，几乎所有的入侵者都喜欢用它，屡试不爽。为什么？因为它操作简单，如同使用自己的机器一样，只要你熟悉DOS命令，在成功以administrator身份连接了远程机器后，就可以用它来干你想干的一切了。
+
+---
+
+---
+
+## `tr` 将字符进行替换压缩和删除
+- 可以对来自标准输入的字符进行替换、压缩和删除。它可以将一组字符变成另一组字符，经常用来编写优美的单行命令，作用很强大。
+- 语法: `tr(选项)(参数)`
+- 选项
+  - `-c`或--complerment：取代所有不属于第一字符集的字符；
+  - `-d`或--delete: 删除所有属于第一字符集的字符；
+  - `-s`或--squeeze-repeats：把 *连续重复* 的字符以单独一个字符表示；
+  - `-t`或--truncate-set1：先删除第一字符集较第二字符集多出的字符。
+- 参数
+  - 字符集1：指定要转换或删除的原字符集。当执行转换操作时，必须使用参数“字符集2”指定转换的目标字符集。但执行删除操作时，不需要参数“字符集2”；
+  - 字符集2：指定要转换成的目标字符集。
+
+```py
+---------------------------------------------------------
+1. 将输入字符由大写转换为小写
+
+$ echo "HELLO WORLD" | tr 'A-Z' 'a-z'
+hello world
+# 'A-Z' 和 'a-z'都是集合，集合是可以自己制定的，例如：'ABD-}'、'bB.,'、'a-de-h'、'a-c0-9'都属于集合，集合里可以使用'\n'、'\t'，可以可以使用其他ASCII字符。
+---------------------------------------------------------
+2. tr 'a' 'b' 将a转换为b
+
+$ cat text | tr '\t' ' '
+---------------------------------------------------------
+3. tr -d 'xxx' 删除字符
+
+$ echo "hello 123 world 456" | tr -d '0-9'
+hello  world
+---------------------------------------------------------
+4. tr -d -c 'xx' 字符集补集，将文本中不在补集中的所有字符删除
+
+$ echo aa.,a 1 b#$bb 2 c*/cc 3 ddd 4 | tr -d -c '0-9 \n'
+ 1  2  3  4
+# 补集中包含了数字0~9、空格和换行符\n，所以没有被删除，其他字符全部被删除了
+---------------------------------------------------------
+5. tr -s 'abc' 压缩输入中重复的字符
+
+$ echo "thissss is      a text linnnnnnne." | tr -s ' sn'
+this is a text line.
+---------------------------------------------------------
+6. 巧妙使用tr做数字相加操作：
+
+$ echo 1 2 3 4 5 6 7 8 9 | xargs -n1 | echo $[ $(tr '\n' '+') 0 ]
+---------------------------------------------------------
+7. 删除Windows文件“造成”的'^M'字符：
+
+cat file | tr -s "\r" "\n" > new_file
+或
+cat file | tr -d "\r" > new_file
+---------------------------------------------------------
+8. tr可以使用的字符类：
+
+[:alnum:]：字母和数字
+[:alpha:]：字母
+[:cntrl:]：控制（非打印）字符
+[:digit:]：数字
+[:graph:]：图形字符
+[:lower:]：小写字母
+[:print:]：可打印字符
+[:punct:]：标点符号
+[:space:]：空白字符
+[:upper:]：大写字母
+[:xdigit:]：十六进制字符  
+使用方式：
+
+tr '[:lower:]' '[:upper:]'
+---------------------------------------------------------
+```
+
+### rot13
+The ROT13 and ROT47 are fairly easy to implement using the Unix terminal application `tr`;
+abcdefghijklm nopqrstuvwxyz
+nopqrstuvwxyz abcdefghijklm
+
+```py
+$ echo abcdef|tr 'abcdef' 'xyzabc'
+xyzabc
+$ echo abcdef|tr 'a-f' 'x-za-c'
+xyzabc
+
+# ROT13: 流行的隐藏文本的方法，由于将字母表的第一个字符用第十三个字符替换，第2个字符用第十四个字符替换，依此类推，因此通常称作ROT13（旋转13）
+$ echo the punchline of the joke is ...|tr 'A-M N-Z a-m n-z' 'N-Z A-M n-z a-m'
+$ echo the punchline of the joke is ...|tr 'A-Z a-z' 'N-ZA-M n-za-m'
+gur chapuyvar bs gur wbxr vf ...
+
+# 要使得隐藏文本可读，可通过交换tr参数实现：
+$ echo gur chapuyvar bs gur wbxr vf ...|tr 'N-Z A-M n-z a-m' 'A-M N-Z a-m n-z'
+$ echo gur chapuyvar bs gur wbxr vf ...|tr 'A-M N-Z a-m n-z' 'N-Z A-M n-z a-m'
+the punchline of the joke is ...
+
+
+# 在下面的示例中tr首先替换字符，然后将几对相同的字符替换为单个字符：
+$ echo tennessee|tr -s 'tnse' 'srne'
+serene
+
+
+# to encrypt the string "The Quick Brown Fox Jumps Over The Lazy Dog" in ROT13:
+# Map upper case A-Z to N-ZA-M and lower case a-z to n-za-m
+$ echo The Quick Brown Fox Jumps Over The Lazy Dog | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+$ tr 'A-Za-z' 'N-ZA-Mn-za-m' <<< "The Quick Brown Fox Jumps Over The Lazy Dog"
+Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt
+
+# and the same string for ROT47:
+$ echo "The Quick Brown Fox Jumps Over The Lazy Dog" | tr '\!-~' 'P-~\!-O'
+%96 "F:4< qC@H? u@I yF>AD ~G6C %96 {2KJ s@8
+In Emacs, one can ROT13 the buffer or a selection with the following commands:[16]
+
+M-x toggle-rot13-mode
+M-x rot13-other-window
+M-x rot13-region
+and in the Vim text editor, one can ROT13 a selection with the command:[17]
+```
+
+## `xxd` - make a hexdump or do the reverse.
+- 对于标准输入或者给定的文件，显示其16进制的内容。也可以反过来进行转换。
+
+```py
+-----------------------------------------------------------
+xxd -h[elp]
+xxd [options] [infile [outfile]]
+xxd -r[evert] [options] [infile [outfile]]
+# 如果没有指定输入文件， 则采用标准输入。
+-----------------------------------------------------------
+# -b: 以2进制格式进行输出
+$ xxd -b train.ini
+0000000: 01011011 01110100 01110010 01100001 01101001 01101110  [train
+0000006: 01011101 00001101 00001010 01101110 01100111 01110010  ]..ngr
+000000c: 01100001 01101101 01100110 01101001 01101100 01100101  amfile
+-----------------------------------------------------------
+# -c: 每行输出多少个字节
+$ xxd -c4 train.ini
+0000000: 5b74 7261  [tra
+0000004: 696e 5d0d  in].
+....
+-----------------------------------------------------------
+# -g:group（分组） 几个字节组成一组, 默认2字节一组
+$ xxd -g4 train.ini
+0000000: 5b747261 696e5d0d 0a6e6772 616d6669  [train]..ngramfi
+0000010: 6c653d22 6e675f32 772e7478 74220d0a  le="ng_2w.txt"..
+0000020: 69746572 636f756e 743d3430 30300d0a  itercount=4000..
+-----------------------------------------------------------
+# -i：将文件内容输出成 c的一个数组格式　　
+$ xxd -i train.ini
+unsigned char train_ini[] = {
+  0x5b, 0x74, 0x72, 0x61, 0x69, 0x6e, 0x5d, 0x0d, 0x0a, 0x6e, 0x67, 0x72,
+  0x61, 0x6d, 0x66, 0x69, 0x6c, 0x65, 0x3d, 0x22, 0x6e, 0x67, 0x5f, 0x32,
+  。。。。
+  0x69, 0x73, 0x74, 0x22
+};
+unsigned int train_ini_len = 148;
+-----------------------------------------------------------
+# -l :lenght（长度） 输出几个字节后结束
+$ xxd -l12 train.ini
+0000000: 5b74 7261 696e 5d0d 0a6e 6772            [train]..ngr
+-----------------------------------------------------------
+# -p：以一个整块输出所有的hex， 不使用空格进行分割
+$ xxd -p train.ini
+5b747261696e5d0d0a6e6772616d66696c653d226e675f32772e74787422
+0d0a69746572636f756e743d343030300d0a73766d6761703d302e303030
+310d0a74656d706469723d2274656d70220d0a7664636c6973743d227664
+632e7478742220204f520d0a77686974656c6973743d2277686974652e6c
+697374220d0a626c61636b6c6973743d22626c61636b2e6c69737422
+-----------------------------------------------------------
+# -r: 反转操作，将16进制专程2进制
+$ xxd -r data.txt > /tmp/jhalon/file.bin
+?4h??6??@4bi???hBZh91AY&SY????????ϟ?????￻??????????׽??9??
+  ?mF?h?h44
+??B??,0?   ??4@?????@2C@h?? ?
+-----------------------------------------------------------
+# -s [+][-]seek ： 从第几个字符开始
+$ xxd -s5 train.ini
+0000005: 6e5d 0d0a 6e67 7261 6d66 696c 653d 226e  n]..ngramfile="n
+0000015: 675f 3277 2e74 7874 220d 0a69 7465 7263  g_2w.txt"..iterc
+0000025: 6f75 6e74 3d34 3030 300d 0a73 766d 6761  ount=4000..svmga
+-----------------------------------------------------------
+# -u :upper（大写） 输出采用大写，默认情况，数据显示的十六进制的字母是小写的，如果要大写，加上u。
+$ xxd -u 1.txt
+0000000: 3132 3334 3536 0A
+-----------------------------------------------------------
+```
+
+---
+
+## `zcat` 命令文件压缩与解压
+zcat命令用于不真正解压缩文件，就能显示压缩包中文件的内容的场合。
+
+语法: zcat(选项)(参数)
+
+选项
+-S：指定gzip格式的压缩包的后缀。当后缀不是标准压缩包后缀时使用此选项；
+-c：将文件内容写到标注输出；
+-d：执行解压缩操作；
+-l：显示压缩包中文件的列表；
+-L：显示软件许可信息；
+-q：禁用警告信息；
+-r：在目录上执行递归操作；
+-t：测试压缩文件的完整性；
+-V：显示指令的版本信息；
+-l：更快的压缩速度；
+-9：更高的压缩比。
