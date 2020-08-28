@@ -10,6 +10,7 @@ baseurl: ''
 # the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
 lang: en-US
 
+<<<<<<< HEAD
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Shanghai
 
@@ -18,6 +19,11 @@ timezone: Asia/Shanghai
 title: Chirpy                          # the main title
 
 tagline: A text-focused Jekyll theme   # it will display as the sub-title
+=======
+title: Grace                          # the main title
+
+tagline: 2.t  # it will display as the sub-title
+>>>>>>> 7afb019a (.)
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
