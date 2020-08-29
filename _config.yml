@@ -12,15 +12,17 @@ lang: en-US
 
 title: Grace                          # the main title
 
-tagline: 11.IT  # it will display as the sub-title
+tagline: 12.IT  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  A webpages focus on the IT learning path.
 
-# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+# Replace with the website url, e.g. 'https://username.github.io'
+url: 'https://ocholuo.github.io/'
+
+author: Grace Jiaying Luo                  # change to your full name
+
+avatar: /assets/img/sample/rabbit.jpg   # support internet resources
 
 github:
   username: ocholuo             # change to your github username
@@ -30,7 +32,7 @@ twitter:
 
 social:
   name: Grace Jiaying Luo                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  email: Lgraceye@hotmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage

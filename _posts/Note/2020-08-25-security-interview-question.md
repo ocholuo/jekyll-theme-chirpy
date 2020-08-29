@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Cyber Security Interview Quiz
+title: Cyber Security Interview Questiones
 date: 2020-08-25 11:11:11 -0400
 description: Cyber Security Interview Questiones
-img: rabbit.jpg
+categories: [Note]
+img: /assets/img/sample/rabbit.png
 tags: [Interview]
 ---
 
+# Cyber Security Interview Questiones
 
 ---
 
