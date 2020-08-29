@@ -12,7 +12,7 @@ tags: [Interview]
 
 ---
 
-![osi](https://i.imgur.com/7zUs1h2.gif)
+![osi](/assets/img/sample/OSILayer.png)
 
 1. What is information security and how is it achieved?
 
@@ -36,6 +36,7 @@ tags: [Interview]
 
 
 security field?
+
 1.  Are open-source projects more or less secure than proprietary ones?
 2.  Who do you look up to within the field of Information Security? Why?
 3.  Where do you get your security news from?
