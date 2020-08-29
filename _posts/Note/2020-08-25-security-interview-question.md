@@ -68,7 +68,7 @@ security field?
 # Network security
 
 44. Explain what **Address Resolution Protocol** is.  
-    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](https://i.imgur.com/QUoHIre.jpg)
+    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.png)
     2.  Data link-layer protocol 
     3.  resolve IP addresses to MAC addresses 
     4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use 
@@ -211,9 +211,9 @@ Just looking for signs that the candidate has basic understanding of programming
 How would you implement a secure login field on a high traffic website where performance is a consideration?
 
 TLS (regardless of performance) is a must
-Also, reducing 3rd party library dependencies could improve performance and reduce security risks (https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5)
-Content-Security Policy (CSP) to enforce stricter execution rules around JS and CSS (https://en.wikipedia.org/wiki/Content_Security_Policy)
-Subresource Integrity (SRI) to ensure only known, trusted resource files are loaded from 3rd-party servers/CDNs (https://en.wikipedia.org/wiki/Subresource_Integrity)
+Also, reducing 3rd party library dependencies could improve performance and reduce security risks [link](https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5)
+Content-Security Policy (CSP) to enforce stricter execution rules around JS and CSS [link](https://en.wikipedia.org/wiki/Content_Security_Policy)
+Subresource Integrity (SRI) to ensure only known, trusted resource files are loaded from 3rd-party servers/CDNs [link](https://en.wikipedia.org/wiki/Subresource_Integrity)
 What are the various ways to handle brute forcing?
 
 Account Lockouts/timeouts
@@ -224,7 +224,7 @@ Fail2ban
 What is Cross-Site Request Forgery? And how to defend against it?
 
 When an attacker gets a victim's browser to make requests with the victim's credentials
-Example: if an image tag (<img>) points to a URL with an associated action, e.g. https://foo.com/logout
+Example: if an image tag `<img>` points to a URL with an associated action, e.g. `https://foo.com/logout`
 Defense includes but are not limited to:
 check origins header & referer header
 check CSRF tokens or nonce
@@ -268,8 +268,8 @@ Does TLS use symmetric or asymmetric encryption?
 Both.
 The initial exchange is done using asymmetric encryption, but bulk data encryption is done using symmetric. See next question for additional information.
 Resources:
-https://web.archive.org/web/20150206032944/https://technet.microsoft.com/en-us/library/cc785811.aspx
-https://en.wikipedia.org/wiki/Transport_Layer_Security
+[link](https://web.archive.org/web/20150206032944/https://technet.microsoft.com/en-us/library/cc785811.aspx)
+[link](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 Describe the process of a TLS session being set up when someone visits a secure website.
 
 Client sends hello message that lists cryptographic information, such as SSL/TLS version and the client's order of preference of cipher suites. The message also contains a random byte string that is used in subsequent calculations. Client may include data compression methods in the hello message as well.
@@ -457,15 +457,6 @@ Where do you get your security news from?
 200. Can you describe rainbow tables?
 
 # Source:- sec-community and personal experience
-
-
-
-
-
-
-
-
-
 
 
 
