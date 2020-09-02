@@ -1,0 +1,103 @@
+<head>
+	<link rel="stylesheet" href="demo.css">
+	<script src = "main.js"></script>
+</head>
+
+
+
+<h1> Upload prototype </h1>
+
+<canvas id="pic">
+</canvas>
+
+<p>
+    File:
+    <input type="file" multiple="false" accept="image/*" id="finput" onchange="upLoad()">
+</p>
+
+<p>
+    <input type="button" value="Make Grayscale" id="dogrey" onclick="doGrey()">
+</p>
+
+
+<hr>
+
+<h1>Color Picker</h1>
+
+<canvas id='d6'>
+</canvas>
+
+<p>
+    <input type="color" value="#001A57" id="clr" onchange="doColor()">
+</p>
+
+<p>
+    <input type="range" min="10" max="100" value="10" id="sldr" oninput="doSquare()">
+</p>
+
+<hr>
+
+
+<h1>Canvas Practice</h1>
+
+<canvas id='d4' class="orangeback">
+</canvas>
+
+<canvas id='d5' class="fuchsiaback">
+</canvas>
+
+<p>
+    <button onclick="doPink()">Change Pink</button>
+    <button onclick="doBlue()">Change Blue</button>
+    <button onclick="clearContext()">Clear Context</button>
+</p>
+
+
+
+<hr>
+
+
+
+<h1>Using a Canvas</h1>
+
+<canvas id='d3'>
+</canvas>
+
+<p>
+    <button onclick="doLime()">make lime</button>
+</p>
+
+<p>
+    <button onclick="doYellow()">make yellow</button>
+</p>
+
+<hr>
+
+
+<h1> Change Things 1 </h1>
+
+<div id="d0"> 
+    Hello World
+  </div>
+
+<div id="d1"> 
+  Hello
+</div>
+
+<div id="d2"> 
+Goodbye
+</div>
+
+<p>
+    <input type="button" value="change color" onclick="changecolor()"> 
+</p>
+
+<p>
+    <button onclick="myConfirmFunction()">Try it</button>
+</p>
+
+<p>
+    <button onclick="changeText()">Change Text</button>
+</p>
+
+<hr>

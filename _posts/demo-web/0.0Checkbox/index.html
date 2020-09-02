@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    #input{
+        border:1px solid black;
+    }
+    input:focus{
+        background-color: #E6E6E6;
+    }
+    #nick{
+        margin-left: 4%;
+        display:none;
+        width: 50%;
+    }
+    </style>
+    <script src="main.js"></script>
+</head>
+<body>
+	<form action="http://www.intro-webdesign.com" method = "GET">
+		<fieldset>
+			<legend>Form Verification</legend>
+            <label for ="fName">First Name:</label>
+            <input type = "text" name = "fName" id = "fName" required>
+            <br/>
+            
+  			<label for = "lName">Last Name:</label>
+            <input type = "text" name = "lName" id = "lName" required>
+            <br/>
+            
+			<label for = "yesNick">Nickname?:</label>
+            <input type="checkbox" name="yesNick" id="yesNick" value="yes" onchange= "nicknameFunction()"/>	
+            <br/>
+			    
+            <div id = "nick">
+                <label for = "nickname">Nickname:</label>
+                <input type = "text" name = "nickname" id = "nickname"><br/>
+            </div>
+
+            <input type = "submit" value = "Verify"/>
+ 
+        </fieldset>
+
+    </form>
+</body>
+
+    <body onload="loadFruits()">
+        <button onclick="myFruits()">Add you Favorite!</button>
+        <p id='fruits'></p>
+    </body>
+</html>

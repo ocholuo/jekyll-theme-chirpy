@@ -1,0 +1,36 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: dimgray;
+}
+
+div {
+    width: 140pt;
+    padding: 5pt;
+    margin: 10pt;
+    border: 1px solid lightgrey;
+    font-size: 28px;
+  }
+
+#d0 {
+    background-color: yellow;
+}
+
+
+.blueback {
+    background-color: lightblue;
+}
+
+.yellowback {
+    background-color: yellow;
+}
+
+canvas {
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid lightgray;
+}
+
+input {
+    font-size: 20pt;
+}

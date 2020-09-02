@@ -1,0 +1,19 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: dimgray;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: dimgray;
+}
+
+canvas {
+    height: 200px;
+    border: 1px solid #c3c3c3;
+}
+
+input {
+    font-size: 20pt;
+}

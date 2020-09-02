@@ -1,0 +1,38 @@
+<html>
+    
+<head>
+	<link rel="stylesheet" href="demo.css">
+	<script src = "main.js"></script>
+</head>
+
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+
+<body>
+    <h1> Green Screen </h1>
+
+    <canvas id="ftpic">
+    </canvas>
+
+    <canvas id="bgpic">
+    </canvas>
+
+    <p>
+        Foreground Image:
+        <input type="file" multiple="false" accept="image/*" id="ftinput" onchange="ftupLoad()">
+    </p>
+
+
+    <p>
+        Background Image:
+        <input type="file" multiple="false" accept="image/*" id="bginput" onchange="bgupLoad()">
+    </p>
+
+    <p>
+        <input type="button" value="Creat Composite" onclick="doComposite()">
+        <input type="button" value="Clear Composite" onclick="clearComposite()">
+    </p>
+</body>     
+</html>
+  
+
+

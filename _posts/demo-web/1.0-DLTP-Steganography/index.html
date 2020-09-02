@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" href="demo.css">
+        <script src = "main.js"></script>
+        <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    </head>
+
+    <body>
+        <h1>Create you Steganography Image</h1>
+
+        <canvas id="baseimg">
+        </canvas>
+
+        <canvas id="hideimg">
+        </canvas>
+
+        <canvas id="outimg">
+        </canvas>
+
+        <p>
+            Base Image file:
+            <input type="file" multiple="false" accept="image/*" id="bfile" onchange="upload('bfile', 'baseimg')">
+        </p>
+        <p>
+            Hide Image file:
+            <input type="file" multiple="false" accept="image/*" id="hfile" onchange="upload('hfile', 'hideimg')">
+        </p>
+
+        <p>
+            <input type="button" value="Create" onclick="create()">
+        </p>
+    </body>
+
+</html>
