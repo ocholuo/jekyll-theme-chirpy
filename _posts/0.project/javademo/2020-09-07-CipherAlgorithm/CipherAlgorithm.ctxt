@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=CipherAlgorithm
+comment1.params=plaintext\ key
+comment1.target=java.lang.String\ caesarcipher(java.lang.String,\ int)
+comment10.params=args
+comment10.target=void\ main(java.lang.String[])
+comment2.params=ch
+comment2.target=boolean\ isVowel(char)
+comment3.params=phrase\ ch
+comment3.target=java.lang.String\ replaceVowels(java.lang.String,\ char)
+comment4.params=phrase\ ch
+comment4.target=java.lang.String\ emphasize(java.lang.String,\ char)
+comment5.params=input\ key1\ key2
+comment5.target=java.lang.String\ encryptTwoKeys(java.lang.String,\ int,\ int)
+comment6.params=s
+comment6.target=int[]\ count26char(java.lang.String)
+comment7.params=freqs
+comment7.target=int\ maxIndex(int[])
+comment8.params=resource\ counts
+comment8.target=void\ countWordLengths(edu.duke.FileResource,\ int[])
+comment9.params=ciphertext
+comment9.target=java.lang.String\ caesarBreaker(java.lang.String)
+numComments=11
