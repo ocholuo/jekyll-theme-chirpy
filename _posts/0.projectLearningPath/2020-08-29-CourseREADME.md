@@ -169,8 +169,8 @@ Name | S | Mark |
 ---|---|---
 [PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) |  | :heavy_check_mark:
 [PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) |  | :pencil2:
-[Overthewire_bandit](https://overthewire.org/wargames/bandit/) | [S](https://github.com/ocholuo/language/blob/master/codegame/Overthewire_bandit(Fin).md) | :heavy_check_mark:
-[TRAFFIC ANALYSIS EXERCISE](http://malware-traffic-analysis.net/training-exercises.html) | [S](https://github.com/ocholuo/language/blob/master/codegame/TrafficAnalysisExe.md) | :pencil2:
+[Overthewire_bandit](https://overthewire.org/wargames/bandit/) | [S](https://github.com/ocholuo/language/tree/master/codegame/Overthewire_bandit(Fin).md) | :heavy_check_mark:
+[TRAFFIC ANALYSIS EXERCISE](http://malware-traffic-analysis.net/training-exercises.html) | [S](https://github.com/ocholuo/language/tree/master/codegame/TrafficAnalysisExe.md) | :pencil2:
 [premiumexam](https://premiumexam.com/) <img src="https://i.imgur.com/6JAb2Cm.png" width="400"> |
 [NDG Online Courses & Labs](https://www.netdevgroup.com/online/courses/cybersecurity#courses) <img src="https://i.imgur.com/0sDYnaC.png" width="400"> |
 [vmware HOL online](https://www.vmwarelearningplatform.com/HOL/catalogs/catalog/1212) <img src="https://i.imgur.com/cuyokhD.png" width="400"> |
