@@ -12,7 +12,7 @@ lang: en-US
 
 title: Grace                          # the main title
 
-tagline: 9.7.1.IT  # it will display as the sub-title
+tagline: 9.10.1.IT  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A webpages focus on the IT learning path.
@@ -35,11 +35,11 @@ social:
   email: Lgraceye@hotmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    # - https://twitter.com/username      # change to your twitter homepage
     - https://github.com/ocholuo       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/grace-jy-l-0aaa32a1/
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 
@@ -54,8 +54,7 @@ baseurl: ''
 timezone: America/New_York
 
 google_analytics:
-  id: ''              # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
+  id: 'lgraceye@hotmail.com'          # Fill with your Google Analytics ID
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
