@@ -230,7 +230,7 @@ hello-1/
 hello-1/hello.c    // the c program
 hello-1/Makefile   // makefile to compile it
 
-$ tar -czvf hello-1.tar.gz /home/server1/demo/m4/hello-1
+$ tar -czvf hello-1.tar.gz /home/server1https://github.com/ocholuo/language/blob/master/0.project/webdemo/m4/hello-1
 
 
 $ ls
