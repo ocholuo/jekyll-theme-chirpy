@@ -1,19 +1,20 @@
 ---
-title: Language - Course Learning Path
+title: Language - Learning Path
 date: 2020-08-29 11:11:11 -0400
 description: Learning Path
-categories: [Project]
+categories: [Language]
 img: /assets/img/sample/rabbit.png
-tags: [Language, Project]
+tags: [Language]
 ---
 
-# Language - Course Learning Path
+
+# Language - Learning Path
 
 [toc]
 
 Little learning note.
 
-From class, online courses, blog, and other resources.
+From class, online courses, blog, and other sources.
 
 
 ```
@@ -36,40 +37,16 @@ sleepy....
 
 ---
 
-## test environment
-
-**Code test environment** | Mark
-| :------------- | :------------- |
-JavaScript| [:rabbit:](https://www.dukelearntoprogram.com//course1/example/index.php)
-
-
-
----
-
-## AWS Certificate
-
-**AWS Certificate** | Mark
-| :------------- | :------------- |
-:star: `AWS Cloud Practitioner (CLF-C01)` :star:| :rabbit:
-[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/69) - AWS Academy Cloud Foundations [Amazon Interns] 5/6 | :heavy_check_mark:
-[AWSTraining](https://www.aws.training/Details/Curriculum?id=27076) - AWS Cloud Practitioner Essentials (Second Edition) | :heavy_check_mark:
-[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/376) - AWS Cloud Practitioner (CLF-C01) 6/14| :heavy_check_mark:
-[Udemy](https://www.udemy.com/course/aws-certified-cloud-practitioner/) - AWS Certified Cloud Practitioner 2020 '300Q' 6/15| :heavy_check_mark:
-:star: `AWS Certified Solutions Architect – Associate` :star:| :rabbit:
-[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/374) - AWS Academy Cloud Architecting [Amazon Interns] 7.24 | :heavy_check_mark:
-[AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | :heavy_check_mark:
-[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| :pencil2:
-
-
----
-
-## doc
+## link
 
 **official doc** | Link
 ---|---
 Python | [The Python Tutorial](https://docs.python.org/3/tutorial/) |
 **AWSCerSheet** | Link
 AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md)
+**Code test environment** | Mark
+| :------------- | :--- |
+JavaScript| [:rabbit:](https://www.dukelearntoprogram.com//course1/example/index.php)
 
 
 ---
@@ -77,31 +54,61 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 ## Coursera finished:
 
 [Coursera Specialization] |  Mark |
-| :------------- | :------------- |
-**`Python 3 Programming`** |
+| :------------- | :--- |
+[COURSE Name]() | [code]() <br> [slide]() <br> [source]()
+| :------------- | :--- |
+**`DukeU. Java Programming and Software Engineering Fundamentals Specialization`** |
+[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 9/2| :heavy_check_mark: <br> [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
+[COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 9/6| :heavy_check_mark: <br> [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
+[COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 9/10| :heavy_check_mark:
+`- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/) <br> [slide](https://github.com/ocholuo/language/tree/master/1.JAVA/course/Java-Programming-and-Software-Engineering-Fundamentals-Specialization) <br> [source](https://www.dukelearntoprogram.com//course3/files.php)
+[COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) |
+`- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`| [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/) <br> [slide]() <br> [source](https://www.dukelearntoprogram.com//course4/files.php)
+[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/) <br> [slide]() <br> [source]()
+| :------------- | :--- |
+**freecodecamp** |
+[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | :heavy_check_mark:
+| :------------- | :--- |
+**AWS Certificate** |
+`AWS Cloud Practitioner (CLF-C01)` :star:| :rabbit:
+[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/69) - AWS Academy Cloud Foundations [Amazon Interns] 5/6 | :heavy_check_mark:
+[AWSTraining](https://www.aws.training/Details/Curriculum?id=27076) - AWS Cloud Practitioner Essentials (Second Edition) | :heavy_check_mark:
+[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/376) - AWS Cloud Practitioner (CLF-C01) 6/14| :heavy_check_mark:
+[Udemy](https://www.udemy.com/course/aws-certified-cloud-practitioner/) - AWS Certified Cloud Practitioner 2020 '300Q' 6/15| :heavy_check_mark:
+`AWS Certified Solutions Architect – Associate` :star:| :rabbit:
+[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/374) - AWS Academy Cloud Architecting [Amazon Interns] 7.24 | :heavy_check_mark:
+[AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | :heavy_check_mark:
+[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| :pencil2:
+| :------------- | :--- |
+**`UMich. Python 3 Programming`** 4/3 |
 [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming) | :heavy_check_mark:
 [COURSE 2 Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries?specialization=python-3-programming) | :heavy_check_mark:
 [COURSE 3 Data Collection and Processing with Python](https://www.coursera.org/learn/data-collection-processing-python?specialization=python-3-programming) | :heavy_check_mark:
 [COURSE 4 Python Classes and Inheritance](https://www.coursera.org/learn/python-classes-inheritance?specialization=python-3-programming) | :heavy_check_mark:
 [COURSE 5 Python Project: pillow, tesseract, and opencv](https://www.coursera.org/learn/python-project) 4/3 | :heavy_check_mark:
-**`Python for Everybody`** |
+| :------------- | :--- |
+**`UMich. Python for Everybody`** 4/13 |
 [COURSE 1 Programming for Everybody](https://www.coursera.org/learn/python?specialization=python) | :heavy_check_mark:
 [COURSE 2 Python Data Structures](https://www.coursera.org/learn/python-data?courseSlug=python-data&showOnboardingModal=checkAndRedirect&specialization=python) | :heavy_check_mark:
 [COURSE 3 Using Python to Access Web Data](https://www.coursera.org/learn/python-network-data?courseSlug=python-network-data&showOnboardingModal=checkAndRedirect&specialization=python) 4/12| :pencil2:
+| :------------- | :--- |
 **`Computer Security and Systems Management`** |
-[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/10-4/13|  :heavy_check_mark:
+[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13|  :heavy_check_mark:
+| :------------- | :--- |
 **`Palo Alto Networks Cybersecurity`** |
 [COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | :pencil2:
-**`Web Design for Everybody: Basics of Web Development & Coding`** |
+| :------------- | :--- |
+**`UMich. Web Design for Everybody: Basics of Web Development & Coding`** |
 [COURSE 1 Introduction to HTML5](https://www.coursera.org/learn/html?specialization=web-design) | :heavy_check_mark:
 [COURSE 3 Interactivity with JavaScript](https://www.coursera.org/learn/javascript?specialization=web-design) | :heavy_check_mark:
-**[CourseraLink] [Michigan](https://www.coursera.org/umich)** |
-**[CourseraLink] [Duke](https://www.coursera.org/duke)** |
+| :------------- | :--- |
+**[CourseraLink] [UMich](https://www.coursera.org/umich)** |
+**[CourseraLink] [DukeU](https://www.coursera.org/duke)** |
 
 <br>
 
 **[pluralsight]** | Mark
-| :------------- | :------------- |
+| :------------- | :--- |
 **`LFCE (Linux Foundation Certified Engineer) Path`** |
 [LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18 | :heavy_check_mark:
 [LFCE: Advanced Network and System Administration](https://app.pluralsight.com/course-player?clipId=6f88f6c6-bea4-405e-b4c1-7bf38255c33c) | :heavy_check_mark:
@@ -117,7 +124,7 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 <br>
 
 **[linux academy]** | Mark
-| :------------- | :------------- |
+| :------------- | :--- |
 `AWS Certification` |
 [AWS Cloud Practitioner (CLF-C01)](https://linuxacademy.com/cp/modules/view/id/376) 6/26| :heavy_check_mark:
 `Security Analyst - Entry Level` |
@@ -127,7 +134,7 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 <br>
 
 **[Alexa]** | Mark
-| :------------- | :------------- |
+| :------------- | :--- |
 `acloud` | ---
 [all](https://learn.acloud.guru/search?query=alexa&page=1) | :pencil2:
 [Introduction to Alexa](https://learn.acloud.guru/course/intro-alexa-free/dashboard) | :pencil2: soso
@@ -142,7 +149,7 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 
 ---
 
-## other resource
+## other source
 
 Specialization | Course Name |  Mark |
 ---|---|---
@@ -154,7 +161,7 @@ other | [Business Dashboard Fundamentals](https://app.pluralsight.com/library/co
 <br>
 
 course less recommand | Mark
-| :------------- | :------------- |
+| :------------- | :--- |
 **[Coursera] `Fundamentals of Computer Network Security`** |
 [1. Design and Analyze Secure Networked Systems](https://www.coursera.org/learn/design-secure-networked-systems) | :warning:
 
@@ -192,7 +199,7 @@ Link | goal
 ## pending
 
 [Coursera Specialization] |  Mark |
-| :------------- | :------------- |
+| :------------- | :--- |
 [Getting Started with AWS Machine Learning](https://www.coursera.org/learn/aws-machine-learning?edocomorp=cloud-technology-free-courses&ranMID=40328&ranEAID=SAyYsTvLiGQ&ranSiteID=SAyYsTvLiGQ-PGabNbN8S6jTghHFFXdf3w&siteID=SAyYsTvLiGQ-PGabNbN8S6jTghHFFXdf3w&utm_content=10&utm_medium=partners&utm_source=linkshare&utm_campaign=SAyYsTvLiGQ) |
 [Google Cloud Platform Fundamentals for AWS Professionals](https://www.coursera.org/learn/gcp-fundamentals-aws?edocomorp=cloud-technology-free-courses&ranMID=40328&ranEAID=SAyYsTvLiGQ&ranSiteID=SAyYsTvLiGQ-F.z0VIYeKtN5Gi0Lxvlh8w&siteID=SAyYsTvLiGQ-F.z0VIYeKtN5Gi0Lxvlh8w&utm_content=10&utm_medium=partners&utm_source=linkshare&utm_campaign=SAyYsTvLiGQ) |
 [Build Your First Android App (Project-Centered Course)](https://www.coursera.org/learn/android-app?edocomorp=free-courses-college-students&ranMID=40328&ranEAID=SAyYsTvLiGQ&ranSiteID=SAyYsTvLiGQ-3_6ELfVQtT1DPiposvj.Vw&siteID=SAyYsTvLiGQ-3_6ELfVQtT1DPiposvj.Vw&utm_content=10&utm_medium=partners&utm_source=linkshare&utm_campaign=SAyYsTvLiGQ) |
@@ -261,7 +268,7 @@ VM Hardening
 Azure Update Management
 Serverless Computing (Kubernetes)
 Subscription Security
-Azure resource locks
+Azure source locks
 Subscription policies
 Resource policies
 Secure Data & Applications

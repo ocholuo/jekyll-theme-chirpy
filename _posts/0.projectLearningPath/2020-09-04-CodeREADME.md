@@ -4,7 +4,7 @@ date: 2020-09-04 11:11:11 -0400
 categories: [Project]
 tags: [OnePage, Project]
 math: true
-image: 
+image:
 ---
 
 # Programming - demo & Learning Path
@@ -39,7 +39,11 @@ Index | Name | Date | Course material | Note
 12 | [WordFrequenciesMap](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-07-WordFrequenciesMap/WordFrequenciesMap.java) | 2020-09-07 | DukeU | **HashMap**
 13 | [CodonCount](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-08-CodonCount/CodonCount.java) | 2020-09-08 | DukeU | **use hashmap to operate dna codon** <br> `buildCodonMap(int start, String dna)` check if idex+=3 dna existed in HashMap <br> `getMostCommonCodon()` check max num in HashMap
 14 | [WordsinFiles](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-08-WordsinFiles/WordsinFiles.java) | 2020-09-08 | DukeU | **word - file - directory HashMap create**
-14 | [LogEntry](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-09-LogEntry/LogEntry.java) | 2020-09-09 | DukeU | **analyst web log entry**
+15 | [LogEntry](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-09-LogEntry/LogEntry.java) | 2020-09-09 | DukeU | **analyst web log entry**
+16 | [VigenereProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-10-VigenereProgram/VigenereCipher.java) | 2020-09-10 | DukeU | **Break the Vigenere Cipher**
+17 | [SearchingEarthquakeDataStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-11-SearchingEarthquakeDataStarterProgram) | 2020-09-11 | DukeU | **operate the class and analyst the Earthquake Event Log**
+18 | [EarthquakeFilterStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-12-EarthquakeFilterStarterProgram) | 2020-09-12 | DukeU | **use interface Filter to avoid duplicate code**
+
 
 
 ---
