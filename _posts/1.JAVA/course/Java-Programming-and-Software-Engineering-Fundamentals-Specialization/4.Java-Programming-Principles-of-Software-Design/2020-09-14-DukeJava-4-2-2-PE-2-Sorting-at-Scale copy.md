@@ -43,13 +43,15 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---
 
+
+
+
+
+
 ## Assignment 1: compareTo Method
 
 ```
-1. Modify the `compareTo` method in the `QuakeEntry` class.
-- (You may want to comment out the current code first).
-- The compareTo method should now sort quake by magnitude first, from smallest magnitude to largest magnitude,
-- and then break ties (use == operator to determine whether magnitudes are equal) by depth, from smallest (most negative) depth to largest depth.
+1. Modify the `compareTo` method in the `QuakeEntry` class.(You may want to comment out the current code first).The compareTo method should now sort quake by magnitude first, from smallest magnitude to largest magnitude,and then break ties (use == operator to determine whether magnitudes are equal) by depth, from smallest (most negative) depth to largest depth.
 
 
 2. Test the `compareTo` method by running the `sortWithCompareTo` method in the `DifferentSorters` class with any data file.
