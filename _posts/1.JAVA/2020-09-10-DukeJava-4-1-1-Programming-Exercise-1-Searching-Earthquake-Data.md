@@ -112,11 +112,11 @@ read data for 25
 number found: 3
 ```
 
----
+<!-- ---
 
 ## Assignment 5: Finding the Largest Magnitude Earthquakes
 
-In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude.
+In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude. -->
 
 <!-- Write a new class named LargestQuakes. Be sure to `import java.util.*;`
 
