@@ -56,7 +56,7 @@ Specifically, for this assignment, you will only modify one class, the EarthQuak
 ---
 
 ## Assignment 2: Filtering by Depth
-In this assignment you will filter earthquakes by their depth, finding those earthquakes whose depth is between a minimum and maximum value. For more information on what the "depth" of an earthquake means, see the information here: http://earthquake.usgs.gov/learn/topics/seismology/determining_depth.php
+In this assignment you will filter earthquakes by their depth, finding those earthquakes whose depth is between a minimum and maximum value. For more information on what the "depth" of an earthquake means, see the information here: [1](http://earthquake.usgs.gov/learn/topics/seismology/determining_depth.php)
 
 Specifically, for this assignment, you will add new methods to one class, the EarthQuakeClient class:
 
