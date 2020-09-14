@@ -116,8 +116,6 @@ number found: 3
 
 ## Assignment 5: Finding the Largest Magnitude Earthquakes
 
-
-<!-- 
 In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude.
 
 Write a new class named LargestQuakes. Be sure to `import java.util.*;`
@@ -143,6 +141,8 @@ Write a new class named LargestQuakes. Be sure to `import java.util.*;`
     - Modify the method findLargestQuakes to call getLargest to print the 5 earthquakes of largest magnitude from the file nov20quakedatasmall.atom. Those five earthquakes are:
 
 
+
+<!--
 ```java
 the largest such earthquake is at location 3 and has magnitude 5.5
 the largest such earthquake is at location 11 and has magnitude 5.1
