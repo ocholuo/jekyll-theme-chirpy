@@ -118,17 +118,17 @@ number found: 3
 
 In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude.
 
-Write a new class named LargestQuakes. Be sure to `import java.util.*;`
+<!-- Write a new class named LargestQuakes. Be sure to `import java.util.*;`
 
 1. Write a void method named `findLargestQuakes` that reads in earthquake data from a source and storing them into an ArrayList of type QuakeEntry.
     - Then it prints all the earthquakes and how many earthquakes that were from the source.
-    - You should read in earthquakes from the small file nov20quakedatasmall.atom, print all the earthquakes and also print how many there are.
+    - You should read in earthquakes from the small file `nov20quakedatasmall.atom`, print all the earthquakes and also print how many there are.
     - After this works you should comment out the printing of all the earthquakes, but continue to print out the total number of earthquakes read in.
 
 
 2. Write a method named `indexOfLargest` that has one parameter, an ArrayList of type QuakeEntry named data.
     - This method returns an integer representing the index location in data of the earthquake with the largest magnitude.
-    - You should test out this method by adding code to the method `findLargestQuakes` to print the index location of the largest magnitude earthquake in the file nov20quakedatasmall.atom and the earthquake at that location.
+    - You should test out this method by adding code to the method `findLargestQuakes` to print the index location of the largest magnitude earthquake in the file `nov20quakedatasmall.atom` and the earthquake at that location.
     - You will see that the largest such earthquake is at location 3 and has magnitude 5.50.
 
 
@@ -138,11 +138,9 @@ Write a new class named LargestQuakes. Be sure to `import java.util.*;`
     - If quakeData has fewer than howMany earthquakes, then the number of earthquakes returned in the ArrayList is equal to the number of earthquakes in quakeData.
     - This method should call the method `indexOfLargest`.
 
-    - Modify the method findLargestQuakes to call getLargest to print the 5 earthquakes of largest magnitude from the file nov20quakedatasmall.atom. Those five earthquakes are:
+    - Modify the method findLargestQuakes to call getLargest to print the 5 earthquakes of largest magnitude from the file `nov20quakedatasmall.atom`. Those five earthquakes are: -->
 
 
-
-<!--
 ```java
 the largest such earthquake is at location 3 and has magnitude 5.5
 the largest such earthquake is at location 11 and has magnitude 5.1
@@ -155,7 +153,7 @@ the largest such earthquake is at location 4 and has magnitude 4.9
 (8.53, -71.34), mag = 5.00, depth = -25160.00, title = 5km ENE of Lagunillas, Venezuela
 (40.37, 73.20), mag = 4.90, depth = -40790.00, title = 21km WNW of Gulcha, Kyrgyzstan
 total number of earthquakes read in: 5
-``` -->
+```
 
 
 
