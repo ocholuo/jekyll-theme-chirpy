@@ -12,7 +12,7 @@ lang: en-US
 
 title: Grace                          # the main title
 
-tagline: 9.14.6.IT  # 11:2662: ERROR: Input contains prohibited control code point U+0001.
+tagline: 9.14.7.IT  # 11:2662: ERROR: Input contains prohibited control code point U+0001.
 
 description: >-                        # used by seo meta and the atom feed
   A webpages focus on the IT learning path.
