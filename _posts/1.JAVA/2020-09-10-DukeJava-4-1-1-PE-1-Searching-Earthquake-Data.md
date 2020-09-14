@@ -21,7 +21,7 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 [ProjectCode](https://github.com/ocholuo/language/tree/master/0.project/javademo)
 
 ---
-
+```
 For the following assignments, you will start with the files provided, using most of the classes, and modifying only a few of them, and create a new class. The classes provided are:
 
 - The class Location, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
@@ -29,11 +29,11 @@ For the following assignments, you will start with the files provided, using mos
 - The class EarthQuakeParser, from the lesson, which has a read method with one String parameter that represents an XML earthquake data file and returns an ArrayList of QuakeEntry objects.
 - The class EarthQuakeClient, which has been started for you and creates an EarthQuakeParser to read in an earthquake data file, creating an ArrayList of QuakeEntrys. You can test the program with the method createCSV to store an ArrayList of the earthquake data and print a CSV file. You will complete the methods that filter magnitude and distance in this class and add additional methods to it.
 - The class ClosestQuakes, which has been started for you to find the ten closest quakes to a particular location. You will complete this method.
-
+```
 ---
 
 ## Assignment 1: Filtering by Magnitude and Distance
-
+```
 In this assignment you will complete the program to filter earthquake data by magnitude and distance, which was described in this lesson in the videos “Coding a Magnitude Filter” and “Coding a Distance Filter.”
 
 Specifically, for this assignment, you will only modify one class, the EarthQuakeClient class:
@@ -52,11 +52,11 @@ Specifically, for this assignment, you will only modify one class, the EarthQuak
     - For each earthquake found, print the distance from the earthquake to the specified city, followed by the information about the city (use getInfo()).
     - Currently this method reads data on earthquakes from a URL, stores a QuakeEntry for each earthquake read in the ArrayList named list, and prints out the number of earthquakes read in. It also gives the location for two cities, Durham, NC (35.988, -78.907) and Bridgeport, CA (38.17, -118.82).
     - After making modifications, when you run your program on the file `nov20quakedatasmall.atom` for the city location `Durham, NC`, no earthquakes are found. But if you then run the program for the city location `Bridgeport, CA`, seven earthquakes are found, and you should get the output:
-
+```
 ---
 
 ## Assignment 2: Filtering by Depth
-
+```
 1. Write the method `filterByDepth` that has three parameters, an ArrayList of type QuakeEntry named quakeData, a double named minDepth and a double named maxDepth.
     - This method should return an ArrayList of type QuakeEntry of all the earthquakes from quakeData whose depth is between minDepth and maxDepth, exclusive.
     - (Do not include quakes with depth exactly minDepth or maxDepth.)
@@ -65,10 +65,11 @@ Specifically, for this assignment, you will only modify one class, the EarthQuak
     - print all the earthquakes from a data source whose depth is between a given minimum and maximum value.
     - also print out the number of earthquakes found.
     - After writing this method, run program on the file `nov20quakedatasmall.atom` for quakes with depth between `-10000.0` and `-5000.0`
-
+```
 ---
 
 ## Assignment 3: Filtering by Phrase in Title
+```
 In this assignment you will filter earthquakes by a phrase in the title given for the earthquake in three ways, finding those earthquakes whose title starts with a phrase, ends with a phrase, or just has a phrase somewhere in the title.
 
 Specifically, for this assignment, you will add new methods to one class, the EarthQuakeClient class:
@@ -85,11 +86,12 @@ Specifically, for this assignment, you will add new methods to one class, the Ea
     - with phrase `“California”` and where set to `“end”`
     - with phrase “Can” and where set to “any”
     - with phrase “Explosion” and where set to “start”
-
+```
 ---
 
 ## Assignment 4: Finding the Closest Earthquakes to a Location
-<!-- In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
+```
+In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
 
 Specifically, for this assignment, you will only modify one class, the ClosestQuakes class:
 
@@ -102,33 +104,33 @@ Specifically, for this assignment, you will only modify one class, the ClosestQu
     - This method should find the closest number of howMany earthquakes to the current Location and return them in an ArrayList of type QuakeEntry.
     - The earthquakes should be in the ArrayList in order with the closest earthquake in index position 0.
     - If there are fewer then howMany earthquakes in quakeData, then the ArrayList returned would be the same size as quakeData.
-    - Now run the method findClosestQuakes by calling getClosest with the location current set to Jakarta (-6.211,106.845) and howMany set to 3. When you run your program on the file nov20quakedatasmall.atom -->
-
-<!-- ```java
+    - Now run the method findClosestQuakes by calling getClosest with the location current set to Jakarta (-6.211,106.845) and howMany set to 3. When you run your program on the file nov20quakedatasmall.atom
+```
+```java
 read data for 25
 14534.43	 (34.05, -117.36), mag = 1.20, depth = 1040.00, title = Quarry Blast - 4km WNW of Grand Terrace, California
 8439.34	 (-24.67, -175.93), mag = 5.10, depth = -10000.00, title = South of Tonga
 6153.14	 (38.27, 142.53), mag = 4.60, depth = -30500.00, title = 109km E of Ishinomaki, Japan
 number found: 3
-``` -->
+```
 
-<!-- ---
+---
 
 ## Assignment 5: Finding the Largest Magnitude Earthquakes
+```
+In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude.
 
-In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude. -->
-
-<!-- Write a new class named LargestQuakes. Be sure to `import java.util.*;`
+Write a new class named LargestQuakes. Be sure to `import java.util.*;`
 
 1. Write a void method named `findLargestQuakes` that reads in earthquake data from a source and storing them into an ArrayList of type QuakeEntry.
     - Then it prints all the earthquakes and how many earthquakes that were from the source.
-    - You should read in earthquakes from the small file `nov20quakedatasmall.atom`, print all the earthquakes and also print how many there are.
+    - You should read in earthquakes from the small file nov20quakedatasmall.atom, print all the earthquakes and also print how many there are.
     - After this works you should comment out the printing of all the earthquakes, but continue to print out the total number of earthquakes read in.
 
 
 2. Write a method named `indexOfLargest` that has one parameter, an ArrayList of type QuakeEntry named data.
     - This method returns an integer representing the index location in data of the earthquake with the largest magnitude.
-    - You should test out this method by adding code to the method `findLargestQuakes` to print the index location of the largest magnitude earthquake in the file `nov20quakedatasmall.atom` and the earthquake at that location.
+    - You should test out this method by adding code to the method `findLargestQuakes` to print the index location of the largest magnitude earthquake in the file nov20quakedatasmall.atom and the earthquake at that location.
     - You will see that the largest such earthquake is at location 3 and has magnitude 5.50.
 
 
@@ -138,10 +140,10 @@ In this assignment you will write a new class and methods to determine the N big
     - If quakeData has fewer than howMany earthquakes, then the number of earthquakes returned in the ArrayList is equal to the number of earthquakes in quakeData.
     - This method should call the method `indexOfLargest`.
 
-    - Modify the method findLargestQuakes to call getLargest to print the 5 earthquakes of largest magnitude from the file `nov20quakedatasmall.atom`. Those five earthquakes are: -->
-
+    - Modify the method findLargestQuakes to call getLargest to print the 5 earthquakes of largest magnitude from the file nov20quakedatasmall.atom. Those five earthquakes are:
+```
 
-<!-- ```java
+```java
 the largest such earthquake is at location 3 and has magnitude 5.5
 the largest such earthquake is at location 11 and has magnitude 5.1
 the largest such earthquake is at location 21 and has magnitude 5.1
@@ -153,7 +155,7 @@ the largest such earthquake is at location 4 and has magnitude 4.9
 (8.53, -71.34), mag = 5.00, depth = -25160.00, title = 5km ENE of Lagunillas, Venezuela
 (40.37, 73.20), mag = 4.90, depth = -40790.00, title = 21km WNW of Gulcha, Kyrgyzstan
 total number of earthquakes read in: 5
-``` -->
+```
 
 
 
