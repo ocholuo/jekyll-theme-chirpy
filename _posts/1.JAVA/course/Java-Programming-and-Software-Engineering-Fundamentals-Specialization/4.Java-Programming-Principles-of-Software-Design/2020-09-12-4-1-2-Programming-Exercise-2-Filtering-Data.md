@@ -15,7 +15,7 @@ tags: [Java]
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 4.Java-Programming-Principles-of-Software-Design
   - 4-1-1 Programming Exercise 1 - Searching Earthquake Data
-  - [4-1-2 Programming Exercise 2 - Filtering Data](#4-2-2-programming-exercise-2---filtering-data)
+  - 4-1-2 Programming Exercise 2 - Filtering Data
 
 
 Resource Link: http://www.dukelearntoprogram.com/course4/index.php

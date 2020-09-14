@@ -14,12 +14,11 @@ tags: [Java]
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 4.Java-Programming-Principles-of-Software-Design
-  - [4-2-1 Programming Exercise 1 Implementing Selection Sort](#4-2-1-programming-exercise-1-implementing-selection-sort)
+  - 4-2-1 Programming Exercise 1 Implementing Selection Sort
 
 Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
-
 ---
 
 - The class `Location`, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
@@ -78,27 +77,27 @@ For this assignment, we will explore the idea that the data might be sorted befo
 Specifically, for this assignment, you will modify the QuakeSortInPlace class:
 
 1. Write the method `checkInSortedOrder`
-   - has one parameter, an ArrayList of type QuakeEntry named quakes. 
-   - This method returns true if the earthquakes are in sorted order by magnitude from smallest to largest. 
-   - Otherwise this methods returns false. 
+   - has one parameter, an ArrayList of type QuakeEntry named quakes.
+   - This method returns true if the earthquakes are in sorted order by magnitude from smallest to largest.
+   - Otherwise this methods returns false.
    - You’ll need to loop through the ArrayList and check adjacent earthquakes to see if any are out of order.
 
 
-2. Write the void method `sortByMagnitudeWithBubbleSortWithCheck` 
-   - has one parameter, an ArrayList of type QuakeEntry named in. 
-   - If the ArrayList in has N elements in it, this method should call `onePassBubbleSort` at most N – 1 times. 
+2. Write the void method `sortByMagnitudeWithBubbleSortWithCheck`
+   - has one parameter, an ArrayList of type QuakeEntry named in.
+   - If the ArrayList in has N elements in it, this method should call `onePassBubbleSort` at most N – 1 times.
    - This method should call `checkInSortedOrder` and stop early if the ArrayList is already sorted. This method should print how many passes were needed to sort the elements.
 
 
-3. Modify the `testSort` method to call to `sortByMagnitudeWithBubbleSortWithCheck`. 
+3. Modify the `testSort` method to call to `sortByMagnitudeWithBubbleSortWithCheck`.
    - Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 2 passes) and earthquakeDataSampleSix2.atom (should sort after 3 passes). Both of these files have five earthquakes.
 
 
-4. Write the void method `sortByMagnitudeWithCheck` 
-   - has one parameter, an ArrayList of type QuakeEntry named in. 
-   - This method sorts earthquakes by their magnitude from smallest to largest using selection sort similar to the `sortByMagnitude` method. 
+4. Write the void method `sortByMagnitudeWithCheck`
+   - has one parameter, an ArrayList of type QuakeEntry named in.
+   - This method sorts earthquakes by their magnitude from smallest to largest using selection sort similar to the `sortByMagnitude` method.
    - However, this method should call `checkInSortedOrder` and stop early if the ArrayList is already sorted. This method should print how many passes were needed to sort the elements. For selection sort, one pass has exactly one swap.
 
 
-5. Modify the testSort method to call to `sortByMagnitudeWithCheck`. 
+5. Modify the testSort method to call to `sortByMagnitudeWithCheck`.
    - Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 3 passes) and earthquakeDataSampleSix2.atom (should sort after 4 passes). Both of these files have five earthquakes.
