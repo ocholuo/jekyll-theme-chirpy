@@ -88,7 +88,7 @@ Specifically, for this assignment, you will add new methods to one class, the Ea
 
 ---
 
-## Assignment 4: Finding the Closest Earthquakes to a Location
+<!-- ## Assignment 4: Finding the Closest Earthquakes to a Location
 In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
 
 Specifically, for this assignment, you will only modify one class, the ClosestQuakes class:
@@ -152,7 +152,7 @@ the largest such earthquake is at location 4 and has magnitude 4.9
 (8.53, -71.34), mag = 5.00, depth = -25160.00, title = 5km ENE of Lagunillas, Venezuela
 (40.37, 73.20), mag = 4.90, depth = -40790.00, title = 21km WNW of Gulcha, Kyrgyzstan
 total number of earthquakes read in: 5
-```
+``` -->
 
 
 
