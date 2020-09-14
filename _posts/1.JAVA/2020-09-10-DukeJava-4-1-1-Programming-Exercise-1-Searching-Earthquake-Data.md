@@ -104,13 +104,13 @@ Specifically, for this assignment, you will only modify one class, the ClosestQu
     - If there are fewer then howMany earthquakes in quakeData, then the ArrayList returned would be the same size as quakeData.
     - Now run the method findClosestQuakes by calling getClosest with the location current set to Jakarta (-6.211,106.845) and howMany set to 3. When you run your program on the file nov20quakedatasmall.atom
 
-```java
+<!-- ```java
 read data for 25
 14534.43	 (34.05, -117.36), mag = 1.20, depth = 1040.00, title = Quarry Blast - 4km WNW of Grand Terrace, California
 8439.34	 (-24.67, -175.93), mag = 5.10, depth = -10000.00, title = South of Tonga
 6153.14	 (38.27, 142.53), mag = 4.60, depth = -30500.00, title = 109km E of Ishinomaki, Japan
 number found: 3
-```
+``` -->
 
 <!-- ---
 
