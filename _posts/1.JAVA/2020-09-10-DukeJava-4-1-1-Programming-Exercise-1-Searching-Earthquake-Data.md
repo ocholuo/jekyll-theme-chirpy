@@ -56,16 +56,12 @@ Specifically, for this assignment, you will only modify one class, the EarthQuak
 ---
 
 ## Assignment 2: Filtering by Depth
-In this assignment you will filter earthquakes by their depth, finding those earthquakes whose depth is between a minimum and maximum value. For more information on what the "depth" of an earthquake means, see the information here: [1](http://earthquake.usgs.gov/learn/topics/seismology/determining_depth.php)
-
-Specifically, for this assignment, you will add new methods to one class, the EarthQuakeClient class:
 
 1. Write the method `filterByDepth` that has three parameters, an ArrayList of type QuakeEntry named quakeData, a double named minDepth and a double named maxDepth.
-    - This method should return an ArrayList of type QuakeEntry of all the earthquakes from quakeData whose depth is between minDepth and maxDepth, exclusive. (Do not include quakes with depth exactly minDepth or maxDepth.)
+    - This method should return an ArrayList of type QuakeEntry of all the earthquakes from quakeData whose depth is between minDepth and maxDepth, exclusive.
+    - (Do not include quakes with depth exactly minDepth or maxDepth.)
 
 2. Write the void method `quakesOfDepth` that has no parameters to use `filterByDepth`
     - print all the earthquakes from a data source whose depth is between a given minimum and maximum value.
     - also print out the number of earthquakes found.
-    - After writing this method, when you run your program on the file nov20quakedatasmall.atom for quakes with depth between -10000.0 and -5000.0 you should find five such quakes and get the output:
-
----
+    - After writing this method, run program on the file `nov20quakedatasmall.atom` for quakes with depth between `-10000.0` and `-5000.0`
