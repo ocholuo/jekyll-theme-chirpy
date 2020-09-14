@@ -88,7 +88,7 @@ Specifically, for this assignment, you will add new methods to one class, the Ea
 
 ---
 
-<!-- ## Assignment 4: Finding the Closest Earthquakes to a Location
+## Assignment 4: Finding the Closest Earthquakes to a Location
 In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
 
 Specifically, for this assignment, you will only modify one class, the ClosestQuakes class:
@@ -115,6 +115,9 @@ number found: 3
 ---
 
 ## Assignment 5: Finding the Largest Magnitude Earthquakes
+
+
+<!-- 
 In this assignment you will write a new class and methods to determine the N biggest earthquakes, those with largest magnitude.
 
 Write a new class named LargestQuakes. Be sure to `import java.util.*;`
