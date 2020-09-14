@@ -8,7 +8,8 @@ tags: [Java]
 ---
 
 
-# 4-1-1 Programming Exercise 1 - Searching Earthquake Data
+# Programming Exercise Searching Earthquake Data
+
 
 [toc]
 
