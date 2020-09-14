@@ -89,7 +89,7 @@ Specifically, for this assignment, you will add new methods to one class, the Ea
 ---
 
 ## Assignment 4: Finding the Closest Earthquakes to a Location
-In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
+<!-- In this assignment you will complete the program to determine the N closests earthquakes to a specified location that was described in this lesson in the video.
 
 Specifically, for this assignment, you will only modify one class, the ClosestQuakes class:
 
@@ -102,7 +102,7 @@ Specifically, for this assignment, you will only modify one class, the ClosestQu
     - This method should find the closest number of howMany earthquakes to the current Location and return them in an ArrayList of type QuakeEntry.
     - The earthquakes should be in the ArrayList in order with the closest earthquake in index position 0.
     - If there are fewer then howMany earthquakes in quakeData, then the ArrayList returned would be the same size as quakeData.
-    - Now run the method findClosestQuakes by calling getClosest with the location current set to Jakarta (-6.211,106.845) and howMany set to 3. When you run your program on the file nov20quakedatasmall.atom
+    - Now run the method findClosestQuakes by calling getClosest with the location current set to Jakarta (-6.211,106.845) and howMany set to 3. When you run your program on the file nov20quakedatasmall.atom -->
 
 <!-- ```java
 read data for 25
