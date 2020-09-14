@@ -52,3 +52,20 @@ Specifically, for this assignment, you will only modify one class, the EarthQuak
     - For each earthquake found, print the distance from the earthquake to the specified city, followed by the information about the city (use getInfo()).
     - Currently this method reads data on earthquakes from a URL, stores a QuakeEntry for each earthquake read in the ArrayList named list, and prints out the number of earthquakes read in. It also gives the location for two cities, Durham, NC (35.988, -78.907) and Bridgeport, CA (38.17, -118.82).
     - After making modifications, when you run your program on the file `nov20quakedatasmall.atom` for the city location `Durham, NC`, no earthquakes are found. But if you then run the program for the city location `Bridgeport, CA`, seven earthquakes are found, and you should get the output:
+
+---
+
+## Assignment 2: Filtering by Depth
+In this assignment you will filter earthquakes by their depth, finding those earthquakes whose depth is between a minimum and maximum value. For more information on what the "depth" of an earthquake means, see the information here: http://earthquake.usgs.gov/learn/topics/seismology/determining_depth.php
+
+Specifically, for this assignment, you will add new methods to one class, the EarthQuakeClient class:
+
+1. Write the method `filterByDepth` that has three parameters, an ArrayList of type QuakeEntry named quakeData, a double named minDepth and a double named maxDepth.
+    - This method should return an ArrayList of type QuakeEntry of all the earthquakes from quakeData whose depth is between minDepth and maxDepth, exclusive. (Do not include quakes with depth exactly minDepth or maxDepth.)
+
+2. Write the void method `quakesOfDepth` that has no parameters to use `filterByDepth`
+    - print all the earthquakes from a data source whose depth is between a given minimum and maximum value.
+    - also print out the number of earthquakes found.
+    - After writing this method, when you run your program on the file nov20quakedatasmall.atom for quakes with depth between -10000.0 and -5000.0 you should find five such quakes and get the output:
+
+---
