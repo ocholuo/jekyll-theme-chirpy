@@ -150,7 +150,7 @@ the largest such earthquake is at location 4 and has magnitude 4.9
 (-11.63, 165.52), mag = 5.10, depth = -20700.00, title = 106km SSW of Lata, Solomon Islands
 (-24.67, -175.93), mag = 5.10, depth = -10000.00, title = South of Tonga
 (8.53, -71.34), mag = 5.00, depth = -25160.00, title = 5km ENE of Lagunillas, Venezuela
-(40.37, 73.20), mag = 4.90, depth = -40790.00, title = 21km WNW of Gul'cha, Kyrgyzstan
+(40.37, 73.20), mag = 4.90, depth = -40790.00, title = 21km WNW of Gulcha, Kyrgyzstan
 total number of earthquakes read in: 5
 ```
 
