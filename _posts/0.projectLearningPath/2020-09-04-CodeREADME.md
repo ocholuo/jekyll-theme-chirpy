@@ -43,7 +43,8 @@ Index | Name | Date | Course material | Note
 16 | [VigenereProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-10-VigenereProgram/VigenereCipher.java) | 2020-09-10 | DukeU | **Break the Vigenere Cipher**
 17 | [SearchingEarthquakeDataStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-11-SearchingEarthquakeDataStarterProgram) | 2020-09-11 | DukeU | **operate the class and analyst the Earthquake Event Log**
 18 | [EarthquakeFilterStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-12-EarthquakeFilterStarterProgram) | 2020-09-12 | DukeU | **use interface Filter to avoid duplicate code**
-
+19 | [EarthquakeSortStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-13-EarthquakeSortStarterProgram) | 2020-09-13 | DukeU | **sort**
+20 | [EfficientSortStarterProgram](https://github.com/ocholuo/language/tree/master/0.project/javademo/2020-09-13-EfficientSortStarterProgram) | 2020-09-13 | DukeU | **Collections.sort(list, new ComparatorSort())**
 
 
 ---
