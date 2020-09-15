@@ -1,7 +1,6 @@
 ---
 title: Language - Learning Path
 date: 2020-09-15 11:11:11 -0400
-description: Learning Path
 categories: [LearningPath]
 img: /assets/img/sample/rabbit.png
 tags: [LearningPath, code]
