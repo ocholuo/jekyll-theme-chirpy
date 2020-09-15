@@ -3,7 +3,6 @@ title: Programming - demo & Learning Path
 date: 2020-09-04 11:11:11 -0400
 categories: [Project]
 tags: [OnePage, Project]
-# image:
 pin: false
 toc: false
 ---
@@ -66,8 +65,6 @@ Index | Name | Date | Course material
 8 | [Beautiful Soup](https://github.com/ocholuo/language/tree/master/0.project/pycode/2020-05-14-BeautifulSoup.md) | 2020-05-14 | University of Michigan in Coursera Chapter 12
 9 | [Building a Better Contact Sheet](https://github.com/ocholuo/language/tree/master/0.project/pycode/2020-05-31-Building-a-Better-Contact-Sheet.md) | 2020-05-31 | University of Michigan in Coursera
 10| [Newspaper Face Search](https://github.com/ocholuo/language/tree/master/0.project/pycode/2020-08-30-NewspaperFaceSearch.py) | 2020-08-30 | University of Michigan in Coursera
-
-`https://github.com/ocholuo/language/tree/master/0.project/pycode/2020-03-20-HiMyPokemon.md`
 
 ---
 
