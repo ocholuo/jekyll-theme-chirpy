@@ -70,9 +70,14 @@ add methods in the `QuakeSortInPlace` class to sort the quakes by depth, from la
 3. Modify the `testSort` method to comment out the line `sortByLargestDepth`, and add below this line a call to `sortByMagnitudeWithBubbleSort`.
 ```
 ---
+
 ## Assignment 3: Check for Completion
 ```
-1. Write the method checkInSortedOrder has one parameter, an ArrayList of type QuakeEntry named quakes. This method returns true if the earthquakes are in sorted order by magnitude from smallest to largest. Otherwise this methods returns false. You’ll need to loop through the ArrayList and check adjacent earthquakes to see if any are out of order.
+1. Write the method `checkInSortedOrder`
+   - has one parameter, an ArrayList of type QuakeEntry named quakes.
+   - This method returns true if the earthquakes are in sorted order by magnitude from smallest to largest.
+   - Otherwise this methods returns false.
+   - You’ll need to loop through the ArrayList and check adjacent earthquakes to see if any are out of order.
 
 
 2. Write the void method `sortByMagnitudeWithBubbleSortWithCheck`

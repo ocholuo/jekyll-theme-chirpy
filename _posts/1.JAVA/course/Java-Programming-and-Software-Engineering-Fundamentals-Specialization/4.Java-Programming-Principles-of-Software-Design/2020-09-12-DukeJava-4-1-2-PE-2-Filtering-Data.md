@@ -108,7 +108,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
    - After writing this method, when you run your program on the file nov20quakedatasmall.atom, you will see the following two earthquakes meet that criteria:
 ```
 
-![2020-09-12-EarthquakeFilterStarterProgram](./../../../img/javademo-EarthquakeFilterStarterProgram-IMG.png)
+![2020-09-12-EarthquakeFilterStarterProgram](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/javademo-EarthquakeFilterStarterProgram-IMG.png)
 
 
 ```

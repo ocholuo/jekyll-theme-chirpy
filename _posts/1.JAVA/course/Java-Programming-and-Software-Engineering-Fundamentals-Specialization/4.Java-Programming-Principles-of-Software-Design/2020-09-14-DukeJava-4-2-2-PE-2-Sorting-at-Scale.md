@@ -15,27 +15,11 @@ Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
+![2020-09-13-EfficientSortStarterProgram](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/javademo-EfficientSortStarterProgram.png)
 
-![2020-09-13-EfficientSortStarterProgram](../../../img/javademo-EfficientSortStarterProgram.png)
-
----
-
-```py
-The void method setRandom has one integer parameter named seed. Using this method will allow you to generate the same random text each time, which will help in testing your program.
-
-The void method setTraining has one String parameter named s. The String s is used to initialize the training text. It is important that you DO NOT change this line or it may affect your output: myText = s.trim();
-
-The getRandomText method has one integer parameter named numChars. This method generates and returns random text that is numChars long. Remember, for MarkovZero, this class generates each letter by randomly choosing a letter from the training text.
-
-The void method runMarkovZero has no parameters. This method reads in a file the user chooses, creates a MarkovZero object, and then generates three sets of randomly generated text using the file read in to choose the random characters from.
-
-The void method printOut is called by runMarkovZero to print out the random text that was generated with around 60 characters per line. DO NOT CHANGE THIS METHOD. You’ll need output generated in this format for some of the quiz questions.
-```
-
+![2020-09-13-EfficientSortStarterProgram](./../../../img/javademo-EfficientSortStarterProgram.png)
 
 ---
-
-Assignment
 
 ## Assignment 1: compareTo Method
 
