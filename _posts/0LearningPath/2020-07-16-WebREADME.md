@@ -3,6 +3,8 @@ title: Web - demo & Learning Path
 date: 2020-07-16 11:11:11 -0400
 categories: [Project]
 tags: [OnePage, Project]
+pin: ture
+toc: ture
 ---
 
 
@@ -23,24 +25,22 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
 | lab | pic  |
 | --- | ---- |
 | :heavy_check_mark: | [DLTP-MiniProject](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-MiniProject) - 200831
-| .  | <img src="./../demo-web/image/demo-DLTP-MiniProject.png" width="400" alt="DLTP-MiniProject"> <img src="./../demo-web/image/demo-dogrey.png" width="200" alt="dogrey"> <img src="./../demo-web/image/demo-dored.png" width="200" alt="dored"> <img src="./../demo-web/image/demo-dorainbow.png" width="200" alt="dorainbow"> <img src="./../demo-web/image/demo-doblur.png" width="200" alt="doblur">
+| .  | <img src="/assets/img/webdemoimage/demo-DLTP-MiniProject.png" width="300" alt="DLTP-MiniProject"> <br> <img src="/assets/img/webdemoimage/demo-dogrey.png" width="150" alt="dogrey"> <img src="/assets/img/webdemoimage/demo-dored.png" width="150" alt="dored"> <br> <img src="/assets/img/webdemoimage/demo-dorainbow.png" width="150" alt="dorainbow"> <img src="/assets/img/webdemoimage/demo-doblur.png" width="150" alt="doblur">
 | :heavy_check_mark: | [DLTP-GreenScreenWeb](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-GreenScreenWeb) - 200830
-| .  | <img src="./../demo-web/image/demo-GreenScreen1.png" width="500" alt="GreenScreen1"> <img src="./../demo-web/image/demo-GreenScreen2.png" width="500" alt="GreenScreen1">
+| .  | <img src="/assets/img/webdemoimage/demo-GreenScreen1.png" width="300" alt="GreenScreen1"> <img src="/assets/img/webdemoimage/demo-GreenScreen2.png" width="300" alt="GreenScreen1">
 | :heavy_check_mark: | [DLTP-Practise](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-Practise) - 200830
 | :heavy_check_mark: | [my website](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0mywebsite)
-| .  | <img src="./../demo-web/image/demo-mywebsite.jpg" width="500" alt="mywebsite">
+| .  | <img src="/assets/img/webdemoimage/demo-mywebsite.jpg" width="300" alt="mywebsite">
 | :heavy_check_mark: | [css cheat sheet](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0csscheatsheet)
-| .  | <img src="./../demo-web/image/demo-csscheatsheet.png" width="500" alt="csscheatsheet">
+| .  | <img src="/assets/img/webdemoimage/demo-csscheatsheet.png" width="300" alt="csscheatsheet">
 | :heavy_check_mark: | [Number Guess Game](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0NumberGuessGame)         
-| .  | <img src="./../demo-web/image/demo-NumberGuessGame.png" width="500" alt="NumberGuessGame">
+| .  | <img src="/assets/img/webdemoimage/demo-NumberGuessGame.png" width="300" alt="NumberGuessGame">
 | :heavy_check_mark: | [Silly Story Generator](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0SillyStoryGenerator)
-| .  | <img src="./../demo-web/image/demo-SillyStoryGenerator.png" width="500" alt="SillyStoryGenerator">
+| .  | <img src="/assets/img/webdemoimage/demo-SillyStoryGenerator.png" width="300" alt="SillyStoryGenerator">
 | :heavy_check_mark: | [Add User](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0AddUser)
-| .  | <img src="./../demo-web/image/demo-AddUser.png" width="500" alt="AddUser">
+| .  | <img src="/assets/img/webdemoimage/demo-AddUser.png" width="300" alt="AddUser">
 | :heavy_check_mark: | [Canvas Ball](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0CanvasBall)
-| .  | <img src="./../demo-web/image/demo-CanvasBall.png" width="500" alt="CanvasBall">
-
-
+| .  | <img src="/assets/img/webdemoimage/demo-CanvasBall.png" width="300" alt="CanvasBall">
 
 ---
 
