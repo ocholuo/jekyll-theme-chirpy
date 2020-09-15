@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cyber Security Interview Questiones
+title: Cyber Security knowledge point
 date: 2020-08-25 11:11:11 -0400
 description: Cyber Security Interview Questiones
 categories: [Note]
@@ -8,11 +8,11 @@ img: /assets/img/sample/rabbit.png
 tags: [Interview]
 ---
 
-# Cyber Security Interview Questiones
+# Cyber Security knowledge point
 
 ---
 
-![osi](/assets/img/sample/OSILayer.png)
+![osi](./../../assets/img/sample/OSILayer.jpg)
 
 1. What is information security and how is it achieved?
 
@@ -69,20 +69,20 @@ security field?
 
 44. Explain what **Address Resolution Protocol** is.  
     1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.png)
-    2.  Data link-layer protocol 
-    3.  resolve IP addresses to MAC addresses 
-    4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use 
+    2.  Data link-layer protocol
+    3.  resolve IP addresses to MAC addresses
+    4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use
         1.  ARP request
         2.  ARP reply
         3.  vulnerability with ARP:
             - It will believe any ARP reply packet
-            - nothing to authenticate the request 
+            - nothing to authenticate the request
             - Attackers can easily create ARP reply packets with spoofed or bogus MAC addresses, reply and poison the ARP cache on systems in the network.  Gratuitous ARP
 
 
 45. What port does **ping** work over?
     1.  ping test uses ICMP
-    2.  no real ports being used. 
+    2.  no real ports being used.
     3.  ICMP basically roofs, or sits on top of, the IP address. not a layer four protocol.
 
 
@@ -92,7 +92,7 @@ security field?
 
 
 47. How exactly does **traceroute/tracert** work at the protocol level?
-    1.  Traceroute (tracert) works by sending a packet to an open UDP port on a destination machine. 
+    1.  Traceroute (tracert) works by sending a packet to an open UDP port on a destination machine.
     2.  The router then discards the packet and sends off an ICMP notification packet to the original host with the message that the TTL expired from the router.
     3.  Traceroute transmits packets with small TTL (Time To Live) values. The TTL is an IP header field that is used to prevent packets from running into endless loops. When a router that handles the packet subtracts one from the packet's TTL. The packet expires and it's discarded when the TTL reaches zero.
 
@@ -119,39 +119,39 @@ access the corporate network.
     3. PROXY FIREWALLS
        1. application level
        2. the client’s request is evaluated against security rules and based on these rules, it is permitted or blocked.
-       3. use both stateful and deep packet inspection. 
+       3. use both stateful and deep packet inspection.
        4. They are mostly used for monitoring traffics for layer 7 protocols like HTTP and FTP.
     4. bypass:
        1. incognito window
        2. HTTP tunneling is a firewall evasion technique
-          1. lots of things can be wrapped within an HTTP shell (Microsoft Office has been doing this for years). 
-            ▪	And, because port 80 is almost never filtered by a firewall, you can craft port 80 segments to carry payload for protocols the firewall may have otherwise blocked. 
-            ▪	HTTP beacons and HTTP tunnels are the de facto standard implant technology for hackers. 
+          1. lots of things can be wrapped within an HTTP shell (Microsoft Office has been doing this for years).
+            ▪	And, because port 80 is almost never filtered by a firewall, you can craft port 80 segments to carry payload for protocols the firewall may have otherwise blocked.
+            ▪	HTTP beacons and HTTP tunnels are the de facto standard implant technology for hackers.
 
 
 
 1.  Besides firewalls, what other devices are used to enforce network boundaries?
-    1.  IDS/IPS, Procy, VPN, ACLs, subnetting, NAT, PAT, 
+    1.  IDS/IPS, Procy, VPN, ACLs, subnetting, NAT, PAT,
 
 
 2.  What is the role of network boundaries in information security?
 3.  What does an intrusion detection system do? How does it do it?
 4.  What is a honeypot? What type of attack does it defend against?
-    1.  a server left open or appears to have been sloppily locked down, allowing an attacker relatively easy access. 
+    1.  a server left open or appears to have been sloppily locked down, allowing an attacker relatively easy access.
     2.  Divert attackers from the live network:
     3.  diverts the attacker away from the live network.
-    4.  location of the honeypot is of utmost importance, more realistic placement is inside the DMZ. 
+    4.  location of the honeypot is of utmost importance, more realistic placement is inside the DMZ.
     5.  tool to gather intelligence on the attacker
-    
+
 
 
 5.  What technologies and approaches are used to secure information and services deployed on cloud computing infrastructure?
 6.  What information security challenges are faced in a cloud computing environment?
 7.  Can you give me an overview of IP multicast?
     1.  IP multicast delivers application source traffic to multiple receivers without burdening the source or the receivers while using a minimum of network bandwidth.
-    2.  multicast sender could send traffic destined for a Class D IP address, known as a multicast group, 
-    3.  devices on a network wanting to receive that transmission could join that multicast group. 
-    4.  send that traffic only to devices in a network wanting to receive that traffic. 
+    2.  multicast sender could send traffic destined for a Class D IP address, known as a multicast group,
+    3.  devices on a network wanting to receive that transmission could join that multicast group.
+    4.  send that traffic only to devices in a network wanting to receive that traffic.
 
 8.  How many bits do you need for a subnet size?
     1.  32 bits
@@ -459,6 +459,89 @@ Where do you get your security news from?
 # Source:- sec-community and personal experience
 
 
+
+# knowledge point
+
+
+**What Is Tcp/ip Model?**
+- TCP/IP model is an implementation of OSI reference model.
+- It has 4 layers.
+- Network layer, Internet layer, Transport layer and Application layer.
+
+
+## TCP/UDP
+
+Network traffic mainly categorizes into two types:
+- Transmission Control Protocol (TCP)
+- User Datagram Protocol (UDP).
+- Both protocols help in to establish the connection and transfer data between two ends of the communication. Below are the TCP/UDP interview questions and answers which generally asked in an interview.
+
+**Q1. Explain Transmission Control Protocol, TCP.**
+- TCP is a `connection-oriented protocol`.
+- when data is transferring from source to destination, `protocol takes care of data integrity` by sending data packet again if it lost during transmission.
+- ensures reliability and error-free data stream.
+- TCP packets contain fields such as Sequence Number, AcK number, Data offset, Reserved, Control bit, Window,  Urgent Pointer, Options, Padding, checksum, Source port, and Destination port.
+
+
+**Q2. Explain User Datagram Protocol, UDP.**
+- UDP is a connection-less protocol. In simple terms, if one data packet is lost during transmission, it will not send that packet again.
+- This protocol is suitable where minor data loss is not a major issue.
+
+
+**Q3. How does TCP work?**
+- TCP uses a three-way handshake to establish a connection between client and server.
+- It uses SYN, ACK and FIN flags (1 bit) for connecting two endpoints.
+- After the establishment of the connection, data is transferred sequentially.
+- If there is any loss of packet, it retransmits data.
+
+
+**Q4. List out common TCP/IP protocols.**
+- HTTP – Used between a web client and a web server, for non-secure data transmissions.
+- HTTPS – Used between a web client and a web server, for secure data transmissions.
+- FTP – Used between two or more computers to transfer files.
+
+
+**Q5. Comparison between TCP/IP & OSI model.**
+- TCP/IP is the alternate model that also explains the information flow in the network.
+- It is a simpler representation in comparison to the OSI model but contains fewer details of protocols than the OSI model.
+
+
+**Q6. Is UDP better than TCP?**
+- Both protocols are used for different purposes.
+- If the user wants error-free and guarantees to deliver data, TCP is the choice.
+- If the user wants fast transmission of data and little loss of data is not a problem, UDP is the choice.
+
+
+**Q7. What is the port number of Telnet and DNS?**
+- Telnet is a protocol used to access remote server but insecurely. Port no of Telnet is 23.
+- DNS is a protocol used to translate a domain name to IP address. Port no of DNS is 53.
+
+
+**Q8. What is the UDP packet format?**
+- The UDP packet format contains four fields:
+- Source Port and Destination Port fields (16 bits each): Endpoints of the connection.
+- Length field (16 bits) : length of the header and data.
+- Checksum field (16 bits) : It allows packet integrity checking (optional).
+
+
+**Q9. What is the TCP packet format?**
+- The TCP packet format consists of these fields:
+- `Source Port and Destination Port` fields (16 bits each); Sequence Number field (32 bits);
+- Acknowledgement Number field (32 bits); Data Offset (a.k.a. Header Length) field (variable length);
+- Reserved field (6 bits); Flags field (6 bits) contains the various flags: URG,  ACK, PSH, RST, SYN,
+- FIN; Window field (16 bits); Checksum field (16 bits) ; Urgent pointer field (16 bits) ;
+- Options field (variable length)
+- Data field (variable length).
+
+
+
+**Q10. List out some TCP/IP ports and protocols.**
+Protocol	Port Number	Description
+File Transfer Protocol (FTP)	        20/21	Protocol helps in transferring files between client and server.
+Secure Shell (SSH)	                    22	This method helps to access remote server securely.
+Telnet	                                23	This method also helps to access remote server but here, data is transmitted in clear text.
+Simple Mail Transfer Protocol (SMTP)	25	This protocol helps in managing email services.
+Domain Name System (DNS)	            53	This protocol helps in translating domain name into IP addresses.
 
 
 
