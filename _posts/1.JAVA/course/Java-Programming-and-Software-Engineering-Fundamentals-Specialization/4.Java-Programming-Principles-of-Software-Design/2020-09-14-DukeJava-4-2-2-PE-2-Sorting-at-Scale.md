@@ -20,7 +20,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---
 
-```
+```py
 The void method setRandom has one integer parameter named seed. Using this method will allow you to generate the same random text each time, which will help in testing your program.
 
 The void method setTraining has one String parameter named s. The String s is used to initialize the training text. It is important that you DO NOT change this line or it may affect your output: myText = s.trim();
