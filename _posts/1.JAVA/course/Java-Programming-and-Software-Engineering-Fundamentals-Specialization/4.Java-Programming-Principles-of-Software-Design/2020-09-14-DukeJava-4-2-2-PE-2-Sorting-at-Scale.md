@@ -26,7 +26,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---
 
-```
+<!-- ```
 - The class Location, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
 
 - The class QuakeEntry, from the lesson, which has a constructor that requires latitude, longitude, magnitude, title, and depth. It has several get methods and a toString method. It also has a compareTo method to sort earthquakes by magnitude (and commented out code that previously sorted earthquakes by distance to a location). You will be modifying the compareTo method in the first assignment.
@@ -40,7 +40,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 - The DistanceComparator class
   - implements Comparator to allow one to sort QuakeEntry’s by their distance to a specified location that is passed in as a parameter.
-```
+``` -->
 
 
 ---
