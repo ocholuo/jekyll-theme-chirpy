@@ -21,7 +21,11 @@ Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
+
+![2020-09-13-EfficientSortStarterProgram](../../../img/javademo-EfficientSortStarterProgram.png)
+
 ---
+
 ```
 - The class `Location`, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
 
@@ -31,33 +35,25 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 - The `DifferentSorters` class includes several methods that are similar to code shown in the videos to test several of the classes/methods in this assignment. You’ll be adding additional tester methods to this class.
 
-- The `MagnitudeComparator` class
-  - implements `Comparator` to allow one to sort QuakeEntry’s by magnitude from smallest to largest magnitude.
+- The MagnitudeComparator class
+  - implements Comparator to allow one to sort QuakeEntry’s by magnitude from smallest to largest magnitude.
 
 - The `DistanceComparator` class
   - implements `Comparator` to allow one to sort QuakeEntry’s by their distance to a specified location that is passed in as a parameter.
 ```
----
-
-![2020-09-13-EfficientSortStarterProgram](../../../img/javademo-EfficientSortStarterProgram.png)
+end
 
 ---
 
-
-
-
-
+# Assignment
 
 ## Assignment 1: compareTo Method
 
 ```
-1. Modify the `compareTo` method in the `QuakeEntry` class.(You may want to comment out the current code first).The compareTo method should now sort quake by magnitude first, from smallest magnitude to largest magnitude,and then break ties (use == operator to determine whether magnitudes are equal) by depth, from smallest (most negative) depth to largest depth.
+- Modify the compareTo method in the QuakeEntry class. (You may want to comment out the current code first). The compareTo method should now sort quake by magnitude first, from smallest magnitude to largest magnitude, and then break ties (use == operator to determine whether magnitudes are equal) by depth, from smallest (most negative)
+depth to largest depth.
 
-
-2. Test the `compareTo` method by running the `sortWithCompareTo` method in the `DifferentSorters` class with any data file.
-   - The sort used is `Collections.sort`.
-   - You should be able to see that the earthquakes are sorted by magnitude, and those with the same magnitude are sorted by depth.
-   - Modify this method to print out the QuakeEntry in the ArrayList in position 10 (which is actually the 11th element in the ArrayList) by adding the following code at the end of this method, after sorting and printing out all the elements.
+- Test the compareTo method by running the sortWithCompareTo method in the DifferentSorters class with any data file. The sort used is Collections.sort. You should be able to see that the earthquakes are sorted by magnitude, and those with the same magnitude are sorted by depth.
 
 ```
 ---
