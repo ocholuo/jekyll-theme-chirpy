@@ -7,8 +7,6 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-DukeJava - 4-2-2 Programming Exercise 2 Sorting at Scale
-
 [toc]
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
