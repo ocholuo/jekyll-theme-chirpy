@@ -7,7 +7,7 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-# DukeJava - 4-2-2 Programming Exercise 2 Sorting at Scale
+DukeJava - 4-2-2 Programming Exercise 2 Sorting at Scale
 
 [toc]
 
@@ -45,7 +45,7 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---
 
-# Assignment
+Assignment
 
 ## Assignment 1: compareTo Method
 
