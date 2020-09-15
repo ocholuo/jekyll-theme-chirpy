@@ -19,7 +19,9 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
+
 ---
+
 ```
 - The class `Location`, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
 
@@ -71,7 +73,7 @@ add methods in the `QuakeSortInPlace` class to sort the quakes by depth, from la
 ```
 ---
 
-## Assignment 3: Check for Completion
+<!-- ## Assignment 3: Check for Completion
 ```
 1. Write the method `checkInSortedOrder`
    - has one parameter, an ArrayList of type QuakeEntry named quakes.
@@ -98,4 +100,4 @@ add methods in the `QuakeSortInPlace` class to sort the quakes by depth, from la
 
 5. Modify the testSort method to call to `sortByMagnitudeWithCheck`.
    - Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 3 passes) and earthquakeDataSampleSix2.atom (should sort after 4 passes). Both of these files have five earthquakes.
-```
+``` -->
