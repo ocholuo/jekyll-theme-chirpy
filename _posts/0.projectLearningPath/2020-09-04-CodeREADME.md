@@ -3,8 +3,9 @@ title: Programming - demo & Learning Path
 date: 2020-09-04 11:11:11 -0400
 categories: [Project]
 tags: [OnePage, Project]
-math: true
-image:
+# image:
+pin: false
+toc: false
 ---
 
 # Programming - demo & Learning Path

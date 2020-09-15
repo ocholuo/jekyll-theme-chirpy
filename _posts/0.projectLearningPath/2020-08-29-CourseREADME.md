@@ -5,6 +5,8 @@ description: Learning Path
 categories: [Language]
 img: /assets/img/sample/rabbit.png
 tags: [Language]
+pin: false
+toc: false
 ---
 
 
@@ -67,7 +69,7 @@ JavaScript| [:rabbit:](https://www.dukelearntoprogram.com//course1/example/index
 [COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/) <br> [slide]() <br> [source]()
 | :------------- | :--- |
 **freecodecamp** |
-[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | :heavy_check_mark:
+[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | :pencil2:
 | :------------- | :--- |
 **AWS Certificate** |
 `AWS Cloud Practitioner (CLF-C01)` :star:| :rabbit:
