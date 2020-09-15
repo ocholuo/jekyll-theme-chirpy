@@ -7,7 +7,7 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-[toc]
+## Programming Exercise 2 Sorting at Scale
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 4.Java-Programming-Principles-of-Software-Design
