@@ -38,7 +38,9 @@ In Java, reuse code using an `Is-A relationship` or `Has-A relationship`.
 - In Java, there is no such keyword that implements a Has-A relationship. But we mostly use new keywords to implement a Has-A relationship in Java.
 
 
-![IS-A and HAS-A relationship](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/IS-A-and-HAS-A-relationship.jpg)
+![IS-A and HAS-A relationship](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/IS-A-and-HAS-A-relationship.jpg)
+
+![IS-A and HAS-A relationship](/assets/img/Javaimg/IS-A-and-HAS-A-relationship.jpg)
 
 
 ## code example

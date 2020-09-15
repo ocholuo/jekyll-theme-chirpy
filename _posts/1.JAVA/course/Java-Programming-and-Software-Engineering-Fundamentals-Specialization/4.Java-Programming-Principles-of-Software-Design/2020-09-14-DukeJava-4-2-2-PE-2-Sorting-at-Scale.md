@@ -15,7 +15,7 @@ Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
-![2020-09-13-EfficientSortStarterProgram](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/javademo-EfficientSortStarterProgram.png)
+![2020-09-13-EfficientSortStarterProgram](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/javademo-EfficientSortStarterProgram.png)
 
-![2020-09-13-EfficientSortStarterProgram](./../../../img/javademo-EfficientSortStarterProgram.png)
+![2020-09-13-EfficientSortStarterProgram](/assets/img/Javaimg/javademo-EfficientSortStarterProgram.png)
 

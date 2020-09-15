@@ -1,5 +1,5 @@
 ---
-title: Java - 1-1-1 Programming Exercise 1 Modifying Images
+title: Java - DukeJava - 1-1-1 Programming Exercise 1 Modifying Images
 date: 2020-09-02 11:11:11 -0400
 description:
 categories: [Java, DukeCourse]
@@ -8,7 +8,7 @@ tags: [Java]
 ---
 
 
-# 1-1-1 Programming Foundations with JS, HTML and CSS
+# DukeJava - 1-1-1 Programming Foundations with JS, HTML and CSS
 
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
@@ -24,7 +24,9 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 Write a JavaScript program that modifies an image by putting three vertical stripes on it - a red stripe on the left one third, a green stripe in the middle, and a blue stripe on the right one third. For example, if your program ran on Drew’s picture shown on the left, the resulting image would have red, green and blue vertical stripes as shown in the image on the right.
 
-![3color](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/3color.png)
+![3color](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/3color.png)
+
+![3color](/assets/img/Javaimg/3color.png)
 
 
 ```js
@@ -52,7 +54,9 @@ print(img);
 
 Write code to change the Duke blue devil (the image below on the left) to be yellow (as in the image below on the right)
 
-![Dukebluedevil](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/Dukebluedevil.png)
+![Dukebluedevil](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/Dukebluedevil.png)
+
+![Dukebluedevil](/assets/img/Javaimg/Dukebluedevil.png)
 
 ```js
 var img = new SimpleImage("duke_blue_devil.png");
@@ -73,12 +77,17 @@ print(img);
 
 ## 3.
 
-![drewRobert](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/drewRobert.png)
+![drewRobert](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/drewRobert.png)
 
-![dinos](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/dinos.png)
+![drewRobert](/assets/img/Javaimg/drewRobert.png)
 
-![outimg](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/outimg.png)
+![dinos](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/dinos.png)
 
+![dinos](/assets/img/Javaimg/dinos.png)
+
+![outimg](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/outimg.png)
+
+![outimg](/assets/img/Javaimg/outimg.png)
 
 ```js
 var img = new SimpleImage("drewRobert.png");
@@ -108,7 +117,9 @@ print(outimg);
 Your friend is trying to write a program that draws a square 200 pixels by 200 pixels and that looks like this square with colors red (red value 255), green (green value 255), blue (blue value 255) and magenta (red value 255 and blue value 255). All other RGB values are set to 0.
 
 
-![4colorpixel](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/4colorpixel.png)
+![4colorpixel](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/4colorpixel.png)
+
+![4colorpixel](/assets/img/Javaimg/4colorpixel.png)
 
 ```java
 var img = new SimpleImage(200,200);
@@ -136,7 +147,9 @@ print (img);
 
 write another function named addBorder. This function will add a black border to an image, such as in the following example:
 
-![panda](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/1.JAVA/img/panda.png)
+![panda](https://github.com/ocholuo/ocholuo.github.io/tree/master/assets/img/Javaimg/panda.png)
+
+![panda](/assets/img/Javaimg/panda.png)
 
 black border that is 10 pixels thick
 
