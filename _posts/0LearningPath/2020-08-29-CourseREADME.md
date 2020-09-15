@@ -5,8 +5,8 @@ description: Learning Path
 categories: [Language]
 img: /assets/img/sample/rabbit.png
 tags: [Language]
-pin: ture
-toc: ture
+pin: true
+toc: true
 ---
 
 
