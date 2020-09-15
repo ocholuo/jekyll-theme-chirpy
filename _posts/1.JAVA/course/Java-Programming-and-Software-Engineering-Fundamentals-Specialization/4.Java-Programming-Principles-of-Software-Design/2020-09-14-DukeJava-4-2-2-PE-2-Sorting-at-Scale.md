@@ -7,13 +7,9 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-## Programming Exercise 2 `Sorting at Scale`
+# Programming Exercise 2 `Sorting at Scale`
 
-Java-Programming-and-Software-Engineering-Fundamentals-Specialization
-- 4.Java-Programming-Principles-of-Software-Design
-  - 4-2 Earthquakes: Sorting Algorithms
-    - 4-2-1 Programming Exercise 1 `Implementing Selection Sort`
-    - 4-2-2 Programming Exercise 2 `Sorting at Scale`
+[toc]
 
 Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
@@ -24,21 +20,17 @@ ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
 ---
 
-<!-- ```
-- The class Location, from the Android platform and revised for this course, a data class representing a geographic location. One of the constructors has parameters latitude and longitude, and one of the public methods is distanceTo.
+```
+The void method setRandom has one integer parameter named seed. Using this method will allow you to generate the same random text each time, which will help in testing your program.
 
-- The class QuakeEntry, from the lesson, which has a constructor that requires latitude, longitude, magnitude, title, and depth. It has several get methods and a toString method. It also has a compareTo method to sort earthquakes by magnitude (and commented out code that previously sorted earthquakes by distance to a location). You will be modifying the compareTo method in the first assignment.
+The void method setTraining has one String parameter named s. The String s is used to initialize the training text. It is important that you DO NOT change this line or it may affect your output: myText = s.trim();
 
-- The class EarthQuakeParser, from the lesson, which has a read method with one String parameter that represents an XML earthquake data file and returns an ArrayList of QuakeEntry objects.
+The getRandomText method has one integer parameter named numChars. This method generates and returns random text that is numChars long. Remember, for MarkovZero, this class generates each letter by randomly choosing a letter from the training text.
 
-- The DifferentSorters class includes several methods that are similar to code shown in the videos to test several of the classes/methods in this assignment. You’ll be adding additional tester methods to this class.
+The void method runMarkovZero has no parameters. This method reads in a file the user chooses, creates a MarkovZero object, and then generates three sets of randomly generated text using the file read in to choose the random characters from.
 
-- The MagnitudeComparator class
-  - implements Comparator to allow one to sort QuakeEntry’s by magnitude from smallest to largest magnitude.
-
-- The DistanceComparator class
-  - implements Comparator to allow one to sort QuakeEntry’s by their distance to a specified location that is passed in as a parameter.
-``` -->
+The void method printOut is called by runMarkovZero to print out the random text that was generated with around 60 characters per line. DO NOT CHANGE THIS METHOD. You’ll need output generated in this format for some of the quiz questions.
+```
 
 
 ---
