@@ -7,13 +7,13 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-## Programming Exercise 2 Sorting at Scale
+## Programming Exercise 2 `Sorting at Scale`
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 4.Java-Programming-Principles-of-Software-Design
   - 4-2 Earthquakes: Sorting Algorithms
-    - 4-2-1 Programming Exercise 1 Implementing Selection Sort
-    - 4-2-2 Programming Exercise 2 Sorting at Scale
+    - 4-2-1 Programming Exercise 1 `Implementing Selection Sort`
+    - 4-2-2 Programming Exercise 2 `Sorting at Scale`
 
 Resource Link: http://www.dukelearntoprogram.com/course4/index.php
 
