@@ -7,7 +7,7 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
 
-# DukeJava - 4-3-1 Programming Exercise 1 Generating Random Text
+# DukeJava - 4-3-2 Programming Exercise 2 Interface-and-Abstract-Class
 
 [toc]
 

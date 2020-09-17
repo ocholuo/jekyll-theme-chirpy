@@ -12,7 +12,7 @@ tags: [Interview]
 
 ---
 
-![osi](./../../assets/img/sample/OSILayer.jpg)
+![osi](/assets/img/sample/OSILayer.jpg)
 
 1. What is information security and how is it achieved?
 
@@ -88,16 +88,16 @@ security field?
 46. Do you prefer **filtered ports or closed ports** on your firewall?
     1.  For small company servers / back-end systems / intranet sites: close ports (REJECT).
         - The reason
-        - because those server are not usually targeted by DDoS attacks 
+        - because those server are not usually targeted by DDoS attacks
         - because the external apps that requires to consume services hosted in the the servers can quickly report failures instead to hang the connections during minutes.
 
 
 47. How exactly does **traceroute/tracert** work at the protocol level?
     1.  Traceroute (tracert) works by `sending a packet to an open UDP port` on a destination machine.
     2.  The router then discards the packet and sends off an `ICMP` notification packet to the original host with the message that the TTL expired from the router.
-    3.  Traceroute transmits packets with small TTL (Time To Live) values. 
-        - The TTL is an IP header field that is used to prevent packets from running into endless loops. 
-        - When a router that handles the packet, subtracts one from the packet's TTL. 
+    3.  Traceroute transmits packets with small TTL (Time To Live) values.
+        - The TTL is an IP header field that is used to prevent packets from running into endless loops.
+        - When a router that handles the packet, subtracts one from the packet's TTL.
         - The packet expires and it's discarded when the TTL reaches zero.
 
 
@@ -118,7 +118,7 @@ access the corporate network.
         3.  `Stateless`
         4.  `Stateful`: remember information associated with previously passed packets and thus provide much better security.
     2.  `NEXT-GENERATION FIREWALLS (NGFW)`
-        1.  traditional firewall features coupled with additional functionality 
+        1.  traditional firewall features coupled with additional functionality
             - like anti-virus, intrusion prevention systems, encrypted traffic inspection, and deep packet inspection (DPI).
         2.  Unlike basic firewalls which only check packet headers, DPI examines the data within the packet, thus allowing users to stop, identify, or categorize packets containing malicious data.
     3. `PROXY FIREWALLS`
@@ -161,7 +161,7 @@ access the corporate network.
     1.  32 bits
 
 9.  What is packet filtering?
-    
+
 10. Can you explain the difference between a packet filtering firewall and an application layer firewall?
 
 
@@ -193,7 +193,7 @@ access the corporate network.
 72. What is cross-site request forgery?
 
 73. How does one defend against CSRF?
-    
+
 74. If you were a site administrator looking for incoming CSRF attacks, what would you look for?
 75. What’s the difference between HTTP and HTML?
 76. How does HTTP handle state?
@@ -217,7 +217,7 @@ access the corporate network.
 
 84. Describe the last program or script that you wrote. What problem did it solve?
     - Just looking for signs that the candidate has basic understanding of programming concepts and is at least able to write simple programs
-  
+
 85. How would you implement a secure login field on a high traffic website where performance is a consideration?
     - TLS (regardless of performance) is a must
     - reducing 3rd party library dependencies, could improve performance and reduce security risks [link](https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5)
@@ -234,7 +234,7 @@ access the corporate network.
 
 87. What is **Cross-Site Request Forgery**? And how to defend?
     - attacker gets a victim's browser to make requests with the victim's credentials
-    - Example: 
+    - Example:
     - if an image tag `<img>` points to a URL with an associated action, e.g. `https://foo.com/logout`
     - Defense includes but are not limited to:
       - check origins header & referer header
@@ -279,20 +279,20 @@ Hashing is a one-way function. Cannot be reversed. The output is fixed length an
 
 1. Does TLS use symmetric or asymmetric encryption?
    - Both.
-   - The initial exchange is done using asymmetric encryption, but bulk data encryption is done using symmetric. 
+   - The initial exchange is done using asymmetric encryption, but bulk data encryption is done using symmetric.
    - Resources:
    - [link](https://web.archive.org/web/20150206032944/https://technet.microsoft.com/en-us/library/cc785811.aspx)
    - [link](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
 2. the process of a TLS session set up (visits a secure website).
-   - **Client** sends `hello message`, which 
-     - lists cryptographic information, such as SSL/TLS version and the client's order of preference of cipher suites. 
+   - **Client** sends `hello message`, which
+     - lists cryptographic information, such as SSL/TLS version and the client's order of preference of cipher suites.
      - contains a random byte string that is used in subsequent calculations.  
      - may include data compression methods in the hello message as well.
-   - **Server** responds with hello message, which 
-     - contains the cipher suite chosen by the server, the server's digital certificate, and another random byte string. 
+   - **Server** responds with hello message, which
+     - contains the cipher suite chosen by the server, the server's digital certificate, and another random byte string.
      - If the server requires client certificate authentication, the server will also send client certificate request to the client.
-   - **Client** 
+   - **Client**
      - verifies server's digital certificate.
      - sends a `random byte string encrypted with the server's public key` to allow both client and server to calculate the secret key used for subsequent encryption between client & server.
      - If server requested a client certificate, the client sends a `random byte string encrypted with the client's private key with the client's digital certificate` or "no digital certificate alert". This alert is only a warning, but some implementations will cause the handshake to fail if client authentication is mandatory.
@@ -505,7 +505,7 @@ Where do you get your security news from?
    - TCP packets contain fields such as Sequence Number, AcK number, Data offset, Reserved, Control bit, Window,  Urgent Pointer, Options, Padding, checksum, Source port, and Destination port.
 
 3. Explain User Datagram Protocol, UDP
-   - UDP is a `connection-less protocol`. 
+   - UDP is a `connection-less protocol`.
    - if one data packet is lost during transmission, it will not send that packet again.
    - This protocol is suitable where minor data loss is not a major issue.
 
@@ -525,7 +525,7 @@ Where do you get your security news from?
    - It is a simpler representation in comparison to the OSI model but contains fewer details of protocols than the OSI model.
 
 7. Is UDP better than TCP?
-   - wants error-free and guarantees to deliver data, TCP 
+   - wants error-free and guarantees to deliver data, TCP
    - wants fast transmission of data and little loss of data is not a problem, UDP
 
 8. What is the port number of Telnet and DNS?
@@ -540,14 +540,14 @@ Where do you get your security news from?
 
 10. What is the TCP packet format?
     - The TCP packet format consists of these fields:
-    - `Source Port and Destination Port` fields (16 bits each); 
+    - `Source Port and Destination Port` fields (16 bits each);
     - `Sequence Number field` (32 bits);
-    - `Acknowledgement Number field` (32 bits); 
+    - `Acknowledgement Number field` (32 bits);
     - Data Offset (a.k.a. Header Length) field (variable length);
-    - `Reserved field` (6 bits); 
-    - `Flags field` (6 bits) contains the various flags: URG,  ACK, PSH, RST, SYN, FIN; 
-    - `Window field` (16 bits); 
-    - `Checksum field` (16 bits) ; 
+    - `Reserved field` (6 bits);
+    - `Flags field` (6 bits) contains the various flags: URG,  ACK, PSH, RST, SYN, FIN;
+    - `Window field` (16 bits);
+    - `Checksum field` (16 bits) ;
     - `Urgent pointer` field (16 bits) ;
     - Options field (variable length)
     - Data field (variable length).
@@ -562,7 +562,81 @@ Where do you get your security news from?
 
 
 
+## API
+
+1. API
+    - **Representational State Transfer** <- `XML/JSON`
+      - not object, but the status of the object
+      - GET/POST
+   - **an interface** allows users to interact with a program through a client.
+      - A client can be a browser
+         - end-user uses to access a website. user interacting with Indeed's API through the browser.
+      - A client can also be another application.
+         - If you're a software developer, you might write a program that accesses the Indeed API to pull in information about jobs through the client application.
+      - the client provides access to the API and its resources (objects application stores info about)
 
 
+2. What is **REST API**?
+    - A REST API is one that follows certain constraints.
+    - A RESTful application is one that follows specific rules within the API. 
+    - For one, a RESTful app allows users to access resources. This could be objects like username or user profile and actions like creating user access or editing or removing a post. 
+    - RESTful applications are also easier for developers to access and use due to the constraints placed on the API.
+    - REST API is one that follows the constraints of REST 
+    - allowing users to interact with the API in a specific way and making it easier for developers to use in their own applications.
 
-.
+3. benefits of using REST
+   - easy to scale, flexible and portable
+   - works independently from the client and server, which makes development less complex
+   - it would give the user control over the resources needed to make accounts and share from the publication,
+   - support massive growth. 
+
+4. architectural style for web APIs in REST?
+   - REST is a set of constraints that has to be applied for an application to be RESTful. 
+   - The architectural has to have a few key characteristics. 
+     - HTTP so that a client can communicate with the enterprise server. 
+     - A format language specified as XML/JSON. 
+     - An address to reach services in the form of Uniform Resource Identifier and communicate statelessly.
+
+
+5. test REST API? What tools are needed?
+   - To test API you use specific software designed to assess RESTful constraints. 
+   - Some popular tools for practical API testing: SoapUI, Katalon Studio and Postman.
+   - SoapUI, easy to download and access. to let applications been assessed consistently RESTful, good for the other developers at MetroMind who needed to use too.
+  
+
+6. difference between REST and AJAX?
+   - Shared database vs batch file transfer
+   - RPC vs MOM
+   - PUT vs POST
+   - Jax-WS vs Jax-RS
+   - Request/response is different in AJAX and REST. 
+     - In REST, request/response revolves around a URL structure and resources
+     - in AJAX request is transmitted via XMLHttpRequest objects and response occurs when JavaScript code makes changes to the page. 
+     - REST is a software development method
+     - AJAX is a set of resources for development. 
+     - REST requires the customer to interact with internal servers
+     - AJAX actively prevents it.
+
+7. main characteristics of REST?
+   - Primary characteristics of REST are being stateless and using GET to access resources. 
+   - In a truly RESTful application, the server can restart between calls as data passes through it.
+
+8. HTTP methods commonly used in REST?
+   - The HTTP methods supported by REST are `GET, POST, PUT, DELETE, OPTION and HEAD`. 
+   - The most commonly used method in REST is GET.
+
+
+9. Can you use GET instead of PUT to create a new resource?
+    - cannot use the GET feature instead of PUT
+    - GET has view-rights only.
+
+10. markup languages can be used in a RESTful web API
+    - XML and JSON can be used in a RESTful web API.
+
+11. resource in REST?
+    - resource: a name for any piece of content in a RESTful piece of architecture. 
+    - This includes HTML, text files, images, video and more.
+
+
+ref:
+[1](https://www.indeed.com/career-advice/interviewing/rest-api-interview-questions)
