@@ -51,10 +51,12 @@ If attacker is using IP spoofing on his outbound packets, he must either not car
 
 
 ### Steps to Avoid Spoofing
+- **ingress filtering**
+  - works only if all routers use it.
 - monitoring networks for atypical activity,
 - using robust verification methods (even among networked computers),
-- authenticating all IP addresses,
-- Set up a comprehensive packet filtering system for router or security gateway. 
+- **authenticating all IP addresses**,
+- Set up a comprehensive **packet filtering system for router or security gateway**. 
   - This should analyze and discard incoming data packets if they have source addresses of devices within your network.
   - Outgoing packets with sender addresses outside of the network should also be watched for and filtered.
   - detect inconsistencies (like outgoing packets with source IP addresses that don't match those on the organization's network),
