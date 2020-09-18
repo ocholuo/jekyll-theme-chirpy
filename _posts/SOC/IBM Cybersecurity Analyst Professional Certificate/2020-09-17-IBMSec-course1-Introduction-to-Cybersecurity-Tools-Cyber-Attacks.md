@@ -2,7 +2,7 @@
 title: IBMSec course 1 Introduction to Cybersecurity Tools & Cyber Attacks
 date: 2020-09-17 11:11:11 -0400
 categories: [SOC]
-tags: [Coursera]
+tags: 
 toc: true
 image:
 ---
