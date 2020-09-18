@@ -1,8 +1,8 @@
 ---
 title: CyberAttackMeow - IP Spoofing
 date: 2020-09-17 11:11:11 -0400
-categories: [CyberAttack, Application/ServerAttack]
-tags: [CyberAttack, Application/ServerAttack, Spoofing]
+categories: [CyberAttack, APPandServerAttack]
+tags: [CyberAttack, APPandServerAttack, Spoofing]
 toc: true
 image:
 ---
@@ -16,6 +16,8 @@ image:
 ![image004](https://i.imgur.com/5L9wA6Y.jpg)
 
 ---
+
+### IP Spoofing
 
 Each IP packet includes a place to specify the destination and source IP addresses.
 - The validity of the source addres
@@ -37,7 +39,7 @@ Such modification of the source address to something other than the sender’s I
 ![Screen Shot 2018-11-07 at 17.55.52](https://i.imgur.com/inR65UN.png)
 ￼
 
-How IP Spoofing is Used in Other Attacks
+### How IP Spoofing is Used in Other Attacks
 with a spoofed source IP address on an outbound packet, the machine with the spoofed IP address will receive any response from the destination server.
 If attacker is using IP spoofing on his outbound packets, he must either not care about any responses for these packets or he has some other way of receiving responses.
 - example:
@@ -48,7 +50,7 @@ If attacker is using IP spoofing on his outbound packets, he must either not car
 - A variation on this approach uses thousands of computers to send messages with the same spoofed source IP address to a huge number of recipients. The receiving machines automatically transmit acknowledgement to the spoofed IP address and flood the targeted server.
 
 
-Steps to Avoid Spoofing
+### Steps to Avoid Spoofing
 - monitoring networks for atypical activity,
 - using robust verification methods (even among networked computers),
 - authenticating all IP addresses,
