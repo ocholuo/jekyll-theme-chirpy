@@ -46,7 +46,6 @@ The act of exploiting vulnerabilities, and delivering malicious code onto the sy
 - Dynamic data exchange
 
 
-
 ## Privilege Escalation
 Attackers often need more privileges on a system to get access to more data and permissions: for this, they need to escalate their privileges often to an Admin.
 - Attackers use privilege escalation to get elevated access to resources.
