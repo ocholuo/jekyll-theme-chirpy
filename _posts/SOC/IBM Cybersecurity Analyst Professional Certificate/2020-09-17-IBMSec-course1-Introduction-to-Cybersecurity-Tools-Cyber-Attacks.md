@@ -1,8 +1,8 @@
 ---
 title: IBMSec course 1 Introduction to Cybersecurity Tools & Cyber Attacks
 date: 2020-09-17 11:11:11 -0400
-categories: [SOC, Certification]
-tags: [Certification]
+categories: [SOC]
+tags: [Coursera]
 toc: true
 image:
 ---
@@ -133,12 +133,13 @@ XX 15. Alice sends an encrypted message to Bob but it is intercepted by Trudy. T
 
 ![Screen Shot 2020-09-17 at 19.58.43](https://i.imgur.com/3ON9Ye2.png)
 
-
-Syrian Electronic Army
-- Website defacement and electronic surveillance against Syrian rebels and other opposition
-- Defacement attacks against Western websites that it contends spread news hostile to the Syrian government
-- Spamming popular Facebook pages with pro-regime comments:[19] The Facebook pages of President Barack Obama and former French President Nicolas Sarkozy have been targeted by such spam campaigns.
-
+HackerOrg | Note
+---|---
+`Fancy Bears` | That organization was been collated with US election hack. DCC hack into Hillary Clinton party, the office that manage information from Democratic Party.
+`Laser group` |
+`Look Sec` |
+`Syrian Electronic Army` | - Website defacement and electronic surveillance against Syrian rebels and other opposition. <br> - Defacement attacks against Western websites that it contends spread news hostile to the Syrian government. <br> - Spamming popular Facebook pages with pro-regime comments:[19] The Facebook pages of President Barack Obama and former French President Nicolas Sarkozy have been targeted by such spam campaigns.
+`Guardians of the Peace` | leaks on Sony
 
 attack | result
 ---|---
@@ -280,374 +281,108 @@ Shamoon Duqu Flame DarkSeoul WannaCry | for criminals and sponsor hackers from g
 
 ![Screen Shot 2020-09-17 at 23.16.50](https://i.imgur.com/okar6mY.png)
 
-### What is Social Engineering?
+### Social Engineering - Phishing and Vishing
 
-![Screen Shot 2020-09-18 at 00.27.53](https://i.imgur.com/WCh3gNq.png)
+### Cyberwarfare
 
-The Social-Egineer Toolkit(SET)
-- setup fake website
+
+
+
 
 
 
 
 ```
 1. Which hacker organization hacked into the Democratic National Convension and released Hillery Clinton's emails?
-Fancy Bears:  has been operating since the mid-2000s. CrowdStrike reported targeting has included Aerospace, Defense, Energy, Government and the Media industries.
-Anonymous
-Syrian Electronic Army
-Guardians of the Peace
-All of the above
+Fancy Bears
 
 2.What challenges are expected in the future?
-Enhanced espionage from more countries
-Far more advanced malware
-New consumer technology to exploit
 All of the above
 
 3.Why are cyber attacks using SWIFT so dangerous?
-SWIFT is the flight plan and routing system used by all cooperating nations for international commercial flights
 SWIFT is the protocol used by all banks to transfer money
-SWIFT is the protocol used by all US healthcare providers to encrypt medical records
-SWIFT is the protocol used to transmit all diplomatic telegrams between governments around the world
 
 
-4.Which statement best describes Authentication?
-Protection against denial by one of the parties in communication
-Prevention of unauthorized use of a resource
-Assurance that the communicating entity is the one claimed
-Assurance that a resource can be accessed and used
+        4.Which statement best describes Authentication?
+        Prevention of unauthorized use of a resource
 
-5.Trusted functionality, security labels, event detection, security audit trails and security recovery are all examples of which type of security mechanism?
-External security mechanism
-Passive security mechanism
-Contingent security mechanism
-Active security mechanism
+
+        5.Trusted functionality, security labels, event detection, security audit trails and security recovery are all examples of which type of security mechanism?
+        Active security mechanism
 
 6.If an organization responds to an intentional threat, that threat is now classified as what?
-An active threat
 An attack
-An open case
-A malicious threat
+
 
 7.An attack that is developed particularly for a specific customer and occurs over a long period of time is a form of what type of attack?
-
 Advanced Persistent Threat
 
 
-Water Hole
-
-
-Denial of Service (DOS)
-
-
-Spectra
-
-8.
-Question 8
-Which of three (3) these approaches could be used by hackers as part of a Business Email Compromise attack?
-
-1 point
-
-Request to make a payment
-
-
+8.Which of three (3) these approaches could be used by hackers as part of a Business Email Compromise attack?
 Attorney impersonation
-
-
 Account compromise
-
-
 CEO Fraud, where CEO sends email to an employee
 
-9.
-Question 9
-Which type of actor was not one of the four types of actors mentioned in the video A brief overview of types of actors and their motives?
 
-1 point
-
-Hackers
-
-
-Internal
-
-
+9.Which type of actor was not one of the four types of actors mentioned in the video A brief overview of types of actors and their motives?
 Black Hats
 
 
-Governments
-
-
-Hactivists
-
-10.
-Question 10
-A political motivation is often attributed to which type of actor?
-
-1 point
-
-Hackers
-
-
-Security Analysts
-
-
-Internal
-
-
+10.A political motivation is often attributed to which type of actor?
 Hactivist
 
-11.
-Question 11
-The video Hacking organizations called out several countries with active government sponsored hacking operations in effect. Which one of these was among those named?
 
-1 point
-
-Egypt
-
-
+11.The video Hacking organizations called out several countries with active government sponsored hacking operations in effect. Which one of these was among those named?
 Israel
 
 
-South Africa
-
-
-Canada
-
-12.
-Question 12
-Which of these is not a known hacking organization?
-
-1 point
-
+12.Which of these is not a known hacking organization?
 The Ponemon Institute
 
 
-Fancy Bears
-
-
-Syrian Electronic Army
-
-
-Anonymous
-
-
-Guardians of the Peace
-
-13.
-Question 13
-Which type of actor hacked the 2016 US Presidential Elections?
-
-1 point
-
-Hackers
-
-
-Internal
-
-
-Hactivists
-
-
+13.Which type of actor hacked the 2016 US Presidential Elections?
 Government
 
-14.
-Question 14
-True or False: Passive attacks are easy to detect because the original messages are usually alterned or undelivered.
 
-1 point
-
+14.True or False: Passive attacks are easy to detect because the original messages are usually alterned or undelivered.
 False
 
 
-True
+15.True or False: Authentication, Access Control and Data Confidentiality are all addressed by the ITU X.800 standard.
+pervasive
 
-15.
-Question 15
-True or False: Authentication, Access Control and Data Confidentiality are all addressed by the ITU X.800 standard.
-
-1 point
-
-True
-
-
-False
-
-16.
-Question 16
-Cryptography, digital signatures, access controls and routing controls considered which?
-
-1 point
-
-Security Policy
-
-
+16.Cryptography, digital signatures, access controls and routing controls considered which?
 Specific security mechanisms
 
 
-Pervasive security mechanisms
-
-
-Business Policy
-
-17.
-Question 17
-True or False: A tornado threatening a data center can be classified as an attack.
-
-1 point
-
-True
-
-
+17.True or False: A tornado threatening a data center can be classified as an attack.
 False
 
-18.
-Question 18
-Traffic flow analysis is classified as which?
 
-1 point
-
-A masquerade attack
-
-
+18.Traffic flow analysis is classified as which?
 A passive attack
 
 
-An origin attack
-
-
-An active attack
-
-19.
-Question 19
-How would you classify a piece of malicious code designed to cause damage, can self-replicate and spreads from one computer to another by attaching itself to files?
-
-1 point
-
-Trojan Horse
-
-
-Adware
-
-
-Virus
-
-
+19.How would you classify a piece of malicious code designed to cause damage, can self-replicate and spreads from one computer to another by attaching itself to files?
 Worm
 
+        20.Botnets can be used to orchestrate which form of attack?
+        DDoS attacks
 
-Ransomware
-
-
-Spyware
-
-20.
-Question 20
-Botnets can be used to orchestrate which form of attack?
-
-1 point
-
-Distribution of Spam
-
-
-DDoS attacks
-
-
-Phishing attacks
-
-
-Distribution of Spyware
-
-
-As a Malware launchpad
-
-
-All of the above
-
-21.
-Question 21
-Policies and training can be classified as which form of threat control?
-
-1 point
-
-Technical controls
-
-
-Passive controls
-
-
-Active controls
-
-
+21.Policies and training can be classified as which form of threat control?
 Administrative controls
 
-22.
-Question 22
-Which type of attack can be addressed using a switched Ethernet gateway and software on every host on your network that makes sure their NICs is not running in promiscuous mode.
-
-1 point
-
+22.Which type of attack can be addressed using a switched Ethernet gateway and software on every host on your network that makes sure their NICs is not running in promiscuous mode.
 Packet Sniffing
 
-
-Host Insertion
-
-
-Trojan Horse
-
-
-Ransomware
-
-
-All of the above
-
-23.
-Question 23
-A flood of maliciously generated packets swamp a receiver’s network interface preventing it from responding to legitimate traffic. This is characteristic of which form of attack?
-
-1 point
-
+23.A flood of maliciously generated packets swamp a receiver’s network interface preventing it from responding to legitimate traffic. This is characteristic of which form of attack?
 A Denial of Service (DOS) attack
 
-
-A Trojan Horse
-
-
-A Masquerade attack
-
-
-A Ransomware attack
-
-24.
-Question 24
-A person calls you at work and tells you he is a lawyer for your company and that you need to send him specific confidential company documents right away, or else! Assuming the caller is not really a lawyer for your company but a bad actor, what kind of attack is this?
-
-1 point
-
+24.A person calls you at work and tells you he is a lawyer for your company and that you need to send him specific confidential company documents right away, or else! Assuming the caller is not really a lawyer for your company but a bad actor, what kind of attack is this?
 A Social Engineering attack
 
-
-A Trojan Horse
-
-
-A Denial of Service attack
-
-
-A Worm attack
-
-25.
-Question 25
-True or False: An individual hacks into a military computer and uses it to launch an attack on a target he personally dislikes. This is considered an act of cyberwarfare.
-
-1 point
-
+25.True or False: An individual hacks into a military computer and uses it to launch an attack on a target he personally dislikes. This is considered an act of cyberwarfare.
 False
-
-
-True
-
-
-Honor Code Agreement
-I, Grace Jiaying Luo, understand that submitting work that isn’t my own may result in permanent failure of this course or deactivation of my Coursera account. Learn more about Coursera’s Honor Code
 ```
 ---
 

@@ -37,32 +37,6 @@ sleepy....
 
 ---
 
-## link
-
-**official doc** | Link
----|---
-Python | [The Python Tutorial](https://docs.python.org/3/tutorial/) |
-**AWSCerSheet** | 
-AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md)
-**Code test environment** |
-. | [JavaScript](https://www.dukelearntoprogram.com//course1/example/index.php) 
-**Web** | 
-[crunchbase](https://www.crunchbase.com/hub/united-states-cloud-security-companies) | company search
-**API Gene** | 
-[apigee](https://cloud.google.com/apigee/) | 
-[8 open-source API tools](https://techbeacon.com/app-dev-testing/8-open-source-tools-will-lift-your-api-game) |
-[PrograrmmableWeb] |
-**API Gene** | 
-[WiCys](https://www.wicys.org/about) |
-[SANS](https://www.sans.org/)
-[The Open Web Application Project (OWASP)](https://www.owasp.org/index.php/Category:OWASP_Project#tab=Project_Inventory)
-[Information Systems Security Association (ISSA)](https://www.issa.org/)
-[Forum of Incident Response and Security Teams (FIRST)](https://www.first.org/membership/benefits)
-[COMPUTER SECURITY RESOURCE CENTER](https://csrc.nist.gov/)
-
-
----
-
 ## InfoSec:
 
 
@@ -90,13 +64,13 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**IBM Cybersecurity Analyst Professional Certificate** | 
+**IBM Cybersecurity Analyst Professional Certificate** |
 [COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | :pencil2:
-[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | 
-[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) | 
-[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) | 
-[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) | 
-[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) | 
+[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) |
+[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
+[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
+[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
+[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) |
 [COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
 [COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
@@ -130,7 +104,7 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 **UMich. Web Design for Everybody: Basics of Web Development & Coding** |
 [COURSE 1 Introduction to HTML5](https://www.coursera.org/learn/html?specialization=web-design) | :heavy_check_mark:
 [COURSE 3 Interactivity with JavaScript](https://www.coursera.org/learn/javascript?specialization=web-design) | :heavy_check_mark:
-| :--------------------------------------------------------------------------------------------------- | :--- 
+| :--------------------------------------------------------------------------------------------------- | :---
 **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
 **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
 
@@ -178,6 +152,35 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 [AWSacademy-ExamReadiness:AWS Certified Alexa Skill Builder-Specialty](https://kiku.aws.training/Details/eLearning?id=34489) | :pencil2:
 
 ---
+
+
+## link
+
+**official doc** | Link
+---|---
+Python | [The Python Tutorial](https://docs.python.org/3/tutorial/) |
+**AWSCerSheet** |
+AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md)
+**Code test environment** |
+. | [JavaScript](https://www.dukelearntoprogram.com//course1/example/index.php)
+**Web** |
+[crunchbase](https://www.crunchbase.com/hub/united-states-cloud-security-companies) | company search
+**API Gene** |
+[apigee](https://cloud.google.com/apigee/) |
+[8 open-source API tools](https://techbeacon.com/app-dev-testing/8-open-source-tools-will-lift-your-api-game) |
+[PrograrmmableWeb] |
+**API Gene** |
+[WiCys](https://www.wicys.org/about) |
+[SANS](https://www.sans.org/) |
+[The Open Web Application Project (OWASP)](https://www.owasp.org/index.php/Category:OWASP_Project#tab=Project_Inventory) |
+[Information Systems Security Association (ISSA)](https://www.issa.org/) |
+[Forum of Incident Response and Security Teams (FIRST)](https://www.first.org/membership/benefits) |
+[COMPUTER SECURITY RESOURCE CENTER](https://csrc.nist.gov/) |
+
+
+---
+
+
 
 ## other source
 
