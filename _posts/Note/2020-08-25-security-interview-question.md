@@ -34,6 +34,18 @@ tags: [Interview]
 15. What is Information Security Governance?
 16. What are your professional values? Why are professional ethics important in the information
 
+17. What is the difference between threat, vulnerability, and a risk?
+    - A threat is from an attacker that will use a vulnerability that was not mitigated because someone forgot to identify it as a risk.
+    - Vulnerability (weakness) is a gap in the protection efforts of a system, a threat is an attacker who exploits that weakness.
+    - Risk is the measure of potential loss when that the vulnerability is exploited by the threat.
+
+18. difference between a vulnerability and an exploit?
+    - vulnerability, a potential problem
+    - exploit, an active problem.
+    - Think of it like this: You have a shed with a broken lock where it won’t latch properly. In some areas such as major cities, that would be a major problem that needs to be resolved immediately, while in others like rural areas its more of a nuisance that can be fixed when you get around to it. In both scenarios it would be a vulnerability, while the major cities shed would be an example of an exploit – there are people in the area, actively exploiting a known problem.
+
+
+---
 
 security field?
 
@@ -47,28 +59,30 @@ security field?
 8.  What are your first three steps when securing a Windows server?
 9.  Who’s more dangerous to an organization, insiders or outsiders?
 10. Why is DNS monitoring important?
-11. How would traceroute help you find out where a breakdown in communication is?
-12. Why would you want to use SSH from a Windows PC?
-13. How would you find out what a POST code means?
-14. What is the difference between a black hat and a white hat?
-15. What do you think of social networking sites such as Facebook and LinkedIn?
-16. Why are internal threats often more successful than external threats?
-17. Why is deleted data not truly gone when you delete it?
-18. What is the Chain of Custody?
-19. How would you permanently remove the threat of data falling into the wrong hands?
-20. What is exfiltration?
-21. How do you protect your home wireless access point?
-22. If you were going to break into a database-based website, how would you do it?
-23. What is the CIA triangle?
-24. What is the difference between information protection and information assurance?
-25. How would you lock down a mobile device?
-26. What is the difference between closed-source and open-source? Which is better?
-27. What is your opinion on hacktivist groups such as Anonymous?
+
+11. Why would you want to use SSH from a Windows PC?
+12. How would you find out what a POST code means?
+13. What is the difference between a black hat and a white hat?
+14. What do you think of social networking sites such as Facebook and LinkedIn?
+15. Why are internal threats often more successful than external threats?
+16. Why is deleted data not truly gone when you delete it?
+17. What is the Chain of Custody?
+18. How would you permanently remove the threat of data falling into the wrong hands?
+19. What is exfiltration?
+20. How do you protect your home wireless access point?
+21. If you were going to break into a database-based website, how would you do it?
+22. What is the CIA triangle?
+23. What is the difference between information protection and information assurance?
+24. How would you lock down a mobile device?
+25. What is the difference between closed-source and open-source? Which is better?
+26. What is your opinion on hacktivist groups such as Anonymous?
+
+---
 
 # Network security
 
 44. Explain what **Address Resolution Protocol** is.  
-    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.png)
+    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.jpg)
     2.  Data link-layer protocol
     3.  resolve IP addresses to MAC addresses
     4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use
@@ -80,8 +94,8 @@ security field?
             - Attackers can easily create ARP reply packets with spoofed or bogus MAC addresses, reply and poison the ARP cache on systems in the network.  Gratuitous ARP
 
 45. What port does **ping** work over?
-    1.  ping test uses `ICMP`
-    2.  no real ports being used.
+    1.  It doesn’t work over a port. no real ports being used.
+    2.  ping test uses `ICMP` layer 3 protocol.
     3.  `ICMP` basically roofs, or sits on top of, the IP address. not a layer four protocol.
 
 
@@ -93,12 +107,37 @@ security field?
 
 
 47. How exactly does **traceroute/tracert** work at the protocol level?
-    1.  Traceroute (tracert) works by `sending a packet to an open UDP port` on a destination machine.
-    2.  The router then discards the packet and sends off an `ICMP` notification packet to the original host with the message that the TTL expired from the router.
+
+    1.  Traceroute (tracert) works by
+        - `sending a packet to an open UDP port` on a destination machine.
+        - `setting the TTL for a packet to 1`, sending it towards the requested destination host, and listening for the reply.
+        - When the initiating machine receives a “time exceeded” response, it examines the packet to determine where the packet came from – this identifies the machine one hop away.
+        - The router then discards the packet and `sends off an ICMP notification packet to the original host` with the message that the TTL expired from the router.
+        - Then the tracing machine `generates a new packet with TTL 2`, and uses the response to determine the machine 2 hops away, and so on.
+
     3.  Traceroute transmits packets with small TTL (Time To Live) values.
         - The TTL is an IP header field that is used to prevent packets from running into endless loops.
         - When a router that handles the packet, subtracts one from the packet's TTL.
         - The packet expires and it's discarded when the TTL reaches zero.
+
+    4. not all TCP stacks behave correctly. Some TCP stacks `set the TTL for the ICMP “time exceeded” message` to that of the message being killed.
+        - So if the TTL is 0, the packet will be killed by the next machine to which it is passed.
+        This can have two effects on a trace.
+        - If the computer is an intermediate machine in the trace, the entry remain blank. No information is returned because the “time exceeded” message never makes it back. 
+        If the machine you are doing a trace to has this bug in its TCP stack, return packets won’t reach the originating machine unless the TTL is high enough to cover the round trip. So Trace Route will show a number of failed connections equal to n (the number of hops to the destination machine) minus 1.
+
+11. How would traceroute help you find out where a breakdown in communication is?
+
+
+118. on laptop, just plugged in network cable. How many packets must leave my NIC in order to complete a traceroute to twitter.com?
+     - they need to factor in all layers: Ethernet, IP, DNS, ICMP/UDP, etc. And they need to consider round-trip times.
+
+20. **configure trace route in a cisco firewall** for a group of windows users?
+    - Windows uses ICMP for traceroute, Linux technically uses UDP.
+    - Therefore, the responses they get from the devices along the path is different, depending on which source device you used to initiate the trace.
+    - For Windows, you'd need an `inbound rule allowing icmp time-exceeded`.
+    - For Linux, you'd need an `inbound rule allowing icmp unreachable`.
+    - For both, you'd also need to add an "`inspect icmp`" statement.
 
 
 48. What are Linux’s strengths and weaknesses vs. Windows?
@@ -139,6 +178,11 @@ access the corporate network.
 
 
 2.  What is the role of network boundaries in information security?
+
+3.  How does a router differ from a switch?
+    - Switches create a network. Routers connect networks.
+
+
 3.  What does an intrusion detection system do? How does it do it?
 
 4.  What is a honeypot? What type of attack does it defend against?
@@ -178,6 +222,13 @@ access the corporate network.
 18. How would you judge if a remote server is running IIS or Apache?
 19. What is the difference between an HIDS and a NIDS?
 
+
+21. use SSH from a Windows pc?
+    - SSH (TCP port 22) is a secure connection used on many different systems and dedicated appliances.
+    - Routers, Switches, SFTP servers and insecure programs being tunnelled through this port all can be used to help harden a connection against eavesdropping.
+    - the SSH protocol itself is implemented on a wide variety of systems – Linux, Windows.
+    - Programs like PuTTY, Filezilla and others have Windows ports available, which allow Windows users the same ease-of-use connectivity to these devices as do Linux users.
+
 ---
 
 # Application security
@@ -203,11 +254,6 @@ access the corporate network.
 80. You are remoted in to a headless system in a remote area. You have no physical access to the hardware and you need to perform an OS installation. What do you do?
 81. On a Windows network, why is it easier to break into a local account than an AD account?
 
-82. encrypt and compress data during transmission, which first?
-    1.  compression aims to use patterns in data to reduce its size.
-    2.  Encryption aims to randomize data so that it's uninterpretable without a secret key.
-    3.  encrypt first, then compress, then compression will be useless. `Compression doesn't work on random data.`
-    4.  compress first, then encrypt, then an attacker can find patterns in message length (Compression Ratio) to learn something about the data and potentially foil the encryption (like CRIME)
 
 83. What could attackers do with HTTP Header Injection vulnerability?
     - Carriage returns and line feeds (or %0D & %0A) are means to an end that would allow attackers to control HTTP headers
@@ -231,6 +277,9 @@ access the corporate network.
     - Fail2ban
     - ...etc
 
+---
+
+## Web Security
 
 87. What is **Cross-Site Request Forgery**? And how to defend?
     - attacker gets a victim's browser to make requests with the victim's credentials
@@ -240,13 +289,18 @@ access the corporate network.
       - check origins header & referer header
       - check CSRF tokens or nonce
 
-88. What is Cross-Site Scripting? What are the different types of XSS? defend?
+88. What is **Cross-Site Scripting XSS**?
     - attackers get victim's browsers to execute some code (usually JavaScript) within their browser
+
+89. the different types of XSS? defend?
     - Traditionally, types have been categorized into `Stored` and `Reflected` XSS attacks.
-    - `Stored XSS` is some code that an attacker was able to persist in a database and gets retrieved and presented to victims (e.g. forum)
-    - `Reflected XSS` is usually in the form of a maliciously crafted URL which includes the malicious code. When the user clicks on the link, the code runs in their browser
-    - `DOM-based XSS`, occurs when attackers can control DOM elements, thus achieve XSS without sending any requests to the server
-    - XSS categories tend to overlap, therefore it's much better to describe XSS in terms like Server Stored XSS, Server Reflected XSS, Client Stored XSS (e.g. stored DOM-based XSS), or Client Reflected XSS (e.g. reflected DOM-based XSS)
+        - `Stored XSS` is some code that an attacker was able to persist in a database and gets retrieved and presented to victims (e.g. forum)
+        - `Reflected XSS` is usually in the form of a maliciously crafted URL which includes the malicious code. When the user clicks on the link, the code runs in their browser
+        - `DOM-based XSS`, occurs when attackers can control DOM elements, thus achieve XSS without sending any requests to the server
+    - Server Stored XSS,
+    - Server Reflected XSS,
+    - Client Stored XSS (e.g. stored DOM-based XSS),
+    - Client Reflected XSS (e.g. reflected DOM-based XSS)
     - Defense includes:
       - Output encoding (more important)
       - Input validation (less important)
@@ -255,6 +309,21 @@ access the corporate network.
     - HTTP is stateless
     - State is stored in cookies
 
+
+---
+
+## AAA
+
+1. How would you harden user authentication?
+   - Generate Memorable Secure Passwords/Password Generators
+   - Use password vaults
+   - Two Factor Authentication
+   - Use HTTPS/Firewalls
+   - Use Robust Routers
+   - Use good antivirus softwares
+
+
+---
 
 ## Architect
 Have you designed security measures that span overlapping information domains?
@@ -373,7 +442,7 @@ Where do you get your security news from?
 115. What’s the difference between a threat, vulnerability, and a risk?
 116. If you were to start a job as head engineer or CSO at a Fortune 500 company due to the previous guy being fired for incompetence, what would your priorities be? [Imagine you start on day one with no knowledge of the environment]
 117. As a corporate information security professional, what’s more important to focus on: threats or vulnerabilities?
-118. If I’m on my laptop, here inside my company, and I have just plugged in my network cable. How many packets must leave my NIC in order to complete a traceroute to twitter.com?
+
 119. How would you build the ultimate botnet?
 120. What are the primary design flaws in HTTP, and how would you improve it?
 121. If you could re-design TCP, what would you fix?
@@ -382,6 +451,8 @@ Where do you get your security news from?
 124. If you had to get rid of a layer of the OSI model, which would it be?
 125. What is residual risk?
 126. What is the difference between a vulnerability and an exploit?
+
+---
 
 # Security audits, testing & incident response
 
@@ -470,13 +541,23 @@ Where do you get your security news from?
 35.  What’s the difference between encoding, encryption, and hashing?
 36.  In public-key cryptography you have a public and a private key, and you often perform both encryption and signing functions. Which key is used for which function?
 37.  What’s the difference between Symmetric and Asymmetric encryption?
-38.  If you had to both encrypt and compress data during transmission, which would you do first, and why?
+
+38.  **encrypt and compress** data during transmission, which first?
+     1.  compression aims to use patterns in data to reduce its size.
+     2.  Encryption aims to randomize data so that it's uninterpretable without a secret key.
+     3.  encrypt first, then compress, then compression will be useless. `Compression doesn't work on random data.`
+     4.  compress first, then encrypt, then an attacker can find patterns in message length (Compression Ratio) to learn something about the data and potentially foil the encryption (like CRIME)
+
 39.  What is SSL and why is it not enough when it comes to encryption?
 40.  What is salting, and why is it used?
 41.  What are salted hashes?
 42.  What is the Three-way handshake? How can it be used to create a DOS attack?
 43.  What’s more secure, SSL or HTTPS?
 44.  Can you describe rainbow tables?
+
+45.  Can two files generate same checksum?
+     - Yes, but only if the contents are identical.
+     - Even change a single word, the checksum will be different
 
 # Source:- sec-community and personal experience
 
@@ -578,51 +659,51 @@ Where do you get your security news from?
 
 2. What is **REST API**?
     - A REST API is one that follows certain constraints.
-    - A RESTful application is one that follows specific rules within the API. 
-    - For one, a RESTful app allows users to access resources. This could be objects like username or user profile and actions like creating user access or editing or removing a post. 
+    - A RESTful application is one that follows specific rules within the API.
+    - For one, a RESTful app allows users to access resources. This could be objects like username or user profile and actions like creating user access or editing or removing a post.
     - RESTful applications are also easier for developers to access and use due to the constraints placed on the API.
-    - REST API is one that follows the constraints of REST 
+    - REST API is one that follows the constraints of REST
     - allowing users to interact with the API in a specific way and making it easier for developers to use in their own applications.
 
 3. benefits of using REST
    - easy to scale, flexible and portable
    - works independently from the client and server, which makes development less complex
    - it would give the user control over the resources needed to make accounts and share from the publication,
-   - support massive growth. 
+   - support massive growth.
 
 4. architectural style for web APIs in REST?
-   - REST is a set of constraints that has to be applied for an application to be RESTful. 
-   - The architectural has to have a few key characteristics. 
-     - HTTP so that a client can communicate with the enterprise server. 
-     - A format language specified as XML/JSON. 
+   - REST is a set of constraints that has to be applied for an application to be RESTful.
+   - The architectural has to have a few key characteristics.
+     - HTTP so that a client can communicate with the enterprise server.
+     - A format language specified as XML/JSON.
      - An address to reach services in the form of Uniform Resource Identifier and communicate statelessly.
 
 
 5. test REST API? What tools are needed?
-   - To test API you use specific software designed to assess RESTful constraints. 
+   - To test API you use specific software designed to assess RESTful constraints.
    - Some popular tools for practical API testing: SoapUI, Katalon Studio and Postman.
    - SoapUI, easy to download and access. to let applications been assessed consistently RESTful, good for the other developers at MetroMind who needed to use too.
-  
+
 
 6. difference between REST and AJAX?
    - Shared database vs batch file transfer
    - RPC vs MOM
    - PUT vs POST
    - Jax-WS vs Jax-RS
-   - Request/response is different in AJAX and REST. 
+   - Request/response is different in AJAX and REST.
      - In REST, request/response revolves around a URL structure and resources
-     - in AJAX request is transmitted via XMLHttpRequest objects and response occurs when JavaScript code makes changes to the page. 
+     - in AJAX request is transmitted via XMLHttpRequest objects and response occurs when JavaScript code makes changes to the page.
      - REST is a software development method
-     - AJAX is a set of resources for development. 
+     - AJAX is a set of resources for development.
      - REST requires the customer to interact with internal servers
      - AJAX actively prevents it.
 
 7. main characteristics of REST?
-   - Primary characteristics of REST are being stateless and using GET to access resources. 
+   - Primary characteristics of REST are being stateless and using GET to access resources.
    - In a truly RESTful application, the server can restart between calls as data passes through it.
 
 8. HTTP methods commonly used in REST?
-   - The HTTP methods supported by REST are `GET, POST, PUT, DELETE, OPTION and HEAD`. 
+   - The HTTP methods supported by REST are `GET, POST, PUT, DELETE, OPTION and HEAD`.
    - The most commonly used method in REST is GET.
 
 
@@ -634,7 +715,7 @@ Where do you get your security news from?
     - XML and JSON can be used in a RESTful web API.
 
 11. resource in REST?
-    - resource: a name for any piece of content in a RESTful piece of architecture. 
+    - resource: a name for any piece of content in a RESTful piece of architecture.
     - This includes HTML, text files, images, video and more.
 
 
