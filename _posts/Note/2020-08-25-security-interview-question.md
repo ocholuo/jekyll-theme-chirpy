@@ -6,13 +6,14 @@ description: Cyber Security Interview Questiones
 categories: [Note]
 img: /assets/img/sample/rabbit.png
 tags: [Interview]
+image: /assets/img/sample/OSILayer.jpg
 ---
 
 # Cyber Security knowledge point
 
----
+[toc]
 
-![osi](/assets/img/sample/OSILayer.jpg)
+---
 
 1. What is information security and how is it achieved?
 
@@ -25,7 +26,7 @@ tags: [Interview]
 6. What is the difference between logical and physical security? Can you give an example of both?
 7. What’s an acceptable level of risk?
 8. What are the most common types of attacks that threaten enterprise data security?
-9.  What is the difference between a threat and a vulnerability?
+9. What is the difference between a threat and a vulnerability?
 10. Can you give me an example of common security vulnerabilities?
 11. Are you familiar with any security management frameworks such as ISO/IEC 27002?
 12. What is a security control?
@@ -35,29 +36,35 @@ tags: [Interview]
 16. What are your professional values? Why are professional ethics important in the information
 
 17. What is the difference between threat, vulnerability, and a risk?
-    - A threat is from an attacker that will use a vulnerability that was not mitigated because someone forgot to identify it as a risk.
-    - Vulnerability (weakness) is a gap in the protection efforts of a system, a threat is an attacker who exploits that weakness.
-    - Risk is the measure of potential loss when that the vulnerability is exploited by the threat.
+   - A threat is from an attacker that will use a vulnerability that was not mitigated because someone forgot to identify it as a risk.
+   - Vulnerability (weakness) is a gap in the protection efforts of a system, a threat is an attacker who exploits that weakness.
+   - Risk is the measure of potential loss when that the vulnerability is exploited by the threat.
 
 18. difference between a vulnerability and an exploit?
-    - vulnerability, a potential problem
-    - exploit, an active problem.
-    - Think of it like this: You have a shed with a broken lock where it won’t latch properly. In some areas such as major cities, that would be a major problem that needs to be resolved immediately, while in others like rural areas its more of a nuisance that can be fixed when you get around to it. In both scenarios it would be a vulnerability, while the major cities shed would be an example of an exploit – there are people in the area, actively exploiting a known problem.
+   - vulnerability, a potential problem
+   - exploit, an active problem.
+   - Think of it like this: You have a shed with a broken lock where it won’t latch properly. In some areas such as major cities, that would be a major problem that needs to be resolved immediately, while in others like rural areas its more of a nuisance that can be fixed when you get around to it. In both scenarios it would be a vulnerability, while the major cities shed would be an example of an exploit         - there are people in the area, actively exploiting a known problem.
+
+19. How would you find out what a POST code means?
+    - POST is one of the best tools available when a system will not boot. Normally through the use of either display LEDs in more modern systems, or traditionally through audio tones, these specific codes can tell you what the system doesn’t like about its current setup. Because of how rare these events can be, unless you are on a tech bench day in and day out, reference materials such as the Motherboard manual and your search engine of choice can be tremendous assets. Just remember to make sure that everything is seated correctly, you have at least the minimum required components to boot, and most importantly that you have all of your connections on the correct pins.
+
+
+
 
 
 ---
 
-security field?
+## security field
 
-1.  Are open-source projects more or less secure than proprietary ones?
-2.  Who do you look up to within the field of Information Security? Why?
-3.  Where do you get your security news from?
-4.  What’s the difference between symmetric and public-key cryptography?
-5.  What kind of network do you have at home?
-6.  What are the advantages offered by bug bounty programs over normal testing practices?
-7.  What are your first three steps when securing a Linux server?
-8.  What are your first three steps when securing a Windows server?
-9.  Who’s more dangerous to an organization, insiders or outsiders?
+1. Are open-source projects more or less secure than proprietary ones?
+2. Who do you look up to within the field of Information Security? Why?
+3. Where do you get your security news from?
+4. What’s the difference between symmetric and public-key cryptography?
+5. What kind of network do you have at home?
+6. What are the advantages offered by bug bounty programs over normal testing practices?
+7. What are your first three steps when securing a Linux server?
+8. What are your first three steps when securing a Windows server?
+9. Who’s more dangerous to an organization, insiders or outsiders?
 10. Why is DNS monitoring important?
 
 11. Why would you want to use SSH from a Windows PC?
@@ -81,153 +88,225 @@ security field?
 
 # Network security
 
-44. Explain what **Address Resolution Protocol** is.  
-    1.  ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.jpg)
-    2.  Data link-layer protocol
-    3.  resolve IP addresses to MAC addresses
-    4.  broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use
-        1.  ARP request
-        2.  ARP reply
-        3.  vulnerability with ARP:
-            - It will believe any ARP reply packet
-            - nothing to authenticate the request
-            - Attackers can easily create ARP reply packets with spoofed or bogus MAC addresses, reply and poison the ARP cache on systems in the network.  Gratuitous ARP
+44. Explain what **Address Resolution Protocol** is.
+   1. ![v2-cfdda1ceb830edd5a8d28ae31c6ac8f6_hd](/assets/img/sample/arp.jpg)
+   2. Data link-layer protocol
+   3. resolve IP addresses to MAC addresses
+   4. broadcasting requests that queries all the network interfaces on a local-area network, and caching responses for future use
+   1. ARP request
+   2. ARP reply
+   3. vulnerability with ARP:
+   - It will believe any ARP reply packet
+   - nothing to authenticate the request
+   - Attackers can easily create ARP reply packets with spoofed or bogus MAC addresses, reply and poison the ARP cache on systems in the network. Gratuitous ARP
 
 45. What port does **ping** work over?
-    1.  It doesn’t work over a port. no real ports being used.
-    2.  ping test uses `ICMP` layer 3 protocol.
-    3.  `ICMP` basically roofs, or sits on top of, the IP address. not a layer four protocol.
+   1. It doesn’t work over a port. no real ports being used.
+   2. ping test uses `ICMP` layer 3 protocol.
+   3. `ICMP` basically roofs, or sits on top of, the IP address. not a layer four protocol.
 
 
 46. Do you prefer **filtered ports or closed ports** on your firewall?
-    1.  For small company servers / back-end systems / intranet sites: close ports (REJECT).
-        - The reason
-        - because those server are not usually targeted by DDoS attacks
-        - because the external apps that requires to consume services hosted in the the servers can quickly report failures instead to hang the connections during minutes.
+   1. For small company servers / back-end systems / intranet sites: close ports (REJECT).
+   - The reason
+   - because those server are not usually targeted by DDoS attacks
+   - because the external apps that requires to consume services hosted in the the servers can quickly report failures instead to hang the connections during minutes.
 
 
-47. How exactly does **traceroute/tracert** work at the protocol level?
 
-    1.  Traceroute (tracert) works by
-        - `sending a packet to an open UDP port` on a destination machine.
-        - `setting the TTL for a packet to 1`, sending it towards the requested destination host, and listening for the reply.
-        - When the initiating machine receives a “time exceeded” response, it examines the packet to determine where the packet came from – this identifies the machine one hop away.
-        - The router then discards the packet and `sends off an ICMP notification packet to the original host` with the message that the TTL expired from the router.
-        - Then the tracing machine `generates a new packet with TTL 2`, and uses the response to determine the machine 2 hops away, and so on.
+6. What are Linux’s strengths and weaknesses vs. Windows?
+   1. Price
+   2. Ease Of Use
+   3. Reliability. Linux is notoriously reliable and secure.
+   4. Software
+   5. Hardware
+   6. Security
 
-    3.  Traceroute transmits packets with small TTL (Time To Live) values.
-        - The TTL is an IP header field that is used to prevent packets from running into endless loops.
-        - When a router that handles the packet, subtracts one from the packet's TTL.
-        - The packet expires and it's discarded when the TTL reaches zero.
+### firewall
 
-    4. not all TCP stacks behave correctly. Some TCP stacks `set the TTL for the ICMP “time exceeded” message` to that of the message being killed.
-        - So if the TTL is 0, the packet will be killed by the next machine to which it is passed.
-        This can have two effects on a trace.
-        - If the computer is an intermediate machine in the trace, the entry remain blank. No information is returned because the “time exceeded” message never makes it back. 
-        If the machine you are doing a trace to has this bug in its TCP stack, return packets won’t reach the originating machine unless the TTL is high enough to cover the round trip. So Trace Route will show a number of failed connections equal to n (the number of hops to the destination machine) minus 1.
+1. What is a firewall? how a firewall can be bypassed?
+   1. `PACKET-FILTERING FIREWALLS`
+      1. examines the packet source and destination IP address
+      2. either prohibits or allows them to pass based on the established security rule set.
+   2. `Stateless`
+   3. `Stateful`: remember information associated with previously passed packets and thus provide much better security.
+   4. `NEXT-GENERATION FIREWALLS (NGFW)`
+      1. traditional firewall features coupled with additional functionality
+      - like anti-virus, intrusion prevention systems, encrypted traffic inspection, and deep packet inspection (DPI).
+      1. Unlike basic firewalls which only check packet headers, DPI examines the data within the packet, thus allowing users to stop, identify, or categorize packets containing malicious data.
+   5. `PROXY FIREWALLS`
+      1. application level
+      2. the client’s request is evaluated against security rules and based on these rules, it is permitted or blocked.
+      3. use both stateful and deep packet inspection.
+      4. They are mostly used for monitoring traffics for layer 7 protocols like HTTP and FTP.
+   6. **bypass**:
+      1. incognito window
+      2. `HTTP tunneling` is a firewall evasion technique
+      3. lots of things can be wrapped within an HTTP shell (Microsoft Office has been doing this for years).
+   - because port 80 is almost never filtered by a firewall
+   - can craft port 80 segments to carry payload for protocols the firewall may have otherwise blocked.
+   - HTTP beacons and HTTP tunnels are the de facto standard implant technology for hackers.
 
-11. How would traceroute help you find out where a breakdown in communication is?
+2. What is worse in Firewall Detection, false negative / false positive?
+   - false positive
+     - the device generated an alert for an intrusion which has actually not happened
+     - calling a legitimate piece of traffic bad.
+   - false negative: **bad**
+     - the device has not generated any alert and the intrusion has actually happened
+     - a piece of malicious traffic being let through without incident
 
-
-118. on laptop, just plugged in network cable. How many packets must leave my NIC in order to complete a traceroute to twitter.com?
-     - they need to factor in all layers: Ethernet, IP, DNS, ICMP/UDP, etc. And they need to consider round-trip times.
-
-20. **configure trace route in a cisco firewall** for a group of windows users?
-    - Windows uses ICMP for traceroute, Linux technically uses UDP.
-    - Therefore, the responses they get from the devices along the path is different, depending on which source device you used to initiate the trace.
-    - For Windows, you'd need an `inbound rule allowing icmp time-exceeded`.
-    - For Linux, you'd need an `inbound rule allowing icmp unreachable`.
-    - For both, you'd also need to add an "`inspect icmp`" statement.
-
-
-48. What are Linux’s strengths and weaknesses vs. Windows?
-    1.  Price
-    2.  Ease Of Use
-    3.  Reliability. Linux is notoriously reliable and secure.
-    4.  Software
-    5.  Hardware
-    6.  Security
-
-
-49. What is a firewall? And provide an example of how a firewall can be bypassed by an outsider to
-access the corporate network.
-    1.  `PACKET-FILTERING FIREWALLS`
-        1.  examines the packet source and destination IP address
-        2.  either prohibits or allows them to pass based on the established security rule set.
-        3.  `Stateless`
-        4.  `Stateful`: remember information associated with previously passed packets and thus provide much better security.
-    2.  `NEXT-GENERATION FIREWALLS (NGFW)`
-        1.  traditional firewall features coupled with additional functionality
-            - like anti-virus, intrusion prevention systems, encrypted traffic inspection, and deep packet inspection (DPI).
-        2.  Unlike basic firewalls which only check packet headers, DPI examines the data within the packet, thus allowing users to stop, identify, or categorize packets containing malicious data.
-    3. `PROXY FIREWALLS`
-       1. application level
-       2. the client’s request is evaluated against security rules and based on these rules, it is permitted or blocked.
-       3. use both stateful and deep packet inspection.
-       4. They are mostly used for monitoring traffics for layer 7 protocols like HTTP and FTP.
-    4. **bypass**:
-       1. incognito window
-       2. `HTTP tunneling` is a firewall evasion technique
-          1. lots of things can be wrapped within an HTTP shell (Microsoft Office has been doing this for years).
-            - because port 80 is almost never filtered by a firewall
-            - can craft port 80 segments to carry payload for protocols the firewall may have otherwise blocked.
-            - HTTP beacons and HTTP tunnels are the de facto standard implant technology for hackers.
-
-1.  Besides firewalls, what other devices are used to enforce network boundaries?
-    1.  IDS/IPS, Procy, VPN, ACLs, subnetting, NAT, PAT,
+3. Besides firewalls, what other devices are used to enforce network boundaries?
+   1. IDS/IPS, Procy, VPN, ACLs, subnetting, NAT, PAT,
 
 
-2.  What is the role of network boundaries in information security?
+4. What is the role of network boundaries in information security?
 
-3.  How does a router differ from a switch?
-    - Switches create a network. Routers connect networks.
-
-
-3.  What does an intrusion detection system do? How does it do it?
-
-4.  What is a honeypot? What type of attack does it defend against?
-    1.  a server left open or appears to have been sloppily locked down, allowing an attacker relatively easy access.
-    2.  Divert attackers from the live network:
-    3.  diverts the attacker away from the live network.
-    4.  location of the honeypot is of utmost importance, more realistic placement is inside the DMZ.
-    5.  tool to gather intelligence on the attacker
-
-5.  What technologies and approaches are used to secure information and services deployed on cloud computing infrastructure?
-6.  What information security challenges are faced in a cloud computing environment?
-
-7.  an overview of IP multicast?
-    1.  delivers application source traffic to multiple receivers without burdening the source or the receivers while `using a minimum of network bandwidth`.
-    2.  multicast sender could send traffic destined for a Class D IP address, known as a multicast group,
-    3.  devices on a network wanting to receive that transmission could join that multicast group.
-    4.  send that traffic only to devices in a network wanting to receive that traffic.
-
-8.  How many bits do you need for a subnet size?
-    1.  32 bits
-
-9.  What is packet filtering?
-
-10. Can you explain the difference between a packet filtering firewall and an application layer firewall?
+5. How does a router differ from a switch?
+   - Switches create a network. Routers connect networks.
 
 
-11. layers of the OSI model?
-    1.  Physical, Data Link, Network, Transport, Session, Presentation, and Application.
+6. What does an intrusion detection system do? How does it do it?
+
+7. What is a honeypot? What type of attack does it defend against?
+   1. a server left open or appears to have been sloppily locked down, allowing an attacker relatively easy access.
+   2. Divert attackers from the live network:
+   3. diverts the attacker away from the live network.
+   4. location of the honeypot is of utmost importance, more realistic placement is inside the DMZ.
+   5. tool to gather intelligence on the attacker
+
+8. What technologies and approaches are used to secure information and services deployed on cloud computing infrastructure?
+9. What information security challenges are faced in a cloud computing environment?
+
+10. an overview of IP multicast?
+   1. delivers application source traffic to multiple receivers without burdening the source or the receivers while `using a minimum of network bandwidth`.
+   2. multicast sender could send traffic destined for a Class D IP address, known as a multicast group,
+   3. devices on a network wanting to receive that transmission could join that multicast group.
+   4. send that traffic only to devices in a network wanting to receive that traffic.
+
+11. How many bits do you need for a subnet size?
+   5. 32 bits
+
+12. What is packet filtering?
+
+13. Can you explain the difference between a packet filtering firewall and an application layer firewall?
 
 
-12. How would you login to Active Directory from a Linux or Mac box?
-13. What is an easy way to configure a network to allow only a single computer to login on a particular jack?
-14. What are the three ways to authenticate a person?
-15. You find out that there is an active problem on your network. You can fix it, but it is out of your jurisdiction. What do you do?
-16. How would you compromise an “office workstation” at a hotel?
-17. What is worse in firewall detection, a false negative or a false positive? And why?
-18. How would you judge if a remote server is running IIS or Apache?
-19. What is the difference between an HIDS and a NIDS?
+14. layers of the OSI model?
+   6. Physical, Data Link, Network, Transport, Session, Presentation, and Application.
 
 
-21. use SSH from a Windows pc?
-    - SSH (TCP port 22) is a secure connection used on many different systems and dedicated appliances.
-    - Routers, Switches, SFTP servers and insecure programs being tunnelled through this port all can be used to help harden a connection against eavesdropping.
-    - the SSH protocol itself is implemented on a wide variety of systems – Linux, Windows.
-    - Programs like PuTTY, Filezilla and others have Windows ports available, which allow Windows users the same ease-of-use connectivity to these devices as do Linux users.
+15. How would you login to Active Directory from a Linux or Mac box?
+16. What is an easy way to configure a network to allow only a single computer to login on a particular jack?
+17. What are the three ways to authenticate a person?
+18. You find out that there is an active problem on your network. You can fix it, but it is out of your jurisdiction. What do you do?
+19. How would you compromise an “office workstation” at a hotel?
+20. What is worse in firewall detection, a false negative or a false positive? And why?
+21. How would you judge if a remote server is running IIS or Apache?
+22. What is the difference between an HIDS and a NIDS?
+
+
+23. use SSH from a Windows pc?
+   - SSH (TCP port 22) is a secure connection used on many different systems and dedicated appliances.
+   - Routers, Switches, SFTP servers and insecure programs being tunnelled through this port all can be used to help harden a connection against eavesdropping.
+   - the SSH protocol itself is implemented on a wide variety of systems         - Linux, Windows.
+   - Programs like PuTTY, Filezilla and others have Windows ports available, which allow Windows users the same ease-of-use connectivity to these devices as do Linux users.
+
+47. TTL?
+   - Time To Live.
+   - When a TCP packet is sent, its TTL is set, which is the number of routers (hops) it can pass through before the packet is discarded.
+   - As the packet passes through a router the TTL is decremented until, when the TTL reaches zero, the packet is destroyed and an `ICMP “time exceeded” message is returned.`
+   - The return message’s TTL is set by the terminating router when it creates the packet and decremented normally.
+   - The TTL is an IP `header field`
+   - to prevent packets from running into endless loops.
+
+
+### traceroute
+
+1. What protocol does traceroute use?
+   - Traceroute works by `sending a packet to an open UDP port` on a destination machine.
+   - The type of packet that is sent differs depending on the implementation. By default
+   - Windows uses ICMP.
+   - Mac OS X and Linux use UDP.
+   - All versions of traceroute rely on `ICMP type 11 (Time exceeded) responses` from each hop along the route.
+   - If ICMP type 11 responses are being blocked by your firewall, traceroute will not work.
+   - These packets are inbound, not outbound.
+
+2. How exactly does **traceroute/tracert** work?
+   - client:
+     - Traceroute transmits packets with small TTL values.
+     - `setting the TTL for a packet to 1`
+   - sending it towards the requested destination host, and listening for the reply.
+     - When the initiating machine receives a “time exceeded” response, it examines the packet to determine where the packet came from
+     - this identifies the machine one hop away.
+   - The router
+     - discards the packet
+     - `sends off an ICMP notification packet to the original host` with the message that the TTL expired from the router.
+   - Then the tracing machine `generates a new packet with TTL 2`, and uses the response to determine the machine 2 hops away, and so on.
+
+   - **not all TCP stacks behave correctly**.
+     - Some TCP stacks `set the TTL for the ICMP “time exceeded” message` to that of the message being killed.
+       - So if the TTL is 0, the packet will be killed by the next machine to which it is passed.
+     - This can have two effects on a trace.
+       - If the computer is an intermediate machine in the trace,
+     - the entry remain blank.
+     - No information is returned because the “time exceeded” message never makes it back.
+       - If the machine you are doing a trace to has this bug in its TCP stack,
+     - return packets won’t reach the originating machine unless the TTL is high enough to cover the round trip.
+     - So Trace Route will show a number of failed connections equal to n (the number of hops to the destination machine) minus 1.
+
+3. How would traceroute help you find out where a breakdown in communication is?
+   - to `see exactly what routers touched` as move along the chain of connections to final destination.
+   - if end up with a problem where can’t connect/ping the destination,
+   - a tracert can help to tell exactly `where` the chain of connections stop.
+   - contact the correct people – your own firewall, ISP, destination’s ISP or somewhere in the middle.
+
+4. How many packets must leave my NIC to complete a traceroute to twitter.com?
+   - `they need to factor in all layers: Ethernet, IP, DNS, ICMP/UDP, etc. And they need to consider round-trip times`.
+   - The top 3-4 levels of the OSI model are not used
+     - (depending on the the operating system)
+       - traceroute makes a request to the networking library
+       - send either an ICMP (layer 3) or UDP (layer 4) packet to the destination
+       - with a TTL of 1,
+     - the response that is returned includes information presented to the user and the TTL is increased to 2 for the next packet and sent.
+     - This proceeds until the destination is reached.
+   - The packets themselves are constructed at the bit level for level 1, to individual frames in level 2, packed in a ‘packet’ in layer 3.
+   - Then the remaining transformations depend on whether UDP is used or ICMP.
+
+5. **configure trace route in a cisco firewall** for a group of windows users?
+   - Windows uses ICMP for traceroute, Linux technically uses UDP.
+   - Therefore, the responses they get from the devices along the path is different, depending on which source device you used to initiate the trace.
+   - For Windows, need an `inbound rule allowing icmp time-exceeded`.
+   - For Linux, need an `inbound rule allowing icmp unreachable`.
+   - For both, need to add an "`inspect icmp`" statement.
+
+---
+
+## pentest
+
+
+1. red team or a blue team?
+   - the Blue Team has to be good every time, while the Red Team only has to be good once.
+
+2. What’s the difference between a White Box test and a Black Box test?
+
+3. difference between Information Protection and Information Assurance?
+   - Information Protection: protecting information through the use of Encryption, Security software and other methods designed to keep it safe.
+   - Information Assurance: keeping the data reliable – RAID configurations, backups, non-repudiation techniques, etc.
+
+
+## wireless
+
+1. protect Wireless Access Point?
+   - Using WPA2,
+   - stop broadcasting the SSID
+   - prevent a man-in-the-middle attack?
+
+Secure/Multipurpose Internet Mail Extensions: Encrypts the email in transit
+Use HTTPS
+Use VPMS/Proxy
+
+using MAC address filtering
+
 
 ---
 
@@ -256,58 +335,72 @@ access the corporate network.
 
 
 83. What could attackers do with HTTP Header Injection vulnerability?
-    - Carriage returns and line feeds (or %0D & %0A) are means to an end that would allow attackers to control HTTP headers
-    - could inject XSS via Referer header
-    - could set cookie to a value known by the attacker (session fixation)
-    - could redirect to a malicious server
+   - Carriage returns and line feeds (or %0D & %0A) are means to an end that would allow attackers to control HTTP headers
+   - could inject XSS via Referer header
+   - could set cookie to a value known by the attacker (session fixation)
+   - could redirect to a malicious server
 
 84. Describe the last program or script that you wrote. What problem did it solve?
-    - Just looking for signs that the candidate has basic understanding of programming concepts and is at least able to write simple programs
+   - Just looking for signs that the candidate has basic understanding of programming concepts and is at least able to write simple programs
 
 85. How would you implement a secure login field on a high traffic website where performance is a consideration?
-    - TLS (regardless of performance) is a must
-    - reducing 3rd party library dependencies, could improve performance and reduce security risks [link](https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5)
-    - Content-Security Policy (CSP) to enforce stricter execution rules around JS and CSS [link](https://en.wikipedia.org/wiki/Content_Security_Policy)
-    - Subresource Integrity (SRI) to ensure only known, trusted resource files are loaded from 3rd-party servers/CDNs [link](https://en.wikipedia.org/wiki/Subresource_Integrity)
+   - TLS (regardless of performance) is a must
+   - reducing 3rd party library dependencies, could improve performance and reduce security risks [link](https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5)
+   - Content-Security Policy (CSP) to enforce stricter execution rules around JS and CSS [link](https://en.wikipedia.org/wiki/Content_Security_Policy)
+   - Subresource Integrity (SRI) to ensure only known, trusted resource files are loaded from 3rd-party servers/CDNs [link](https://en.wikipedia.org/wiki/Subresource_Integrity)
 
 86. What are the various ways to handle brute forcing?
-    - Account Lockouts/timeouts
-    - API rate limiting
-    - IP restrictions
-    - Fail2ban
-    - ...etc
+   - Account Lockouts/timeouts
+   - API rate limiting
+   - IP restrictions
+   - Fail2ban
+   - ...etc
 
 ---
+
+## Web APP
+
+1. judge if a remote server is running IIS or Apache?
+   - Error messages oftentimes 
+     - give away what the server is running, 
+     - if the website administrator has not set up custom error pages for every site, it can give it away as entering a known bad address. 
+   - telnet
+     - see how it responds. 
+     - Never underestimate the amount of information that can be gained by not getting the right answer but by asking the right questions.
+
+
+
+
 
 ## Web Security
 
 87. What is **Cross-Site Request Forgery**? And how to defend?
-    - attacker gets a victim's browser to make requests with the victim's credentials
-    - Example:
-    - if an image tag `<img>` points to a URL with an associated action, e.g. `https://foo.com/logout`
-    - Defense includes but are not limited to:
-      - check origins header & referer header
-      - check CSRF tokens or nonce
+   - attacker gets a victim's browser to make requests with the victim's credentials
+   - Example:
+   - if an image tag `<img>` points to a URL with an associated action, e.g. `https://foo.com/logout`
+   - Defense includes but are not limited to:
+     - check origins header & referer header
+     - check CSRF tokens or nonce
 
 88. What is **Cross-Site Scripting XSS**?
-    - attackers get victim's browsers to execute some code (usually JavaScript) within their browser
+   - attackers get victim's browsers to execute some code (usually JavaScript) within their browser
 
 89. the different types of XSS? defend?
-    - Traditionally, types have been categorized into `Stored` and `Reflected` XSS attacks.
-        - `Stored XSS` is some code that an attacker was able to persist in a database and gets retrieved and presented to victims (e.g. forum)
-        - `Reflected XSS` is usually in the form of a maliciously crafted URL which includes the malicious code. When the user clicks on the link, the code runs in their browser
-        - `DOM-based XSS`, occurs when attackers can control DOM elements, thus achieve XSS without sending any requests to the server
-    - Server Stored XSS,
-    - Server Reflected XSS,
-    - Client Stored XSS (e.g. stored DOM-based XSS),
-    - Client Reflected XSS (e.g. reflected DOM-based XSS)
-    - Defense includes:
-      - Output encoding (more important)
-      - Input validation (less important)
+   - Traditionally, types have been categorized into `Stored` and `Reflected` XSS attacks.
+   - `Stored XSS` is some code that an attacker was able to persist in a database and gets retrieved and presented to victims (e.g. forum)
+   - `Reflected XSS` is usually in the form of a maliciously crafted URL which includes the malicious code. When the user clicks on the link, the code runs in their browser
+   - `DOM-based XSS`, occurs when attackers can control DOM elements, thus achieve XSS without sending any requests to the server
+   - Server Stored XSS,
+   - Server Reflected XSS,
+   - Client Stored XSS (e.g. stored DOM-based XSS),
+   - Client Reflected XSS (e.g. reflected DOM-based XSS)
+   - Defense includes:
+     - Output encoding (more important)
+     - Input validation (less important)
 
 89. How does HTTP handle state?
-    - HTTP is stateless
-    - State is stored in cookies
+   - HTTP is stateless
+   - State is stored in cookies
 
 
 ---
@@ -322,6 +415,45 @@ access the corporate network.
    - Use Robust Routers
    - Use good antivirus softwares
 
+2. What is OAuth?
+   - an open-standard authorization protocol/framework
+   - describes how unrelated servers and services can safely allow authenticated access to their assets without actually sharing the initial, related, single logon credential.
+    - known as secure, third-party, user-agent, delegated authorization.
+   - Created and strongly supported from the start by Twitter, Google and other companies, OAuth was released as an open standard in 2010 as RFC 5849, and quickly became widely adopted.
+   - example
+    - log onto a website and it offers one or more opportunities to log on using another website’s/service’s logon.
+    - click on the button linked to the other website, the other website authenticates you, and the website you were originally connecting to logs you on itself afterward using permission gained from the second website.
+
+3. How OAuth works
+   - assume a user has already signed into one website or service
+    - OAuth only works using HTTPS
+    - The user then initiates a feature/transaction that needs to access another unrelated site or service.
+    - The following happens (greatly simplified):
+   1. The first website
+     - connects to the second website on behalf of the user, using OAuth,
+     - providing the user’s verified identity.
+   2. The second site
+     - generates a `one-time token and a one-time secret` unique to the transaction and parties involved.
+   3. The first site
+     - gives this token and secret to the initiating user’s client software.
+   4. The client’s software
+     - presents the request token and secret to their authorization provider (which may or may not be the second site)
+   - If not authenticated to the authorization provider, the client may be asked to authenticate.
+   - After authentication, the client is asked to approve the authorization transaction to the second website.
+   5. The user
+      - approves (or their software silently approves) a particular transaction type at the first website.
+      - The user is given an `approved access token` (notice it’s no longer a request token).
+      - The user gives the approved access token to the first website.
+   6. The first website
+      - gives the access token to the second website as proof of authentication on behalf of the user.
+   7. The second website lets the first website access their site on behalf of the user.
+   8. The user sees a successfully completed transaction occurring.
+   - OAuth is not the first authentication/authorization system to work this way on behalf of the end-user.
+    - In fact, many authentication systems, notably Kerberos, work similarly.
+    - What is special about OAuth is its ability to work across the web and its wide adoption.
+    - It succeeded with adoption rates where previous attempts failed (for various reasons).
+    - Although not as simple as it could be, web coders seem to readily understand the involved transactions.
+    - Making a website OAuth-compatible can be done in a few hours to a day
 
 ---
 
@@ -339,35 +471,71 @@ Blue Team
 Given an HTTP traffic log between a machine on your network and a 3rd party website (e.g. Google), what would the source and destination ports look like?
 Source port might be some number above port 1024 (aka ephemeral port)
 Destination port might be 80 (HTTP) or 443 (HTTPS)
-Encryption
-What's the difference between encoding, encryption, and hashing?
 
-Encoding ensures message integrity. Can be easily reversible. Example: base64
-Encryption guarantees message confidentiality. Reversible only using the appropriate decryption keys. Example: AES256
-Hashing is a one-way function. Cannot be reversed. The output is fixed length and usually smaller than the input.
 
-1. Does TLS use symmetric or asymmetric encryption?
+
+
+
+### TLS/SSL
+
+1. TLS use symmetric or asymmetric encryption?
    - Both.
-   - The initial exchange is done using asymmetric encryption, but bulk data encryption is done using symmetric.
+   - The initial exchange is done using asymmetric encryption
+   - but bulk data encryption is done using symmetric.
    - Resources:
    - [link](https://web.archive.org/web/20150206032944/https://technet.microsoft.com/en-us/library/cc785811.aspx)
    - [link](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
-2. the process of a TLS session set up (visits a secure website).
-   - **Client** sends `hello message`, which
-     - lists cryptographic information, such as SSL/TLS version and the client's order of preference of cipher suites.
-     - contains a random byte string that is used in subsequent calculations.  
-     - may include data compression methods in the hello message as well.
-   - **Server** responds with hello message, which
-     - contains the cipher suite chosen by the server, the server's digital certificate, and another random byte string.
-     - If the server requires client certificate authentication, the server will also send client certificate request to the client.
-   - **Client**
-     - verifies server's digital certificate.
-     - sends a `random byte string encrypted with the server's public key` to allow both client and server to calculate the secret key used for subsequent encryption between client & server.
-     - If server requested a client certificate, the client sends a `random byte string encrypted with the client's private key with the client's digital certificate` or "no digital certificate alert". This alert is only a warning, but some implementations will cause the handshake to fail if client authentication is mandatory.
-   - **Server** verified client's digital certificate.
-   - **Client** sends finished message encrypted with the calculated secret key
-   - **Server** sends finished message encrypted with the calculated secret key
+2. **SSL / TLS session set up** (visits a secure website).
+   - ==========================================
+   > Client: “Hello there. I want to establish secure communication between the two of us. Here are my cipher suits and compatible SSL/TLS version.”
+   - ==========================================
+   - **Client** sends `ClientHello` message:
+    - lists cryptographic information, such as SSL/TLS version and the client's order of preference of cipher suites.
+    - contains a **Client random byte** string that is used in subsequent calculations.
+    - may include data compression methods in the hello message as well.
+   - ==========================================
+   > Server: “Hello Client. I have checked your cipher suits and SSL/TLS version. I think we’re good to go ahead. Here are my certificate file and my public key. Check ‘em out.”
+   - ==========================================
+   - **Server** responds with `ServerHello` message:
+    - the cipher suite chosen by server
+    - the server's digital certificate
+    - and **Server random byte** string
+   - **Server** send `ServerCertification`
+   - **Server** send client `CertificateRequest` to the client. If the server requires client certificate authentication
+   - **Server** send `ServerKeyExchange`
+   - **Server** send `ServerHelloDone`
+   - ==========================================
+   > Client: “verify your certificate. to verify your private key, I will generate and encrypt a pre-master (shared secret key) key using your public key. Decrypt it using your private key and we’ll use this master key to encrypt and decrypt the information”
+   - ==========================================
+   - **Client**:
+    - verifies server's digital certificate.
+    - get server public key.
+   - **Client** send `ClientKeyExchange`
+    - `(Client random byte + CipherMethod)` = **PreMasterSecretKey** encrypted by server public key
+   - **Client** send `ClientCertification`
+    - If server requested a client certificate, the client sends
+      - a **Client random byte** encrypted with the client's private key with the client's digital certificate
+      - **PreMasterSecretKey** encrypted by server public key
+      - or "no digital certificate alert".
+    - This alert is only a warning, but some implementations will cause the handshake to fail if client authentication is mandatory.
+   - **Client** send `ChangeCipherSec`
+    - `(ClientRandom byte + ServerRandom byte + PreMasterSecretKey` = **SessionSecrect**
+   - **Client** send `ClientVerify`
+    - (Hash all content) encrypted by PreMasterSecretKey
+   - **Client** send `Finished`
+    - sends finished message encrypted with the calculated secret key
+   - ==========================================
+   - Client: “I’m sending you this sample message to verify that our master-key works. Send me the decrypted version of this message. If it works, our data is in safe hands.”
+   - ==========================================
+   - **Server**
+    - verified client's digital certificate.
+    - got PreMasterSecretKey
+   - **Server** send `ChangeCipherSec`
+    - `(ClientRandom byte + ServerRandom byte + PreMasterSecretKey` = **SessionSecrect**
+   - **Server** send `Finished`
+    - sends finished message encrypted with the calculated secret key
+   - ==========================================
    - For the duration of the TLS session, the server and client can now exchange messages that are symmetrically encrypted with the shared secret key
    - Resources:
 
@@ -377,6 +545,18 @@ Heartbleed
 BEAST
 CRIME
 POODLE
+
+1. SSL, why is it not enough to encryption?
+   - SSL is identity verification, not hard data encryption.
+   - It is designed to be able to prove that the person you are talking to on the other end is who they say they are.
+   - SSL/TLS are both used almost everyone, but the problem is because of this it is a huge target and is mainly attacked via its implementation (The Heartbleed bug for example) and its known methodology.
+   - As a result, SSL can be stripped in certain circumstances, so additional protections for data-in-transit and data-at-rest are very good ideas.
+
+
+
+
+
+---
 
 
 What is Forward Secrecy?
@@ -428,148 +608,259 @@ Where do you get your security news from?
 107. You need to reset a password-protected BIOS configuration. What do you do?
 
 
+108. How would you login to Active Directory from a Linux or Mac box?
+     - Active Directory uses an implementation of the SMB protocol, which can be accessed from a Linux or Mac system by using the Samba program. 
+     - Depending on the version, this can allow for share access, printing, and even Active Directory membership.
+
+109. SMB Protocol?
+     - `Server Message Block (SMB)`
+       - one version of `Common Internet File System (CIFS)` 
+       - an application-layer network protocol
+       - mainly used for providing shared access to files, printers, and serial ports and miscellaneous communications between nodes on a network. 
+     - It also provides an authenticated inter-process communication mechanism. 
+     - Most usage of SMB involves computers running Microsoft Windows, where it was known as “Microsoft Windows Network” before the introduction of Active Directory. 
+     - Corresponding Windows services are LAN Manager Server (for the server component) and LAN Manager Workstation (for the client component)
+
+110. smal company, Why should I care about exploits and computer jibberish?
+     - a classic catch-22 situation: a company doesn’t have enough money to secure their networks
+     - An SMB will acknowledge what they need to do to keep their store secure and keep receiving payments since following the money will tend to help move things along.
+
+
+
+### IPS/IDS
+
+1.   What is an IPS and how does it differs from IDS?
+     - intrusion detection system
+     - intrusion prevention system.
+     - IDS will just detect the intrusion and will leave the rest to the administrator for further action
+     - IPS will detect the intrusion and will take further action to prevent the intrusion.
+     - the positioning of the devices in the network.
+
+---
+
+## hack
+
+1. compromise an “Office Workstation” at a hotel?
+   - Considering how infected these typically are,
+
+2. lock down a mobile device?
+   - The baseline for these though would be three key elements:
+   - An anti-malware application,
+   - a remote wipe utility,
+   - and full-disk encryption.
+
+3. prevent a man-in-the-middle attack?
+   - Secure/Multipurpose Internet Mail Extensions: Encrypts the email in transit
+   - Use HTTPS
+   - Use VPNS/Proxy
+
+4. reset a password-protected BIOS configuration
+   - While BIOS itself has been superseded by UEFI, most systems still follow the same configuration for how they keep the settings in storage.
+   - BIOS itself is a pre-boot system
+     - it has its own storage mechanism for its settings and preferences.
+   - In the classic scenario, simply popping out the CMOS battery will be enough to have the memory storing these settings lose its power supply, and it will lose its settings.
+   - use a jumper or a physical switch on the motherboard.
+   - actually remove the memory itself from the device and reprogram it in order to wipe it out.
+   - try default password enabled, ‘password’.
+
+
+### XSS
+
+1. XSS/Cross-site scripting, how will you mitigate it?
+   - Cross-site Scripting (XSS)
+   - client-side code injection attack
+   - a JavaScript vulnerability in the web applications.
+     - Javascript can run pages locally on the client system as opposed to running everything on the server side,
+     - this cause variables can be changed directly on the client’s webpage.
+   - attacker can execute malicious scripts/payload into a legitimate website or web application
+   - Countermeasures of XSS
+     - input validation
+     - implementing a CSP (Content security policy)
+
+2. XSS vs SQL Injection?
+   - Cross-site scripting (XSS)
+     - a type of computer security vulnerability typically found in Web applications.
+     - attackers inject client-side script into Web pages viewed by other users.
+     - A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same origin policy.
+   - SQL injection
+     - a code injection technique, used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution (e.g. to dump the database contents to the attacker).
+
 ---
 
 # Risk management
 
-108. Is there an acceptable level of risk?
-109. How do you measure risk? Can you give an example of a specific metric that measures information security risk?
-110. Can you give me an example of risk trade-offs (e.g. risk vs cost)?
-111. What is incident management?
-112. What is business continuity management? How does it relate to security?
-113. What is the primary reason most companies haven’t fixed their vulnerabilities?
-114. What’s the goal of information security within an organization?
-115. What’s the difference between a threat, vulnerability, and a risk?
-116. If you were to start a job as head engineer or CSO at a Fortune 500 company due to the previous guy being fired for incompetence, what would your priorities be? [Imagine you start on day one with no knowledge of the environment]
-117. As a corporate information security professional, what’s more important to focus on: threats or vulnerabilities?
+1.   Is there an acceptable level of risk?
+2.   How do you measure risk? Can you give an example of a specific metric that measures information security risk?
+3.   Can you give me an example of risk trade-offs (e.g. risk vs cost)?
+4.   What is incident management?
+5.   What is business continuity management? How does it relate to security?
+6.   What is the primary reason most companies haven’t fixed their vulnerabilities?
+7.   What’s the goal of information security within an organization?
+8.   What’s the difference between a threat, vulnerability, and a risk?
+9.   If you were to start a job as head engineer or CSO at a Fortune 500 company due to the previous guy being fired for incompetence, what would your priorities be? [Imagine you start on day one with no knowledge of the environment]
+10.  As a corporate information security professional, what’s more important to focus on: threats or vulnerabilities?
 
-119. How would you build the ultimate botnet?
-120. What are the primary design flaws in HTTP, and how would you improve it?
-121. If you could re-design TCP, what would you fix?
-122. What is the one feature you would add to DNS to improve it the most?
-123. What is likely to be the primary protocol used for the Internet of Things in 10 years?
-124. If you had to get rid of a layer of the OSI model, which would it be?
-125. What is residual risk?
-126. What is the difference between a vulnerability and an exploit?
+11.  How would you build the ultimate botnet?
+12.  What are the primary design flaws in HTTP, and how would you improve it?
+13.  If you could re-design TCP, what would you fix?
+14.  What is the one feature you would add to DNS to improve it the most?
+15.  What is likely to be the primary protocol used for the Internet of Things in 10 years?
+16.  If you had to get rid of a layer of the OSI model, which would it be?
+17.  What is residual risk?
+18.  What is the difference between a vulnerability and an exploit?
 
 ---
 
 # Security audits, testing & incident response
 
-127. What is an IT security audit?
-128. What is an RFC?
-129. What type of systems should be audited?
-130. Have you worked in a virtualized environment?
-131. What is the most difficult part of auditing for you?
-132. Describe the most difficult auditing procedure you’ve implemented.
-133. What is change management?
-134. What types of RFC or change management software have you used?
-135. What do you do if a rollout goes wrong?
-136. How do you manage system major incidents?
-137. How do you ask developers to document changes?
-138. How do you compare files that might have changed since the last time you looked at them?
-139. Name a few types of security breaches.
-140. What is a common method of disrupting enterprise systems?
-141. What are some security software tools you can use to monitor the network?
-142. What should you do after you suspect a network has been hacked?
-143. How can you encrypt email to secure transmissions about the company?
-144. What document describes steps to bring up a network that’s had a major outage?
-145. How can you ensure backups are secure?
-146. What is one way to do a cross-script hack?
-147. How can you avoid cross script hacks?
-148. How do you test information security?
-149. What is the difference between black box and white box penetration testing?
-150. What is a vulnerability scan?
-151. In pen testing what’s better, a red team or a blue team?
-152. Why would you bring in an outside contractor to perform a penetration test?
+1.   What is an IT security audit?
+2.   What is an RFC?
+3.   What type of systems should be audited?
+4.   Have you worked in a virtualized environment?
+5.   What is the most difficult part of auditing for you?
+6.   Describe the most difficult auditing procedure you’ve implemented.
+7.   What is change management?
+8.   What types of RFC or change management software have you used?
+9.   What do you do if a rollout goes wrong?
+10.  How do you manage system major incidents?
+11.  How do you ask developers to document changes?
+12.  How do you compare files that might have changed since the last time you looked at them?
+13.  Name a few types of security breaches.
+14.  What is a common method of disrupting enterprise systems?
+15.  What are some security software tools you can use to monitor the network?
+16.  What should you do after you suspect a network has been hacked?
+17.  How can you encrypt email to secure transmissions about the company?
+18.  What document describes steps to bring up a network that’s had a major outage?
+19.  How can you ensure backups are secure?
+20.  What is one way to do a cross-script hack?
+21.  How can you avoid cross script hacks?
+22.  How do you test information security?
+23.  What is the difference between black box and white box penetration testing?
+24.  What is a vulnerability scan?
+25.  In pen testing what’s better, a red team or a blue team?
+26.  Why would you bring in an outside contractor to perform a penetration test?
+
+
+---
 
 # Cryptography
 
 
-153. What is secret-key cryptography?
-154. What is public-key cryptography?
-155. What is a session key?
+1.   difference between Symmetric and Asymmetric encryption?
+     - Symmetric encryption uses the same key to encrypt and decrypt
+     - Asymmetric uses different keys for encryption and decryption.
+     - Symmetric is usually much faster, but difficult to implement most times due to the fact that you would have to transfer the key over an unencrypted channel.
+     - Hence, a hybrid approach should be preferred. Setting up a channel using asymmetric encryption and then sending the data using symmetric process
+
+2.   What is secret-key cryptography?
+3.   What is public-key cryptography?
+4.   What is a session key?
 
 
-156. What is RSA?
-     1.   asymmetric encryption
-     2.   based on factoring 2 larger primes.
-     3.   RSA works with both encryption and digital signatures, used in many environments, like Secure Sockets Layer (SSL), and key exchange.
-          1.   3^5 = 3 to the 5th
-          2.   B^Number Mod M = bignum
-               1.   B^X Mod M = bignum1
-               2.   B^Y Mod M = bignum2
-          3.   (B^Y Mod M)^X = B^XY Mod M
-               1.   B^X Mod M = B^XY Mod M = bignum1^Y = bignumber3
-               2.   B^Y Mod M = B^XY Mod M = bignum2^X = bignumber3
+5.   What is RSA?
+    1.  asymmetric encryption
+    2.  based on factoring 2 larger primes.
+    3.  RSA works with both encryption and digital signatures, used in many environments, like Secure Sockets Layer (SSL), and key exchange.
+     1.  3^5 = 3 to the 5th
+     2.  B^Number Mod M = bignum
+      1.  B^X Mod M = bignum1
+      2.  B^Y Mod M = bignum2
+     3.  (B^Y Mod M)^X = B^XY Mod M
+      3.  B^X Mod M = B^XY Mod M = bignum1^Y = bignumber3
+      4.  B^Y Mod M = B^XY Mod M = bignum2^X = bignumber3
 
 
-1.   How fast is RSA?
-2.   What would it take to break RSA?
-3.   Are strong primes necessary for RSA?
-4.   How large a module (key) should be used in RSA?
-5.   How large should the primes be?
-6.   How is RSA used for authentication in practice? What are RSA digital signatures?
-7.   What are the alternatives to RSA?
-8.   Is RSA currently in use today?
-9.   What are DSS and DSA?
-10.  What is difference between DSA and RSA?
-11.  Is DSA secure?
-12.  What are special signature schemes?
-13.  What is a blind signature scheme?
-14.  What is a designated confirmer signatures?
-15.  What is a fail-stop signature scheme?
-16.  What is a group signature?
-17.  What is blowfish?
-18.  What is SAFER?
-19.  What is FEAL?
-20.  What is Shipjack?
-21.  What is stream cipher?
-22.  What is the advantage of public-key cryptography over secret-key cryptography?
-23.  What is the advantage of secret-key cryptography over public-key cryptography?
-24.  What is Message Authentication Code (MAC)?
-25.  What is a block cipher?
-26.  What are different block cipher modes of operation?
-27.  What is a stream cipher? Name a most widely used stream cipher.
-28.  What is one-way hash function?
-29.  What is collision when we talk about hash functions?
-30.  What are the applications of a hash function?
-31.  What is trapdoor function?
-32.  Cryptographically speaking, what is the main method of building a shared secret over a public medium?
-33.  What’s the difference between Diffie-Hellman and RSA?
-34.  What kind of attack is a standard Diffie-Hellman exchange vulnerable to?
-35.  What’s the difference between encoding, encryption, and hashing?
-36.  In public-key cryptography you have a public and a private key, and you often perform both encryption and signing functions. Which key is used for which function?
-37.  What’s the difference between Symmetric and Asymmetric encryption?
+6.   How fast is RSA?
+7.   What would it take to break RSA?
+8.   Are strong primes necessary for RSA?
+9.   How large a module (key) should be used in RSA?
+10.  How large should the primes be?
+11.  How is RSA used for authentication in practice? What are RSA digital signatures?
+12.  What are the alternatives to RSA?
+13.  Is RSA currently in use today?
+14.  What are DSS and DSA?
+15.  What is difference between DSA and RSA?
+16.  Is DSA secure?
+17.  What are special signature schemes?
+18.  What is a blind signature scheme?
+19.  What is a designated confirmer signatures?
+20.  What is a fail-stop signature scheme?
+21.  What is a group signature?
+22.  What is blowfish?
+23.  What is SAFER?
+24.  What is FEAL?
+25.  What is Shipjack?
+26.  What is stream cipher?
+27.  What is the advantage of public-key cryptography over secret-key cryptography?
+28.  What is the advantage of secret-key cryptography over public-key cryptography?
+29.  What is Message Authentication Code (MAC)?
+30.  What is a block cipher?
+31.  What are different block cipher modes of operation?
+32.  What is a stream cipher? Name a most widely used stream cipher.
+33.  What is one-way hash function?
+34.  What is collision when we talk about hash functions?
+35.  What are the applications of a hash function?
+36.  What is trapdoor function?
+37.  Cryptographically speaking, what is the main method of building a shared secret over a public medium?
+38.  What’s the difference between Diffie-Hellman and RSA?
+39.  What kind of attack is a standard Diffie-Hellman exchange vulnerable to?
+40.  What’s the difference between encoding, encryption, and hashing?
+41.  In public-key cryptography you have a public and a private key, and you often perform both encryption and signing functions. Which key is used for which function?
 
-38.  **encrypt and compress** data during transmission, which first?
-     1.  compression aims to use patterns in data to reduce its size.
-     2.  Encryption aims to randomize data so that it's uninterpretable without a secret key.
-     3.  encrypt first, then compress, then compression will be useless. `Compression doesn't work on random data.`
-     4.  compress first, then encrypt, then an attacker can find patterns in message length (Compression Ratio) to learn something about the data and potentially foil the encryption (like CRIME)
+42.  **encrypt and compress** data during transmission, which first?
+    4. compression aims to use patterns in data to reduce its size.
+    5. Encryption aims to randomize data so that it's uninterpretable without a secret key.
+    6. encrypt first, then compress, then compression will be useless. `Compression doesn't work on random data. only use for plain data`
+    7. compress first, then encrypt, then an attacker can find patterns in message length (Compression Ratio) to learn something about the data and potentially foil the encryption (like CRIME)
 
-39.  What is SSL and why is it not enough when it comes to encryption?
-40.  What is salting, and why is it used?
-41.  What are salted hashes?
-42.  What is the Three-way handshake? How can it be used to create a DOS attack?
-43.  What’s more secure, SSL or HTTPS?
-44.  Can you describe rainbow tables?
+43.  What is SSL and why is it not enough when it comes to encryption?
+44.  What is salting, and why is it used?
+45.  What are salted hashes?
+46.  What is the Three-way handshake? How can it be used to create a DOS attack?
+47.  What’s more secure, SSL or HTTPS?
+48.  Can you describe rainbow tables?
 
-45.  Can two files generate same checksum?
-     - Yes, but only if the contents are identical.
-     - Even change a single word, the checksum will be different
+49.  Can two files generate same checksum?
+    - Yes, but only if the contents are identical.
+    - Even change a single word, the checksum will be different
 
-# Source:- sec-community and personal experience
+50. difference between encoding, encryption, and hashing?
+    - Encoding
+      - protect the `integrity` of data as it crosses networks and systems
+      - i.e. to keep its original message upon arriving
+      - it isn’t primarily a security function.
+      - easily reversible because the system for encoding is almost necessarily and by definition in wide use.
+      - Example: base64
+    - Encryption
+      - for `confidentiality`
+      - reversible only if you have the appropriate key/keys.
+    - Hashing
+      - ensures `Integrity`
+      - one-way (non-reversible)
+      - the output is of a fixed length that is usually much smaller than the input.
+      - Hashing can be cracked using rainbow tables and collision attacks but is not reversible.
 
+### hashing
+
+1. salted hashes?
+   - Salt at its most fundamental level is random data. 
+   - When a properly protected password system receives a new password
+     - it will create a hashed value for that password, 
+     - create a new random salt value, 
+     - and then store that combined value in its database. 
+   - helps defend against `dictionary attacks` and `known hash attacks`. 
+   - For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
+
+
+---
 
 
 # knowledge point
 
-
-**What Is Tcp/ip Model?**
-- TCP/IP model is an implementation of OSI reference model.
-- It has 4 layers.
-- Network layer, Internet layer, Transport layer and Application layer.
+1. What Is Tcp/ip Model?
+   - TCP/IP model is an implementation of OSI reference model.
+   - It has 4 layers.
+   - Network layer, Internet layer, Transport layer and Application layer.
 
 
 ## TCP/UDP
@@ -597,9 +888,9 @@ Where do you get your security news from?
    - If there is any loss of packet, it retransmits data.
 
 5. List out common TCP/IP protocols.
-   - HTTP – Used between a web client and a web server, for non-secure data transmissions.
-   - HTTPS – Used between a web client and a web server, for secure data transmissions.
-   - FTP – Used between two or more computers to transfer files.
+   - HTTP         - Used between a web client and a web server, for non-secure data transmissions.
+   - HTTPS         - Used between a web client and a web server, for secure data transmissions.
+   - FTP         - Used between two or more computers to transfer files.
 
 6. Comparison between TCP/IP & OSI model.
    - TCP/IP is the alternate model that also explains the information flow in the network.
@@ -620,50 +911,50 @@ Where do you get your security news from?
    - Checksum field (16 bits) : It allows packet integrity checking (optional).
 
 10. What is the TCP packet format?
-    - The TCP packet format consists of these fields:
-    - `Source Port and Destination Port` fields (16 bits each);
-    - `Sequence Number field` (32 bits);
-    - `Acknowledgement Number field` (32 bits);
-    - Data Offset (a.k.a. Header Length) field (variable length);
-    - `Reserved field` (6 bits);
-    - `Flags field` (6 bits) contains the various flags: URG,  ACK, PSH, RST, SYN, FIN;
-    - `Window field` (16 bits);
-    - `Checksum field` (16 bits) ;
-    - `Urgent pointer` field (16 bits) ;
-    - Options field (variable length)
-    - Data field (variable length).
+   - The TCP packet format consists of these fields:
+   - `Source Port and Destination Port` fields (16 bits each);
+   - `Sequence Number field` (32 bits);
+   - `Acknowledgement Number field` (32 bits);
+   - Data Offset (a.k.a. Header Length) field (variable length);
+   - `Reserved field` (6 bits);
+   - `Flags field` (6 bits) contains the various flags: URG,  ACK, PSH, RST, SYN, FIN;
+   - `Window field` (16 bits);
+   - `Checksum field` (16 bits) ;
+   - `Urgent pointer` field (16 bits) ;
+   - Options field (variable length)
+   - Data field (variable length).
 
 11. List out some TCP/IP ports and protocols.
-    - Protocol	Port Number	Description
-    - File Transfer Protocol (FTP)	        20/21	Protocol helps in transferring files between client and server.
-    - Secure Shell (SSH)	                    22	This method helps to access remote server securely.
-    - Telnet	                                23	This method also helps to access remote server but here, data is transmitted in clear text.
-    - Simple Mail Transfer Protocol (SMTP)	25	This protocol helps in managing email services.
-    - Domain Name System (DNS)	            53	This protocol helps in translating domain name into IP addresses.
+   - Protocol	Port Number	Description
+   - File Transfer Protocol (FTP)	                  20/21	Protocol helps in transferring files between client and server.
+   - Secure Shell (SSH)	                                             22	This method helps to access remote server securely.
+   - Telnet	                                                                        23	This method also helps to access remote server but here, data is transmitted in clear text.
+   - Simple Mail Transfer Protocol (SMTP)	25	This protocol helps in managing email services.
+   - Domain Name System (DNS)	                           53	This protocol helps in translating domain name into IP addresses.
 
 
 
 ## API
 
 1. API
-    - **Representational State Transfer** <- `XML/JSON`
-      - not object, but the status of the object
-      - GET/POST
+   - **Representational State Transfer** <- `XML/JSON`
+     - not object, but the status of the object
+     - GET/POST
    - **an interface** allows users to interact with a program through a client.
-      - A client can be a browser
-         - end-user uses to access a website. user interacting with Indeed's API through the browser.
-      - A client can also be another application.
-         - If you're a software developer, you might write a program that accesses the Indeed API to pull in information about jobs through the client application.
-      - the client provides access to the API and its resources (objects application stores info about)
+     - A client can be a browser
+    - end-user uses to access a website. user interacting with Indeed's API through the browser.
+     - A client can also be another application.
+    - If you're a software developer, you might write a program that accesses the Indeed API to pull in information about jobs through the client application.
+     - the client provides access to the API and its resources (objects application stores info about)
 
 
 2. What is **REST API**?
-    - A REST API is one that follows certain constraints.
-    - A RESTful application is one that follows specific rules within the API.
-    - For one, a RESTful app allows users to access resources. This could be objects like username or user profile and actions like creating user access or editing or removing a post.
-    - RESTful applications are also easier for developers to access and use due to the constraints placed on the API.
-    - REST API is one that follows the constraints of REST
-    - allowing users to interact with the API in a specific way and making it easier for developers to use in their own applications.
+   - A REST API is one that follows certain constraints.
+   - A RESTful application is one that follows specific rules within the API.
+   - For one, a RESTful app allows users to access resources. This could be objects like username or user profile and actions like creating user access or editing or removing a post.
+   - RESTful applications are also easier for developers to access and use due to the constraints placed on the API.
+   - REST API is one that follows the constraints of REST
+   - allowing users to interact with the API in a specific way and making it easier for developers to use in their own applications.
 
 3. benefits of using REST
    - easy to scale, flexible and portable
@@ -674,9 +965,9 @@ Where do you get your security news from?
 4. architectural style for web APIs in REST?
    - REST is a set of constraints that has to be applied for an application to be RESTful.
    - The architectural has to have a few key characteristics.
-     - HTTP so that a client can communicate with the enterprise server.
-     - A format language specified as XML/JSON.
-     - An address to reach services in the form of Uniform Resource Identifier and communicate statelessly.
+    - HTTP so that a client can communicate with the enterprise server.
+    - A format language specified as XML/JSON.
+    - An address to reach services in the form of Uniform Resource Identifier and communicate statelessly.
 
 
 5. test REST API? What tools are needed?
@@ -691,12 +982,12 @@ Where do you get your security news from?
    - PUT vs POST
    - Jax-WS vs Jax-RS
    - Request/response is different in AJAX and REST.
-     - In REST, request/response revolves around a URL structure and resources
-     - in AJAX request is transmitted via XMLHttpRequest objects and response occurs when JavaScript code makes changes to the page.
-     - REST is a software development method
-     - AJAX is a set of resources for development.
-     - REST requires the customer to interact with internal servers
-     - AJAX actively prevents it.
+    - In REST, request/response revolves around a URL structure and resources
+    - in AJAX request is transmitted via XMLHttpRequest objects and response occurs when JavaScript code makes changes to the page.
+    - REST is a software development method
+    - AJAX is a set of resources for development.
+    - REST requires the customer to interact with internal servers
+    - AJAX actively prevents it.
 
 7. main characteristics of REST?
    - Primary characteristics of REST are being stateless and using GET to access resources.
@@ -708,15 +999,15 @@ Where do you get your security news from?
 
 
 9. Can you use GET instead of PUT to create a new resource?
-    - cannot use the GET feature instead of PUT
-    - GET has view-rights only.
+   - cannot use the GET feature instead of PUT
+   - GET has view-rights only.
 
 10. markup languages can be used in a RESTful web API
-    - XML and JSON can be used in a RESTful web API.
+   - XML and JSON can be used in a RESTful web API.
 
 11. resource in REST?
-    - resource: a name for any piece of content in a RESTful piece of architecture.
-    - This includes HTML, text files, images, video and more.
+   - resource: a name for any piece of content in a RESTful piece of architecture.
+   - This includes HTML, text files, images, video and more.
 
 
 ref:
