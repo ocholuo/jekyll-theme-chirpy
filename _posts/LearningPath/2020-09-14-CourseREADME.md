@@ -65,7 +65,7 @@ sleepy....
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | :pencil2:
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | :pencil2: 	✏️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) |
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
 [COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
@@ -76,7 +76,7 @@ sleepy....
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
-[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 9/2| :heavy_check_mark:
+[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 9/2| :heavy_check_mark: 	✔️
 [COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 9/6| :heavy_check_mark:
 [COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 9/10| :heavy_check_mark:
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
