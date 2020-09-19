@@ -24,22 +24,22 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
 
 | lab | pic  |
 | --- | ---- |
-| :heavy_check_mark: | [DLTP-MiniProject](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-MiniProject) - 200831
+| ✔️ | [DLTP-MiniProject](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-MiniProject) - 200831
 | .  | <img src="/assets/img/webdemoimage/demo-DLTP-MiniProject.png" width="300" alt="DLTP-MiniProject"> <br> <img src="/assets/img/webdemoimage/demo-dogrey.png" width="150" alt="dogrey"> <img src="/assets/img/webdemoimage/demo-dored.png" width="150" alt="dored"> <br> <img src="/assets/img/webdemoimage/demo-dorainbow.png" width="150" alt="dorainbow"> <img src="/assets/img/webdemoimage/demo-doblur.png" width="150" alt="doblur">
-| :heavy_check_mark: | [DLTP-GreenScreenWeb](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-GreenScreenWeb) - 200830
+| ✔️ | [DLTP-GreenScreenWeb](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-GreenScreenWeb) - 200830
 | .  | <img src="/assets/img/webdemoimage/demo-GreenScreen1.png" width="300" alt="GreenScreen1"> <img src="/assets/img/webdemoimage/demo-GreenScreen2.png" width="300" alt="GreenScreen1">
-| :heavy_check_mark: | [DLTP-Practise](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-Practise) - 200830
-| :heavy_check_mark: | [my website](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0mywebsite)
+| ✔️ | [DLTP-Practise](https://github.com/ocholuo/language/tree/master/0.project/webdemo/1.0-DLTP-Practise) - 200830
+| ✔️ | [my website](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0mywebsite)
 | .  | <img src="/assets/img/webdemoimage/demo-mywebsite.jpg" width="300" alt="mywebsite">
-| :heavy_check_mark: | [css cheat sheet](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0csscheatsheet)
+| ✔️ | [css cheat sheet](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0csscheatsheet)
 | .  | <img src="/assets/img/webdemoimage/demo-csscheatsheet.png" width="300" alt="csscheatsheet">
-| :heavy_check_mark: | [Number Guess Game](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0NumberGuessGame)         
+| ✔️ | [Number Guess Game](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0NumberGuessGame)         
 | .  | <img src="/assets/img/webdemoimage/demo-NumberGuessGame.png" width="300" alt="NumberGuessGame">
-| :heavy_check_mark: | [Silly Story Generator](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0SillyStoryGenerator)
+| ✔️ | [Silly Story Generator](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0SillyStoryGenerator)
 | .  | <img src="/assets/img/webdemoimage/demo-SillyStoryGenerator.png" width="300" alt="SillyStoryGenerator">
-| :heavy_check_mark: | [Add User](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0AddUser)
+| ✔️ | [Add User](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0AddUser)
 | .  | <img src="/assets/img/webdemoimage/demo-AddUser.png" width="300" alt="AddUser">
-| :heavy_check_mark: | [Canvas Ball](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0CanvasBall)
+| ✔️ | [Canvas Ball](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0CanvasBall)
 | .  | <img src="/assets/img/webdemoimage/demo-CanvasBall.png" width="300" alt="CanvasBall">
 
 ---
@@ -71,7 +71,7 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
   - Accessibility
   - Security
 - HTTP
-  - :heavy_check_mark: HTTP cookie
+  - ✔️ HTTP cookie
 
 
 
@@ -80,9 +80,9 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
 - HTML — Structuring the web
 - CSS — Styling the web
 - 030[JavaScript — Dynamic client-side scripting](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-    - :heavy_check_mark: JavaScript First Steps
-    - :heavy_check_mark: [JavaScript building blocks](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks)
-    - :heavy_check_mark: 033[Introducing JavaScript objects]
+    - ✔️ JavaScript First Steps
+    - ✔️ [JavaScript building blocks](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks)
+    - ✔️ 033[Introducing JavaScript objects]
     - Asynchronous JavaScript
     - 035[Client-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs)
       - Introduction to web APIs

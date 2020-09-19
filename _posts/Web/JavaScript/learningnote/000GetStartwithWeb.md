@@ -3,13 +3,13 @@
 
 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
 
-:heavy_check_mark: HTML basics
+✔️ HTML basics
 
-:heavy_check_mark: CSS basics
+✔️ CSS basics
 
-:heavy_check_mark: JavaScript basics
+✔️ JavaScript basics
 
-:heavy_check_mark: Publishing your website
+✔️ Publishing your website
 
 --- 
 

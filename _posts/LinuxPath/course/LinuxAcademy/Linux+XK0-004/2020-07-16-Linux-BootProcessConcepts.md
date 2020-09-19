@@ -15,7 +15,7 @@ image:
 
 # Linux Boot Process Concepts
 
-## :heavy_check_mark: | **Legacy GRUB**
+## ✔️ | **Legacy GRUB**
 
 
 <img src="https://i.imgur.com/pmLrHrH.png" width=600>

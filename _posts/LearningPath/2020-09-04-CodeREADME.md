@@ -71,7 +71,7 @@ Index | Name | Date | Course material
 
 :purple_heart: some link:
 
-:star: when the runestone error: use [this link](https://runestone.academy/runestone/books/published/fopp/AdvancedAccumulation/toctree.html) to access the text book
+⭐ when the runestone error: use [this link](https://runestone.academy/runestone/books/published/fopp/AdvancedAccumulation/toctree.html) to access the text book
 
 ---
 
