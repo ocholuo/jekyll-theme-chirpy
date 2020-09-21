@@ -2,7 +2,7 @@
 title: IBMSec course 1 Introduction to Cybersecurity Tools & Cyber Attacks
 date: 2020-09-17 11:11:11 -0400
 categories: [SOC]
-tags: 
+tags: [OnePage]
 toc: true
 image:
 ---
@@ -133,13 +133,12 @@ XX 15. Alice sends an encrypted message to Bob but it is intercepted by Trudy. T
 
 ![Screen Shot 2020-09-17 at 19.58.43](https://i.imgur.com/3ON9Ye2.png)
 
-HackerOrg | Note
----|---
-`Fancy Bears` | That organization was been collated with US election hack. DCC hack into Hillary Clinton party, the office that manage information from Democratic Party.
-`Laser group` |
-`Look Sec` |
-`Syrian Electronic Army` | - Website defacement and electronic surveillance against Syrian rebels and other opposition. <br> - Defacement attacks against Western websites that it contends spread news hostile to the Syrian government. <br> - Spamming popular Facebook pages with pro-regime comments:[19] The Facebook pages of President Barack Obama and former French President Nicolas Sarkozy have been targeted by such spam campaigns.
-`Guardians of the Peace` | leaks on Sony
+
+Syrian Electronic Army
+- Website defacement and electronic surveillance against Syrian rebels and other opposition
+- Defacement attacks against Western websites that it contends spread news hostile to the Syrian government
+- Spamming popular Facebook pages with pro-regime comments:[19] The Facebook pages of President Barack Obama and former French President Nicolas Sarkozy have been targeted by such spam campaigns.
+
 
 attack | result
 ---|---
@@ -284,11 +283,6 @@ Shamoon Duqu Flame DarkSeoul WannaCry | for criminals and sponsor hackers from g
 ### Social Engineering - Phishing and Vishing
 
 ### Cyberwarfare
-
-
-
-
-
 
 
 

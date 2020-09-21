@@ -1,5 +1,5 @@
 ---
-title: Language - Learning Path
+title: Course - Learning Path
 date: 2020-09-14 11:11:11 -0400
 categories: [LearningPath]
 tags: [LearningPath, code]
@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-# Language - Learning Path
+# Course - Learning Path
 
 [toc]
 

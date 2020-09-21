@@ -21,14 +21,19 @@ toc: true
 - Both [reflected and stored XSS](https://owasp.org/www-community/attacks/xss/#stored-and-reflected-xss-attacks) can be addressed by performing the appropriate validation and encoding on the server-side.
 - [DOM Based XSS](https://owasp.org/www-community/attacks/DOM_Based_XSS) can be addressed with a special subset of rules described in the DOM based XSS Prevention Cheat Sheet.
 
-### Why Can't Just `HTML Entity Encode` Untrusted Data
+Relying on inbound input handling to prevent XSS is thus a very brittle solution that will be prone to errors. (The deprecated "magic quotes" feature of PHP is an example of such a solution.)
+
+Instead, outbound input handling should be your primary line of defense against XSS, because it can take into account the specific context that user input will be inserted into.
+
+## Why Can't Just `HTML Entity Encode` Untrusted Data
 
 `HTML entity encoding`
 - okay for untrusted data that you put in the body of the HTML document, such as inside a `<div>` tag.
 - or for untrusted data that goes into attributes, particularly if you're religious about using quotes around your attributes.
 
-But HTML entity encoding doesn't work if you're putting untrusted data inside a `<script>` tag anywhere, or an `event handler attribute` like `onmouseover`, or inside CSS, or in a URL.
-- So even if you use an `HTML entity encoding` method everywhere, you are still most likely vulnerable to XSS.
+But `HTML entity encoding` doesn't work if putting untrusted data inside a `<script>` tag anywhere, or an `event handler attribute` like `onmouseover`, or inside CSS, or in a URL.
+- so even use `HTML entity encoding` method everywhere, still most likely vulnerable to XSS.
+
 - **You MUST use the encode syntax for the part of the HTML document you're putting untrusted data into.** That's what the rules below are all about.
 
 ### You Need a Security Encoding Library
