@@ -42,8 +42,8 @@ sleepy....
 
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**freecodecamp** |
-[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
+[JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 9/20 | ✏️
+**freecodecamp** [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
@@ -54,9 +54,8 @@ sleepy....
 ⭐ `AWS Certified Solutions Architect – Associate`  | 🐰
 [AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/374) - AWS Academy Cloud Architecting [Amazon Interns] 7.24 | ✔️
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
-[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| ✏️
+[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-
 
 ---
 
@@ -65,7 +64,7 @@ sleepy....
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | ✏️ 
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | ✏️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) |
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
 [COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
@@ -133,7 +132,7 @@ sleepy....
 [AWS Cloud Practitioner (CLF-C01)](https://linuxacademy.com/cp/modules/view/id/376) 6/26| ✔️
 `Security Analyst - Entry Level` |
 [CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6| ✏️
-[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1| ✏️
+[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1| ✔️
 
 <br>
 

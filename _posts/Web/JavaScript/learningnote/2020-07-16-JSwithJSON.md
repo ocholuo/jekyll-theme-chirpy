@@ -1,5 +1,18 @@
+---
+title: JavaScript with JSON
+# author: Grace JyL
+date: 2020-07-16 11:11:11 -0400
+description:
+excerpt_separator:
+categories: [Web, JavaSriptNote]
+tags: [Web, JavaSriptNote]
+math: true
+# pin: true
+toc: true
+# image: /assets/img/sample/devices-mockup.png
+---
 
-# JSON
+# JavaScript with JSON
 
 [toc]
 
@@ -7,7 +20,7 @@
 
 ## JSON to web
 
-loaded this object into a JavaScript program, 
+loaded this object into a JavaScript program,
 
 parsed in a variable called `superHeroes`
 

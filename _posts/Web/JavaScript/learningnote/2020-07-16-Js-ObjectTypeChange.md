@@ -1,6 +1,20 @@
+---
+title: JavaScript 类型转换
+# author: Grace JyL
+date: 2020-07-16 11:11:11 -0400
+description:
+excerpt_separator:
+categories: [Web, JavaSriptNote]
+tags: [Web, JavaSriptNote]
+math: true
+# pin: true
+toc: true
+# image: /assets/img/sample/devices-mockup.png
+---
 
 # JavaScript 类型转换
 
+[toc]
 
 ## JavaScript 类型
 
@@ -64,7 +78,7 @@ function () {}.constructor         // 返回函数 Function(){ [native code] }
 String(100 + 23)       // 将数字表达式转换为字符串并返回  
 (100 + 23).toString()  // Number 方法 toString()
 // Number 方法
-toString() 
+toString()
 toExponential()	// 把对象的值转换为指数计数法。
 toFixed()	    // 把数字转换为字符串，结果的小数点后有指定位数的数字。
 toPrecision()	// 把数字格式化为指定的长度。
@@ -77,7 +91,7 @@ true.toString()      // 返回 "true"
 
 
 // Date() 返回字符串。
-Date() 
+Date()
 ```
 
 2. 转换为数字
@@ -100,15 +114,3 @@ var x = + y;      // x 是一个数字
 var y = "John";   // y 是一个字符串
 var x = + y;      // x 是一个数字 (NaN)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
