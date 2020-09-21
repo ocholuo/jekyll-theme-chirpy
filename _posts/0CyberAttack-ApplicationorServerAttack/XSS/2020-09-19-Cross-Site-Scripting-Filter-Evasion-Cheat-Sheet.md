@@ -906,7 +906,7 @@ c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
 ## DIV Background-image Plus Extra Characters
 Rnaske built a quick XSS fuzzer to detect any erroneous characters that are allowed after the open parenthesis but before the JavaScript directive in IE and Netscape 8.1 in secure site mode. These are in decimal but you can include hex and add padding of course. (Any of the following chars can be used: 1-32, 34, 39, 160, 8192-8.13, 12288, 65279):
 ```
-St...yle=..."xxx: ur...llink(js.:.ale.l..rt('your word'))"
+St...yle=背景图片"xxx: 地址括号 js: 警报括号'your word'括号括号"
 ```
 
 DIV Expression
