@@ -20,7 +20,7 @@ description: >-                        # used by seo meta and the atom feed
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://ocholuo.github.io/'
 
-author: Grace Jiaying Luo                  # change to your full name
+author: Grace JyL                 # change to your full name
 
 avatar: /assets/img/sample/rabbit.jpg   # support internet resources
 
@@ -31,7 +31,7 @@ twitter:
   username: twitter_username            # change to your twitter username
 
 social:
-  name: Grace Jiaying Luo                  # it will shows as the copyright owner in Footer
+  name: Grace JyL                  # it will shows as the copyright owner in Footer
   email: Lgraceye@hotmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link

@@ -1,3 +1,11 @@
+---
+title: JPMorganChase SDE Virtual Experience - Task1
+date: 2020-09-20 11:11:11 -0400
+description: Learning Path
+categories: [Lab, ChaseSDE]
+# img: /assets/img/sample/rabbit.png
+tags: [Lab, SDE]
+---
 
 
 # Interface with a stock price data feed
