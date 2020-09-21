@@ -19,7 +19,7 @@ toc: true
 ## Introduction
 
 - Both [reflected and stored XSS](https://owasp.org/www-community/attacks/xss/#stored-and-reflected-xss-attacks) can be addressed by performing the appropriate validation and encoding on the server-side.
-- [DOM Based XSS](https://owasp.org/www-community/attacks/DOM_Based_XSS) can be addressed with a special subset of rules described in the [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md).
+- [DOM Based XSS](https://owasp.org/www-community/attacks/DOM_Based_XSS) can be addressed with a special subset of rules described in the DOM based XSS Prevention Cheat Sheet.
 
 ### Why Can't Just `HTML Entity Encode` Untrusted Data
 
@@ -429,7 +429,7 @@ The `SanitizeHelper` module provides a set of methods for scrubbing text of unde
 ---
 
 ### RULE \#8 - Prevent DOM-based XSS
-- For details on what DOM-based XSS is, and defenses against this type of XSS flaw, please see the OWASP article on [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md).
+- For details on what DOM-based XSS is, and defenses against this type of XSS flaw, please see the OWASP article on `DOM based XSS Prevention Cheat Sheet` .
 
 ---
 
@@ -510,7 +510,7 @@ The `X-XSS-Protection` header has been deprecated by modern browsers and its use
 | String | CSS Value | `html <div style="width:BAD DATA;">Selection</div>` | Strict structural validation (rule \#4), CSS Hex encoding, Good design of CSS Features. |
 | String | JavaScript Variable | `<script>var currentValue='BAD DATA';</script> <script>someFunction('BAD DATA');</script>` | Ensure JavaScript variables are quoted, JavaScript Hex Encoding, JavaScript Unicode Encoding, Avoid backslash encoding (`\"` or `\'` or `\\`) |
 | HTML   | HTML Body | `<div>BAD HTML</div>` | HTML Validation (JSoup, AntiSamy, HTML Sanitizer...) |
-| String | DOM XSS | `<script>document.write("BAD INPUT: " + document.location.hash );<script/>` | [DOM based XSS Prevention Cheat Sheet](DOM_based_XSS_Prevention_Cheat_Sheet.md) |
+| String | DOM XSS | `<script>document.write("BAD INPUT: " + document.location.hash );<script/>` | `DOM based XSS Prevention Cheat Sheet` |
 
 The following snippets of HTML demonstrate how to safely render untrusted data in a variety of different contexts.
 

