@@ -43,13 +43,14 @@ Referer的正确拼写是Referrer，但是标准定案只能将错就错。
 1. 用户点击网页上的链接。
 2. 用户发送表单。
 3. 网页加载静态资源，比如加载图片、脚本、样式。
+
 ```html
 <!-- 加载图片 -->
 <img src="foo.jpg">
 <!-- 加载脚本 -->
 <script src="foo.js"></script>
 <!-- 加载样式 -->
-<link href="foo.css" rel="stylesheet">
+<!-- <link href="foo.css" rel="stylesheet"> -->
 ```
 
 - 浏览器都会将当前网址作为Referer字段，放在 HTTP 请求的头信息发送。
