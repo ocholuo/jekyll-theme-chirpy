@@ -1,11 +1,24 @@
+---
+title: HTTP Referer
+# author: Grace JyL
+date: 2020-04-25 11:11:11 -0400
+description: 
+excerpt_separator: 
+categories: [Web, HTTP]
+tags: [Web, HTTP]
+math: true
+# pin: true
+toc: true
+# image: /assets/img/sample/devices-mockup.png
+---
+
+
 # HTTP Referer
 
 [toc]
 
 ref
 http://www.ruanyifeng.com/blog/2019/06/http-referer.html
-
-
 
 HTTP 请求的头信息里面，`Referer` 是一个常见字段，提供访问来源的信息。
 
