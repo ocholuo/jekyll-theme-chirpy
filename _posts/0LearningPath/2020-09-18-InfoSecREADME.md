@@ -50,14 +50,30 @@ Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Securit
 ---|---
 `Code Security/Analysis` | Kluwan <br> ![Kiuwan](https://i.imgur.com/PqQm3mh.png)
 `PaswdCrack` | John The Ripper <br>![John-the-Ripper](https://i.imgur.com/zq4Ao7o.png)
+---|---
+**Application Link** | Layer 7
+`capturing HTTPS traffic` | sslstrip ![sslstrip](https://i.imgur.com/aiocGts.png)
+---|---
+**Data Link** | Layer 2
+`ARP poisoning` | arpspoof ![arpspoof](https://i.imgur.com/ZKZug7g.png)
+`ARP poisoning` | Ettercap ![Ettercap](https://i.imgur.com/0ciXVzn.png)
+`ARP poisoning` | Cain and Abel ![CainandAbel](https://i.imgur.com/8gSuAdg.png)
+`detect ARP poisoning` | AntiARP, ARPon, ArpStar,
+`detect ARP poisoning` | XARP ![XARP](https://i.imgur.com/vWTIp91.png)
+---|---
+**Digital Forensic Tools** | Layer 2
+. | `Sleuth Kit (+Autopsy)`
 
-
+---
 
 GoodWeb | Note
 ---|---
 [CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
 [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
 [tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm)
+[Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile)
+
+---
 
 Lab | Note
 ---|---
@@ -66,6 +82,7 @@ Lab | Note
 [SEED Labs – Cross-Site Scripting Attack Lab](http://www.cis.syr.edu/~wedu/seed/Labs_12.04/Web/Web_XSS_Elgg/Web_XSS_Elgg.pdf) | ✔️
 [InfosecLab](https://67327.cmuis.net/labs) |
 
+---
 
 XiongHaizimen | Note
 ---|---

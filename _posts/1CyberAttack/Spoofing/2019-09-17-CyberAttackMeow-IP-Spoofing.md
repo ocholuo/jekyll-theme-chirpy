@@ -1,8 +1,8 @@
 ---
 title: Meow's CyberAttack - IP Spoofing
-date: 2020-09-17 11:11:11 -0400
-categories: [CyberAttack, APPandServerAttack]
-tags: [CyberAttack, APPandServerAttack, Spoofing]
+date: 2019-09-17 11:11:11 -0400
+categories: [CyberAttack, Spoofing]
+tags: [CyberAttack, Spoofing]
 toc: true
 image:
 ---

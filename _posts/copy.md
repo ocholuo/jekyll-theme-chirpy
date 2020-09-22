@@ -14,3 +14,4 @@ toc: true
 
 # Cyber Security knowledge point
 
+https://ocholuo.github.io/posts/SEED-Labs–XSS-Attack-Lab

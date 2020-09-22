@@ -19,9 +19,10 @@ Overthewire_Natas
 [toc]
 
 Natas teaches the basics of serverside web-security.
-- [Overthewire_bandit](https://overthewire.org/wargames/bandit/)
+- [Overthewire_Natas](https://overthewire.org/wargames/natas/)
 - Each level of natas consists of its own website located at `http://natasX.natas.labs.overthewire.org`, where X is the level number.
-- There is no SSH login. To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.
+- There is no SSH login. 
+- To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.
 
 - many websites such as Facebook, Google, and even Amazon, store information in SQL Databases. These databases are connected to the web servers, allowing them to process user transactions, login requests, and a countless amount of other things!
 - These servers also handle user encryption, session keys, etc. One coding mistake; allowing a malicious attacker to inject SQL code into a query, or even inject special characters into a form, or the URL, can be devastating!
