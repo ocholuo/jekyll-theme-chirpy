@@ -241,7 +241,8 @@ Link | goal
 
 
 some website:
-name | .
+
+name | Note
 ---|---
 [cybrary.it](https://www.cybrary.it/catalog/career-path/cyber-security-engineer/syllabus/) | <img src="https://i.imgur.com/QVLEnK3.png" width="400">
 

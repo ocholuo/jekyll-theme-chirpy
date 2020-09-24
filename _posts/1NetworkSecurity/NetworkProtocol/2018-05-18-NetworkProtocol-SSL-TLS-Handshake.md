@@ -56,6 +56,8 @@ SSL缺省只进行server端的认证，客户端的认证是可选的。
 
 ![A-SSL-TLS-handshake](https://i.imgur.com/ddmS4bp.png)
 
+![Screen Shot 2020-09-24 at 11.36.15](https://i.imgur.com/YlJQa8r.png)
+
 ---
 
 ### Phase I of Handshake Protocol:  
