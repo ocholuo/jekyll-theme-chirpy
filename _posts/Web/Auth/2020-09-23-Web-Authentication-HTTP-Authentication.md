@@ -479,11 +479,11 @@ Multiple Device
 
 
 ref:
-[Session vs Token Based Authentication](https://medium.com/@sherryhsu/session-vs-token-based-authentication-11a6c5ac45e4)
-[HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
-[Session vs Token-Based Authentication](https://medium.com/@allwinraju/session-vs-token-based-authentication-b1f862dd7ed8)
-[Difference between cookies, session and tokens](https://www.youtube.com/watch?v=44c1t_cKylo&ab_channel=ValentinDespa)
-[Authentication Types Ethical Hackers Academy || Cyber Security News](https://www.linkedin.com/posts/ethical-hackers-academy_authentication-types-ethical-hackers-academy-activity-6710268783136796672-g5Fl)
+- [Session vs Token Based Authentication](https://medium.com/@sherryhsu/session-vs-token-based-authentication-11a6c5ac45e4)
+- [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+- [Session vs Token-Based Authentication](https://medium.com/@allwinraju/session-vs-token-based-authentication-b1f862dd7ed8)
+- [Difference between cookies, session and tokens](https://www.youtube.com/watch?v=44c1t_cKylo&ab_channel=ValentinDespa)
+- [Authentication Types Ethical Hackers Academy || Cyber Security News](https://www.linkedin.com/posts/ethical-hackers-academy_authentication-types-ethical-hackers-academy-activity-6710268783136796672-g5Fl)
 
 
 
