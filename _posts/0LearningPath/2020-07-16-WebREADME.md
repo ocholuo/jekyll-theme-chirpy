@@ -1,7 +1,7 @@
 ---
 title: Web - demo & Learning Path
 date: 2020-07-16 11:11:11 -0400
-categories: [LearningPath]
+categories: [0 - LearningPath]
 tags: [OnePage, LearningPath]
 toc: true
 ---

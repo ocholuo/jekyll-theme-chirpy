@@ -1,7 +1,7 @@
 ---
 title: InfoSec - Note
 date: 2020-09-18 11:11:11 -0400
-categories: [LearningPath]
+categories: [0 - LearningPath]
 tags: [OnePage]
 toc: true
 pin: true
