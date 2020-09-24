@@ -27,7 +27,6 @@ Attack | Tool
 ---|---
 `Finding vulnerabilities` | Intruder <br>![Intruder](https://i.imgur.com/7BLUaKx.png)
 `Building anti-forensic and evasion tools` | Metasploit <br>![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
-`link analysis and data mining` | Maltego <br>![Maltego](https://i.imgur.com/oegrQtd.png) <br> - provide graphical picture about the weak points and abnormalities of the network.
 `identified vulnerabilities` | Netsparker <br>![Netsparker](https://i.imgur.com/cuShMOy.jpg)
 ---|---
 `phishing` | Gophish - opensource phishing platform |
@@ -52,20 +51,30 @@ Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Securit
 `PaswdCrack` | John The Ripper <br>![John-the-Ripper](https://i.imgur.com/zq4Ao7o.png)
 ---|---
 **Application Link** | Layer 7
-`capturing HTTPS traffic` | sslstrip ![sslstrip](https://i.imgur.com/aiocGts.png)
+`capturing HTTPS traffic` | sslstrip <br> ![sslstrip](https://i.imgur.com/aiocGts.png)
 ---|---
 **Network Link** | Layer 7
-`capturing network packet` | PackETH ![PackETH](https://i.imgur.com/HDvf8Du.png)
+`capturing network packet` | PackETH <br> ![PackETH](https://i.imgur.com/HDvf8Du.png)
 ---|---
 **Data Link** | Layer 2
-`ARP poisoning` | arpspoof ![arpspoof](https://i.imgur.com/ZKZug7g.png)
-`ARP poisoning` | Ettercap ![Ettercap](https://i.imgur.com/0ciXVzn.png)
-`ARP poisoning` | Cain and Abel ![CainandAbel](https://i.imgur.com/8gSuAdg.png)
+`ARP poisoning` | arpspoof <br> ![arpspoof](https://i.imgur.com/ZKZug7g.png)
+`ARP poisoning` | Ettercap <br> ![Ettercap](https://i.imgur.com/0ciXVzn.png)
+`ARP poisoning` | Cain and Abel <br> ![CainandAbel](https://i.imgur.com/8gSuAdg.png)
 `detect ARP poisoning` | AntiARP, ARPon, ArpStar,
-`detect ARP poisoning` | XARP ![XARP](https://i.imgur.com/vWTIp91.png)
+`detect ARP poisoning` | XARP <br> ![XARP](https://i.imgur.com/vWTIp91.png)
 ---|---
 **Digital Forensic Tools** | Layer 2
 . | `Sleuth Kit (+Autopsy)`
+---|---
+**Reconnaissance** | step 1
+`passive` | visualping <br> ![visualping](https://i.imgur.com/TV47wYz.png)
+`website mirroring` | HTTrack <br> ![HTTrack](https://i.imgur.com/g0s74oj.png)
+`email foot-printing` | TheHarvester <br> ![TheHarvester](https://i.imgur.com/Ey7HrEQ.png)
+`link analysis and data mining` | Maltego <br> ![Maltego](https://i.imgur.com/oegrQtd.png) <br> - provide graphical picture about the weak points and abnormalities of the network.
+`foot-printing` | Recon-ng <br> ![Recon-ng](https://i.imgur.com/jgc9SSN.png)
+`foot-printing` | OSRframwork <br> ![OSRframwork](https://i.imgur.com/vtJNROh.png)
+`hacker search engine` | Shodan <br> ![OSRframwork](https://i.imgur.com/F4Hmvxn.jpg) <br> - collects all information about all devices that are directly connected to the internet with the specified keywords that you enter.
+
 
 ---
 
