@@ -64,7 +64,7 @@ sleepy....
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) | ✏️
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25 | ✔️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) |
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
 [COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
