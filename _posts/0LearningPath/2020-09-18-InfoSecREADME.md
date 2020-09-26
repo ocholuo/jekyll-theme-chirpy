@@ -82,6 +82,7 @@ GoodWeb | Note
 ---|---
 [CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
 [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
+[OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) |
 [tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm) |
 [Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile) |
 [securityintelligence 2020 data breach report](https://securityintelligence.com/) |
@@ -100,6 +101,6 @@ Lab | Note
 XiongHaizimen | Note
 ---|---
 [Tanishq](https://tanishq.page/index.html) | cool website and lab!
-
+[coolguy](https://jhalon.github.io/over-the-wire-natas1/) | great solution
 
 .

