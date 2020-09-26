@@ -154,6 +154,9 @@ write another function named addBorder. This function will add a black border to
 black border that is 10 pixels thick
 
 ```java
+
+1.
+
 function setBlack(pixel) {
     pixel.setRed(0);
     pixel.setGreen(0);
@@ -172,6 +175,34 @@ for(var pixel of img.values()) {
         setBlack(pixel);
     }
 }
+print(img);
+
+
+2.
+
+function pixelOnEdge(image,pixel,horizontalThick, verticalThick){
+    var x = pixel.getX();
+    var y = pixel.getY();
+    if (x < verticalThick || x > image.getWidth() - verticalThick){
+        return true;
+    }
+    if (y < horizontalThick || y > image.getHeight() - horizontalThick){
+        return true;
+    }
+    return false;
+}
+
+function addBorders(image,horizontalThick, verticalThick){
+    for (var px of image.values()){
+        if (pixelOnEdge(image,px,horizontalThick,verticalThick)){
+            px = setBlack(px);
+        }
+    }
+    return image;
+}
+
+var img = new SimpleImage("skyline.png");
+img = addBorders(img,40,20);
 print(img);
 ```
 

@@ -40,7 +40,10 @@ image:
 
 ![Screen Shot 2020-09-17 at 16.20.44](https://i.imgur.com/OLgUyXQ.png)
 
+!!
+
 ![Screen Shot 2020-09-17 at 16.25.23](https://i.imgur.com/DfE3tlW.png)
+
 
 ![Screen Shot 2020-09-17 at 16.29.17](https://i.imgur.com/VIOPzzu.png)
 
@@ -79,43 +82,6 @@ image:
 
 ![Screen Shot 2020-09-17 at 17.43.09](https://i.imgur.com/TePhvCd.png)
 
-```
-1. What was shown in the movie War Games that concerned President Reagan?
-
-2. In addition to the movie War Games, what other event made the need for advanced cybersecurity apparent?
-
-3. What were the three (3) main cybersecurity concerns arising from the 9/11 attacks?
-
-xx4. According to a Forbes Magazine study, the annual cost of cybercrime in the United States alone has reached how much?
-
-5. Who are Alice, Bob and Trudy?
-
-6. Which of the following is considered a legitimate challenge to implementing a comprehensive cybersecurity solution?
-
-7. Jeff Crume described five challenges in security today. Which two (2) of these are challenges because their numbers are decreasing?
-
-8. “A defined way to breach the security of an IT system through a vulnerability” is the definition of which key cybersecurity term?
-
-9. “A situation involving exposure to a danger.” Is the definition of which key cybersecurity term?
-
-xx10. Which aspect of a comprehensive approach to cybersecurity includes these items: evaluate, create teams, establish baselines, identify and model threats, identify use cases, identify risks, establish monitoring and control requirements?
-
-11. According to a 2018 report by Domo, over what period of time do the following things occur: 49,380 videos are uploaded to Instagram, 25,000 gifs are sent on Facebook Messenger, 4.2 million videos are viewed on Snapchat and 473,400 tweets are sent on Twitter?
-
-12. In the examples using Bob, Alice and Trudy, what aspect of cybersecurity is being illustrated?
-
-13. Alice sends an unencrypted message to Bob but it is intercepted by Trudy. Trudy reads the message but does not in any way interfere with its content or delivery. Which precept of the CIA Triad would have been violated?
-
-14. Alice sends an encrypted message to Bob but it is intercepted by Trudy. Trudy cannot read it so, in anger, she deletes it without allowing its delivery to Bob. Which precept of the CIA Triad would have been violated?
-
-XX 15. Alice sends an encrypted message to Bob but it is intercepted by Trudy. Trudy cannot read it but forwards it on to Bob from an anonymous address she controls. Which precept of the CIA Triad would have been violated?
-
-16. A major metropolitan police department gets a warrant from a judge to hack into the computer of a suspected crime boss. A skilled penetration tester working for the department conducts the hack and retrieves incriminating evidence. What color hat does this officer wear?
-
-17. Which three (3) are resources that are available to help guide penetration testing efforts by cybersecurity specialists?
-
-18. According to the Vulnerability Assessment Methodology, Vulnerabilities are determined by which 2 fact?
-```
 
 ---
 
@@ -282,114 +248,147 @@ Shamoon Duqu Flame DarkSeoul WannaCry | for criminals and sponsor hackers from g
 
 ### Social Engineering - Phishing and Vishing
 
-### Cyberwarfare
+### Cyberwar
 
-
-
-```
-1. Which hacker organization hacked into the Democratic National Convension and released Hillery Clinton's emails?
-Fancy Bears
-
-2.What challenges are expected in the future?
-All of the above
-
-3.Why are cyber attacks using SWIFT so dangerous?
-SWIFT is the protocol used by all banks to transfer money
-
-
-        4.Which statement best describes Authentication?
-        Prevention of unauthorized use of a resource
-
-
-        5.Trusted functionality, security labels, event detection, security audit trails and security recovery are all examples of which type of security mechanism?
-        Active security mechanism
-
-6.If an organization responds to an intentional threat, that threat is now classified as what?
-An attack
-
-
-7.An attack that is developed particularly for a specific customer and occurs over a long period of time is a form of what type of attack?
-Advanced Persistent Threat
-
-
-8.Which of three (3) these approaches could be used by hackers as part of a Business Email Compromise attack?
-Attorney impersonation
-Account compromise
-CEO Fraud, where CEO sends email to an employee
-
-
-9.Which type of actor was not one of the four types of actors mentioned in the video A brief overview of types of actors and their motives?
-Black Hats
-
-
-10.A political motivation is often attributed to which type of actor?
-Hactivist
-
-
-11.The video Hacking organizations called out several countries with active government sponsored hacking operations in effect. Which one of these was among those named?
-Israel
-
-
-12.Which of these is not a known hacking organization?
-The Ponemon Institute
-
-
-13.Which type of actor hacked the 2016 US Presidential Elections?
-Government
-
-
-14.True or False: Passive attacks are easy to detect because the original messages are usually alterned or undelivered.
-False
-
-
-15.True or False: Authentication, Access Control and Data Confidentiality are all addressed by the ITU X.800 standard.
-pervasive
-
-16.Cryptography, digital signatures, access controls and routing controls considered which?
-Specific security mechanisms
-
-
-17.True or False: A tornado threatening a data center can be classified as an attack.
-False
-
-
-18.Traffic flow analysis is classified as which?
-A passive attack
-
-
-19.How would you classify a piece of malicious code designed to cause damage, can self-replicate and spreads from one computer to another by attaching itself to files?
-Worm
-
-        20.Botnets can be used to orchestrate which form of attack?
-        DDoS attacks
-
-21.Policies and training can be classified as which form of threat control?
-Administrative controls
-
-22.Which type of attack can be addressed using a switched Ethernet gateway and software on every host on your network that makes sure their NICs is not running in promiscuous mode.
-Packet Sniffing
-
-23.A flood of maliciously generated packets swamp a receiver’s network interface preventing it from responding to legitimate traffic. This is characteristic of which form of attack?
-A Denial of Service (DOS) attack
-
-24.A person calls you at work and tells you he is a lawyer for your company and that you need to send him specific confidential company documents right away, or else! Assuming the caller is not really a lawyer for your company but a bad actor, what kind of attack is this?
-A Social Engineering attack
-
-25.True or False: An individual hacks into a military computer and uses it to launch an attack on a target he personally dislikes. This is considered an act of cyberwarfare.
-False
-```
 ---
 
 ## week 3
+![Screen Shot 2020-09-25 at 17.12.26](https://i.imgur.com/O3PQxjh.png)
+
+![Screen Shot 2020-09-25 at 17.12.43](https://i.imgur.com/84A3tbU.png)
+
+![Screen Shot 2020-09-25 at 17.13.24](https://i.imgur.com/ZLv0Guy.png)
+
+![Screen Shot 2020-09-25 at 17.14.24](https://i.imgur.com/HQ3FAne.png)
+
+![Screen Shot 2020-09-25 at 17.16.48](https://i.imgur.com/Wfy5S5z.png)
+
+![Screen Shot 2020-09-25 at 17.18.12](https://i.imgur.com/6YnVOcD.png)
+
+![Screen Shot 2020-09-25 at 17.18.53](https://i.imgur.com/PMmYfM8.png)
+
+### Incident Response Process
+
+![Screen Shot 2020-09-25 at 17.33.24](https://i.imgur.com/DSlSG7o.png)
+
+![Screen Shot 2020-09-25 at 17.33.56](https://i.imgur.com/rOL14Ko.png)
+
+![Screen Shot 2020-09-25 at 17.34.36](https://i.imgur.com/gGaUvzE.png)
+
+![Screen Shot 2020-09-25 at 17.38.51](https://i.imgur.com/AZh8Coo.png)
+
+![Screen Shot 2020-09-25 at 17.41.04](https://i.imgur.com/l5Zug9e.png)
+
+![Screen Shot 2020-09-25 at 17.42.08](https://i.imgur.com/9j5O9D9.png)
+
+![Screen Shot 2020-09-25 at 17.46.07](https://i.imgur.com/XaR82as.png)
+
+![Screen Shot 2020-09-25 at 17.47.01](https://i.imgur.com/Jhu0hdk.png)
+
+![Screen Shot 2020-09-25 at 17.48.14](https://i.imgur.com/9oj31PY.png)
+
+![Screen Shot 2020-09-25 at 17.50.36](https://i.imgur.com/6wksJ8F.png)
+
+![Screen Shot 2020-09-25 at 17.51.33](https://i.imgur.com/1nSiK3c.png)
+
+![Screen Shot 2020-09-25 at 17.54.26](https://i.imgur.com/woliWJP.png)
+---
+
+## week 4 security Tools
+
+![Screen Shot 2020-09-25 at 17.58.29](https://i.imgur.com/00NIKGD.png)
+
+![Screen Shot 2020-09-25 at 20.03.01](https://i.imgur.com/5Na0TYv.png)
+
+![Screen Shot 2020-09-25 at 20.04.03](https://i.imgur.com/6qrhK6A.png)
+
+![Screen Shot 2020-09-25 at 20.05.12](https://i.imgur.com/Doke21d.png)
+
+### application gateway
+
+application gateway : app = 1:1
+
+![Screen Shot 2020-09-25 at 20.06.26](https://i.imgur.com/S89dv44.png)
+
+### XML gateway
+
+![Screen Shot 2020-09-25 at 20.10.18](https://i.imgur.com/9yTYu2Z.png)
+
+![Screen Shot 2020-09-25 at 20.13.08](https://i.imgur.com/7IkN5Eq.png)
+
+### firewalls
+
+stateless:
+- faster
+- less secure, packet from different source ip
+
+![Screen Shot 2020-09-25 at 20.13.39](https://i.imgur.com/msx23LV.png)
+
+![Screen Shot 2020-09-25 at 20.16.35](https://i.imgur.com/Mf7UCEJ.png)
+
+![Screen Shot 2020-09-25 at 20.17.17](https://i.imgur.com/5a4noay.png)
+
+![Screen Shot 2020-09-25 at 20.18.20](https://i.imgur.com/hS2MALe.png)
+
+![Screen Shot 2020-09-25 at 20.19.24](https://i.imgur.com/SaNoGbc.png)
+
+![Screen Shot 2020-09-25 at 20.20.29](https://i.imgur.com/pmUBRWX.png)
+
+![Screen Shot 2020-09-25 at 20.22.18](https://i.imgur.com/7QjmVUG.png)
+
+![Screen Shot 2020-09-25 at 20.22.51](https://i.imgur.com/2eYqR8D.png)
+
+![Screen Shot 2020-09-25 at 20.23.34](https://i.imgur.com/BwtcP5C.png)
+
+![Screen Shot 2020-09-25 at 20.24.29](https://i.imgur.com/cGu5fna.png)
+
+![Screen Shot 2020-09-25 at 20.26.24](https://i.imgur.com/wGz36kc.png)
+
+![Screen Shot 2020-09-25 at 20.27.26](https://i.imgur.com/PknnkBy.png)
+
+![Screen Shot 2020-09-25 at 20.29.03](https://i.imgur.com/xdBdhIu.png)
+
+![Screen Shot 2020-09-25 at 20.30.55](https://i.imgur.com/xJeA9oR.png)
+
+![Screen Shot 2020-09-25 at 20.32.52](https://i.imgur.com/XMSCJeJ.png)
+
+![Screen Shot 2020-09-25 at 20.35.28](https://i.imgur.com/dOOFz63.png)
+
+![Screen Shot 2020-09-25 at 20.37.06](https://i.imgur.com/OSaxOJq.png)
+
+![Screen Shot 2020-09-25 at 20.37.59](https://i.imgur.com/F1MDPuu.png)
+
+![Screen Shot 2020-09-25 at 20.40.00](https://i.imgur.com/dRhxHuK.png)
+
+![Screen Shot 2020-09-25 at 20.40.45](https://i.imgur.com/IdEJCZn.png)
+
+![Screen Shot 2020-09-25 at 20.41.49](https://i.imgur.com/VFHsxVg.png)
+
+![Screen Shot 2020-09-25 at 20.45.10](https://i.imgur.com/Uh0uPmE.png)
+
+### `PTES techinical Guidelines`
+
+![Screen Shot 2020-09-25 at 20.52.06](https://i.imgur.com/Dh34kdv.png)
+
+![Screen Shot 2020-09-25 at 20.53.44](https://i.imgur.com/A067j0P.png)
+
+![Screen Shot 2020-09-25 at 21.01.17](https://i.imgur.com/GXnX93q.png)
+
+
+
+
 
 
 ---
 
-## week 4
 
 
 
 
----
+
+
+
+
+
 
 .

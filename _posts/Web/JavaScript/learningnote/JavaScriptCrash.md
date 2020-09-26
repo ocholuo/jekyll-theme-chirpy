@@ -981,6 +981,7 @@ myHTML.onclick = function() {};
 const btn = document.querySelector('.btn');
 ```
 
+```js
 1.
 btn.onclick = function() {code}
 - user clicks on an HTML element
@@ -1020,7 +1021,7 @@ removeEventListener(event, code)
 myElement.onclick = functionA;
 myElement.addEventListener('click', functionA);
 
-
+```
 
 
 ### Mouse Event

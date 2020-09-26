@@ -75,9 +75,9 @@ sleepy....
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
-[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 9/2| ✔️
-[COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 9/6| ✔️
-[COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 9/10| ✔️
+[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2| ✔️
+[COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 100% 9/6| ✔️
+[COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 100% 9/10| ✔️
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
 [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17| ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
@@ -162,6 +162,7 @@ Python | [The Python Tutorial](https://docs.python.org/3/tutorial/) |
 AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md)
 **Code test environment** |
 . | [JavaScript](https://www.dukelearntoprogram.com//course1/example/index.php)
+. | [DS visualgo](https://visualgo.net/en/sorting?slide=1)
 **Web** |
 [crunchbase](https://www.crunchbase.com/hub/united-states-cloud-security-companies) | company search
 **API Gene** |
