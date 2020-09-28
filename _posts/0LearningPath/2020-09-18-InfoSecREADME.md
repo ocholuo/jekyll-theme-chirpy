@@ -25,7 +25,8 @@ kali用得好，监狱进得早，与君共勉
 
 Attack | Tool
 ---|---
-`Finding vulnerabilities` | Intruder <br>![Intruder](https://i.imgur.com/7BLUaKx.png)
+`vulnerability scanning & management` | OpenVAS <br> ![openvas10](https://i.imgur.com/8sJLdIh.png)
+`Finding vulnerabilities` | Intruder <br> ![Intruder](https://i.imgur.com/7BLUaKx.png)
 `Building anti-forensic and evasion tools` | Metasploit <br>![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
 `identified vulnerabilities` | Netsparker <br>![Netsparker](https://i.imgur.com/cuShMOy.jpg)
 ---|---
@@ -92,9 +93,10 @@ GoodWeb | Note
 Lab | Note
 ---|---
 [Internet Security](http://site.iugaza.edu.ps/mammar/internet-security/) <br> - [Attacklab](http://site.iugaza.edu.ps/nour/fall-2012/security-disc/) |
-[SEEDLab](https://seedsecuritylabs.org/lab_env.html) <br> - [Cross-Site Scripting Attack Lecture](https://www.youtube.com/watch?v=sFSq6dsDGzA&feature=youtu.be&ab_channel=KevinDu) |
-[SEED Labs – Cross-Site Scripting Attack Lab](http://www.cis.syr.edu/~wedu/seed/Labs_12.04/Web/Web_XSS_Elgg/Web_XSS_Elgg.pdf) | ✔️
+[SEEDLab](https://seedsecuritylabs.org/lab_env.html) |
+- [Cross-Site Scripting Attack Lab](http://www.cis.syr.edu/~wedu/seed/Labs_12.04/Web/Web_XSS_Elgg/Web_XSS_Elgg.pdf) | ✔️
 [InfosecLab](https://67327.cmuis.net/labs) |
+[pentest](https://www.pentesterlab.com/exercises) |
 
 ---
 

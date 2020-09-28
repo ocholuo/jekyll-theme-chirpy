@@ -298,7 +298,7 @@ public class HTTPSimpleForge {
 
 ---
 
-### Task 5 : Writing an XSS worm
+## Task 5 : Writing an XSS worm
 - coding a worm which can change the information of an account in the web app.
   - This requires the analysis of changing the 'about me' section in the web app.
 - The attacker user11 uses the other account samy to update the 'about me' section to study the process.
@@ -338,7 +338,7 @@ ff.send(params);
 
 ---
 
-### Task 6 : Creating a self propagating worm
+## Task 6 : Creating a self propagating worm
 - exponential growth
 - dynamically generate code
 

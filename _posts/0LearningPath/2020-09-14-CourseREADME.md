@@ -81,7 +81,7 @@ sleepy....
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
 [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17| ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
-[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) |
+[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **UMich. Python 3 Programming** 4/3 |
 [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming) | ✔️

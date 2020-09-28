@@ -1,0 +1,399 @@
+
+# REST API
+
+[toc]
+
+---
+
+## basic
+- REpresentational State Transfer. 
+- architectural style for distributed hypermedia systems
+- presented by Roy Fielding in 2000
+
+Like any other architectural style, REST have 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful. 
+
+### Guiding Principles of REST
+1. `Client–server`
+   - separating the user interface concerns from the data storage concerns
+   - improve the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.
+2. `Stateless`
+   - Each request from client to server must contain all of the information necessary to understand the request
+   - Each request cannot take advantage of any stored context on the server.
+   - Session state is therefore kept entirely on the client.
+3. `Cacheable`
+   - Cache constraints require that the data within a response to a request be implicitly or explicitly labeled as cacheable or non-cacheable. 
+   - If a response is cacheable, then a `client cache` is given the right to `reuse that response data` for later, equivalent requests.
+4. `Uniform interface`
+   - By applying the software engineering principle of generality to the component interface, the overall system architecture is simplified and the visibility of interactions is improved.
+   - In order to obtain a uniform interface, multiple architectural constraints are needed to guide the behavior of components.
+   - `REST` is defined by 4 interface constraints: 
+     - identification of resources;
+     - manipulation of resources through representations;
+     - self-descriptive messages;
+     - hypermedia as the engine of application state.
+5. `Layered system`
+   - The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each component cannot “see” beyond the immediate layer with which they are interacting.
+6. `Code on demand (optional)`
+   - REST allows client functionality to be extended by downloading and executing code in the form of `applets` or `scripts`. 
+   - This simplifies clients by reducing the number of features required to be pre-implemented.
+
+
+### Resource
+Any information that can be named can be a resource: a document or image, a temporal service, a collection of other resources, a non-virtual object (e.g. a person), and so on.
+
+`resource identifier`
+- identify the particular resource involved in an interaction between components.
+
+`resource representation`
+- The state of the resource at any particular timestamp
+- A representation consists of `data`, `metadata` describing the data and `hypermedia links` which help the clients in transition to the next desired state.
+
+`media type`
+- The data format of a representation
+- The media type identifies a specification that defines how a representation is to be processed. 
+- `A truly RESTful API looks like hypertext`. 
+- Every addressable unit of information carries an address, either explicitly (e.g., link and id attributes) or implicitly (e.g., derived from the media type definition and representation structure).
+
+
+## Resource Methods
+- to perform the desired transition. A large number of people wrongly relate resource methods to HTTP GET/PUT/POST/DELETE methods.
+
+---
+
+## design a REST API
+
+designing REST Services
+1. Identify `Object Model`
+2. Create Model `URIs`
+3. Determine `Representations`
+4. Assign `HTTP Methods`
+5. More Actions
+
+
+### Identify Object Model
+- identifying the objects which will be presented as resources.
+- For a network-based application, such as devices, managed entities, routers, modems, etc. 
+  - For simplicity sake, we will consider only two resources i.e.
+  - Devices
+  - Configurations
+- Here configuration is sub-resource of a device. 
+- A device can have many configuration options.
+
+Note that both objects/resources in our above model will have a unique identifier, which is the integer id property.
+
+1. Resource URIs are all nouns.
+2. `URIs` are usually in two forms
+   - collection of resources and singular resource.
+3. `Collection` may be in two forms 
+   - primary collection and secondary collection. 
+   - Secondary collection is sub-collection from a primary collection only.
+4. Each resource/collection contain at least `one link i.e. to itself`.
+5. Collections contain only most important information about resources.
+6. To get complete information about a resource, you need to access through its specific resource URI only.
+7. Representations can have extra links (i.e. methods in single device). Here method represent a `POST` method. You can have more attributes or form links in altogether new way also.
+8. We have not talked about operations on these resources yet.
+
+
+### Create Model URIs
+- designing the resource URIs – focus on the relationship between resources and its sub-resources. 
+- These resource URIs are endpoints for `RESTful` services.
+- URIs should all be nouns only.
+
+example:
+```bash
+# a device is a top-level resource. 
+# And configuration is sub-resource under the device. 
+
+/devices
+/devices/{id}
+ 
+/configurations
+/configurations/{id}
+ 
+/devices/{id}/configurations
+/devices/{id}/configurations/{id}
+```
+
+
+### Determine Representations
+- Mostly representations are defined in either XML or JSON format. 
+- We will see XML examples as its more expressive on how data is composed.
+
+#### Collection of Device Resource
+- When returning a collection resource, include only the most important information about resources. 
+- This will keep the size of payload small
+- improve the performance of REST APIs.
+
+```xml
+<devices size="2"> 
+ 
+    <link rel="self" href="/devices"/>
+ 
+    <device id="12345"> 
+        <link rel="self" href="/devices/12345"/>
+        <deviceFamily>apple-es</deviceFamily> 
+        <OSVersion>10.3R2.11</OSVersion> 
+        <platform>SRX100B</platform> 
+        <serialNumber>32423457</serialNumber> 
+        <connectionStatus>up</connectionStatus> 
+        <ipAddr>192.168.21.9</ipAddr> 
+        <name>apple-srx_200</name> 
+        <status>active</status>
+    </device> 
+ 
+    <device id="556677"> 
+        <link rel="self" href="/devices/556677"/>
+        <deviceFamily>apple-es</deviceFamily> 
+        <OSVersion>10.3R2.11</OSVersion> 
+        <platform>SRX100B</platform> 
+        <serialNumber>6453534</serialNumber> 
+        <connectionStatus>up</connectionStatus> 
+        <ipAddr>192.168.20.23</ipAddr> 
+        <name>apple-srx_200</name> 
+        <status>active</status>
+    </device> 
+ 
+</devices>
+```
+
+#### Single Device Resource
+- Opposite to collection URI, here include complete information of a device in this URI. 
+- also include a list of links for sub-resources and other supported operations. 
+- This will make your `REST API` HATEOAS driven.
+
+```xml
+<device id="12345"> 
+    <link rel="self" href="/devices/12345"/>
+ 
+    <id>12345</id> 
+    <deviceFamily>apple-es</deviceFamily> 
+    <OSVersion>10.0R2.10</OSVersion> 
+    <platform>SRX100-LM</platform> 
+    <serialNumber>32423457</serialNumber> 
+    <name>apple-srx_100_lehar</name> 
+    <hostName>apple-srx_100_lehar</hostName> 
+    <ipAddr>192.168.21.9</ipAddr> 
+    <status>active</status>
+ 
+    <configurations size="2">
+        <link rel="self" href="/configurations" />
+ 
+        <configuration id="42342">
+            <link rel="self" href="/configurations/42342" />
+        </configuration>
+ 
+        <configuration id="675675">
+            <link rel="self" href="/configurations/675675" />
+        </configuration>
+    </configurations>
+ 
+    <method href="/devices/12345/exec-rpc" rel="rpc"/> 
+    <method href="/devices/12345/synch-config"rel="synch device configuration"/> 
+</device>
+```
+
+#### Configuration Resource Collection
+- Similar to device collection representation
+- create configuration collection representation `with only minimal information`.
+
+```xml
+<configurations size="20">
+    <link rel="self" href="/configurations" />
+ 
+    <configuration id="42342">
+        <link rel="self" href="/configurations/42342" />
+    </configuration>
+ 
+    <configuration id="675675">
+        <link rel="self" href="/configurations/675675" />
+    </configuration>
+    ...
+    ...
+</configurations>
+```
+
+Please note that configurations collection representation inside device is similar to top-level configurations URI. 
+- Only difference is that configurations for a device are only two, so only two configuration items are listed as subresource under device.
+
+#### Single Configuration Resource
+Now, single configuration resource representation must have all possible information about this resource – including relevant links.
+
+```xml
+<configuration id="42342">
+    <link rel="self" href="/configurations/42342" />
+    <content><![CDATA[...]]></content>
+    <status>active</status>
+    <link  rel="raw configuration content" href="/configurations/42342/raw" /> 
+</configuration>
+```
+
+#### Configuration Resource Collection Under Single Device
+This resource collection of configurations will be a subset of the primary collection of configurations, and will be specific a device only. 
+- As it is the subset of primary collection, DO NOT create a different representation data fields than primary collection. 
+- Use the same presentation fields as the primary collection.
+
+```xml
+<configurations size="2">
+    <link rel="self" href="/devices/12345/configurations" />
+ 
+    <configuration id="53324">
+        <link rel="self" href="/devices/12345/configurations/53324" />
+        <link rel="detail" href="/configurations/53324" />
+    </configuration>
+ 
+    <configuration id="333443">
+        <link rel="self" href="/devices/12345/configurations/333443" />
+        <link rel="detail" href="/configurations/333443" />
+    </configuration>
+</configurations>
+```
+
+Notice that this subresource collection has two links. One for its direct representation inside sub-collection `i.e. /devices/12345/configurations/333443` and other pointing to its location in primary collection `i.e. /configurations/333443`.
+
+Having two links is essential as you can provide access to a device- specific configuration in a more unique manner, and you will have the ability to mask some fields (if design requires it), which shall not be visible in a secondary collection.
+
+
+#### Single Configuration Resource Under Single Device
+This representation should have either exactly similar representation as of Configuration representation from the primary collection, OR you may mask few fields.
+- This subresource representation will also have an additional link to its primary presentation.
+
+```xml
+<configuration id="11223344">
+    <link rel="self" href="/devices/12345/configurations/11223344" />
+    <link rel="detail" href="/configurations/11223344" />
+    <content><![CDATA[...]]></content>
+    <status>active</status>
+    <link rel="raw configuration content" href="/configurations/11223344/raw" /> 
+</configuration>
+```
+
+---
+
+### Assign HTTP Methods
+- resource URIs and their representation are fixed
+- decide the possible operations in the application and map these operations on resource URIs. 
+- A user of our network application can perform browse, create, update, or delete operations. So let’s assign them.
+
+#### Browse all devices or configurations [Primary Collection]
+
+```bash
+HTTP GET /devices
+HTTP GET /configurations
+
+# If the collection size is large
+# apply paging and filtering as well. 
+# e.g., Below requests will fetch the first 20 records from collection.
+HTTP GET /devices?startIndex=0&size=20
+HTTP GET /configurations?startIndex=0&size=20
+```
+
+#### Browse all devices or configurations [Secondary Collection]
+
+```bash
+HTTP GET /devices/{id}/configurations
+# It will be mostly a small size collection – so no need to enable filtering or soring here.
+```
+
+#### Browse single device or configuration [Primary Collection]
+
+- To get the complete detail of a device or configuration, use GET operation on singular resource URIs.
+```
+HTTP GET /devices/{id}
+HTTP GET /configurations/{id}
+```
+
+#### Browse single device or configuration [Secondary Collection]
+```
+HTTP GET /devices/{id}/configurations/{id}
+Subresource representation will be either same as or a subset of primary presentation.
+```
+
+#### Create a device or configuration
+Create is not idempotent operation
+- in HTTP protocol – POST is also not idempotent. So use POST.
+```
+HTTP POST /devices
+HTTP POST /configurations
+```
+Please note that request payload will not contain any id attribute, as the server is responsible for deciding it. 
+- The response to create request will look like this:
+
+```xml
+HTTP/1.1 201 Created
+Content-Type: application/xml
+Location: http://example.com/network-app/configurations/678678
+ 
+<configuration id="678678">
+    <link rel="self" href="/configurations/678678" />
+    <content><![CDATA[...]]></content>
+    <status>active</status>
+    <link  rel="raw configuration content" href="/configurations/678678/raw" /> 
+</configuration>
+
+```
+
+#### Update a device or configuration
+Update operation is an idempotent operation and HTTP PUT is also is idempotent method. So we can use PUT method for update operations.
+```
+HTTP PUT /devices/{id}
+HTTP PUT /configurations/{id}
+```
+
+PUT response may look like this.
+
+```xml
+HTTP/1.1 200 OK
+Content-Type: application/xml
+ 
+<configuration id="678678">
+    <link rel="self" href="/configurations/678678" />
+    <content><![CDATA[. updated content here .]]></content>
+    <status>active</status>
+    <link  rel="raw configuration content" href="/configurations/678678/raw" /> 
+</configuration>
+```
+
+#### Remove a device or configuration
+
+```xml
+HTTP DELETE /devices/{id}
+HTTP DELETE /configurations/{id}
+```
+
+A successful response SHOULD be 
+- 202 (Accepted) if resource has been queues for deletion (async operation), 
+- or 200 (OK) / 204 (No Content) if resource has been deleted permanently (sync operation).
+
+In the case of async operation, the application shall return a task id that can be tracked for success/failure status.
+
+Please note that you should put enough analysis in deciding the behavior when a subresource is deleted from the system. Usually, you may want to `SOFT DELETE` a resource in these requests
+- in other words, set their status INACTIVE. By following this approach, you will not need to find and remove its references from other places as well.
+
+#### Applying or Removing a configuration from a device
+In a real application, you will need to apply the configuration on the device – OR you may want to remove the configuration from the device (not from the primary collection). You shall use PUT and DELETE methods in this case, because of its idempotent nature.
+
+```bash
+# //Apply Configuration on a device
+HTTP PUT /devices/{id}/configurations       
+ 
+# //Remove Configuration on a device  
+HTTP DELETE /devices/{id}/configurations/{id}       
+```
+
+
+
+
+
+---
+
+References:
+- [1](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
+- [2](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [restful](https://restfulapi.net/)
+
+
+
+
+
+
+.
