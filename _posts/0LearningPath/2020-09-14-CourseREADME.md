@@ -65,7 +65,7 @@ sleepy....
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **IBM Cybersecurity Analyst Professional Certificate** |
 [COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25 | ✔️
-[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) |
+[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
 [COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
 [COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
@@ -73,6 +73,9 @@ sleepy....
 [COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
 [COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
+| :--------------------------------------------------------------------------------------------------- | :--- |
+[runestone](https://runestone.academy/runestone/default/user/register) | ✏️
+[Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds/index.html) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
 [COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2| ✔️

@@ -19,6 +19,26 @@ toc: true
 
 ---
 
+## Pragma
+
+The `Pragma HTTP/1.0` general header is an implementation-specific header that may have various effects along the request-response chain. 
+
+It is used for backwards compatibility with HTTP/1.0 caches where the `Cache-Control HTTP/1.1` header is not yet present.
+
+Pragma is not specified for HTTP responses and not a reliable replacement for the general `HTTP/1.1 Cache-Control` header
+- although it does behave the same as `Cache-Control`: `no-cache`, if the` Cache-Control` header field is omitted in a request. 
+- Use Pragma only for backwards compatibility with HTTP/1.0 clients.
+
+
+**Syntax**
+
+`Pragma: no-cache`
+- `no-cache`: Forces caches to submit the request to the origin server for validation before releasing a cached copy.
+
+
+
+---
+
 ## `WWW-Authenticate` response header 
 - `WWW-Authenticate`
   - Header type	Response `header`

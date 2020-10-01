@@ -1,5 +1,5 @@
 ---
-title: HTTP Referer
+title: HTTP - Requests
 # author: Grace JyL
 date: 2020-04-25 11:11:11 -0400
 description:
@@ -13,11 +13,13 @@ toc: true
 ---
 
 
-# 4.3 HTTP Method
+# HTTP - Requests
 
 [toc]
 
 ---
+
+# 4.3 HTTP Method
 
 ## 4.3.1.  GET
 
@@ -390,9 +392,9 @@ Host: server.example.com:80
 - by directly connecting to the request-target
 - or, if configured to use another proxy, by forwarding the `CONNECT` request to the next inbound proxy.
 
-Any `2xx (Successful) response` indicates that the sender (and all inbound proxies) will switch to tunnel mode immediately after the blank line that concludes the successful response's header section; data received after that blank line is from the server identified by the request-target.  
+Any `2xx (Successful) response` # the sender (and all inbound proxies) will switch to tunnel mode immediately after the blank line that concludes the successful response's header section; data received after that blank line is from the server identified by the request-target.  
 
-Any response other than a successful response indicates that the tunnel has not yet been formed and that the connection remains governed by HTTP.
+Any response other than a successful response # the tunnel has not yet been formed and that the connection remains governed by HTTP.
 
 A tunnel is closed when a tunnel intermediary detects that either side has closed its connection:
 - the intermediary MUST attempt to send any outstanding data that came from the closed side to the other side, close both connections, and then discard any remaining data left undelivered.
@@ -597,6 +599,981 @@ ETag: "e0023aa4f"
 ```
 
 ---
+
+# HTTP - Requests
+
+An HTTP client sends an HTTP request to a server in the form of a request message which includes following format:
+
+```
+A Request-line
+
+Zero or more header (General|Request|Entity) fields followed by CRLF
+
+An empty line (i.e., a line with nothing preceding the CRLF) 
+indicating the end of the header fields
+
+Optionally a message-body
+```
+
+---
+
+## Request-Line
+
+The Request-Line begins with a `method token`, followed by the `Request-URI` and the `protocol version`, and ending with `CRLF`. The elements are separated by space `SP` characters.
+
+Request-Line = `Method` SP `Request-URI` SP `HTTP-Version` `CRLF`
+
+
+## Request-URI
+
+The Request-URI is a `Uniform Resource Identifier` and identifies the resource upon which to apply the request. 
+
+`Request-URI = "*" | absoluteURI | abs_path | authority`
+
+```bash
+# 1. The asterisk * 
+# used when an HTTP request does not apply to a particular resource, but to the server itself
+# only allowed when the method used does not necessarily apply to a resource.
+OPTIONS * HTTP/1.1
+
+# 2. The absoluteURI
+# used when an HTTP request is being made to a proxy. 
+# The proxy is requested to forward the request or service from a valid cache, and return the response.
+GET http://www.w3.org/pub/WWW/TheProject.html HTTP/1.1
+
+# 3. The most common form of Request-URI
+# to identify a resource on an origin server or gateway. 
+# For example, a client wishing to retrieve a resource directly from the origin server would create a TCP connection to port 80 of the host "www.w3.org" and send the following lines:
+GET /pub/WWW/TheProject.html HTTP/1.1
+Host: www.w3.org
+# Note that the absolute path cannot be empty; if none is present in the original URI, it MUST be given as "/" (the server root).
+```
+
+## General-header, Entity-header and Request header
+
+- `POST` /cgi-bin/process.cgi `HTTP/1.1`
+- `User-Agent`: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+- `Host`: www.tutorialspoint.com
+- `Content-Type`: application/x-www-form-urlencoded
+- `Content-Length`: 12345
+- `Accept-Language`: en-us
+- `Accept-Encoding`: gzip, deflate
+- `Connection`: Keep-Alive
+- licenseID=string&content=string&/paramsXML=string
+
+
+### Request Header Fields
+
+The request-header fields 
+- allow the client to pass additional information about the request, and about the client itself, to the server. 
+- These fields act as request modifiers.
+
+```bash
+# to fetch hello.htm page from the web server running on tutorialspoint.com
+# not sending any request data to the server because we are fetching a plain HTML page from the server.
+GET /hello.htm HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Host: www.tutorialspoint.com
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+# Connection is a general-header, and the rest of the headers are request headers. 
+
+
+POST /cgi-bin/process.cgi HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Host: www.tutorialspoint.com
+Content-Type: application/x-www-form-urlencoded
+# the passed data is a simple web form data
+Content-Length: 12345
+# the actual length of the data put in the message body
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+licenseID=string&content=string&/paramsXML=string
+```
+
+
+---
+
+# HTTP - Responses
+
+After receiving and interpreting a request message, a server responds with an HTTP response message:
+
+```
+A Status-line
+
+Zero or more header (General|Response|Entity) fields followed by CRLF
+
+An empty line (i.e., a line with nothing preceding the CRLF) indicating the end of the header fields
+
+Optionally a message-body
+```
+
+---
+
+## Message Status-Line
+
+A Status-Line consists of the protocol version followed by a numeric status code and its associated textual phrase. 
+
+Status-Line = `HTTP-Version` SP `Status-Code` SP `Reason-Phrase` CRLF```
+
+---
+
+### HTTP Version
+
+`HTTP-Version = HTTP/1.1````
+
+---
+
+### Status Code
+
+3-digit integer 
+- first digit of the Status-Code defines the class of response
+- the last two digits do not have any categorization role. 
+
+```bash
+1xx: Informational
+# It means the request was received and the process is continuing.
+
+2xx: Success
+# It means the action was successfully received, understood, and accepted.
+
+3xx: Redirection
+# It means further action must be taken in order to complete the request.
+
+4xx: Client Error
+# It means the request contains incorrect syntax or cannot be fulfilled.
+
+5xx: Server Error
+# It means the server failed to fulfill an apparently valid request.
+```
+
+---
+
+
+# HTTP - Header Fields
+
+HTTP header fields provide required information about the request or response, or about the object sent in the message body. There are four types of HTTP message headers:
+
+- `General-header`: These header fields have general applicability for both request and response messages.
+- `Client Request-header`: These header fields have applicability only for request messages.
+- `Server Response-header`: These header fields have applicability only for response messages.
+- `Entity-header`: These header fields define meta information about the entity-body or, if no body is present, about the resource identified by the request.
+
+
+## General Headers
+
+### Cache-Control 怎么留留多久
+- `Cache-Control : cache-request-directive | cache-response-directive`
+- An HTTP client or server use it 
+- specify directives that MUST be obeyed by all the caching system. 
+- specify parameters for the cache 
+
+
+`cache request directives` that can be **used by the client in its HTTP request**:
+
+```bash
+1	no-cache
+# A cache must not use the response to satisfy a subsequent request without successful revalidation with the origin server.
+
+2	no-store
+# The cache should not store anything about the client request or server response.
+
+3	max-age = seconds
+# the client is willing to accept a response 
+# whose age is not greater than the specified time in seconds.
+
+4	max-stale [ = seconds ]
+# the client is willing to accept a response that has exceeded its expiration time. 
+# If seconds are given, it must not be expired by more than that time.
+
+5	min-fresh = seconds
+# the client is willing to accept a response 
+# whose freshness lifetime is not less than its current age plus the specified time in seconds.
+
+6	no-transform
+# Does not convert the entity-body.
+
+7	only-if-cached
+# Does not retrieve new data. 
+# The cache can send a document only if it is in the cache, and should not contact the origin-server to see if a newer copy exists.
+```
+
+`cache response directives` that can **be used by the server in its HTTP response**:
+
+```bash
+1	public
+# the response may be cached by any cache.
+
+2	private
+# all or part of the response message is intended for a single user
+# must not be cached by a shared cache.
+
+3	no-cache
+# A cache must not use the response to satisfy a subsequent request without successful re-validation with the origin server.
+
+4	no-store
+# The cache should not store anything about the client request or server response.
+
+5	no-transform
+# Does not convert the entity-body.
+
+6	must-revalidate
+# The cache must verify the status of the stale documents before using it and expired ones should not be used.
+
+7	proxy-revalidate
+# The proxy-revalidate directive has the same meaning as the must- revalidate directive, except that it does not apply to non-shared user agent caches.
+
+8	max-age = seconds
+# the client is willing to accept a response 
+# whose age is not greater than the specified time in seconds.
+
+9	s-maxage = seconds
+# The maximum age specified by this directive overrides the maximum age specified by either the max-age directive or the Expires header. 
+# The s-maxage directive is always ignored by a private cache.
+```
+
+---
+
+### Connection 告诉server希望close还是keep-alive
+- allows the sender to `specify options` that are desired for that particular connection and `must not be communicated by proxies` over further connections. 
+
+`Connection : "Connection"`
+- HTTP/1.1 defines the "close" connection option for the sender 
+- to signal that the connection will be closed after completion of the response. 
+
+```bash
+Connection: close
+# By default, HTTP 1.1 uses persistent connections, where the connection does not automatically close after a transaction. HTTP 1.0, on the other hand, does not have persistent connections by default. 
+
+Connection: keep-alive
+# If a 1.0 client wishes to use persistent connections, it uses the keep-alive parameter
+```
+
+---
+
+### Date
+
+All HTTP date/time stamps MUST be represented in Greenwich Mean Time (GMT), without exception. 
+
+HTTP applications are allowed to use any of the following three representations of date/time stamps:
+
+```bash
+# Sun, 06 Nov 1994 08:49:37 GMT  ; RFC 822, updated by RFC 1123
+Here the first format is the most preferred one.
+Sunday, 06-Nov-94 08:49:37 GMT ; RFC 850, obsoleted by RFC 1036
+Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
+```
+
+---
+
+### Pragma
+
+to include implementation specific directives that might apply to any recipient along the request/response chain. 
+
+```bash
+Pragma: no-cache
+# The only directive defined in HTTP/1.0 is the no-cache directive and is maintained in HTTP 1.1 for backward compatibility. 
+# No new Pragma directives will be defined in the future.
+```
+
+---
+
+### Trailer
+
+indicates that `the given set of header fields` is present in `the trailer of a message` encoded with chunked transfer-coding. 
+
+```bash
+Trailer : field-name
+# Message header fields listed in the Trailer header field must not include the following header fields:
+
+Transfer-Encoding
+Content-Length
+Trailer
+```
+
+---
+
+### Transfer-Encoding
+
+indicates `what type of transformation has been applied to the message body` 
+- in order to safely transfer it between the sender and the recipient.
+- This is not the same as content-encoding because transfer-encodings are a property of the message, not of the entity-body.
+- All transfer-coding values are case-insensitive. 
+
+```bash
+Transfer-Encoding: chunked
+```
+
+---
+
+### Upgrade
+
+allows the client to specify what additional communication protocols it supports and would like to use if the server finds it appropriate to switch protocols.
+- provide a simple mechanism for transition from HTTP/1.1 to some other, incompatible protocol.
+
+```bash
+Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+```
+
+---
+
+### Via 中途proxy路径
+- to provide a simple mechanism for transition from HTTP/1.1 to some other, incompatible protocol.
+- must be used by gateways and proxies to indicate the intermediate protocols and recipients. 
+- For example:
+  - a request message sent from an **HTTP/1.0** `user agent` to an `internal proxy code-named "fred"`
+  - `internal proxy code-named "fred"` uses **HTTP/1.1** to forward the request to a `public proxy at nowhere.com`
+  - `public proxy at nowhere.com` to forward it to the `origin server at www.ics.uci.edu`.
+  - request completes
+- The request received by www.ics.uci.edu would then have the following Via header field:
+
+```bash
+Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+```
+
+---
+
+### Warning
+
+- carry `additional information about the status or transformation` of a message which `might not be reflected in the message`. 
+- A response may carry more than one Warning header.
+
+```bash
+Warning : warn-code SP warn-agent SP warn-text SP warn-date
+```
+
+---
+
+## Client Request Headers```
+
+---
+
+### Accept 什么样的文件 text/plain/html/x-dvi/x-c
+
+- specify `certain media types` which are acceptable for the response. 
+
+```bash
+Accept: type/subtype [q=qvalue]
+# Multiple media types can be listed separated by commas
+# the optional qvalue represents an acceptable quality level for accept types on a scale of 0 to 1. 
+
+Accept: text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c
+# This would be interpreted as text/html and text/x-c are the preferred media types
+# but if they do not exist, then send the text/x-dvi entity
+# if that does not exist, send the text/plain entity.
+```
+
+---
+
+### Accept-Charset 接受的字符
+
+- indicate what `character sets` are acceptable for the response. 
+
+```bash
+Accept-Charset: character_set [q=qvalue]
+# Multiple character sets can be listed separated by commas and the optional qvalue represents an acceptable quality level for nonpreferred character sets on a scale of 0 to 1. Following is an example:
+
+Accept-Charset: iso-8859-5, unicode-1-1; q=0.8
+# The special value "*", if present in the Accept-Charset field, matches every character set and if no Accept-Charset header is present, the default is that any character set is acceptable.
+```
+
+---
+
+### Accept-Encoding
+
+- similar to Accept, but restricts the `content-codings that are acceptable` in the response. 
+
+```bash
+Accept-Encoding: encoding types
+
+# Examples:
+Accept-Encoding: compress, gzip
+Accept-Encoding:
+Accept-Encoding: *
+Accept-Encoding: compress;q=0.5, gzip;q=1.0
+Accept-Encoding: gzip;q=1.0, identity;q=0.5, *;q=0
+```
+
+---
+
+### Accept-Language
+
+- similar to Accept, but restricts the set of natural languages that are preferred as a response to the request.
+
+```bash
+Accept-Language: language [q=qvalue]
+# Multiple languages can be listed separated by commas and the optional qvalue represents an acceptable quality level for non preferred languages on a scale of 0 to 1. Following is an example:
+
+Accept-Language: da, en-gb;q=0.8, en;q=0.7
+```
+
+---
+
+### Authorization 后接encode的验证信息
+
+- consists of credentials containing the `authentication information of the user agent` for the `realm` of the resource being requested. 
+
+```bash
+Authorization : credentials
+# The HTTP/1.0 specification defines the BASIC authorization scheme, where the authorization parameter is the string of username:password encoded in base 64. 
+
+Authorization: BASIC Z3Vlc3Q6Z3Vlc3QxMjM=
+# The value decodes into is guest:guest123 where guest is user ID and guest123 is the password.
+```
+
+---
+
+### Cookie
+
+- contains a name/value pair of information stored for that URL. 
+
+```bash
+Cookie: name=value
+Multiple cookies can be specified separated by semicolons as follows:
+
+Cookie: name1=value1;name2=value2;name3=value3
+```
+
+---
+
+### Expect 用户要求的server行动
+
+- indicate that a `particular set of server behaviors is required by the client`.
+
+```bash
+Expect : 100-continue | expectation-extension
+# If a server receives a request containing an Expect field that includes an expectation-extension that it does not support, 
+# it must respond with a 417 (Expectation Failed) status.
+```
+
+---
+
+### From
+
+- contains an Internet e-mail address for the human user who controls the requesting user agent. 
+
+```bash
+From: webmaster@w3.org
+# This header field may be used for logging purposes and as a means for identifying the source of invalid or unwanted requests.
+```
+
+---
+
+### Host
+- to specify the Internet host and the port number of the resource being requested. 
+
+```bash
+Host : "Host" ":" host [ ":" port ] ;
+# A host without any trailing port information implies the default port, which is 80. 
+
+# request on the origin server for http://www.w3.org/pub/WWW/ would be:
+GET /pub/WWW/ HTTP/1.1
+Host: www.w3.org
+```
+
+---
+
+### If-Match
+- used with a method to make it conditional. 
+- This header `requests the server to perform the requested method` 
+- only if the `given value in this tag` matches the `given entity tags represented by ETag`.
+- If none of the entity tags match, or if "*" is given and no current entity exists
+- the server must not perform the requested method, and must return a `412 (Precondition Failed) response`.
+
+```bash
+If-Match : entity-tag
+# An asterisk (*) matches any entity, and the transaction continues only if the entity exists. 
+
+If-Match: "xyzzy"
+If-Match: "xyzzy", "r2d2xxxx", "c3piozzzz"
+If-Match: *
+```
+
+---
+
+### If-Modified-Since
+- used with a method to make it conditional. 
+- If the requested URL `has not been modified since the time` specified in this field
+  - an entity will not be returned from the server; 
+- instead, a `304 (not modified) response` will be returned without any message-body. 
+- If none of the entity tags match, or if "*" is given and no current entity exists, the server must not perform the requested method, and must return a `412 (Precondition Failed) response`.
+
+```bash
+If-Modified-Since : HTTP-date
+# An example of the field is:
+
+If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT  
+```
+
+---
+
+### If-None-Match
+- used with a method to make it conditional. 
+- This header requests the server to perform the requested method only if none of the `given value in this tag` matches the `given entity tags represented by ETag`. 
+
+```bash
+If-None-Match : entity-tag
+# An asterisk (*) matches any entity, and the transaction continues only if the entity does not exist. 
+
+If-None-Match: "xyzzy"
+If-None-Match: "xyzzy", "r2d2xxxx", "c3piozzzz"
+If-None-Match: * 
+```
+
+---
+
+### If-Range 时间 本日部分更新/全新一日更新
+- can be used with a conditional `GET` to 
+  - request `only the portion of the entity that is missing`, if it has not been changed, 
+  - `the entire entity` if it has been changed.
+
+```bash
+If-Range : entity-tag | HTTP-date
+# Either an entity tag or a date can be used to identify the partial entity already received. For example:
+
+If-Range: Sat, 29 Oct 1994 19:43:31 GMT
+# Here if the document has not been modified since the given date, the server returns the byte range given by the Range header, otherwise it returns all of the new document.
+```
+
+---
+
+### If-Unmodified-Since 如果在此时间前无修改的话
+- used with a method to make it conditional.
+- If the requested resource has not been modified since the time, the server should perform the requested operation 
+  - as if the If-Unmodified-Since header were not present.
+
+```bash
+If-Unmodified-Since : HTTP-date
+# If the requested resource has not been modified since the time specified in this field, the server should perform the requested operation as if the If-Unmodified-Since header were not present.
+
+If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+If the request results in anything other than a 2xx or 412 status, the If-Unmodified-Since header should be ignored.
+```
+
+---
+
+### Max-Forwards 最大跳跃数
+- provides a mechanism with the `TRACE` and `OPTIONS` methods 
+- limit the `number of proxies or gateways that can forward` the request to the next inbound server.
+  - The Max-Forwards value is a decimal integer 
+  - indicating `the remaining number of times` this request message may be forwarded. 
+- This is useful for debugging with the `TRACE` method, avoiding infinite loops. 
+
+```bash
+Max-Forwards : 5
+# The Max-Forwards header field may be ignored for all other methods defined in the HTTP specification.
+```
+
+---
+
+### Proxy-Authorization
+The Proxy-Authorization request-header field allows the client to identify itself (or its user) to a proxy which requires authentication. Here is the general syntax:
+
+Proxy-Authorization : credentials
+The Proxy-Authorization field value consists of credentials containing the authentication information of the user agent for the proxy and/or realm of the resource being requested.
+```
+
+---
+
+### Range
+The Range request-header field specifies the partial range(s) of the content requested from the document. The general syntax is:
+
+Range: bytes-unit=first-byte-pos "-" [last-byte-pos]
+The first-byte-pos value in a byte-range-spec gives the byte-offset of the first byte in a range. The last-byte-pos value gives the byte-offset of the last byte in the range; that is, the byte positions specified are inclusive. You can specify a byte-unit as bytes. Byte offsets start at zero. Some simple examples are as follows:
+
+- The first 500 bytes 
+Range: bytes=0-499
+
+- The second 500 bytes
+Range: bytes=500-999
+
+- The final 500 bytes
+Range: bytes=-500
+
+- The first and last bytes only
+Range: bytes=0-0,-1
+Multiple ranges can be listed, separated by commas. If the first digit in the comma-separated byte range(s) is missing, the range is assumed to count from the end of the document. If the second digit is missing, the range is byte n to the end of the document.
+```
+
+---
+
+### Referer
+The Referer request-header field allows the client to specify the address (URI) of the resource from which the URL has been requested. The general syntax is as follows:
+
+Referer : absoluteURI | relativeURI
+Following is a simple example:
+
+Referer: http://www.tutorialspoint.org/http/index.htm
+If the field value is a relative URI, it should be interpreted relative to the Request-URI.
+```
+
+---
+
+### TE
+The TE request-header field indicates what extension transfer-coding it is willing to accept in the response and whether or not it is willing to accept trailer fields in a chunked transfer-coding. Following is the general syntax:
+
+TE   : t-codings
+The presence of the keyword "trailers" # the client is willing to accept trailer fields in a chunked transfer-coding and it is specified either of the ways:
+
+TE: deflate
+TE:
+TE: trailers, deflate;q=0.5
+If the TE field-value is empty or if no TE field is present, then only transfer-coding is chunked. A message with no transfer-coding is always acceptable.
+```
+
+---
+
+### User-Agent
+The User-Agent request-header field contains information about the user agent originating the request. Following is the general syntax:
+
+User-Agent : product | comment
+Example:
+
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Server Response Headers```
+
+---
+
+### Accept-Ranges
+The Accept-Ranges response-header field allows the server to indicate its acceptance of range requests for a resource. The general syntax is:
+
+Accept-Ranges  : range-unit | none
+For example a server that accepts byte-range requests may send:
+
+Accept-Ranges: bytes
+Servers that do not accept any kind of range request for a resource may send:
+
+Accept-Ranges: none
+This will advise the client not to attempt a range request.
+```
+
+---
+
+### Age
+The Age response-header field conveys the sender's estimate of the amount of time since the response (or its revalidation) was generated at the origin server. The general syntax is:
+
+Age : delta-seconds
+Age values are non-negative decimal integers, representing time in seconds. Following is a simple example:
+
+Age: 1030
+An HTTP/1.1 server that includes a cache must include an Age header field in every response generated from its own cache.
+```
+
+---
+
+### ETag
+The ETag response-header field provides the current value of the entity tag for the requested variant. The general syntax is:
+
+ETag :  entity-tag
+Here are some simple examples:
+
+ETag: "xyzzy"
+ETag: W/"xyzzy"
+ETag: ""```
+
+---
+
+### Location
+The Location response-header field is used to redirect the recipient to a location other than the Request-URI for completion. The general syntax is:
+
+Location : absoluteURI
+Following is a simple example:
+
+Location: http://www.tutorialspoint.org/http/index.htm
+The Content-Location header field differs from Location in that the Content-Location identifies the original location of the entity enclosed in the request.
+```
+
+---
+
+### Proxy-Authenticate
+The Proxy-Authenticate response-header field must be included as a part of a 407 (Proxy Authentication Required) response. The general syntax is:
+
+Proxy-Authenticate  : challenge```
+
+---
+
+### Retry-After
+The Retry-After response-header field can be used with a 503 (Service Unavailable) response to indicate how long the service is expected to be unavailable to the requesting client. The general syntax is:
+
+Retry-After : HTTP-date | delta-seconds
+Examples:
+
+Retry-After: Fri, 31 Dec 1999 23:59:59 GMT
+Retry-After: 120
+In the latter example, the delay is 2 minutes.
+```
+
+---
+
+### Server
+The Server response-header field contains information about the software used by the origin server to handle the request. The general syntax is:
+
+Server : product | comment
+Following is a simple example:
+
+Server: Apache/2.2.14 (Win32)
+If the response is being forwarded through a proxy, the proxy application must not modify the Server response-header.
+```
+
+---
+
+### Set-Cookie
+The Set-Cookie response-header field contains a name/value pair of information to retain for this URL. The general syntax is:
+
+Set-Cookie: NAME=VALUE; OPTIONS
+Set-Cookie response header comprises the token Set-Cookie, followed by a comma-separated list of one or more cookies. Here are the possible values you can specify as options:
+
+S.N.	Options and Description
+
+```bash
+1	Comment=comment
+This option can be used to specify any comment associated with the cookie.
+
+2	Domain=domain
+The Domain attribute specifies the domain for which the cookie is valid.
+
+3	Expires=Date-time
+# The date the cookie will expire. If it is blank, the cookie will expire when the visitor quits the browser.
+
+4	Path=path
+# The Path attribute specifies the subset of URLs to which this cookie applies.
+
+5	Secure
+# It instructs the user agent to return the cookie only under a secure connection.
+
+Following is an example of a simple cookie header generated by the server:
+
+Set-Cookie: name1=value1,name2=value2; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+Vary
+The Vary response-header field specifies that the entity has multiple sources and may therefore vary according to the specified list of request header(s). Following is the general syntax:
+
+Vary : field-name
+You can specify multiple headers separated by commas and a value of asterisk "*" signals that unspecified parameters are not limited to the request-headers. Following is a simple example:
+
+Vary: Accept-Language, Accept-Encoding
+Here field names are case-insensitive.
+
+WWW-Authenticate
+The WWW-Authenticate response-header field must be included in 401 (Unauthorized) response messages. The field value consists of at least one challenge that indicates the authentication scheme(s) and parameters applicable to the Request-URI. The general syntax is:
+
+WWW-Authenticate : challenge
+WWW- Authenticate field value might contain more than one challenge, or if more than one WWW-Authenticate header field is provided, the contents of a challenge itself can contain a comma-separated list of authentication parameters. Following is a simple example:
+
+WWW-Authenticate: BASIC realm="Admin"
+Entity Headers
+Allow
+The Allow entity-header field lists the set of methods supported by the resource identified by the Request-URI. The general syntax is:
+
+Allow : Method
+You can specify multiple methods separated by commas. Following is a simple example:
+
+Allow: GET, HEAD, PUT
+This field cannot prevent a client from trying other methods.
+
+Content-Encoding
+The Content-Encoding entity-header field is used as a modifier to the media-type. The general syntax is:
+
+Content-Encoding : content-coding
+The content-coding is a characteristic of the entity identified by the Request-URI. Following is a simple example:
+
+Content-Encoding: gzip
+If the content-coding of an entity in a request message is not acceptable to the origin server, the server should respond with a status code of 415 (Unsupported Media Type).
+
+Content-Language
+The Content-Language entity-header field describes the natural language(s) of the intended audience for the enclosed entity. Following is the general syntax:
+
+Content-Language : language-tag
+Multiple languages may be listed for content that is intended for multiple audiences. Following is a simple example:
+
+Content-Language: mi, en
+The primary purpose of Content-Language is to allow a user to identify and differentiate entities according to the user's own preferred language.
+
+Content-Length
+The Content-Length entity-header field indicates the size of the entity-body, in decimal number of OCTETs, sent to the recipient or, in the case of the HEAD method, the size of the entity-body that would have been sent, had the request been a GET. The general syntax is:
+
+Content-Length : DIGITS
+Following is a simple example:
+
+Content-Length: 3495
+Any Content-Length greater than or equal to zero is a valid value.
+
+Content-Location
+The Content-Location entity-header field may be used to supply the resource location for the entity enclosed in the message when that entity is accessible from a location separate from the requested resource's URI. The general syntax is:
+
+Content-Location:  absoluteURI | relativeURI 
+Following is a simple example:
+
+Content-Location: http://www.tutorialspoint.org/http/index.htm
+The value of Content-Location also defines the base URI for the entity.
+
+Content-MD5
+The Content-MD5 entity-header field may be used to supply an MD5 digest of the entity for checking the integrity of the message upon receipt. The general syntax is:
+
+Content-MD5  : md5-digest using base64 of 128 bit MD5 digest as per RFC 1864
+Following is a simple example:
+
+Content-MD5  : 8c2d46911f3f5a326455f0ed7a8ed3b3
+The MD5 digest is computed based on the content of the entity-body, including any content-coding that has been applied, but not including any transfer-encoding applied to the message-body.
+
+Content-Range
+The Content-Range entity-header field is sent with a partial entity-body to specify where in the full entity-body the partial body should be applied. The general syntax is:
+
+Content-Range : bytes-unit SP first-byte-pos "-" last-byte-pos
+Examples of byte-content-range-spec values, assuming that the entity contains a total of 1234 bytes:
+
+- The first 500 bytes:
+Content-Range : bytes 0-499/1234
+
+- The second 500 bytes:
+Content-Range : bytes 500-999/1234
+
+- All except for the first 500 bytes:
+Content-Range : bytes 500-1233/1234
+
+- The last 500 bytes:
+Content-Range : bytes 734-1233/1234
+When an HTTP message includes the content of a single range, this content is transmitted with a Content-Range header, and a Content-Length header showing the number of bytes actually transferred. For example,
+
+HTTP/1.1 206 Partial content
+Date: Wed, 15 Nov 1995 06:25:24 GMT
+Last-Modified: Wed, 15 Nov 1995 04:58:08 GMT
+Content-Range: bytes 21010-47021/47022
+Content-Length: 26012
+Content-Type: image/gif
+Content-Type
+The Content-Type entity-header field indicates the media type of the entity-body sent to the recipient or, in the case of the HEAD method, the media type that would have been sent, had the request been a GET. The general syntax is:
+
+Content-Type : media-type
+Following is an example:
+
+Content-Type: text/html; charset=ISO-8859-4
+Expires
+The Expires entity-header field gives the date/time after which the response is considered stale. The general syntax is:
+
+Expires : HTTP-date
+Following is an example:
+
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Last-Modified
+The Last-Modified entity-header field indicates the date and time at which the origin server believes the variant was last modified. The general syntax is:
+
+Last-Modified: HTTP-date
+Following is an example:
+
+Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+
+
+
+
+
+
+## Response Header Fields
+
+allow the server to pass additional information about the response which cannot be placed in the Status-Line. 
+
+These header fields give information about the server and about further access to the resource identified by the Request-URI.
+
+```
+Accept-Ranges
+
+Age
+
+ETag
+
+Location
+
+Proxy-Authenticate
+
+Retry-After
+
+Server
+
+Vary
+
+WWW-Authenticate
+```
+
+
+
+- HTTP/1.1 `200` OK
+- `Date`: Mon, 27 Jul 2009 12:28:53 GMT
+- `Server`: Apache/2.2.14 (Win32)
+- `Last-Modified`: Wed, 22 Jul 2009 19:15:56 GMT
+- `Content-Length`: 88
+- `Content-Type`: text/html
+- `Connection`: Closed
+- <html>
+- <body>
+- <h1>Hello, World!</h1>
+- </body>
+- </html>
+
+
+
+```html
+
+an HTTP response for a request 
+
+<!-- to fetch the hello.htm page from the web server running on tutorialspoint.com -->
+HTTP/1.1 200 OK
+Date: Mon, 27 Jul 2009 12:28:53 GMT
+Server: Apache/2.2.14 (Win32)
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+Content-Length: 88
+Content-Type: text/html
+Connection: Closed
+<html>
+<body>
+<h1>Hello, World!</h1>
+</body>
+</html>
+
+
+<!-- an HTTP response message displaying error condition when the web server could not find the requested page: -->
+HTTP/1.1 404 Not Found
+Date: Sun, 18 Oct 2012 10:36:20 GMT
+Server: Apache/2.2.14 (Win32)
+Content-Length: 230
+Content-Type: text/html; charset=iso-8859-1
+Connection: Closed
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head>
+   <title>404 Not Found</title>
+</head>
+<body>
+...
+</body>
+</html>
+
+
+<!-- HTTP response message showing error condition when the web server encountered a wrong HTTP version in the given HTTP request: -->
+HTTP/1.1 400 Bad Request
+Date: Sun, 18 Oct 2012 10:36:20 GMT
+Server: Apache/2.2.14 (Win32)
+Content-Length: 230
+Content-Type: text/html; charset=iso-8859-1
+Connection: Closed
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head>
+   <title>400 Bad Request</title>
+</head>
+<body>
+...
+</body>
+</html>
+```
+
+
+
+
+
+
+
+
 
 
 
