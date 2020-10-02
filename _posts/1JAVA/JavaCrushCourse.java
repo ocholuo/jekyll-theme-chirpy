@@ -352,7 +352,6 @@ public class JavaCrushCourse {
         // lvl.setLvl(5);
         // System.out.println(lvl.getLvl());
 
-
     }
 
 
@@ -375,14 +374,34 @@ public class JavaCrushCourse {
     // }
 
 
-    DirectoryResource dr = new DirectoryResource();
-    for(File f : dr.selectedFile()){
-        FileResource fr = new FileResource(f);
-        CSVParser parser = fr.getCSVParser();
-        for(CSVRecord record : parser){
-            double currenttemp = current.get("TemperatureF");
+    // DirectoryResource dr = new DirectoryResource();
+    // for(File f : dr.selectedFile()){
+    //     FileResource fr = new FileResource(f);
+    //     CSVParser parser = fr.getCSVParser();
+    //     for(CSVRecord record : parser){
+    //         double currenttemp = current.get("TemperatureF");
+    //     }
+    // }
+
+
+    return (Collection<Car>) CollectionUtils.select( listOfCars, (arg0) -> {return Car.SEDAN == ((Car)arg0).getStyle();} );
+    // is equivalent to
+    return (Collection<Car>) CollectionUtils.select(listOfCars, new Predicate() {
+        public boolean evaluate(Object arg0) {
+            return Car.SEDAN == ((Car)arg0).getStyle();
         }
-    }
+    });
+    
+    Runnable r = ()-> System.out.print("Run method");
+    // is equivalent to
+    Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                System.out.print("Run method");
+            }
+    };
+
+
 
 
 

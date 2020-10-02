@@ -29,6 +29,22 @@ kali用得好，监狱进得早，与君共勉
 
 ---
 
+GoodWeb | Note
+---|---
+`testing` | 
+[CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
+[OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
+[OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) |
+[tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm) |
+[Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile) |
+[securityintelligence 2020 data breach report](https://securityintelligence.com/) |
+[Web Application Vulnerabilities Index](https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/) | 
+[Vulnerabilities search]  | [with expolit](https://securitytracker.com/search/search.html), [2](http://www.securityfocus.com/bid/17408), [IBM X-Force](https://exchange.xforce.ibmcloud.com/vulnerabilities/25698)
+`web knowledge` | 
+[HTTP tutorial](https://www.tutorialspoint.com/http/http_caching.htm)
+
+---
+
 ## Pentest tools
 
 Attack | Tool
@@ -86,19 +102,6 @@ Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Securit
 `web info gethering` | httprint <br> ![httprint](https://i.imgur.com/koDelg8.png)
 `Fingerprint web Framework` | whatweb <br> ![whatweb](https://i.imgur.com/PKmBLXt.png)
 `Fingerprint web Framework` | BlindElephant, Wappalyzer
-
----
-
-GoodWeb | Note
----|---
-[CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
-[OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
-[OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) |
-[tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm) |
-[Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile) |
-[securityintelligence 2020 data breach report](https://securityintelligence.com/) |
-[Web Application Vulnerabilities Index](https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/) | 
-[Vulnerabilities search]  | [with expolit](https://securitytracker.com/search/search.html), [2](http://www.securityfocus.com/bid/17408), [IBM X-Force](https://exchange.xforce.ibmcloud.com/vulnerabilities/25698)
 
 ---
 
