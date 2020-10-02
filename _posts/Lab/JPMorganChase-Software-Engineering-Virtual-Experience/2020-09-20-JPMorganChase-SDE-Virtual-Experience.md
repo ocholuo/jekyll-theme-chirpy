@@ -13,6 +13,19 @@ tags: [Lab, SDE]
 
 [toc]
 
+
+
+Interface with a stock price data feed and set up system for analysis of the data
+- Financial Data Python Git Basic Programming
+- monitor two historically correlated stocks and be able to visualize when the correlation between the two weakens
+- displays a graph that automatically updates as it gets data from the server application
+- generate a live graph that displays the data feed in a clear and visually appealing way for traders to monitor this trading strategy.
+- monitor and determine when a trading opportunity may arise as a result of the temporary weakening of a correlation between two stock prices. Given this graph, the trader should be able to quickly and easily notice when the ratio moves too far from the average historical correlation.
+
+
+
+
+
 ---
 
 ## task 1 Interface with a stock price data feed
@@ -464,14 +477,15 @@ For the third module of this project:
 
 
 1. setup
+
 ```bash
 git clone https://github.com/insidesherpa/JPMC-tech-task-3.git
 cd JPMC-tech-task-3
 python datafeed/server.py
 
-# To check your node version type
+// To check your node version type
 node -v
-# To check your npm version type
+// To check your npm version type
 npm -v
 
 nvm install v11.0.0
