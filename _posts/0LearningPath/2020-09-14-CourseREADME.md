@@ -42,7 +42,7 @@ sleepy....
 
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-[JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 9/20 | ✏️
+[JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03 | ✔️
 **freecodecamp** [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |

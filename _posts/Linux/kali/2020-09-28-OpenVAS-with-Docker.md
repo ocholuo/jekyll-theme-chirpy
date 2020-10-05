@@ -1,5 +1,5 @@
 ---
-title: OpenVAS on Kali Linux
+title: OpenVAS with Docker
 # author: Grace JyL
 date: 2020-09-28 11:11:11 -0400
 description: 
@@ -14,10 +14,6 @@ toc: true
 
 
 # OpenVAS with Docker
-
-==============
-
-[![Travis CI](https://img.shields.io/travis/mikesplain/openvas-docker/master.svg)](https://travis-ci.org/mikesplain/openvas-docker/branches) [![Docker Pulls](https://img.shields.io/docker/pulls/mikesplain/openvas.svg)](https://hub.docker.com/r/mikesplain/openvas/) [![Docker Stars](https://img.shields.io/docker/stars/mikesplain/openvas.svg)](https://hub.docker.com/r/mikesplain/openvas/) [![](https://images.microbadger.com/badges/image/mikesplain/openvas.svg)](https://microbadger.com/images/mikesplain/openvas "Get your own image badge on microbadger.com")
 
 
 ---
