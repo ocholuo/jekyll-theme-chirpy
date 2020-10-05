@@ -4,8 +4,8 @@ title: Meow's CyberAttackTools - OpenVAS
 date: 2020-09-28 11:11:11 -0400
 description: 
 excerpt_separator: 
-categories: [Linux, Kali]
-tags: [Linux, Kali, OpenVAS]
+categories: [CyberAttack, CyberAttackTools]
+tags: [CyberAttack, CyberAttackTools, OpenVAS]
 math: true
 # pin: true
 toc: true
