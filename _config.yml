@@ -54,7 +54,7 @@ baseurl: ''
 timezone: America/New_York
 
 google_analytics:
-  id: UA-179830187-1          # Fill with your Google Analytics ID
+  id: 'UA-179830187-1'          # Fill with your Google Analytics ID
   pv:
     proxy_endpoint:   'https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw'
     # fill in the Google Analytics superProxy endpoint of Google App Engine

@@ -14,29 +14,21 @@ tags: [OnePage]
 
 ---
 
-
-# get app from github
-
-
+```
 Project ID
 myochosite-291718
-
-
-
-
-
-# setup and configure
-
+```
 
 # Google APIs 创建项目
 
 用 Google 账户登陆 **Google APIs Dashboard**
-1. <kbd>Create Project</kbd> 新建一个 Project，如起名cotes-blog-ga，
-2. “Location” 项默认为 No organization。
-3. 新建完毕后，为项目开启 API 和服务。<kbd>+ ENABLE APIS AND SERVICES</kbd> 进入API Library
-4. 搜索栏中搜关键词 “analytic” 即可找到`Analytics API`，点击 `Enable`
-5. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 <kbd>Create credentials</kbd> 为 API 创建 credentials。
-6. 创建页面作如下操作：
+1. <kbd>Create Project</kbd> 新建一个 Project
+   1. 起名: cotes-blog-ga，
+   2. **Location**: 默认为 No organization。
+2. 新建完毕后，为项目开启 API 和服务。<kbd>+ ENABLE APIS AND SERVICES</kbd> 进入API Library
+3. 搜索栏中搜关键词 `analytic` 即可找到`Analytics API`，点击 `Enable`
+4. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 <kbd>Create credentials</kbd> 为 API 创建 credentials。
+5. 创建页面作如下操作：
    1. findout what kind of credentials needed:
       1. Which API are you using? `Google Analytics API`
       2. Where will you be calling the API from? `Web brower(Javascript)`
@@ -56,9 +48,11 @@ myochosite-291718
 
 # 下载配置 SuperProxy
 
-安装 Python 27
+[github](https://github.com/googleanalytics/google-analytics-super-proxy)
 
-安装 Cloud SDK for Python
+**安装 Python 27**
+
+**安装 Cloud SDK for Python**
 
 ```bash
 $ python -V
@@ -72,21 +66,21 @@ Python 2.7.16
 export PATH="/Users/luo/google-cloud-sdk/bin:$PATH"
 ```
 
-下载 SuperProxy 项目
+**下载 SuperProxy 项目**
 
 1. 修改 <kbd>src/config.py</kbd>：
    1. `OAUTH_CLIENT_ID` 与 `OAUTH_CLIENT_SECRET`，填入创建的 Client ID 与 Client secret。
    2. `PROJECT_ID` 在 Google APIs Dashboard 或者其他任一 GCP 页面中，点击顶栏项目名即可查看。
    3. `OAUTH_REDIRECT_URI` 填入 GAE 派发的免费域名
-      1. 默认在地址尾部添加了 /admin/auth，
+      1. 默认在地址尾部添加了 `/admin/auth`，
       2. 所以 URI 全貌为：`https://PROJECT_ID.appspot.com/admin/auth`。
-   4. 返回上一步的 Credentials，点击 OAuth 2.0 client IDs 中的 OAuth ID，在设置页面的 Authorized redirect URIs 填入 SuperProxy 中OAUTH_REDIRECT_URI的完整地址，例如：https://cotes-blog-ga-214617.appspot.com/admin/auth。
+   4. 返回上一步的 Credentials，点击 `OAuth 2.0 client IDs` 中的 `OAuth ID`，在设置页面的 `Authorized redirect URIs` 填入 `SuperProxy` 中 `OAUTH_REDIRECT_URI` 的完整地址，例如：`https://cotes-blog-ga-214617.appspot.com/admin/auth`。
 
 2. 修改 <kbd>src/app.yaml</kbd>:
    1. 首部两行：application与version，在 Cloud SDK 213.0.0 中已经标记为无效字段了，需要将其删除，否则部署时会出现警告而导致中断。
 
 
-上传 SuperProxy 至 GAE
+**上传 SuperProxy 至 GAE**
 
 ```bash
 enable CloudBuild API
@@ -113,21 +107,21 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
 
 ```
 
-GAE 上创建查询
+**GAE 上创建查询**
 
-1. 登陆 https://PROJECT_ID.appspot.com/admin，验证账户后创建查询。
-   1. Authorize Access > Successfully connected to Google Analytics > Create Query
+1. 登陆 `https://PROJECT_ID.appspot.com/admin`，验证账户后创建查询。
+   1. Authorize Access > Successfully connected to Google Analytics > <kbd>Create Query</kbd>
 
 2. Query
    1. GA Core Reporting API 查询请求可以在 [Query Explorer](https://ga-dev-tools.appspot.com/query-explorer/) 创建。
    2. 因为要查询的是 Pageviews:
-      1. start-date 填写博客发布首日。
-      2. end-date 填 today (这是 GA Report 支持的参数，表示永远按当前查询日期为止）。
-      3. metrics 选择 ga:pageviews。
-      4. dimensions 选择 ga:pagePath。
-      5. filters: ga:pagePath!@=;ga:pagePath!@(。  
+      1. **start-date**: 博客发布首日。
+      2. **end-dat**e: `today` (这是 GA Report 支持的参数，表示永远按当前查询日期为止）。
+      3. **metrics**: `ga:pageviews`
+      4. **dimensions**: `ga:pagePath`
+      5. **filters**: `ga:pagePath!@=;ga:pagePath!@(。`  
          1. 为了减少返回结果，减轻网络带宽，所以增加自定义过滤规则1：
-         2. 其中 ; 表示用 逻辑与 串联两条规则，!@= 表示不含 =，!@( 表示不含 (。
+         2. 其中 `;` 表示用 逻辑与 串联两条规则，`!@=` 表示`不含 =`，`!@(` 表示不含`(`。
    3. <kbd>Run Query</kbd>
    4. 拷贝 `API Query URI` 生成内容，填至 GAE 上 `SuperProxy` 的 `Encoded URI for the query` 即可。
 
@@ -145,7 +139,7 @@ GAE 上创建查询
     Owner	lgraceye@hotmail.com
     ```
 
-6. Scheduling 中点击 <kbd>Start Scheduling</kbd> 开启定时任务。
+6. Scheduling 中点击 <kbd>Start Scheduling</kbd> 开启定时任务。 [link](https://myochosite-291718.appspot.com/admin/query/manage?query_id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw)
 
 
 
