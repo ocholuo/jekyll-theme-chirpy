@@ -51,8 +51,12 @@ layout: page
 
     <div class="post-content">
       <p>
+        <!-- 首页内容简介 truncate: 200 -->
+        <!-- {{ post.content | strip_html | truncate: 200 | replace: '&', '&amp;' }}
+        {{ post.excerpt }} -->
         {% include no-linenos.html content=post.content %}
-        {{ content | markdownify | strip_html | truncate: 0 }}
+        {{ content | markdownify | strip_html | truncate: 100 }}
+        {{ excerpt }}
       </p>
     </div>
 
