@@ -68,12 +68,16 @@
 
   /* --- custom light colors --- */
   --highlight-bg-color: #f7f7f7;
-  --highlighter-rouge-color: #2f2f2f;
+  --highlighter-rouge-color: #353a3d;
   --highlight-lineno-color: #c2c6cc;
   --highlight-lineno-border-color: #e9ecef;
   --inline-code-bg: #f3f3f3;
 
   // --highlight-bg-color: #000000;
   // --highlighter-rouge-color: #f7f0f0;
+  --highlight-lineno-color: #c2c6cc;
+  --highlight-lineno-border-color: #e9ecef;
+  --inline-code-bg: #000000;
+  --inline-rouge-color: #f7f0f0;
 
 } // light-syntax

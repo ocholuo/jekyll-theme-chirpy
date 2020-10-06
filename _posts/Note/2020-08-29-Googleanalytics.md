@@ -37,17 +37,20 @@ myochosite-291718
 4. 搜索栏中搜关键词 “analytic” 即可找到`Analytics API`，点击 `Enable`
 5. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 `Create credentials` 为 API 创建 credentials。
 6. 创建页面作如下操作：
-   1. Which API are you using? `Google Analytics API`
-   2. Where will you be calling the API from? `Web brower(Javascript)`
-   3. What data will you be accessing? `User data`
-Create an OAuth 2.0 client ID
-Client ID 自定义命名，笔者为 blog-oauth
-Restrictions 两项暂时留空，往后将会写入 GAE 的项目地址。
-Set up the OAuth 2.0 consent screen
-Email 保持默认值
-产品名称自定义命名，不与其他公司产品重名即可，例笔者为 cotes-blog-ga
-Download credentials
-视个人需要决定下载与否，供 SuperProxy 使用的 Client ID，Client secret 都可以在 Dashboard 直接查看。
+   1. findout what kind of credentials needed:
+      1. Which API are you using? `Google Analytics API`
+      2. Where will you be calling the API from? `Web brower(Javascript)`
+      3. What data will you be accessing? `User data`
+   2. Create an OAuth 2.0 client ID
+      1. Client ID 自定义命名: `blog-oauth`
+      2. Restrictions 两项暂时留空，往后将会写入 GAE 的项目地址。
+   3. Set up the OAuth 2.0 consent screen
+      1. Email 保持默认值
+      2. 产品名称自定义命名，不与其他公司产品重名即可，例笔者为 cotes-blog-ga
+   4. Download credentials
+      1. 视个人需要决定下载与否，
+      2. `Client ID	318175415936-rdlkiaaf422e7kuenfq3blrnv0s5rn64.apps.googleusercontent.com`
+      3. 供 SuperProxy 使用的 Client ID，Client secret 都可以在 Dashboard 直接查看。
 
 
 
