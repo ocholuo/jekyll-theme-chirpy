@@ -12,7 +12,7 @@ lang: en-US
 
 title: Grace                          # the main title
 
-tagline: 9.22.1.IT  # only title + add + minus link + add
+tagline: 10.6.IT  # only title + add + minus link + add
 
 description: >-                        # used by seo meta and the atom feed
   A webpages focus on the IT learning path.
@@ -75,7 +75,7 @@ disqus:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:   [dark] # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
