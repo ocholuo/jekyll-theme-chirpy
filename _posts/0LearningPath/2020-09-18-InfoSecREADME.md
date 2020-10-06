@@ -31,7 +31,7 @@ kali用得好，监狱进得早，与君共勉
 
 GoodWeb | Note
 ---|---
-`testing` | 
+**testing** | Note
 [CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
 [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
 [OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) |
@@ -40,7 +40,7 @@ GoodWeb | Note
 [securityintelligence 2020 data breach report](https://securityintelligence.com/) |
 [Web Application Vulnerabilities Index](https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/) | 
 [Vulnerabilities search]  | [with expolit](https://securitytracker.com/search/search.html), [2](http://www.securityfocus.com/bid/17408), [IBM X-Force](https://exchange.xforce.ibmcloud.com/vulnerabilities/25698)
-`web knowledge` | 
+**web knowledge** | Note
 [HTTP tutorial](https://www.tutorialspoint.com/http/http_caching.htm)
 
 ---
