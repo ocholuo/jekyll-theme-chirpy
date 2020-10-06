@@ -31,11 +31,11 @@ myochosite-291718
 # Google APIs 创建项目
 
 用 Google 账户登陆 **Google APIs Dashboard**
-1. `Create Project`新建一个 Project，如起名cotes-blog-ga，
+1. <kbd>Create Project</kbd> 新建一个 Project，如起名cotes-blog-ga，
 2. “Location” 项默认为 No organization。
 3. 新建完毕后，为项目开启 API 和服务。<kbd>+ ENABLE APIS AND SERVICES</kbd> 进入API Library
 4. 搜索栏中搜关键词 “analytic” 即可找到`Analytics API`，点击 `Enable`
-5. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 `Create credentials` 为 API 创建 credentials。
+5. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 <kbd>Create credentials</kbd> 为 API 创建 credentials。
 6. 创建页面作如下操作：
    1. findout what kind of credentials needed:
       1. Which API are you using? `Google Analytics API`
