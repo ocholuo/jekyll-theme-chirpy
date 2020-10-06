@@ -9,7 +9,6 @@
 
 connect AWS SSO to G Suite, allowing users to access AWS accounts with their G Suite credentials.
 
-
 ![1_6oXNkTw5nxNT2rWCnx-sXg](https://i.imgur.com/p0IdHp1.png)
 
 grant access by assigning `G Suite users` to `accounts governed by AWS Organizations`. The user’s permissions in an account are determined by `permission sets defined in AWS SSO`.

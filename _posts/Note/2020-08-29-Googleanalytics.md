@@ -53,10 +53,10 @@ myochosite-291718
       3. 供 SuperProxy 使用的 Client ID，Client secret 都可以在 Dashboard 直接查看。
    5. `完成后即可生成新 OAuth 2.0 client ID`:
 
+
 # 下载配置 SuperProxy
 
 安装 Python 27
-
 
 安装 Cloud SDK for Python
 
@@ -68,24 +68,84 @@ Python 2.7.16
 # download the install filecd 
 ./google-cloud-sdk/install.sh
 ./google-cloud-sdk/bin/gcloud init
+
+export PATH="/Users/luo/google-cloud-sdk/bin:$PATH"
 ```
 
-# deploy
+下载 SuperProxy 项目
+
+1. 修改 <kbd>src/config.py</kbd>：
+   1. `OAUTH_CLIENT_ID` 与 `OAUTH_CLIENT_SECRET`，填入创建的 Client ID 与 Client secret。
+   2. `PROJECT_ID` 在 Google APIs Dashboard 或者其他任一 GCP 页面中，点击顶栏项目名即可查看。
+   3. `OAUTH_REDIRECT_URI` 填入 GAE 派发的免费域名
+      1. 默认在地址尾部添加了 /admin/auth，
+      2. 所以 URI 全貌为：`https://PROJECT_ID.appspot.com/admin/auth`。
+   4. 返回上一步的 Credentials，点击 OAuth 2.0 client IDs 中的 OAuth ID，在设置页面的 Authorized redirect URIs 填入 SuperProxy 中OAUTH_REDIRECT_URI的完整地址，例如：https://cotes-blog-ga-214617.appspot.com/admin/auth。
+
+2. 修改 <kbd>src/app.yaml</kbd>:
+   1. 首部两行：application与version，在 Cloud SDK 213.0.0 中已经标记为无效字段了，需要将其删除，否则部署时会出现警告而导致中断。
 
 
+上传 SuperProxy 至 GAE
 
+```bash
+enable CloudBuild API
+enable Cloud Datastore API
+# need billing account
+# https://console.developers.google.com/apis/api/datastore.googleapis.com/overview?project=myochosite-291718
 
+gcloud app deploy app.yaml index.yaml --project myochosite-291718
+# chose location
+#  [14] us-central   
+#  [15] us-east1     
+#  [16] us-east4     
+#  [17] us-west2     
+#  [18] us-west3     
+#  [19] us-west4     
+#  [20] cancel
+# Please enter your numeric choice:  15                                        
+# Updating config [index]...done.                                                                              
+# Indexes are being rebuilt. This may take a moment.
+# You can stream logs from the command line by running:
+#   $ gcloud app logs tail -s default
+# To view your application in the web browser run:
+#   $ gcloud app browse
 
+```
 
+GAE 上创建查询
 
+1. 登陆 https://PROJECT_ID.appspot.com/admin，验证账户后创建查询。
+   1. Authorize Access > Successfully connected to Google Analytics > Create Query
 
+2. Query
+   1. GA Core Reporting API 查询请求可以在 [Query Explorer](https://ga-dev-tools.appspot.com/query-explorer/) 创建。
+   2. 因为要查询的是 Pageviews:
+      1. start-date 填写博客发布首日。
+      2. end-date 填 today (这是 GA Report 支持的参数，表示永远按当前查询日期为止）。
+      3. metrics 选择 ga:pageviews。
+      4. dimensions 选择 ga:pagePath。
+      5. filters: ga:pagePath!@=;ga:pagePath!@(。  
+         1. 为了减少返回结果，减轻网络带宽，所以增加自定义过滤规则1：
+         2. 其中 ; 表示用 逻辑与 串联两条规则，!@= 表示不含 =，!@( 表示不含 (。
+   3. <kbd>Run Query</kbd>
+   4. 拷贝 `API Query URI` 生成内容，填至 GAE 上 `SuperProxy` 的 `Encoded URI for the query` 即可。
 
+3. <kbd>Save Query</kbd> [link](https://myochosite-291718.appspot.com/admin/query/manage?query_id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw)
+4. GAE 上保存查询后，会生成一个 Public Endpoint（公开的访问地址），用户访问它将返回 JSON 格式的查询结果。
+5. 最后，在 Public Request Endpoint 点击 <kbd>Enable Endpoint</kbd> 使查询生效，
 
+    ```
+    Details about the configuration and the public URL for this query.
+    Name	pageviewforblog
+    URL	https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw
+    Formats	CSV  DataTable (JSON Response)  DataTable (JSON String)  JSON  TSV for Excel 
+    Status	Disabled
+    API Request	https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A230544252&start-date=2020-01-01&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&filters=ga%3ApagePath!%40%3D%3Bga%3ApagePath!%40(
+    Owner	lgraceye@hotmail.com
+    ```
 
-
-
-
-
+6. Scheduling 中点击 <kbd>Start Scheduling</kbd> 开启定时任务。
 
 
 
