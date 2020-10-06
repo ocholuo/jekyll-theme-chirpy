@@ -29,19 +29,20 @@ kali用得好，监狱进得早，与君共勉
 
 ---
 
+
 GoodWeb | Note
 ---|---
 **testing** | Note
 [CSIS Significant Cyber Incidents](https://www.csis.org/programs/technology-policy-program/significant-cyber-incidents) | summary of incidents from over the last year.
-[OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) |
-[OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) |
-[tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm) |
-[Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile) |
-[securityintelligence 2020 data breach report](https://securityintelligence.com/) |
-[Web Application Vulnerabilities Index](https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/) | 
+[OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/IndexASVS.html) | .
+[OWASP Cheat Sheet Series2](https://cheatsheetseries.owasp.org/IndexProactiveControls.html) | .
+[tutorialspoint-infosec](https://www.tutorialspoint.com/security_testing/testing_cross_site_scripting.htm) | .
+[Youtube-University of Nottingham](https://www.youtube.com/watch?v=1S0aBV-Waeo&ab_channel=Computerphile) | .
+[securityintelligence 2020 data breach report](https://securityintelligence.com/) | .
+[Web Application Vulnerabilities Index](https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/) | .
 [Vulnerabilities search]  | [with expolit](https://securitytracker.com/search/search.html), [2](http://www.securityfocus.com/bid/17408), [IBM X-Force](https://exchange.xforce.ibmcloud.com/vulnerabilities/25698)
 **web knowledge** | Note
-[HTTP tutorial](https://www.tutorialspoint.com/http/http_caching.htm)
+[HTTP tutorial](https://www.tutorialspoint.com/http/http_caching.htm) | .
 
 ---
 
@@ -120,6 +121,9 @@ XiongHaizimen | Note
 [Tanishq](https://tanishq.page/index.html) | cool website and lab!
 [coolguy](https://jhalon.github.io/over-the-wire-natas1/) | great solution
 [Gaurav Sen](https://www.youtube.com/watch?v=_YlYuNMTCc8&t=5s&ab_channel=GauravSen) | youtuber
+[youtube](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw) | not yet
+[youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl 
+[youtube](https://www.youtube.com/channel/UCZLJf_R2sWyUtXSKiKlyvAw) | DS Pro, clear and step by step 
 
 
 ---

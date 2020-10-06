@@ -1,13 +1,13 @@
 ---
-title: Google Analytics
+title: Implement Google Analytics to blog
 date: 2020-08-29 11:11:11 -0400
-description: IT Blog Pool
+# description: IT Blog Pool
 categories: [Note]
-img: /assets/img/sample/rabbit.png
-tags: [OnePage]
+# img: /assets/img/sample/rabbit.png
+tags: 
 ---
 
-# Google Analytics
+# Implement Google Analytics to blog
 
 [toc]
 
