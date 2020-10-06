@@ -15,7 +15,17 @@ tags: [OnePage]
 ---
 
 
+# get app from github
 
+
+
+
+
+
+
+# setup and configure
+
+# deploy
 
 
 
