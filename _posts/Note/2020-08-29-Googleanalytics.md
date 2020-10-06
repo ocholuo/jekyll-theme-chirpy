@@ -33,7 +33,7 @@ myochosite-291718
 用 Google 账户登陆 **Google APIs Dashboard**
 1. `Create Project`新建一个 Project，如起名cotes-blog-ga，
 2. “Location” 项默认为 No organization。
-3. 新建完毕后，为项目开启 API 和服务。`+ ENABLE APIS AND SERVICES` 进入API Library
+3. 新建完毕后，为项目开启 API 和服务。<kbd>+ ENABLE APIS AND SERVICES</kbd> 进入API Library
 4. 搜索栏中搜关键词 “analytic” 即可找到`Analytics API`，点击 `Enable`
 5. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 `Create credentials` 为 API 创建 credentials。
 6. 创建页面作如下操作：
@@ -51,9 +51,24 @@ myochosite-291718
       1. 视个人需要决定下载与否，
       2. `Client ID	318175415936-rdlkiaaf422e7kuenfq3blrnv0s5rn64.apps.googleusercontent.com`
       3. 供 SuperProxy 使用的 Client ID，Client secret 都可以在 Dashboard 直接查看。
+   5. `完成后即可生成新 OAuth 2.0 client ID`:
+
+# 下载配置 SuperProxy
+
+安装 Python 27
 
 
+安装 Cloud SDK for Python
 
+```bash
+$ python -V
+Python 2.7.16
+# Cloud SDK requires Python. Supported versions are 3.5 to 3.7, and 2.7.9 or higher.
+
+# download the install filecd 
+./google-cloud-sdk/install.sh
+./google-cloud-sdk/bin/gcloud init
+```
 
 # deploy
 
