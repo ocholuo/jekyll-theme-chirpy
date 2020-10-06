@@ -4,8 +4,8 @@ title: Create SOCKS Tunnel to route Web Traffic Securely Without a VPN
 date: 2020-10-02 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [Pentest]
-tags: [Pentest, SOCKS]
+categories: [Linux, Kali]
+tags: [Linux, SOCKS]
 math: true
 # pin: true
 toc: true
@@ -98,6 +98,7 @@ kill 14345
 
 ## (macOS/Linux) — Creating Shortcuts for Repeated Use
 
+
 ### Clickable BASH Script
 - The script will set up the tunnel and then launch Firefox
   
@@ -123,16 +124,11 @@ ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N sammy@`your_domain`
 ```
 
 - Make the script executable, so that when you double click on it, it will execute. From the command line, use the chmod command to add execute permissions:
-- 
 - chmod +x /path/to/socks.sh
 - On macOS, you may have to perform an additional step to tell macOS that a .sh file should be executed like a program and not be opened in an editor. To do this, right click on your socks.sh file and select 'Get Info’.
-- 
 - Locate the section 'Open with:’ and if the disclosure triangle isn’t pointing down, click on it so you can see the dropdown menu. Xcode might be set as the default app.Get Info
-- 
 - Change it to Terminal.app. If Terminal.app isn’t listed, choose 'Other’, and then navigate to Applications > Utilities > Terminal.app (you may need to set the pull down menu 'Enable’ from 'Recommended Applications’ to 'All Applications’).
-- 
 - To open your SOCKS proxy now, double click on the socks.sh file. The script will open a terminal window, start the SSH connection, and launch Firefox. Feel free to close the terminal window at this point. As long as you kept the proxy settings in Firefox, you can start browsing over your secure connection:
-- 
 - This script will help you quickly stand up the proxy, but you’ll still have to perform the manual steps listed above to find the ssh process and kill it when you’re done.
 
 ---

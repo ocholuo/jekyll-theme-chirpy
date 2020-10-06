@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [Linux, CommandTool]
 tags: [CommandTool, Socket]
 math: true
-image: 
+image:
 ---
 
 
@@ -12,23 +12,11 @@ image:
 
 [toc]
 
-我们深谙信息交流的价值，那网络中进程之间如何通信，如我们每天打开浏览器浏览网页时，浏览器的进程怎么与web服务器通信的？当你用QQ聊天时，QQ进程怎么与服务器或你好友所在的QQ进程通信？这些都得靠socket？那什么是socket？socket的类型有哪些？还有socket的基本函数
-
-ref
-https://segmentfault.com/a/1190000004570985
-https://www.cs.dartmouth.edu/~campbell/cs50/socketprogramming.html
-http://zake7749.github.io/2015/03/17/SocketProgramming/
-https://www.tenouk.com/Module39a.html
-https://www.jb51.net/article/135558.htm
-https://hit-alibaba.github.io/interview/basic/network/Socket-Programming-Basic.html
-http://cighao.com/2016/07/12/c-linux-socket/
-https://blog.csdn.net/hguisu/article/details/7445768
-https://www.jianshu.com/p/6a5d273f3223
-https://blog.csdn.net/hguisu/article/details/7445768
-
-
+---
 
 ## 1. 网络中进程之间通信
+
+我们深谙信息交流的价值，那网络中进程之间如何通信，如我们每天打开浏览器浏览网页时，浏览器的进程怎么与web服务器通信的？当你用QQ聊天时，QQ进程怎么与服务器或你好友所在的QQ进程通信？这些都得靠socket？那什么是socket？socket的类型有哪些？还有socket的基本函数
 
 本地的`进程间通信（IPC）`有很多种方式，总结为下面4类：
 - 消息传递（管道、FIFO、消息队列）
@@ -37,10 +25,18 @@ https://blog.csdn.net/hguisu/article/details/7445768
 - 远程过程调用（Solaris门和Sun RPC）
 
 网络中进程之间通信？首要解决的问题是如何唯一标识一个进程，否则通信无从谈起！
-- 在本地可以通过`进程PID`来唯一标识一个进程，但是在网络中这是行不通的。
-- TCP/IP协议族 解决了这个问题，网络层的“ip地址”可以唯一标识网络中的主机，而传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）。这样利用`三元组（ip地址，协议，端口）`就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。
+- 在本地可以通过`进程PID`来唯一标识一个进程，但在网络中行不通。
+- TCP/IP协议族 解决了这个问题
+  - 网络层的“ip地址”可以唯一标识网络中的主机，
+  - 而传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）
+  - 这样利用`三元组（ip地址，协议，端口）`就可以标识网络的进程了
+  - 网络中的进程通信就可以利用这个标志与其它进程进行交互。
 
-使用TCP/IP协议的应用程序通常采用应用编程接口：UNIX BSD的套接字（socket）和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用socket，而现在又是网络时代，网络中进程通信是无处不在，这就是我为什么说“一切皆socket”。
+使用TCP/IP协议的应用程序通常采用应用编程接口：
+- UNIX BSD的套接字（socket）
+- 和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。
+- 就目前而言，几乎所有的应用程序都是采用socket
+
 
 ## 2. Socket
 socket起源于Unix，而Unix/Linux基本哲学之一就是“一切皆文件”，都可以用“打开open –> 读写write/read –> 关闭close”模式来操作。
@@ -833,6 +829,20 @@ struct in_addr {
     unsigned long s_addr;          # load with inet_pton()
 };
 ```
+
+
+
+ref
+- https://segmentfault.com/a/1190000004570985
+- https://www.cs.dartmouth.edu/~campbell/cs50/socketprogramming.html
+- http://zake7749.github.io/2015/03/17/SocketProgramming/
+- https://www.tenouk.com/Module39a.html
+- https://www.jb51.net/article/135558.htm
+- https://hit-alibaba.github.io/interview/basic/network/Socket-Programming-Basic.html
+- http://cighao.com/2016/07/12/c-linux-socket/
+- https://blog.csdn.net/hguisu/article/details/7445768
+- https://www.jianshu.com/p/6a5d273f3223
+- https://blog.csdn.net/hguisu/article/details/7445768
 
 
 
