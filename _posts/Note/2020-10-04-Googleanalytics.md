@@ -1,10 +1,10 @@
 ---
 title: Implement Google Analytics to blog
-date: 2020-08-29 11:11:11 -0400
+date: 2020-10-04 11:11:11 -0400
 # description: IT Blog Pool
 categories: [Note]
 # img: /assets/img/sample/rabbit.png
-tags: 
+tags:
 ---
 
 # Implement Google Analytics to blog
@@ -59,7 +59,7 @@ $ python -V
 Python 2.7.16
 # Cloud SDK requires Python. Supported versions are 3.5 to 3.7, and 2.7.9 or higher.
 
-# download the install filecd 
+# download the install filecd
 ./google-cloud-sdk/install.sh
 ./google-cloud-sdk/bin/gcloud init
 
@@ -133,7 +133,7 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
     Details about the configuration and the public URL for this query.
     Name	pageviewforblog
     URL	https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw
-    Formats	CSV  DataTable (JSON Response)  DataTable (JSON String)  JSON  TSV for Excel 
+    Formats	CSV  DataTable (JSON Response)  DataTable (JSON String)  JSON  TSV for Excel
     Status	Disabled
     API Request	https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A230544252&start-date=2020-01-01&end-date=today&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&filters=ga%3ApagePath!%40%3D%3Bga%3ApagePath!%40(
     Owner	lgraceye@hotmail.com
@@ -142,6 +142,10 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
 6. Scheduling 中点击 <kbd>Start Scheduling</kbd> 开启定时任务。 [link](https://myochosite-291718.appspot.com/admin/query/manage?query_id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw)
 
 
-
-
+ref
+- [1](https://taoalpha.github.io/blog/2015/06/07/tech-add-google-analytics-pageviews-to-jekyll-blog/)
+- [jekyll-ga](https://github.com/developmentseed/jekyll-ga#readme)
+- [2](http://zhangwenli.com/blog/2014/08/05/page-view-from-google-analytics-for-your-blog/)
+- [3](https://devblog.dymel.pl/2016/10/13/public-api-for-your-google-analytics/)
+- [4](https://blog.cotes.info/posts/fetch-pageviews-from-google-analytics/)
 .
