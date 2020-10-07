@@ -7,19 +7,22 @@ categories: [Note]
 tags:
 ---
 
-# Implement Google Analytics to blog
 
 [toc]
 
 
 ---
 
+# Implement Google Analytics to blog
+
 ```
 Project ID
-myochosite-291718
+myo****site-291718
 ```
 
-# Google APIs 创建项目
+---
+
+## Google APIs 创建项目
 
 用 Google 账户登陆 **Google APIs Dashboard**
 1. <kbd>Create Project</kbd> 新建一个 Project
@@ -45,12 +48,15 @@ myochosite-291718
       3. 供 SuperProxy 使用的 Client ID，Client secret 都可以在 Dashboard 直接查看。
    5. `完成后即可生成新 OAuth 2.0 client ID`:
 
+---
 
-# 下载配置 SuperProxy
+## 下载配置 SuperProxy
 
 [github](https://github.com/googleanalytics/google-analytics-super-proxy)
 
 **安装 Python 27**
+
+---
 
 **安装 Cloud SDK for Python**
 
@@ -80,6 +86,8 @@ export PATH="/Users/luo/google-cloud-sdk/bin:$PATH"
    1. 首部两行：application与version，在 Cloud SDK 213.0.0 中已经标记为无效字段了，需要将其删除，否则部署时会出现警告而导致中断。
 
 
+---
+
 **上传 SuperProxy 至 GAE**
 
 ```bash
@@ -106,6 +114,8 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
 #   $ gcloud app browse
 
 ```
+
+---
 
 **GAE 上创建查询**
 
@@ -141,6 +151,7 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
 
 6. Scheduling 中点击 <kbd>Start Scheduling</kbd> 开启定时任务。 [link](https://myochosite-291718.appspot.com/admin/query/manage?query_id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw)
 
+---
 
 ref
 - [1](https://taoalpha.github.io/blog/2015/06/07/tech-add-google-analytics-pageviews-to-jekyll-blog/)
