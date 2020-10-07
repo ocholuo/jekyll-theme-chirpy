@@ -7,6 +7,17 @@ categories: [Note]
 tags:
 ---
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ1LNFS83M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TJ1LNFS83M');
+</script>
+
+
 
 [toc]
 
@@ -52,8 +63,6 @@ myo****site-291718
 
 ## 下载配置 SuperProxy
 
-[github](https://github.com/googleanalytics/google-analytics-super-proxy)
-
 **安装 Python 27**
 
 ---
@@ -73,6 +82,8 @@ export PATH="/Users/luo/google-cloud-sdk/bin:$PATH"
 ```
 
 **下载 SuperProxy 项目**
+
+[github](https://github.com/googleanalytics/google-analytics-super-proxy)
 
 1. 修改 <kbd>src/config.py</kbd>：
    1. `OAUTH_CLIENT_ID` 与 `OAUTH_CLIENT_SECRET`，填入创建的 Client ID 与 Client secret。
