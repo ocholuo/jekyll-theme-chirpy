@@ -1293,9 +1293,14 @@ class OrderedList:
 
 #### `is_empty` and `size`
 
-`is_empty` and `size` methods can be implemented the same as with unordered lists
+some method will work just fine since
 
-the `remove` method will work just fine since we still need to find the item and then link around the node to remove it.
+`is_empty` <kbd>𝑂(1)</kbd>
+
+`size` <kbd>𝑂(1)</kbd>
+
+`remove` <kbd>𝑂(n)</kbd>
+
 
 ```py
 def is_empty(self):
@@ -1323,6 +1328,8 @@ def remove(self, item):
 #### `search()`
 
 ![orderedsearch](https://i.imgur.com/cXdshUF.png)
+
+<kbd>𝑂(n)</kbd>
 
 as in order, if current data is bigger, no need to continue
 
