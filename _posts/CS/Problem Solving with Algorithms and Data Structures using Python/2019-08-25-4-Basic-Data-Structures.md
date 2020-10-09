@@ -4,8 +4,8 @@ title: pythonds3 - 4. Basic Data Structures
 date: 2019-08-25 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [CS, DataStructure]
-tags: [DataStructure, Python]
+categories: [CS, DS]
+tags: [DS, Python]
 math: true
 # pin: true
 toc: true
