@@ -1,7 +1,7 @@
 ---
 title: Programming - Code & Learning Path
 date: 2020-09-04 11:11:11 -0400
-categories: [0LearningPath]
+categories: [0LearningPath, OnePages]
 img: /assets/img/sample/rabbit.png
 tags: [OnePage, LearningPath]
 pin: true
