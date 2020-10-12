@@ -507,11 +507,9 @@ for col in df.columns:
     col = "b"
   coList.append(col)
 df.columns = coList
-
 ```
 
-
-
+---
 
 ## Reset the Index
 
@@ -543,6 +541,160 @@ df_reset = df.reset_index(level=0, inplace=True)
 
 ![Screen Shot 2020-10-11 at 21.20.54](https://i.imgur.com/hN4rXmz.png)
 
+![YvuOa](https://i.imgur.com/gWAcLx8.png)
+
+![BECid](https://i.imgur.com/BJgq3wA.png)
+
+![8w1US](https://i.imgur.com/w2hTAeC.png)
+
+![euLoe](https://i.imgur.com/GFogtGG.png)
+
+<kbd>pandas.DataFrame.merge</kbd>
+
+### inner
+
+> blue indicates rows that are present in the merge result
+> red indicates rows that are excluded from the result (i.e., removed)
+> green indicates missing values that are replaced with NaNs in the result
+
+```py
+left = pd.DataFrame({'key': ['A', 'B', 'C', 'D'], 'value': np.random.randn(4)})    
+right = pd.DataFrame({'key': ['B', 'D', 'E', 'F'], 'value': np.random.randn(4)})
+# left
+#   key     value
+# 0   A  1.764052
+# 1   B  0.400157
+# 2   C  0.978738
+# 3   D  2.240893
+# right
+#   key     value
+# 0   B  1.867558
+# 1   D -0.977278
+# 2   E  0.950088
+# 3   F -0.151357
+
+left.merge(right, on='key')
+left.merge(right, on='key', how='inner')
+#   key   value_x   value_y
+# 0   B  0.400157  1.867558
+# 1   D  2.240893 -0.977278
+```
+
+
+### example
+
+```py
+data1 = [["py1","NaN", 8, "NaN", "Game1", "NaN"], ["py2","None", 9, "NaN", "Game2", "NaN"]]
+data2 = [["NaN", "py5", "NaN", "Kick", "NaN", "Game5"], ["NaN", "py6", "NaN", "Elbow", "NaN", "Game6"]]
+
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+print(df1)
+print(df2)
+#      0     1  2    3      4    5
+# 0  py1   NaN  8  NaN  Game1  NaN
+# 1  py2  None  9  NaN  Game2  NaN
+#      0    1    2      3    4      5
+# 0  NaN  py5  NaN   Kick  NaN  Game5
+# 1  NaN  py6  NaN  Elbow  NaN  Game6
+
+pd.concat([df1, df2])
+#   0	  1	    2	  3	    4	    5
+# 0	py1	NaN	  8	  NaN	  Game1	NaN
+# 1	py2	None	9	  NaN	  Game2	NaN
+# 0	NaN	py5	  NaN	Kick	NaN	  Game5
+# 1	NaN	py6	  NaN	Elbow	NaN	  Game6
+
+
+data1 = ({"A":[1,2,3], "B":[4,5,6],"C":[1,2,3], "D":[4,5,6]})
+data2 = ({"A":[3,8,9], "C":[1,0,1],"E":[7,8,9], "F":[1,0,1]})
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+print(df1)
+print(df2)
+
+pd.concat([df1, df2])
+#   A	B	  C	D	  E	  F
+# 0	1	4.0	1	4.0	NaN	NaN
+# 1	2	5.0	2	5.0	NaN	NaN
+# 2	3	6.0	3	6.0	NaN	NaN
+# 0	3	NaN	1	NaN	7.0	1.0
+# 1	8	NaN	0	NaN	8.0	0.0
+# 2	9	NaN	1	NaN	9.0	1.0
+
+
+# axis{0/’index’, 1/’columns’}, default 0
+# The axis to concatenate along.
+
+# 有全部数据的column
+pd.concat([df1, df2], axis=0, join="inner")
+# 	A	C
+# 0	1	1
+# 1	2	2
+# 2	3	3
+# 0	3	1
+# 1	8	0
+# 2	9	1
+pd.concat([df1, df2], axis=1, join="inner")
+# 	A	B	C	D	A	C	E	F
+# 0	1	4	1	4	3	1	7	1
+# 1	2	5	2	5	8	0	8	0
+# 2	3	6	3	6	9	1	9	1
+
+```
+
+
+<kbd>pandas.DataFrame.merge</kbd>
+
+```py
+# how: {‘left’, ‘right’, ‘outer’, ‘inner’}, default ‘inner’
+# on: label or list, Column or index level names to join on. These must be found in both DataFrames. If on is None and not merging on indexes then this defaults to the intersection of the columns in both DataFrames.
+
+data1 = ({"A":[1,2,3], "B":[4,5,6]})
+data2 = ({"A":[3,8,9], "C":[1,0,1]})
+#    A  B
+# 0  1  4
+# 1  2  5
+# 2  3  6
+#    A  B
+# 0  3  1
+# 1  8  5
+# 2  9  1
+
+pd.merge(df1, df2, on=["A"], how="inner")
+# 	A	B	C
+# 0	3	6	1
+
+pd.merge(df1, df2, on=["B"], how="inner")
+# 	A_x	B	A_y
+# 0	  2	5	8
+
+pd.merge(df1, df2, on=["B"], how="inner", suffixes=('_left', '_right'))
+# 	A_left	B	A_right
+# 0	     2	5	8
+
+
+df1 = pd.DataFrame({'lkey': ['foo', 'bar', 'baz', 'foo'], 'value': [1, 2, 3, 5]})
+df2 = pd.DataFrame({'rkey': ['foo', 'bar', 'baz', 'foo'], 'value': [5, 6, 7, 8]})
+#     lkey value
+# 0   foo      1
+# 1   bar      2
+# 2   baz      3
+# 3   foo      5
+#     rkey value
+# 0   foo      5
+# 1   bar      6
+# 2   baz      7
+# 3   foo      8
+
+df1.merge(df2, left_on='lkey', right_on='rkey')
+#   lkey  value_x rkey  value_y
+# 0  foo        1  foo        5
+# ...
+```
+
+
+
 ---
 
 # I/O
@@ -551,6 +703,10 @@ df_reset = df.reset_index(level=0, inplace=True)
 # Read and Write to CSV
 pd.read_csv('file.csv', header=None, nrows=5)
 df.to_csv('myDataFrame.csv')
+
+data = pd.read_csv('/Users/luo/Documents/code/python3/jupyter/passwd/new/Post3.txt',sep=":", header=None)
+data.columns = ["a", "b", "c", "etc."]
+
 
 # Read multiple sheets from the same file
 xlsx = pd.ExcelFile('file.xls')
@@ -762,6 +918,11 @@ a = df.drop([2])
 
 
 
+
+---
+
+ref:
+- [1](https://stackoverflow.com/questions/53645882/pandas-merging-101)
 
 
 .

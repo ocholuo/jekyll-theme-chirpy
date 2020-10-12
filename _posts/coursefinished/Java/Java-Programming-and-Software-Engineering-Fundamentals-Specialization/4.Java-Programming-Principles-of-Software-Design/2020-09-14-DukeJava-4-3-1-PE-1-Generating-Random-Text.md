@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-3-1 Programming Exercise 1 Generating Random Text
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [0LearningPath, Course]
+categories: [coursefinished, JavaNote]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---

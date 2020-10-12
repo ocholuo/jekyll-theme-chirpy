@@ -2,7 +2,7 @@
 title: Java - DukeJava - 1-1-1 Programming Exercise 1 Modifying Images
 date: 2020-09-02 11:11:11 -0400
 description:
-categories: [0LearningPath, Course]
+categories: [coursefinished, JavaNote]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
