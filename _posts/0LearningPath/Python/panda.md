@@ -1,0 +1,767 @@
+
+[toc]
+
+---
+
+# panda
+
+---
+
+## install
+
+```bash
+
+# 1.
+# install anaconda
+# set up environment
+
+$ cd /Users/luo/Documents/code/python3
+$ conda create --name PythonEnv python=3.7 -y
+
+$ conda update -n base -c defaults conda
+
+# To activate this environment
+$ conda activate PythonEnv
+
+# To deactivate an active environment
+$ conda deactivate
+
+
+# 2.
+# install pandas and NumPy
+
+conda install matplotlib -y
+conda install pandas -y
+conda install numPy -y
+
+```
+
+---
+
+
+### import
+
+The Pandas library is usually imported under the alias `pd`, while the NumPy library is loaded as `np`.
+
+```py
+import numpy as np
+import pandas as pd
+```
+
+---
+
+## Pandas Data Frames
+
+
+
+the DataFrame can contain data that is:
+
+- a Pandas `Series Object`:
+  - ![Screen Shot 2020-10-10 at 12.07.23](https://i.imgur.com/7Hsxmek.png)
+  - a **1-dimensional labeled array**
+  - capable of holding any data type with axis labels or index.
+  - An example of a Series object is one `column` from a `DataFrame`.
+- a Pandas `DataFrame`
+  - ![Screen Shot 2020-10-10 at 12.08.30](https://i.imgur.com/bN4jOaJ.png)
+  - a **2-dimensional labeled data structures**
+  - with columns of potentially different types
+- a Pandas `Panel`
+  - ![Screen Shot 2020-10-10 at 12.10.14](https://i.imgur.com/Lc0zbc6.png)
+  - a **3-dimensional labeled data contanier**
+- a NumPy `ndarray`
+  - can be a record or structured
+- a two-dimensional `ndarray`
+- dictionaries of one-dimensional `ndarray`’s, lists, dictionaries or Series.
+
+### series
+
+```py
+# =========================== Series
+data = [1,2,3,4]
+series1 = pd.Series(data)
+series1
+# 0    1
+# 1    2
+# 2    3
+# 3    4
+
+data = [[1,2,3,4],['a','b']]
+series1 = pd.Series(data)
+print(series1)
+# 0    [1, 2, 3, 4]
+# 1          [a, b]
+
+print(type(series1))
+# <class 'pandas.core.series.Series'>
+
+
+data = [1,2,3]
+series1 = pd.Series(data, index=['a','b','c'])
+print(series1)
+# a    1
+# b    2
+# c    3
+print(series1['a':'b'])
+# a    1
+# b    2
+```
+
+---
+
+### `np.ndarray` and `np.array()`
+
+the difference between `np.ndarray` and `np.array()` .
+- `np.ndarray` an actual data type
+- `np.array()` a function to make arrays from other data structures.
+
+
+---
+
+
+### Structured arrays & Record arrays
+
+
+- <kbd>Structured arrays</kbd>
+  - allow users to **manipulate the data by named fields**:
+- <kbd>Record arrays</kbd>
+  - expand the properties of structured arrays, allow users to access fields of structured arrays by attribute not index.
+  - You see below that the foo values are accessed in the r2 record array.
+
+> example
+> a structured array of three tuples
+> - The first element of each tuple will be called foo and will be of type int,
+> - the second element will be named bar and will be a float.
+
+```py
+# ----------------- A structured array: manipulate the data by named fields
+my_array = np.ones(3, dtype=([('foo', int), ('bar', float)]))
+print(my_array['foo'])
+# [1 1 1]
+print(my_array['bar'])
+# [ 1.  1.  1.]
+
+# ----------------- A record array: access fields of structured arrays by attribute
+my_array2 = my_array.view(np.recarray)
+print(my_array2.foo)
+```
+
+specify the index and column names
+- The index, indicates the difference in rows
+- the column, indicate the difference in columns.
+
+---
+
+### DataFrame
+
+```py
+# =========================== DataFrame
+data = {'Country': ['Belgium',  'India',  'Brazil'],
+        'Capital': ['Brussels',  'New Delhi',  'Brasilia'],
+        'Population': [11190846, 1303171035, 207847528]}
+df = pd.DataFrame(data, columns=['Country',  'Capital',  'Population'])
+```
+
+. | Country	| Capital	| Population
+---|---|---|---
+1	| Belgium	| Brussels	| 11190846
+2	| India	    | New Delhi	| 1303171035
+3	| Brazil	| Brasilia	| 207847528
+
+
+many things that can serve as input to make a `DataFrame`
+
+1. Take `array` as input
+
+```py
+data = [[1,2,3,4,5], [1,2,3]]
+df = pd.DataFrame(data)
+#   0	1	2	3	  4
+# 0	1	2	3	4.0	5.0
+# 1	1	2	3	NaN	NaN
+
+data = [[1,2]]
+#   0	1
+# 0	1	2
+
+data = [1,2]
+#   0
+# 0	1
+# 1	2
+
+df.rename(index = {0:"a", 1:"b"}, inplace=True)
+df.rename(index = str, columns={0:"A"}, inplace=True)
+# 	A
+# a	1
+# b	2
+
+
+df.columns=["a"]
+# 	a
+# a	1
+# b	2
+```
+
+2. NumPy ndarray
+
+```py
+
+my_2darray = np.array([[1, 2, 3], [4, 5, 6]])
+print(pd.DataFrame(my_2darray))
+#        0  1  2
+#     0  1  2  3
+#     1  4  5  6
+
+
+data = np.array([['','Col1','Col2'], ['Row1',1,2], ['Row2',3,4]])
+df = pd.DataFrame(data=data[1:,1:], index=data[1:,0], columns=data[0,1:])
+#          Col1 Col2 (colums)
+#     Row1    1    2
+#     Row2    3    4
+#   (index)
+
+
+data = np.array([['a','b'], [6,12]])
+df = pd.DataFrame( { 'A':data[:,0], 'B':data[:,1] } )
+# 	A	B
+# 0	a	b
+# 1	6	12
+```
+
+
+3. Take `dictionary` as input
+
+```py
+# 每个 key 的 value 数字必须一样 否则报错
+# key = colunms
+
+my_dict = {1: ['1', '3'], 2: ['1', '2'], 3: ['2', '4']}
+print(pd.DataFrame(my_dict))
+#       1  2  3
+#    0  1  1  2
+#    1  3  2  4
+
+
+data = {"a": ['apple', 'mango'], "b": [10,12]}
+df = pd.DataFrame(data)
+df["FruitName"] = df["a"]
+#   a     b	  FruitName
+# 0	apple	10	apple
+# 1	mango	12	mango
+
+```
+
+4. Take `DataFrame` as input
+
+```py
+my_df = pd.DataFrame(data=[4,5,6,7], index=range(0,4), columns=['A'])
+print(pd.DataFrame(my_df))
+    #    A
+    # 0  4
+    # 1  5
+    # 2  6
+    # 3  7
+```
+
+5. Take `Series` as input
+
+```py
+my_series = pd.Series({"United Kingdom":"London", "India":"New Delhi", "United States":"Washington", "Belgium":"Brussels"})
+print(pd.DataFrame(my_series))
+    #                          0
+    # Belgium           Brussels
+    # India            New Delhi
+    # United Kingdom      London
+    # United States   Washington
+
+data = pd.Series([6,12], index=['a','b'])
+df = pd.DataFrame([data])
+#   a	b
+# 0	6	12
+df = pd.DataFrame(data)
+#   0
+# a	6
+# b	12
+```
+
+> the index of Series (and DataFrame) contains the keys of the original dictionary, they are sorted
+
+
+### `shape()` and `len() combination with the index`
+
+```py
+df = pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6]]))
+
+print(df)
+    #    0  1  2
+    # 0  1  2  3
+    # 1  4  5  6
+
+df.shape       # (2, 3)
+
+len(df.index)  # 2
+
+df[0].count()  # 2  
+# but this will exclude the NaN values (if there are any).
+# .count() on DataFrame is the better option.
+
+df.columns.values    # [0, 1, 2]
+```
+
+- `shape()`:
+  - the dimensions of DataFrame.
+  - the width and the height of DataFrame.
+- `len() combination with the index`
+  - only give you information on the height of DataFrame.
+
+
+# Fundamental DataFrame Operations
+
+## Select Index or Column From a Pandas DataFrame
+
+```py
+# -    A  B  C
+# - 0  1  2  3
+# - 1  4  5  6
+# - 2  7  8  9
+
+
+# access the value that is at index 0, in column ‘A’.
+# Using `iloc[]`
+print(df.iloc[0][0])
+
+# Using `loc[]`
+print(df.loc[0]['A'])
+
+# Using `iat[]`
+print(df.iat[0,0])
+
+# Using `at[]`
+print(df.at[0,'A'])
+
+
+
+# Use `iloc[]` to select a row
+print(df.iloc[0])
+    # A    1
+    # B    2
+    # C    3
+
+# Use `loc[]` to select a column
+print(df.loc[:,'A'])
+    # 0    1
+    # 1    4
+    # 2    7
+```
+
+---
+
+## Add Index, Row or Column to a Pandas DataFrame
+
+### Add Index
+
+```py
+# Print out DataFrame `df` to check it out
+print(df)
+
+# Set 'C' as the index of DataFrame
+df.set_index('C')
+```
+
+
+### Add Rows
+
+- `.loc[]`
+  - works on <kbd>labels</kbd> of index.
+  - `loc[2]`: the **values that have an index labeled 2**.
+- `.iloc[]`
+  - works on the <kbd>positions</kbd> in index.
+  - `iloc[2]`: the **values that are at index 2**.
+- `.ix[]`
+  - when the index is integer-based, pass a label to `.ix[]`.
+  - `ix[2]`: look in DataFrame for **values that have an index labeled 2**.
+  - if index is integer-based, `ix[]` like `.loc[]`,
+  - if index is not solely integer-based, `ix[]` will work with positions, just like `.iloc[]`.
+
+```py
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2, 'A', 4], columns=[48, 49, 50])
+    #    48  49  50
+    # 2   1   2   3
+    # A   4   5   6
+    # 4   7   8   9
+
+# Pass `2` to `loc`
+print(df.loc[2])
+    # 48    1
+    # 49    2
+    # 50    3
+
+# Pass `2` to `iloc`
+print(df.iloc[2])
+    # 48    7
+    # 49    8
+    # 50    9
+
+# Pass `2` to `ix`
+print(df.ix[2])
+    # 48    7
+    # 49    8
+    # 50    9
+
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+    #       48  49  50
+    # 2.5    1   2   3
+    # 12.6   4   5   6
+    # 4.8    7   8   9
+
+
+# no index labeled `2`, so change the index at position `2`
+df.ix[2] = [60, 50, 40]
+    #       48  49  50
+    # 2.5    1   2   3
+    # 12.6   4   5   6
+    # 4.8   60  50  40
+
+
+# make an index labeled `2` and add the new values
+df.loc[2] = [11, 12, 13]
+    #       48  49  50
+    # 2.5    1   2   3
+    # 12.6   4   5   6
+    # 4.8   60  50  40
+    # 2.0   11  12  13
+```
+
+---
+
+
+## Column
+
+### Add Column
+
+```py
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index=['1st', '2nd','3rd'], columns=['A', 'B', 'C'])
+    #      A  B  C
+    # 1st  1  2  3
+    # 2nd  4  5  6
+    # 3rd  7  8  9
+
+
+# ================================= Add Column
+df['D'] = df.index
+    #      A  B  C    D
+    # 1st  1  2  3  1st
+    # 2nd  4  5  6  2nd
+    # 3rd  7  8  9  3rd
+
+
+# ================================= Add Column value
+
+df.loc[:, 4] = pd.Series(['5', '6','7'], index=df.index)  # .iloc[:, x] look by label
+#      A  B  C    D  4
+# 1st  1  2  3  1st  5
+# 2nd  4  5  6  2nd  6
+# 3rd  7  8  9  3rd  7
+
+
+df.loc[:, 3] = pd.Series(['5', '6','7'], index=df.index)  # not exist, add
+#      A  B  C    D  3
+# 1st  1  2  3  1st  5
+# 2nd  4  5  6  2nd  6
+# 3rd  7  8  9  3rd  7
+
+
+df.loc[:, 'D'] = pd.Series(['5', '6','7'], index=df.index) # exist, change
+#      A  B  C  D
+# 1st  1  2  3  5
+# 2nd  4  5  6  6
+# 3rd  7  8  9  7
+
+
+df.iloc[:, 3] = pd.Series(['5', '6','7'], index=df.index)  # .iloc[:, x] look by index
+#      A  B  C  D
+# 1st  1  2  3  5
+# 2nd  4  5  6  6
+# 3rd  7  8  9  7
+```
+
+> Series object is much like a column of a DataFrame.
+
+
+### change the columns
+
+```py
+data = [1,2]
+
+df = pd.DataFrame(data)
+
+# 1.
+df.rename(index = str, columns={0:"A"}, inplace=True)
+
+# 2.
+df.columns=["a"]
+
+# 3.
+coList=[]
+for col in df.columns:
+  if col = "a":
+    col = "b"
+  coList.append(col)
+df.columns = coList
+
+```
+
+
+
+
+## Reset the Index
+
+```py
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+    #       48  49  50
+    # 2.5    1   2   3
+    # 12.6   4   5   6
+    # 4.8    7   8   9
+
+
+# eset the values
+df = df.reset_index(level=0, drop=True)
+    #    48  49  50
+    # 0   1   2   3
+    # 1   4   5   6
+    # 2   7   8   9
+
+df_reset = df.reset_index(level=0, inplace=True)
+    # None
+```
+
+`drop` argument: to get rid of the index that was there.
+`inplace`, the original index with floats is added as an extra column to your DataFrame.
+
+---
+
+## Merge
+
+![Screen Shot 2020-10-11 at 21.20.54](https://i.imgur.com/hN4rXmz.png)
+
+---
+
+# I/O
+
+```py
+# Read and Write to CSV
+pd.read_csv('file.csv', header=None, nrows=5)
+df.to_csv('myDataFrame.csv')
+
+# Read multiple sheets from the same file
+xlsx = pd.ExcelFile('file.xls')
+df = pd.read_excel(xlsx, 'Sheet1')
+
+# Read and Write to Excel
+pd.read_excel('file.xlsx')
+df.to_excel('dir/myDataFrame.xlsx',  sheet_name='Sheet1')
+
+# Read and Write to SQL Query or Database Table
+# (read_sql()is a convenience wrapper around read_sql_table() and read_sql_query())
+
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///:memory:')
+pd.read_sql(SELECT * FROM my_table;, engine)
+pd.read_sql_table('my_table', engine)
+pd.read_sql_query(SELECT * FROM my_table;', engine)
+df.to_sql('myDf', engine)
+
+```
+
+---
+
+# Selection
+
+---
+
+## get
+
+```py
+
+import numpy as np
+import pandas as pd
+
+data = {'Country': ['Belgium',  'India',  'Brazil'],
+        'Capital': ['Brussels',  'New Delhi',  'Brasilia'],
+        'Population': [11190846, 1303171035, 207847528]}
+df = pd.DataFrame(data, columns=['Country',  'Capital',  'Population'])
+
+# . | Country	| Capital	| Population
+# 1	| Belgium	| Brussels	| 11190846
+# 2	| India	    | New Delhi	| 1303171035
+# 3	| Brazil	| Brasilia	| 207847528
+
+
+# Get one element
+df['Capital']
+0     Brussels
+1     New Delhi
+2     Brasilia
+
+# Get subset of a DataFrame
+>>> df[1:]
+Country     Capital   Population
+1  India    New Delhi 1303171035
+2  Brazil   Brasilia  207847528
+```
+
+---
+
+## Selecting', Boolean Indexing and Setting
+
+```py
+
+# By Position
+# Select single value by row and and column
+>>> df.iloc([0], [0])
+'Belgium'
+>>> df.iat([0], [0])
+'Belgium'
+
+===============================================================
+
+# By Label
+# Select single value by row and column labels
+>>> df.loc([0],  ['Country'])
+'Belgium'
+>>> df.at([0],  ['Country'])
+'Belgium'
+
+===============================================================
+
+# By Label/Position
+
+# Select single row of subset of rows
+>>> df.ix[2]
+Country      Brazil
+Capital      Brasilia
+Population   207847528
+
+# Select a single column of subset of columns
+>>> df.ix[:, 'Capital']
+0     Brussels
+1    New Delhi
+2     Brasilia
+
+# Select rows and columns
+>>> df.ix[1, 'Capital']
+'New Delhi'
+```
+
+---
+
+### Boolean Indexing
+
+```py
+
+# Series s where value is not >1
+>>> s[~(s > 1)]
+
+# s where value is <-1 or >2
+>>> s[(s < -1) | (s > 2)]
+
+# Use filter to adjust DataFrame
+>>> df[df['Population']>1200000000]
+
+
+# Setting
+# Set index a of Series s to 6
+>>> s['a'] = 6
+```
+
+---
+
+## Dropping
+
+```py
+
+#    Country    Capital  Population
+# 0  Belgium   Brussels    11190846
+# 1    India  New Delhi  1303171035
+# 2   Brazil   Brasilia   207847528
+
+
+# Drop values from rows (axis=0)
+>>> s.drop(['a',  'c'])
+
+a = df.drop([2])
+#    Country    Capital  Population
+# 0  Belgium   Brussels    11190846
+# 1    India  New Delhi  1303171035
+
+
+
+# Drop values from columns(axis=1)
+>>> df.drop('Country', axis=1)
+
+
+# Sort and Rank
+# Sort by labels along an axis
+>>> df.sort_index()
+
+# Sort by the values along an axis
+>>> df.sort_values(by='Country')
+
+# Assign ranks to entries
+>>> df.rank()
+```
+
+---
+
+## Retrieving Series/DataFrame Information
+
+### Basic Information
+
+```py
+# (rows, columns)
+>>> df.shape
+
+# Describe index
+>>> df.index
+
+# Describe DataFrame columns
+>>> df.columns
+
+# Info on DataFrame
+>>> df.info()
+
+# Number of non-NA values
+>>> df.count()
+```
+
+### Summary
+
+```py
+# Sum of values
+>>> df.sum()
+
+# Cumulative sum of values
+>>> df.cumsum()
+
+# Minimum/maximum values
+>>> df.min()/df.max()
+
+# Minimum/Maximum index value
+>>> df.idxmin()/df.idxmax()
+
+# Summary statistics
+>>> df.describe()
+
+# Mean of values
+>>> df.mean()
+
+# Median of values
+>>> df.median()
+```
+
+
+
+
+
+
+
+.

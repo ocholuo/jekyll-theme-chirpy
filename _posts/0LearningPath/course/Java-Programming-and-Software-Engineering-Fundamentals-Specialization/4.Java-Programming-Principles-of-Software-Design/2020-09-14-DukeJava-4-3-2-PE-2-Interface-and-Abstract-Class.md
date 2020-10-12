@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-3-2 Interface and Abstract Class
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [Java, DukeCourse]
+categories: [0LearningPath, Course]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---

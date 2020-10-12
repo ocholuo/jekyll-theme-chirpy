@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-2-2 Programming Exercise 2 Sorting at Scale
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [Java, DukeCourse]
+categories: [0LearningPath, Course]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---

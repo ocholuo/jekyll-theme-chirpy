@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-1-1 - Programming Exercise - Searching Earthquake Data
 date: 2020-09-10 11:11:11 -0400
 description:
-categories: [Java, DukeCourse]
+categories: [0LearningPath, Course]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---

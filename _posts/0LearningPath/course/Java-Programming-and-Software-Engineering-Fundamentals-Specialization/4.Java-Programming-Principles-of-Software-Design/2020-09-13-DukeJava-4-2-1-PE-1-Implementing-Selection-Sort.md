@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-2-1 Programming Exercise 1 Implementing Selection Sort
 date: 2020-09-13 11:11:11 -0400
 description:
-categories: [Java, DukeCourse]
+categories: [0LearningPath, Course]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
