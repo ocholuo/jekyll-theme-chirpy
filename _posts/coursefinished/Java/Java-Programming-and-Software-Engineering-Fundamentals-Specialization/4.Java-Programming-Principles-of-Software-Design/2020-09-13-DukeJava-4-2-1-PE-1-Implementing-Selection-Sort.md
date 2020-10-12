@@ -7,9 +7,11 @@ img: /assets/img/sample/rabbit.png
 tags: [Java]
 --- 
 
-# DukeJava - 4-2-1 Programming Exercise 1 Implementing Selection Sort
-
 [toc]
+
+---
+
+# DukeJava - 4-2-1 Programming Exercise 1 Implementing Selection Sort
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization.
 - 4.Java-Programming-Principles-of-Software-Design
