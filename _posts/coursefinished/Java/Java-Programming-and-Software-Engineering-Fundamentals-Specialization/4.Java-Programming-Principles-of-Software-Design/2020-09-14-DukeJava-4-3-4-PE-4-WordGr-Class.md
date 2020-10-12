@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-3-4 Programming Exercise 4 WordGram Class
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [coursefinished, JavaNote]
+categories: [CourseFinished, JavaNote]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
 ---
