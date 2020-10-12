@@ -17,9 +17,9 @@
 
 ```py
 
-1. in python: find().
+import re
 
-    import re
+1. in python: find().
 
     hand = open('file.txt')
     for line in hand:
@@ -29,8 +29,6 @@
             print(line)
 
 2. in python: startswith()
-
-    import re
 
     hand = open('file.txt')
     for line in hand:
@@ -46,10 +44,9 @@
 ## match and extract data
 
 ```py
+import re
 
 1. normal match
-
-    import re
 
     x='my 2 favoriate numbers are 19 and 42'
     y=re.findall('[0-9]+',x)  # give back the string '2','19','42'
