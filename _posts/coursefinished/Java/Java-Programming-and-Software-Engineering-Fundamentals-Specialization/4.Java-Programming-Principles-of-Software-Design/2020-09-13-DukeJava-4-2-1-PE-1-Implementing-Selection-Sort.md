@@ -5,13 +5,13 @@ description:
 categories: [coursefinished, JavaNote]
 img: /assets/img/sample/rabbit.png
 tags: [Java]
----
+--- 
 
 # DukeJava - 4-2-1 Programming Exercise 1 Implementing Selection Sort
 
 [toc]
 
-Java-Programming-and-Software-Engineering-Fundamentals-Specialization
+Java-Programming-and-Software-Engineering-Fundamentals-Specialization.
 - 4.Java-Programming-Principles-of-Software-Design
   - 4-2 Earthquakes: Sorting Algorithms
     - 4-2-1 Programming Exercise 1 Implementing Selection Sort
