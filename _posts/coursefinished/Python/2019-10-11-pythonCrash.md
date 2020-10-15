@@ -1,6 +1,16 @@
+---
+title: Python Crash
+date: 2019-10-11 11:11:11 -0400
+description:
+categories: [CourseFinished, PythonNote]
+img: /assets/img/sample/rabbit.png
+tags: [Python]
+---
+
+[toc]
 
 
-# Python
+# Python Crash
 
 [toc]
 
@@ -447,6 +457,22 @@ open_cv_version.save("msi_recruitment.png")
 
 pil_img = pil_img.convert("RGB")
 pil_img.mode       # "RBG"
+
+
+
+
+
+# list all files in the current directory using os.listdir:
+import os
+for filename in os.listdir(os.getcwd()):
+   with open(os.path.join(os.cwd(), filename), 'r') as f: # open in readonly mode
+      # do your stuff
+
+# list only some files, depending on the file pattern using the glob module:
+import glob
+for filename in glob.glob('*.txt'):
+   with open(os.path.join(os.cwd(), filename), 'r') as f: # open in readonly mode
+      # do your stuff
 ```
 
 
