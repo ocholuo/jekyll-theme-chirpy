@@ -101,7 +101,8 @@ import edu.duke.*;
 import java.util.*;
 import org.apache.commons.csv.*;
 ```
-
+
+```
 write the following methods
 - `loadMovies(String filename)`
   - process every record from the CSV file whose name is filename, a file of movie information
@@ -122,7 +123,7 @@ write the following methods
   - Add code to find the maximum number of ratings by any rater. Determine how many raters have this maximum number of ratings and who those raters are. If you run this code on the file ratings_short.csv, you will see rater 2 has three ratings, the maximum number of ratings of all the raters, and that there is only one rater with three ratings.
   - Add code to find the number of ratings a particular movie has. If you run this code on the file ratings_short.csv for the movie “1798709”, you will see it was rated by four raters.
   - Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated.
-
+```
 
 
 
