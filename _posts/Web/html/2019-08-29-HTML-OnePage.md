@@ -48,7 +48,7 @@ HTML
   - `<script>` :	定义了客户端的脚本文件
   - `<style>` :	定义了HTML文档的样式文件
 - **sectioning elements**
-- `<body>` : define the body of the whole webpage
+- `<body>` : define the body of the whole webpage,只有 body 区域才会在浏览器中显示。
 - `<h1>` : header
 - `<div>`:
   - section or division of a web page.
@@ -61,11 +61,6 @@ HTML
 
 
 `<tagname>content goes here...</tagname>`
-
-
-### HTML 网页结构
-下面是一个可视化的HTML页面结构：
-只有 body 区域才会在浏览器中显示。
 
 ```html
 <html>
