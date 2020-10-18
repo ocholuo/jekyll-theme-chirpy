@@ -103,8 +103,8 @@ import org.apache.commons.csv.*;
 ```
 
 ```
-write the following methods
-- `loadMovies(String filename)`
+<!-- write the following methods
+`loadMovies(String filename)`
   - process every record from the CSV file whose name is filename, a file of movie information
   - return an ArrayList of type Movie with all of the movie data from the file.
   
@@ -113,6 +113,7 @@ write the following methods
   - Add code to determine how many movies include the Comedy genre. In the file ratedmovies_short.csv, there is only one.
   - Add code to determine how many movies are greater than 150 minutes in length. In the file ratedmovies_short.csv, there are two.
   - Add code to determine the maximum number of movies by any director, and who the directors are that directed that many movies. Remember that some movies may have more than one director. In the file ratedmovies_short.csv the maximum number of movies by any director is one, and there are five directors that directed one such movie.
+  
 - `loadRaters(String filename)` 
   - process every record from the CSV file whose name is filename, a file of raters and their ratings
   - return an ArrayList of type Rater with all the rater data from the file.
@@ -122,7 +123,7 @@ write the following methods
   - Add code to find the number of ratings for a particular rater you specify in your code. For example, if you run this code on the rater whose rater_id is 2 for the file ratings_short.csv, you will see they have three ratings.
   - Add code to find the maximum number of ratings by any rater. Determine how many raters have this maximum number of ratings and who those raters are. If you run this code on the file ratings_short.csv, you will see rater 2 has three ratings, the maximum number of ratings of all the raters, and that there is only one rater with three ratings.
   - Add code to find the number of ratings a particular movie has. If you run this code on the file ratings_short.csv for the movie “1798709”, you will see it was rated by four raters.
-  - Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated.
+  - Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated. -->
 ```
 
 
