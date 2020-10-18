@@ -7,12 +7,11 @@ categories: [Lab, ChaseSDE]
 tags: [Lab, SDE]
 ---
 
-
-
-# JPMorganChase SDE Virtual Experience
-
 [toc]
 
+---
+
+# JPMorganChase SDE Virtual Experience
 
 
 Interface with a stock price data feed and set up system for analysis of the data
@@ -21,10 +20,6 @@ Interface with a stock price data feed and set up system for analysis of the dat
 - displays a graph that automatically updates as it gets data from the server application
 - generate a live graph that displays the data feed in a clear and visually appealing way for traders to monitor this trading strategy.
 - monitor and determine when a trading opportunity may arise as a result of the temporary weakening of a correlation between two stock prices. Given this graph, the trader should be able to quickly and easily notice when the ratio moves too far from the average historical correlation.
-
-
-
-
 
 ---
 

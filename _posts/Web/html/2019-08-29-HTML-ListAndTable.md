@@ -1,16 +1,17 @@
 ---
 title: HTML - List And Table
-date: 2020-08-29 11:11:11 -0400
+date: 2019-08-29 11:11:11 -0400
 description: Learning Path
 categories: [Web, HTML]
 img: /assets/img/sample/rabbit.png
 tags: [HTML]
 ---
 
+[toc]
+
+---
 
 # HTML - List And Table
-
-[toc]
 
 ---
 

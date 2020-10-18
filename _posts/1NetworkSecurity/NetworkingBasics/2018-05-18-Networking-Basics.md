@@ -12,6 +12,10 @@ toc: true
 image: /assets/img/note/tls-ssl-handshake.png
 ---
 
+[toc]
+
+---
+
 # Networking Basics: TCP & UDP, TCP/IP & OSI Model
 
 The **Transmission Control Protocol/Internet Protocol (TCP/IP)** suite
