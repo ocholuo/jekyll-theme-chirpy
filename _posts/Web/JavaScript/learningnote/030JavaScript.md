@@ -262,7 +262,8 @@ the **internal and external JavaScript**, JavaScript is loaded and run in `the h
 #### **external JavaScript**
 
 `defer` attribute: tells the browser to continue downloading the HTML content once the `<script>` tag element has been reached.
-```js
+
+```html
 <script src="script.js" defer></script>
 ```
 

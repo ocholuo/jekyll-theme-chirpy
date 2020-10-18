@@ -222,7 +222,7 @@ This poem will display on a single line:
 - src 指向的内容会嵌入到文档中当前标签所在的位置。
 - 常用的有：img、script、iframe。
 - 例如:
-- <script src="script.js"></script>
+- `<script src="script.js"></script>`
 - 当浏览器解析到该元素时，会暂停浏览器的渲染，直到该资源加载完毕。
 - 这也是将js脚本放在底部而不是头部得原因。
 
