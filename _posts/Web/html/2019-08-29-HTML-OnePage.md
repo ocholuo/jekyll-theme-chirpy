@@ -37,7 +37,7 @@ HTML
     - contains general information about the page.
     - includes the title Information about scripts and information about displaying the page using CSS.
     - 包含了文档的元（meta）数据，
-    - 如 <meta charset="utf-8"> 定义网页编码格式为 utf-8。
+    - 如 `<meta charset="utf-8">` 定义网页编码格式为 utf-8。
   - `<title>` :
     - 描述了文档的标题
     - title for the page
@@ -100,14 +100,12 @@ HTML 是用来描述网页的一种语言。
 - The `<!DOCTYPE>` declaration for HTML5 is: `<!DOCTYPE html>`
 
 #### 通用声明
-HTML5
-`<!DOCTYPE html>`
+
+HTML5 `<!DOCTYPE html>`
 HTML 4.01
-`<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">`
+`<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">`
 XHTML 1.0
-`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
+`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
 
 
 ### Empty HTML Elements
@@ -132,7 +130,7 @@ HTML elements with no content are called empty elements.
 ### HTML Heading
 `<h1> - <h6>`
 
-```
+```html
 <h1>这是一个标题</h1>
 <h2>这是一个标题</h2>
 <h3>这是一个标题</h3>
@@ -143,7 +141,7 @@ HTML elements with no content are called empty elements.
 
 ### HTML 段落 `<p>`
 
-```
+```html
 <p>这是一个段落。</p>
 <p>这是另外一个段落。</p>
 浏览器会自动地在段落的前后添加空行。（</p> 是块级元素）
@@ -152,7 +150,7 @@ HTML elements with no content are called empty elements.
 
 ### HTML Horizontal Rules `<hr>`
 
-```
+```html
 创建水平线。
 
 <p>这是一个段落。</p>
@@ -181,6 +179,7 @@ This poem will display on a single line:
 
 
 ### HTML 链接 `<a href="url"> </a>`
+
 `<a href="https://www.runoob.com"> 这是一个链接 </a>`
 
 ---
@@ -242,7 +241,8 @@ This poem will display on a single line:
 HTML 文档由嵌套的 HTML 元素构成。
 
 HTML 文档实例
-```
+
+```html
 <!DOCTYPE html>
 <html>
   <body>
@@ -302,12 +302,13 @@ HTML 链接由 `<a>` 标签定义。链接的地址在 `href 属性`中指定：
 ### HTML 属性常用引用属性值
 - 属性值应该始终被包括在`引号`内。
 - 双引号是最常用的，不过使用`单引号`也没有问题。
-- Remark提示: 在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号，例如：name='John "ShotGun" Nelson'
+- Remark提示: 在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号，例如：`name='John "ShotGun" Nelson'`
 
 ### 使用小写属性
 属性和属性值对大小写不敏感。
 
 ### HTML 属性参考手册
+
 属性	    | 描述
 ---|---
 class	   | 为html元素定义一个或多个类名（classname）(类名从样式文件引入)
@@ -428,7 +429,8 @@ id属性可用于创建在一个HTML文档书签标记。
 
 #### HTML `<base>` 元素
 描述了`基本的链接地址/链接目标`，该标签作为HTML文档中所有的`链接标签`的默认链接:
-```
+
+```html
 <head>
 <base href="http://www.runoob.com/images/" target="_blank">
 </head>
@@ -437,7 +439,8 @@ id属性可用于创建在一个HTML文档书签标记。
 #### HTML `<link>` 元素
 定义了文档与外部资源之间的关系。
 通常用于链接到样式表:
-```
+
+```html
 <head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
@@ -447,7 +450,7 @@ id属性可用于创建在一个HTML文档书签标记。
 定义了HTML文档的样式文件引用地址.
 在`<style>` 元素中你也可以直接添加样式来渲染 HTML 文档:
 
-```
+```html
 <head>
   <style type="text/css">
     body {background-color:yellow}
@@ -461,7 +464,7 @@ id属性可用于创建在一个HTML文档书签标记。
 - 元数据不显示在页面上，但会被浏览器解析。
 - 通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。
 - 可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务。
-- 一般放置于 <head> 区域
+- 一般放置于 `<head>` 区域
 
 为搜索引擎 定义关键词:
 `<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">`
@@ -479,7 +482,7 @@ id属性可用于创建在一个HTML文档书签标记。
 #### HTML`<title>`元素不仅可以显示文本，也可以在左侧显示logo等图片。
 显示时，要将`<link>`标签放入`<head>`里。
 
-```
+```html
 <!doctype HTML>
 <html>
 <head>
@@ -517,6 +520,7 @@ CSS (Cascading Style Sheets) 用于渲染HTML元素标签的样式.
 </body>
 ```
 
+```html
 <body>
 <div style="opacity:0.5;position:absolute;left:50px;width:300px;height:150px;background-color:#40B3DF"></div>
 <div style="font-family:verdana;padding:20px;border-radius:10px;border:10px solid #EE872A;">
@@ -529,7 +533,7 @@ CSS (Cascading Style Sheets) 用于渲染HTML元素标签的样式.
 <div style="color:#000000;">and more...</div>
 </div>
 </body>
-
+```
 
 
 
