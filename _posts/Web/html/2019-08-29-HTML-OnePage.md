@@ -53,8 +53,6 @@ HTML
 - `<div>`:
   - section or division of a web page.
   - for grouping elements together to use CSS styling.
-
-
 - **text content**
   - `<p>` : 定义一个段落
   - `<hr>`	: 定义水平线
@@ -67,13 +65,13 @@ HTML
 ```html
 <html>
     <head>
-        <title></title>
+        <title>Page title</title>
     </head>
 
     <body>
-        <h1></h1>
-        <p></p>
-        <p></p>
+        <h1>This is a heading</h1>
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
     </body>
 </html>
 ```
@@ -132,16 +130,17 @@ HTML elements with no content are called empty elements.
 
 ```html
 <html>
-  <head>
-    <title>web title</title>
-  </head>
+    <head>
+        <title>Page title</title>
+    </head>
 
-  <body>
-    <h1>hearder1</h1>
-    <p>abcde</p>
-    <p>fghijk</p>
-  </body>
+    <body>
+        <h1>This is a heading</h1>
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+    </body>
 </html>
+```
 
 只有 body 区域才会在浏览器中显示。
 ```
