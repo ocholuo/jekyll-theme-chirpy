@@ -127,7 +127,8 @@ HTML elements with no content are called empty elements.
 
 ### HTML 网页结构
 下面是一个可视化的HTML页面结构：
-```
+
+```html
 <html>
   <head>
     <title>页面标题</title>
