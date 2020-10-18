@@ -1,7 +1,7 @@
 ---
 title: Linux - CentOS Enterprise User and Group Management
 date: 2020-07-16 11:11:11 -0400
-categories: [CourseNote, Linux]
+categories: [CourseNote, LinuxNote]
 tags: [Linux, LFCE, Pluralsight]
 math: true
 image: 
