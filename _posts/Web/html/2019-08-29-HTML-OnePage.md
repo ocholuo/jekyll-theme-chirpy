@@ -62,6 +62,11 @@ HTML
 
 `<tagname>content goes here...</tagname>`
 
+
+### HTML 网页结构
+下面是一个可视化的HTML页面结构：
+只有 body 区域才会在浏览器中显示。
+
 ```html
 <html>
     <head>
@@ -124,26 +129,6 @@ HTML elements with no content are called empty elements.
 ### Web 浏览器
 - Web浏览器用于读取HTML文件，并将其作为网页显示。
 - 浏览器并不是直接显示的HTML标签，但可以使用标签来决定如何展现HTML页面的内容给用户：
-
-### HTML 网页结构
-下面是一个可视化的HTML页面结构：
-
-```html
-<html>
-    <head>
-        <title>Page title</title>
-    </head>
-
-    <body>
-        <h1>This is a heading</h1>
-        <p>This is a paragraph.</p>
-        <p>This is another paragraph.</p>
-    </body>
-</html>
-```
-
-只有 body 区域才会在浏览器中显示。
-```
 
 ---
 
