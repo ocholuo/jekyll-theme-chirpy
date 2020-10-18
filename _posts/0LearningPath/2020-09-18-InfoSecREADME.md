@@ -92,7 +92,7 @@ Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Securit
 **Digital Forensic Tools** | Layer 2
 . | `Sleuth Kit (+Autopsy)`
 ---------|------------------------------
-🐰 | **Reconnaissance** step 1 information gethering 
+🐰 | **Reconnaissance** step 1 information gethering
 `passive` | visualping <br> ![visualping](https://i.imgur.com/TV47wYz.png)
 `website mirroring` | HTTrack <br> ![HTTrack](https://i.imgur.com/g0s74oj.png)
 `email foot-printing` | TheHarvester <br> ![TheHarvester](https://i.imgur.com/Ey7HrEQ.png)
@@ -103,6 +103,8 @@ Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Securit
 `web info gethering` | httprint <br> ![httprint](https://i.imgur.com/koDelg8.png)
 `Fingerprint web Framework` | whatweb <br> ![whatweb](https://i.imgur.com/PKmBLXt.png)
 `Fingerprint web Framework` | BlindElephant, Wappalyzer
+`website record` | HUNCHLY <br> ![HUNCHLY](https://i.imgur.com/2coiGDl.png)
+
 
 ---
 
@@ -122,8 +124,8 @@ XiongHaizimen | Note
 [coolguy](https://jhalon.github.io/over-the-wire-natas1/) | great solution
 [Gaurav Sen](https://www.youtube.com/watch?v=_YlYuNMTCc8&t=5s&ab_channel=GauravSen) | youtuber
 [youtube](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw) | not yet
-[youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl 
-[youtube](https://www.youtube.com/channel/UCZLJf_R2sWyUtXSKiKlyvAw) | DS Pro, clear and step by step 
+[youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl
+[youtube](https://www.youtube.com/channel/UCZLJf_R2sWyUtXSKiKlyvAw) | DS Pro, clear and step by step
 
 
 ---
