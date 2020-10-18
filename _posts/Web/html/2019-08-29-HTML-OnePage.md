@@ -57,12 +57,11 @@ HTML
   - `<p>` : 定义一个段落
   - `<hr>`	: 定义水平线
   - `<!--...-->`	: 定义注释
-  - `<ul> <ol> <dl>`: `<li>`
-
+  - `<ul> <ol> <dl> <li>`
 
 `<tagname>content goes here...</tagname>`
 
-```html
+```
 <html>
     <head>
         <title>Page title</title>
@@ -130,7 +129,7 @@ HTML elements with no content are called empty elements.
 ### HTML Heading
 `<h1> - <h6>`
 
-```html
+```
 <h1>这是一个标题</h1>
 <h2>这是一个标题</h2>
 <h3>这是一个标题</h3>
@@ -141,7 +140,7 @@ HTML elements with no content are called empty elements.
 
 ### HTML 段落 `<p>`
 
-```html
+```
 <p>这是一个段落。</p>
 <p>这是另外一个段落。</p>
 浏览器会自动地在段落的前后添加空行。（</p> 是块级元素）
@@ -150,7 +149,7 @@ HTML elements with no content are called empty elements.
 
 ### HTML Horizontal Rules `<hr>`
 
-```html
+```
 创建水平线。
 
 <p>这是一个段落。</p>
@@ -166,7 +165,7 @@ HTML elements with no content are called empty elements.
 ### The Poem Problem `<pre> </pre>`
 This poem will display on a single line:
 
-```html
+```
 <pre>
   My Bonnie lies over the ocean.
 
@@ -242,7 +241,7 @@ HTML 文档由嵌套的 HTML 元素构成。
 
 HTML 文档实例
 
-```html
+```
 <!DOCTYPE html>
 <html>
   <body>
@@ -430,7 +429,7 @@ id属性可用于创建在一个HTML文档书签标记。
 #### HTML `<base>` 元素
 描述了`基本的链接地址/链接目标`，该标签作为HTML文档中所有的`链接标签`的默认链接:
 
-```html
+```
 <head>
 <base href="http://www.runoob.com/images/" target="_blank">
 </head>
@@ -440,7 +439,7 @@ id属性可用于创建在一个HTML文档书签标记。
 定义了文档与外部资源之间的关系。
 通常用于链接到样式表:
 
-```html
+```
 <head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
@@ -450,7 +449,7 @@ id属性可用于创建在一个HTML文档书签标记。
 定义了HTML文档的样式文件引用地址.
 在`<style>` 元素中你也可以直接添加样式来渲染 HTML 文档:
 
-```html
+```
 <head>
   <style type="text/css">
     body {background-color:yellow}
@@ -482,7 +481,7 @@ id属性可用于创建在一个HTML文档书签标记。
 #### HTML`<title>`元素不仅可以显示文本，也可以在左侧显示logo等图片。
 显示时，要将`<link>`标签放入`<head>`里。
 
-```html
+```
 <!doctype HTML>
 <html>
 <head>
@@ -500,7 +499,7 @@ id属性可用于创建在一个HTML文档书签标记。
 ## HTML 样式- CSS
 CSS (Cascading Style Sheets) 用于渲染HTML元素标签的样式.
 
-```html
+```
 <body>
 
 <div style="opacity:0.5;position:absolute;left:50px;width:300px;height:150px;background-color:#40B3DF"></div>
@@ -520,7 +519,7 @@ CSS (Cascading Style Sheets) 用于渲染HTML元素标签的样式.
 </body>
 ```
 
-```html
+```
 <body>
 <div style="opacity:0.5;position:absolute;left:50px;width:300px;height:150px;background-color:#40B3DF"></div>
 <div style="font-family:verdana;padding:20px;border-radius:10px;border:10px solid #EE872A;">
