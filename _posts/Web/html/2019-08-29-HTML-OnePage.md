@@ -131,17 +131,17 @@ HTML elements with no content are called empty elements.
 ```html
 <html>
   <head>
-    <title>页面标题</title>
+    <title>web title</title>
   </head>
 
   <body>
-    <h1>这是一个标题</h1>
-    <p>这是一个段落。</p>
-    <p>这是另外一个段落。</p>
+    <h1>hearder1</h1>
+    <p>abcde</p>
+    <p>fghijk</p>
   </body>
 </html>
 
-只有 <body> 区域 (白色部分) 才会在浏览器中显示。
+只有 body 区域才会在浏览器中显示。
 ```
 
 ---
