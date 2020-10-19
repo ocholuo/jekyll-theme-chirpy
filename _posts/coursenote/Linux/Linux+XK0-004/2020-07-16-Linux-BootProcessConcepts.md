@@ -1,5 +1,5 @@
 ---
-title: Linux Boot Process Concepts
+title: Linux - Boot Process Concepts
 date: 2020-07-16 11:11:11 -0400
 categories: [CourseNote, LinuxNote]
 tags: [Linux, Boot]
@@ -13,7 +13,7 @@ image:
 
 ---
 
-# Linux Boot Process Concepts
+# Linux - Boot Process Concepts
 
 ## ✔️ | **Legacy GRUB**
 
