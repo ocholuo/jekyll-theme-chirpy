@@ -9,14 +9,14 @@ tags: [SOC, Prisma]
 math: true
 # pin: true
 toc: true
-image: /assets/img/note/Palo_Alto_Networks_Logo.png
+image: /assets/img/note/prisma.png
 ---
 
 [toc]
 
 ---
 
-# Prisma Cloud - Onboarding and Initial Setup
+# Prisma Cloud - Onboarding and Initial Setup Note
 
 ---
 
@@ -176,7 +176,7 @@ Manage the individuals who can access instance by
 
 
 **Prisma Cloud Permission Groups**
-- four <kbd>permission groups<kbd> predefined in Prisma Cloud,
+- four <kbd>permission groups</kbd> predefined in Prisma Cloud,
 - and a fifth permission group that combines the permissions of two of the predefined groups.  
 
 1. <kbd>System Admin</kbd> : Full control and access to **all Prisma Cloud settings**
@@ -226,19 +226,19 @@ Prisma Cloud General Settings
    2. The information can be filtered by cloud account and by time range.
 
 
-Demo: Access Keys
+<kbd>Demo: Access Keys</kbd>
 
 ![Screen Shot 2020-10-20 at 19.31.26](https://i.imgur.com/ytcnZWA.png)
 
 ![Screen Shot 2020-10-20 at 19.32.07](https://i.imgur.com/5cCXJkW.png)
 
 
-Demo: IP Whitelisting
+<kbd>Demo: IP Whitelisting</kbd>
 
 ![Screen Shot 2020-10-20 at 19.34.32](https://i.imgur.com/pyKSJM9.png)
 
 
-Demo: Licensing
+<kbd>Demo: Licensing</kbd>
 
 ![Screen Shot 2020-10-20 at 19.35.36](https://i.imgur.com/patzSdB.png)
 
@@ -253,34 +253,34 @@ set the `enterprise level settings` to build standard training models for `Unusu
 
 4 settings under the <kbd>Unusual User Activity/UEBA</kbd> panel on the bottom portion of the page.
 
-<kbd>Unusual User Activity/UEBA</kbd>
-- two settings within this section.
-- <kbd>Training Model Threshold</kbd>
-  - `Low, Medium, or High`
-  - to define the training model that will be used for UEBA or user and entity behavior analytics.
-  - Low: 25 event for 7 days
-  - Medium: 100 event for 30 days
-  - High: 300 event for 90 days
-- <kbd>Alert Disposition</kbd>
+1. <kbd>Unusual User Activity/UEBA</kbd>
+   - two settings within this section.
+   - <kbd>Training Model Threshold</kbd>
+     - `Low, Medium, or High`
+     - to define the training model that will be used for UEBA or user and entity behavior analytics.
+     - Low: 25 event for 7 days
+     - Medium: 100 event for 30 days
+     - High: 300 event for 90 days
+   - <kbd>Alert Disposition</kbd>
 
 
-<kbd>User Idle Timeout</kbd>
-- specifies the time interval when inactive users will be logged out of the system.
-- `Custom: xx mins`
+2. <kbd>User Idle Timeout</kbd>
+   - specifies the time interval when inactive users will be logged out of the system.
+   - `Custom: xx mins`
 
 
-<kbd>Auto Enable New Default Policies of the Type</kbd>
-- allows administrators to specify policies to be enabled by default and can be configured by policy severity.
-- `Low, Medium, or High`
+3. <kbd>Auto Enable New Default Policies of the Type</kbd>
+   - allows administrators to specify policies to be enabled by default and can be configured by policy severity.
+   - `Low, Medium, or High`
 
 
-<kbd>Make Alert Dismissal Reason Mandatory</kbd>
-- on: users may dismiss an alert only after providing an informative note.
+4. <kbd>Make Alert Dismissal Reason Mandatory</kbd>
+   - on: users may dismiss an alert only after providing an informative note.
 
 
-<kbd>Populate User Attribution In Alerts Notification<kbd>
-- User attribution tries to identify the user who made the change to a resource that resulted in a policy violation.
-- mandates that user attribution be included in the alert payloads.
+5. <kbd>Populate User Attribution In Alerts Notification<kbd>
+   - User attribution tries to identify the user who made the change to a resource that resulted in a policy violation.
+   - mandates that user attribution be included in the alert payloads.
 
 ---
 
