@@ -1,7 +1,7 @@
 ---
 title: Prisma Cloud - 1
 # author: Grace JyL
-date: 2020-09-18 11:11:11 -0400
+date: 2020-10-18 11:11:11 -0400
 description:
 excerpt_separator:
 categories: [SOC, PaloAlto]
