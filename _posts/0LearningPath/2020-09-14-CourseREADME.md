@@ -56,6 +56,10 @@ sleepy....
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
+**Palo Alto Networks Digital Learning** |
+⭐ `Prisma` | 🐰
+[Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 5/6 | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- |
 
 ---
 

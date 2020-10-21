@@ -9,6 +9,16 @@ img: /assets/img/sample/rabbit.png
 
 # DukeJava 4-1 StepOne
 
+[toc]
+
+Java-Programming-and-Software-Engineering-Fundamentals-Specialization
+- 5.Java-Programming-Build-a-Recommendation-System
+  - Step One : get the rating, rater, movie from the file
+
+Resource Link: https://www.coursera.org/learn/java-programming-recommender/supplement/ILMcl/programming-exercise-step-one
+
+starter files: https://www.dukelearntoprogram.com//course5/files.php
+
 ---
 
 - The class <kbd>Movie</kbd>
