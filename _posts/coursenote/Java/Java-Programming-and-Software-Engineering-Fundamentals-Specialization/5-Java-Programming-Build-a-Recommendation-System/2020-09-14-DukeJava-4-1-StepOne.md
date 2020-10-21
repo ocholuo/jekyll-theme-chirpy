@@ -101,11 +101,6 @@ rater_id,movie_id,rating,time
 
 ## Assignment
 
-create a new class FirstRatings
-- to process the movie and ratings data and to answer questions about them.
-- use CSVParser and CSVRecord.
-- FirstRatings will need the following three import statements:
-
 ```java
 import edu.duke.*;
 import java.util.*;
