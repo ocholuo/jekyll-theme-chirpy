@@ -15,9 +15,9 @@ Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 5.Java-Programming-Build-a-Recommendation-System
   - Step One : get the rating, rater, movie from the file
 
-Resource Link: https://www.coursera.org/learn/java-programming-recommender/supplement/ILMcl/programming-exercise-step-one
+[Resource Link](https://www.coursera.org/learn/java-programming-recommender/supplement/ILMcl/programming-exercise-step-one)
 
-starter files: https://www.dukelearntoprogram.com//course5/files.php
+[starter files](https://www.dukelearntoprogram.com//course5/files.php)
 
 ---
 
