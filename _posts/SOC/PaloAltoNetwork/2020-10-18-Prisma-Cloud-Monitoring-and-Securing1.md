@@ -9,7 +9,7 @@ tags: [SOC, Prisma]
 math: true
 # pin: true
 toc: true
-image: /assets/img/note/tls-ssl-handshake.png
+image: /assets/img/note/Palo_Alto_Networks_Logo.png
 ---
 
 [toc]
