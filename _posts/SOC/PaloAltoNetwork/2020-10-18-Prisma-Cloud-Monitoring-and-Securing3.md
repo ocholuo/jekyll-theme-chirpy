@@ -129,14 +129,35 @@ Alert Statuses
 
 ---
 
+## Audit Logs Report
 
+Audit Logs section enables companies to prepare for such audits and demonstrate compliance.
 
+The Audit logs section lists out the actions performed by the users of the system.
 
+- Who: specifies the user who performed the action.
+- When: provided by Timestamp.
+- Where: the source IP address of the user.
+- What: provides the details of what has been updated, created, or deleted.
 
+![Screen Shot 2020-10-21 at 01.45.14](https://i.imgur.com/ARnsxeE.png)
 
+![Screen Shot 2020-10-21 at 01.45.52](https://i.imgur.com/PeTHHux.png)
 
+![Screen Shot 2020-10-21 at 01.46.11](https://i.imgur.com/5pJypwe.png)
 
+---
 
+## check
+
+How are compliance reports generated in Prisma Cloud?
+- Compliance tab -> select the report to download in the Reports section
+
+How can a user associate custom policies to a compliance standard?
+- When creating a new policy, select one or more compliance standards for the new rule
+
+An Alert report can be downloaded in which file format?
+- `.CSV`
 
 
 
