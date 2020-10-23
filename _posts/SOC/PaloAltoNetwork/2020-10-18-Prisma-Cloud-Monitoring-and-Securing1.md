@@ -176,14 +176,26 @@ Manage the individuals who can access instance by
 
 
 **Prisma Cloud Permission Groups**
-- four <kbd>permission groups</kbd> predefined in Prisma Cloud,
+- 4 <kbd>permission groups</kbd> predefined
 - and a fifth permission group that combines the permissions of two of the predefined groups.  
 
-1. <kbd>System Admin</kbd> : Full control and access to **all Prisma Cloud settings**
-2. <kbd>Account Group Admin</kbd> : Full control and access to **all Prisma Cloud settings**
-3. <kbd>Account Group Read-Only</kbd> : Read-only access to specified sections of Prisma Cloud
-4. <kbd>Cloud Provisioning Admin</kbd> : Permission to onboard and manage cloud accounts
-5. <kbd>Account and Cloud Provisioning Admin</kbd> : This role combines the permissions of Account Group Admin and Cloud Provisioning Admin.
+1. <kbd>System Admin</kbd> :
+   - Full control (read/write permissions) to the service
+   - can create, edit, or delete account groups or cloud accounts.
+   - Only System administrators have access to `all Settings on Prisma Cloud` and can view `audit logs` to analyze actions performed by other users who have been assigned administrative privileges.
+2. <kbd>Account Group Admin</kbd> :
+   - Full control and access to `all Prisma Cloud settings`
+   - Read/write permissions for the cloud accounts and account groups to which they are granted access.
+   - An account group administrator can only view resources deployed within the cloud accounts to which they have access. Resources deployed on other cloud accounts that Prisma Cloud monitors are excluded from the search or investigation results.
+3. <kbd>Cloud Provisioning Admin</kbd> :
+   - Permissions to onboard and manage cloud accounts from Prisma Cloud and the APIs
+   - create and manage the account groups.
+   - With this role access is limited to Settings > Cloud Accounts and Settings > Account Groups on the admin console.
+4. <kbd>Account Group Read-Only</kbd> :
+      - Read-only access to specified sections of Prisma Cloud
+      - This role does not have permissions to modify any settings.
+5. <kbd>Account and Cloud Provisioning Admin</kbd> :
+   - This role combines the permissions of Account Group Admin and Cloud Provisioning Admin.
 
 
 Demo: Creating a Role

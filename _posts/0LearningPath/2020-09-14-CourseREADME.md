@@ -47,18 +47,18 @@ sleepy....
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
-[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/69) - AWS Academy Cloud Foundations [Amazon Interns] 5/6 | ✔️
-[AWSTraining](https://www.aws.training/Details/Curriculum?id=27076) - AWS Cloud Practitioner Essentials (Second Edition) | ✔️
-[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/376) - AWS Cloud Practitioner (CLF-C01) 6/14| ✔️
-[Udemy](https://www.udemy.com/course/aws-certified-cloud-practitioner/) - AWS Certified Cloud Practitioner 2020 '300Q' 6/15| ✔️
+[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/69) - AWS Academy Cloud Foundations [Amazon Interns] 5/6/20 | ✔️
+[AWSTraining](https://www.aws.training/Details/Curriculum?id=27076) - AWS Cloud Practitioner Essentials (Second Edition) 5/8/20 | ✔️
+[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/376) - AWS Cloud Practitioner (CLF-C01) 6/14/20 | ✔️
+[Udemy](https://www.udemy.com/course/aws-certified-cloud-practitioner/) - AWS Certified Cloud Practitioner 2020 '300Q' 6/15/20 | ✔️
 ⭐ `AWS Certified Solutions Architect – Associate`  | 🐰
-[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/374) - AWS Academy Cloud Architecting [Amazon Interns] 7.24 | ✔️
+[AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/374) - AWS Academy Cloud Architecting [Amazon Interns] 7/24/20 | ✔️
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
-[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14| ✔️
+[LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **Palo Alto Networks Digital Learning** |
 ⭐ `Prisma` | 🐰
-[Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 5/6 | ✏️
+[Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 
 ---
@@ -68,7 +68,7 @@ sleepy....
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25 | ✔️
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
 [COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
@@ -82,27 +82,27 @@ sleepy....
 [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds/index.html) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
-[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2| ✔️
-[COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 100% 9/6| ✔️
-[COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 100% 9/10| ✔️
+[COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2/20 | ✔️
+[COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 100% 9/6/20 | ✔️
+[COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 100% 9/10/20 | ✔️
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
-[COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17| ✔️
+[COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17/20 | ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
 [COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**UMich. Python 3 Programming** 4/3 |
+**UMich. Python 3 Programming** 4/3/20  |
 [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming) | ✔️
 [COURSE 2 Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries?specialization=python-3-programming) | ✔️
 [COURSE 3 Data Collection and Processing with Python](https://www.coursera.org/learn/data-collection-processing-python?specialization=python-3-programming) | ✔️
 [COURSE 4 Python Classes and Inheritance](https://www.coursera.org/learn/python-classes-inheritance?specialization=python-3-programming) | ✔️
-[COURSE 5 Python Project: pillow, tesseract, and opencv](https://www.coursera.org/learn/python-project) 4/3 | ✔️
-**UMich. Python for Everybody** 4/13 |
+[COURSE 5 Python Project: pillow, tesseract, and opencv](https://www.coursera.org/learn/python-project) 4/3/20  | ✔️
+**UMich. Python for Everybody** 4/13/20  |
 [COURSE 1 Programming for Everybody](https://www.coursera.org/learn/python?specialization=python) | ✔️
 [COURSE 2 Python Data Structures](https://www.coursera.org/learn/python-data?courseSlug=python-data&showOnboardingModal=checkAndRedirect&specialization=python) | ✔️
 [COURSE 3 Using Python to Access Web Data](https://www.coursera.org/learn/python-network-data?courseSlug=python-network-data&showOnboardingModal=checkAndRedirect&specialization=python) 4/12| ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **Computer Security and Systems Management** |
-[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13|  ✔️
+[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **Palo Alto Networks Cybersecurity** |
 [COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
@@ -120,26 +120,26 @@ sleepy....
 **[pluralsight]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **LFCE (Linux Foundation Certified Engineer) Path** |
-[LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18 | ✔️
+[LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18/20 | ✔️
 [LFCE: Advanced Network and System Administration](https://app.pluralsight.com/course-player?clipId=6f88f6c6-bea4-405e-b4c1-7bf38255c33c) | ✔️
 [LFCE: Network and Host Security](https://app.pluralsight.com/player?course=security-network-host-lfce&author=anthony-nocentino&name=security-network-host-lfce-m0&clip=0) | ✔️
-[LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24 | ✔️
+[LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20 | ✔️
 [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️
 [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents) | ✏️
 **CISSP (Certified Information Systems Security Professional) Path** |
-[Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1 | ✔️
+[Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1/20 | ✔️
 **Web Application Penetration Testing Path** |
-[1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9 | ✏️
+[1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9/20 | ✏️
 
 <br>
 
 **[linux academy]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
 `AWS Certification` |
-[AWS Cloud Practitioner (CLF-C01)](https://linuxacademy.com/cp/modules/view/id/376) 6/26| ✔️
+[AWS Cloud Practitioner (CLF-C01)](https://linuxacademy.com/cp/modules/view/id/376) 6/26/20 | ✔️
 `Security Analyst - Entry Level` |
-[CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6| ✏️
-[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1| ✔️
+[CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6/20 | ✏️
+[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1/20 | ✔️
 
 <br>
 
@@ -194,9 +194,9 @@ AWS | [1](https://github.com/alozano-77/AWS-SAA-C02-Course/blob/master/README.md
 Specialization | Course Name |  Mark |
 ---|---|---
 **APP** | |
-Tableau | [Training Videos](https://www.tableau.com/learn/training/20201) 5/3 | ✏️
+Tableau | [Training Videos](https://www.tableau.com/learn/training/20201) 5/3/20 | ✏️
 **other** | |
-other | [Business Dashboard Fundamentals](https://app.pluralsight.com/library/courses/business-dashboard-fundamentals/table-of-contents) 5/3 | ✔️
+other | [Business Dashboard Fundamentals](https://app.pluralsight.com/library/courses/business-dashboard-fundamentals/table-of-contents) 5/3/20 | ✔️
 
 <br>
 
