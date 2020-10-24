@@ -12,7 +12,7 @@ image:
 
 ## 1
 
-```py
+```bash
 1. downloads
 $ cd ur_path
 $ git clone link
