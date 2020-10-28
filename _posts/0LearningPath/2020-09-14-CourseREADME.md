@@ -59,6 +59,9 @@ sleepy....
 **Palo Alto Networks Digital Learning** |
 ⭐ `Prisma` | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
+[Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
+[Cortex XDR: Managed Threat Hunting (EDU-194)](https://beacon.paloaltonetworks.com/student/path/644210/activity/687279) 10/27/20 | ✔️
+[Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 
 ---
@@ -226,15 +229,19 @@ Name | S | Mark |
 
 ---
 
-## link
+## platform
 
-Link | goal
+platform | goal
 ---|---
-⭐[aws educate](https://www.awseducate.com/signin/SiteLogin) | <img src="https://i.imgur.com/1b0Eksu.png" width="200">
-⭐[aws academy](https://awsacademy.instructure.com/courses/69/pages/webinar-q-and-a) | <img src="https://i.imgur.com/7UEa24X.png" width="200">
-⭐[aws training](https://www.aws.training/SignIn) | <img src="https://i.imgur.com/2L8TU8S.png" width="200">
-
+⭐ [aws educate](https://www.awseducate.com/signin/SiteLogin) <br> <img src="https://i.imgur.com/1b0Eksu.png" width="200"> | aws learning resource
+⭐ [aws academy](https://awsacademy.instructure.com/courses/69/pages/webinar-q-and-a) <br> <img src="https://i.imgur.com/7UEa24X.png" width="200"> | aws learning resource
+⭐ [aws training](https://www.aws.training/SignIn) <br> <img src="https://i.imgur.com/2L8TU8S.png" width="200"> | aws learning resource
+⭐ [eventbrite](https://www.eventbrite.com/u/487798027239/) | ticket for evert
 ---
+
+
+https://www.eventbrite.com/u/487798027239/
+
 
 ## pending
 
@@ -257,6 +264,7 @@ name | Note
 
 
 ![Screen Shot 2020-05-27 at 22.27.13](https://i.imgur.com/4eHR24I.png)
+
 
 
 

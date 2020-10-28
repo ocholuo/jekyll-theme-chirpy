@@ -1,11 +1,11 @@
 ---
-title: Palo Alto Networks - Cortex XDR 2.0 Architecture, Analytics, and Causality Analysis
+title: Palo Alto Networks - CortexXDR
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
 excerpt_separator:
 categories: [SOC, PaloAlto]
-tags: [SOC, Prisma]
+tags: [SOC, CortexXDR]
 math: true
 # pin: true
 toc: true
@@ -16,7 +16,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Palo Alto Networks - Cortex XDR 2.0 Architecture, Analytics, and Causality Analysis
+# Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis
 
 
 ## Cortex XDR 2.0 - Architecture and Components
@@ -215,7 +215,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Analysis Actions 15 m
+## Cortex XDR 2.0 - Analysis Actions
 
 ![Screen Shot 2020-10-24 at 02.02.58](https://i.imgur.com/pM5r5tw.png)
 
@@ -379,7 +379,7 @@ image: /assets/img/note/prisma.png
 ## check
 
 
-From where on the management console can you rerun a query? 
+From where on the management console can rerun a query?
 - Query Center
 
 For the All `Actions option` on the Query Builder, which two entities can be specified?   
@@ -402,21 +402,21 @@ Which option can be considered as a use case of the rule exceptions?
 - to prevent false positives
 
 
-Which option describes the `severity attribute` of a Cortex XDR rule? 
+Which option describes the `severity attribute` of a Cortex XDR rule?
 - severity of alert to create
 
 
-Which two types are shown in the type list on the page for adding IOC rules? 
+Which two types are shown in the type list on the page for adding IOC rules?
 - Destination IP
 - File Name
 
 
-You can create a BIOC rule based on which two entities?  
+can create a BIOC rule based on which two entities?  
 - Network
 - Registry
 
 
-Which action option is correct about global BIOC rules? 
+Which action option is correct about global BIOC rules?
 - can clone
 
 
@@ -428,7 +428,7 @@ Which two options are correct about the Live Terminal action?
 What does the Pending status mean for an action performed in multiple endpoints?   
 - Not all endpoints have started to run the action yet.
 
-For which entity can you apply the Exclude action? 
+For which entity can apply the Exclude action?
 - alerts
 
 
@@ -440,11 +440,11 @@ Which action can be used for both response and investigation?
 - Live Terminal
 
 
-In the Timeline View, what does a gray icon imply? 
+In the Timeline View, what does a gray icon imply?
 - informational alert
 
 
-After you select a `node in the CI chain` on the `Causality View page`, which two tabs can you click? ​ (Choose two)  
+After select a `node in the CI chain` on the `Causality View page`, which two tabs can click? ​ (Choose two)  
 - NETWORK
 - PROCESS
 
@@ -454,7 +454,7 @@ Which two alert severity levels are visible on the `Causality View page`?
 - Medium
 
 
-After you right-click a `node in the CI chain` on the `Causality View page`, which two actions can you perform?  
+After right-click a `node in the CI chain` on the `Causality View page`, which two actions can perform?  
 - Open in VirusTotal
 - Terminate
 
@@ -467,10 +467,8 @@ Which two entities can appear under the section `Key Assets` on the incident det
 - hosts
 - users
 
-
 On the `incident details page`, informational alerts are displayed in which section?  
 - Insights
-
 
 Which generator can appear in the ALERT SRC field of alerts in the management console?
 - PAN NGFW
@@ -480,7 +478,7 @@ Which alert attribute is blank for unstitched alerts?
 - CGO signer
 
 
-Which two incident attributes are editable from the Cortex XDR management console?    
+Which two `incident attributes` are editable from the Cortex XDR management console</kbd>?    
 - severity ​
 - status ​
 
@@ -516,7 +514,7 @@ Which analysis technique is most effectively applied to `block fileless threats`
 - behavioral
 
 
-Which term is used to describe the `process of learning the normal behavior of an entity`? 
+Which term is used to describe the `process of learning the normal behavior of an entity`?
 - profiling
 
 
@@ -551,7 +549,7 @@ Which component is required in `agentless` Cortex XDR deployments?
 
 
 Which Cortex XDR offering `supports the enhanced endpoint data collection` feature?   
-- Cortex XDR Pro <kbd>per Endpoint</kbd>
+- <kbd>Cortex XDR Pro per Endpoint</kbd>
 
 
 Which two features are supported by <kbd>Cortex XDR Prevent</kbd>?    
@@ -559,14 +557,442 @@ Which two features are supported by <kbd>Cortex XDR Prevent</kbd>?
 - endpoint management
 
 
-Which two engines does Cortex XDR Pro <kbd>per endpoint</kbd> have?    
+Which two engines does Cortex XDR Pro <kbd>per endpoint</kbd> have?
 - Analytics
 - Causality Analysis
+
 
 
 What does the Palo Alto Networks-invented term `XDR` stand for?  
 - Cross-Platform Detection & Response
 
+---
+
+# Cortex XDR: Managed Threat Hunting (EDU-194)
 
 
-。
+---
+
+
+## Cortex XDR: Managed Threat Hunting
+
+Managed Threat Hunting Overview
+
+The Cortex XDR Managed Threat Hunting service is designed to find new, unnoticed threats before they pose risk to network.
+
+Proactive Threat Hunting: Problems and Solutions
+- Proactive threat hunting is difficult to conduct due to `lack of time, lack of resources, and missed attacks`.
+- Cortex XDR addresses these issues through its <kbd>Managed Threat Hunting</kbd> service.
+
+
+Problems
+- Most teams don’t have the time to proactively hunt for threats.
+- Teams rarely have advanced `threat hunters` dedicated to finding attacks.
+  - Finding stealthy attacks requires vast amounts of data and threat intelligence that must be available at cloud scale.
+  - Threat hunting is a data science problem that requires a unique combination of analytics expertise with a deep understanding of how adversaries work.
+  - Without manual threat hunting, organizations may not find the stealthiest attacks.
+
+
+Solutions > managed theat hunting
+- can augment team with around-the-clock threat hunting,
+- and cut dwell times and reduce risk without hiring more staff.  
+- enables to find all attacks with dedicated hunting across endpoint, network, cloud, and third-party data collected by Cortex XDR.  
+- can get detailed reports with context, intelligence, and guidance.  
+
+![Screen Shot 2020-10-28 at 00.55.29](https://i.imgur.com/5NALAxp.png)
+
+
+<kbd>Cortex XDR Research</kbd>
+- Researchers analyze emerging threats.
+- They also develop and test new detections.  
+
+Cortex XDR and Managed Threat Hunting
+- Cortex XDR and Managed Threat Hunting create a powerful combination of services can leverage.
+- **Cortex XDR** offers visibility, analytics, data exploration, and threat intel.
+- **Managed Threat Hunting** offers monitoring, knowledge, and early access to relevant information.
+
+<kbd>Cortex XDR Platform</kbd>
+- New detections are released to Cortex XDR customers on a regular basis.
+- Cortex XDR provides threat prevention
+- gives full visibility across endpoint, network, and cloud.
+- Analytics and threat detection across all data sources generate leads for hunting.
+- a powerful data exploration and integrated threat intel tool.
+
+
+<kbd>Managed Threat Hunting</kbd>
+- build on Cortex XDR
+  - Analytics on integrated endpoint, network, and cloud data drive threat hunting.
+- enriched with context.
+  - High-fidelity threat intel provides information about threats and generates impact reports.
+- This threat hunting capability is backed by `Unit 42`.
+  - Dedicated threat hunters continuously monitor environment for attacks.
+- leverage the **Cortex XDR platform**, **tools** such as Cortex XDR, and **ongoing research** to uncover hidden threats.
+- find new threats by `leveraging the Cortex XDR platform for research and testing`.
+  - The Cortex XDR platform gives `Unit 42 threat hunters` access to `emerging research and detections`.
+  - The Cortex XDR platform gives the threat hunters full access to `Cortex XDR analytics and data exploration engine`.
+- monitor environment to discover new threats and complex attacks by advanced adversaries.
+- get deep knowledge of Cortex XDR data sources and Palo Alto Networks threat intelligence.
+- rely on the managed threat hunting team to monitor network
+- get email notifications if new threats are found.
+
+
+Unit 42
+- The Cortex XDR Managed Threat Hunting is backed by Unit 42.
+- Unit 42 comprises a global threat intelligence team, threat hunting specialists, malware analysis authorities, and researchers.
+- A Global threat intelligence team
+  - years of defense, cyber warfare, intelligence, and industry experience.
+- Threat hunting specialists
+  - deep knowledge of attacker tools, techniques, and procedures.
+- Malware analysis authorities
+  - adept at forensics analysis and reverse engineering malware.
+- Researchers
+  - Researchers partner with the security community and law enforcement.
+
+
+Reducing Risk with Managed Threat Hunting Reports
+- Cortex XDR enables to get detailed reports based on thorough investigations of threats in organization.
+- Cortex XDR provides both <kbd>threat reports</kbd> and <kbd>impact reports</kbd>.
+
+**Threat Reports**
+- The Cortex XDR Managed Threat Hunting service provides threat reports that include `technical details` of the attack, `guidance`, and `information` about additional resources.
+  - Technical Details
+    - the scope of the attack, the probable source, and the tools and techniques used in the attack.
+  - Guidance
+    - guidance on remedial steps take.
+  - Additional Resources
+    - links to additional resources use for investigation.  
+
+Impact Reports
+- summary information about a threat and its impact for organization.
+- The report also provides information on ways to get assistance.
+  - Threat
+    - provide information about emerging attack campaigns, malware, and vulnerabilities.  
+  - Summary
+    - summary on a reported attack.
+    - The summary gives details about the nature and the scope of the reported attack.  
+  - Impact
+    - information on whether organization was affected by the attack.
+  - Assistance
+    - getting assistance from Unit 42 analysts.
+
+---
+
+## Managed Threat Hunting Techniques
+
+The Cortex XDR platform enables to conduct both manual and semi-automated threat hunting.
+
+<kbd>Manual Hunting</kbd>
+- gathers information from a variety of data sources.
+- uses the data for initial investigation followed by deep investigation, and then writes a report.
+
+> - Data Sources
+> collects data from network, endpoint, cloud, and third-party sources provided by customers.
+> - Idea
+> Based on findings from cases or a published exploit or attack, designs a query to search for the attack.
+> - Hypothesis
+> validates the hypothesis, checks results, and refines the hypothesis until discovered threats or is confident that no threat exists.
+> - Investigation
+> conducts deeper investigation of the findings and evidence.
+> - Report
+> sends a report with findings to the customer.
+
+
+![Screen Shot 2020-10-28 at 00.48.20](https://i.imgur.com/BaVVQ9I.png)
+
+
+<kbd>Semi-Automated Hunting</kbd>
+- Like manual hunting, semi-automated hunting involves collecting data from a variety of sources.
+- The data is analyzed, enriched, and prioritized.
+- Then the hunter uses the data for initial investigation followed by deep investigation, and writes a report.
+
+> - Data Sources
+> Data is collected from network, endpoint, cloud, and third-party sources provided by customers.
+> - Signals
+> Smart signals analyze all collected data to discover threats. Signals are based on one or all customers.
+> - Enrichment and Prioritization
+> Cortex XDR enriches the data that is analyzed by the signals and prioritizes the incident.
+> - Initial Investigation
+> As a first step, the hunter validates the signal before investigating it in the Cortex XDR management console.
+> - Deep Investigation
+> The hunter performs a manual investigation to confirm the threat and to understand the full scope of the attack.
+> Report
+> sends a report with findings to the customer.
+
+![Screen Shot 2020-10-28 at 00.52.08](https://i.imgur.com/XBEoMAF.png)
+
+
+Threat Hunting Tools
+- Cortex XDR enables managed threat hunting by leveraging several threat hunting tools such as `AutoFocus` and `WildFire`.
+- Unit 42:
+  - team of expert threat hunters.
+- Cortex XDR:
+  - A special version of Cortex XDR enables to keep an eye on all managed threat hunting customers, to pose questions, and to perform investigations.
+- AutoFocus:
+  - provides a high-fidelity threat intelligence feed powered by WildFire findings.
+- WildFire:
+  - a cloud-delivered malware analysis service
+  - uses data and threat intelligence from the industry's largest community.
+  - applies advanced analysis to automatically identify unknown threats and stop attackers in their tracks.
+- Cortex XSOAR
+  - applies playbooks to aggregate and normalize threat intel, enrich incidents, reduce false positives, deduplicate activities, and produce experimental signals.
+- external resources:
+  - The threat hunting team uses several external resources, such as `VT, Cuckoo, URL Analyzer, and GCP`.
+
+
+---
+
+Demo: Cortex XDR Managed Threat Hunting
+
+![Screen Shot 2020-10-28 at 00.58.22](https://i.imgur.com/LyxAq9I.png)
+
+![Screen Shot 2020-10-28 at 00.59.24](https://i.imgur.com/MbYDxP5.png)
+
+![Screen Shot 2020-10-28 at 00.59.42](https://i.imgur.com/z1Wg1Ue.png)
+
+![Screen Shot 2020-10-28 at 00.59.59](https://i.imgur.com/NQW3QxQ.png)
+
+![Screen Shot 2020-10-28 at 01.00.26](https://i.imgur.com/1buNwua.png)
+
+![Screen Shot 2020-10-28 at 01.00.57](https://i.imgur.com/mw9Zn6w.png)
+
+![Screen Shot 2020-10-28 at 01.01.11](https://i.imgur.com/DaqWx5N.png)
+
+![Screen Shot 2020-10-28 at 01.01.47](https://i.imgur.com/IXdfeQM.png)
+
+![Screen Shot 2020-10-28 at 01.02.53](https://i.imgur.com/A7lguEb.png)
+
+![Screen Shot 2020-10-28 at 01.03.09](https://i.imgur.com/UYlCIYz.png)
+
+### check
+
+Which three types of data exist in a threat report? (Choose three.)
+- the scope of the attack
+- probable source
+- attack tools and techniques
+
+
+Which two hunting techniques does the Managed Threat Hunting team use? (Choose two.)  5245097
+- semi-automated & manual
+
+
+What three benefits does the Cortex XDR Managed Threat Hunting service bring? (Choose three.)  5245097
+- It augments teams with 24/7 threat hunting.
+- It unmasks threats anywhere in an organization.
+- It enables teams to quickly respond with recommended next steps.
+
+
+Which two report types should a customer expect to receive from the Managed Threat Hunting team? (Choose two.)
+- threat report
+- impact report
+
+
+In which two places are Managed Threat Hunting incidents reported? (Choose two.)  5245097
+- Cortex XDR UI & email
+
+
+The Managed Threat Hunting team analyzes all alerts that exist in Cortex XDR.  5245097
+- False
+
+
+Which two items describe the Managed Threat Hunting service? (Choose two.)  5245097
+- It is supported by Unit 42.
+- It is enriched with context.
+
+
+
+---
+
+
+## Cortex Data Lake
+
+
+![Screen Shot 2020-10-28 at 01.12.47](https://i.imgur.com/sKWW9BN.png)
+
+
+![Screen Shot 2020-10-28 at 01.13.48](https://i.imgur.com/TaIu0kP.png)
+
+![Screen Shot 2020-10-28 at 01.16.12](https://i.imgur.com/7RGURkL.png)
+
+![Screen Shot 2020-10-28 at 01.17.12](https://i.imgur.com/HGhFYfv.png)
+
+![Screen Shot 2020-10-28 at 01.17.34](https://i.imgur.com/3KONLyc.png)
+
+![Screen Shot 2020-10-28 at 01.17.51](https://i.imgur.com/9iWS2pG.png)
+
+![Screen Shot 2020-10-28 at 01.18.09](https://i.imgur.com/34pCbp3.png)
+
+![Screen Shot 2020-10-28 at 01.18.41](https://i.imgur.com/yP1tuvE.png)
+
+![Screen Shot 2020-10-28 at 01.19.13](https://i.imgur.com/54yjXdP.png)
+
+![Screen Shot 2020-10-28 at 01.20.32](https://i.imgur.com/6BY7k4M.png)
+
+![Screen Shot 2020-10-28 at 01.20.05](https://i.imgur.com/Z4dAq0I.png)
+
+![Screen Shot 2020-10-28 at 01.28.46](https://i.imgur.com/cjbOrRM.png)
+
+![Screen Shot 2020-10-28 at 01.29.43](https://i.imgur.com/smRw4Mu.png)
+
+![Screen Shot 2020-10-28 at 01.32.11](https://i.imgur.com/yfknfG8.png)
+
+![Screen Shot 2020-10-28 at 11.32.06](https://i.imgur.com/inWJdU4.png)
+
+![Screen Shot 2020-10-28 at 11.33.53](https://i.imgur.com/uApRL0D.png)
+
+![Screen Shot 2020-10-28 at 11.34.27](https://i.imgur.com/aTwatYs.png)
+
+![Screen Shot 2020-10-28 at 11.34.58](https://i.imgur.com/vD5vSIM.png)
+
+![Screen Shot 2020-10-28 at 11.35.17](https://i.imgur.com/YnKj44k.png)
+
+![Screen Shot 2020-10-28 at 11.35.31](https://i.imgur.com/Nc7vYGW.png)
+
+![Screen Shot 2020-10-28 at 11.35.41](MySQL Circuit Breaker Open)
+
+![Screen Shot 2020-10-28 at 11.36.32](https://i.imgur.com/F7eiARF.png)
+
+![Screen Shot 2020-10-28 at 11.36.57](https://i.imgur.com/Eqc3iaP.png)
+
+
+![Screen Shot 2020-10-28 at 11.38.30](https://i.imgur.com/CfT6kMO.png)
+
+![Screen Shot 2020-10-28 at 11.39.08](https://i.imgur.com/TGmTANi.png)
+
+![Screen Shot 2020-10-28 at 11.39.00](https://i.imgur.com/HcKfqw4.png)
+
+![Screen Shot 2020-10-28 at 11.40.24](https://i.imgur.com/SrKxH6r.png)
+
+![Screen Shot 2020-10-28 at 11.40.33](https://i.imgur.com/sYVei5D.png)
+
+![Screen Shot 2020-10-28 at 11.41.05](https://i.imgur.com/wLKoE3A.png)
+
+![Screen Shot 2020-10-28 at 11.41.12](https://i.imgur.com/E32Uc3M.png)
+
+![Screen Shot 2020-10-28 at 11.41.40](https://i.imgur.com/6yWNrkj.png)
+
+![Screen Shot 2020-10-28 at 11.41.58](https://i.imgur.com/W0jqweE.png)
+
+![Screen Shot 2020-10-28 at 11.42.48](https://i.imgur.com/rpiJNrz.png)
+
+![Screen Shot 2020-10-28 at 11.43.26](https://i.imgur.com/sVCW5v3.png)
+
+![Screen Shot 2020-10-28 at 11.43.46](https://i.imgur.com/Q8WlWwi.png)
+
+![Screen Shot 2020-10-28 at 11.45.25](https://i.imgur.com/9IOAVmq.png)
+
+![Screen Shot 2020-10-28 at 11.45.39](https://i.imgur.com/LGPA93x.png)
+
+### troubleshoot
+
+![Screen Shot 2020-10-28 at 11.53.44](https://i.imgur.com/R95CKHY.png)
+
+![Screen Shot 2020-10-28 at 11.55.09](https://i.imgur.com/QE1TnQz.png)
+
+![Screen Shot 2020-10-28 at 11.56.12](https://i.imgur.com/oDEE8FV.png)
+
+![Screen Shot 2020-10-28 at 11.57.02](https://i.imgur.com/Ua3Wu9a.png)
+
+![Screen Shot 2020-10-28 at 11.57.13](https://i.imgur.com/HpiOzwA.png)
+![Screen Shot 2020-10-28 at 11.58.04](undefined)
+
+![Screen Shot 2020-10-28 at 11.58.14](https://i.imgur.com/j7ssAHM.png)
+
+![Screen Shot 2020-10-28 at 11.58.33](https://i.imgur.com/M6tthwL.png)
+
+![Screen Shot 2020-10-28 at 11.58.45](https://i.imgur.com/0RCKvZk.png)
+
+
+![Screen Shot 2020-10-28 at 11.59.57](https://i.imgur.com/Uipklvm.png)
+
+![Screen Shot 2020-10-28 at 12.04.23](https://i.imgur.com/AXLvHYA.png)
+
+![Screen Shot 2020-10-28 at 12.04.43](https://i.imgur.com/s5uy60G.png)
+
+
+![Screen Shot 2020-10-28 at 12.05.25](https://i.imgur.com/nBUi4b3.png)
+
+
+## check
+
+What is the maximum logs-per-second rate per TB of storage that Cortex Data Lake supports?
+- 1,000
+
+By what quantity can you increase your storage in Cortex Data Lake?
+- 1GB
+
+
+Every log is stored in how many different databases?
+- 2
+
+
+For fault tolerance, each log is replicated how many times in each database?
+- 3
+
+
+If you have purchased Traps, where do you go to `activate Cortex Data Lake?`  
+- Cortex hub
+
+
+If you need firewalls to forward logs to the Logging Service, where do you go to activate Cortex Data Lake?
+- Customer Support Portal
+
+
+Older logs in Cortex Data Lake get purged during which two conditions? (Choose two.)
+- maximum days of log retention
+- log storage quota exceeded
+
+
+True or false? Firewalls need to connect securely to Cortex Data Lake.
+- True
+
+
+True or false? For Cortex Data Lake to work, the time in the firewall and Panorama must be synchronized with the NTP server.  
+- True
+
+True or false? It is the best practice to use the paloalto-logging-service App-ID.  
+- True
+
+
+True or false? Logs stored in Cortex Data Lake can be forwarded to an external syslog receiver.
+- True
+
+True or false? Magnifier is an application running on the Palo Alto Networks Application Framework.
+- True
+
+True or false? Cortex Data Lake enables the Palo Alto Network Application Framework.  
+- True
+
+
+True or false? Cortex Data Lake offers multi-tenancy.
+- True
+
+
+True or false? You activate Cortex Data Lake license by using the auth code.  
+- True
+
+
+Where is the Log Forwarding App available?
+- Cortex hub
+
+What is the purpose of the one-time password (OTP)?
+- establish a certificate for secure connection between Cortex Data Lake and Panorama
+
+
+Which entity does Panorama contact to get a one-time password (OTP)?  
+- License Server
+
+Which three TCP ports need to be opened for connectivity between Cortex Data Lake and Panorama? (Choose three.)   
+- 443
+- 444
+- 3978
+
+
+True or false? If you subscribe to Cortex Data Lake, then you do not need to own any Log Collectors or be concerned about deploying them.  
+- True
+
+True or false? Cortex Data Lake provides built-in log redundancy.
+- True
+
+
+
+.
