@@ -43,7 +43,8 @@ sleepy....
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03 | ✔️
-**freecodecamp** [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
+**codecamp** |
+[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
@@ -56,8 +57,7 @@ sleepy....
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Palo Alto Networks Digital Learning** |
-⭐ `Prisma` | 🐰
+**Palo Alto Networks Learning** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
 [Cortex XDR: Managed Threat Hunting (EDU-194)](https://beacon.paloaltonetworks.com/student/path/644210/activity/687279) 10/27/20 | ✔️
