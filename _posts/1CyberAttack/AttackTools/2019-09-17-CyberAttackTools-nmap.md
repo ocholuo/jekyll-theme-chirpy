@@ -7,11 +7,12 @@ toc: true
 image:
 ---
 
-# nmap
 
 [toc]
 
 ---
+
+![Screen Shot 2020-10-30 at 19.45.35](https://i.imgur.com/a0IeE5F.png)
 
 # Nmap
 
@@ -70,9 +71,25 @@ Nmap handles all scan types we discussed in the previous section, using switches
 
 NOTE Port sweeping and enumeration on a machine is also known as fingerprinting, although the term is normally associated with examining the OS itself. You can fingerprint operating systems with several tools we’ve discussed already, along with goodies such as SolarWinds, Netcraft, and HTTrack.
 
+
 ---
 
-## os detect
+## install
+
+```bash
+# for mac
+install homebrew
+brew update
+brew upgrade
+brew install wget
+brew install nmap
+brew install Zenmap
+
+```
+
+---
+
+## os detect [nmap –O]
 
 `nmap –O [目標IP]`
 
@@ -110,10 +127,34 @@ Windows 上面開啟的 WireShark也可以看到不同的封包送過來
 ---
 
 ## Nmap output
+
 - The GUI version of the tool, `Zenmap`, makes reading this output easy
 - the output is available via several methods.
 - The default is called interactive, and it is sent to standard output (text sent to the terminal). Normal output displays less run-time information and fewer warnings because it is expected to be analyzed after the scan completes rather than interactively.
 - You can also send output as XML (which can be parsed by graphical user interfaces or imported into databases) or in a “greppable” format (for easy searching).
+
+```bash
+
+$ nmap scanme.nmap.org
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-10-30 19:39 EDT
+Nmap scan report for scanme.nmap.org (45.33.32.156)
+Host is up (0.11s latency).
+Not shown: 992 closed ports
+PORT      STATE    SERVICE
+22/tcp    open     ssh
+25/tcp    filtered smtp
+Nmap done: 1 IP address (1 host up) scanned in 23.08 seconds
+
+nmap -sS 127.0.0.1
+Starting Nmap 4.01 at 2006-07-06 17:23 BST
+Interesting ports on chaos (127.0.0.1):
+(The 1668 ports scanned but not shown below are in state: closed)
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+Nmap finished: 1 IP address (1 host up) scanned in 0.207 seconds
+
+```
 
 ![page89image152295312](https://i.imgur.com/ZaGR0fp.jpg)
 
@@ -127,88 +168,87 @@ Windows 上面開啟的 WireShark也可以看到不同的封包送過來
 
 ## Basic Scan Types [-sT, -sS]
 
-The two basic scan types used most in Nmap are 
-1. TCP connect() scanning [-sT] 
+The two basic scan types used most in Nmap are
+1. TCP connect() scanning [-sT]
 2. SYN scanning (half-open / stealth scanning) [-sS].
 
 The sample below shows a SYN scan and a FIN scan, performed against a Linux system.
 
-```
-[chaos]# nmap -sS 127.0.0.1
+```bash
+nmap -sS 127.0.0.1
 Starting Nmap 4.01 at 2006-07-06 17:23 BST
 Interesting ports on chaos (127.0.0.1):
 (The 1668 ports scanned but not shown below are in state: closed)
 PORT     STATE SERVICE
 21/tcp   open  ftp
 22/tcp   open  ssh
-631/tcp  open  ipp
-6000/tcp open  X11
 Nmap finished: 1 IP address (1 host up) scanned in 0.207 seconds
-```
-```
-[chaos]# nmap -sF 127.0.0.1
+
+
+nmap -sF 127.0.0.1
 Starting Nmap 4.01 at 2006-07-06 17:23 BST
 Interesting ports on chaos (127.0.0.1):
 (The 1668 ports scanned but not shown below are in state:closed)
 PORT     STATE         SERVICE
 21/tcp   open|filtered ftp
 22/tcp   open|filtered ssh
-631/tcp  open|filtered ipp
-6000/tcp open|filtered X11
 Nmap finished: 1 IP address (1 host up) scanned in 1.284
 ```
 
+---
+
 ### TCP connect() Scan [-sT]
-- These scans are so called because UNIX sockets programming uses a system call named `connect()` to begin a TCP connection to a remote site. 
-  - If `connect()` succeeds, connection made. 
-  - If it fails, the connection could not be made 
+- These scans are so called because UNIX sockets programming uses a system call named `connect()` to begin a TCP connection to a remote site.
+  - If `connect()` succeeds, connection made.
+  - If it fails, the connection could not be made
     - the remote system is offline
     - the port is closed
     - some other error occurred along the way
 - This allows a basic type of port scan
   - attempts to connect to every port in turn
-  - notes whether or not the connection succeeded. 
+  - notes whether or not the connection succeeded.
   - Once the scan is completed
     - ports to which a connection could be established are listed as `open`
     - the rest are said to be `closed`.
 
 pros:
-1. very effective, provides a clear picture of the ports you can and cannot access. 
+1. very effective, provides a clear picture of the ports you can and cannot access.
    - If a connect() scan lists a port as open, you can definitely connect to it
 
 major drawback
-1. very easy to detect on the system being scanned. 
+1. very easy to detect on the system being scanned.
    - If a firewall or intrusion detection system is running on the victim
-   - attempts to `connect()` to every port on the system will almost always trigger a warning. 
-   - modern firewalls, attempt to connect to a single port (which has been blocked or has not been specifically "opened") will usually result in the `connection attempt being logged`. 
+   - attempts to `connect()` to every port on the system will almost always trigger a warning.
+   - modern firewalls, attempt to connect to a single port (which has been blocked or has not been specifically "opened") will usually result in the `connection attempt being logged`.
    - most servers will log connections and their source IP
    - it would be easy to detect the source of a `TCP connect() scan`.
 
+---
 
 ### SYN Stealth Scan [-sS]
 For this reason, the TCP Stealth Scan was developed.
-- When a TCP connection is made between two systems, a process known as a "three way handshake" occurs. This involves the exchange of three packets, and synchronises the systems with each other (necessary for the error correction built into TCP. 
+- When a TCP connection is made between two systems, a process known as a "three way handshake" occurs. This involves the exchange of three packets, and synchronises the systems with each other (necessary for the error correction built into TCP.
 - The system initiating the connection sends a packet to the system it wants to connect to. TCP packets have a header section with a flags field. Flags tell the receiving end something about the type of packet, and thus what the correct response is.
 - four possible flags.
-  - SYN (Synchronise), ACK (Acknowledge), FIN (Finished) and RST (Reset). 
-  - `SYN` packets include a `TCP sequence number`: lets the remote system know what sequence numbers to expect in subsequent communication. 
-  - `ACK` acknowledges receipt of a packet or set of packets, 
+  - SYN (Synchronise), ACK (Acknowledge), FIN (Finished) and RST (Reset).
+  - `SYN` packets include a `TCP sequence number`: lets the remote system know what sequence numbers to expect in subsequent communication.
+  - `ACK` acknowledges receipt of a packet or set of packets,
   - `FIN`: when a communication is finished, requesting that the connection be closed
   - `RST`: when the connection is to be reset (closed immediately)
 
-**SYN / Stealth scanning** makes use of this procedure by sending a SYN packet and looking at the response. 
+**SYN / Stealth scanning** makes use of this procedure by sending a SYN packet and looking at the response.
 1. the port is open
    - `SYN/ACK` is sent back
-   - the remote end is trying to open a TCP connection. 
-   - The scanner then sends an `RST` to tear down the connection before it can be established fully; often preventing the connection attempt appearing in application logs. 
+   - the remote end is trying to open a TCP connection.
+   - The scanner then sends an `RST` to tear down the connection before it can be established fully; often preventing the connection attempt appearing in application logs.
 2. the port is closed
    - `RST` will be sent back
 3. it is filtered
    - `no response` will be sent back
-   - the SYN packet will have been dropped and no response will be sent. 
+   - the SYN packet will have been dropped and no response will be sent.
 
-In this way, Nmap can detect three port states 
-- open, closed and filtered. 
+In this way, Nmap can detect three port states
+- open, closed and filtered.
 - Filtered ports may require further probing since they could be subject to firewall rules which render them open to some IPs or conditions, and closed to others.
 
 Modern firewalls and Intrusion Detection Systems can detect SYN scans, but in combination with other features of Nmap, it is possible to create a virtually undetectable SYN scan by altering timing and other options (explained later).
@@ -217,38 +257,38 @@ Modern firewalls and Intrusion Detection Systems can detect SYN scans, but in co
 
 ### FIN, Null and Xmas Tree Scans [-sF, -sN, -sX]
 
-Each scan type refers to the flags set in the TCP header. 
+Each scan type refers to the flags set in the TCP header.
 - a **closed port** should respond with an `RST` upon receiving packets
-- an **open port** should `just drop them` (it’s listening for packets with SYN set). 
+- an **open port** should `just drop them` (it’s listening for packets with SYN set).
 - This way, you never make even part of a connection, and never send a SYN packet (what most IDS’ look out for).
 
-1. The FIN scan sends a packet with only the `FIN` flag set, 
+1. The FIN scan sends a packet with only the `FIN` flag set,
 2. the Xmas Tree scan sets the `FIN, URG and PUSH` flags
 3. the Null scan sends a packet `with no flags` switched on.
 
-These scan types will work against any system where the TCP/IP implementation follows RFC 793. 
-- Microsoft Windows does not follow the RFC, and will ignore these packets even on closed ports. 
+These scan types will work against any system where the TCP/IP implementation follows RFC 793.
+- Microsoft Windows does not follow the RFC, and will ignore these packets even on closed ports.
 - to detect an MS Windows system
-  - running SYN along with one of these scans. 
-  - If the SYN scan shows open ports, and the FIN/NUL/XMAS does not, chances are you’re looking at a Windows box 
+  - running SYN along with one of these scans.
+  - If the SYN scan shows open ports, and the FIN/NUL/XMAS does not, chances are you’re looking at a Windows box
   - (OS Fingerprinting is much more reliable way)
 
 ---
 
 ## Ping Scan [-sP]
-- lists the hosts within the specified range that responded to a ping. 
-- to detect which computers are online, rather than which ports are open. 
+- lists the hosts within the specified range that responded to a ping.
+- to detect which computers are online, rather than which ports are open.
 
 Four methods exist within Nmap for ping sweeping.
-1. sends an `ICMP ECHO REQUEST (ping request) packet` to the destination system. 
-   - `ICMP ECHO REPLY` received, the system is up, and ICMP packets are not blocked. 
+1. sends an `ICMP ECHO REQUEST (ping request) packet` to the destination system.
+   - `ICMP ECHO REPLY` received, the system is up, and ICMP packets are not blocked.
    - `no response` to the ICMP ping, Nmap will try a "TCP Ping", to determine whether ICMP is blocked, or if the host is really not online.
 
-2. sends either a `SYN or an ACK packet` to any port (80 default) on the remote system. 
-   - `RST or a SYN/ACK` is returned, then the remote system is online. 
+2. sends either a `SYN or an ACK packet` to any port (80 default) on the remote system.
+   - `RST or a SYN/ACK` is returned, then the remote system is online.
    - If the remote system `does not respond`, either it is offline, or the chosen port is filtered, and thus not responding to anything.
 
-3. run an Nmap ping scan as root, the default is to use the `ICMP and ACK methods`. 
+3. run an Nmap ping scan as root, the default is to use the `ICMP and ACK methods`.
 4. Non-root users will use the `connect() method`, which attempts to connect to a machine, waiting for a response, and tearing down the connection as soon as it has been established (similar to the SYN/ACK method for root users, but this one establishes a full TCP connection!)
 
 The ICMP scan type can be disabled by setting `-P0`
@@ -256,17 +296,17 @@ The ICMP scan type can be disabled by setting `-P0`
 ---
 
 ## UDP Scan [-sU]
-Nmap sends 0-byte UDP packets to each target port on the victim. 
+Nmap sends 0-byte UDP packets to each target port on the victim.
 - Receipt of an `ICMP Port Unreachable` message signifies the port is closed
 - otherwise it is assumed open.
 
 disadvantage
-1. when a firewall blocks outgoing ICMP Port Unreachable messages, the port will appear open. 
+1. when a firewall blocks outgoing ICMP Port Unreachable messages, the port will appear open.
    - false-positives are hard to distinguish from real open ports.
-2. the speed at which it can be performed. 
+2. the speed at which it can be performed.
    - Most operating systems limit the number of `ICMP Port Unreachable messages` which can be generated in a certain time period
-     - thus slowing the speed of a UDP scan. 
-   - Nmap adjusts its scan speed accordingly to avoid flooding a network with useless packets. 
+     - thus slowing the speed of a UDP scan.
+   - Nmap adjusts its scan speed accordingly to avoid flooding a network with useless packets.
    - **Microsoft do not limit the `Port Unreachable error` generation frequency**
      - thus it is easy to scan a Windows machine’s 65,535 UDP Ports in very little time!!
 

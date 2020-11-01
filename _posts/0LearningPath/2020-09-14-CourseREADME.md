@@ -59,6 +59,7 @@ sleepy....
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **Palo Alto Networks Learning** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
+[Prisma Cloud: Onboarding and Operationalizing](https://beacon.paloaltonetworks.com/student/path/642701) 10/28/20 | ✏️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
 [Cortex XDR: Managed Threat Hunting (EDU-194)](https://beacon.paloaltonetworks.com/student/path/644210/activity/687279) 10/27/20 | ✔️
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
