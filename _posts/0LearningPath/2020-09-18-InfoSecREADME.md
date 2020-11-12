@@ -52,6 +52,11 @@ GoodWeb | Note
 
 Attack | Tool
 ------------------------------|-----------------------------------------------------------
+**malware** |  Layer 7
+`malware packaging` | PEiD <br>![PEiD](https://i.imgur.com/y1AFinu.png)
+`malware` | IDA Freeware <br> ![IDA Freeware](https://i.imgur.com/CAsSCA1.png)
+`malware` | Pe Explorer <br> ![Pe Explorer](https://i.imgur.com/kzfck2A.png)
+---------|------------------------------
 `vulnerability scanning & management` | OpenVAS <br> ![openvas10](https://i.imgur.com/8sJLdIh.png)
 `Finding vulnerabilities` | Intruder <br> ![Intruder](https://i.imgur.com/7BLUaKx.png)
 `Building anti-forensic and evasion tools` | Metasploit <br>![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
@@ -125,6 +130,8 @@ XiongHaizimen | Note
 [Tanishq](https://tanishq.page/index.html) | cool website and lab!
 [coolguy](https://jhalon.github.io/over-the-wire-natas1/) | great solution
 [infosecblog](https://www.boiteaklou.fr/archive/) | cool
+[secblog](https://www.aldeid.com/w/index.php?search=TryHackMe&title=Special%3ASearch&go=Go) | solution
+[Kali渗透测试 大学霸](https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial/content/27.html) | learn kali
 [Gaurav Sen](https://www.youtube.com/watch?v=_YlYuNMTCc8&t=5s&ab_channel=GauravSen) | youtuber
 [youtube](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw) | not yet
 [youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl
