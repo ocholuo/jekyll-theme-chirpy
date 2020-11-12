@@ -34,7 +34,108 @@ image:
 
 ![page88image152923104](https://i.imgur.com/6mO8lhp.jpg)
 
-Table 3-4 Nmap Switches
+
+---
+
+```bash
+nmap 0.0.0.0
+nmap 0.0.0.0 0.0.0.1 0.0.0.2 scanme.nmap.org
+nmap 0.0.0.1-125
+nmap 0.0.0.0/24
+nmap 0.0.0.0/24 --exclude 0.0.0.3
+nmap 0.0.0.0/24 --excludefile list.txt
+nmap scanme.nmap.org
+nmap nmap.org/29
+nmap -O scanme.nmap.org
+nmap -iL targetlist.txt
+nmap -iR 20  # random select 20
+
+Nmap                              Port Selection
+Scan a single Port	              nmap -p 22 192.168.1.1
+Scan a range of ports	            nmap -p 1-100 192.168.1.1
+Scan 100 most common ports (Fast)	nmap -F 192.168.1.1
+Scan all 65535 ports            	nmap -p- 192.168.1.1
+
+
+# Nmap Output Formats
+nmap 0.0.0.1 -oN output.txt # normal output
+nmap 0.0.0.1 -oX output.xml # xml
+nmap 0.0.0.1 -oG output.txt
+nmap 0.0.0.1 -oA output     # 3 mainfile type, gnmap, nmap, xml
+nmap -oA output.txt 0.0.0.1 -O
+
+
+nmap -sO # IP protocol scan
+
+
+nmap -O -v 0.0.0.1 -oA output.txt   # detail, verbositive level
+nmap -O -vv 0.0.0.1 -oA output.txt 
+
+nmap -F 0.0.0.1-50      # fast mode. 100 most popular port
+nmap -T4 -A -v 0.0.0.0  # advanced
+
+nmap -sn 0.0.0.0 # fast ping swipe
+nmap -sS # TCP SYN scan
+nmap -sS -p 80 -T2 -iR 50
+nmap -sA # TCP ACK scan
+nmap -sT # TCP connection scan
+nmap -sY # SCTP INIT scan
+nmap -sW # TCP Window scan
+nmap -sM # TCP Maimon scan
+
+nmap -sU # UDP scan
+nmap -sU -p 53,88,123,137,138 0.0.0.0
+
+nmap -sN # Null scan
+nmap -sF # FIN scan REST=livehost
+nmap -sX 0.0.0.0 # Xmas scan push urgent=1
+nmap -b # FTP Bounce scan
+
+-Pn # don't ping before scanning
+nmap -sn -PE # ICMP ping
+-PP # ICMP timestamp request
+-PM # ICMP netmask request
+-PA # ACK ping
+-PS # SYN ping
+-PU # UDP probes
+-PY # SCTP INIT ping probes
+
+-d             # debugging level
+--packet-trace # Packet trace
+-r             # disable randomizing scanned ports
+--traceroute   # traceroute to targets
+--max-retries  # Max Retries
+
+
+nmap -v --script whois-ip emailheaderip
+nmap -v --script whois-domain header.from(trophtdepot.com)
+nmap -T4 -O --script smb-os-discovery, whois-domain header.from(0.0.0.0)
+# A scan to search for DDOS reflection UDP services
+Scan for UDP DDOS reflectors	nmap –sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr 192.168.1.0/24
+# HTTP Service Information
+Gather page titles from HTTP services	nmap --script=http-title 192.168.1.0/24
+Get HTTP headers of web services     	nmap --script=http-headers 192.168.1.0/24
+Find web apps from known paths       	nmap --script=http-enum 192.168.1.0/24
+# Detect Heartbleed SSL Vulnerability
+nmap -sV -p 443 --script=ssl-heartbleed 192.168.1.0/24
+# Find Information about IP address	
+nmap --script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24
+
+nmap -6 --hop-limit
+nmap -6 -S source target
+nmap -6 0.0.0.0
+nmap --ipv6 0.0.0.0
+
+
+# Service and OS Detection
+Detect OS and Services	          nmap -A 192.168.1.1
+Standard service detection       	nmap -sV 192.168.1.1
+More aggressive Service Detection	nmap -sV --version-intensity 5 192.168.1.1
+Lighter banner grabbing detection	nmap -sV --version-intensity 0 192.168.1.1
+
+```
+
+
 
 ---
 

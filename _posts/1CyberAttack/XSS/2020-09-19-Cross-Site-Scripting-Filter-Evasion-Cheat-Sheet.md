@@ -23,9 +23,9 @@ toc: true
 ／|￣∪∪￣|＼／
 　|＿＿ ＿|／
 
-por favor, no lo usar para hacer algo malo!
+por favor, no lo usar para hacer algo malo
 just learning note, please don't use it to do something wrong
-kali用得好，监狱进得早，与君共勉!
+kali用得好，监狱进得早，与君共勉
 
 ```
 

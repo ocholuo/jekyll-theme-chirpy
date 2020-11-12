@@ -38,14 +38,6 @@ cd hashcat/ && make
 
 
 
-./example400.sh
-
-
-
-
-
-
-
 
 
 .
