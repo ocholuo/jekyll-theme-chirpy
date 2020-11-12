@@ -12,6 +12,6 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-# Cyber Security knowledge point!
+# Cyber Security knowledge point
 
 https://ocholuo.github.io/posts/SEED-Labs–XSS-Attack-Lab
