@@ -154,9 +154,8 @@ filter just the ienabled policy
 
 
 ---
-
+ 
 ## Alerts
-
 
 Alerts are generated after public cloud account connects to Prisma Cloud.
 
@@ -182,7 +181,7 @@ Policies and Alerts
 - 4 alert states:
   - open,
   - resolved,
-  - dismissed, and
+  - dismissed,
   - snoozed. 小睡
 
 

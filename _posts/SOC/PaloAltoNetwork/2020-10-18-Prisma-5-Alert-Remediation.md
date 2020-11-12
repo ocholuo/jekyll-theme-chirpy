@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - Prisma Cloud - 5
+title: Palo Alto Networks - Prisma Remediating Security Issues
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -16,11 +16,11 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Prisma Cloud - Remediating Security Issues
+# Remediating Security Issues
 
 --
 
-## Overview of Remediation Core Concepts
+## Remediation Core Concepts
 
 In Prisma Cloud, an `alert` occurs when an `alert rule` has been configured that enforces `one or more policies` and for `one or more account groups`.
 
@@ -28,19 +28,28 @@ Resolving Open Alerts
 - Resources in the targeted environment that are in violation of any policy in the alert rule will trigger the alert.
 - Once the alert is asserted, open alerts can be resolved in one of three ways.  
 - **Manual Remediation**
-  - log in to your public cloud account directly and `reconfigure the resource` so that it is no longer in violation of the policy.
+  - log in to public cloud account directly and `reconfigure the resource` so that it is no longer in violation of the policy.
+  - applies to all alert types and not just to config alerts.
+  - It provides the steps to remediate the policy violation from cloud account console.
+  - Note that no CLI command is provided for it.
 - **Automatic Remediation**
   - allow Prisma Cloud to automatically remediate the security violation.
+  - Auto-remediation needs to be enabled.
+  - It applies only to some config policies.
+  - Note that Prisma Cloud requires `write permissions` for the cloud account.
 - **Guided Remediation**
-  - perform guided remediation by invoking the required CLI commands from within Prisma Cloud.
+  - invoke the required CLI from within Prisma Cloud.
+  - the CLI command is displayed but not automatically executed,
+  - the user needs to manually invoke the steps to execute the CLI command.
+  - It applies only to some config policies.
 
 
 Remediation Core Concepts
 - the requirements for auto-remediation.
 - **Read and Write Permissions**
   - Prisma Cloud does require read and write permissions to perform remediation.
-  - read-only permissions: monitor or scan public clouds and gather the information and data regarding those public account.
-  - read-write permissions: invoke remediation from the Prisma Cloud platform.
+  - `read-only permissions`: monitor or scan public clouds and gather the information and data regarding those public account.
+  - `read-write permissions`: invoke **remediation** from the Prisma Cloud.
 - **Rapid Response**
   - To facilitate rapid incident response,
   - Prisma Cloud allows remediation of cloud security alerts in cloud environments using CLI commands.
@@ -50,7 +59,7 @@ Remediation Core Concepts
   - prisma Cloud provides the CLI commands for Prisma Cloud system default policies that have a remediation CLI commands associated with them.
   - Not all policies are applicable for CLI command remediation.
   - The CLI description has the necessary permission listed.
-  - You may need to make sure the Prisma Cloud application has these necessary additional privileges.
+  - may need to make sure the Prisma Cloud application has these necessary additional privileges.
 
 
 Public Cloud Account Requirements
@@ -63,12 +72,11 @@ Public Cloud Account Requirements
 - Azure: Storage Account Contributor role
   - For auto-remediation of Azure policies, the Prisma Cloud application must have a storage account contributor role at the subscription level.
   - This role only is needed for auto-remediation.
-  - The action supported for this role allows you to manage your resources.
+  - The action supported for this role allows to manage resources.
 - GCP: Compute Security Admin role
-  - In the GCP environment, you can grant permissions by granting roles to a user, a group, or a service account.
+  - In the GCP environment, can grant permissions by granting roles to a user, a group, or a service account.
   - The `compute.securityAdmin` role is required for auto-remediation.
   - This allows the role to create, modify, and delete firewall rules along with other security-related configuration changes.
-
 
 
 <kbd>Demo: Policies that Support Remediation</kbd>
@@ -79,31 +87,15 @@ Public Cloud Account Requirements
 
 ---
 
-## Alert Rules Configured for `Auto-Remediation`
+## Manual Remediation
 
-In order to invoke auto-remediation, policies that are configured for remediation also need to be incorporated into an alert rule.
-
-Alert Rules for Auto-Remediation Overview
-- To enable automated remediation, identify the set of policies that you want to remediate automatically and verify that Prisma Cloud has the required permissions in the associated cloud environments.
-- `Write Access`
-  - Prisma Cloud will need write access to the necessary cloud services to execute the remediation commands.
-- `Resolution`
-  - After remediation has been applied to the violating resource, the alert should be resolved and therefore not reappear after the next scan of the cloud accounts.
-- `Auto-Remediation`
-  - Prisma Cloud honors alert rules that have auto-remediation turned on.
-  - These alerts will be auto-resolved.
-
-
-
-<kbd>Demo: Alert Rule Support for Auto-Remediation</kbd>
-
-![Screen Shot 2020-10-22 at 17.20.31](https://i.imgur.com/SlxbNED.png)
+![original](https://i.imgur.com/16ZX9bN.png)
 
 ---
 
 ## `Guided Remediation`
 
-In Prisma Cloud, you can perform guided remediation to resolve an alert. This can be performed on policies that have the `built-in remediation option`.
+In Prisma Cloud, can perform guided remediation to resolve an alert. This can be performed on policies that have the `built-in remediation option`.
 
 Guided Remediation
 - In Prisma Cloud, all open alerts are displayed by default in the <kbd>Alerts Overview page</kbd>.
@@ -122,14 +114,37 @@ alert > violating resource > audit trail
 
 ![Screen Shot 2020-10-22 at 17.25.06](https://i.imgur.com/xJgxknC.png)
 
+![extraLarge](https://i.imgur.com/JdREpKi.png)
+
 ![Screen Shot 2020-10-22 at 17.25.52](https://i.imgur.com/A5N84bP.png)
+
+---
+
+## Alert Rules Configured for `Auto-Remediation`
+
+In order to invoke auto-remediation, policies that are configured for remediation also need to be incorporated into an alert rule.
+
+Alert Rules for Auto-Remediation Overview
+- To `enable automated remediation`, identify the set of policies that want to remediate automatically and verify that Prisma Cloud has the required permissions in the associated cloud environments.
+- `Write Access`
+  - need write access to the cloud services to execute the remediation CLI commands.
+- `Resolution`
+  - After remediation has been applied to the violating resource, the alert should be resolved and therefore not reappear after the next scan of the cloud accounts.
+- `Auto-Remediation`
+  - Prisma Cloud honors alert rules that have auto-remediation turned on.
+  - These alerts will be auto-resolved.
+
+
+<kbd>Demo: Alert Rule Support for Auto-Remediation</kbd>
+
+![Screen Shot 2020-10-22 at 17.20.31](https://i.imgur.com/SlxbNED.png)
 
 
 ---
 
 ## Add Remediation to a Policy - `Custom Policies`
 
-When you create a new custom policy in Prisma Cloud, configure the remediation steps or commands necessary to resolve policy violations.
+When create a new custom policy in Prisma Cloud, configure the remediation steps or commands necessary to resolve policy violations.
 
 Adding Remediation
 - to create remediation commands. Prisma Cloud will need `write access` to the necessary cloud services to execute the remediation commands.

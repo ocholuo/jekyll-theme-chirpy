@@ -1,398 +1,254 @@
 
 
-# Cortex XDRTM Pro Administrator’s Guide
-
+---
 
 [toc]
 
 ---
 
 
-# Cortex XDRTM Pro Administrator’s Guide
-     paloaltonetworks.com/documentation
+## Cortex XDR Overview
 
- Contact Information
-Corporate Headquarters:
-Palo Alto Networks
-3000 Tannery Way
-Santa Clara, CA 95054 www.paloaltonetworks.com/company/contact-support
-About the Documentation
-- Forthemostrecentversionofthisguideorforaccesstorelateddocumentation,visittheTechnical Documentation portal www.paloaltonetworks.com/documentation.
-- To search for a specific topic, go to our search page www.paloaltonetworks.com/documentation/ document-search.html.
-- Have feedback or questions for us? Leave a comment on any page in the portal, or write to us at documentation@paloaltonetworks.com.
-Copyright
-Palo Alto Networks, Inc.
-www.paloaltonetworks.com
-© 2018-2020 Palo Alto Networks, Inc. Palo Alto Networks is a registered trademark of Palo Alto Networks. A list of our trademarks can be found at www.paloaltonetworks.com/company/ trademarks.html. All other marks mentioned herein may be trademarks of their respective companies.
-Last Revised August 19, 2020
- 2 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
+The Cortex XDR app offers complete visibility over network traffic, user behavior, and endpoint activity.
+- simplifies threat investigation by `correlating logs from sensors` to reveal threat causalities and timelines.
+- easily identify the root cause of every alert.
+- perform immediate response actions.
+- to stop future attacks, pro-actively `define IOCs and BIOCs` to detect and respond to malicious activity.
 
- Table of Contents
-Cortex XDRTM Overview....................................................................................7 Cortex XDR Architecture.......................................................................................................................... 9 Cortex XDR Concepts..............................................................................................................................11
-XDR..................................................................................................................................................11 Sensors............................................................................................................................................ 11 Log Stitching..................................................................................................................................11 Causality Analysis Engine...........................................................................................................12 Causality Chain............................................................................................................................. 12 Causality Group Owner (CGO)................................................................................................. 12
-Cortex XDR Licenses............................................................................................................................... 13 Features by Cortex XDR License Type...................................................................................13 Cortex XDR License Allocation.................................................................................................15 Cortex XDR License Expiration................................................................................................ 16 Cortex XDR License Monitoring.............................................................................................. 16 Migrate Cortex XDR License.......................................................................................... 17
-Get Started with Cortex XDR Pro................................................................23
-Set up Cortex XDR Pro Overview........................................................................................................25 Plan Cortex XDR Deployment.................................................................................................... 27 Manage Roles.............................................................................................................................................28
-Predefined User Roles for Cortex XDR..................................................................................30 Activate Network Devices............................................................................................................37 Activate Cortex XDR................................................................................................................................39 Set Up Directory Sync.............................................................................................................................42
-Pairing Directory Sync................................................................................................................ 42 Allocate Log Storage for Cortex XDR................................................................................................. 44 Set up Endpoint Protection....................................................................................................................47
-Plan Agent Deployment................................................................................................... 48 Enable Access to Cortex XDR.................................................................................................. 49 Proxy Communication.................................................................................................................52
-Set up Network Analysis.........................................................................................................................53 Ingest Data from External Sources..........................................................................................54 Configure XDR...........................................................................................................................................63 Integrate External Threat Intelligence Services.................................................................... 64 Set up Cortex XDR Environment...................................................................................65 Set up Outbound Integration.................................................................................................................67 Use the Cortex XDR Interface.............................................................................................................. 68 Manage Tables..............................................................................................................................69
-Endpoint Security..............................................................................................75
-Endpoint Security Concepts...................................................................................................................77 About Cortex XDR Endpoint Protection................................................................................77 File Analysis and Protection Flow............................................................................................80 Endpoint Protection Capabilities..............................................................................................83 Endpoint Protection Modules................................................................................................... 86
-Manage Cortex XDR Agents..................................................................................................................93 Create an Agent Installation Package..................................................................................... 93 Set an Application Proxy for Cortex XDR Agents............................................................... 95
- TABLE OF CONTENTS iii
+### Cortex XDR
 
- Move Cortex XDR Agents Between Managing XDR Servers............................................95 Upgrade Cortex XDR Agents....................................................................................................97 Delete Cortex XDR Agents........................................................................................................99 Uninstall the Cortex XDR Agent..............................................................................................99
-Define Endpoint Groups.......................................................................................................................101 About Content Updates........................................................................................................................104 Endpoint Security Profiles....................................................................................................................105
-Add a New Exploit Security Profile...................................................................................... 106 Add a New Malware Security Profile................................................................................... 110 Add a New Restrictions Security Profile..............................................................................117 Manage Security Profiles.........................................................................................................118
-Customizable Agent Settings...............................................................................................................120 Add a New Agent Settings Profile........................................................................................ 123 Configure Global Agent Settings........................................................................................... 127 Endpoint Data Collected by Cortex XDR............................................................................ 129
-Apply Security Profiles to Endpoints.................................................................................................137 Exceptions Security Profiles................................................................................................................ 139 Add a New Exceptions Security Profile............................................................................... 140 Add a Global Endpoint Policy Exception............................................................................. 141 Hardened Endpoint Security............................................................................................................... 147 Device Control............................................................................................................................148 Host Firewall...............................................................................................................................154 Disk Encryption.......................................................................................................................... 159 Host Insights............................................................................................................................... 164
-Investigation and Response.........................................................................173
-Cortex XDR Indicators.......................................................................................................................... 175 Working with BIOCs.................................................................................................................175 Working with IOCs....................................................................................................................182 Manage Existing Indicators..................................................................................................... 185
-Search Queries........................................................................................................................................188 Cortex XDR Query Builder......................................................................................................188 Cortex XDR Query Center...................................................................................................... 210 Quick Launcher...........................................................................................................................214 Cortex XDR Scheduled Queries.............................................................................................215 Research a Known Threat....................................................................................................... 217
-Investigate Incidents..............................................................................................................................219 External Integrations.................................................................................................................222 Create an Incident Starring Configuration...........................................................................223
-Investigate Artifacts and Assets......................................................................................................... 225 Investigate an IP Address........................................................................................................ 225 Investigate an Asset..................................................................................................................228 Investigate a File and Process Hash..................................................................................... 229
-Investigate Alerts....................................................................................................................................233 Cortex XDR Alerts.....................................................................................................................233 Triage Alerts................................................................................................................................240 Manage Alerts.............................................................................................................................241 Alert Exclusions..........................................................................................................................243 Causality View............................................................................................................................ 245 Network Causality View.......................................................................................................... 248 Timeline View............................................................................................................................. 250 Analytics Alert View..................................................................................................................252
-Investigate Endpoints............................................................................................................................ 254 Action Center..............................................................................................................................254
- iv TABLE OF CONTENTS
+![Screen Shot 2020-11-05 at 15.03.36](https://i.imgur.com/t7puHPo.png)
 
- View Details About an Endpoint........................................................................................... 258 Retrieve Files from an Endpoint............................................................................................ 263 Retrieve Support Logs from an Endpoint............................................................................ 264 Scan an Endpoint for Malware...............................................................................................265
-Investigate Files...................................................................................................................................... 267 Manage File Execution............................................................................................................. 267 Manage Quarantined Files...................................................................................................... 268 Review WildFire Analysis Details.......................................................................................... 269 Import File Hash Exceptions...................................................................................................272
-Response Actions................................................................................................................................... 273 Initiate a Live Terminal Session..............................................................................................273 Isolate an Endpoint....................................................................................................................277 Remediate Endpoints................................................................................................................278 Run Scripts on an Endpoint.................................................................................................... 280 Search and Destroy Malicious Files...................................................................................... 292 Manage External Dynamic Lists.............................................................................................294
-Broker VM........................................................................................................299
-Broker VM Overview............................................................................................................................ 301 Set up Broker VM..................................................................................................................................302 Configure the Broker VM........................................................................................................302 Activate the Agent Proxy........................................................................................................ 310 Activate the Syslog Collector................................................................................................. 311 Activate the Network Mapper............................................................................................... 312 Activate Pathfinder....................................................................................................................313 Activate the Windows Event Collector................................................................................318 Manage Broker VMs................................................................................................................... 332 View Broker VM Details..........................................................................................................332 Edit Broker VM Configuration..................................................................................... 334 Collect Broker VM Logs...........................................................................................................335 Reboot a Broker VM.................................................................................................................336 Upgrade a Broker VM.............................................................................................................. 336 Open Remote Terminal............................................................................................................336 Remove a Broker VM...............................................................................................................338 Broker VM Notifications.......................................................................................................................339
-Analytics............................................................................................................341
-Analytics Concepts.................................................................................................................................343 Analytics Engine.........................................................................................................................343 Analytics Sensors....................................................................................................................... 344 Coverage of the MITRE Attack Tactics................................................................................345 Analytics Detection Time Intervals....................................................................................... 347
-Asset Management........................................................................................ 351
-About Asset Management....................................................................................................................353 Configure Network Parameters................................................................................................354 Define IP Address Ranges.......................................................................................................354 Define Domain Names............................................................................................................. 355 Manage Network Assets............................................................................................................ 356
-Monitoring........................................................................................................359 TABLE OF CONTENTS v
+Cortex XDR
+- consumes data from the <kbd>Cortex Data Lake</kbd>
+- correlate and stitch together logs across different log sensors to derive event causality and timelines.
 
- Cortex XDR Dashboard........................................................................................................................ 361 Dashboard Widgets...................................................................................................................361 Predefined Dashboards............................................................................................................366 Build a Custom Dashboard......................................................................................................369 Manage Dashboards..................................................................................................................370 Run or Schedule Reports.........................................................................................................371
-Monitor Cortex XDR Incidents........................................................................................................... 373 Monitor Administrative Activity......................................................................................................... 375 Monitor Agent Activity......................................................................................................................... 377 Monitor Agent Operational Status.....................................................................................................379
-Log Forwarding...............................................................................................381
-Log Forwarding Data Types................................................................................................................ 383 Integrate Slack for Outbound Notifications.................................................................................... 384 Integrate a Syslog Receiver................................................................................................................. 386 Configure Notification Forwarding.................................................................................................... 388 Cortex XDR Log Notification Formats..............................................................................................390
-Alert Notification Format.........................................................................................................390 Agent Audit Log Notification Format...................................................................................393 Management Audit Log Notification Format......................................................................394 Cortex XDR Log Format for IOC and BIOC Alerts............................................................395 Cortex XDR Analytics Log Format.........................................................................................403 Cortex XDR Log Formats.........................................................................................................408
-Managed Security...........................................................................................437
-About Managed Security......................................................................................................................439 Cortex XDR Managed Security Access Requirements..................................................................440 Set up Managed Threat Hunting........................................................................................................441 Pair a Parent Tenant with Child Tenant...........................................................................................442
-Pairing a Parent and Child Tenant.........................................................................................442
-Unpairing a Parent and Child Tenant................................................................................... 443 Manage a Child Tenant.........................................................................................................................444 Track Tenant Management............................................................................................444 View Child Tenant Data...........................................................................................................445 Create and Allocate Configurations......................................................................................446 Create a Security Managed Action....................................................................................... 447
- vi TABLE OF CONTENTS
+A Cortex XDR deployment which uses the full set of sensors can include the following components:
+- <kbd>Cortex XDR</kbd>—The Cortex XDR app provides `complete visibility` into all data in the Cortex Data Lake. provides a single interface from which investigate and triage alerts, take remediation actions, and define policies to detect the malicious activity in the future.
+- <kbd>Cortex Data Lake</kbd>—A cloud-based logging infrastructure that allows to centralize the collection and storage of logs from log data sources.
+- <kbd>Cortex XDR Pro per TB</kbd>:
+    - **Analytics engine**—The Cortex XDR analytics engine is a security service that utilizes network data to automatically detect and report on post-intrusion threats. The analytics engine does this by identifying good (normal) behavior on network, so that it can notice bad (anomalous) behavior.
+    - **Palo Alto Networks next-generation firewalls**—On-premise or virtual firewalls that enforce network security policies in campus, branch offices, and cloud data centers.
+    - **Palo Alto Networks Prisma Access and GlobalProtect**—If extend firewall security policy to mobile users and remote networks using Prisma Access or GlobalProtect, also forward related traffic logs to Cortex Data Lake. The analytics engine can then analyze those logs and raise alerts on anomalous behavior.
+    - **External firewalls and alerts**—Cortex XDR can ingest traffic logs from external firewall vendors—such as Check Point—and use the analytics engine to analyze those logs and raise alerts on anomalous behavior. For additional context in incidents, also send alerts from external alert sources.
+- <kbd>Cortex XDR Pro per Endpoint</kbd>:
+  - **Analytics engine**—The Cortex XDR analytics can also consume endpoint data to automatically detect and report on post-intrusion threats. The analytics engine can use endpoint data to raise alerts for abnormal network behavior (for example port scan activity).
+  - **Cortex XDR agents**—Protects endpoints from known and unknown malware and malicious behavior and techniques. Cortex XDR agents perform its own analysis locally on the endpoint but also consumes WildFire threat intelligence. The Cortex XDR agent reports all endpoint activity to the Cortex Data Lake for analysis by Cortex XDR apps.
+   - **External alert sources**—To add additional context to incidents, send Cortex XDR alerts from external sources using the Cortex XDR API.
 
-    Cortex XDRTM Overview
-The Cortex XDRTM app offers complete visibility over network traffic, user behavior, and endpoint activity. It simplifies threat investigation by correlating logs from sensors to reveal threat causalities and timelines. This enables to easily identify the root cause of every alert. The app also allows to perform immediate response actions. Finally, to stop future attacks, pro-actively define IOCs and BIOCs to detect and respond to malicious activity.
-> Cortex XDR Architecture
-> Cortex XDR Concepts
-> Cortex XDR Licenses
-        7
+### Cortex XDR Concepts
 
-  8 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
-
- Cortex XDR Architecture
-Cortex XDR consumes data from the Cortex Data Lake and can correlate and stitch together logs across different log sensors to derive event causality and timelines. A Cortex XDR deployment which uses the full set of sensors can include the following components:
-- Cortex XDR—The Cortex XDR app provides complete visibility into all data in the Cortex Data Lake. The app provides a single interface from which investigate and triage alerts, take remediation actions, and define policies to detect the malicious activity in the future.
-- Cortex Data Lake—A cloud-based logging infrastructure that allows to centralize the collection and storage of logs from log data sources.
-- Cortex XDR Pro per TB:
-- Analytics engine—The Cortex XDR analytics engine is a security service that utilizes network data to automatically detect and report on post-intrusion threats. The analytics engine does this by identifying good (normal) behavior on network, so that it can notice bad (anomalous) behavior.
-- Palo Alto Networks next-generation firewalls—On-premise or virtual firewalls that enforce network security policies in campus, branch offices, and cloud data centers.
-- Palo Alto Networks Prisma Access and GlobalProtect—If extend firewall security policy to mobile users and remote networks using Prisma Access or GlobalProtect, also forward related traffic logs to Cortex Data Lake. The analytics engine can then analyze those logs and raise alerts on anomalous behavior.
-- External firewalls and alerts—Cortex XDR can ingest traffic logs from external firewall vendors—such as Check Point—and use the analytics engine to analyze those logs and raise alerts on anomalous behavior. For additional context in incidents, also send alerts from external alert sources.
-- Cortex XDR Pro per Endpoint:
-- Analytics engine—The Cortex XDR analytics can also consume endpoint data to automatically detect and report on post-intrusion threats. The analytics engine can use endpoint data to raise alerts for abnormal network behavior (for example port scan activity).
-- Cortex XDR agents—Protects endpoints from known and unknown malware and malicious behavior and techniques. Cortex XDR agents perform its own analysis locally on the endpoint but also consumes WildFire threat intelligence. The Cortex XDR agent reports all endpoint activity to the Cortex Data Lake for analysis by Cortex XDR apps.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 9 © 2020 Palo Alto Networks, Inc.
-
- - External alert sources—To add additional context to incidents, send Cortex XDR alerts from external sources using the Cortex XDR API.
- 10 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
-
- Cortex XDR Concepts
-- XDR
-- Sensors
-- Log Stitching
-- Causality Analysis Engine
-- Causality Chain
-- Causality Group Owner (CGO)
-- Analytics Concepts
 XDR
-With Endpoint Detection and Response (EDR), enterprises rely on endpoint data as a means to trigger cybersecurity incidents. As cybercriminals and their tactics have become more sophisticated, the time
-to identify and contain breaches has only increased. XDR goes beyond the traditional EDR approach of using only endpoint data to identify and respond to threats by applying machine learning across all enterprise, network, cloud, and endpoint data. This approach enables to quickly find and stop targeted attacks and insider abuse and remediate compromised endpoints.
+- With **Endpoint Detection and Response (EDR)**, enterprises rely on endpoint data to trigger cybersecurity incidents.
+- As cybercriminals and their tactics have become more sophisticated, the time to identify and contain breaches has only increased.
+- XDR goes beyond the traditional EDR approach of using only endpoint data to identify and respond to threats by `applying machine learning across all enterprise, network, cloud, and endpoint data`.
+- quickly find and stop targeted `attacks and insider abuse` and remediate compromised endpoints.
+
 Sensors
-Cortex XDRTM uses existing Palo Alto Networks products as sensors to collect logs and telemetry data. The sensors that are available to depend on Cortex XDR license type.
-With a Cortex XDR Pro per TB license, a sensor can be any of the following:
-- Virtual (VM-Series) or physical firewalls—Identifies known threats in network and cloud data center environments
-- Prisma Access or GlobalProtect—Identifies known threats in mobile user and remote network traffic
-- External firewall vendors forward traffic logs from any external vendor for analysis by the Cortex XDR analytics engine
-With a Cortex XDR Pro per Endpoint license, a sensor can be any of the following:
-- Cortex XDR agents—Identifies threats on Windows, Mac, Linux, and Android endpoints and halts any malicious behavior or files
-While more sensors increases the amount of data Cortex XDR can analyze, only need to deploy one type of sensor to begin detecting and stopping threats with Cortex XDR.
+- Cortex XDR `uses existing Palo Alto Networks products as sensors` to collect logs and telemetry data.
+-  The sensors that are available to depend on Cortex XDR license type.
+-  Cortex XDR Pro per TB license, sensor:
+  - **Virtual (VM-Series) or physical firewalls**—Identifies known threats in network and cloud data center environments
+  - **Prisma Access or GlobalProtect**—Identifies known threats in mobile user and remote network traffic
+  - **External firewall** vendors forward traffic logs from any external vendor for analysis by the Cortex XDR analytics engine
+- Cortex XDR Pro per Endpoint license, sensor:
+  - **Cortex XDR agents**—Identifies threats on Windows, Mac, Linux, and Android endpoints and halts any malicious behavior or files
+  - While more sensors increases the amount of data Cortex XDR can analyze, only need to deploy one type of sensor to begin detecting and stopping threats with Cortex XDR.
+
 Log Stitching
-To provide a complete and comprehensive picture of the events and activity surrounding an event, Cortex XDRTM correlates together firewall network logs, endpoint raw data, and cloud data across detection sensors. The act of correlating logs from different sources is referred to as log stitching and helps identify the source and destination of security processes and connections made over the network.
-Log stitching allows to:
-- Run investigation queries based on stitched network and endpoint logs
-- Create granular BIOC rules over logs from Palo Alto Networks Next-Generation Firewalls and raw
-endpoint data
-- Investigate correlated network and endpoint events in the Network Causality View
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 11 © 2020 Palo Alto Networks, Inc.
+-  The act of correlating logs from different sources
+-  Cortex XDR `correlates together firewall network logs, endpoint raw data, and cloud data across detection sensors`.
+-  `provide a complete and comprehensive picture` of the events and activity surrounding an event,
+-  helps `identify the source and destination` of security processes and connections made over the network.
+- Log stitching allows to:
+  - Run investigation queries based on stitched network and endpoint logs
+  - Create granular BIOC rules over logs from Palo Alto Networks Next-Generation Firewalls and raw
+  endpoint data
+- Log stitching streamlines detection and reduces response time by eliminating the need for manual analysis across different data sensors.
+- Stitching data across the firewalls and endpoints allows to obtain data form different sensors in a unified view, each sensor adding another layer of visibility.
+- For example,
+- when a connection is seen through the firewall and the endpoint,
+  - the endpoint can provide information on the processes involved and on the chain of execution
+  - the firewall can provide information on the amount of data transferred over the connection and the different app ids involved.
 
- Log stitching streamlines detection and reduces response time by eliminating the need for manual analysis across different data sensors. Stitching data across the firewalls and endpoints allows to obtain data form different sensors in a unified view, each sensor adding another layer of visibility. For example, when a connection is seen through the firewall and the endpoint, the endpoint can provide information on the processes involved and on the chain of execution while the firewall can provide information on the amount of data transferred over the connection and the different app ids involved.
 Causality Analysis Engine
-The Causality Analysis Engine correlates activity from all detection sensors to establish causality chains that identify the root cause of every alert. The Causality Analysis Engine also identifies a complete forensic timeline of events that helps to determine the scope and damage of an attack, and provide immediate response. The Causality Analysis Engine determines the most relevant artifacts in each alert and aggregates all alerts related to an event into an incident.
-Causality Chain
-When a malicious file, behavior, or technique is detected, Cortex XDRTM correlates available data across detection sensors to display the sequence of activity that led to the alert. This sequence of events is called the causality chain. The causality chain is built from processes, events, insights, and alerts associated with the activity. During alert investigation should review the entire causality chain to fully understand why the alert occurred.
-Causality Group Owner (CGO)
-The Causality Group Owner (CGO) is the process in the causality chain that the Causality Analysis Engine identified as being responsible for or causing the activities that led to the alert.
- 12 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
+- correlates activity from all detection sensors `to establish causality chains` that identify the root cause of every alert.
+- identifies a complete forensic timeline of events to determine the scope and damage of an attack, and provide immediate response.
+- determines the most relevant artifacts in each alert and aggregates all alerts related to an event into an incident.
 
- Cortex XDR Licenses
-- Features by Cortex XDR License Type
+Causality Chain
+- When a malicious file, behavior, or technique is detected, Cortex XDR correlates available data across detection sensors to display the sequence of activity that led to the alert. This sequence of events is called the causality chain.
+- The causality chain is built from processes, events, insights, and alerts associated with the activity.
+- review the entire causality chain to understand why the alert occurred.
+
+Causality Group Owner (CGO)
+- the process in the causality chain that the Causality Analysis Engine identified as being responsible for or causing the activities that led to the alert.
+
+---
+
+### Cortex XDR Licenses
 - Cortex XDR License Allocation
 - Cortex XDR License Expiration
 - Cortex XDR License Monitoring
 - Migrate Cortex XDR License
-Features by Cortex XDR License Type
-The following table describes the capabilities associated with each Cortex XDR license type. use either Cortex XDR Prevent or a Cortex XDR Pro license. There are two types of Pro licenses, Cortex XDR Pro per Endpoint and Cortex XDR Pro per TB, that use independently or together for more complete coverage. If do not know which license type have, see Cortex XDR License Monitoring.
-  Feature
-    Cortex XDR Prevent
-    Cortex XDR Pro per Endpoint
-    Cortex XDR Pro per TB
-                  Log storage
-      - Minimum of 200 endpoints
-- 30 day log retention
-      - Minimum of 200 endpoints
-- 30 day log retention
-     Minimum 5TB log storage
-  Cortex XDR Adds-ons
-   Host Insights, including:
-- System visibility and Host Inventory
-- Vulnerability Management
-- File Search and Destroy
-This Add-on is limited to a 3-month free trial period.
-        —
-            —
-  Endpoint Prevention Features
-Endpoint management Device control
-—
-—
-Cortex XDRTM Overview 13 © 2020 Palo Alto Networks, Inc.
-                         CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-|
 
-   Feature
-    Cortex XDR Prevent
-    Cortex XDR Pro per Endpoint
-    Cortex XDR Pro per TB
-  Host firewall — Disk encryption — Response Actions
-Live Terminal — Endpoint isolation — External dynamic list —
-(EDL)
-Script execution — —
-Remediation analysis — —
-                                                                            Analysis
-Analytics —
-Alert and Log Ingestion
-Cortex XDR agent alerts
-Integrations
-Threat intelligence (AutoFocus, VirusTotal)
-MSSP
-14 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
-—
-                               Enhanced data collection for EDR and other Pro features
-      —
-        —
-   Other alerts (from Palo Alto Networks and third-party sources)
-      —
-     (API)
-       Other logs (from Palo Alto Networks and third-party sources)
-        —
-      —
-                      Outbound integration and notification forwarding (Slack, Syslog)
-         + agent audit logs
-       + agent audit logs
+#### Cortex XDR License Allocation
+- With <kbd>Cortex XDR Prevent</kbd> and <kbd>Cortex XDR Pro per Endpoint</kbd> licenses, Cortex XDR manages licensing for all endpoints in organization.
+- Each time install a new Cortex XDR agent on an endpoint, the Cortex XDR agent registers with Cortex XDR to obtain a license.
+- In the case of non-persistent VDI, the Cortex XDR agent registers with Cortex XDR as soon as the user logs in to the endpoint.
+- Cortex XDR issues licenses `until exhaust the number of license seats available`.
+- Cortex XDR also enforces a license cleanup policy to automatically return unused licenses to the pool of available licenses.
+  - The time at which a license returns to the license pool depends on the type of endpoint:
 
-   Feature
-    Cortex XDR Prevent
-    Cortex XDR Pro per Endpoint
-    Cortex XDR Pro per TB
-     MSSP (requires additional MSSP license)
-                   Managed Threat Hunting (requires an additional Managed Threat Hunting License)
-   —
-    + a minimum of 500 endpoints
-  —
- Cortex XDR License Allocation
-With Cortex XDR Prevent and Cortex XDR Pro per Endpoint licenses, Cortex XDR manages licensing for all endpoints in organization. Each time install a new Cortex XDR agent on an endpoint, the Cortex XDR agent registers with Cortex XDR to obtain a license. In the case of non-persistent VDI, the Cortex XDR agent registers with Cortex XDR as soon as the user logs in to the endpoint.
-Cortex XDR issues licenses until exhaust the number of license seats available. Cortex XDR also enforces a license cleanup policy to automatically return unused licenses to the pool of available licenses. The time at which a license returns to the license pool depends on the type of endpoint:
-  Endpoint Type
-    License Return
-    Agent Removal from Cortex XDR console
-    Agent Removal from Cortex XDR Database
-     Standard and mobile devices
-After 30 days
-    After 180 days
- After 180 days
-The agent cannot be restored after this period of time.
-      (Non-Persistent) VDI and Temporary Session
-   Immediately after log-off for VDI, otherwise after 90 minutes
-       After 6 hours
-    After 7 days
- If after a license is revoked the agent connects to Cortex XDR, reconnection will succeed as long as the agent has not been deleted.
-It can take up to an hour for Cortex XDR to display revived endpoints.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 15 © 2020 Palo Alto Networks, Inc.
+![Screen Shot 2020-11-05 at 15.20.42](https://i.imgur.com/cxss8Tu.png)
 
- Cortex XDR License Expiration
-Cortex XDR licenses are valid for the period of time associated with the license purchase. After Cortex XDR license expires, Cortex XDR allows access to tenant for an additional grace period of 48 hours. After the 48-hour grace period, Cortex XDR disables access to the Cortex XDR app until renew the license.
-For the first 30 days of expired license, Cortex XDR continues to protect endpoints and/or network and retains data in the Cortex Data Lake according to Cortex Data Lake data retention policy and licensing. After 30 days, the tenant is decommissioned and agent prevention capabilities cease.
-Cortex XDR License Monitoring
+>  If after a license is revoked the agent connects to Cortex XDR, reconnection will succeed as long as the agent has not been deleted.
+
+#### Cortex XDR License Expiration
+Cortex XDR licenses are valid for the period of time associated with the license purchase.
+- After Cortex XDR license expires, Cortex XDR allows access to tenant for an additional grace period of 48 hours.
+- After the 48-hour grace period, Cortex XDR disables access to the Cortex XDR app until renew the license.
+- For the first 30 days of expired license, Cortex XDR continues to protect endpoints and/or network and retains data in the Cortex Data Lake according to Cortex Data Lake data retention policy and licensing.
+- After 30 days, the tenant is decommissioned and agent prevention capabilities cease.
+
+#### Cortex XDR License Monitoring
 From the > Cortex XDR License dialog, view the license type associated with Cortex XDR instance.
 For each license, Cortex XDR displays a tile that has the expiration date of license and additional details specific to license type:
-    License
-    Tile Details
-     Cortex XDR Prevent
-   Displays the total number of concurrent agents permitted by license. also view a graph of the current license allocation (total and percentage).
-     Cortex XDR Pro per Endpoint
-   Displays the total number of installed agents in addition to the number and percentage of agents with Pro features enabled. Below the license tile, also view the storage retention policy, total amount of storage allocated for enhanced data collection, and the actual data usage.
-  Cortex XDR Pro per TB Displays the amount of total storage included with license and the amount of storage used.
-16 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
-     Combination of Cortex XDR Pro per Endpoint and Cortex XDR Pro per TB
-    Cortex XDR Pro per Endpoint displays the total number of installed agents, while Cortex XDR Pro per TB displays how many agents are enabled with endpoint data collection, allowing them to collect and send data to the server.
 
-   License
-    Tile Details
-  Add-Ons
-Host Insights Displays the expiration of the license.
-To keep informed of updates made to license and avoid service disruptions, Cortex XDR displays license notifications when log in. The notification identifies any changes made to license and describes any required actions.
-Migrate Cortex XDR License
-As part of the migration of Cortex XDR 1.0 to Cortex XDR 2.0, a new Cortex XDR licensing structure will go into effect. The new licensing structure allows to better view and manage how network data and endpoints are best utilized across organization.
+Cortex XDR Prevent
+- Displays the total number of concurrent agents permitted by license. also view a graph of the current license allocation (total and percentage).
+
+Cortex XDR Pro per Endpoint
+- Displays the total number of installed agents in addition to the number and percentage of agents with Pro features enabled.
+- Below the license tile, also view the storage retention policy, total amount of storage allocated for enhanced data collection, and the actual data usage.
+of storage used.
+
+Combination of Cortex XDR Pro per Endpoint and Cortex XDR Pro per TB
+- Cortex XDR Pro per Endpoint displays the total number of installed agents, while Cortex XDR Pro per TB displays how many agents are enabled with endpoint data collection, allowing them to collect and send data to the server.
+
+Add-Ons
+- Host Insights Displays the expiration of the license.
+- To keep informed of updates made to license and avoid service disruptions, Cortex XDR displays license notifications when log in. The notification identifies any changes made to license and describes any required actions.
+
+
+#### Migrate Cortex XDR License
+As part of the migration of Cortex XDR 1.0 to Cortex XDR 2.0, a new Cortex XDR licensing structure will go into effect.
+
+The new licensing structure allows to better view and manage how network data and endpoints are best utilized across organization.
+
 Cortex XDR 1.0 license was based on the amount of terabyte (TB) used for either:
 - 1TB = 200 Pro per Endpoints (with EDR Collection)
-Or
+- Or
 - 1TB = 1TB of network traffic analysis/third party data + 200 Prevent Endpoints (without EDR collection)
-The Cortex XDR 2.0 license structure is based on three Cortex XDR Licenses that purchase individually or as a combination. The endpoint licenses provide the number of permitted agents, either Prevent or Pro. The TB license identifies the amount of TB used for network traffic analysis and collecting third-party data:
+
+The Cortex XDR 2.0 license structure is based on three Cortex XDR Licenses that purchase individually or as a combination.
+- The endpoint licenses provide the number of permitted agents, either Prevent or Pro.
+- The TB license identifies the amount of TB used for network traffic analysis and collecting third-party data:
 - Cortex XDR Prevent license—Number of Prevent Endpoints (without EDR collection)
 - Cortex XDR Pro per Endpoint license—Number of Pro Endpoints (with EDR collection)
 - Cortex XDR Pro per TB license—Amount of network data used for network traffic analysis and third-
 party data.
-License Conversion Method and Example
+
+### License Conversion Method and Example
 Converting Cortex XDR 1.0 license to a Cortex XDR 2.0 license is calculated as follows:
-        License Type
-    Calculation
-     Endpoints
- - For each Cortex 1.0 license, 1 TB = 200 Pro per Endpoints (with EDR collection).
-The number of endpoints is converted based on the quota allocated in Hub > Cortex Data Lake > Cortex XDR > Endpoint XDR Data, previously Traps > Endpoint Data.
-     Network Data
-    - For each Cortex XDR 1.0 license, 1 TB = 1 TB of network data.
-Since XDR 2.0 pro per TB license no longer includes Prevent endpoints, the license does not reflect them, however, keep using them until renewal.
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 17 © 2020 Palo Alto Networks, Inc.
 
-  After migration of Cortex 2.0, when navigating to > Cortex XDR License, the license displays the converted amounts of network data or its equivalent number of endpoints allocated to license. The following table displays a conversion comparison between Cortex XDR 1.0 and 2.0 licenses.
-Cortex XDR 1.0 License - Cortex XDR 1.0 PAN-MGFR-XDR-1TB license - 100TB
+Endpoints
+- For each Cortex 1.0 license, 1 TB = 200 Pro per Endpoints (with EDR collection).
+- The number of endpoints is converted based on the quota allocated in **Hub > Cortex Data Lake > Cortex XDR > Endpoint XDR Data**, previously Traps > Endpoint Data.
+
+Network Data
+- For each Cortex XDR 1.0 license, 1 TB = 1 TB of network data.
+- Since XDR 2.0 pro per TB license no longer includes Prevent endpoints, the license does not reflect them, however, keep using them until renewal.Inc.
+
+After migration of Cortex 2.0, when navigating to > Cortex XDR License, the license displays the converted amounts of network data or its equivalent number of endpoints allocated to license. The following table displays a conversion comparison between Cortex XDR 1.0 and 2.0 licenses.
+
+Cortex XDR 1.0 License
+- Cortex XDR 1.0 PAN-MGFR-XDR-1TB license - 100TB
 - Hub > Cortex Data Lake > Traps > Endpoint Data - 10TB Endpoint Data.
-Post Migration Cortex - Up to 20,000 Pro per Endpoints
-  License Version
-    License Details
-      XDR 2.0 License
+
+Post Migration Cortex
+- Up to 20,000 Pro per Endpoints
 - Up to 100TB for network traffic analysis and third-party data
-  Convert Cortex XDR License
-When Cortex XDR app is migrated to Cortex XDR 2.0, we recommend convert Cortex XDR license to align with the new structure. To apply the new license structure, determine how the amount of network data and number of endpoints are distributed across organization.
-After convert legacy license to Cortex XDR 2.0 license structure, new network and endpoint allocation are applied immediately. edit the allocation at any time, however, after convert to the new license structurenot revert to legacy license.
-- STEP 1 | In Cortex XDR app, select   > Cortex XDR License.
-  18 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
 
-  - (1) Network quota in TB and qualifying number of Pro per Endpoints
-- (2,3) Number of agents installed and enabled to collect EDR data in organization based on the
-quota allocated in Hub > Cortex Data Lake > Cortex XDR > Endpoint XDR Data.
-- (4) Current number of days Cortex XDR retains data.
-- STEP 2 | Convert Cortex XDR 1.0 license to Cortex XDR 2.0 license.
-1. Select Convert License.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 19 © 2020 Palo Alto Networks, Inc.
 
-  2. Use the Network Allocation slide bar to allocate license between network and endpoints (1 network TB = 200 endpoints).
-If allocate all of license to network data then disable endpoint capabilities (and vice versa).
-3. Apply new license allocations.
-- STEP 3 | In new Cortex XDR 2.0 license, review or Edit license allocation:
-- Number of Cortex XDR agents
-- Amount of network TB
-- Number of installed endpoints and endpoints enabled with EDR Data collection according to the
-number of agents allocated to license, rather than the Cortex Data Lake distribution.
-- Number of days remaining for Cortex XDR to retain data.
-20 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview © 2020 Palo Alto Networks, Inc.
+#### Convert Cortex XDR License
 
-  STEP 4 | Should require additional TB or agent coverage, contact Sales representative.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview 21 © 2020 Palo Alto Networks, Inc.
 
-  22 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Cortex XDRTM Overview
+---
 
-    Get Started with Cortex XDR Pro
-> Set up Cortex XDR Pro Overview
-        23
 
-  24 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+## Get Started with Cortex XDR Pro
 
- Set up Cortex XDR Pro Overview
-Before use Cortex XDR for advanced detection and response, must activate the Cortex XDR app and set up related apps and services. must perform the setup activities as shown in the following image. Some steps are required only if have the corresponding license type.
- STEP 1 |
-- STEP 2 | STEP 3 |
-- STEP 4 |
-- STEP 5 |
-- STEP 6 |
+### set up Cortex XDR Pro Overview
+
+Before use Cortex XDR for advanced detection and response
+1. activate the Cortex XDR app
+2. set up related apps and services.
+
+![Screen Shot 2020-11-05 at 15.31.15](https://i.imgur.com/295YqNw.png)
+
+
 Plan Cortex XDR Deployment.
-As part of planning, ensure that or the person who is activating Cortex apps has the
-appropriate roles.
+- As part of planning, ensure that or the person who is activating Cortex apps has the appropriate roles.
+
 (Cortex XDR Pro per TB license only) Activate Network Devices.
+
 Activate Cortex XDR and related apps and services.
 1. Locate the email that contains activation information.
 2. Activate Cortex XDR.
 3. Activate Cortex Data Lake (if not using an existing instance).
 4. (Optional) Create a Directory Sync Service instance
 5. Review log storage.
-(Cortex XDR Pro per Endpoint only) Set up Endpoint Protection.
-1. Plan Cortex XDR agent deployment.
-2. Create Cortex XDR agent installation packages
-3. Define endpoint groups.
-4. Deploy the Cortex XDR agent to endpoints.
-5. Configure endpoint security policy.
-(Cortex XDR Pro per TB license only) Set up Network Analysis.
+
+(Cortex XDR Pro per Endpoint only) **Set up Endpoint Protection**.
+1. Plan `Cortex XDR agent` deployment.
+2. Create `Cortex XDR agent installation packages`
+3. Define `endpoint groups`.
+4. `Deploy the Cortex XDR agent` to endpoints.
+5. Configure `endpoint security policy`.
+
+(Cortex XDR Pro per TB license only) **Set up Network Analysis.**
 1. Perform any remaining setup of network sensors.
 2. Configure the internal networks that want Cortex XDR to monitor.
 3. Verify that Cortex XDR is receiving alerts.
 4. Set up Pathfinder.
 5. If set up a Directory Sync Service instance, enable Cortex XDR to use it.
+
+
 Configure XDR.
 1. (Optional) Integrate additional threat intelligence.
-2. After 24 hours, enable Cortex XDR Analytics Analysis.
-1. Configure Network Coverage.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Get Started with Cortex XDR Pro 25 © 2020 Palo Alto Networks, Inc.
-
- 2. (Recommended) Set up Pathfinder to interrogate endpoints that do not have EDR or that do not have the Cortex XDR agent installed.
+2. After 24 hours, enable `Cortex XDR Analytics Analysis`.
+   1. Configure Network Coverage.
+   2. (Recommended) Set up `Pathfinder` to interrogate endpoints that do not have EDR or that do not have the Cortex XDR agent installed.
 3. Define alert exclusions.
 4. Prioritize incidents based on attributes by creating an incident starring policy.
 5. Import or configure rules for known BIOC and IOCs.
 6. (Optional) Manage External Dynamic Lists- Requires a Cortex XDR Pro per TB license.
-- STEP 7 | (Optional) Set up Outbound Integration.
+
+(Optional) Set up Outbound Integration.
 - Integrate with Slack
 - Integrate with a Syslog Server
 - Integrate with Cortex XSOAR
-- STEP 8 | (Optional) Set up Managed Security STEP 9 | Use the Cortex XDR Interface.
- 26 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | © 2020 Palo Alto Networks, Inc.
-Get Started with Cortex XDR Pro
 
- Plan Cortex XDR Deployment
-Before get started with Cortex XDRTM, plan deployment:
-  Deployment Type
-    Deployment Considerations
-     New Cortex XDR tenants
-  Use the Cortex Data Lake Calculator to determine the amount of log storage need for Cortex XDR deployment. Talk to Partner or Sales Representative to determine whether must purchase additional Cortex Data Lake storage.
-Determine the region in which want to host Cortex XDR and any associated services, such as Cortex Data Lake and Directory Sync Service:
-- US—All Cortex XDR logs and data remain within the US boundary.
-- UK—All Cortex XDR logs and data remain within the UK boundary.
-- EU—All Cortex XDR logs and data remain within the Europe boundary.
-- SG—All Cortex XDR logs and data remain within the Singapore
-boundary.
-- JP—All Cortex XDR logs and data remain within the Japan boundary.
-(Cortex XDR Pro per Endpoint license only) Calculate the bandwidth required to support the number of agents plan to deploy. need 1.2Mbps of bandwidth for every 1,000 agents. The bandwidth requirement scales linearly so, for example, to support 100,000 agents, need to allocate 120Mbps of bandwidth.
-Manage Roles to ensure or the person who is activating Cortex apps has the appropriate permissions.
-When are ready to get started with a new tenant, Activate Cortex XDR.
-      CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 27 © 2020 Palo Alto Networks, Inc.
+(Optional) Set up Managed Security
 
- Manage Roles
+Use the Cortex XDR Interface.
+
+### Plan Cortex XDR Deployment
+Before get started with Cortex XDR, plan deployment:
+1. Use the <kbd>Cortex Data Lake Calculator</kbd> to determine the amount of log storage need for Cortex XDR deployment. Talk to Partner or Sales Representative to determine whether must purchase additional Cortex Data Lake storage.
+2. Determine the region in which want to host Cortex XDR and any associated services, such as Cortex Data Lake and Directory Sync Service:
+   - US—All Cortex XDR logs and data remain within the US boundary.
+   - UK—All Cortex XDR logs and data remain within the UK boundary.
+   - EU—All Cortex XDR logs and data remain within the Europe boundary.
+   - SG—All Cortex XDR logs and data remain within the Singapore boundary.
+   - JP—All Cortex XDR logs and data remain within the Japan boundary.
+3. (Cortex XDR Pro per Endpoint license only) Calculate the `bandwidth required` to support the number of agents plan to deploy. need 1.2Mbps of bandwidth for every 1,000 agents. The bandwidth requirement scales linearly so, for example, to support 100,000 agents, need to allocate 120Mbps of bandwidth.
+4. **Manage Roles** to ensure or the person who is activating Cortex apps has the appropriate permissions.
+5. When are ready to get started with a new tenant, Activate Cortex XDR.
+
+
+### Manage Roles
 Role-based access control (RBAC) enables to use roles or specific permissions to assign access rights to administrative users. manage roles for all Cortex apps and services in the hub. By assigning roles, enforce the separation of viewing access and initiating actions among functional or regional areas of organization. The following options are available to help manage access rights:
 - Assign Predefined User Roles for Cortex XDR
 - Create and save new roles based on the granular permission
@@ -408,10 +264,9 @@ To be eligible for role assignment in the hub, the user must have an account in 
 - STEP 2 | Manage the level of access for a Cortex XDR user.
 1. Log in to the hub and select > Access Management.
 2. Use the sidebar to filter users as needed or the search field to search for users.
-3. Select one or more users and then Assign Roles.
-28 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+3. Select one or more users and then Assign Roles
 
- 4. In the Assign Roles page for each instance, select one of the following options:
+ 1. In the Assign Roles page for each instance, select one of the following options:
 - Assign Permissions—Create a new role or assign selected permissions.
 - Cortex XDR Predefined Role—Select one of the predefined Cortex XDR role. Select Role
 Definitions to view a list of the Cortex predefined roles and the allocated views and actions.
@@ -419,461 +274,21 @@ Definitions to view a list of the Cortex predefined roles and the allocated view
 5. (Optional) To create a new role:
 1. After selected Assign Permissions, in the Assign Custom Permissions pop-up, select which IN_APP VIEWS and IN_APP ACTIONS permissions want to grant.
 2. Save As New Role to create a new role that apply to other users, or Save to apply the selected permissions to the user without a defined role.
-The new rule is displayed with User Created (UC) icon. Select the role to apply permissions to the user and then Save.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 29 © 2020 Palo Alto Networks, Inc.
+The new rule is displayed with User Created (UC) icon. Select the role to apply permissions to the user and then Save
 
   6. (Optional) To edit or clone a user created role:
 1. Select > Access Management > Manage Roles.
 2. In the Manage Roles Cortex XDR page, find user created role and select Actions.
 3. Edit Permissions, Clone, or Delete role, as desired.
+
 Predefined User Roles for Cortex XDR
 Role-based access control (RBAC) enables to use preconfigured roles to assign access rights to administrative users. manage roles for all Cortex apps and services in the hub. By assigning roles, enforce the separation of access among functional or regional areas of organization.
 Each role extends specific privileges to users. The way configure administrative access depends on the security requirements of organization. Use roles to assign specific access privileges to administrative user accounts. The built-in roles provide specific access rights that cannot be changed. Use hub roles to provide full access to Cortex XDR with three levels: Account, App, or Instance. If desire more granular access control, assign any of the Cortex XDR app roles.
 The following table describes the Cortex XDR predefined roles and the view and action privileges associated with each.
 Some features are license dependent. As a result users may not see a specific feature if the feature is not supported by the license type or if they do not have access based on their assigned role.
-     Role
-    Description
-    View Privileges
-    Action Privileges
-          App The user has full access to - Administrator the given apps, including
-all current and future app instances. App Administrator can assign roles for app instances, and can also activate app instances specific to that app.
-30 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
-Endpoints - Investigation
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint - Response
-Management
-- Endpoint
-Installations
-- Device Control
-- Quarantine
-- Request WildFire
-Verdict Change - Blacklist
-- Rules
-- Incidents - Alerts
- |
-Get Started with Cortex XDR Pro
 
-   Role
-   Description
-   View Privileges
-   Action Privileges
-      Requires a Cortex XDR license.
-    - Vulnerability Assessment
-- Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center - Configurations
-- Analytics Management
-- Public API
-- Auditing
-- Alert Notifications
-- Threat Intelligence
-- On-demand
-Analytics
-- External Alerts
-Mapping
-- Saas Log Collection
-- Broker Services
-    - Terminate Process
-- Isolate
-- Live Terminal
-- EDL
-- File Retrieval
-- Remediation
-Suggestions
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability Assessment
-           Instance Administrator
-The user has full access to the app instance. The Instance Administrator can make other users Instance Administrator for the app instance. If the app has predefined or custom roles, the Instance Administrator can assign those roles to other users.
-- Endpoints
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint - Response
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment - Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center - Configurations
-- Analytics Management
-- Public API
-- Auditing
-- Alert Notifications
-- Threat Intelligence
-- Quarantine
-- Request WildFire
-Verdict Change - Blacklist
-- Terminate Process - Isolate
-- Live Terminal
-- EDL
-- File Retrieval - Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Investigation
-- Rules
-- Incidents
-- Alerts
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 31 © 2020 Palo Alto Networks, Inc.
 
-   Role
-   Description
-   View Privileges
-   Action Privileges
-          - On-demand Analytics
-- External Alerts Mapping
-- Broker Services
-    - Endpoint Installations
-- Device Control
-- Vulnerability Assessment
-      Viewer
-    Can view the majority of the features of the XDR app for this instance, but can take no actions.
-Requires a Cortex XDR license.
-    - Endpoints
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment
-- Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center - Configurations
-- Auditing
-   - Endpoints
-- Vulnerability Assessment
-          Security Admin
-Can triage and investigate - alerts and incidents,
-respond (excluding Live Terminal), and edit profiles and policies.
-Endpoints
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment Investigation
-- Rules
-- Incidents
-- Alerts Response
-- Action Center Configurations
-- Analytics Management
-•
-•
-•
-Investigation
-- Rules
-- Incidents
-- Alerts Response
-- Quarantine
-- Request WildFire
-Verdict Change
-- Blacklist
-- Terminate Process
-- Isolate
-- EDL Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Endpoint Profiles
-- Endpoint Policies
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-•
-- •
- 32 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
-|
-Get Started with Cortex XDR Pro
-
-   Role
-   Description
-   View Privileges
-   Action Privileges
- - Saas Log Collection
-     Privileged Security Admin
-      Can triage and investigate alerts and incident, respond, and edit profiles and policies.
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-      - Endpoints
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment
-- Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center - Configurations
-- Analytics Management
-- Auditing
-- Alert Notifications
-- Threat Intelligence
-- On-demand
-Analytics
-- SaaS Log Collection
-- Broker Services
-     - Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Quarantine
-- Request WildFire
-Verdict Change
-- Blacklist
-- Terminate Process
-- Isolate
-- Live Terminal
-- EDL
-- File Retrieval
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Endpoint Profiles
-- Endpoint Policies
-- Device Control
-- Vulnerability Assessment
-          IT Admin
-Can manage and control endpoints and installations, configure brokers, view profiles, policies, and alerts.
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-- Endpoints
-- Endpoint Profiles
-- Global Exceptions
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment - Investigation
-- Incidents
-- Alerts - Response
-- Action Center
-- Endpoints
-- Retrieve Endpoint Data
-- Global Exceptions
-- Endpoint
-Management
-- Endpoint
-Installations
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-|
-Get Started with Cortex XDR Pro 33 © 2020 Palo Alto Networks, Inc.
-
-   Role
-   Description
-   View Privileges
-   Action Privileges
-          - Configurations
-- Saas Log Collection
-- Broker Services
-          Privileged IT Admin
-  Can manage and control endpoints and installations, configure brokers, create profiles and policies, view alerts, and initiate Live Terminal.
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-  - Endpoints
-- Endpoint Profiles
-- Endpoint Policies
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Investigation
-- Incidents
-- Alerts
-- Response
-- Action Center - Configurations
-- Saas Log Collection
-- Broker Services
- - Investigation
-- Incidents
-- Alerts
-- Response
-- Request WildFire Verdict Change
-- Live Terminal
-- File Retrieval
-- Endpoints
-- Retrieve Endpoint Data
-- Global Exceptions
-- Endpoint
-Management
-- Endpoint
-Installations
-- Device Control
-- Vulnerability
-Assessment
-     Deployment Admin
-      Can manage and control endpoints and installations, and configure brokers.
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-      - Endpoints
-- Global Exceptions
-- Endpoint
-Management
-- Endpoint
-Installations
-- Configurations
-- Auditing
-- Broker Services
-     - Endpoints
-- Endpoint Management
-- Endpoint Installations
-          Investigation Admin
-Can view and triage alerts - and incidents, configure
-rules, and view the profiles and policies and analytics management screens.
-Endpoints
-- Endpoint Profiles
-- Endpoint Policies
-- Device Control Investigation
-- Rules
-- Incidents
-- Alerts Response
-- Action Center Configurations
-- Investigation
-- Rules
-- Incidents - Alerts
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Device Control
-- Vulnerability
-Assessment
-Requires a Cortex XDR license.
-•
-- •
- 34 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
-|
-Get Started with Cortex XDR Pro
-
-   Role
-   Description
-   View Privileges
-   Action Privileges
- - Analytics Management
-     Investigator
-      Can view and triage alerts and incidents.
-Requires a Cortex XDR license.
-      - Investigation
-- Incidents - Alerts
-     - Investigation
-- Incidents
-- Alerts
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-     Privileged Investigator
-  Can view and triage alerts, incidents and rules, profiles and policies and analytics management screens.
-Requires a Cortex XDR Pro per Endpoint license.
-  - Endpoints
-- Endpoint Profiles
-- Endpoint Policies
-- Device Control
-- Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center - Configurations
-- Analytics Management
- - Investigation
-- Incidents
-- Alerts
-- Endpoints
-- Endpoint Scan
-     Responder
-      Can view and triage alerts, and access all response capabilities excluding Live Terminal.
-Requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
-      - Investigation
-- Rules
-- Incidents - Alerts
-- Response
-- Action Center
-     - Response
-- Quarantine
-- Request WildFire
-Verdict Change
-- Blacklist
-- Terminate Process
-- Isolate
-- EDL
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-          Privileged Responder
-Can view and triage alerts and incidents, access all response capabilities, and configure rules, policies, and profiles.
-Requires a Cortex XDR license.
-- Endpoints •
-- Endpoint Profiles
-- Endpoint Policies
-- Endpoint
-Management - Investigation
-- Rules
-Investigation
-- Rules
-- Incidents
-- Alerts
-- Response
-- Quarantine
-Get Started with Cortex XDR Pro 35 © 2020 Palo Alto Networks, Inc.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-|
-
-   Role
-   Description
-   View Privileges
-   Action Privileges
-        - Incidents
-- Alerts - Response
-- Action Center - Configurations
-- Analytics Management
-   - Request WildFire Verdict Change
-- Blacklist
-- Terminate Process
-- Isolate
-- Live Terminal
-- EDL
-- File Retrieval
-- Remediation
-Suggestions
-- Endpoints
-- Retrieve Endpoint Data
-- Endpoint Scan
-- Device Control
-   36 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
-
- Activate Network Devices
+### Activate Network Devices
 With a Cortex XDR Pro per TB license, if use Palo Alto Networks firewalls as a traffic log source, must activate firewalls and Panorama. If use Panorama to manage firewalls, must activate firewalls before continue with activation of Cortex XDR. If only use one firewall or use multiple firewalls but do not manage them using Panorama, activate firewalls after activate Cortex XDR.
 - STEP 1 | Register and activate firewalls and Panorama.
 - STEP 2 | Onboard Panorama-Managed Firewalls to Cortex Data Lake.
@@ -892,386 +307,293 @@ To support Cortex XDR, firewalls must forward at least Traffic logs to the Corte
 HIP
 System Logs
 Enhanced application logs (PAN-OS 8.1.1 or later)
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Get Started with Cortex XDR Pro 37 © 2020 Palo Alto Networks, Inc.
 
  Enhanced application logs are designed to increase visibility into network activity for Palo Alto Networks Cloud Services apps, and Cortex XDR requires these logs to support certain features.
 Follow the complete workflow to configure Panorama-managed firewalls to forward logs to the Cortex Data Lake.
- 38 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
- Activate Cortex XDR
-Use the hub (https://apps.paloaltonetworks.com) to activate Cortex XDR. This is a one-time task you’ll need to perform when first start using Cortex XDR. After you’ve activated the Cortex XDR app—and completed all the steps described in Set up Cortex XDR Pro Overview—you’ll only need to repeat the activation if want to add additional app instances.
-To activate the Cortex XDR app, must be assigned a required role and locate activation email containing a link to begin activation in the hub. Activating Cortex XDR automatically includes activation of Cortex Data Lake.
+
+### Activate Cortex XDR
+Use the hub (https://apps.paloaltonetworks.com) to activate Cortex XDR.
+
+To activate the Cortex XDR app, must be assigned a required role and locate activation email containing a link to begin activation in the hub.
+
+Activating Cortex XDR automatically includes activation of Cortex Data Lake.
 - STEP 1 | Begin activation.
-1. Click the activation link received in email to begin activation in the hub.
-2. If manage multiple company CSP accounts, make sure select the specific account to which
-want to allocate the Cortex XDR license to before proceeding with activation.
-The hub will associate activation of Cortex XDR and the included apps and services
-only with the selected account.
-3. From the Cortex XDR tile, select the serial number want to activate.
-If there is only one serial number associated with company account, click the tile to begin activation.
-If have multiple serial numbers associated, click each one to activate.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 39 © 2020 Palo Alto Networks, Inc.
+  1. Click the activation link received in email
+  2. If manage multiple company CSP accounts, make sure select the specific account to which
+  want to allocate the Cortex XDR license to before proceeding with activation.
+  The hub will associate activation of Cortex XDR and the included apps and services
+  only with the selected account.
+  3. From the Cortex XDR tile, select the serial number want to activate.
+  If there is only one serial number associated with company account, click the tile to begin activation.
+  If have multiple serial numbers associated, click each one to activate.
 
- STEP 2 | Provide details about the Cortex XDR app you’re activating.
- - Company Account—Identifies the company account under which are activating Cortex XDR.
-- Name—Give Cortex XDR app instance an easily-recognizable name and optional Description.
-If have more than one Cortex XDR instance, the hub displays the name in the instance list when select the Cortex XDR tile. Choose a name that is 59 or fewer characters and is unique across company account.
-- Subdomain—Give Cortex XDR instance an easy to recognize name. The hub displays the name assign on the list of available instances for the Cortex XDR app. also access the Cortex XDR app directly using the full URL (https:// <subdomain>.xdr. <region>.paloaltonetworks.com). If are converting an existing Traps management service to Cortex XDR, this field is grayed out.
-- Cortex Data Lake—Select the Cortex Data Lake instance that will provide the Cortex XDR apps with log data.
-If activated with an auth code, provision a new Cortex Data Lake instance by selecting the link to activate purchased licenses and provide the separate Cortex Data Lake auth code received in email.
-If activated with the activation link, automatically provision a new Cortex Data Lake instance in the region select or select an existing Cortex Data Lake and increase its size. only select a Cortex Data Lake instance that is not allocated to another Cortex XDR instance. When select a Cortex Data Lake instance, the hub provisions Cortex XDR instance in the same region.
-40 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+- STEP 2 | Provide details about the Cortex XDR app you’re activating.
+  - Company Account—Identifies the company account under which are activating Cortex XDR.
+  - Name—Give Cortex XDR app instance an easily-recognizable name and optional Description.
+  If have more than one Cortex XDR instance, the hub displays the name in the instance list when select the Cortex XDR tile. Choose a name that is 59 or fewer characters and is unique across company account.
+  - Subdomain—Give Cortex XDR instance an easy to recognize name. The hub displays the name assign on the list of available instances for the Cortex XDR app. also access the Cortex XDR app directly using the full URL (https:// <subdomain>.xdr. <region>.paloaltonetworks.com). If are converting an existing Traps management service to Cortex XDR, this field is grayed out.
+  - Cortex Data Lake—Select the Cortex Data Lake instance that will provide the Cortex XDR apps with log data.
+  - If activated with an auth code, provision a new Cortex Data Lake instance by selecting the link to activate purchased licenses and provide the separate Cortex Data Lake auth code received in email.
+  - If activated with the activation link, automatically provision a new Cortex Data Lake instance in the region select or select an existing Cortex Data Lake and increase its size. only select a Cortex Data Lake instance that is not allocated to another Cortex XDR instance. When select a Cortex Data Lake instance, the hub provisions Cortex XDR instance in the same region
+  - Region—Select a region in which want to set up Cortex Data Lake instance. If selected an existing Cortex Data Lake instance, this field automatically displays the region in which Cortex Data Lake instance is deployed and cannot be changed.
+  - Directory Sync—(Optional) Select the Directory Sync Service instance that will provide the Cortex XDR app with Active Directory data. If there is only one Directory Sync Service instance for the selected Cortex Data Lake region, the hub automatically selects it for pairing with the Cortex XDR app, however clear the default selection, if desired. If do not currently have a Directory Sync Service activated and configured for account, select the link to create an instance now, or add one at a later time.
 
- STEP 3 |
-- Region—Select a region in which want to set up Cortex Data Lake instance. If selected an existing Cortex Data Lake instance, this field automatically displays the region in which Cortex Data Lake instance is deployed and cannot be changed.
-- Directory Sync—(Optional) Select the Directory Sync Service instance that will provide the Cortex XDR app with Active Directory data. If there is only one Directory Sync Service instance for the selected Cortex Data Lake region, the hub automatically selects it for pairing with the Cortex XDR app, however clear the default selection, if desired. If do not currently have a Directory Sync Service activated and configured for account, select the link to create an instance now, or add one at a later time.
-Review the end user license agreement and Agree & Activate.
-The hub displays the activation status as it activates and provisions apps. It can take up to an hour to complete activation. After activation completes, the hub displays a summary that shows the details for apps and services.
-Manage Apps to view the current status of apps.
-When the app is available will see a green check mark in the STATUS column. To return to the status page at a later time, return to the hub and select > Manage Apps.
-When app is available, log in to Cortex XDR app to confirm that successfully access the Cortex XDR app interface.
-Allocate Log Storage for Cortex XDR.
-Review the storage allocation for Cortex Data Lake and adjust the quota as needed. must be an
-assigned an Instance Administrator or higher role to for Cortex Data Lake to manage logging storage. Assign roles to additional administrators, if needed.
-Complete configuration.
-If have a Cortex XDR Pro per Endpoint license, continue to Set up Endpoint Protection. Otherwise
-proceed to Set up Network Analysis.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 41 © 2020 Palo Alto Networks, Inc.
- STEP 4 |
-- STEP 5 | STEP 6 |
-- STEP 7 | STEP 8 |
+- STEP 3 | Review the end user license agreement and Agree & Activate.
+  - The hub displays the activation status as it activates and provisions apps. It can take up to an hour to complete activation. After activation completes, the hub displays a summary that shows the details for apps and services.
 
- Set Up Directory Sync
-Directory Sync is an optional service that enables to leverage Active Directory user, group, and computer information in Cortex XDR apps to provide context when investigate alerts. use Active Directory information in policy configuration and endpoint management.
-After finish the setup, Cortex XDR syncs with Directory Sync every 24 hours. To set up Directory Sync:
+- STEP 4 | Manage Apps to view the current status of apps.
+  - When the app is available will see a green check mark in the STATUS column. To return to the status page at a later time, return to the hub and select > Manage Apps.
+- STEP 5 | When app is available, log in to Cortex XDR app
+- STEP 6 | Allocate Log Storage for Cortex XDR.
+- STEP 7 | Assign roles to additional administrators, if needed.
+- STEP 8 |Complete configuration.
+
+> If have a Cortex XDR Pro per Endpoint license, continue to Set up Endpoint Protection. Otherwise
+proceed to Set up Network Analysis
+
+
+
+### Set Up Directory Sync
+Directory Sync is an optional service that enables to leverage Active Directory user, group, and computer information in Cortex XDR apps to provide context when investigate alerts. use Active Directory information in `policy configuration and endpoint management`.
+
+> After finish the setup, Cortex XDR syncs with Directory Sync every 24 hours.
+
+To set up Directory Sync:
 - STEP 1 | Add and configure Directory Sync instance.
-See the Directory Sync Service Getting Started Guide for instructions.
+  - Activate Directory Sync
+  - See the Directory Sync Service Getting Started Guide for instructions.
 - STEP 2 | Pair the Directory Sync to Cortex XDR apps.
-Pairing can occur during Cortex XDR activation or after activate Cortex XDR apps.
-- STEP 3 | After activate and pair Cortex XDR apps with Directory Sync, must define which Active Directory domain the analytics engine should use.
+  - Pairing can occur during Cortex XDR activation or after activate Cortex XDR apps.
+- STEP 3 | After activate and pair Cortex XDR apps with Directory Sync, must define which Active    
+  - Directory domain the analytics engine should use.
 Wait about ten minutes after have paired Directory Sync before do this.
-Pairing Directory Sync
+
+#### Pairing Directory Sync
 If did not pair Directory Sync to Cortex apps during Cortex XDR activation, later pair it with Cortex XDR instance.
 - STEP 1 | Log into the hub.
 - STEP 2 | Click the gear > Manage Apps in the upper-right corner.
 - STEP 3 | Locate the Directory Sync instance that want to use with Cortex XDR. Make a note of the instance's name, which appears in the left-most column.
-If have more than one instance, make sure choose the instance that is in the same region as the Cortex Data Lake instance are using with apps.
-   STEP 4 | Pair the Directory Sync instance with Cortex XDR instance.
-1. Scroll down until find Cortex XDR instance in the Cortex XDR section.
-2. Click on its name in the left-most column.
-42 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+  - If have more than one instance, make sure choose the instance that is in the same region as the Cortex Data Lake instance are using with apps.
+- STEP 4 | Pair the Directory Sync instance with Cortex XDR instance.
+  1. Scroll down until find Cortex XDR instance in the Cortex XDR section.
+  2. Click on its name in the left-most column
+  3. In the resulting pop-up configuration screen, select the desired Directory Sync instance, and then click OK.
 
- 3. In the resulting pop-up configuration screen, select the desired Directory Sync instance, and then click OK.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 43 © 2020 Palo Alto Networks, Inc.
+### Allocate Log Storage for Cortex XDR
+receive Cortex Data Lake log storage based on the amount of storage associated with Cortex XDR Licenses.
 
- Allocate Log Storage for Cortex XDR
-receive Cortex Data Lake log storage based on the amount of storage associated with Cortex XDR Licenses. Generally, this capacity is determined by factors such as the size of network and number of endpoints in deployment.
 Cortex XDR Pro per Endpoint and Cortex XDR Pro per TB licenses grant a daily ingestion quota of the number of TBs / 30 in addition to the same amount of TBs in storage.
-For example: Cortex XDR Pro per TB 10
+- For example: Cortex XDR Pro per TB 10
 - Daily ingestion quota calculated according to 10TB / 30 = 333GB
 - Storage = 10TB
-To increase capacity, contact Palo Alto Network account representative.
-When activate Cortex XDR, Cortex Data Lake assigns a default storage allocation for logs, EDR data, and alerts. While some Cortex apps receive a default allocation, with a Cortex XDR Pro per TB license, must manually allocate storage for firewall logs. After activate Cortex XDR, review and adjust log storage allocation depending on storage requirements.
+
+When activate Cortex XDR, Cortex Data Lake assigns a default storage allocation for logs, EDR data, and alerts.
+
+While some Cortex apps receive a default allocation, with a Cortex XDR Pro per TB license, must manually allocate storage for firewall logs.
+
 Cortex Data Lake displays the current possible allocation but does not display the storage usage.
+
+After activate Cortex XDR, review and adjust log storage allocation depending on storage requirements.
+
 To allocate log storage quota:
 - STEP 1 | Sign In to the Palo Alto Networks hub at https://apps.paloaltonetworks.com/.
 - STEP 2 | Select Cortex Data Lake instance.
-If have multiple Cortex Data Lake instances, select the Cortex Data Lake tile and then select the
-Cortex Data Lake instance from the list of available instances associated with account. Cortex Data Lake displays the service status and total logging storage capacity.
 - STEP 3 | Select Configuration to define logging storage settings.
-Cortex Data Lake displays the total storage allocated for the apps and services associated with the
-Cortex Data Lake instance.
-The Cortex Data Lake depicts storage allocation graphically. As adjust storage allocation, the graphic updates to display the changes to storage policy. The Cortex Data Lake storage policy specifies the distribution of total storage allocated to each app or service and the minimum retention warning (not supported with Cortex XDR).
 - STEP 4 | Allocate quota for Cortex XDR.
-1. If purchased quota for firewall logs, allocate quota to the Firewall log type.
-To use the same Cortex Data Lake instance for both firewall logs and Cortex XDR logs, must first associate Panorama with the Cortex Data Lake instance before allocate quota for firewall logs.
-2. Review storage allocation for Cortex XDR according to the formula:
-1TB for every 200 Cortex XDR Pro endpoints for 30 days
-By default, 80% of available storage for Cortex XDR is assigned to logs and data, and 20% is assigned to alerts. It is recommended to review the status of Cortex Data Lake instance
-44 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
-
- after about two weeks of data collection and make adjustments as needed but to use the default allocations as a starting point.
-Use the Cortex Data Lake Calculator to calculate how many logs are ingested and add additional TBs accordingly.
+  1. If purchased quota for firewall logs, allocate quota to the Firewall log type.
+  2. To use the same Cortex Data Lake instance for both firewall logs and Cortex XDR logs, must first `associate Panorama with the Cortex Data Lake instance` before allocate quota for firewall logs.
+  3. Review storage allocation for Cortex XDR according to the formula:
+  4. By default, 80% of available storage for Cortex XDR is assigned to logs and data, and 20% is assigned to alerts.
+  5. It is recommended to review the status of Cortex Data Lake instance after about two weeks of data collection and make adjustments as needed but to use the default allocations as a starting point.
+  6. Use the Cortex Data Lake Calculator to calculate how many logs are ingested and add additional TBs accordingly.
 - STEP 5 | Apply changes.
 - STEP 6 | Monitor data retention.
-Cortex XDR retains endpoint data according to the allocated quota in Cortex XDR Data Lake. Make sure data retention is sufficient for environment.
-By default, Cortex XDR will not remove data less than 30 days, however must allocate the quotain order for Cortex XDR to support the retention.
-1. From Cortex XDR, navigate to > Cortex XDR License.
-2. In the Endpoint XDR Data Retention section, review the following:
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 45 © 2020 Palo Alto Networks, Inc.
-
-  - Current number of days data has been stored in Cortex XDR Data Lake. The count begins the as soon as activate Cortex XDR.
-- Number of retention days permitted according to the quota allocated.
+  - Cortex XDR retains endpoint data according to the allocated quota in Cortex XDR Data Lake.
+  - Make sure data retention is sufficient for environment.
+  - By default, Cortex XDR will not remove data less than 30 days, however must allocate the quotain order for Cortex XDR to support the retention.
+  1. From Cortex XDR, navigate to > Cortex XDR License.
+  2. In the Endpoint XDR Data Retention section, review the following:
+     - Current number of days data has been stored in Cortex XDR Data Lake. The count begins the as soon as activate Cortex XDR.
+     - Number of retention days permitted according to the quota allocated.
 3. If needed, update Cortex XDR allocated quota.
- 46 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
- Set up Endpoint Protection
-The Cortex XDR agent monitors endpoint activity and collects endpoint data that Cortex XDR uses to raise alerts. Before begin collecting endpoint data, must deploy the Cortex XDR agent and configure endpoint policy. To use endpoint management functions in Cortex XDR must be assigned an administrative role in the hub.
+
+### Set up Endpoint Protection
+
+The <kbd>Cortex XDR agent</kbd> `monitors endpoint activity` and `collects endpoint data` that Cortex XDR uses to raise alerts.
+- Before begin collecting endpoint data, must `deploy the Cortex XDR agent` and `configure endpoint policy`.
+- To use endpoint management functions in Cortex XDR must be assigned an administrative role in the hub.
+
 - STEP 1 | Verify the status of Cortex XDR tenant.
-1. From the hub, click the gear icon next to name.
-2. In the Cortex area, review the STATUS for the tenant just activated.
-When Cortex XDR tenant is available, the status changes to the green check mark.
+  1. hub > Manage Apps > STATUS, When Cortex XDR tenant is available, the status changes to the green check mark.
 - STEP 2 | Plan Agent Deployment.
-- STEP 3 | Enable Access to Cortex XDR.
+- STEP 3 | **Enable Access to Cortex XDR**.
 - STEP 4 | (Optional) Set up Broker VM communication.
-- STEP 5 | Install the Cortex XDR agent on endpoints.
-Install the agent software directly on an endpoint or use a software deployment tool of choice
-(such as JAMF or GPO) to distribute and install the software on multiple endpoints.
-1. Create an Agent Installation Package.
-2. Install the Cortex XDR agent.
-For instructions by operating system, see the Cortex XDR Agent Administrator’s Guide or the Traps Agent Administrator’s Guide if use an earlier version.
-- STEP 6 | Define Endpoint Groups to which apply endpoint security policy. STEP 7 | Customize Endpoint Security Profiles and assign them to endpoints.
-Cortex XDR provides out-of-the box exploit and malware protection. However, at minimum, must enable Data Collection in an Agent Settings profile to leverage endpoint data in Cortex XDR apps. Data collection for Windows endpoints is available with Traps 6.0 and later releases and on endpoints running Windows 7 SP1 and later releases. Data collection on macOS and Linux endpoints are available with Traps 6.1 and later releases.
+- STEP 5 | **Install the Cortex XDR agent on endpoints**.
+  1. `Install the agent software` directly on an endpoint or use a software deployment tool (such as JAMF or GPO) to distribute and install the software on multiple endpoints.
+  2. Create an `Agent Installation Package`.
+  3. `Install the Cortex XDR agent`.
+- STEP 6 | Define Endpoint Groups to which apply endpoint security policy.
+- STEP 7 | **Customize Endpoint Security Profiles and assign them to endpoints**.
+  - Cortex XDR provides out-of-the box exploit and malware protection.
+  - However  must enable <kbd>Data Collection<kbd> in an `Agent Settings profile` to leverage endpoint data in Cortex XDR apps.
+  - Data collection for Windows endpoints is available with Traps 6.0 and later releases and on endpoints running Windows 7 SP1 and later releases.
+  - Data collection on macOS and Linux endpoints are available with Traps 6.1 and later releases.
 - STEP 8 | (Optional) Configure Device Control profiles to restrict file execution on USB-connected devices.
 - STEP 9 | Verify that the Cortex XDR agent can connect to Cortex XDR instance.
-If successful, the Cortex XDR console displays a Connected status. view the status of all agents
-on the Endpoints > Endpoint Management of Cortex XDR interface.
-- STEP 10 | Configure the internal networks that want Cortex XDR to monitor.
-1. Log in to Cortex XDR app either using the direct link or from the Cortex XDR tile on the hub.
-2. To view existing network segments, select the gear (   ) in the upper right corner and select Analytics Management > Status > Analytics Network Coverage Status. This page provides a table of the IP address ranges Cortex XDR Analytics monitors, which is pre-populated with the default IPv4 and IPv6 address spaces.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 47 © 2020 Palo Alto Networks, Inc.
-
- 3. To add custom network segments, select Configuration and then Network Segments Configuration.
-4. Add (   ) a new segment and enter the first and last IP address of the range to monitor.
-5. Save (   ) the network segment. If the Configuration saved notification does not appear, save again.
+  - If successful, the Cortex XDR console displays a Connected status.
+  - view the status of all agents: `Endpoints > Endpoint Management` of Cortex XDR interface.
+- STEP 10 | **Configure the internal networks that want Cortex XDR to monitor**.
+  1. Log in to Cortex XDR app
+  2. To view existing network segments: `Analytics Management > Status > Analytics Network Coverage Status`.
+     1. This page provides a table of the IP address ranges Cortex XDR Analytics monitors, which is pre-populated with the default IPv4 and IPv6 address spaces
+     2. To add custom network segments, select `Configuration` and then `Network Segments Configuration`.
+  3. Add a new segment and enter the first and last IP address of the range to monitor.
+  4. Save the network segment. If the Configuration saved notification does not appear, save again.
 - STEP 11 | If also have a Cortex XDR Pro per TB license, proceed to Set up Network Analysis. Otherwise, proceed to Configure XDR.
-Plan Agent Deployment
-typically deploy Cortex XDR agent software to endpoints across a network after an initial proof of concept (POC), which simulates corporate production environment. During the POC or deployment stage, analyze security events to determine which are triggered by malicious activity and which are due to legitimate processes behaving in a risky or incorrect manner. also simulate the number and types of endpoints, the user profiles, and the types of applications that run on the endpoints in organization and, according to these factors, define, test, and adjust the security policy for organization.
-The goal of this multi-step process is to provide maximum protection to the organization without interfering with legitimate workflows.
-After the successful completion of the initial POC, we recommend a multi-step implementation in the corporate production environment for the following reasons:
-- The POC doesn't always reflect all the variables that exist in production environment.
-- There is a rare chance that the Cortex XDR agent will affect business applications, which can reveal
-vulnerabilities in the software as a prevented attack.
-- During the POC, it is much easier to isolate issues that appear and provide a solution before full
-implementation in a large environment where issues could affect a large number of users.
-A multi-step deployment approach ensures a smooth implementation and deployment of the Cortex XDR solution throughout network. Use the following steps for better support and control over the added protection.
-  Step
-    Duration
-    Plan
-   0. Calculate the bandwidth required to support the number of agents plan to deploy.
-    as needed
- For every 100,000 agents, will need
-to allocate 120Mbps of bandwidth. The bandwidth requirement scales linearly. For example, to support 300,000 agents, plan to allocate 360Mbps of bandwidth (three times the amount required for 100,000 agents).
-   1. Install Cortex XDR on endpoints.
-      1 week
-   Install the Cortex XDR agent on a small number of endpoints (3 to 10).
-Test normal behavior of the Cortex XDR agents (injection and policy) and confirm that there is no change in the user experience.
-   2. Expand the Cortex XDR deployment.
-       2 weeks
-    Gradually expand agent distribution to larger groups that have similar attributes (hardware, software, and users). At the end of two weeks have Cortex XDR deployed on up to 100 endpoints.
-  48 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
-   Step
-    Duration
-    Plan
-   3. Complete the Cortex XDR installation.
-      2 or more weeks
-   Broadly distribute the Cortex XDR agent throughout the organization until all endpoints are protected.
-  4. Define corporate policy and protected processes.
+#### Plan Agent Deployment
+typically deploy Cortex XDR agent software to endpoints across a network after an initial `proof of concept (POC)`, which simulates corporate production environment.
+- During the POC or deployment stage, analyze security events to determine which are triggered by malicious activity and which are due to legitimate processes behaving in a risky or incorrect manner.
+- also simulate the number and types of endpoints, the user profiles, and the types of applications that run on the endpoints in organization and, according to these factors, define, test, and adjust the **security policy** for organization.
+
+> The goal of this multi-step process is to provide maximum protection to the organization without interfering with legitimate workflows.
+
+
+- After the successful completion of the initial POC, we recommend a multi-step implementation in the corporate production environment for the following reasons:
+  - The POC doesn't always reflect all the variables that exist in production environment.
+  - There is a rare chance that the Cortex XDR agent will affect business applications, which can reveal vulnerabilities in the software as a prevented attack.
+  - During the POC, it is much easier to isolate issues that appear and provide a solution before full implementation in a large environment where issues could affect a large number of users.
+
+A multi-step deployment approach ensures a smooth implementation and deployment of the Cortex XDR solution throughout network. Use the following steps for better support and control over the added protection.
+0. Calculate the bandwidth required to support the number of agents plan to deploy.
+1. Install Cortex XDR on endpoints.
+2. Expand the Cortex XDR deployment.
+3. Complete the Cortex XDR installation.
+4. Define corporate policy and protected processes.
+5. Refine corporate policy and protected processes.
 6. Finalize corporate policy and protected processes.
-Up to 1 week
-A few minutes
-Add protection rules for third-party or in- house applications and then test them.
-Deploy protection rules globally.
-   5. Refine corporate policy and protected processes.
-        Up to 1 week
-     Deploy security policy rules to a small number of endpoints that use the applications frequently. Fine tune the policy as needed.
-     Enable Access to Cortex XDR
+
+
+#### Enable Access to Cortex XDR
 After receive account details, enable and verify access to Cortex XDR.
-Some of the IP addresses required for access are registered in the United States. As a result, some GeoIP databases do not correctly pinpoint the location in which IP addresses are used. In regard to customer data, Cortex Data Lake stores all data in deployment region, regardless of the IP address registration and restricts data transmission through any infrastructure to that region. For considerations, see Plan Cortex XDR Deployment.
-Throughout this topic, <xdr-tenant> refers to the chosen subdomain of Cortex XDR tenant and <region> is the region in which Cortex Data Lake is deployed (see Plan Cortex XDR Deployment for supported regions).
+
+> Some of the IP addresses required for access are registered in the United States. As a result, some GeoIP databases do not correctly pinpoint the location in which IP addresses are used. In regard to customer data, Cortex Data Lake stores all data in deployment region, regardless of the IP address registration and restricts data transmission through any infrastructure to that region. For considerations, see Plan Cortex XDR Deployment.
+>
+> Throughout this topic, <xdr-tenant> refers to the chosen subdomain of Cortex XDR tenant and <region> is the region in which Cortex Data Lake is deployed (see Plan Cortex XDR Deployment for supported regions).
+
+
 - STEP 1 | (Optional) If are deploying the broker VM as a proxy between Cortex XDR and the Cortex XDR agents, start by enabling the communication between them.
 - STEP 2 | In firewall configuration, enable access to Cortex XDR communication servers and storage buckets.
-With Palo Alto Networks firewalls, we recommend that use the following App-IDs to allow communication between Cortex XDR agents and Cortex XDR management console when configure security policy:
-- cortex-xdr—Requires PAN-OS Applications and Threats content update version 8279 or a later release.
-- traps-management-service—Requires PAN-OS Applications and Threats content update version 793 or a later release.
-If do not use Palo Alto Networks firewalls, ensure that configure firewall policy to enable communication with the FQDNs.
-distributions.traps.paloaltonetworks.com traps-management-service
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 49 © 2020 Palo Alto Networks, Inc.
-    FQDN
-    App-ID Coverage
+  - With Palo Alto Networks firewalls, we recommend that use the following `App-IDs` to allow communication between Cortex XDR agents and Cortex XDR management console when configure security policy:
+  - **cortex-xdr**—Requires PAN-OS Applications and Threats content update version 8279 or a later release.
+  - **traps-management-service**—Requires PAN-OS Applications and Threats content update version 793 or a later release.
+  - If **do not use Palo Alto Networks firewalls**, ensure that configure firewall policy to enable communication with the FQDNs.
 
-   FQDN
-   App-ID Coverage
- Used for the first request in registration flow where the agent passes the distribution id and obtains the ch- <tenant>.traps.paloaltonetworks.com of its tenant
-         dc-<xdr-tenant>.traps.paloaltonetworks.com Used for EDR data upload.
-     traps-management-service
-   ch-<xdr-tenant>.traps.paloaltonetworks.com
-Used for all other requests between the agent and its tenant server including heartbeat, uploads, action results, and scan reports.
-   traps-management-service
-   cc-<xdr-tenant>.traps.paloaltonetworks.com Used for get-verdict requests.
-     traps-management-service
-   wss://lrc-<region>.paloaltonetworks.com Used in live terminal flow.
-       cortex-xdr
-   panw-xdr-installers-prod- us.storage.googleapis.com
-Used to download installers for upgrade actions from the server.
-This storage bucket is used for all regions.
-   cortex-xdr
-   panw-xdr-payloads-prod- us.storage.googleapis.com
-Used to download the executable for live terminal for Cortex XDR agents earlier than version 7.1.0.
-This storage bucket is used for all regions.
-     cortex-xdr
-   global-content-profiles- policy.storage.googleapis.com
-Used to download content updates.
-     cortex-xdr
-   panw-xdr-evr- prod-<region>.storage.googleapis.com
-Used to download extended verdict request results in scanning.
-      cortex-xdr
- STEP 3 | To establish secure communication (TLS) to Cortex XDR, the endpoints, and any other devices that initiate a TLS connection with Cortex, must have the following certificates installed on the operating system:
-50 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+FQDN | App-ID Coverage
+---|---
+`distributions.traps.paloaltonetworks.com` | traps-management-service | Used for the first request in registration flow where the agent passes the distribution id and obtains the `ch- <tenant>.traps.paloaltonetworks.com` of its tenant
+`dc-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service | Used for EDR data upload.
+`ch-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service | Used for all other requests between the agent and its tenant server including heartbeat, uploads, action results, and scan reports.
+`cc-<xdr-tenant>.traps.paloaltonetworks.com` | traps-management-service |  Used for get-verdict requests.
+`wss://lrc-<region>.paloaltonetworks.com`| cortex-xdr | Used in live terminal flow.
+`panw-xdr-installers-prod- us.storage.googleapis.com` | cortex-xdr | Used to download installers for upgrade actions from the server. This storage bucket is used for all regions.
+`panw-xdr-payloads-prod- us.storage.googleapis.com` | cortex-xdr | sed to download the executable for live terminal for Cortex XDR agents earlier than version 7.1.0. This storage bucket is used for all regions.
+`global-content-profiles- policy.storage.googleapis.com` | cortex-xdr | Used to download content updates.
+`panw-xdr-evr- prod-<region>.storage.googleapis.com` | cortex-xdr | Used to download extended verdict request results in scanning.
 
-   Certificate
-    Fingerprint
-     GoDaddy Root Certificate Authority - G2 (Godaddy)
- - SHA1 Fingerprint—47 BE AB C9 22 EA E8 0E 78 78 34 62 A7 9F 45 C2 54 FD E6 8B
-- SHA256 Fingerprint—45 14 0B 32 47 EB 9C C8 C5 B4 F0 D7 B5 30 91 F7 32 92 08 9E 6E 5A 63 E2 74 9D D3 AC A9 19 8E DA
-     GlobalSign (Google)
-    - SHA1 Fingerprint—75 E0 AB B6 13 85 12 27 1C 04 F8 5F DD DE 38 E4 B7 24 2E FE
-- SHA256 Fingerprint—CA 42 DD 41 74 5F D0 B8 1E B9 02 36 2C F9 D8 BF 71 9D A1 BD 1B 1E FC 94 6F 5B 4C 99 F4 2C 1B 9E
- STEP 4 | If use SSL decryption, we recommend that do not decrypt Cortex XDR services. To exclude Cortex XDR services from decryption, add the following domains to SSL Decryption
-Exclusion list where <region> is deployment region:
-- *.traps.paloaltonetworks.com
-- *.xdr.<region>.paloaltonetworks.com
-- app-proxy.<region>.paloaltonetworks.com
-- panw-xdr-evr-prod-<region>.storage.googleapis.com
-- panw-xdr-installers-prod-us.storage.googleapis.com
-- panw-xdr-payloads-prod-us.storage.googleapis.com
-- global-content-profiles-policy.storage.googleapis.com - lrc-<region>.paloaltonetworks.com
-In PAN-OS 8.0 and later releases, configure the list in Device > Certificate Management > SSL Decryption Exclusion.
+- STEP 3 | To **establish secure communication (TLS) to Cortex XDR**, the endpoints, and any other devices that initiate a TLS connection with Cortex, must have the following certificates installed on the operating system:
+
+Certificate | Fingerprint
+---|---
+GoDaddy Root Certificate Authority - G2 (Godaddy) | - **SHA1 Fingerprint**—47 BE AB C9 22 EA E8 0E 78 78 34 62 A7 9F 45 C2 54 FD E6 8B <br> - **SHA256 Fingerprint**—45 14 0B 32 47 EB 9C C8 C5 B4 F0 D7 B5 30 91 F7 32 92 08 9E 6E 5A 63 E2 74 9D D3 AC A9 19 8E DA
+lobalSign (Google) | - **SHA1 Fingerprint**—75 E0 AB B6 13 85 12 27 1C 04 F8 5F DD DE 38 E4 B7 24 2E FE <br> - **SHA256 Fingerprint**—CA 42 DD 41 74 5F D0 B8 1E B9 02 36 2C F9 D8 BF 71 9D A1 BD 1B 1E FC 94 6F 5B 4C 99 F4 2C 1B 9E
+
+- STEP 4 | If use SSL decryption, we recommend that do not decrypt Cortex XDR services.
+  - To exclude Cortex XDR services from decryption, add the following domains to SSL Decryption
+
+Exclusion list where `<region>` is deployment region:
+- `*.traps.paloaltonetworks.com`
+- `*.xdr.<region>.paloaltonetworks.com`
+- `app-proxy.<region>.paloaltonetworks.com`
+- `panw-xdr-evr-prod-<region>.storage.googleapis.com`
+- `panw-xdr-installers-prod-us.storage.googleapis.com`
+- `panw-xdr-payloads-prod-us.storage.googleapis.com`
+- `global-content-profiles-policy.storage.googleapis.com`
+- `lrc-<region>.paloaltonetworks.com`
+
+> In PAN-OS 8.0 and later releases, configure the list in Device > Certificate Management > SSL Decryption Exclusion.
+
 - STEP 5 | (Windows only) Enable access for Windows CRL checks.
-(Endpoints running the following or later releases: Traps 6.0.3, Traps 6.1.1, and Cortex XDR 7.0) When the Cortex XDR agent examines portable executables (PEs) running on the endpoint as part of the enforced Malware Security Profile, the agent performs a certificate revocation (CRL) check. The CRL check ensures that the certificate used to sign a given PE is still considered valid by its Certificate Authority (CA), and has not been revoked. To validate the certificate, the Cortex XDR agent leverages Microsoft Windows APIs and triggers the operating system to fetch the specific Certificate Revocation List (CRL) from the internet. To complete the certificate revocation check, the endpoint needs HTTP access to a dynamic list of URLs, based on the PEs that are executed or scanned on the endpoint.
-1. If a system-wide proxy is defined for the endpoint (statically or using a PAC file), Microsoft Windows downloads the CRL lists through the proxy.
-2. If a specific proxy is defined for the Cortex XDR agent, and the endpoint has no access to the internet over HTTP, then Microsoft Windows will fail to download the CRL lists. As a result, the certificate revocation check will fail and the certificate will be considered valid by the agent, while creating a latency in executing PEs. If the Cortex XDR agent is running in an isolated environment that prohibits the successful completion of certificate revocation checks, the Palo Alto Networks Support team can provide a configuration file that will disable the revocation checks and avoid unnecessary latency in the execution time of PEs.
-- STEP 6 | (Windows only) Enable serverless peer-to-peer (P2) content updates.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 51 © 2020 Palo Alto Networks, Inc.
+  - (Endpoints running the following or later releases: Traps 6.0.3, Traps 6.1.1, and Cortex XDR 7.0) When the Cortex XDR agent examines portable executables (PEs) running on the endpoint as part of the enforced Malware Security Profile, the agent performs a certificate revocation (CRL) check. The CRL check ensures that the certificate used to sign a given PE is still considered valid by its Certificate Authority (CA), and has not been revoked. To validate the certificate, the Cortex XDR agent leverages Microsoft Windows APIs and triggers the operating system to fetch the specific Certificate Revocation List (CRL) from the internet. To complete the certificate revocation check, the endpoint needs HTTP access to a dynamic list of URLs, based on the PEs that are executed or scanned on the endpoint.
+  1. If a system-wide proxy is defined for the endpoint (statically or using a PAC file), Microsoft Windows downloads the CRL lists through the proxy.
+  2. If a specific proxy is defined for the Cortex XDR agent, and the endpoint has no access to the internet over HTTP, then Microsoft Windows will fail to download the CRL lists. As a result, the certificate revocation check will fail and the certificate will be considered valid by the agent, while creating a latency in executing PEs. If the Cortex XDR agent is running in an isolated environment that prohibits the successful completion of certificate revocation checks, the Palo Alto Networks Support team can provide a configuration file that will disable the revocation checks and avoid unnecessary latency in the execution time of PEs.
 
- By default, the Cortex XDR agent retrieves content updates from its peer Cortex XDR agents on the same subnet. To enable P2P, must enable UDP and TCP over port 33221. change the port number or choose to download the content directly from the Cortex XDR sever in the Agent settings profile.
+- STEP 6 | (Windows only) Enable serverless peer-to-peer (P2) content updates
+  - By default, the Cortex XDR agent retrieves content updates from its peer Cortex XDR agents on the same subnet. To enable P2P, must enable UDP and TCP over port 33221. change the port number or choose to download the content directly from the Cortex XDR sever in the Agent settings profile.
+
+
 - STEP 7 | Verify that access Cortex XDR tenant.
-After download and install the Cortex XDR agent software on endpoints and configure endpoint security policy, verify that the Cortex XDR agents can check in with Cortex XDR to receive the endpoint policy.
-Proxy Communication configure communication through proxy servers between the Cortex XDR server and the Cortex XDR agents running on Windows, Mac, and Linux endpoints. The Cortex XDR agent uses the proxy settings defined as part of the Internet & Network settings or WPAD protocol on the endpoint. also configure a list of proxy servers that Cortex XDR agent will use to communicate the with Cortex XDR server.
+  - After download and install the Cortex XDR agent software on endpoints and configure endpoint security policy, verify that the Cortex XDR agents can check in with Cortex XDR to receive the endpoint policy.
+
+#### Proxy Communication
+configure communication through proxy servers between the Cortex XDR server and the Cortex XDR agents running on Windows, Mac, and Linux endpoints. The Cortex XDR agent uses the proxy settings defined as part of the Internet & Network settings or WPAD protocol on the endpoint. also configure a list of proxy servers that Cortex XDR agent will use to communicate the with Cortex XDR server.
+
 Cortex XDR supports the following types of proxy configurations:
 - System-wide proxy—Use system-wide proxy to send all communication on the endpoint including to and from the Cortex XDR agent through a proxy server configured for the endpoint. Cortex XDR supports proxy communication for proxy settings defined explicitly on the endpoint, as well as proxy settings configured in a proxy auto-config (PAC) file.
-- Application-specific proxy—(Available with Traps agent 5.0.9, Traps agent 6.1.2, and Cortex XDR agent 7.0 and later releases) Configure a Cortex XDR specific proxy that applies only to the Cortex XDR agent and does not enforce proxy communications with other apps or services on endpoint.
-set up to five proxy servers either during the Cortex XDR agent installation process, or following agent installation, directly from the Cortex XDR management console.
-If the endpoints in environment are not connected directly to the internet, deploy a Palo Alto Networks broker VM.
-Application-specific proxy configurations take precedence over system-wide proxy configurations. The Cortex XDR agent retrieves the proxy list defined on the endpoint and tries to establish communication with the Cortex XDR server first through app-specific proxies. Then, if communication is unsuccessful, the agent tries to connect using the system-wide proxy, if defined. If none are defined, the Cortex XDR agent attempts communication with the Cortex XDR server directly.
- 52 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+- Application-specific proxy—(Available with Traps agent 5.0.9, Traps agent 6.1.2, and Cortex XDR agent 7.0 and later releases) Configure a Cortex XDR specific proxy that applies only to the Cortex XDR agent and does not enforce proxy communications with other apps or services on endpoint. set up to five proxy servers either during the Cortex XDR agent installation process, or following agent installation, directly from the Cortex XDR management console.
 
- Set up Network Analysis
+If the endpoints in environment are not connected directly to the internet, deploy a Palo Alto Networks broker VM.
+
+Application-specific proxy configurations take precedence over system-wide proxy configurations. The Cortex XDR agent retrieves the proxy list defined on the endpoint and tries to establish communication with the Cortex XDR server first through app-specific proxies. Then, if communication is unsuccessful, the agent tries to connect using the system-wide proxy, if defined. If none are defined, the Cortex XDR agent attempts communication with the Cortex XDR server directly.
+
+
+### Set up Network Analysis
 With a Cortex XDR Pro per TB license must set up network sensors and define network coverage for internal networks.
 - STEP 1 | Set up network sensors.
-1. If use unmanaged Palo Alto Networks firewalls, and did not configure log-forwarding on firewalls before activating Cortex XDR, Start Sending Logs to Cortex Data Lake.
-2. (Optional) Ingest Data from External Sources.
-If have external (non-Palo Alto Networks) network sensors, set up a syslog collector to receive alerts or logs from them. If send external alerts, Cortex XDR can include any them in relevant incidents for a more complete picture of the activity involved. If send logs and alerts from external sources such as Check Point firewalls, Cortex XDR can apply analytics analysis and raise analytics alerts on the external logs and include the external alerts in incidents for additional context.
-3. (Optional) If use Okta or Azure AD, Ingest Authentication Logs and Data into authentication stories. After set up log collection, search for authentication data using the Query Builder.
-4. (Optional) If want to use Pathfinder to examine network hosts, servers, and workstations for malicious or risky software, Set Up Pathfinder. If want to use Pathfinder to supplement the Cortex XDR agent or choose not to use Cortex XDR for endpoint protection, Set Up Pathfinder.
+  1. If use unmanaged Palo Alto Networks firewalls, and did not configure log-forwarding on firewalls before activating Cortex XDR, Start Sending Logs to Cortex Data Lake.
+  2. (Optional) Ingest Data from External Sources. If have external (non-Palo Alto Networks) network sensors, set up a syslog collector to receive alerts or logs from them. If send external alerts, Cortex XDR can include any them in relevant incidents for a more complete picture of the activity involved. If send logs and alerts from external sources such as Check Point firewalls, Cortex XDR can apply analytics analysis and raise analytics alerts on the external logs and include the external alerts in incidents for additional context.
+  3. (Optional) If use Okta or Azure AD, Ingest Authentication Logs and Data into authentication stories. After set up log collection, search for authentication data using the Query Builder.
+  4. (Optional) If want to use Pathfinder to examine network hosts, servers, and workstations for malicious or risky software, Set Up Pathfinder. If want to use Pathfinder to supplement the Cortex XDR agent or choose not to use Cortex XDR for endpoint protection, Set Up Pathfinder.
 - STEP 2 | Configure the internal networks that want Cortex XDR to monitor.
-1. Log in to Cortex XDR app either using the direct link or from the Cortex XDR tile on the hub.
-2. To view existing network segments, select the gear (   ) in the upper right corner and select Analytics Management > Status > Analytics Network Coverage Status. This page provides a table of the IP address ranges Cortex XDR Analytics monitors, which is pre-populated with the default IPv4 and IPv6 address spaces.
-3. To add custom network segments, select Configuration and then Analytics Network Coverage Status.
-4. Add (   ) a new segment and enter the first and last IP address of the range to monitor.
-5. Specify the Assigned Pathfinder VM to assign a Pathfinder VM to the network segment. If do
-not want Pathfinder to scan a particular segment, then leave the field blank.
-6. (Optional) If want to further limit Pathfinder scans to specific devices, go to the Pathfinder
-page and then select Per Asset Configuration. Use these settings to override the default Pathfinder
-configuration on a per-asset basis.
-7. Leave Reserved for VPN blank. See the following step for adding GlobalProtect VPN IP address
-pool to the Cortex XDR app as a network segment to monitor.
-8. Save (   ) the network segment. If the Configuration saved notification does not appear, save again.
+  1. Log in to Cortex XDR app either using the direct link or from the Cortex XDR tile on the hub.
+  2. To view existing network segments, select the gear (   ) in the upper right corner and select Analytics Management > Status > Analytics Network Coverage Status. This page provides a table of the IP address ranges Cortex XDR Analytics monitors, which is pre-populated with the default IPv4 and IPv6 address spaces.
+  3. To add custom network segments, select Configuration and then Analytics Network Coverage Status.
+  4. Add (   ) a new segment and enter the first and last IP address of the range to monitor.
+  5. Specify the Assigned Pathfinder VM to assign a Pathfinder VM to the network segment. If do not want Pathfinder to scan a particular segment, then leave the field blank.
+  6. (Optional) If want to further limit Pathfinder scans to specific devices, go to the Pathfinder page and then select Per Asset Configuration. Use these settings to override the default Pathfinder configuration on a per-asset basis.
+  7. Leave Reserved for VPN blank. See the following step for adding GlobalProtect VPN IP address pool to the Cortex XDR app as a network segment to monitor.
+  8. Save (   ) the network segment. If the Configuration saved notification does not appear, save again.
 - STEP 3 | If use GlobalProtect or Prisma Access, add the GlobalProtect VPN IP address pool for the VPN traffic that want to monitor.
-1. To enable the Cortex XDR app to analyze VPN traffic, add (+) a new segment and specify the first and last IP address of GlobalProtect VPN IP address pool.
-2. Leave the Pathfinder VM assignment blank for GlobalProtect VPN IP address pool network segments. The app creates virtual profiles of endpoints from VPN traffic from the username- associated traffic, and Pathfinder cannot scan those virtual profiles.
-3. Identify this network segment as Reserved for VPN. GlobalProtect dynamically assigns IP addresses from the IP pool to the mobile endpoints that connect to network. The Cortex XDR analytics engine creates virtual entity profiles for network segments that are reserved for VPN.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 53 © 2020 Palo Alto Networks, Inc.
-
- 4. Save (   ) the network segment. If the Configuration saved notification does not appear, save again.
+  1. To enable the Cortex XDR app to analyze VPN traffic, add (+) a new segment and specify the first and last IP address of GlobalProtect VPN IP address pool.
+  2. Leave the Pathfinder VM assignment blank for GlobalProtect VPN IP address pool network segments. The app creates virtual profiles of endpoints from VPN traffic from the username- associated traffic, and Pathfinder cannot scan those virtual profiles.
+  3. Identify this network segment as Reserved for VPN. GlobalProtect dynamically assigns IP addresses from the IP pool to the mobile endpoints that connect to network. The Cortex XDR analytics engine creates virtual entity profiles for network segments that are reserved for VPN
+  4. Save (   ) the network segment. If the Configuration saved notification does not appear, save again.
 - STEP 4 | After have configured the analytics engine, wait about an hour, and then verify that Cortex XDR is receiving alerts on the various networks that the analytics engine is monitoring.
-1. To view existing network segments, select > Analytics Management > Status and then select Analytics Network Coverage Status.
-2. Select the report duration, or enter a custom date and time range, and click Generate.
-3. Verify that the IP ranges match the network segments the firewall sees; the DNS % should be over
-50. The DHCP % column should reflect the correct percentage for IP ranges that contain endpoints
-with dynamic IP addresses.
-4. In a deployment with GlobalProtect or Prisma Access, verify that the app generates alerts on VPN
-traffic.
-- STEP 5 | If want to use Pathfinder to interrogate endpoints for risky or malicious software, Set Up
-Pathfinder.
-If also use Cortex XDR Pro per Endpoint, use Pathfinder to supplement endpoint detection
+  1. To view existing network segments, select > Analytics Management > Status and then select Analytics Network Coverage Status.
+  2. Select the report duration, or enter a custom date and time range, and click Generate.
+  3. Verify that the IP ranges match the network segments the firewall sees; the DNS % should be over
+  4.  The DHCP % column should reflect the correct percentage for IP ranges that contain endpoints
+  with dynamic IP addresses.
+  4. In a deployment with GlobalProtect or Prisma Access, verify that the app generates alerts on VPN
+  traffic.
+- STEP 5 | If want to use Pathfinder to interrogate endpoints for risky or malicious software, Set Up Pathfinder.
+  - If also use Cortex XDR Pro per Endpoint, use Pathfinder to supplement endpoint detection
 using the Cortex XDR agent.
-- STEP 6 | If selected a Directory Sync Service instance during the Cortex XDR activation process,
-configure Cortex XDR to use it.
-Ingest Data from External Sources
+- STEP 6 | If selected a Directory Sync Service instance during the Cortex XDR activation process, configure Cortex XDR to use it.
+
+
+#### Ingest Data from External Sources
 To provide with a more complete and detailed picture of the activity involved in an incident, ingest data from a variety of external, third-party sources in Cortex XDR. Depending on the source, Cortex XDR can receive logs or both logs and alerts from the source. Cortex XDR can stitch the logs together with other logs and can raise provided alerts in relevant incidents.
 To ingest data, must set up the syslog collector applet on a broker VM within network. The applet can receive logs and alerts from external sources.
-   54 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
- Cortex XDR supports log and alert ingestion from the following external sources:
-  Vendor and Device Type
-    Operating System Version
-    Format Requirements
-    Log Visibility
-    Alert Visibility
-  Firewalls
-   Check Point FW1/VPN1
-      - R77.30 - R80.10 - R80.20 - R80.30 - R80.40
-    CEF format using Log Exporter
-         Network connection logs are available in the Query Builder.
-Alerts from Check Point firewalls are raised in Cortex XDR incidents when relevant.
- Logs
-with sessionid=0 are
-dropped.
-   Fortinet Fortigate
-        6.2.1 and above
-      timestamp must be in nanoseconds
-       Network connection logs are available in the Query Builder.
-      Alerts from Check Point firewalls are raised in Cortex XDR incidents when relevant.
-   Cisco ASA
-      —
-    - Syslog in Cisco-ASA
-format
-- Must include
-timestamps
-- Only supports messages:
-302013, 302014, 302015, 302016
-     Network connection logs are available in the Query Builder.
-   —
-  Authentication Services
-Okta Cloud API Token needed
-—
-   Azure AD
-        Cloud API
-      Secret needed
-       Authentication logs are available in the Query Builder.
-     —
-             Authentication logs are available
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 55 © 2020 Palo Alto Networks, Inc.
 
-   Vendor and Device Type
-   Operating System Version
-   Format Requirements
-   Log Visibility
-   Alert Visibility
- in the Query Builder.
-   PingOne for Enterprise
-        Cloud API
-      Account ID and Subscription ID needed
-       Authentication logs are available in the Query Builder.
-     —
-  Endpoint Logs
-Alerts from Additional External Sources
-   Windows Event Collector
-        —
-      WEC
-       Windows event logs are available in the Query Builder.
-     —
-     Ingest External Alerts
-       —
-     To ingest alerts from external sources, use the Cortex XDR ingestion API or set up a syslog collector applet on a broker VM inside network.
-     —
-    To enable Cortex XDR to display alerts, must also map alert fields to the Cortex XDR field format.
- Ingest External Alerts
+#### Ingest External Alerts
 For a more complete and detailed picture of the activity involved in an incident, Cortex XDR can ingest alerts from any external source. Cortex XDR stitches the external alerts together with relevant endpoint data and displays alerts from external sources in relevant incidents and alerts tables. also see external alerts and related artifacts and assets in Causality views.
+
 To ingest alerts from an external source, configure alert source to forward alerts (in CEF format) to the syslog collector. also ingest alerts from external sources using the Cortex XDR API.
+
 After Cortex XDR begins receiving external alerts, must map the following required fields to the Cortex XDR format:
 - Timestamp
 - Severity
@@ -1279,32 +601,38 @@ After Cortex XDR begins receiving external alerts, must map the following requir
 - Source port
 - Destination IP address
 - Destination port
-56 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | © 2020 Palo Alto Networks, Inc.
-Get Started with Cortex XDR Pro
 
-  If send pre-parsed alerts using the Cortex XDR API, additional mapping is not required.
+> If send pre-parsed alerts using the Cortex XDR API, additional mapping is not required.
+
 Storage of external alerts is determined by Cortex Data Lake data retention policy. To ingest external alerts:
-- STEP 1 | Send alerts from an external source to Cortex XDR. There are two ways to send alerts:
-- Cortex XDR API—Use the insert_cef_alerts API to send the raw CEF syslog alerts or use the insert_parsed_alerts API to convert the CEF syslog alerts to the Cortex XDR format before sending them to Cortex XDR. If use the API to send logs, do not need to perform the additional mapping step in Cortex XDR.
-- Activate Syslog collector— Activate the syslog collector and then configure the alert source to forward alerts in CEF format to the syslog collector. Then configure an alert mapping rule as follows.
-- STEP 2 | In Cortex XDR, select   > Settings > External Alerts.
-- STEP 3 | Right-click the Vendor Product for alerts and select Filter and Map.
-- STEP 4 | Use the filters at the top of the table to narrow the results to only the alerts want to map.
-Cortex XDR displays a limited sample of results during the mapping rule creation. As define filters, Cortex XDR applies the filter to the limited sample but does not apply the filters across all alerts. As a result, might not see any results from the alert sample during the rule creation.
+- STEP 1 | **Send alerts from an external source to Cortex XDR**.
+  - There are two ways to send alerts:
+  - **Cortex XDR API**
+    - Use the `insert_cef_alerts API` to send the `raw CEF syslog alerts`
+    - or use the `insert_parsed_alerts API` to `convert the CEF syslog alerts to the Cortex XDR format` before sending them to Cortex XDR.
+    - If use the API to send logs, do not need to perform the additional mapping step in Cortex XDR.
+  - **Activate Syslog collector**
+    - `Activate the syslog collector `
+    - and then `configure the alert source` to forward alerts in CEF format to the syslog collector.
+    - Then configure an alert mapping rule as follows.
+- STEP 2 | In **Cortex XDR > Settings > External Alerts**.
+- STEP 3 | Right-click the **Vendor Product for alerts > Filter and Map**.
+- STEP 4 | Use the filters to narrow the results to the alerts want to map.
+  - Cortex XDR displays a limited sample of results during the mapping rule creation.
+  - As define filters, Cortex XDR applies the filter to the limited sample but does not apply the filters across all alerts.
+  - As a result, might not see any results from the alert sample during the rule creation.
 - STEP 5 | Click Next to begin a new mapping rule.
-1. On the left, define a Name and optional Description to identify mapping rule.
-2. Map each required Cortex XDR field to a field in alert source.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 57 © 2020 Palo Alto Networks, Inc.
+  1. On the left, define a Name and optional Description to identify mapping rule.
+  2. Map each required Cortex XDR field to a field in alert source.
+  3. If needed, use the field converter () to translate the source field to the Cortex XDR syntax.
+  4. For example, if use a different severity system, need to use the converter to map severities fields to the Cortex XDR risks of High, Medium, and Low. also use regex to convert the fields to extract the data to facilitate matching with the Cortex XDR format. For example, say need to map the port but source field contains both IP address and port (192.168.1.200:8080). To extract everything after the :, use the following regex: `^[^:]*_`
+  5. For additional context when are investigating an incident, also map additional optional fields to fields in alert source.
+- STEP 6 | Submit alert filter and mapping rule when finished.
 
-   If needed, use the field converter (
-) to translate the source field to the Cortex XDR syntax.
-For example, if use a different severity system, need to use the converter to map severities fields to the Cortex XDR risks of High, Medium, and Low. also use regex to convert the fields to extract the data to facilitate matching with the Cortex XDR format. For example, say need to map the port but source field contains both IP address and port (192.168.1.200:8080). To extract everything after the :, use the following regex:
-^[^:]*_
-For additional context when are investigating an incident, also map additional optional fields to fields in alert source.
-- STEP 6 | Submit alert filter and mapping rule when finished. Ingest Logs from Check Point Firewalls
+
+#### Ingest Logs from Check Point Firewalls
 If use Check Point firewalls, still take advantage of Cortex XDR investigation and detection capabilities by forwarding Check Point firewall logs to Cortex XDR. By forwarding firewall logs, Cortex XDR can examine network traffic to detect anomalous behavior. Cortex XDR can use Check Point firewall logs as the sole data source, but can also use Check Point firewall logs in conjunction with Palo Alto Networks firewall logs. For additional endpoint context, also use Traps to collect and alert on endpoint data.
-As an estimate for initial sizing, note that the average Check Point log size is roughly 700 bytes. For proper sizing calculations, test the log sizes and log rates produced by Check Point firewalls.
-58 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+As an estimate for initial sizing, note that the average Check Point log size is roughly 700 bytes. For proper sizing calculations, test the log sizes and log rates produced by Check Point firewalls
 
  As soon as Cortex XDR starts to receive logs, the app can begin analyzing and raising Analytics alerts. Cortex XDR stores Analytics alerts according to Cortex Data Lake storage retention policy but does not store the Check Point firewall logs. As a result,not query or apply IOC and BIOC rule matching to Check Point firewall logs.
 To integrate logs, first need to set up an applet in a broker VM within network to act as a syslog collector. then configure firewall policy to log all traffic and set up the Log Exporter on Check Point Log Server to forward logs to the syslog collector in a CEF format.
@@ -1312,7 +640,9 @@ To integrate logs, first need to set up an applet in a broker VM within network 
 - STEP 2 | Configure the Check Point firewall to forward syslog events in CEF format to the syslog
 collector.
 Configure firewall policy to log all traffic and set up the Log Exporter to forward logs to the syslog collector. By logging all traffic, enable Cortex XDR to detect anomalous behavior from Check Point firewall logs. For more information on setting up Log Exporter, see the Check Point documentation.
-Ingest Logs from Cisco ASA Firewalls
+
+
+#### Ingest Logs from Cisco ASA Firewalls
 If use Cisco ASA firewalls, still take advantage of Cortex XDR investigation and detection capabilities by forwarding firewall logs to Cortex XDR. This enables Cortex XDR to examine network traffic to detect anomalous behavior. Cortex XDR can use Cisco ASA firewall logs as the sole data source, but can also use Cisco ASA firewall logs in conjunction with Palo Alto Networks firewall logs. For additional endpoint context, also use Cortex XDR to collect and alert on endpoint data.
 As an estimate for initial sizing, note that the average Cisco ASA log size is roughly 180 bytes. For proper sizing calculations, test the log sizes and log rates produced by Cisco ASA firewalls.
 As soon as Cortex XDR starts to receive logs, the app can begin analyzing and raising Analytics alerts. Cortex XDR stores Analytics alerts according to Cortex Data Lake storage retention policy but does not store the Cisco ASA firewall logs. As a result,not query or apply IOC and BIOC rule matching to Cisco ASA firewall logs.
@@ -1321,9 +651,10 @@ To integrate logs, first need to set up an applet in a broker VM within network 
 - STEP 2 | Configure the Cisco ASA firewall or the log device forwarding logs from it to log to the syslog
 collector.
 Configure firewall policy to log all traffic and forward the traffic logs to the syslog collector. By logging all traffic, enable Cortex XDR to detect anomalous behavior from Cisco ASA firewall logs. For more information on setting up Log Forwarding on Cisco ASA firewalls, see the Cisco ASA Series documentation.
-Ingest Logs from Fortinet Fortigate Firewalls
-If use Fortinet Fortigate firewalls, still take advantage of Cortex XDR investigation and detection capabilities by forwarding firewall logs to Cortex XDR. This enables Cortex XDR to examine network traffic to detect anomalous behavior. Cortex XDR can use Fortinet Fortigate firewall logs as the sole data source, but can also use Fortinet Fortigate firewall logs in conjunction with Palo Alto Networks firewall logs. For additional endpoint context, also use Cortex XDR to collect and alert on endpoint data.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 59 © 2020 Palo Alto Networks, Inc.
+
+
+#### Ingest Logs from Fortinet Fortigate Firewalls
+If use Fortinet Fortigate firewalls, still take advantage of Cortex XDR investigation and detection capabilities by forwarding firewall logs to Cortex XDR. This enables Cortex XDR to examine network traffic to detect anomalous behavior. Cortex XDR can use Fortinet Fortigate firewall logs as the sole data source, but can also use Fortinet Fortigate firewall logs in conjunction with Palo Alto Networks firewall logs. For additional endpoint context, also use Cortex XDR to collect and alert on endpoint data
 
  As an estimate for initial sizing, note that the average Fortinet Fortigate log size is roughly 1,070 bytes. For proper sizing calculations, test the log sizes and log rates produced by Fortinet Fortigate firewalls.
 As soon as Cortex XDR starts to receive logs, the app can begin analyzing and raising Analytics alerts. Cortex XDR stores Analytics alerts according to Cortex Data Lake storage retention policy but does not store the Fortinet Fortigate firewall logs. As a result,not query or apply IOC and BIOC rule matching to Fortinet Fortigate firewall logs.
@@ -1332,7 +663,9 @@ To integrate logs, first need to set up an applet in a broker VM within network 
 - STEP 2 | Configure the log device that receives Fortinet Fortigate firewall logs to forward syslog events
 to the syslog collector.
 Configure firewall policy to log all traffic and forward the traffic logs to the syslog collector. By logging all traffic, enable Cortex XDR to detect anomalous behavior from Fortinet Fortigate firewall logs. For more information on setting up Log Forwarding on Fortinet Fortigate firewalls, see the Fortinet FortiOS documentation.
-Ingest Authentication Logs and Data
+
+
+#### Ingest Authentication Logs and Data
 Ingesting Authentication Logs and Data requires a Cortex XDR Pro per TB license.
 When ingest authentication logs and data from an external source, Cortex XDR can weave that information into authentication stories. An authentication story unites logs and data regardless of the information source (for example, from an on-premise KDC or from a cloud-based authentication service) into a uniform schema. To search authentication stories, use the Query Builder or Native Search.
 Cortex XDR can ingest authentication logs and data from the following authentication services:
@@ -1345,7 +678,6 @@ To receive authentication logs and data from Azure AD, must first configure the 
 - STEP 1 | From the Microsoft Azure Console, create an app for Cortex XDR with the following API permissions: AuditLog.ReadAll and Directory.ReadAll. For more information on Microsoft Azure, see the following instructions on the Microsoft documentation portal:
 - Register an app: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart- register-app
 - Add API permissions for Directory.Read.All and AuditLog.Read.All with type Application: https:// docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web- apis#add-permissions-to-access-web-apis
-60 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
  - Create an application secret: https://docs.microsoft.com/en-us/azure/active-directory/develop/ howto-create-service-principal-portal#create-a-new-application-secret
 - STEP 2 | Select   > Settings > SaaS Log Collection.
@@ -1373,7 +705,6 @@ To receive authentication logs and data from PingOne for Enterprise, must first 
 - STEP 1 | Set up PingOne for Enterprise to send logs and data.
 To set up integration, must have an account for the PingOne management dashboard and access to
 create a subscription for SSO logs. From the PingOne Dashboard:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 61 © 2020 Palo Alto Networks, Inc.
 
  1. Set up a Poll subscription.
 1. Select Reporting > Subscriptions > Add Subscription.
@@ -1400,9 +731,10 @@ After configuration is complete, Cortex XDR begins receiving information from th
 service. From the SaaS Log Collection page, view the log collection summary.
 - STEP 4 | To search for specific authentication logs or data, Create an Authentication Query or
 Native Search.
- 62 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
- Configure XDR
+---
+
+### Configure XDR
 Before begin using Cortex XDR, must set up alert sensors. The more sensors that integrate with Cortex XDR, the more context have when a threat is detected. also set up Cortex XDR to raise Analytics alerts on network or endpoint data (or both) depending or Cortex XDR Pro licenses.
 The following workflow highlights the tasks that must perform (in order) to configure Cortex XDR.
 - STEP 1 | Integrate External Threat Intelligence Services.
@@ -1428,21 +760,21 @@ Pathfinder.
 By default, Cortex XDR - Analytics is disabled. Activating Cortex XDR - Analytics enables the Cortex XDR analytics engine to analyze endpoint data to develop a baseline and raise Analytics and Analytics BIOC alerts when anomalies and malicious behaviors are detected. To create a baseline, Cortex XDR requires a minimum set of data. To satisfy the requirement must have either
 EDR logs from a minimum of 30 endpoints or 675MB of network traffic logs from Palo Alto Networks firewalls in the last 24 hours.
 1. In Cortex XDR, select the gear (   ) in the upper right corner and then select Settings > Cortex XDR - Analytics.
-The Enable option will be grayed out if do not have the required data set.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 63 © 2020 Palo Alto Networks, Inc.
+The Enable option will be grayed out if do not have the required data set
 
   2. When available, Enable Cortex XDR - Analytics. The analytics engine will immediately begin analyzing Cortex data for anomalies.
 - STEP 3 | Add an Alert Exclusion Policy.
 - STEP 4 | Create an Incident Starring Configuration.
 - STEP 5 | (Optional) Palo Alto Networks also automatically delivers behavioral indicators of compromise (BIOCs) rules defined by the Palo Alto Networks threat research team to all Cortex XDR tenants, but also import any additional indicators as rules, as needed.
 To alert on specific BIOCs, Create a BIOC Rule. To immediately being alerting on known malicious indicators of compromise (IOCs)—such as known malicious IP addresses—Create an IOC Rule.
-Integrate External Threat Intelligence Services
+
+
+#### Integrate External Threat Intelligence Services
 To aid with threat investigation, Cortex XDR displays the WildFire-issued verdict for each Key Artifact in an incident. To provide additional verification sources, integrate an external threat intelligence service with Cortex XDR. The threat intelligence services the app supports are:
 - AutoFocusTM—AutoFocus groups conditions and indicators related to a threat with a tag. Tags can
 be user-defined or come from threat-research team publications and are divided into classes, such as exploit, malware family, and malicious behavior. When add the service, the relevant tags display in the incident details page under Key Artifacts. Without an AutoFocus license key, still pivot from Cortex XDR to the service to initiate a query for the artifact. See the AutoFocus Administrator’s Guide for more information on AutoFocus tags.
 - VirusTotal—VirusTotal provides aggregated results from over 70 antivirus scanners, domain services included in the block list, and user contributions. The VirusTotal score is represented as a fraction, where, for example, a score of 34/52 means out of 52 queried services, 34 services determined the artifact to be malicious. When add the service, the relevant VirusTotal score displays in the incident details page under Key Artifacts. Without a VirusTotal license key, still pivot from Cortex XDR to the service to initiate a query for the artifact.
 - WildFire®—WildFire detects known and unknown threats, such as malware. The WildFire verdict contains detailed insights into the behavior of identified threats. The WildFire verdict displays next to
-64 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
  relevant Key Artifacts in the incidents details page, the causality view, and within the Live Terminal view of processes.
 WildFire provides verdicts and analysis reports to Cortex XDR users without requiring a license key. Using WildFire for next-generation firewalls or other use-cases continues to require an active license.
@@ -1456,41 +788,45 @@ Select the gear (   ) in the menu bar, then Settings > Threat Intelligence and t
 Select Test. If there is an issue, an error message provides more details.
 - STEP 4 | Verify the service integration in an incident.
 After adding the license key, should see the additional verdict information from the service included in the Key Artifacts of an incident. right-click the service, such as VirusTotal (VT) or AutoFocus (AF), to see the entire verdict. See Investigate Incidents for more information on where these services are used within the Cortex XDR app.
-Set up Cortex XDR Environment
+
+
+#### Set up Cortex XDR Environment
 To create a more personalized user experience, Cortex XDR enables to customize the following:
 - Keyboard Shortcuts
 - User Timezone
 - Distribution List Emails
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 65 © 2020 Palo Alto Networks, Inc.
 
- Define Keyboard Shortcuts
+Define Keyboard Shortcuts
 Select the keyboard shortcut for the Cortex XDR capabilities.
 - STEP 1 | From the Cortex XDR management console, navigate to   > Settings > General.
 - STEP 2 | In the Keyboard Shortcuts section, change the default settings for:
 - Artifact and Asset Views
 - Quick Launcher
 The shortcut value must be a keyboard letter, A through Z, and cannot be the same for both shortcuts.
+
+
 Select Timezone
 Select own specific timezone. Selecting a timezone affects the timestamps displayed in the Cortex XDR management console, auditing logs, and when exporting files.
 - STEP 1 | From the Cortex XDR management console, navigate to   > Settings > General.
 - STEP 2 | In the Timezone section, select the timezone in which want to display Cortex XDR
 data.
+
 Define Distribution List Emails
 Define a list of email addresses Cortex XDR can use as distribution lists.
 - STEP 1 | From the Cortex XDR management console, navigate to   > Settings > General.
 - STEP 2 | In the Email Contacts section, enter email addresses want to include in a distribution list. Make sure to select after each email address.
-  66 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
- Set up Outbound Integration
+---
+
+## Set up Outbound Integration
 With Cortex XDR, set up any of the following optional outbound integrations:
 - Integrate Slack for Outbound Notifications
 - Integrate a Syslog Receiver
-- Integrate with Cortex XSOAR—Send alerts to Cortex XSOAR for automated and coordinated threat
-response. From Cortex XSOAR, define, adjust, and test playbooks that respond to Cortex XDR alerts. also manage incidents in Cortex XSOAR with any changes automatically synced to Cortex XDR. For more information, see the in-app documentation in Cortex XSOAR.
+- Integrate with Cortex XSOAR—Send alerts to Cortex XSOAR for automated and coordinated threat response. From Cortex XSOAR, define, adjust, and test playbooks that respond to Cortex XDR alerts. also manage incidents in Cortex XSOAR with any changes automatically synced to Cortex XDR. For more information, see the in-app documentation in Cortex XSOAR.
 - Integrate with external receivers such as ticketing systems—To manage incidents from the application of choice, use the Cortex XDR API Reference to send alerts and alert details to an external receiver. After generate API key and set up the API to query Cortex XDR, external apps can receive incident updates, request additional data about incidents, and make changes such as to set the status and change the severity, or assign an owner. To get started, see the Cortex XDR API Reference.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 67 © 2020 Palo Alto Networks, Inc.
 
- Use the Cortex XDR Interface
+
+### Use the Cortex XDR Interface
 Cortex XDR provides an easy-to-use interface that access from the hub. By default, Cortex XDR displays the Incident Management Dashboard when log in. If desired, change the default dashboard or Build a Custom Dashboard that displays when log in.
 Each SAML login session is valid for 8 hours.
 Depending on license and assigned role, explore and the following areas in the app.
@@ -1509,7 +845,7 @@ From this menu, also add malicious domains and IP addresses to an external dynam
      From this menu, configure additional add-on security services such as Device Control. Device Control requires a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
       Rules
 With a Cortex XDR Pro per TB license, define indicators of known threats to enable Cortex XDR to raise alerts when detected. As investigate and research threats and uncover specific indicators and behaviors associated with
- 68 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
+
 
    Interface
    Description
@@ -1529,7 +865,8 @@ Access a list of apps allocated to hub account. The following topics describe ad
 - Save and Share Filters
 - Show or Hide Results
 - Manage Columns and Rows
-Manage Tables
+
+#### Manage Tables
 Most pages in Cortex XDR present data in table format and provide controls to help manage and filter the results. If additional views or actions are available for a specific value, pivot (right-click) from the value in the table. For example, view the incident details, or pivot to the Causality View for an alert or pivot to the results for a query.
      Hub
   On most pages, also refresh (   ) the content on the page. To manage tables in the app:
@@ -1537,8 +874,6 @@ Most pages in Cortex XDR present data in table format and provide controls to he
 - Export Results to File
 - Save and Share Filters
 - Show or Hide Results
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Get Started with Cortex XDR Pro 69 © 2020 Palo Alto Networks, Inc.
 
  - Manage Columns and Rows Filter Page Results
 To reduce the number of results, filter by any heading and value. When apply a filter, Cortex XDR displays the filter criteria above the results table. also filter individual columns for specific values using the icon to the right of the column heading.
@@ -1556,11 +891,10 @@ Cortex XDR adds the filter criteria above the top of the table. For example, on 
 In most cases this will be = to include results that match the value specify, or != to exclude results
 that match the value.
 3. Enter a value to complete the filter criteria.
-CMD fields have a 128 character limit. Shorten longer query strings to 127 characters and add an asterisk (*).
+CMD fields have a 128 character limit. Shorten longer query strings to 127 characters and add an asterisk `(*)`.
 Alternatively, select Include empty values to create a filter that excludes or includes results when the field has an empty values.
 - STEP 3 | To add additional filters, click +AND (within the filter brackets) to display results that must match all specified criteria, or +OR to display results that match any of the criteria.
 - STEP 4 | Click out of the filter area into the results table to see the results. STEP 5 | Next steps:
-70 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
  - If at any time want to remove the filter, click the X next to it. To remove all filters, click the trash icon.
 - Save and Share Filters. Export Results to File
@@ -1581,7 +915,6 @@ override the existing filter.
 Unsharing a filter will turn a public filter private. Deleting a shared filter will remove it for all users.
 Show or Hide Results
 As an alternative to building a filter query from scratch or using the column filters, pivot from rows and specific values to define the match criteria to fine tune the results in the table. also pivot on
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 71 © 2020 Palo Alto Networks, Inc.
 ) or delete ( ) a filter.
 
  empty values to show only results with empty values or only results that do not have empty values in the column from which pivot.
@@ -1603,7 +936,6 @@ Any adjustments make to the columns or rows persist when navigate away from and 
 2. Select the desired ROW VIEW option.
   Cortex XDR updates the table to present the results in the desired row height view ranging from short to tall.
 - Adjust the column width:
-72 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro © 2020 Palo Alto Networks, Inc.
 
  1. On the Cortex XDR page, select the menu indicated by three vertical dots to the right of the Filter button.
 2. Select the desired column width option from the COLUMN MANAGER.
@@ -1613,11 +945,11 @@ Cortex XDR updates the table to present the results in the desired view: narrow,
 2. Below the column manager, search for a column by name, or select the fields want to add or clear any fields want to hide.
 Cortex XDR adds or removes the fields to the table as select or clear the fields.
 3. If desired, drag and drop the fields to change the order in which they appear in the table.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro 73 © 2020 Palo Alto Networks, Inc.
 
-  74 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Get Started with Cortex XDR Pro
 
-    Endpoint Security
+---
+
+## Endpoint Security
 Endpoint security features require a Cortex XDR Pro - Endpoint license.
 > Endpoint Security Concepts
 > Manage Cortex XDR Agents
@@ -1628,25 +960,26 @@ Endpoint security features require a Cortex XDR Pro - Endpoint license.
 > Apply Security Profiles to Endpoints
 > Exceptions Security Profiles
 > Hardened Endpoint Security
-        75
 
-  76 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
- Endpoint Security Concepts
+### Endpoint Security Concepts
 - About Cortex XDR Endpoint Protection
 - File Analysis and Protection Flow
 - Endpoint Protection Capabilities
 - Endpoint Protection Modules
-About Cortex XDR Endpoint Protection
+
+
+#### About Cortex XDR Endpoint Protection
 Cyberattacks are attacks performed on networks or endpoints to inflict damage, steal information, or achieve other goals that involve taking control of computer systems that do not belong to the attackers. These adversaries perpetrate cyberattacks either by causing a user to unintentionally run a malicious executable file, known as malware, or by exploiting a weakness in a legitimate executable file to run malicious code behind the scenes without the knowledge of the user.
 One way to prevent these attacks is to identify executable files, dynamic-link libraries (DLLs), and other pieces of code to determine if they are malicious and, if so, to prevent them from executing by testing each potentially dangerous code module against a list of specific, known threat signatures. The weakness of this method is that it is time-consuming for signature-based antivirus (AV) solutions to identify newly created threats that are known only to the attacker (also known as zero-day attacks or exploits) and add them to the lists of known threats, which leaves endpoints vulnerable until signatures are updated.
 Cortex XDR takes a more efficient and effective approach to preventing attacks that eliminates the need for traditional AV. Rather than try to keep up with the ever-growing list of known threats, Cortex XDR sets up a series of roadblocks—traps, if will—that prevent the attacks at their initial entry points—the point where legitimate executable files are about to unknowingly allow malicious access to the system.
 Cortex XDR provides a multi-method protection solution with exploit protection modules that target software vulnerabilities in processes that open non-executable files and malware protection modules that examine executable files, DLLs, and macros for malicious signatures and behavior. Using this multi-method approach, the Cortex XDR solution can prevent all types of attacks, whether they are known or unknown threats.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 77 © 2020 Palo Alto Networks, Inc.
+
 
   Exploit Protection Overview
 An exploit is a sequence of commands that takes advantage of a bug or vulnerability in a software application or process. Attackers use these exploits to access and use a system to their advantage. To gain control of a system, the attacker must exploit a chain of vulnerabilities in the system. Blocking any attempt to exploit a vulnerability in the chain will block the entire exploitation attempt.
 To combat an attack in which an attacker takes advantage of a software exploit or vulnerability, Cortex XDR employs exploit protection modules (EPMs). Each EPM targets a specific type of exploit attack in the attack chain. Some capabilities that Cortex XDR EPMs provide are reconnaissance prevention, memory corruption prevention, code execution prevention, and kernel protection.
+
 Malware Protection Overview
 Malicious files, known as malware, are often disguised as or embedded in non-malicious files. These files can attempt to gain control, gather sensitive information, or disrupt the normal operations of the system. Cortex XDR prevents malware by employing the Malware Prevention Engine. This approach combines several layers of protection to prevent both known and unknown malware that has not been seen before from causing harm to endpoints. The mitigation techniques that the Malware Prevention Engine employs vary by the endpoint type:
 - Malware Protection for Windows
@@ -1655,7 +988,6 @@ Malicious files, known as malware, are often disguised as or embedded in non-mal
 - Malware Protection for Android
 Malware Protection for Windows
 - WildFire integration—Enables automatic detection of known malware and analysis of unknown malware using WildFire threat intelligence.
-78 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  - Local static analysis—Enables Cortex XDR to use machine learning to analyze unknown files and issue a verdict. Cortex XDR uses the verdict returned by the local analysis module until it receives a verdict from Cortex XDR.
 - DLL file protection—Enables Cortex XDR to block known and unknown DLLs on Windows endpoints.
@@ -1684,7 +1016,6 @@ Malware Protection for Linux
 - Local static analysis—Enables the Cortex XDR agent to use machine learning to analyze unknown files and issue a verdict. The Cortex XDR agent uses the verdict returned by the local analysis module until it receives the WildFire verdict from Cortex XDR. Local analysis requires Traps agent 6.0 or a later release.
 - Behavioral threat protection—Enables continuous monitoring of endpoint activity to identify and analyze chains of events—known as causality chains. This enables Cortex XDR to detect malicious activity that could otherwise appear legitimate if inspected as individual events. Behavioral threat protection requires Traps agent 6.1 or a later release.
 - ELF file protection—Enables to block known malicious and unknown ELF files executed on a host server or within a container on a Cortex XDR-protected endpoint. Cortex XDR automatically suspends the file execution until a WildFire or local analysis verdict is obtained. ELF file protection requires Traps agent 6.0 or a later release.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 79 © 2020 Palo Alto Networks, Inc.
 
  - Malware protection modules—Targets the execution behavior of a file—such as those associated with reverse shell protection.
 Malware Protection for Android
@@ -1698,7 +1029,6 @@ Exploit Protection for Protected Processes
 In a typical attack scenario, an attacker attempts to gain control of a system by first corrupting or bypassing memory allocation or handlers. Using memory-corruption techniques, such as buffer overflows and heap corruption, a hacker can trigger a bug in software or exploit a vulnerability in a process. The attacker must then manipulate a program to run code provided or specified by the attacker while evading detection. If the attacker gains access to the operating system, the attacker can then upload malware, such as Trojan horses (programs that contain malicious executable files), or can otherwise use the system to their advantage. The Cortex XDR agent prevents such exploit attempts by employing roadblocks—or traps—at each stage of an exploitation attempt.
 When a user opens a non-executable file, such as a PDF or Word document, and the process that opened the file is protected, the Cortex XDR agent seamlessly injects code into the software. This occurs at the earliest possible stage before any files belonging to the process are loaded into memory. The Cortex XDR agent then activates one or more protection modules inside the protected process. Each protection module targets a specific exploitation technique and is designed to prevent attacks on program vulnerabilities based on memory corruption or logic flaws.
 In addition to automatically protecting processes from such attacks, the Cortex XDR agent reports any security events to Cortex XDR and performs additional actions as defined in the endpoint security policy. Common actions that the Cortex XDR agent performs include collecting forensic data and notifying the user about the event.
-80 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  The default endpoint security policy protects the most vulnerable and most commonly used applications but also add other third-party and proprietary applications to the list of protected processes.
 Malware Protection
@@ -1710,7 +1040,6 @@ When a user or machine attempts to open an executable file, the Cortex XDR agent
 If no restriction rules apply to an executable file, the Cortex XDR agent next moves to Phase 3: Evaluation of Hash Verdicts.
 Phase 3: Hash Verdict Determination
 The Cortex XDR agent calculates a unique hash using the SHA-256 algorithm for every file that attempts to run on the endpoint. Depending on the features that enable, the Cortex XDR agent performs additional
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 81 © 2020 Palo Alto Networks, Inc.
 
  analysis to determine whether an unknown file is malicious or benign. The Cortex XDR agent can also submit unknown files to Cortex XDR for in-depth analysis by WildFire.
 To determine a verdict for a file, the Cortex XDR agent evaluates the file in the following order:
@@ -1737,7 +1066,6 @@ If the hash does not exist in the local cache or has an unknown verdict, the Cor
 evaluates whether the file is signed by a known signer.
 4. Local analysis—When an unknown executable, DLL, or macro attempts to run on a Windows or
 Mac endpoint, the Cortex XDR agent uses local analysis to determine if it is likely to be malware. On Windows endpoints, if the file is signed by a known signer, the Cortex XDR agent permits the file to
-82 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  run and does not perform additional analysis. For files on Mac endpoints and files that are not signed by a known signer on Windows endpoints, the Cortex XDR agent performs local analysis to determine whether the file is malware. Local analysis uses a statistical model that was developed with machine learning on WildFire threat intelligence. The model enables the Cortex XDR agent to examine hundreds of characteristics for a file and issue a local verdict (benign or malicious) while the endpoint is offline or Cortex XDR is unreachable. The Cortex XDR agent can rely on the local analysis verdict until it receives an official WildFire verdict or hash exception.
 Local analysis is enabled by default in a Malware Security profile. Because local analysis always returns a verdict for an unknown file, if enable the Cortex XDR agent to Block files with unknown verdict, the agent only blocks unknown files if a local analysis error occurs or local analysis is disabled. To change the default settings (not recommended), see Add a New Malware Security Profile.
@@ -1761,7 +1089,6 @@ Attackers can use existing mechanisms in the operating system—such as DLL- loa
                 —
    —
   Known Vulnerable Processes Protection —
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 83 © 2020 Palo Alto Networks, Inc.
 
    Protection Capability
    Windows
@@ -1787,7 +1114,6 @@ Targets encryption based activity associated with ransomware to analyze and halt
      —
             Prevent Malicious Child Process Execution
 Prevents script-based attacks used to deliver malware by blocking known targeted processes from launching child
-84 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 — — —
 | Endpoint Security
 
@@ -1843,7 +1169,7 @@ Many attack scenarios are based on writing malicious executable files to certain
              —
      —
     —
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 85 © 2020 Palo Alto Networks, Inc.
+
 
    Protection Capability
     Windows
@@ -1870,7 +1196,6 @@ can restrict the executable files, that users can launch from optical disc drive
 Each security profile applies multiple security modules to protect endpoints from a wide range of attack techniques. While the settings for each module are not configurable, the Cortex XDR agent activates a specific protection module depending on the type of attack, the configuration of security policy, and the operating system of the endpoint. When a security event occurs, the Cortex XDR agent logs details about the event including the security module employed by the Cortex XDR agent to detect and prevent the attack based on the technique. To help understand the nature of the attack, the alert identifies the protection module the Cortex XDR agent employed.
 The following table lists the modules and the platforms on which they are supported. A dash (—) indicates the module is not supported.
 APC Protection — — —
-86 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
   Module
     Windows
     Mac
@@ -1914,8 +1239,7 @@ Prevents areas of memory defined to contain only data from running executable co
             DLL Hijacking
 Prevents DLL-hijacking attacks where the attacker attempts to load dynamic-link libraries on
 — — —
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 87 © 2020 Palo Alto Networks, Inc.
+
 
    Module
    Windows
@@ -1952,7 +1276,6 @@ This module provides an additional layer of protection by extending gatekeeper f
    —
             Hash Exception — — Halts execution of files that
 an administrator identified
-88 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
    Module
    Windows
@@ -1983,7 +1306,7 @@ on Linux endpoints. On the first detection of suspicious rootkit behavior, the b
    Local Analysis
 Examines hundreds of characteristics of an unknown executable file, DLL, or macro to determine if it is likely to be malware. The local analysis module uses a statistical model that was developed using machine learning on WildFire threat intelligence.
                         —
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 89 © 2020 Palo Alto Networks, Inc.
+
 
    Module
     Windows
@@ -2026,7 +1349,6 @@ Blocks malicious activity where an attacker redirects standard input and output 
             —
             ROP — Protects against the use of
 return-oriented programming
-90 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
    Module
    Windows
@@ -2066,8 +1388,7 @@ Improves or altogether implements ASLR (address space layout randomization) with
    —
             WildFire
 Leverages WildFire for threat intelligence to determine whether a file is malware. In the case of unknown files, Cortex XDR can forward
-     CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 91 © 2020 Palo Alto Networks, Inc.
+
 
    Module
    Windows
@@ -2078,7 +1399,7 @@ Leverages WildFire for threat intelligence to determine whether a file is malwar
    WildFire Post-Detection (Malware and Grayware)
 Identifies a file that was previously allowed to run
 on an endpoint that is now determined to be malware. Post-detection events provide notifications for each endpoint on which the file executed.
-                           92 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+                          Alto
 
  Manage Cortex XDR Agents
 - Create an Agent Installation Package
@@ -2093,9 +1414,8 @@ After install the Cortex XDR agent for the first time, upgrade individual or bat
 To create a new installation package:
 - STEP 1 | From Cortex XDR, select Endpoints > Endpoint Management > Agent Installations.
 - STEP 2 | Create a new installation package.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 93 © 2020 Palo Alto Networks, Inc.
 
- STEP 3 | STEP 4 |
+- STEP 3 | STEP 4 |
 - STEP 5 | STEP 6 | STEP 7 |
 - STEP 8 |
 Enter a unique Name and an optional Description to identify the installation package.
@@ -2124,8 +1444,8 @@ agent software from any endpoints. However, if install the Cortex XDR agent from
 - Copy text to clipboard to copy the text from a specific field in the row of an installation package.
 - Hide installation packages. Using the Hide option provides a quick method to filter out results based
 on a specific value in the table. also use the filters at the top of the page to build a filter from scratch. To create a persistent filter, save ( ) it.
- STEP 9 |
-  94 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+- STEP 9 |
+
 
  Set an Application Proxy for Cortex XDR Agents
 This capability is supported on endpoints with Traps agent 5.0.9 (Windows only) or Cortex XDR agent 7.0 and later releases.
@@ -2142,7 +1462,6 @@ agent.
 When disable the proxy configuration, all proxies associated with that agent are removed. The agent resumes communication with the Cortex XDR sever through the wide-system proxy if defined, otherwise if a wide-system is not defined the agent resumes communicating directly with the Cortex XDR server. If neither a wide-system proxy nor direct communication exist and disable the proxy, the agent will disconnect from Cortex XDR.
 Move Cortex XDR Agents Between Managing XDR Servers move existing agents between Cortex XDR managing servers directly from the Cortex XDR management console. This can be useful during POCs or to better manage agents allocation between tenants. When change the server that manages the agent, the agent transfers to the new managing server as a freshly installed agent, without any data that was previously stored for it on the original managing server. After the Cortex XDR registers with the new server, it can no longer communicate with the previous one.
 The following are prerequisites to enable change the managing server of a Cortex XDR agent:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 95 © 2020 Palo Alto Networks, Inc.
 
  - Ensure that are running a Cortex XDR agent 7.2 or later release.
 - Ensure have administrator privileges for Cortex XDR in the hub.
@@ -2160,7 +1479,7 @@ Management > Endpoints Administration.
 2. Right click + Alt to open the options menu in advanced mode, and select Endpoint Control > Change
 managing server. This option is available only for an administrator in Cortex XDR and for Cortex XDR agent 7.2 and later releases.
 3. Enter the ID number of the installation package obtained in Step 1. If selected agents running on different operating systems, for example Windows and Linux, must provide an ID for each operating system. When done, click Move.
-  96 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
   STEP 4 | Track the action.
 When track the action in the Action Center, the original managing server will keep displaying In progress (Sent) status also after the action has ended successfully, since the agent no longer reports to this managing server. The new managing server will add this as a new agent registration action.
@@ -2176,13 +1495,11 @@ If needed, filter the list of endpoints. To reduce the number of results, use th
 filters Filters at the top of the page.
 - STEP 3 | Select the endpoints want to upgrade. also select endpoints running different operating systems to upgrade the agents at the same time.
 - STEP 4 | Right-click selection and select Endpoint Control > Upgrade agent version.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 97 © 2020 Palo Alto Networks, Inc.
 
   For each platform, select the name of the installation package want to push to the selected endpoints.
 Starting in the Cortex XDR agent 7.1 release, install the Cortex XDR agent on Linux endpoints using package manager. When upgrade an agent on a Linux endpoint that is not using package manager, Cortex XDR upgrades the installation process by default according to the endpoint Linux distribution. Alternatively, if do not want to use the package manage, clear the option Upgrade to installation by package manager.
 The Cortex XDR agent keeps the name of the original installation package after every upgrade.
 - STEP 5 | Upgrade.
-98 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Cortex XDR distributes the installation package to the selected endpoints at the next heartbeat communication with the agent. To monitor the status of the upgrades, go to Response > Action Center. From the Action Center also view additional information about the upgrade (right-click the action and select Additional data) or cancel the upgrade (right-click the action and select Cancel Agent Upgrade).
 - During the upgrade process, the endpoint operating system might request for a reboot. However, do not have to perform the reboot for the Cortex XDR agent upgrade process to complete successfully.
@@ -2201,16 +1518,15 @@ The following workflow describes how to uninstall the Cortex XDR agent from one 
   STEP 1 | Log in to Cortex XDR.
 Go to Response > Action Center > + New Action.
 - STEP 2 | Select Agent Uninstall.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 99 © 2020 Palo Alto Networks, Inc.
 
- STEP 3 | Click Next.
+
+- STEP 3 | Click Next.
 - STEP 4 | Select the target endpoints (up to 100) for which want to uninstall the Cortex XDR agent.
 If needed, Filter the list of endpoints by attribute or group name.
 - STEP 5 | Click Next.
 - STEP 6 | Review the action summary and click Done when finished.
 - STEP 7 | To track the status of the uninstallation, return to the Action Center.
-  100 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
  Define Endpoint Groups
 To easily apply policy rules to specific endpoints, define an endpoint group. There are two methods use to define an endpoint group:
@@ -2224,13 +1540,13 @@ Group.
 - STEP 3 | Enter a Group Name and optional Description to identify the endpoint group. The name assign to the group will be visible when assign endpoint security profiles to endpoints.
 - STEP 4 | Determine the endpoint properties for creating an endpoint group:
 - Dynamic—Use the filters to define the criteria want to use to dynamically populate an endpoint group. Dynamic groups support multiple criteria selections and can use AND or OR operators. For endpoint names and aliases, and domains and workgroups, use * to match any string of characters. As apply filters, Cortex XDR displays any registered endpoint matches to help validate filter criteria.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 101 © 2020 Palo Alto Networks, Inc.
+
 
    Cortex XDR supports only IPv4 addresses.
 - Static—Select specific registered endpoints that want to include in the endpoint group. Use the filters, as needed, to reduce the number of results.
 When create a static endpoint group from a file, the IP address, hostname, or alias of the endpoint must match an existing agent that has registered with Cortex XDR. select up to 250 endpoints.
 When disconnect the Directory Sync Service (DSS) in Cortex XDR deployment, it might affect existing endpoint groups and policy rules based on Active Directory properties.
-  102 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
   STEP 5 | Create the endpoint group.
 After save endpoint group, it is ready for use to assign security profiles to endpoints and in
@@ -2243,7 +1559,7 @@ manage a group, right-click the group and select the desired action:
 - Save as new—Duplicate the endpoint group and save it as a new group.
 - Export group—Export the list of endpoints that match the endpoint group criteria to a tab separated
 values (TSV) file.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 103 © 2020 Palo Alto Networks, Inc.
+
 
  About Content Updates
 To increase security coverage and quickly resolve any issues in policy, Palo Alto Networks can seamlessly deliver software packages for Cortex XDR called content updates. Content updates can contain changes or updates to any of the following:
@@ -2268,7 +1584,6 @@ To adjust content update distribution for environment, configure the following o
 Otherwise, if want the Cortex XDR agent to retrieve the latest content from the server immediately, force the Cortex XDR agent to connect to the server in one of the following methods:
 - (Windows and Mac only) Perform manual check-in from the Cortex XDR agent console. - Initiate a check-in using the Cytool checkin command.
   104
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Endpoint Security Profiles
 Cortex XDR provides default security profiles that use out of the box to immediately begin protecting endpoints from threats. While security rules enable to block or allow files to run
@@ -2291,7 +1606,6 @@ Add a New Restrictions Security Profile.
 Add a New Agent Settings Profile.
       Exceptions Profiles
 Exceptions Security Profiles override the security policy to allow a process or file to run on an endpoint, to disable a specific BTP rule, to allow a known digital signer, and to import exceptions from the Cortex XDR support team. Exceptions
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 105 © 2020 Palo Alto Networks, Inc.
 
    Profile Name
    Description
@@ -2319,7 +1633,6 @@ To view which processes are protected by each capability, see Processes Protecte
 Policy.
 For Logical Exploits Protection, also configure a block list for the DLL Hijacking module. The block list enables to block specific DLLs when run by a protected process. The DLL folder or file must include the complete path. To complete the path, use environment variables or the asterisk (*) as a wildcard to match any string of characters (for example, */windows32/).
 For Exploit Protection for Additional Processes, also add one or more additional processes.
-106 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
   In Exploit Security profiles, if change the action mode for processes, must restart the protected processes for the following security modules to take effect on the process and its forked processes: Brute Force Protection, Java Deserialization, ROP, and SO Hijacking.
 - STEP 4 | Save the changes to profile. STEP 5 | Apply Security Profiles to Endpoints. do this in two ways: Create a new policy rule using this profile from the right-click menu or launch the new policy wizard from Policy Rules.
@@ -2376,7 +1689,7 @@ Known Vulnerable Processes Protection
 - vboxtray.exe - video.ui.exe - visio.exe
 - vlc.exe
 - vmware-authd.exe - vmware-hostd.exe - vmware-vmx.exe
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 107 © 2020 Palo Alto Networks, Inc.
+
 
      Windows Processes Protected by Exploit Security Policy
    - eqnedt32.exe
@@ -2470,7 +1783,7 @@ Logical Exploits Protection
 - vmware fusion
 - vpn shield
 - winmail.dat file viewer
-  108 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | © 2020 Palo Alto Networks, Inc.
+
 Endpoint Security
 
      Mac Processes Protected by Exploit Security Policy
@@ -2567,8 +1880,7 @@ Known Vulnerable Processes Protection
 - syslog-ng - tinyproxy - vsftpd
 - wickedd-dhcp4 - wickedd-dhcp6 - winbindd
 - xinetd
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 109 © 2020 Palo Alto Networks, Inc.
+
 
  Add a New Malware Security Profile
 Malware security profiles allow to configure the action Cortex XDR agents take when known malware and unknown files try to run on Windows, Mac, Linux, and Android endpoints.
@@ -2595,7 +1907,6 @@ The quarantine feature is not available for malware identified in network drives
 to Cortex XDR, and for Cortex XDR to send the files to WildFire for analysis. With macro analysis, the Cortex XDR agent sends the Microsoft Office file containing the macro. The file types that the Cortex XDR agent analyzes depend on the platform type. WildFire accepts files up to 100MB in size.
 - Treat Grayware as Malware—Treat all grayware with the same Action Mode configure for malware. Otherwise, if this option is disabled, grayware is considered benign and is not blocked.
 - Action on Unknown to WildFire—Select the behavior of the Cortex XDR agent when an unknown file tries to run on the endpoint (Allow, Run Local Analysis, or Block). With local analysis, the
-110 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Cortex XDR agent uses embedded machine learning to determine the likelihood that an unknown file is malware and issues a local verdict for the file. If block unknown files but do not run local analysis, unknown files remain blocked until the Cortex XDR agent receives an official WildFire verdict.
 - (Windows only) Examine Office Files From Network Drives—Enable the Cortex XDR agent to examine Microsoft Office files in network drives when they contain a macro that attempts to run. If this option is disabled, the Cortex XDR agent will not examine macros in network drives.
@@ -2618,7 +1929,6 @@ With Behavioral threat protection, the agent continuously monitors endpoint acti
 Palo Alto Networks researchers define the causality chains that are malicious and distribute those chains as behavioral threat rules. When the Cortex XDR agent detects a match to a behavioral threat protection rule, the Cortex XDR agent carries out the configured action (default is Block). In addition, the Cortex XDR agent reports the behavior of the entire event chain up to the process, known as the causality group owner (CGO), that the Cortex XDR agent identified as triggering the event sequence.
 To configure Behavioral Threat Protection
 1. Define the Action mode to take when the Cortex XDR agent detects malicious causality chains:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 111 © 2020 Palo Alto Networks, Inc.
 
  - Block (default)—Block all processes and threads in the event chain up to the CGO.
 - Report—Allow the activity but report it to Cortex XDR.
@@ -2649,7 +1959,7 @@ execution:
 allow list with optional execution criteria.
 +Add and then specify the allow list criteria including the Parent Process Name, Child Process Name,
 and Command Line Params. Use ? to match a single character or * to match any string of characters.
- 112 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
    If are adding child process evaluation criteria based on a specific security event, the event indicates both the source process and the command line parameters in one line. Copy only the command line parameter for use in the profile.
 - STEP 7 | (Windows and Mac only) Enable endpoint file scanning.
@@ -2661,7 +1971,6 @@ Just as with an on-demand scan, a scheduled scan will resume after a reboot, pro
 operating system crash.
 3. (Windows only) To include removable media drives in the scheduled scan, enable the Cortex XDR
 agent to Scan Removable Media Drives.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 113 © 2020 Palo Alto Networks, Inc.
 
  4. Add folders allow list to exclude them from examination.
 1. Add (+) a folder.
@@ -2698,7 +2007,6 @@ attempts to redirect standard input and output streams to network sockets.
 2. (Optional) Add processes to allow list that must redirect streams to network sockets.
 1. +Add a connection.
 2. Enter the path of the process, and the local and remote IP address and ports.
-114 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Use a wildcard to match a partial path name. Use a * to match any string of characters (for example, */bash). also use a * to match any IP address or any port.
 3. Press Enter or click the check mark when done.
@@ -2719,8 +2027,6 @@ The Cortex XDR agent analyzes files based on the type of file, regardless of the
 - Object code
 - FON (Fonts)
 - Microsoft Windows screensaver (.scr) files
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 115 © 2020 Palo Alto Networks, Inc.
 
  - Microsoft Office files containing macros opened in Microsoft Word (winword.exe) and Microsoft Excel (excel.exe):
 - Microsoft Office 2003 to Office 2016—.doc and .xls
@@ -2755,7 +2061,6 @@ Local Verdict Cache
 The Cortex XDR agent stores hashes and the corresponding verdicts for all files that attempt to run on the endpoint inits local cache. The local cache scales in size to accommodate the number of unique executable files opened on the endpoint. On Windows endpoints, the cache is stored in the C:\ProgramData \Cyvera\LocalSystem folder on the endpoint. When service protection is enabled (see Add a New Agent Settings Profile), the local cache is accessible only by the Cortex XDR agent and cannot be changed.
 Each time a file attempts to run, the Cortex XDR agent performs a lookup in its local cache to determine if a verdict already exists. If known, the verdict is either the official WildFire verdict or manually set as a hash exception. Hash exceptions take precedence over any additional verdict analysis.
 If the file is unknown in the local cache, the Cortex XDR agent queries Cortex XDR for the verdict. If Cortex XDR receives a verdict request for a file that was already analyzed, Cortex XDR immediately responds to the Cortex XDR agent with the verdict.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
  116
 
  If Cortex XDR does not have a verdict for the file, it queries WildFire and optionally submits the file for analysis. While the Cortex XDR agent attempts waits for an official WildFire verdict, it can use File Analysis and Protection Flow to evaluate the file. After Cortex XDR receives the verdict it responds to the Cortex XDR agent that requested the verdict.
@@ -2785,9 +2090,8 @@ The type of protection capability determines whether the capability supports an 
 to match a partial name for the folder and environment variables. Use ? to match any single character or * to match any string of characters. To match a folder, must terminate the path with * to match all files in the folder (for example, c:\temp\*).
 3. Repeat to add additional folders.
 - STEP 4 | Save the changes to profile.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 117 © 2020 Palo Alto Networks, Inc.
 
- STEP 5 | Apply Security Profiles to Endpoints. do this in two ways: Create a new policy rule using this profile from the right-click
+- STEP 5 | Apply Security Profiles to Endpoints. do this in two ways: Create a new policy rule using this profile from the right-click
 menu or launch the new policy wizard from Policy Rules. Manage Security Profiles
 After customize Endpoint Security Profiles manage them from the Profiles page, as needed.
 - View information about security profiles
@@ -2815,7 +2119,6 @@ Usage Count
   - Edit a security profile.
 2. Make changes and then Save the security profile.
  118
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  - Duplicate a security profile.
 1. From Endpoints > Policy Management > Profiles, right-click the security profile and select Save as New.
@@ -2842,8 +2145,7 @@ remove.
 The Usage Count should have a 0 value.
 3. Right-click the security profile and select Delete.
 4. Confirm the deletion and are done.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 119 © 2020 Palo Alto Networks, Inc.
+
 
  Customizable Agent Settings
 Each Agent Settings Profile provides a tailored list of settings that configure for the platform select.
@@ -2860,7 +2162,6 @@ The following table describes these customizable settings and indicates which pl
   Agent Profiles
 Windows Security Center Configuration
 Configure Windows Security Center preferences to allow registration with the Microsoft Security Center, to allow registration with automated Windows
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 — — —
    Disk Space
 Customize the amount of disk space the Cortex XDR agent uses to store logs and information about events.
@@ -2907,8 +2208,7 @@ Manual response actions that take on the endpoint after a malicious file, proces
             Content Updates
 Configure how the Cortex XDR agent performs content updates on the endpoint: whether to download the content directly from Cortex XDR or from a peer agent, whether to perform immediate or delayed
 — — —
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 121 © 2020 Palo Alto Networks, Inc.
+
 
    Setting
    Windows
@@ -2937,7 +2237,6 @@ Configure the Cortex XDR agent auto upgrade scheduler and number of parallel upg
                             —
                Configure the type of information collected by the Cortex XDR Agent for Vulnerability Management and Host insights.
 See Hardened Endpoint Security for the list of all
-122 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 | Endpoint Security
 
    Setting
@@ -2964,7 +2263,6 @@ By default, Cortex XDR uses the settings specified in the default agent settings
 area on the endpoint. When disabled, the Cortex XDR agent operates in silent mode where the Cortex XDR agent does not display any notifications in the notification area. If enable notifications, use the default notification messages, or provide custom text (up to 50 characters) for each notification type. also customize a notification footer.
 - Live Terminal User Notifications—Enable this option to display a pop-up on the endpoint when initiate a Live Terminal session.
 - STEP 5 | (Android only) Configure network usage preferences.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 123 © 2020 Palo Alto Networks, Inc.
    Advanced Analysis
 Enable Cortex XDR to automatically upload alert data for secondary verdict verification and security policy tuning.
                         —
@@ -2985,9 +2283,8 @@ For the Cortex XDR agent 5.0 release only, if want to register the agent to the 
 When Enable the Cortex XDR agent to register to the Windows Security Center, Windows shuts down Microsoft Defender on the endpoint automatically. If still want to allow Microsoft Defender to run on the endpoint where Cortex XDR is installed, must Disable this option. However, Palo Alto Networks does not recommend running Windows Defender and the Cortex XDR agent on the same endpoint since it might cause performance issues and incompatibility issues with Global Protect and other applications.
 - STEP 9 | (Windows only) Configure Forensics alert data collection options.
 When the Cortex XDR agent alerts on process-related activity on the endpoint, the Cortex XDR agent collects the contents of memory and other data about the event in what is known as a alert data dump file. customize the Alert Data Dump File Size—Small, Medium, or Full (the largest and most complete set of information)—and whether to Automatically Upload Alert Data Dump File to Cortex XDR. During event investigation, if automatic uploading of the alert data dump file was disabled, manually retrieve the data.
-124 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
- STEP 10 | (Windows, Mac, and Linux only) Enable the Cortex XDR agent to Monitor and Collect Enhanced Endpoint Data for use by apps on the Cortex platform.
+- STEP 10 | (Windows, Mac, and Linux only) Enable the Cortex XDR agent to Monitor and Collect Enhanced Endpoint Data for use by apps on the Cortex platform.
 Event monitoring and data collection requires:
 - A Cortex XDR Pro per Endpoint license.
 - A supported agent version—Traps agent 6.0 or a later release for Windows endpoints
@@ -3006,7 +2303,6 @@ If Cortex XDR agents communicate with Cortex XDR through a proxy, must add to al
 - For Cortex XDR agent release prior to 7.1.0 only - C:\Program Files\Palo Alto
 Networks\Traps\cyveraservice.exe
 This enables the Cortex XDR agent to maintain communication with Cortex XDR after isolate the endpoint.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 125 © 2020 Palo Alto Networks, Inc.
 
   When add a specific application to allow list from network isolation, the Cortex XDR agent continues to block some internal system processes. This is because some applications, for example ping.exe, can use other processes to facilitate network communication. As a result, if the Cortex XDR agent continues to block an application included in allow list, may need to perform additional network monitoring to determine the process that facilitates the communication, and then add that process to the allow list.
 1. +Add an entry to the allow list.
@@ -3025,7 +2321,6 @@ Limitations in the content download process:
 - If disable content updates for a newly installed agent, the agent will retrieve the content for the first time from Cortex XDR and then disable content updates on the endpoint.
 - When add a Cortex XDR agent to an endpoints group with disabled content auto-upgrades policy, then the policy is applied to the added agent as well.
 - Content Rollout—The Cortex XDR agent can retrieve content updates Immediately as they are available, or after a pre-configured Delayed period. When delay content updates, the Cortex
-126 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  XDR agent will retrieve the content according to the configured delay. For example, if configure a delay period of two days, the agent will not use any content released in the last 48 hours.
 If disable or delay automatic-content updates provided by Palo Alto Networks, it may affect the security level in organization.
@@ -3044,7 +2339,6 @@ If the Cortex XDR agent detects a network change on the endpoint, the agent trig
 Configure Global Agent Settings
 On top of customizable Agent Settings Profiles for each Operating System and different endpoint targets, set global Agent Configurations that apply to all the endpoints in network.
 - STEP 1 | From Cortex XDR, select > Settings > Agent Configuration. STEP 2 | Set global uninstall password.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 127 © 2020 Palo Alto Networks, Inc.
 
  The uninstall password is required to remove a Cortex XDR agent and to grant access to agent security component on the endpoint. use the default uninstall Password1 defined in Cortex XDR or set a new one and Save. This global uninstall password applies to all the endpoints (excluding mobile) in network. If change the password later on, the new default password applies to all new and existing profiles to which it applied before. If want to use a different password to uninstall specific agents, override the default global uninstall password by setting a different password for those agents in the Agent Settings profile.
 - STEP 3 | Configure content bandwidth allocated for all endpoints.
@@ -3064,7 +2358,6 @@ After Cortex XDR receives the data, it automatically analyzes the memory content
 1. Configure the desired options:
 - Enable Cortex XDR to automatically upload defined alert data files for advanced analysis.
 Advanced Analysis increases the Cortex XDR exploit protection module accuracy
-128 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  - Automatically apply Advanced Analysis exceptions to Global Exceptions list. This will apply all Advanced Analysis exceptions suggested by Cortex XDR, regardless of the alert data file source
 2. Save the Advanced Analysis configuration. Endpoint Data Collected by Cortex XDR
@@ -3100,7 +2393,7 @@ Process start
 - File size
 - File access time
 - Full path of the modified file before and after modification
-             CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 129 © 2020 Palo Alto Networks, Inc.
+
 
    Category
    Events
@@ -3151,7 +2444,7 @@ Source IP address and port Destination IP address and port
 Failed connection Protocol (TCP/UDP)
 - Create - Listen - Close - Bind
 - •
- 130 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
+
 | Endpoint Security
 
    Category
@@ -3213,7 +2506,7 @@ computer) or remote (connected using a terminal services session)
    User Presence (Traps 6.1 and later)
        User Detection
     Detection when a user is present or idle per active user session on the computer.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 131 © 2020 Palo Alto Networks, Inc.
+
 
    Category
     Events
@@ -3256,7 +2549,6 @@ WER events for application crashes only
      Microsoft-Windows- TaskScheduler
        106, 129, 141, 142, 200, 201
       132
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 | Endpoint Security
 
    Path
@@ -3299,7 +2591,7 @@ Security Security
              Security
             4624
     Service logon events if the user account isn't LocalSystem, NetworkService, LocalService
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 133 © 2020 Palo Alto Networks, Inc.
+
 
    Path
     Provider
@@ -3344,7 +2636,7 @@ Process Terminate (4689)
                      Security
             4648, 4776
     Local credential authentication events (4776), Logon with explicit credentials (4648)
-  134 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
+
 |
 Endpoint Security
 
@@ -3395,7 +2687,7 @@ Attributes
 For specific files only and only
 if the file was written.
     Files
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 135 © 2020 Palo Alto Networks, Inc.
+
 
    Category
    Events
@@ -3426,7 +2718,7 @@ Newly set owner/attributes
      Process
 - Stop •
 PID of the stopped process
-    136 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
  Apply Security Profiles to Endpoints
 Cortex XDR provides out-of-the-box protection for all registered endpoints with a default security policy customized for each supported platform type. To tune security policy, customize settings in a security profile and attach the profile to a policy. Each policy that create must apply to one or more endpoints or endpoint groups.
@@ -3446,13 +2738,12 @@ Use the filters to assign the policy to one or more endpoints or endpoint groups
 Cortex XDR automatically applies a filter for the platform selected. To change the platform, go Back to the general policy settings.
 Click Done.
 In the Policy Rules table, change the rule position, if needed, to order the policy relative to other policies.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 137 © 2020 Palo Alto Networks, Inc.
- STEP 5 | STEP 6 |
+- STEP 5 | STEP 6 |
 - STEP 7 | STEP 8 |
 
  The Cortex XDR agent evaluates policies from top to bottom. When the Cortex XDR agent finds the first match it applies that policy as the active policy. To move the rule, select the arrows and drag the policy to the desired location in the policy hierarchy.
 Right-click to View Policy Details, Edit, Save as New, Disable, and Delete.
-  138 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
  Exceptions Security Profiles
 To allow full granularity, Cortex XDR allows to create exceptions from baseline policy. These exceptions allow to remove specific folders or paths from exemption or disable specific security modules. In Cortex XDR, configure the following types of policy exceptions:
@@ -3484,7 +2775,7 @@ Each time a BIOC/IOC alert is detected, the 3 day timeframe begins counting down
 No exception created No exception created
 System Generated exception created
                         Example B
-    CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 139 © 2020 Palo Alto Networks, Inc.
+
 
    Day Number
     BIOC/IOC Detections
@@ -3511,7 +2802,6 @@ To configure a Support Exception:
 2. ClickCreate.
 To configure module specific exceptions:
 - Behavioral Threat Protection Rule Exception—When view an alert for a Behavioral Threat event which want to allow in network from now on, right-click the alert and Create alert exception. Cortex XDR displays the alert data (Platform and Rule name). Select Exception Scope: Profile and select the exception profile name. Click Add.
-140 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
          6
        99 Detections
     No exception created since detections were not within the 3 day timeframe
@@ -3532,8 +2822,6 @@ As an alternative to adding an endpoint-specific exception in policy rules, defi
 - Review Advanced Analysis Exceptions
 - Add a Global Digital Signer Exception
 - Add a Global Java Deserialization Exception
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 141 © 2020 Palo Alto Networks, Inc.
 
  Add a Global Process Exception
 - STEP 1 | Go to Endpoints > Policy Management > Policy Exceptions.
@@ -3548,7 +2836,6 @@ Add a Global Support Exception
 - STEP 1 | Go to Endpoints > Policy Management > Policy Exceptions. STEP 2 | Select Support exceptions.
 Import the json file received from Palo Alto Networks support team by either browsing for it in files or by dragging and dropping the file on the page.
   STEP 3 | Click Save.
-142 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  The new support exception is added to the Global Exceptions in network and will be applied across all rules and policies.
 Add a Global Behavioral Threat Protection Rule Exception
@@ -3557,7 +2844,6 @@ When view a Behavioral Threat alert in the Alerts table for which want to allow 
 - STEP 2 | Review the alert data (platform and rule name) and select Exception Scope: Global.
 - STEP 3 | Click Add.
 The relevant BTP exception is added to the Global Exceptions in network and will be applied across all rules and policies. At any point, click the Generating Alert ID to return to the original alert from which the exception was originated. To delete a specific global exception, select it and click X.not edit global exceptions generated from a BTP security event.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 143 © 2020 Palo Alto Networks, Inc.
 
  Review Advanced Analysis Exceptions
 With Advanced Analysis, Cortex XDR can provide a secondary validation of XDR Agent alerts raised by exploit protection modules. To perform the additional analysis, Cortex XDR analyzes alert data sent by the Cortex XDR agent. If Advanced Analysis indicates an alert is actually benign, Cortex XDR can automatically create exceptions and distribute the updated security policy to endpoints.
@@ -3567,7 +2853,6 @@ Add a Global Digital Signer Exception
 - STEP 1 | Right-click the alert and select Create alert exception.
 Review the alert data (Platform, signer, and alert ID) and select Exception Scope: Global.
 - STEP 2 | Click Add.
-144 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  The relevant digital signer exception is added to the Global Exceptions in network and will be applied across all rules and policies. At any point, click the Generating Alert ID to return to the original alert from which the exception was originated. To delete a specific global exception, select it and click X.not edit global exceptions generated from a digital signer restriction security event.
 Add a Global Java Deserialization Exception
@@ -3576,14 +2861,13 @@ Review the alert data (Platform, Process, Java executable, and alert ID) and sel
 Global.
 - STEP 2 | Click Add.
 The relevant digital signer exception is added to the Global Exceptions in network and will be applied across all rules and policies. At any point, click the Generating Alert ID to return to the original alert from which the exception was originated. To delete a specific global exception, select it and click X.not edit global exceptions generated from a digital signer restriction security event.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 145 © 2020 Palo Alto Networks, Inc.
 
   Add a Global Local File Threat Examination Exception
 - STEP 1 | Right-click the alert and select Create alert exception.
 Review the alert data (Process, Path, and Hash) and select Exception Scope: Global.
 - STEP 2 | Click Add.
 The relevant PHP file is added to the Global Exceptions in network and will be applied across all rules and policies. At any point, click the Generating Alert ID to return to the original alert from which the exception was originated. To delete a specific global exception, select it and click X.not edit global exceptions generated from a local file threat examination exception restriction security event.
-   146 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
  Hardened Endpoint Security
 Cortex XDR enables to extend the security on endpoints beyond the Cortex XDR agent built- in prevention capabilities to provide an increased coverage of network security within organization. By leveraging existing mechanisms and added capabilities, the Cortex XDR agent can enforce additional protections on endpoints to provide a comprehensive security posture.
@@ -3610,7 +2894,7 @@ Provides full visibility into the business and IT operational data on all Window
    Host Inventory
 Compiles a complete list of all applications installed in network.
                                  Identifies and quantifies the security vulnerabilities (CVEs)
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 147 © 2020 Palo Alto Networks, Inc.
+
 
    Module
    Windows
@@ -3641,7 +2925,6 @@ Cortex XDR relies on the device class assigned by the operating system.
 Add a New Configuration Profile.
 The Cortex XDR agent relies on the device class assigned by the operating system. For Windows endpoints only, configure additional device classes.
   148
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 | Endpoint Security
 
    Profile
@@ -3673,8 +2956,7 @@ When you’re done, Create device profile definitions. If needed, edit, delete, 
   Apply Device Control Profiles to Endpoints.
 Add a New Exceptions Profile
 - STEP 1 | Log in to Cortex XDR.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Endpoint Security 149 © 2020 Palo Alto Networks, Inc.
+
 
  Go to Endpoints > Policy management > Extension Profiles and select + New Profile. Select Platform and click Device Exceptions > Next
 - STEP 2 | Fill in the General Information.
@@ -3707,7 +2989,6 @@ The platform will automatically be assigned to Windows.
 Use filters or manual endpoint selection to define the exact target endpoints of the policy rules.
 6. ClickDone.
 - STEP 3 | Configure policy hierarchy.
-150 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Drag and drop the policies in the desired order of execution. The default policy that enables all devices on all endpoints is always the last one on the page and is applied to endpoints that don’t match the criteria in the other policies.
 - STEP 4 | Save the policy hierarchy.
@@ -3726,7 +3007,6 @@ If see a violation for which you’d like to define an exception on the device t
 - STEP 7 | Tune device control exceptions.
 To better deploy device control in network and allow further granularity, add devices on network to allow list and grant them access to endpoints. Device control exceptions are configured per device and must select the device category, vendor, and type of permission that want to allow on the endpoint. Optionally, to limit the exception to a specific device, also include the product and/or serial number.
 Cortex XDR enables to configure the following exceptions:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 151 © 2020 Palo Alto Networks, Inc.
   Exception Name
     Description
      Permanent Exceptions
@@ -3765,7 +3045,6 @@ the device in network:
 2. Select the PROFILE from the list.
 3. Click Save. The exception is added to the Exceptions Profile and will be applied in the next
 heartbeat.
-152 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  Add a Custom Device Class
 (Windows only) include custom USB-connected device classes beyond Disk Drive, CD-ROM, Windows Portable Devices and Floppy Disk Drives, such as USB connected network adapters. When create a custom device class, must supply Cortex XDR the official ClassGuid identifier used by Microsoft. Alternatively, if configured a GUID value to a specific USB connected device, must use this value for the new device class. After add a custom device class, view it in Device Management and enforce any device control rules and exceptions on this device class.
@@ -3774,7 +3053,7 @@ To create a custom USB-connected device class:
 - STEP 2 | Create the new device class.
 Select +New Device. Set a Name for the new device class, supply a valid and unique GUID Identifier.
 For each GUID value define one class type only.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 153 © 2020 Palo Alto Networks, Inc.
+
 
   STEP 3 | Save.
 The new device class is now available in Cortex XDR as all other device classes.
@@ -3782,7 +3061,6 @@ Host Firewall
 The Cortex XDR host firewall enables to control communications on endpoints. To use the host firewall, set rules that allow or block the traffic on the devices and apply them to endpoints using Cortex XDR host firewall policy rules. Additionally, configure different sets of rules based on the current location of endpoints - within or outside organization network. The Cortex XDR host firewall rules leverage the operating system firewall APIs and enforce them on endpoints.
 Before start applying host firewall policy rules, ensure meet the following requirements and refer to these known limitations:
 - For Windows:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
  154
 
  - The endpoint is running a Cortex XDR agent 7.1 or later release
@@ -3814,9 +3092,8 @@ Platform and click Host Firewall > Next
 - Assign a name and an optional description to the profile.
 - By default, host firewall profile rules are based on the current location of device. Configure
 two sets of rules: a set of External Rules that apply when the device is located outside the internal organization network, and a set of Internal Rules that apply when the device is located within the internal organization network. If disable the Location Based option, policy will apply the internal set of rules only, and that will be applied to the device regardless of its location.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 155 © 2020 Palo Alto Networks, Inc.
 
- STEP 3 | Create host firewall rules. For Windows:
+- STEP 3 | Create host firewall rules. For Windows:
 Click +New Rule. A host firewall rule allows or blocks the communication to and/or from a Windows endpoint. fine tune the rule by applying the action to the following parameters:
 - Action—Select whether to Allow or Block the communication on the endpoint.
 - Specific IPs and Ports—(Optional) Configure the rule for specific local or remote IPs and/or Ports. also set a range of IP addresses.
@@ -3829,7 +3106,6 @@ Click +New Rule. A host firewall rule allows or blocks the communication to and/
 system variables in the path definition, must re-enforce the policy on the endpoint every time the directories and/or system variables on the endpoint change.
 If the profile is location based, define both internal and external rules. also copy a rule from one set to another.
 For Mac:
-156 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
   1. Enable Host Firewall Management.
 Enable this option to allow Cortex XDR to manage the host firewall on Mac endpoints.
@@ -3840,7 +3116,6 @@ The host firewall settings allow or block inbound communication on Mac endpoints
 - Application exclusions—Allow or block specific programs running on the endpoint using Apple BundleID.
 If the profile is location based, define both internal and external settings. STEP 4 | Save profile.
 When you’re done, Create host firewall profile. STEP 5 | Apply Host Firewall Profiles to Endpoints.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 157 © 2020 Palo Alto Networks, Inc.
 
  Apply Host Firewall Profiles to Endpoints
 After defined the required host firewall profiles, must configure the Protection Policies and enforce them on endpoints. Cortex XDR applies Protection policies on endpoints from top to bottom, as you’ve ordered them on the page. The first policy that matches the endpoint is applied. If no policies match, the default policy that enables all communication to and form the endpoint is applied.
@@ -3867,7 +3142,6 @@ T to view only the communication events on the endpoint to which the Cortex XDR 
 Additionally, to monitor the communication on endpoint, use the following operating system utilities:
 - Windows—Since the Cortex XDR Host Firewall leverages the Microsoft Windows Filtering Platform (WFP), use a monitoring tool such as Network Shell (netsh), the Microsoft Windows command- line utility to monitor the network communication on the endpoint.
 - Mac—From the endpoint System Preferences > Security and Privacy > Firewall > Firewall options, view the list of blocked and allowed applications in the firewall. The Cortex XDR host firewall blocks only incoming communications on Mac endpoints, still allowing outbound communication initiated from the endpoint.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
  158
 
  Disk Encryption
@@ -3894,7 +3168,7 @@ Group Policy configuration:
 - Make sure the GPO configuration applying to the endpoint enables Save BitLocker recovery
 - Provide a FileVaultMaster certificate / institutional recovery key (IRK) that is signed by a valid authority.
 - It can take the agent up to 5 minutes to report the disk
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 159 © 2020 Palo Alto Networks, Inc.
+
 
    Requirement / Limitation
    Windows
@@ -3912,7 +3186,7 @@ not apply an encryption enforcement from another MDM on the endpoint together wi
 - Configure a Disk Encryption Profile
 - Apply Disk Encryption Profile to Endpoints
 Monitor the Endpoint Encryption Status in Cortex XDR monitor the Encryption Status of an endpoint in the new Endpoints > Disk Encryption Visibility table. For each endpoint, the table lists both system and custom drives that were encrypted.
-  160 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
+
 
  The following table describes both the default and additional optional fields that view in the Disk Encryption Visibility table per endpoint. The fields are in alphabetical order.
   Field
@@ -3938,7 +3212,6 @@ Last known IPv4 or IPv6 address of the endpoint.
 The MAC address of the endpoint. The platform running on the endpoint.
 Name of the operating system version running on the endpoint.
 Lists all the disks on the endpoint along with the status per volume, Decrypted or Encrypted. For
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 161 © 2020 Palo Alto Networks, Inc.
                  Last Reported
      Date and time of the last change in the agent’s status. For more details, see View Details About an Endpoint.
 
@@ -3960,7 +3233,6 @@ encryption capabilities, Enable the Use disk encryption option.
 - For Mac:
 Inline with the operating system requirements, when the Cortex XDR agent attempts to enforce an encryption profile on an endpoint, the endpoint user is required to enter the login password. Limit the number of login attempts to one or three. Otherwise, if do not force log in attempts, the user can continuously dismiss the operating system pop-up and the Cortex XDR agent will never encrypt the endpoint.
 - STEP 5 | (Windows only) Specify the Encryption methods per operating system.
-162 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  For each operating system (Windows 7, Windows 8-10, Windows 10 (1511) and above), select the encryption method from the corresponding list.
 must select the same encryption method configured by the Microsoft Windows Group Policy in organization for the target endpoints. Otherwise, if select a different encryption method than the one already applied through the Windows Group Policy, Cortex XDR will display errors.
@@ -3987,9 +3259,8 @@ Alternatively, associate the disk encryption profile to an existing policy. Righ
 Drag and drop the policies in the desired order of execution.
 - STEP 4 | Save the policy hierarchy.
 After the policy is saved and applied to the agents, Cortex XDR enforces the disk encryption policies on environment.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 163 © 2020 Palo Alto Networks, Inc.
 
- STEP 5 | Now, Monitor the Endpoint Encryption Status in Cortex XDR Host Insights
+- STEP 5 | Now, Monitor the Endpoint Encryption Status in Cortex XDR Host Insights
 With Host insights, gain full visibility and inventory into the business and IT operational data on all Windows endpoints. By reviewing inventory for all hosts in a single place, quickly identify
 IT and security issues that exist in network, such as identifying a suspicious service or autorun that were added to an endpoint. The Cortex XDR agent scans the endpoint every 24 hours for any updates. Alternatively, re-scan the endpoint to retrieve the most updated data.
 The following are prerequisites to enable Host inventory for Cortex XDR instance:
@@ -4017,7 +3288,6 @@ Details about the disk volumes that exist on an endpoint.
                      Autoruns
      Details about executables that start automatically when the user logs in or boots the endpoint, which are configured in the endpoint Registry, startup folders, scheduled tasks, services, and drivers.
              164
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
 
  View Host Insights
 For each entity, Cortex XDR lists all the details about the entity and the details about the endpoint it applies to. For example, the default Services view lists a separate row for every service on every endpoint:
@@ -4034,8 +3304,7 @@ Details about the account such as:
 - Temporary duplicate account
 - Normal account
 - Interdomain trust account
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
-         Endpoint Security 165 © 2020 Palo Alto Networks, Inc.
+
 
    Data
    Description
@@ -4055,7 +3324,6 @@ The Services view lists all the services that are installed on all endpoints. To
 Service identification Information about the service, such as the service name, type, and path. data
 View drivers insights
 The Drivers view lists all the drivers that are installed on all endpoints, To view the Drivers insights, from Cortex XDR go to Add-ons > Host Insights > Drivers. For each driver, Cortex XDR lists all the following details:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
    Data
     Description
        Service runtime data
@@ -4095,7 +3363,6 @@ View shares insights
 Information about the endpoint hardware, such as manufacturer, model, physical memory, processors architecture, and CPU.
 The operating system name and release running on the endpoint.
       In Shares view, Cortex XDR lists details about all the Microsoft Windows network shared folders defined for each endpoint. To view Shares insights, from Cortex XDR go to Add-ons > Host Insights > Shares. For each endpoint, Cortex XDR lists all the following details:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 167 © 2020 Palo Alto Networks, Inc.
 
    Data
     Description
@@ -4122,7 +3389,6 @@ Vulnerability Management.
 Host Inventory and Vulnerability Management
 In Add-ons > Host Insights > Vulnerability Management detect existing vulnerabilities, the Cortex XDR agent provides Cortex XDR a host inventory with the name and version of all applications installed on the endpoint. Every four hours, Cortex XDR correlates the network application inventory with the data from the NIST public database. If Cortex XDR detects a new CVE during data correlation, it creates an alert and generates an incident in Cortex XDR (only one alert per CVE). The alerts help proactively identify new risks in network, so that follow-up and remediate them, and associate other alerts with security patching problems in organization.
 Additionally, use Cortex XDR to evaluate the extent and severity of each CVE in network, gain full visibility in to the risks to which each endpoint is exposed, and assess the vulnerability status of an installed application in network.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
   168
 
  See Hardened Endpoint Security for the list of all operating systems that support Vulnerability Management.
@@ -4143,7 +3409,6 @@ The severity level (High, Medium, or Low) of the CVE as ranked in the NIST datab
                          Severity score
     The CVE severity score based on the NIST Common Vulnerability Scoring System (CVSS). Click the score to see the full CVSS description.
  For detailed information about the endpoints in network that are impacted by a CVE, right-click the CVE and select View affected endpoints.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 169 © 2020 Palo Alto Networks, Inc.
 
  To learn more about the application in network that is impacted by a CVE, right-click the CVE and select View applications.
 Endpoint Analysis
@@ -4168,7 +3433,6 @@ The severity level (High, Medium, or Low) of the CVE as ranked in the NIST datab
     The CVE severity score based on the NIST Common Vulnerability Scoring System (CVSS). Click the score to see the full CVSS description.
  perform the following actions from Cortex XDR as investigate and remediate endpoints:
 - View a complete list of all applications installed on an endpoint—Right-click the endpoint and View installed applications. This list includes the application name, version, and installation path on the endpoint. If an installed application has known vulnerabilities, Cortex XDR also displays the list of CVEs and the highest Severity.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security © 2020 Palo Alto Networks, Inc.
  170
 
  - (Windows only) Isolate an endpoint from network—Right-click the endpoint and Isolate the endpoint before or during remediation to allow the Cortex XDR agent to communicate only with Cortex XDR.
@@ -4182,7 +3446,6 @@ From Host Insights > Vulnerability Management, select Apps. For each application
 Platform Severity
 Version
 the application and View endpoints.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security 171 © 2020 Palo Alto Networks, Inc.
 The number of endpoints that are currently affected by this CVE.
 The name of the application affected by this CVE.
 A list of all platforms on which the application is installed.
@@ -4200,7 +3463,6 @@ To view the details of all the endpoints in network on which an application is i
  - (Windows only) View a complete list of all KBs installed on an endpoint—Right-click the endpoint and View installed kbs. This list includes all the Microsoft Windows patches that were installed on the endpoint and a link to the Microsoft official Knowledge Base (KB) support article.
 The number of affected endpoints in the host inventory is updated every four hours. Because Cortex XDR agents report their application inventory to Cortex XDR at different times within this four-hour window, the number of affected endpoints in the host inventory are sometimes different (and less accurate) than the number of endpoints see when view the endpoints list.
   172
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security
 
     Investigation and Response
 > Cortex XDR Indicators
@@ -4212,7 +3474,7 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Endpoint Security
 > Response Actions
         173
 
-  174 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Cortex XDR Indicators
 When identify a threat, define specific indicators for which want Cortex XDR to raise alerts. define rules for the following types of indicators:
@@ -4229,7 +3491,7 @@ To further enhance the BIOC rule capabilities, also configure BIOC rules as cust
 - Manage Global BIOC Rules
 BIOC Rule Details
 From Rules > BIOC, view all user-defined and preconfigured behavioral indicator of compromise (BIOC) rules. To search for a specific BIOC rule, filter by one or more fields in the BIOC rules table. From the BIOC page, also manage or clone existing rules.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 175 © 2020 Palo Alto Networks, Inc.
+Inc.
 
   The following table describes the fields that are available for each BIOC rule in alphabetical order.
   Field
@@ -4251,7 +3513,6 @@ Displays the type of MITRE ATT&CK tactic the BIOC rule is attempting to trigger 
 Displays the type of MITRE ATT&CK technique and sub-technique the BIOC rule is attempting to trigger on.
 Date and time when the BIOC was last modified.
                                176
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
 
    Field
     Description
@@ -4290,8 +3551,7 @@ Displays if the BIOC rule is associated with a Restriction profile.
 - Configure a Custom Prevention Rule
 - Import Rules
 Create a Rule from Scratch
-To define a BIOC, configure the entity and any related activity or characteristics. An entity can be a specific process, registry, file, network host. An entity activity can describe the various actions that are relevant to that type of entity.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 177 © 2020 Palo Alto Networks, Inc.
+To define a BIOC, configure the entity and any related activity or characteristics. An entity can be a specific process, registry, file, network host. An entity activity can describe the various actions that are relevant to that type of entity.Inc.
 
  For example, for a Registry entity, the actions are: Write, Rename, and Delete. If identify a threat by additional attributes, also specify those characteristics as additional entity information in the BIOC. For example, for a Process, add a process name, command-line argument used to call the process, or a user name.
 The following describes the type of process and actions create a BIOC rule for:
@@ -4322,10 +3582,9 @@ For the purpose of showing the expected behavior of the rule before save it, Cor
 4. (Optional) Select the MITRE Tactic and MITRE Technique want to associate with the alert. You
 can select up to 3 MITRE Tactics and MITRE Techniques/Sub-Techniques.
 5. Enter any additional comments such as why created the BIOC.
-6. ClickOK.
-178 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+6. ClickOK.Inc.
 
- STEP 7 | Save BIOC rule.
+- STEP 7 | Save BIOC rule.
 Configure a Custom Prevention Rule
 Custom prevention rules allow to configure and apply user-defined BIOC rules to Restriction profiles deployed on Windows, Mac, and Linux endpoints.
 By using the BIOC rules, configure custom prevention rules to terminate the causality chain of a malicious process according to the defined Restrictions Profile Action Mode; Block, Report, Prompt, Disable and trigger Cortex XDR Agent behavioral prevention type alerts in addition to the BIOC rule detection alerts.
@@ -4351,10 +3610,9 @@ If the rule is already referenced by one or more profiles, select See profiles t
 - Ensure the rule selected is compatible with the type of endpoint operating system.
 - Select the Restriction Profile name want to apply the BIOC rule to for each of the operating
 systems. BIOC event rules of type Event Log and Registry are only supported by Windows OS. only add to existing profiles created, Cortex XDR Default profiles will not
-appear as an option.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 179 © 2020 Palo Alto Networks, Inc.
+appear as an option.Inc.
 
- STEP 5 | Add the BIOC rule to the selected profiles.
+- STEP 5 | Add the BIOC rule to the selected profiles.
 The BIOC rule is now configured as a custom prevention rule and applied to Restriction profiles. After the Restriction profile is pushed to endpoints, the custom prevention rule can start triggering behavioral prevention type alerts.
 - STEP 6 | Review and edit custom prevention rules.
 1. Navigate to Endpoints > Policy Management > Profiles.
@@ -4381,8 +3639,7 @@ Auto-disable will turn off both the BIOC rule detection and the BIOC prevention 
 Cortex XDR loads any BIOC rules. This process may take a few minutes depending on the size of the file.
 - STEP 5 | Refresh the BIOC Rules page to view matches (# of Hits) in historical data.
 - STEP 6 | To investigate any matches, view the Alerts page and filter the Alert Name by the name of the
-BIOC rule.
-180 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+BIOC rule.Inc.
 
  Manage Global BIOC Rules
 Cortex XDR checks for the latest update of global BIOC rules. If there are no new global BIOC rules, the app displays a content status of Contentup to date next to the BIOC rules table heading. A dot to the left of the rule name indicates a global BIOC rule. also view the optional Source column to see which rules are pushed by Palo Alto Networks.
@@ -4400,8 +3657,7 @@ check date.
 2. Review and modify the BIOC properties as needed.
 3. Select OK to save the rule.
 The rule appears in the BIOC Rules table as a user-defined Source type rule which edit.
-- Add a Rule Exception.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 181 © 2020 Palo Alto Networks, Inc.
+- Add a Rule Exception.Inc.
 
  Althoughnot edit global rules, add exceptions to the rule.
 Working with IOCs
@@ -4419,8 +3675,7 @@ Alerts for IOCs are identified by a source type of IOC (see Cortex XDR Alerts fo
 - Manage Existing Indicators
 IOC Rule Details
 From the Rules > IOC page, view all indicators of compromise (IOCs) configured from or uploaded to the Cortex XDR app. To filter the number of IOC rules see, create filter by one or more fields in the IOC rules table. From the IOC page, also manage or clone existing rules.
- The following table describes the fields that are available for each IOC rule in alphabetical order.
-182 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+ The following table describes the fields that are available for each IOC rule in alphabetical order.Inc.
 
    Field
     Description
@@ -4454,8 +3709,7 @@ A list of threat intelligence vendors from which this IOC was obtained.
             There are two options for creating new IOC rules:
 - Configure a single IOC.
 - Upload a file, one IOC per line, that contains up to 20,000 IOCs. For example, upload multiple
-file paths and MD5 hashes for an IOC rule. To help format the upload file in the syntax that Cortex XDR will accept, download the example file.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 183 © 2020 Palo Alto Networks, Inc.
+file paths and MD5 hashes for an IOC rule. To help format the upload file in the syntax that Cortex XDR will accept, download the example file.Inc.
 
   If have a Cortex XDR Pro per Endpoint license, upload IOCs using REST APIs in either CSV or JSON format.
 - STEP 1 | From Cortex XDR, select Rules > IOC. STEP 2 | Select + Add IOC.
@@ -4468,8 +3722,7 @@ SHA256 Hash.
 Medium, or High.
 4. (Optional) Enter a comment that describes the IOC.
 5. (Optional) Enter the IOC's REPUTATION.
-6. (Optional) Enter the IOC's RELIABILITY.
-184 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+6. (Optional) Enter the IOC's RELIABILITY.Inc.
 
  7. (Optional) Enter an EXPIRATION for the IOC.
 8. ClickCreate.
@@ -4503,8 +3756,7 @@ View Alerts Triggered by a Rule
 As IOC and BIOC rules trigger alerts, Cortex XDR displays the total # OF HITS for the rule in the on the BIOC or IOC rules page. To view the associated alerts trigged by a rule:
 - STEP 1 | Select RULES and the type of rule (BIOC or IOC).
 - STEP 2 | Right-click anywhere in the rule, and then select View associated alerts.
-Cortex XDR displays a filtered query of alerts associated with the Rule ID.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 185 © 2020 Palo Alto Networks, Inc.
+Cortex XDR displays a filtered query of alerts associated with the Rule ID.Inc.
 
  Edit a Rule
 After create a rule, it may be necessary to tweak or change the rule settings. open the rule configuration from the Rules page or from the pivot menu of an alert triggered by the rule. To edit the rule from the Rules page:
@@ -4525,8 +3777,7 @@ Disable or Remove a Rule
 If no longer need a rule temporarily disable or permanently remove it.not delete global BIOCs delivered with content updates.
 - STEP 1 | Select RULES and the type of rule ( BIOC or IOC).
 - STEP 2 | Locate the rule that want to change.
-- STEP 3 | Right click anywhere in the rule row and then select Remove to permanently delete the rule, or Disable to temporarily stop the rule. If disable a rule later return to the rule page to Enable it.
-186 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 3 | Right click anywhere in the rule row and then select Remove to permanently delete the rule, or Disable to temporarily stop the rule. If disable a rule later return to the rule page to Enable it.Inc.
 
  Add a Rule Exception
 If want to create a rule to take action on specific behaviors but also want to exclude one or more indicators from the rule, create a rule exception. An indicator can include the SHA256 hash of a process, process name, process path, vendor name, user name, causality group owner (CGO) full path, or process command-line arguments. For more information about these indicators, see Cortex XDR Indicators. For each exception, also specify the rule scope to which exception applies.
@@ -4537,7 +3788,7 @@ Cortex XDR only supports exceptions with one attribute. See Add an Alert Exclusi
 - STEP 4 | Choose the scope of the exception, whether the exception applies to IOCs, BIOCs, or both.
 - STEP 5 | Save the exception.
 By default, activity matching the indicators does not trigger any rule. As an alternative, select one or more rules. After save the exception, the Exceptions count for the rule increments. If later edit the rule, will also see the exception defined in the rule summary.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 187 © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Search Queries
 - Cortex XDR Query Builder
@@ -4556,7 +3807,6 @@ Network Query.
 Create a Registry Query.
 - Event Log—Search Windows event logs by username, log event ID, log level, and message. See Create an
 Event Log Query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
   188
 
  - NG Network—Search security event logs by firewall logs, endpoint raw data over network. See Create an NG Network Query.
@@ -4574,8 +3824,7 @@ When specify core fields without any other search criteria, the Native Search qu
 - user_name
 - process_name - process_path
 Vendor Fields for Native Search
-To search for logs or data from a specific vendor, refine query by vendor and product. The query fields are hierarchical. To construct a query, separate each field in the hierarchy with periods. Examples of vendor fields include:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 189 © 2020 Palo Alto Networks, Inc.
+To search for logs or data from a specific vendor, refine query by vendor and product. The query fields are hierarchical. To construct a query, separate each field in the hierarchy with periods. Examples of vendor fields include:Inc.
 
  - •
 Search for results from all Palo Alto Networks products—PANW Search for results from Cisco ASA firewalls—Cisco.ASA
@@ -4601,7 +3850,6 @@ Azure AD Corelight sensor Fortigate
      network_connections
      - outbound_connection - inbound_connection - failed_connection
   event_logs
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 - endpoint_eventlog - dc_eventlog
    190
 | Investigation and Response
@@ -4635,8 +3883,7 @@ Search
 okta.sso AND ip != 10.0.*
 palo alto networks.file create.file name =~ ”.+?”
 event log AND (palo alto networks.event log id = 41783 OR hostname =~ la^xcortex xdr agent AND palo alto networks.dst process name CONTAINS chrome
-logtype IN ("network connections", execution, injection) AND (palo alto networks.app id = chrome OR process name = chrome)
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 191 © 2020 Palo Alto Networks, Inc.
+logtype IN ("network connections", execution, injection) AND (palo alto networks.app id = chrome OR process name = chrome)Inc.
 
    Search
 ip = 198.51.100.157 AND palo alto
@@ -4662,8 +3909,7 @@ find_existing_files path=c:\windows\system32\ping.exe and hostname=ADI-PC
 - <Action mandatory parameters> search by file hash only.
 - <Action optional parameter> narrow down the search to a specific host
 by adding HOSTNAME = <hostname> or to multiple hosts by adding HOSTNAME in <hostname1, hostname2>.
-For example:
-192 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+For example:Inc.
 
   find_existing_or_deleted_files sha256=2867450a7f720c207b95492458c19acc7fe3183a84b4db48b637e65ad816f635 and hostname in PC
 - STEP 3 | Run the search.
@@ -4679,7 +3925,7 @@ Right-click the file and select Get file to upload the file to Cortex XDR for fu
 - STEP 6 | (Optional) Destroy the file on the endpoint.
 When destroy a file, permanently remove it. destroy the file directly from the search
 results. Right-click the file and select Destroy By path or Destroy by hash.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 193 © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Create a File Query
 From the Query Builder investigate connections between file activity and endpoints.
@@ -4695,10 +3941,9 @@ To build a file query:
 - NAME—File name.
 - PATH—Path of the file.
 - PREVIOUS NAME—Previous name of a file.
-- PREVIOUS PATH—Previous path of the file.
-194 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- PREVIOUS PATH—Previous path of the file.Inc.
 
- STEP 4 | STEP 5 |
+- STEP 4 | STEP 5 |
 - MD5—MD5 hash value of the file.
 - SHA256—SHA256 hash value of the file.
 - DEVICE TYPE—Type of device used to run the file: Unknown, Fixed, Removable Media, CD-ROM.
@@ -4726,9 +3971,8 @@ the same search criteria to initiating processes. To configure different attribu
 Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters. Specify the time period for which want to search for events.
 Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Custom time period. Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
-When are ready, View the Results of a Query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 195 © 2020 Palo Alto Networks, Inc.
- STEP 6 |
+When are ready, View the Results of a Query.Inc.
+- STEP 6 |
 - STEP 7 | STEP 8 |
 - STEP 9 |
 
@@ -4745,8 +3989,7 @@ By default, Cortex XDR will return results that match the attribute specify. To 
 - PATH—Path to the process. For example, C:\windows\system32\notepad.exe.
 - CMD—Command-line used to initiate the process including any arguments, up to 128 characters.
 - MD5—MD5 hash value of the process.
-- SHA256—SHA256 hash value of the process.
-196 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- SHA256—SHA256 hash value of the process.Inc.
 
  - USER NAME—User who executed the process.
 - SIGNATURE—Signing status of the process: Signature Unavailable, Signed, Invalid Signature,
@@ -4778,10 +4021,9 @@ the same search criteria to initiating processes. To configure different attribu
 - PROCESS—NAME, PATH, CMD, MD5, SHA256, USER NAME, SIGNATURE, or PID
 Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters. STEP 6 | Specify the time period for which want to search for events.
 Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Custom time period. STEP 7 | Choose when to run the query.
-Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 197 © 2020 Palo Alto Networks, Inc.
+Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.Inc.
 
- STEP 8 | When are ready, View the Results of a Query. Create a Network Query
+- STEP 8 | When are ready, View the Results of a Query. Create a Network Query
 From the Query Builder investigate connections between network activity, acting processes, and endpoints.
  Some examples of network queries run include:
 - Network connections to or from a specific IP address and port number.
@@ -4793,8 +4035,7 @@ To build a network query:
 - STEP 3 | Enter the search criteria for the network events query.
 - Network traffic type—Select the type or types of network traffic alerts want to search: Incoming, Outgoing, or Failed.
 - Network attributes—Define any additional process attributes for which want to search. Use a pipe (|) to separate multiple values (for example 80|8080). By default, Cortex XDR will return the events that match the attribute specify. To exclude an attribute value, toggle the = option to =!. Options are:
-- REMOTE COUNTRY—Country from which the remote IP address originated.
-198 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- REMOTE COUNTRY—Country from which the remote IP address originated.Inc.
 
  - REMOTE IP—Remote IP address related to the communication.
 - REMOTE PORT—Remote port used to make the connection.
@@ -4825,8 +4066,7 @@ the same search criteria to initiating processes. To configure different attribu
 Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters. STEP 6 | Specify the time period for which want to search for events.
 Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Custom time period. STEP 7 | Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
-- STEP 8 | When are ready, View the Results of a Query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 199 © 2020 Palo Alto Networks, Inc.
+- STEP 8 | When are ready, View the Results of a Query.Inc.
 
  Create an Image Load Query
 From the Query Builder investigate connections between image load activity, acting processes, and endpoints.
@@ -4840,8 +4080,7 @@ SHA256.
 By default, Cortex XDR will return the activity that matches all the criteria specify. To exclude a
 value, toggle the = option to =!.
 - STEP 4 | (Optional) Limit the scope to a specific acting process:
-Select and specify one or more of the following attributes for the acting (parent) process. Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters.
-200 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Select and specify one or more of the following attributes for the acting (parent) process. Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters.Inc.
 
  - NAME—Name of the parent process.
 - PATH—Path to the parent process.
@@ -4865,7 +4104,6 @@ Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Cust
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
 - STEP 8 | When are ready, View the Results of a Query. Create a Registry Query
 From the Query Builder investigate connections between registry activity, processes, and endpoints.
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 201 © 2020 Palo Alto Networks, Inc.
 
   Some examples of registry queries run include:
 - Modified registry keys on specific endpoints.
@@ -4882,8 +4120,7 @@ To build a registry query:
 - KEY PREVIOUS NAME—Name of the registry key before modification.
 - VALUE NAME—Registry value name.
 To specify an additional exception (match this value except), click the + to the right of the value and specify the exception value.
-- STEP 4 | (Optional) Limit the scope to a specific acting process:
-202 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 4 | (Optional) Limit the scope to a specific acting process:Inc.
 
   Select and specify one or more of the following attributes for the acting (parent) process. Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any string of characters.
 - NAME—Name of the parent process.
@@ -4907,8 +4144,7 @@ Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any str
 Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Custom time period. STEP 7 | Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
 - STEP 8 | When are ready, View the Results of a Query. Create an Event Log Query
-From the Query Builder search Windows event log attributes and investigate event logs across endpoints with an Cortex XDR agent installed.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 203 © 2020 Palo Alto Networks, Inc.
+From the Query Builder search Windows event log attributes and investigate event logs across endpoints with an Cortex XDR agent installed.Inc.
 
   Some examples of event log queries run include:
 - Critical level messages on specific endpoints.
@@ -4919,8 +4155,7 @@ To build a file query:
 - STEP 3 | Enter the search criteria for Windows event log query.
 Define any event attributes for which want to search. By default, Cortex XDR will return the events that match the attribute specify. To exclude an attribute value, toggle the = option to =!. Attributes are:
 To specify an additional exception (match this value except), click the + to the right of the value and specify the exception value.
-- STEP 4 | (Optional) Limit the scope to an endpoint or endpoint attributes: Select and specify one or more of the following attributes:
-204 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 4 | (Optional) Limit the scope to an endpoint or endpoint attributes: Select and specify one or more of the following attributes:Inc.
 PROVIDER NAME—The provider of the event log.
 - •
 - USERNAME—The username associated with the event.
@@ -4939,7 +4174,6 @@ Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Cust
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
 - STEP 10 | When are ready, View the Results of a Query. Create an NG Network Query
 From the Query Builder investigate network events stitched across endpoints and the Palo Alto Networks next-generation firewalls logs.
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 205 © 2020 Palo Alto Networks, Inc.
 
   Some examples of network queries run include:
 - Source and destination of a process.
@@ -4957,8 +4191,7 @@ To build a network query:
 - FW DEVICE NAME—Firewall device name.
 - FW RULE—Firewall rule.
 - FW SERIAL ID—Firewall serial ID.
-- PRODUCT
-206 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- PRODUCTInc.
 
  - VENDOR
 To specify an additional exception (match this value except), click the + to the right of the value and
@@ -4991,8 +4224,7 @@ Use a pipe (|) to separate multiple values. Use an asterisk (*) to match any str
 HOST OS, MD5, PROCESS PATH, USER ID, SHA256, SIGNATURE, or PID STEP 6 | Specify the time period for which want to search for events.
 Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Custom time period. STEP 7 | Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
-- STEP 8 | When are ready, View the Results of a Query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 207 © 2020 Palo Alto Networks, Inc.
+- STEP 8 | When are ready, View the Results of a Query.Inc.
 
  Create an Authentication Query
 From the Query Builder investigate authentication activity across all ingested authentication logs and data.
@@ -5007,8 +4239,7 @@ To build an authentication query:
 By default, Cortex XDR will return the activity that matches all the criteria specify. To exclude a value, toggle the = option to =!.
 - STEP 4 | Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
-- STEP 5 | When are ready, View the Results of a Query.
-208 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 5 | When are ready, View the Results of a Query.Inc.
 
  Query Across All Entities
 From the Query Builder perform a simple search for hosts and processes across all file events, network events, registry events, process events, and Windows event logs.
@@ -5025,8 +4256,7 @@ Select and specify one or more of the following attributes for the acting (paren
 - CMD—Command-line used to initiate the parent process including any arguments, up to 128
 characters.
 - MD5—MD5 hash value of the parent process.
-- SHA256—SHA256 hash value of the process.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 209 © 2020 Palo Alto Networks, Inc.
+- SHA256—SHA256 hash value of the process.Inc.
 
  - USER NAME—User who executed the process.
 - SIGNATURE—Signing status of the parent process: Signed, Unsigned, N/A, Invalid Signature, Weak
@@ -5044,8 +4274,7 @@ Options are: Last 24H (hours), Last 7D (days), Last 1M (month), or select a Cust
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query as resources are available, or Run to run the query immediately and view the results in the Query Center.
 - STEP 7 | When are ready, View the Results of a Query. Cortex XDR Query Center
 From the Query Center manage and view the results of all simple and complex queries created from the Query Builder. The Query Center displays information about the query including the query parameters and allows to adjust and rerun queries as needed.
-   The following table describes the fields that are available for each query in alphabetical order.
-210 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+   The following table describes the fields that are available for each query in alphabetical order.Inc.
 
    Field
     Description
@@ -5068,8 +4297,7 @@ maximum number of permitted results (100,000). To reduce the number of results r
 Manage Queries
 Yes or No.
 Date and time the query was created.
-      From the Query Center, view all manual and scheduled queries. The Query Center also provides management functions that allow to modify, rerun, schedule, and remove queries. also refresh the page to view updated status for queries, filter available queries based on fields in the query table, and manage the fields presented in the Query Center.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 211 © 2020 Palo Alto Networks, Inc.
+      From the Query Center, view all manual and scheduled queries. The Query Center also provides management functions that allow to modify, rerun, schedule, and remove queries. also refresh the page to view updated status for queries, filter available queries based on fields in the query table, and manage the fields presented in the Query Center.Inc.
 
  - View the Results of a Query
 - Rename a Query
@@ -5082,13 +4310,12 @@ After run a query, view the events that match search criteria. To view the resul
 - STEP 2 | Locate the query for which want to view the results.
 If necessary, use the Filter to reduce the number of queries Cortex XDR displays.
 - STEP 3 | Right click anywhere in the query row and then select Show results. Cortex XDR displays the results in a new window.
- STEP 4 | (Optional) If want to refine results, Modify a query from the query results.
+- STEP 4 | (Optional) If want to refine results, Modify a query from the query results.
 - STEP 5 | (Optional) If desired, Export to file to export the results to a tab-separated values (TSV) file.
 - STEP 6 | (Optional) Perform additional investigation on the alerts. From the right-click pivot menu:
 - Analyze the alert and open the Causality View.
 - Investigate in Timeline.
-- View event log message to view the event details.
-212 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- View event log message to view the event details.Inc.
 
  Modify a Query
 After run a query might find need to change search parameters such as to narrow the search results or correct a search parameter. There are two ways modify a query: edit it in the Query Center, or edit it from the results page. Both methods populate the criteria specified in the original query in a new query which modify and save.
@@ -5117,8 +4344,6 @@ If want to rerun a query, either schedule it to run on or before a specific date
    - Rerun a query immediately.
 1. Select INVESTIGATION > Query Center.
 2. Right click anywhere in the query and then select Rerun Query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-| Investigation and Response 213 © 2020 Palo Alto Networks, Inc.
 
  Cortex XDR initiates the query immediately.
 - Schedule a query to run:
@@ -5144,7 +4369,6 @@ to those pages. Select Esc to exit Go To mode.
 - Blacklist or whitelist processes bySHA256? hash
 - Add domains or IP addresses to the EDL blocklist
 - Create a new IOC for an IP address, domain, hash, filename, or filepath
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
   214
 
  - Isolate an endpoint
@@ -5154,8 +4378,7 @@ To change the default keyboard shortcut, navigate to   > Settings > General > Ke
 By default, Cortex XDR opens the Quick Launcher in the center of the page. To change the default position, drag the Quick Launcher to another preferred location. The next time open the Quick Launcher, it opens in the previous location. To close the Quick Launcher, click Esc or click out of the Quick Launcher dialog.
 Cortex XDR Scheduled Queries
 From the Scheduled Queries page, easily view all scheduled and reoccurring queries created from the Query Builder. The Scheduled Queries page displays information about the query including the query parameters and allows to adjust or modify the schedule as needed. To edit a query schedule, right click the query and select the desired action.
- The following table describes the fields that are available for each query in alphabetical order. CREATED BY User who created or scheduled the query.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 215 © 2020 Palo Alto Networks, Inc.
+ The following table describes the fields that are available for each query in alphabetical order. CREATED BY User who created or scheduled the query.Inc.
   Field
     Description
 
@@ -5179,8 +4402,7 @@ View Completed Queries
 To view completed queries:
 - STEP 1 | Select INVESTIGATION > Scheduled Queries.
 - STEP 2 | Locate the scheduled query for which want to view previous executions. If necessary, use the Filter to reduce the number of queries Cortex XDR displays.
-- STEP 3 | Right click anywhere in the query row and then select Show all executed instances. Cortex XDR filters the queries on the Query Center and displays the results in a new window.
-216 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 3 | Right click anywhere in the query row and then select Show all executed instances. Cortex XDR filters the queries on the Query Center and displays the results in a new window.Inc.
 
  Edit the Query Frequency
 - STEP 1 | Select INVESTIGATION > Scheduled Queries. STEP 2 | Locate the scheduled query that want to edit.
@@ -5209,15 +4431,14 @@ For example, if external threat intelligence indicates a confirmed threat that i
 behaviors, search for those characteristics.
 View the Results of a Queryand refine as needed to filter out noise.
 See Modify a Query.
-Select an event of interest, and open the Causality View.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 217 © 2020 Palo Alto Networks, Inc.
+Select an event of interest, and open the Causality View.Inc.
 
  Review the chain of execution and data, navigate through the processes on the tree, and analyze the information.
 - STEP 4 | Open the Timeline View to view the sequence of events over time.
 - STEP 5 | Inspect the information again, and identify any characteristics use to Create a BIOC
 Rule.
 If create a BIOC rule, test and tune it as needed.
- 218 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Investigate Incidents
 An attack event can affect several users or hosts and raise different types of alerts caused by a single event. track incidents, assign analysts to investigate, and document the resolution. For a record log of all
@@ -5231,8 +4452,7 @@ There are several ways filter or sort incidents:
 the incident.
 After locate an incident want to investigate, right-click it and select View Incident.
 The Incident details page aggregates all alerts, insights, and affected assets and artifacts from those alerts in a single location. From the Incident details page manage the alert and investigate an event within the context and scope of a threat. Select the pencil icon to edit the incident name and description.
-- STEP 3 | Assign an incident to an analyst.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 219 © 2020 Palo Alto Networks, Inc.
+- STEP 3 | Assign an incident to an analyst.Inc.
 
  Select the assignee (or Unassigned in the case of a new incident) below the incident description and begin typing the analyst’s email address for automated suggestions. Users must have logged into the app to appear in the auto-generated list.
 - STEP 4 | Assign an incident status.
@@ -5259,10 +4479,9 @@ During investigation, also perform additional management of alerts, which includ
 - Timeline View
 - Copy Alerts
 - Build an Alert Exclusion Policy from Alerts in an Incident
-- Intiate a remediation analysis
-220 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- Intiate a remediation analysisInc.
 
- STEP 6 | (Optional) Take action on the incident.
+- STEP 6 | (Optional) Take action on the incident.
 - Change the incident severity.
 The default severity is based on the highest alert in the incident. To manually change the severity select Actions > Change Incident Severity and choose the new severity. The smaller severity bubble indicates the original severity.
 - Change the incident status.
@@ -5289,7 +4508,7 @@ If needed, Search to find specific words or phrases in the comments.
 1. Set the status to Resolved.
 Select the status from the Incident details or select Actions > Change Incident Status.
 2. Select the reason the resolution was resolved.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 221 © 2020 Palo Alto Networks, Inc.
+Inc.
 
   3. Add a comment that explains the reason for closing the incident. 4. SelectOK.
 The Cortex XDR app no longer adds new alerts to the resolved incident and instead adds incoming alerts to a new incident.
@@ -5307,7 +4526,7 @@ To view AutoFocus tags in Cortex XDR incidents, must obtain the license key for 
 VirusTotal
 VirusTotal provides aggregated results from over 70 antivirus scanners, domain services included in the block list, and user contributions. The VirusTotal score is represented as a fraction, where, for example, a score of 34/52 means out of 52 queried services, 34 services determined the artifact to be malicious.
 To view VirusTotal threat intelligence in Cortex XDR incidents, must obtain the license key for the service and add it to the Cortex XDR Configuration. When add the service, the
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+
 
    Integration
    Description
@@ -5319,19 +4538,18 @@ To view VirusTotal threat intelligence in Cortex XDR incidents, must obtain the 
   To manage incidents from the application of choice, use the Cortex XDR API Reference to send alerts and alert details to an external receiver. After generate API
 key and set up the API to query Cortex XDR, external apps can receive incident updates, request additional data about incidents, and make changes such as to set the status and change the severity, or assign an owner. To get started, see the Cortex XDR API Reference.
  Create an Incident Starring Configuration
-To help focus on the incidents that matter most, create an incident starring configuration that categorizes and stars incidents when alerts contain attributes that decide are important. After define an incident starring configuration, Cortex XDR adds a star indicator to any incidents that contain alerts that match the configuration. then sort or filter the Incidents table for incidents containing starred alerts. In addition, also choose whether to display all incidents or only starred incidents on the Incidents Dashboard.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 223 © 2020 Palo Alto Networks, Inc.
+To help focus on the incidents that matter most, create an incident starring configuration that categorizes and stars incidents when alerts contain attributes that decide are important. After define an incident starring configuration, Cortex XDR adds a star indicator to any incidents that contain alerts that match the configuration. then sort or filter the Incidents table for incidents containing starred alerts. In addition, also choose whether to display all incidents or only starred incidents on the Incidents Dashboard.Inc.
 
- STEP 1 | In Cortex XDR, select Incidents > Starred Alerts.
+- STEP 1 | In Cortex XDR, select Incidents > Starred Alerts.
 - STEP 2 | + Add Starring Configuration
 - STEP 3 | Enter a Configuration Name to identify starring configuration.
 - STEP 4 | Enter a descriptive Comment that identifies the reason or purpose of the starring configuration.
 - STEP 5 | Use the alert filters to build the match criteria for the policy. also right-click a specific value in the alert to add it as match criteria. The app refreshes to show
 which alerts in the incident would be included.
- STEP 6 | Create the policy and confirm the action.
+- STEP 6 | Create the policy and confirm the action.
 If later need to make changes, view, modify, or delete the exclusion policy from the
 Incidents > Starred Incidents page.
- 224 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Investigate Artifacts and Assets
 To streamline the investigation process and reduce the number of steps it takes to investigate and threat hunt artifacts and assets, Cortex XDR provides dedicated views of information relating to IP address, Network Assets, and File and Process Hash. Each of the views automatically aggregates and displays a summary of all the information Cortex XDR and threat intelligence services have regarding a specific artifact and asset.
@@ -5343,8 +4561,7 @@ The IP Address View provides a powerful way to investigate and take action on IP
 reducing the number of steps it takes to collect, research, and threat hunt related incidents. Cortex XDR automatically aggregates and displays a summary of all the information Cortex XDR and threat intelligence services have regarding a specific IP address over a defined 24-hour or 7-day time frame.
 To help determine whether an IP address is malicious, the IP Address View displays an interactive visual representation of the collected activity for a specific IP address.
 To investigate an IP address:
-- STEP 1 | Open the IP View for an IP address. access the view from every IP address in Cortex XDR console by either right-click > Open IP View, selecting the IP address or using the default keyboard shortcut Ctrl/CMD+Shift+E combination, or searching for a specific IP address in the Quick Launcher.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 225 © 2020 Palo Alto Networks, Inc.
+- STEP 1 | Open the IP View for an IP address. access the view from every IP address in Cortex XDR console by either right-click > Open IP View, selecting the IP address or using the default keyboard shortcut Ctrl/CMD+Shift+E combination, or searching for a specific IP address in the Quick Launcher.Inc.
 
  To change the default keyboard shortcut, navigate to   > Settings > General > Keyboard Shortcuts. The shortcut value must be a keyboard letter, A through Z, and cannot be the same as the Quick Launcher defined shortcut.
 - STEP 2 | Review the overview for the IP address.
@@ -5372,7 +4589,6 @@ Related Incidents lists the last 3 incidents which contain the specific IP addre
 Select from the following criteria to refine the scope of IP address information want visualized.
  Each selection aggregates the displayed data.
 Type
-226 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | © 2020 Palo Alto Networks, Inc.
 The type of information want to display.
 - Host Insights—Pivot to the Asset View of the IP addresses associated with the host.
 Investigation and Response
@@ -5414,7 +4630,7 @@ Investigation and Response
      Timeframe
     Time period over which to display defined set of values.
 - 24 Hours - 7 Days
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 227 © 2020 Palo Alto Networks, Inc.
+Inc.
 
   Select to apply selections and update the information displayed in the visualization pane. If necessary, Refresh to retrieve data.
 - STEP 4 | Review the selected data.
@@ -5433,10 +4649,9 @@ The Asset View provides a powerful way to investigate assets by reducing the num
 - Every host in Cortex XDR console by right-click > Open Asset View.
 - The IP View of an internal IP address with a Cortex XDR Agent by selecting Host Insights from the
 navigation bar.
-- The Quick Launcher, by searching for a specific Host Name or Agent ID.
-228 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- The Quick Launcher, by searching for a specific Host Name or Agent ID.Inc.
 
- STEP 2 | Review the Asset overview.
+- STEP 2 | Review the Asset overview.
 The overview displays the host name and any related incidents.
 1. Review the Host name.
 2. Add an Alias or Comment to the host name.
@@ -5466,8 +4681,7 @@ selection aggregates the displayed data.
 Select to apply selections and update the information displayed in the visualization pane. STEP 4 | Review the host insights.
 Investigate a File and Process Hash
 The file and process Hash View provides a powerful way to investigate and take action on SHA256 hash processes and files by reducing the number of steps it takes to collect, research, and threat hunt related incidents. The Hash View automatically aggregates and displays a summary of all the information Cortex XDR and threat intelligence services have regarding a specific SHA256 hash over a defined 24 hour or 7 day time frame.
-The Hash View allows to drill down on each of the process executions, file operations, incidents, actions, and threat intelligence reports relating to the hash.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 229 © 2020 Palo Alto Networks, Inc.
+The Hash View allows to drill down on each of the process executions, file operations, incidents, actions, and threat intelligence reports relating to the hash.Inc.
 
   To investigate a file or process hash:
 - STEP 1 | Open the Hash View for a file or process hash. access the view from every hash value in Cortex XDR console by either right-click > Open Hash View, selecting the hash and using the keyboard shortcut Ctrl/CMD+Shift+E combination, or searching for a specific hash in the Quick Launcher.
@@ -5487,8 +4701,7 @@ The color of the hash value is color-coded to indicate the WildFire report verdi
 4. Add an Alias or Comment to the hash value.
 5. Review any available threat intelligence for the hash.
 Depending on the threat intelligence sources that integrate with Cortex XDR, review any of the following threat intelligence.
-- Virus Total score and report.
-230 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- Virus Total score and report.Inc.
 
   Requires a license key. Navigate to   > Settings > Integrations > Threat
 Intelligence.
@@ -5523,8 +4736,7 @@ selection aggregates the displayed data.
 - Initiating Process
 - Target Process / File
       Secondary The set of values want to apply as the secondary set of aggregations.
-- Host
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 231 © 2020 Palo Alto Networks, Inc.
+- HostInc.
 
    Filter
    Description
@@ -5545,7 +4757,7 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 231 © 202
 - Add the hash to a Whitelist.
 - Add the hash to a Blacklist.
 - Create an IOC rule.
- 232 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Investigate Alerts
 - Cortex XDR Alerts
@@ -5566,8 +4778,7 @@ The following table describes both the default fields and additional optional fi
     Description
   Status Indicator (   )
 Identifies whether there is enough endpoint data to analyze an alert.
-Check box to select one or more alerts on which to perform actions. Select multiple alerts to assign all
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 233 © 2020 Palo Alto Networks, Inc.
+Check box to select one or more alerts on which to perform actions. Select multiple alerts to assign allInc.
 
    Field
    Description
@@ -5623,7 +4834,7 @@ Reset To The Server)
 (Syncookie Sent)
 (Wildfire Upload Failure) (Wildfire Upload Success) (Wildfire Upload Skip)
 (XDR Managed Threat Hunting)
-  234 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
    Field
     Description
@@ -5636,8 +4847,7 @@ APP-ID subcategory name associated with a firewall alert.
 APP-ID technology name associated with a firewall alert.
 Command-line arguments of the Causality Group Owner.
 The MD5 value of the CGO that initiated the alert.
-The name of the process that started the causality chain based on Cortex XDR causality logic.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 235 © 2020 Palo Alto Networks, Inc.
+The name of the process that started the causality chain based on Cortex XDR causality logic.Inc.
          ALERT NAME
      Module that triggered the alert. If the alert was generated by Cortex XDR, the Alert Name will be the specific Cortex XDR rule that created the alert (BIOC or IOC rule name). If from an external system, it will carry the name assigned to it by Cortex XDR. Alerts that match an alert starring policy also display a purple star.
 For alerts coming from firewalls, if duplicate alerts with the same name and host are raised within 24 hours, they are aggregated and identified by a +n tag.
@@ -5687,7 +4897,7 @@ Whether the alert is excluded by an exclusion configuration.
 The alert ID as recorded in the detector from which this alert was sent.
          FILE PATH
     When the alert triggered on a file (the Event Type is File) this is the path to the file on the endpoint. If not, then N/A.
-  236 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
    Field
     Description
@@ -5717,8 +4927,7 @@ The ID of the any incident that includes the alert.
 The name of the process that initiated an activity such as a network connection or registry change.
 The MD5 value of the process which initiated the alert. The SHA256 hash value of the initiator.
 Command-line used to initiate the process including any arguments.
-Path of the initiating process.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 237 © 2020 Palo Alto Networks, Inc.
+Path of the initiating process.Inc.
                                  HOST FQDN
      The fully qualified domain name (FQDN) of the Windows endpoint or server on which this alert triggered.
                                    INITIATOR SIGNATURE
@@ -5760,7 +4969,7 @@ OS PARENT SIGNER OS PARENT SH256 OS PARENT ID
 - Unsigned
 - Signed
 - Invalid Signature - Unknown
-             238 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+            Alto
 
    Field
     Description
@@ -5791,8 +5000,7 @@ The remote port of a network operation that triggered the alert.
 The ID that matches the rule that triggered the alert.
 Whether the alert is starred by starring configuration.
 The source zone name of the connection for firewall alerts.
-The SHA256 hash vale of an external DLL file that triggered the alert.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 239 © 2020 Palo Alto Networks, Inc.
+The SHA256 hash vale of an external DLL file that triggered the alert.Inc.
              SEVERITY
      The severity that was assigned to this alert when it was triggered (or modified): Informational, Low, Medium, High, or Unknown. For BIOC and IOCs, define the severity when create the rule. Insights are low and informational severity alerts that do not raise incidents, but provide additional details when investigating an event.
 
@@ -5821,10 +5029,9 @@ For more information about the alert fields, see Cortex XDR Alerts. STEP 2 | Ana
 When the app correlates an alert with additional endpoint data, the Alerts table displays a green dot
 to the left of the alert row to indicate the alert is eligible for analysis in the Causality View. If the alert has a gray dot, the alert is not eligible for analysis in the Causality View. This can occur when there is no data collected for an event, or the app has not yet finished processing the EDR data. To view the reason analysis is not available, hover over the gray dot.
 - STEP 3 | Review the Timeline View of review the sequence of events over time. The timeline is available for alerts that have been stitched with endpoint data.
-- STEP 4 | If deemed malicious, consider responding by isolating the endpoint from the network.
-240 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 4 | If deemed malicious, consider responding by isolating the endpoint from the network.Inc.
 
- STEP 5 | Remediate the endpoint and return the endpoint from isolation.
+- STEP 5 | Remediate the endpoint and return the endpoint from isolation.
 - STEP 6 | Inspect the information again to identify any behavioral details that use to Create a
 BIOC Rule.
 If create a BIOC rule, test and tune the logic for the rule, and then save it.
@@ -5848,8 +5055,7 @@ Cortex XDR saves the URL to memory.
 1. From the Alerts page, right-click the field in the alert that want to copy.
 2. SelectCopy.
 Cortex XDR saves the field contents to memory.
-3. Paste the value into an email or use as needed to share information from the alert.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 241 © 2020 Palo Alto Networks, Inc.
+3. Paste the value into an email or use as needed to share information from the alert.Inc.
 
  Analyze an Alert
 To help understand the full context of an alert, Cortex XDR provides a powerful analysis view that empowers to make a thorough analysis very quickly.
@@ -5878,10 +5084,9 @@ deleted, an empty table is displayed.
 - STEP 3 | Review the rule, if necessary, right-click to perform available actions.
 Retrieve Additional Alert Details
 To easily access additional information relating to an alert:
-- STEP 1 | From the Alerts page, locate the alert for which want to retrieve information.
-242 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 1 | From the Alerts page, locate the alert for which want to retrieve information.Inc.
 
- STEP 2 | Right-click anywhere in the alert, and select one of the following options:
+- STEP 2 | Right-click anywhere in the alert, and select one of the following options:
 - Retrieve alert data—Cortex XDR can provide additional analysis of the memory contents when an exploit protection module raises an XDR Alert. To perform the analysis must first retrieve alert data consisting of the memory contents at the time the alert was raised. This can be done manually for a specific alert, or enable Cortex XDR to automatically retrieve alert data for every relevant XDR Alert. After Cortex XDR receives the data and performs the analysis, it issues a verdict for the alert. monitor the retrieval and analysis progress from the Action Center (pivot to view Additional data). When analysis is complete, Cortex XDR displays the verdict in the Advanced Analysis field.
 - Retrieve related files—To further examine files that are involved in an alert, request the Cortex XDR agent send them to the Cortex XDR management console. If multiple files are involved, Cortex XDR supports up to 20 files and 200MB in total size. The agent collects all requested files into one archive and includes a log in JSON format containing additional status information. When the files are successfully uploaded, download them from the Action Center for up to one week.
 - View full endpoint details—Jump to a filtered view of the Endpoint Administration page by endpoint ID. This unique ID is assigned by the Cortex XDR agent to identify the endpoint.
@@ -5896,8 +5101,7 @@ The following table describes both the default fields and additional optional fi
   COMMENT DESCRIPTION
 Check box to select one or more alert exclusions on which want to perform actions.
 Administrator-provided comment that identifies the purpose or reason for the exclusion policy.
-Text summary of the policy that displays the match criteria.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 243 © 2020 Palo Alto Networks, Inc.
+Text summary of the policy that displays the match criteria.Inc.
 
    Field
     Description
@@ -5920,8 +5124,7 @@ If after reviewing the incident details, if want to suppress one or more alerts 
 - STEP 1 | From the Incident view in Cortex XDR, select Actions > Create Exclusion Policy.
 - STEP 2 | Enter a POLICY NAME to identify alert exclusion.
 - STEP 3 | Enter a descriptive COMMENT that identifies the reason or purpose of the alert exclusion policy.
-- STEP 4 | Use the alert filters to add any the match criteria for the alert exclusion policy. also right-click a specific value in the alert to add it as match criteria. The app refreshes to show which alerts in the incident would be excluded. To see all matching alerts including those not related to the incident, clear the option to Show only alerts in the named incident.
-244 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 4 | Use the alert filters to add any the match criteria for the alert exclusion policy. also right-click a specific value in the alert to add it as match criteria. The app refreshes to show which alerts in the incident would be excluded. To see all matching alerts including those not related to the incident, clear the option to Show only alerts in the named incident.Inc.
 
   STEP 5 | Create the exclusion policy and confirm the action.
 If later need to make changes, view, modify, or delete the exclusion policy from the
@@ -5938,11 +5141,10 @@ Review the results.
 The alerts in the table will be excluded from appearing in the app after the policy is created and optionally, any existing alert matches will be grayed out.
 This action is irreversible: All historic excluded alerts will remain excluded if disable or delete the policy.
 Create and then select Yes to confirm the alert exception policy. Causality View
-The Causality View provides a powerful way to analyze and respond to alerts. The scope of the Causality View is the Causality Instance (CI) to which this alert pertains. The Causality View presents the alert (generated by Cortex XDR or sent to Cortex XDR from a supported alert source such as the Cortex XDR agent) and includes the entire process execution chain that led up to the alert. On each node in the CI chain, Cortex XDR provides information to help understand what happened around the alert.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 245 © 2020 Palo Alto Networks, Inc.
+The Causality View provides a powerful way to analyze and respond to alerts. The scope of the Causality View is the Causality Instance (CI) to which this alert pertains. The Causality View presents the alert (generated by Cortex XDR or sent to Cortex XDR from a supported alert source such as the Cortex XDR agent) and includes the entire process execution chain that led up to the alert. On each node in the CI chain, Cortex XDR provides information to help understand what happened around the alert.Inc.
 - STEP 1 | STEP 2 | STEP 3 | STEP 4 | STEP 5 |
 - STEP 6 |
- STEP 7 |
+- STEP 7 |
 
   The Causality View comprises five sections:
 Context
@@ -5958,7 +5160,6 @@ Injected Node
 •
    Remote IP address
  246
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 | Investigation and Response
 
  Hover over a process node to display a Process Information pop-up listing useful information about the process. If available, the pop-up includes the process Analytics Profiles.
@@ -5977,8 +5178,7 @@ Provides additional information about the entity that selected. The data varies 
 For example, device type, device information, remote IP address.
 When investigate command-line arguments, click {***} to obfuscate or decode the base64-encoded string.
 For continued investigation, copy the entire entity data summary to the clipboard.
-Response Actions choose to isolate the host, on which the alert was triggered, from the network or initiate a live terminal session to the host to continue investigation and remediation.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 247 © 2020 Palo Alto Networks, Inc.
+Response Actions choose to isolate the host, on which the alert was triggered, from the network or initiate a live terminal session to the host to continue investigation and remediation.Inc.
 
  Events Table
 Displays all related events for the process node which matches the alert criteria that were not triggered in the alert table but are informational .
@@ -5990,7 +5190,6 @@ The network causality view includes the entire process execution chain that led 
   The CI chain visualizes the firewall logs, endpoint files, and network connections that triggered alerts connected to a security event.
 The network causality view displays only the information it collects from the detectors. It is possible that the CI may not show some of the firewall or agent processes.
 The Network Causality View comprises five sections:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
   248
 
    Section
@@ -6010,8 +5209,7 @@ From any process node, also right-click to display additional actions that perfo
 - Show parents and children—If the parent is not presented by default, display it. If the process has children, XDR app displays the number of children beneath the process name and allows to display them for additional information.
 - Hide branch—Hide a branch from the Causality View.
 - Add to block list or allow list, terminate, or
-quarantine a process—If after investigating the activity in the CI chain, want to take action on the process, select the desired action on the process across organization.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 249 © 2020 Palo Alto Networks, Inc.
+quarantine a process—If after investigating the activity in the CI chain, want to take action on the process, select the desired action on the process across organization.Inc.
 
    Section
    Description
@@ -6031,7 +5229,7 @@ For the Behavioral Threat Protection table, right-click to add to allow list or 
 To view statistics for files on VirusTotal, pivot from the Initiator MD5 or SHA256 value of the file on the Files tab.
   Timeline View
 The Timeline provides a forensic timeline of the sequence of events, alerts, and informational BIOCs involved in an attack. While the Causality View of an alert surfaces related events and processes that Cortex XDR identifies as important or interesting, the Timeline displays all related events, alerts, and informational BIOCs over time.
- 250 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
   Cortex XDR presents the Timeline in four parts:
   Section
@@ -6045,8 +5243,7 @@ Depending on the type of activities involved in the CI chain of events, the acti
 - Alerts—The alert icon indicates when the alert occurred.
 - BIOCs—The category of the alert is displayed on the left (for
 example: tampering or lateral movement). Each BIOC event also indicates a color associated with the alert severity. An informational severity can indicate something interesting has happened but there weren’t any triggered alerts. These events are likely benign but are byproducts of the actual issue.
-- Event information—The event types include process execution, outgoing or incoming connections, failed connections, data upload, and data download. Process execution and connections are indicated by a dot. One dot indicates one connection while many dots
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 251 © 2020 Palo Alto Networks, Inc.
+- Event information—The event types include process execution, outgoing or incoming connections, failed connections, data upload, and data download. Process execution and connections are indicated by a dot. One dot indicates one connection while many dotsInc.
 
    Section
    Description
@@ -6063,7 +5260,6 @@ Figure 1: Analytics View of an Analytics Alert
   For Analytics alerts, the analytics view indicates the endpoint for which the alert was raised.
 For Analytics BIOC alerts, the Analytics view summarizes information about the alert, including the source host name, IP address, the process name on which the alert was raised, and the corresponding process ID.
   252
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
 
    Section
     Description
@@ -6080,7 +5276,7 @@ nodes. To view the summary of the specific event, select the above the process n
      The alert description provides details and statistics related to the activity. Beneath the description, also view the alert name, severity assigned to the alert, time of the activity, alert tactic (category) and type, and links to the MITRE summary of the attack tactic.
        6. Response actions
     Actions take in response to an Analytics alert. These actions can include isolating a host from the network, initiating a live terminal session, running a Pathfinder scan, and adding an IP address or domain name to an external dynamic list (EDL) that is enforceable in Palo Alto Networks firewall security policy.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 253 © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Investigate Endpoints
 Endpoint investigation requires either a Cortex XDR Prevent or a Cortex XDR Pro per Endpoint license.
@@ -6097,7 +5293,6 @@ The Action Center provides a central location from which track the progress of a
 - Isolation—View the endpoints in organization that have been isolated from the network. For more information, Isolate an Endpoint.
 For actions that can take a while to complete, the Action Center tracks the action progress and displays the action status and current progress description for each stage. For example, after initiating an agent upgrade action, Cortex XDR monitors all stages from the Pending request until the action status is Completed. Throughout the action lifetime, view the number of endpoints on which the action was successful and the number of endpoints on which the action failed.
   The following table describes both the default and additional optional fields that view from the All Actions tab of the Action Center and lists the fields in alphabetical order.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
  254
 
    Field
@@ -6128,7 +5323,6 @@ After the expiration limit, the status for any remaining Pending actions on endp
 - Failed—The action failed on all endpoints.
 - Completed Successfully—The action was completed successfully on all endpoints.
       Additional data—If additional details are available for an action or for specific endpoints, pivot (right-click) to the Additional data view. also export the additional data to a TSV file. The page can include details in the following fields but varies depending on the type of action.
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 255 © 2020 Palo Alto Networks, Inc.
 
    Field
     Description
@@ -6152,7 +5346,6 @@ Initiate an Endpoint Action create new administrative actions using the Action C
 2. Define the target agents for this action.
 3. Review and confirm the action summary.
  256
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
 
   STEP 1 | Log in to Cortex XDR.
 Go to Response > Action Center > +New Action.
@@ -6164,8 +5357,7 @@ Monitor Endpoint Actions
 - STEP 1 | Log in to Cortex XDR.
 Go to Response > Action Center.
 - STEP 2 | Select the relevant view.
-Use the left-side menu on the Action Center page to monitor the different actions according to their type:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 257 © 2020 Palo Alto Networks, Inc.
+Use the left-side menu on the Action Center page to monitor the different actions according to their type:Inc.
 
  - All—Lists all the administrative actions that were created in network, including time of creation, action type and description, action status, the name of the user who initiated the action, and the action expiration date, if it exists.
 - Quarantine—Lists only actions initiated to quarantine files on endpoints, including the file hash, file name, file path and scope of target agents included in this action.
@@ -6188,7 +5380,6 @@ The Endpoints > Endpoint Management > Endpoint Administration page provides a ce
  The following table describes the list of actions perform on endpoints.
 Endpoint Control - Open in interactive mode - Perform Heartbeat
 - Change Endpoint Alias
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
   Field
     Action
        258
@@ -6225,8 +5416,7 @@ When Agent Auto Upgrades are enabled, indicates the action status is either:
 - Up to date—Indicates that the current Cortex XDR agent version on the endpoint is up to date.
 - Failure—Indicates that the Cortex XDR agent upgrade failed after three retries.
 - Not configured—Indicates that automatic agent upgrades are not configured for this endpoint.
-- Pending—Indicates that the Cortex XDR agent version running on the endpoint is not up to date, and the agent is waiting for the upgrade message from Cortex XDR.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 259 © 2020 Palo Alto Networks, Inc.
+- Pending—Indicates that the Cortex XDR agent version running on the endpoint is not up to date, and the agent is waiting for the upgrade message from Cortex XDR.Inc.
 
    Field
    Description
@@ -6259,7 +5449,7 @@ Unique ID assigned by Cortex XDR that identifies the endpoint.
 Hostname of the endpoint.
 Registration status of the Cortex XDR agent on the endpoint:
 - Connected—The Cortex XDR agent has checked in within 10 minutes.
-     260 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+
 
    Field
    Description
@@ -6283,8 +5473,7 @@ IP
 Date and time of when the endpoint was Isolated. Displayed only for endpoints in Isolated or Pending Isolation Cancellation status.
 Date and time at which the Cortex XDR agent was first installed on the endpoint.
 Installation package name used to install the Cortex XDR agent.
-Last known IPv4 or IPv6 address of the endpoint.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 261 © 2020 Palo Alto Networks, Inc.
+Last known IPv4 or IPv6 address of the endpoint.Inc.
              Installation Type
      Type of installation:
 - Standard - VDI
@@ -6321,7 +5510,7 @@ Changes to the agent status can take up to ten minutes to display on the Cortex 
 - Pending—Scan in process.
 - Complete Successfully—Scan completed.
 - Pending Cancellation—Scan was aborted, waiting for cancellation action to reach endpoint.
-  262 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
    Field
     Description
@@ -6340,8 +5529,7 @@ Go to Response > Action Center > + New Action.
 - STEP 2 | Select Files Retrieval and click Next.
 - STEP 3 | Select the operating system and enter the paths for the files want to retrieve, pressing ADD after each completed path.not define a path using environment variables on Mac and Linux endpoints.
 - STEP 4 | Click Next.
-- STEP 5 | Select the target endpoints (up to 10) from which want to retrieve files.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 263 © 2020 Palo Alto Networks, Inc.
+- STEP 5 | Select the target endpoints (up to 10) from which want to retrieve files.Inc.
 
  If needed, Filter the list of endpoints. For more information, refer to Filter Page Results. STEP 6 | Click Next.
 - STEP 7 | Review the action summary and click Done when finished.
@@ -6362,10 +5550,9 @@ When need to send additional forensic data to Palo Alto Networks Technical Suppo
 Go to Response > Action Center > + New Action.
 - STEP 2 | Select Retrieve Support File and click Next.
 - STEP 3 | Select the target endpoints (up to 10) from which want to retrieve logs.
-If needed, Filter the list of endpoints. For more information, refer to Filter Page Results.
-264 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+If needed, Filter the list of endpoints. For more information, refer to Filter Page Results.Inc.
 
- STEP 4 | Click Next.
+- STEP 4 | Click Next.
 - STEP 5 | Review the action summary and click Done when finished.
 In the next heart beat, the agent will retrieve the request to package and send all logs to Cortex XDR. STEP 6 | To track the status of a support log retrieval action, return to the Action Center.
 When the status is Completed Successfully, right-click the action and download the support logs. Cortex XDR retains retrieved files for up to 30 days.
@@ -6380,10 +5567,9 @@ In addition to blocking the execution of malware, the Cortex XDR agent can scan 
 - Periodic scan—Configure periodic full scans that run on the endpoint as part of the malware security profile. To configure periodic scans, see Add a New Malware Security Profile.
 - Custom scan—(Windows, requires a Cortex XDR agent 7.1 or later release) The end user can initiate a scan on demand to examine a specific file or folder. For more information, see the Cortex XDR agent administrator’s guide for Windows.
 Initiate a Full Scan from Cortex XDR initiate full scans of one or more endpoints from either Endpoint Administration or the Action Center. After initiating a scan, monitor the progress from Response > Action Center. From both locations, also abort an in-progress scan. The time a scan takes to complete depends on the number of endpoints, connectivity to those endpoints, and the number of files for which Cortex XDR needs to obtain verdicts.
-To initiate a scan from Cortex XDR:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 265 © 2020 Palo Alto Networks, Inc.
+To initiate a scan from Cortex XDR:Inc.
 
- STEP 1 | Log in to Cortex XDR.
+- STEP 1 | Log in to Cortex XDR.
 Select Response > Action Center > +New Action.
 - STEP 2 | Select Malware Scan.
 - STEP 3 | Click Next.
@@ -6405,7 +5591,7 @@ Cortex XDR displays additional details about the endpoint.
 events.
 Cortex XDR displays a filtered list of malware alerts for files that were detected on the endpoint
 during the scan.
-  266 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
  Investigate Files
 - Manage File Execution
@@ -6436,8 +5622,7 @@ the opposite one.
 to endpoints.
 - Open in VirusTotal—Directs to the VirusTotal analysis of this hash.
 - (Cortex XDR Pro License only) Open Hash View—Pivot the hash view of the hash.
-- Open in Quick Launcher—Open the quick launcher search results for the hash.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 267 © 2020 Palo Alto Networks, Inc.
+- Open in Quick Launcher—Open the quick launcher search results for the hash.Inc.
 
   Manage Quarantined Files
 When the Cortex XDR agent detects malware on a Windows endpoint, take additional precautions to quarantine the file. When the Cortex XDR agent quarantines malware, it moves the file from the location on a local or removable drive to a local quarantine folder (%PROGRAMDATA%\Cyvera\Quarantine) where it isolates the file. This prevents the file from attempting to run again from the same path or causing any harm to endpoints.
@@ -6448,11 +5633,10 @@ To evaluate whether an executable file is considered malicious, the Cortex XDR a
 Quarantining a file in Cortex XDR can be done in one of two ways:
 - enable the Cortex XDR agent to automatically quarantine malicious executables by configuring quarantine settings in the Malware security profile.
 - quarantine a specific file from the causality card.
-- STEP 1 | View the quarantined files in network.
-268 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 1 | View the quarantined files in network.Inc.
 
  Navigate to Response > Action Center > Quarantine. Toggle between DETAILED and AGGREGATED BY SHA256 views to display information on quarantined files.
- STEP 2 | Review details about quarantined files.
+- STEP 2 | Review details about quarantined files.
 In the Detailed view, filter and review the Endpoint Name, Domain, File Path, Quarantine Source, and
 Quarantine Date of the all the quarantined files.
 - Right-click one or more rows and select Restore all files by SHA256 to reinstate the selected files.
@@ -6470,8 +5654,7 @@ In the Aggregated by SHA256 view, filter and review the Hash, File Name, File Pa
 - Open Hash View—Drill down on each of the process executions, file operations, incidents,actions, and threat intelligence reports relating to the hash.
 - Open in Quick Launcher—Search for where the hash value appears in Cortex XDR. Review WildFire Analysis Details
 For each file, Cortex XDR receives a file verdict and the WildFire Analysis Report. This report contains
-the detailed sample information and behavior analysis in different sandbox environments, leading to the WildFire verdict. use the report to assess whether the file poses a real threat on an endpoint. The details in the WildFire analysis report for each event vary depending on the file type and the behavior of the file.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 269 © 2020 Palo Alto Networks, Inc.
+the detailed sample information and behavior analysis in different sandbox environments, leading to the WildFire verdict. use the report to assess whether the file poses a real threat on an endpoint. The details in the WildFire analysis report for each event vary depending on the file type and the behavior of the file.Inc.
 
   - Drill down into the WildFire Analysis Details.
 WildFire analysis details are available for files that receive a WildFire verdict. The Analysis Reports section includes the WildFire analysis for each testing environment based on the observed behavior for the file.
@@ -6484,7 +5667,6 @@ On the left side of the report see all the environments in which the Wildfire se
 3. (Optional) Download the WildFire report.
 If want to download the WildFire report as it was generated by the WildFire service, click (   ). The report is downloaded in PDF format.
 - Report an incorrect verdict to Palo Alto Networks.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
    270
 
  If know the WildFire verdict is incorrect, for example WildFire assigned a Malware verdict to a file wrote and know to be Benign, report an incorrect verdict to Palo Alto Networks to request the verdict change.
@@ -6495,8 +5677,7 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Pa
 5. Enter an email address to receive an email notification after Palo Alto Networks completes the
 additional analysis.
 6. After enter all the details, click OK.
-From this point on, the threat team will perform further analysis on the sample to determine if it should be reclassified. If a malware sample is determined to be safe, the signature for the file is disabled in an upcoming antivirus signature update or if a benign file is determined to be malicious, a
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 271 © 2020 Palo Alto Networks, Inc.
+From this point on, the threat team will perform further analysis on the sample to determine if it should be reclassified. If a malware sample is determined to be safe, the signature for the file is disabled in an upcoming antivirus signature update or if a benign file is determined to be malicious, aInc.
 
  new signature is generated. After the investigation is complete, will receive an email describing the action that was taken.
 Import File Hash Exceptions
@@ -6507,7 +5688,7 @@ If necessary, resolve any conflicts encountered during the upload and retry. STE
 - STEP 5 | Review the action summary, and click Done.
 Cortex XDR imports and then distributes hashes to the allow list and block list based on the
 assigned verdict.
-  272 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Inc.
 
 ### Response Actions
 - Initiate a Live Terminal Session
@@ -6590,8 +5771,7 @@ process tree without killing it entirely.
 engines. scan a file using the VirusTotal scan service to check for false positives or verify
 suspected malware.
 - Get WildFire verdict—WildFire evaluates the file hash signature to compare it against known threats.
-- Get file hash—Obtain the SHA256 hash value of the process.
-274 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- Get file hash—Obtain the SHA256 hash value of the process.Inc.
 
  - Download Binary—Download the file binary to local host for further investigation and analysis. download files up to 200MB in size.
 - Mark as Interesting—Add an Interesting tag to a process to easily locate the process in the session report after end the session.
@@ -6621,8 +5801,7 @@ Right-click a file to take investigative action. take the following actions:
 - Open in VirusTotal—VirusTotal aggregates known malware from antivirus products and online scan engines. scan a file using the VirusTotal scan service to check for false positives or verify suspected malware.
 - Get WildFire verdict—WildFire evaluates the file hash signature to compare it against known threats.
 - Get file hash—Obtain the SHA256 hash value of the file.
-- Download Binary—Download the file binary to local host for further investigation and analysis. download files up to 200MB in size.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 275 © 2020 Palo Alto Networks, Inc.
+- Download Binary—Download the file binary to local host for further investigation and analysis. download files up to 200MB in size.Inc.
 
  - Mark as Interesting—Add an Interesting tag to any file or directory to easily locate the file. The files tag are recorded in the session report to help locate them after end the session.
 - Remove from Interesting—If no threats are found, remove the Interesting tag.
@@ -6639,8 +5818,7 @@ On Windows endpoints,not run GUI-based cmd commands like winver or appwiz.cpl
 Examples include file management or launching batch files. enter or paste the commands, or upload a script. After are done, save the command session output to a file.
 - STEP 3 | When are done, Disconnect the Live Terminal session.
 Choose whether to save the live terminal session report including files and tasks marked as interesting.
-Administrator actions are not saved to the endpoint.
-276 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Administrator actions are not saved to the endpoint.Inc.
 
  Run Python Commands and Scripts
 The Live Terminal provides a Python command line interface that use to run Python commands and scripts.
@@ -6672,7 +5850,7 @@ When isolate an endpoint, halt all network access on the endpoint except for tra
   - Go to <kbd>Response > Action Center > + New Action</kbd> and select Isolate.
   - also initiate the action (for one or more endpoints) from the Isolation page of the <kbd>Action Center</kbd> or from <kbd>Endpoints > Endpoint Management > Endpoint Administration</kbd>.
 
- STEP 2 | STEP 3 |
+- STEP 2 | STEP 3 |
 - STEP 4 | STEP 5 |
 - STEP 6 | STEP 7 |
 Select Isolate.
@@ -6698,8 +5876,7 @@ include the remediation permissions
 - EDR data collection enabled
 - Agent version 7.1 and above on Windows endpoints
 - STEP 1 | Initiate a remediation suggestions analysis.
-- In the Incident View, navigate to Actions > Remediation Suggestions.
-278 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- In the Incident View, navigate to Actions > Remediation Suggestions.Inc.
 
  Hosts that are part of the incident view and do not meet the required criteria will not be included in the remediation analysis.
 - In the Causality View, either:
@@ -6737,7 +5914,7 @@ Action suggested by the Cortex XDR remediation scan to apply to the file or regi
 - Connected
 - Disconnected - Uninstalled
 - Connection lost
-               CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 279 © 2020 Palo Alto Networks, Inc.
+              Alto
 
    Field
    Description
@@ -6753,7 +5930,7 @@ Action suggested by the Cortex XDR remediation scan to apply to the file or regi
 - Partial Success—Not all of the causality processes were terminated
      REMEDIATION DATE
     Displays the timestamp of when all of the endpoint artifacts have been remediated. If missing a successful remediation, field will not display timestamp.
- STEP 3 | Select one or more files and registries and right-click to Remediate.
+- STEP 3 | Select one or more files and registries and right-click to Remediate.
 - STEP 4 | Track remediation process.
 1. Navigate to Response > Action Center > All Actions.
 2. In the Action Type field, locate remediation process.
@@ -6768,7 +5945,6 @@ the endpoint.
 - Role in the hub with the following permissions to run and configure scripts:
 - Run Standard scripts
 - Run High-risk scripts
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
  280
 
  - Script configuration (required to upload a new script, run a snippet, and edit an existing script)
@@ -6803,8 +5979,7 @@ The SHA256 of the code file. the following additional actions:
                          Outcome
      - High-risk—Scripts that may potentially harm the endpoint.
 - Standard—Scripts that do not have a harmful impact on the endpoint.
-    - Download script—To see exactly what the script does, right-click and Download the Python code file locally.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 281 © 2020 Palo Alto Networks, Inc.
+    - Download script—To see exactly what the script does, right-click and Download the Python code file locally.Inc.
 
  - View / Download definitions file—To view or download the script meta-data, right-click the script and select the relevant option.
 - Run—To run the selected script, right-click and select Run. Cortex XDR redirects to the Action Center with the details of this script already populating the new action fields.
@@ -6835,23 +6010,20 @@ Kill all processes by a given name.
 (Windows)
     Set a Registry value from the endpoint.
   *Since all scripts are running under System context,not perform any Registry operations on user-specific hives (HKEY_CURRENT_USER of a specific user).
-Upload Scripts write and upload additional scripts to the Scripts Library.
-282 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+Upload Scripts write and upload additional scripts to the Scripts Library.Inc.
 
  To upload a new script:
 - STEP 1 | From Action Center > Scripts Library select +New Script.
  Drag and drop script file, or browse and select it. During the upload, Cortex XDR parses script to ensure are using only Python modules supported by Cortex XDR. Click Supported Modules if want to view the supported modules list. If script is using unsupported Python modules, or if script is not using proper indentation, Cortex XDR will require that fix it. use the editor to update script directly in Cortex XDR.
 - STEP 2 | Add meta-data to script. fill-in the fields manually, and also upload an existing definitions file in the supported format to automatically fill-in some or all of the definition. To view the manifest format and create own, see Creating a Script Manifest.
 - General—The general script definitions include: name and description, risk categorization, supported operating systems, and timeout in seconds.
- - Input—Set the starting execution point of script code. To execute the script line by line, select Just run. Alternatively, to set a specific function in the code as the entry point, select Run by entry point. Select the function from the list, and specify for each function parameter its type.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 283 © 2020 Palo Alto Networks, Inc.
+ - Input—Set the starting execution point of script code. To execute the script line by line, select Just run. Alternatively, to set a specific function in the code as the entry point, select Run by entry point. Select the function from the list, and specify for each function parameter its type.Inc.
 
   - Output—If script returns an output, Cortex XDR displays that information in the script results table.
 - Single parameter—If the script returns a single parameter, select the Output type from the list and the output will be displayed as is. To detect the type automatically, select Auto Detect.
 - Dictionary—If the script returns more than a single value, select Dictionary from the Output type list. By default, Cortex XDR displays in the script results table the dictionary value as is. To improve the script results table display and be able to filter according to the returned value, assign a user friendly name and type to some or all of dictionary keys, and Cortex XDR will use that in the results table instead.
 To retrieve files from the endpoint, add to the dictionary the files_to_get key to include an array of paths from which files on the endpoint will be retrieved from the endpoint.
-- STEP 3 | When are done, Create the new script. The new script is uploaded to the Scripts Library.
-284 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+- STEP 3 | When are done, Create the new script. The new script is uploaded to the Scripts Library.Inc.
 
  Creating a Script Manifest
 The script manifest file upload into Cortex XDR has to be a single-line textual file, in the exact format explained below. If file is structured differently, the manifest validation will fail and will be required to fix the file.
@@ -6872,8 +6044,7 @@ Enter the name of the operating system this script supports. The options are Win
 Enter the number of seconds after which Cortex XDR agent halts the script execution on the endpoint.
 - STEP 5 | Configure the script input and output.
 To Run by entry point, must specify the entry point name, and all input and output definitions. The available parameter types are:
-- auto_detect
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 285 © 2020 Palo Alto Networks, Inc.
+- auto_detectInc.
 
  - boolean - number - string - ip
 - number_list - string_list - ip_list
@@ -6895,8 +6066,7 @@ Select the target endpoints on which to execute the script. When you’re done, 
 Cortex XDR displays the summary of the script execution action. If all the details are correct, Run the script and proceed to Track Script Execution and View Results. Alternatively, to track the script execution progress on all endpoints and view the results in real-time, Run in interactive mode.
 Run Scripts in Interactive Mode
 When need to run several scripts on the same target scope of endpoints, or when want to view and inspect the results of those scripts immediately and interactively, run scripts in Interactive Mode. also initiate interactive mode for an endpoint directly from Endpoints Management. In
-this mode, Cortex XDR enables to track the execution progress on all endpoints in real-time, run more scripts or code snippets as go, and view the results of these scripts all in one place.
-286 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+this mode, Cortex XDR enables to track the execution progress on all endpoints in real-time, run more scripts or code snippets as go, and view the results of these scripts all in one place.Inc.
 
   In Interactive Mode, Cortex XDR displays general information that includes the scope of target endpoints and a list of all the scripts that are being executed in this session. For each script on the executed scripts list, view the following:
 - The script name, date and time the script execution action was initiated, and a list of input parameters.
@@ -6907,8 +6077,7 @@ Cortex XDR does not include disconnected endpoints in the visualization of the s
 While in Interactive Mode, continuously execute more scripts and add code snippets that will be immediately executed on the target endpoints scope. Cortex XDR logs all the scripts and code snippets execute in Interactive Mode, and later view them in the Action Center.
 - To add another script, select the script from the Cortex XDR scripts library, or start typing a Code Snippet. Set the script timeout and input parameters as necessary, and Run when are done. The script is added to the executed scripts list and its runtime data is immediately displayed on screen.
 Track Script Execution and View Results
-After run a script, see the script execution action in the Action Center.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 287 © 2020 Palo Alto Networks, Inc.
+After run a script, see the script execution action in the Action Center.Inc.
 
   From the Action Center,:
 - Track Script Execution Status
@@ -6936,7 +6105,6 @@ To understand why the script execution failed, see Troubleshoot Script Execution
   In Progress
 The Cortex XDR agent pulled the script execution request.
    288
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
 
    Status
     Description
@@ -6950,8 +6118,7 @@ View Script Execution Results
 Cortex XDR logs all script execution actions, including the script results and specific parameters used in the run. To view the full details about the run, including returned values, right-click the script and select Additional data.
 The script results are divided into two sections. On the upper bar, Cortex XDR displays the script meta-data that includes the script name and entry point, the script execution action status, the parameter values used in this run and the target endpoints scope. also download the exact code used in this run as a py file.
 In the main view, Cortex XDR displays the script execution results in two formats:
-- Aggregated results—A visualization of the script results. Cortex XDR automatically aggregates only results that have a small variety of values. To see how many of the script results were aggregated successfully, see the counts on the toggle (for example, aggregated results 4/5). filter the results to adjust the endpoints considered in the aggregation. also generate a PDF report of the aggregated results view.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 289 © 2020 Palo Alto Networks, Inc.
+- Aggregated results—A visualization of the script results. Cortex XDR automatically aggregates only results that have a small variety of values. To see how many of the script results were aggregated successfully, see the counts on the toggle (for example, aggregated results 4/5). filter the results to adjust the endpoints considered in the aggregation. also generate a PDF report of the aggregated results view.Inc.
      Pending Abort
      The Cortex XDR agent is in the process of executing the script, and has not pulled the abort request from the Cortex XDR server yet.
 
@@ -6964,7 +6131,6 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 289 © 202
      Execution timestamp
      The date and time the Cortex XDR agent started the script execution on the endpoint. If the execution has not started yet, this field is empty.
   Failed files The number of files the Cortex XDR agent failed to retrieve from the endpoint.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
    290
 
    Field
@@ -6991,8 +6157,7 @@ To run the script with the same parameters and on the same target endpoints as t
 Troubleshoot Script Execution
 To understand why a script returned Failed execution status, do the following:
 1. Check script exceptions—If the script generated exceptions, view them to learn why the script
-execution failed. From the Action Center, right click the Failed script and select Additional data. In
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 291 © 2020 Palo Alto Networks, Inc.
+execution failed. From the Action Center, right click the Failed script and select Additional data. InInc.
 
  the Script Results table, right-click an endpoint for which the script execution failed and select View exceptions. The Cortex XDR agent executes scripts on Windows endpoints as a SYSTEM user, and on Mac and Linux endpoints as a root user. These context differences could cause differences in behavior, for instance when using environment variables.
 2. Validate custom scripts—When a custom script uploaded failed and the reason the script failed
@@ -7008,7 +6173,6 @@ The Cortex XDR agent does not include in the local files inventory the following
 - Information about files where the file size exceeds the maximum file size for hash calculations that is preconfigured in Cortex XDR.
 - If the agent settings profile on the endpoint is configured to monitor common file types only, then the local files inventory includes information about these file types only.not search or destroy file types that are not included in the list of common file types.
 The following are prerequisites to enable Cortex XDR to search and destroy files on endpoints:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
    292
 
  - Provision an active Cortex XDR Pro per Endpoint license.
@@ -7035,8 +6199,7 @@ Cortex XDR displays the summary of the file search action.If need to change sett
 If all the details are correct, click Run. The File search action is added to the Action Center. Review the search results.
 In the Action Center, monitor the action progress in real-time and view the search results for all target endpoints. For a detailed view of the results, right-click the action and select Additional data. Cortex XDR displays the search criteria, timestamp, and real-time status of the action on the target endpoints.:
 - View results by file (default view)—Cortex XDR displays the first 100 instances of the file from every endpoint. Each search result includes details about the endpoint (such as endpoint status, name, IP address, and operating system) and details about the file instance (such as full file name and path, hash values, and creation and modification dates).
-- View the results by endpoint—For each endpoint in the search results, Cortex XDR displays details about the endpoint (such as endpoint status, name, IP address, and operating system), the search action status, and details about the file (whether it exists on the endpoint or not, how many instances of the file exist on the endpoint, and the last time the action was updated).
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 293 © 2020 Palo Alto Networks, Inc.
+- View the results by endpoint—For each endpoint in the search results, Cortex XDR displays details about the endpoint (such as endpoint status, name, IP address, and operating system), the search action status, and details about the file (whether it exists on the endpoint or not, how many instances of the file exist on the endpoint, and the last time the action was updated).Inc.
 
   If not all endpoints in the query scope are connected or the search has not completed, the search action remains in Pending status in the Action Center.
 - STEP 6 | (Optional) Destroy a file.
@@ -7051,8 +6214,7 @@ Select the target endpoints from which want to remove the file. Cortex XDR displ
 - STEP 4 | Review the summary and initiate the action.
 Cortex XDR displays the summary of the file destroy action. If need to change settings, go
 Back. If all the details are correct, click Run. The File destroy action is added to the Action Center. Manage External Dynamic Lists
-An External Dynamic List (EDL) is a text file hosted on an external web server that Palo Alto Networks firewall uses to provide control over user access to IP addresses and domains that the Cortex XDR has found to be associated with an alert.
-294 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
+An External Dynamic List (EDL) is a text file hosted on an external web server that Palo Alto Networks firewall uses to provide control over user access to IP addresses and domains that the Cortex XDR has found to be associated with an alert.Inc.
 
  - •
 - •
@@ -7074,8 +6236,7 @@ Record the IP Addresses EDL URL and the Domains EDL URL. will need these URLs in
 Test the URLs in a browser to confirm that they are active.
 Save the EDL configuration.
 Enable the firewall to authenticate the Cortex XDR EDL.
-1. Download and save the following root certificate: https://certs.godaddy.com/repository/gd-class2- root.crt.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 295 © 2020 Palo Alto Networks, Inc.
+1. Download and save the following root certificate: https://certs.godaddy.com/repository/gd-class2- root.crt.Inc.
   STEP 2
 - STEP 3 STEP 4
 |
@@ -7095,7 +6256,6 @@ For more detailed information about how Palo Alto Networks firewall EDLs work, h
 5. Select Client Authentication and enter the username and password that the firewall must use to
 access the Cortex XDR EDL.
 6. Use the Repeat field to define how frequently the firewall retrieves the latest list from Cortex XDR.
-   296 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response © 2020 Palo Alto Networks, Inc.
 
   7. Click OK to add the new EDL.
 - STEP 6 | Select Policies > Security and Add or edit a security policy rule to add the Cortex XDR EDL as
@@ -7113,14 +6273,13 @@ To add an IP address or Domain from the Action Center, Initiate an Endpoint Acti
 can choose to enter the IP address or Domain want to add Manually or choose to Upload File. During investigation, also Add to EDL from the Actions menu that is available from investigation
 pages such as the Incidents View, Causality View, IP View, or Quick Launcher.
 - STEP 8 | At any time, view and make changes to the IP addresses and domain names lists.
-1. Navigate to Response > Action Center > EDL.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response 297 © 2020 Palo Alto Networks, Inc.
+1. Navigate to Response > Action Center > EDL.Inc.
 
   2. Review IP addresses and domain names lists.
 3. If desired, select New Action to add additional IP addresses and domain names.
 4. If desired, select one or more IP addresses or domain names, right-click and Delete any entries that
 no longer want included on the lists.
- 298 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Investigation and Response
+
 
     Broker VM
 > Broker VM Overview
@@ -7129,12 +6288,12 @@ no longer want included on the lists.
 > Broker VM Notifications
         299
 
-  300 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
+
 
  Broker VM Overview
 The Palo Alto Networks Broker is a secured virtual machine (VM), integrated with Cortex XDR, that bridges network and Cortex XDR. By setting up the broker, establish a secure connection in which route endpoints, and collect and forward logs and files for analysis.
 The Broker can be leveraged for running different services separately on the VM using the same Palo Alto Networks authentication. Once installed, the broker automatically receives updates and enhancements from Cortex XDR, providing with new capabilities without having to install a new VM.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 301 © 2020 Palo Alto Networks, Inc.
+
 
  Set up Broker VM
 The Palo Alto Networks Broker is a secured virtual machine (VM), integrated with Cortex XDR, that bridges network and the Cortex XDR app. By setting up the broker, establish a secure connection in which route endpoints, and collect and forward logs and files for analysis.
@@ -7154,7 +6313,6 @@ VM compatible with:
 OVA VMware ESXi 6.0 or later
 VHD Hyper-V 2012 or later
 Enable communication between the Broker Service, and other Palo Alto Networks services and apps. Confirm Cortex XDR version to ensure enable the appropriate connections.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
      Image Type
     Infrastructure
        VMDK
@@ -7197,8 +6355,6 @@ Configure broker VM as follows:
 - VHD (Azure)—Cortex XDR supports Azure compatible VM.
 - VMDK—Convert Cortex XDR VMDK image to Amazon Web Services AMI.
 - STEP 3 | Generate Token and copy to clipboard.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
-© 2020 Palo Alto Networks, Inc.
   Broker VM 303
 
    The token is valid only for 24 hours. A new token is generated each time select Generate Token.
@@ -7206,7 +6362,6 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
 - STEP 5 | Log in with the password !nitialPassw0rd and then define own unique password.
 The password must contain a minimum of eight characters, contain letters and numbers, and at least one capital letter and one special character.
 - STEP 6 | Configure broker VM settings:
-304 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
  1. In the Network Interface section, review the pre-configured Name, IP address, and MAC Address, select the Address Allocation: DHCP (default) or Static, and select to either to Disable or set as Admin the network address as the broker VM web interface.
 - If choose Static, define the following and Save configurations:
@@ -7218,7 +6373,6 @@ The password must contain a minimum of eight characters, contain letters and num
 the password.
 - Save configurations.
 3. (Requires Broker VM 8.0 and later) (Optional) In the NTP section, configure NTP servers. Enter the server addresses according to the information detailed in the grant communications table. enter a server address or IP address.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 305 © 2020 Palo Alto Networks, Inc.
 
  4. (Requires Broker VM 8.0 and later) (Optional) In the SSH Access section, Enable or Disable SSH connections to the broker VM. SSH access is authenticated using a public key, provided by the user. Using a public key grants remote access to colleagues and Cortex XDR support who the private key. must have App Administrator role permissions to configure SSH access.
 To enable connection, generate an RSA Key Pair, enter the public key in the SSH Public Key section and Save configuration.
@@ -7230,14 +6384,13 @@ are directed to Cortex XDR > > Settings > Broker > VMs. The Broker VMs page disp
 Create a Broker VM AMI Image
 After download Cortex XDR Broker VMDK image, covert the image to Amazon Web Services (AWS) AMI.
 To convert the image:
-306 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
  Set up AWS CLI
 (Optional) If haven’t done so already, set up AWS CLI as follows:
 - STEP 1 | Install the AWS zip file by running the following command on local machine:
 - STEP 2 | Connect to AWS account by running: Create an AMI Image
  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli- bundle.zip"unzip awscli-bundle.zipsudo /usr/local/bin/python3.7 awscli- bundle/install -i /usr/local/aws -b /usr/local/bin/aws
- STEP 1 | STEP 2 | STEP 3 | STEP 4 |
+- STEP 1 | STEP 2 | STEP 3 | STEP 4 |
 - STEP 5 |
 - STEP 6 |
 Navigate and log in to AWS account.
@@ -7257,8 +6410,7 @@ aws configure
 .
 Completed status output example:
  { "ImportImageTasks":[ { "...", "SnapshotDetails": [ { "Description":"Broker VM version",
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
-© 2020 Palo Alto Networks, Inc.
+
 Broker VM 307
 
   "DeviceName":"/dev/<name>", "DiskImageSize":2976817664.0,
@@ -7287,7 +6439,6 @@ To create the image:
 - STEP 1 | Decompress the downloaded VHD (Azure) image. Make sure decompress the zipped hard disk file on a server that has more then 512GB of free space.
 Decompression can take up to a few hours.
 - STEP 2 | Create a new storage blob on Azure account by uploading the VHD file. Uploading from Microsoft
-308 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
  1. Update to Windows PowerShell 5.1.
 2. Install .NET Framework 4.7.2 or later.
@@ -7318,8 +6469,7 @@ In the Container page, Select VHD image.
 - OS type—Select Linux
 - VM generation—Select Gen 1
  Review + create to check settings. STEP 5 | Create broker VM disk.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
-© 2020 Palo Alto Networks, Inc.
+
 Broker VM 309
 
  After deployment is complete Go to resource.
@@ -7344,9 +6494,8 @@ The Agent Proxy is used for routing all the agent traffic via a centralized and 
 The Broker Service is supported with Traps agent version 5.0.9 and Traps agent version 6.1.2 and later releases.
 - STEP 4 | Run the installation package on each endpoint according to the endpoint OS. During installation must configure the IP address of the broker VM and a port number. use the default 8888 port or set a custom port. See the Cortex XDR Agent Administrator’s Guide for installation instructions.
 are not permitted to configure port numbers between 0-1024 and 63000-65000, or port numbers 4369, 5671, 5672, 5986, 6379, 8000, 9100, 15672, 25672. Additionally, are not permitted to reuse port numbers already assigned to the Syslog Collector applet.
-310 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
- STEP 5 | After a successful activation, the Apps field displays the Agent Proxy- Active. STEP 6 | In the Apps field, select Agent Proxy to view the agent proxy Resources.
+- STEP 5 | After a successful activation, the Apps field displays the Agent Proxy- Active. STEP 6 | In the Apps field, select Agent Proxy to view the agent proxy Resources.
 - STEP 7 | Manage the Agent Proxy.
 After the Agent Proxy has been activated, right-click broker VM and select:
 - Agent Proxy > Configure to redefine the port.
@@ -7361,7 +6510,6 @@ The Syslog Collector allows to collect syslog logs from within network by listen
 - STEP 4 | Activate configurations.
 After a successful activation, the Apps field displays the Syslog Collector - Active.
 - STEP 5 | In the Apps filed, select Syslog Collector to view the following applet metrics: - Connectivity Status—Whether the applet is connected to Cortex XDR.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 311 © 2020 Palo Alto Networks, Inc.
 
  - Logs Received and Logs Sent—Number of logs received and sent by the applet per second over the last 24 hours. If the number of incoming logs received is larger than the number of logs sent, it could indicate a connectivity issue.
 - Resources—Displays the amount of CPU, Memory, and Disk space the applet is using.
@@ -7376,7 +6524,6 @@ The Network Mapper allows to scan network to detect and identify hosts in enviro
 - STEP 3 | In the Activate Network Mapper window, define the following parameters:
   - Scan Method—Select the either ICMP echo or TCP SYN scan method to identify network hosts. When selecting TCP SYN enter single ports and ranges together, for example 80-83, 443.
 - (Optional) Scan Requests per Second—Define the maximum rate of want to scan per second on network.
-312 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
  - Scanning Scheduler—Define when want to run the network mapper scan. select either daily, weekly, or monthly at a specific time.
 - Scanned Ranges—Select the IP address ranges to scan. Make sure to after each selection. IP address ranges are displayed according to what defined in the asset Network
@@ -7403,7 +6550,6 @@ Activate Pathfinder
 After have configured and registered broker VM, activate the Pathfinder application.
 PathfinderTM is a highly recommended, but optional, component integrated with the Broker VM that deploys a non-persistent data collector on network hosts, servers, and workstations that are not managed by a Cortex XDR agent. The collector is automatically triggered by Analytics type alerts described in the Cortex XDR Analytics Alert Reference providing insights into assets that would previously be unable to scan.
 When an alert is triggered, the data collector is able to run for up to 2 weeks gathering EDR data from unmanaged hosts. track and manage the collector directly from the Cortex XDR console, and investigate the EDR data by running a query from the Query Center.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 313 © 2020 Palo Alto Networks, Inc.
 
  Cortex XDR supports activating Pathfinder on Windows operating systems with PowerShell version 3 and above, excluding Vanilla Windows 7.
 Activate the Pathfinder app to deploy and query the data collector.
@@ -7420,7 +6566,6 @@ Credentials are stored and encrypted only on the broker VM.
 - (Optional) Domain Suffixes—Domain suffixes required for DNS resolving within network.
 The domain suffixes list is read-only and populated by defined Network Configurations.
 - Authentication Method—Select either Kerberos or NTLM.
-314 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
   When selecting Kerberos, the Broker has access to domain controllers over port 88 and is able to acquire the authentication ticket. It is recommended to use Kerberos for better security.
 - Test the credentials and pathfinder permissions.
@@ -7440,7 +6585,6 @@ to enable the proxy, select one of the following options:
 Select Next.
 3. Select to scan the IP Address Ranges defined in Network Configurations and deploy the
 data collector Add IP Address Ranges if don’t see a range in the populated list.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 315 © 2020 Palo Alto Networks, Inc.
 
  By default, every IP address range will use the Pathfinder credentials and settings defined. If want configure other settings, use the right pane to override the settings for a specific range. Make sure to Test the specific credentials for this range.
 The Pathfinder configuration must contain at least one IP address range to run. To avoid collision, IP address ranges can only be associated with one pathfinder applet.
@@ -7452,9 +6596,9 @@ After a successful activation, the Apps field displays the Pathfinder - Active, 
 number of collectors that need to be setup.
 - Failed Tasks—How many collectors have failed
 - Resources—Displays the amount of CPU, Memory, and Disk space the applet is using.
-  316 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
- STEP 5 | Manage the Pathfinder. Right-click broker VM and select:
+
+- STEP 5 | Manage the Pathfinder. Right-click broker VM and select:
 - Pathfinder > Edit Configuration to redefine the pathfinder configurations.
 - Pathfinder > Edit Credentials to redefine the user name and password. select to edit
 credentials for multiple Pathfinder applets.
@@ -7475,7 +6619,6 @@ Displays the Alert ID of the analytics alert that triggered the collector.
 Name of the broker VM initiating the collector. Timetamp of the last collector heartbeat.
 Timestamp of when the collector was triggered.
 Status of the collector on the host. Can be either:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 317 © 2020 Palo Alto Networks, Inc.
                  Result
      Status of the collection process. Can be either:
 - Collection Completed
@@ -7511,10 +6654,9 @@ Ensure meet the following prerequisites before activating the collector:
 - Cortex XDR Pro per TB license
 - have knowledge of Windows Active Directory and Domain Controllers.
 - Broker VM is registered in the DNS and its FQDN is resolvable from the DCs.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
     318
 
- STEP 1 | STEP 2 |
+- STEP 1 | STEP 2 |
 - STEP 3 |
 In Cortex XDR, navigate to Cortex XDR > > Settings > Broker > VMs table and locate broker VM.
 Right-click, select Windows Event Collector > Activate.
@@ -7526,23 +6668,22 @@ After a successful activation, the Apps field displays the Windows Event Collect
 Connected.
 In the Windows Event Forwarder Configuration window:
 - DCs running on Windows Server 2012 or later.
- STEP 4 |
+- STEP 4 |
 - STEP 5 |
 •
 - Define Client Certificate Export Password used to secure the downloaded Windows Event Forwarders (WEF) certificate used to establish connection between Cortex XDR and the Windows Event collector. will need this password when the certificate is imported to the DC.
 - Download the WEF certificate in a PFX format.
 To view Windows Event Forwarder Configuration details at any time, right-click and select Applet
 Management > Configure Windows Event Forwarder.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 319 © 2020 Palo Alto Networks, Inc.
  (copy) the Subscription Manage URL. This will be used when configure the subscription manager in the GPO (Global Policy Object) on DC.
 
- STEP 6 | (Optional) In the Apps field, select Windows Event Collector to view the following applet metrics:
+- STEP 6 | (Optional) In the Apps field, select Windows Event Collector to view the following applet metrics:
 - Connectivity Status—Whether the applet is connected to Cortex XDR.
 - Logs Received and Logs Sent—Number of logs received and sent by the applet per second over the
 last 24 hours. If the number of incoming logs received is larger than the number of logs sent, it could
 indicate a connectivity issue.
 - Resources—Displays the amount of CPU, Memory, and Disk space the applet is using.
- STEP 7 | Manage the Window Event Collector.
+- STEP 7 | Manage the Window Event Collector.
 After the Windows Event Collector has been activated, right-click broker VM and select:
 - Windows Event Collector > Configure to redefine the Windows Event Collector configurations.
 - Windows Event Collector > Deactivate to disable the Windows Event Collector.
@@ -7556,7 +6697,6 @@ After the Windows Event Collector has been activated, right-click broker VM and 
 5. Right-click the certificate and navigate to All tasks > Manage Private Keys.
 6. In the Permissions window, select Add and in the Enter the object name section, enter NETWORK
 SERVICE followed by OK.
-320 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
   Verify the Group or user names appear.
 - STEP 9 | Add the Network Service account to the DC Event Log Readers group.
@@ -7568,7 +6708,7 @@ Directory Event Log Readers group. In PowerShell, execute the following command 
 Event Forwarding, right-click and select Edit.
   C:\> net localgroup "Event Log Readers" "NT Authority\Network Service" /
 add
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 321 © 2020 Palo Alto Networks, Inc.
+
 
   4. In the Group Policy Management Editor:
 - Set the WinRM service for automatic startup.
@@ -7585,7 +6725,6 @@ In the Configure target Subscription Manager window, and select Show
 - MarkEnabled.
 - Select Show and paste the Subscription Manager URL copied from the Cortex XDR console. 6. Add Network Service to Event Log Readers group.
 Navigate to Computer Configuration > Preferences > Control Panel Settings > Local Users and Groups, right-click and select New Local Group.
-322 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
   In the Event Log Readers (built-in) Properties window:
 - In Group name field, select Event Log Readers (built-in).
@@ -7606,7 +6745,7 @@ Configure the following:
 Link the policy to the DC OU or the group of DCs would like to configure as WEFs.
 1. Navigate to Group Policy Management > <domain name > Domain Controllers, right-click and select Link an existing GPO....
 2. Select the WEF Group Policy created, Windows Event Forwarding.
-   CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 323 © 2020 Palo Alto Networks, Inc.
+
 
   3. In an administrative PowerShell console, execute the following command:
 - STEP 12 | Verify Windows Event Forwarding.
@@ -7621,7 +6760,6 @@ To migrate exiting Windows Event Collector signed certificate to the Cortex XDR 
 2. Copy the auto-generated password. Provide the following password when running the OpenSSL command to authenticate import.
 3. Upload CA Certificate by Drag and Drop or browse for certificate.
 4. Upload certificate to the Cortex XDR console.
-324 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
  PS C:\Users\Administrator> gpupdate /force
 PS C:\Users\Administrator> Restart-Service WinRM
  PS C:\Users\Administrator> Get-WinEvent Microsoft-windows-WinRM/ operational -MaxEvents10
@@ -7643,7 +6781,7 @@ Ensure meet the following prerequisites:
 1. On secure Linux/macOS host, download the scripts and save each of the following files to the
   same directory:
 - generate_certs.sh - openssl.conf
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 325 © 2020 Palo Alto Networks, Inc.
+
 
  - v3.ext
  The CA, WEC, and WEF private keys are generated on this host. Ensure are working on a secure host and store the CA private key securely with password protection, so are able to generate WEF certificates for any DC would want to turn into a WEF in the future.
@@ -7669,7 +6807,6 @@ After completing, the script prints the location of the output files along with 
 2. Locate the broker VM on which want to activate WEC, right-click and select Activate Windows
 Event Collector.
 3. In the Activate Windows Event Collector window, Browse to the WEC certificate PFX file generated.
-326 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
 
    The PFX file contains the certificate and key pair of the WEC along with its certificate chain. Normally the same CA will sign both the WEC and the DCs' certificates. If
 this is not the case - upload the CA file which will be used to validate the DCs' client certificate in the CA BUNDLE field.
@@ -7692,7 +6829,6 @@ $
 3. Navigate to Certificates > Personal and verify the following:
 - In the Personal > Certificates folder, ensure the certificate has been imported.
 - In the Trusted Root Certification Authorities folder, ensure the CA was added.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 327 © 2020 Palo Alto Networks, Inc.
 
   4. Navigate to Certificates > Personal > Certificates.
 5. Right-click the certificate and navigate to All tasks > Manage Private Keys.
@@ -7702,11 +6838,10 @@ SERVICE followed by OK.
 - STEP 5 | Add the Network Service account to the DC Event Log Readers group.
 1. To enable DCs to forward events, the Network Service account must be a member of the Active
 Directory Event Log Readers group. In PowerShell, execute the following command on the DC:
-328 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
   C:\> net localgroup "Event Log Readers" "NT Authority\Network Service" /
 add
 
- STEP 6 | Create a WEF Group Policy which applies to every DC want to configure as a WEF.
+- STEP 6 | Create a WEF Group Policy which applies to every DC want to configure as a WEF.
 1. Opengpmc.msc.
 2. Create a new Group Policy and name it Windows Event Forwarding.
 3. In the Group Policy Management window, navigate to Domains > <domain name> > Windows
@@ -7726,7 +6861,6 @@ Components > Event Forwarding, and double-click Configure target Subscription Ma
 - MarkEnabled.
 - Select Show and paste the subscription URL copied. 6. Add Network Service to Event Log Readers group.
 Navigate to Computer Configuration > Preferences > Control Panel Settings > Local Users and Groups, right-click and select New Local Group.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 329 © 2020 Palo Alto Networks, Inc.
 
   In the Event Log Readers (built-in) Properties window:
 - In Group name field, select Event Log Readers (built-in).
@@ -7747,7 +6881,7 @@ Configure the following:
 Link the policy to the DC OU or the group of DCs would like to configure as WEFs.
 1. Navigate to Group Policy Management > <domain name > Domain Controllers, right-click and select Link an existing GPO....
 2. Select the WEF Group Policy created, Windows Event Forwarding.
-   330 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
+
 
   3. In an administrative PowerShell console, execute the following command:
 - STEP 8 | Verify Windows Event Forwarding.
@@ -7756,7 +6890,7 @@ Link the policy to the DC OU or the group of DCs would like to configure as WEFs
  PS C:\Users\Administrator> gpupdate /force
 PS C:\Users\Administrator> Restart-Service WinRM
  PS C:\Users\Administrator> Get-WinEvent Microsoft-windows-WinRM/ operational -MaxEvents10
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 331 © 2020 Palo Alto Networks, Inc.
+
 
  Manage Broker VMs
 After configured the broker VMs, manage broker VMs from the Cortex XDR console.
@@ -7785,7 +6919,6 @@ Colors depict the following statuses:
 - Orange—Past Version
 - Green—Connected, Current Version
   Check box to select one or more broker devices on which to perform actions.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
     332
 
    Field
@@ -7813,7 +6946,6 @@ Notification about low disk space appear in the Notification Center.
 For AWS and Azure cloud environments, the field displays the Internal IP value.
   INTERNAL IP
 All IP addresses of the different interfaces on the device.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 333 © 2020 Palo Alto Networks, Inc.
 
    Field
     Description
@@ -7832,7 +6964,6 @@ Enter a network subnet to avoid the broker VM dockers colliding with internal ne
 default, the Network Subnet is set to 172.17.0.1/16. Internal IP must be:
 - Formatted as prefix/mask, for example 192.0.2.1/24.
 - Must be within /8 to /24 range.
-334 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
      STATUS
      Connection status of the broker device. Status is defined by either Connected or Disconnected.
 Disconnected broker devices do not display CPU Usage, Memory Usage, and Disk Usage information.
@@ -7857,9 +6988,8 @@ Reset current Broker VM Web UI password. Define and Confirm new password. Passwo
 must be at least 8 characters. STEP 3 | Save changes.
 Collect Broker VM Logs
 Cortex XDR allows to collect broker VM logs directly from the Cortex XDR console.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 335 © 2020 Palo Alto Networks, Inc.
 
- STEP 1 | Navigate to Cortex XDR app >   > Settings > Broker > VMs table.
+- STEP 1 | Navigate to Cortex XDR app >   > Settings > Broker > VMs table.
 - STEP 2 | Locate broker VM, right-click and select Broker Management > Download Latest Logs.
 Logs are generated automatically after approximately 30 seconds and are available for 24 hours after the logs have been downloaded.
 Reboot a Broker VM
@@ -7884,7 +7014,6 @@ Applet Names
 - Network Mapper—network_mapper
 - Pathfinder—odysseus
 Services
-336 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 | Broker VM
 
  - Upgrade-—zenith_upgrade
@@ -7933,12 +7062,12 @@ Linux kill command.
 Modify IP address routing.
 > sudo kill [some pid]
 /sbin/route
-          CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 337 © 2020 Palo Alto Networks, Inc.
+
 
  Remove a Broker VM
 Cortex XDR allows to remove a broker VM directly from the Cortex XDR console. STEP 1 | Navigate to Cortex XDR app >   > Settings > Broker > VMs table.
 - STEP 2 | Locate broker VM, right-click and select Broker Management > Remove Broker.
- 338 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM © 2020 Palo Alto Networks, Inc.
+
 
  Broker VM Notifications
 To help monitor broker VM version and connectivity effectively, Cortex XDR send notifications to Cortex XDR console Notification Center.
@@ -7948,15 +7077,15 @@ Cortex XDR send the following notifications:
 - If the broker VM Auto Upgrade is enabled, 12 hours after the release are notified of the latest upgrade, or are notified that the upgrade failed. In such a case, open a Palo Alto Networks Support Ticket.
 - Broker VM Connectivity—Notifies when the broker VM has lost connectivity to Cortex XDR.
 - Broker VM Disk Usage—Notifies when the broker VM is utilizing over 90% of the allocated disk space.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM 339 © 2020 Palo Alto Networks, Inc.
 
-  340 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Broker VM
+
+
 
     Analytics
 > Analytics Concepts
         341
 
-  342 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics © 2020 Palo Alto Networks, Inc.
+
 
  Analytics Concepts
 Network security professionals know that safeguarding a network requires a defense-in-depth strategy. This layered approach to network security means ensuring that software is always patched and current, while running hardware and software systems that are designed to keep attackers out. Many strategies exist to keep unwanted users out of a network, most of these work by stopping intrusion attempts at the network perimeter.
@@ -7968,10 +7097,9 @@ Consequently, network defense-in-depth strategy must include software and proces
 - Coverage of the MITRE Attack Tactics
 - Analytics Detection Time Intervals
 Analytics Engine
-The Cortex XDRTM app uses an analytics engine to examine logs and data from sensors. The analytics engine retrieves logs from Cortex Data Lake to understand the normal behavior (creates a baseline) so that it can raise alerts when abnormal activity occurs. The analytics engine accesses logs as they are streamed to Cortex Data Lake and analyzes the data as soon as it arrives. Cortex XDR raises an Analytics alert when the analytics engine determines an anomaly.
+The Cortex XDR app uses an analytics engine to examine logs and data from sensors. The analytics engine retrieves logs from Cortex Data Lake to understand the normal behavior (creates a baseline) so that it can raise alerts when abnormal activity occurs. The analytics engine accesses logs as they are streamed to Cortex Data Lake and analyzes the data as soon as it arrives. Cortex XDR raises an Analytics alert when the analytics engine determines an anomaly.
 The analytics engine is built to process—in parallel—large amounts of data stored in Cortex Data Lake. The ultimate goal is to identify normal behavior so the Cortex apps can recognize and use alerts to notify of that abnormal behavior. The analytics engine can examine traffic and data from a variety of sources such as network activity from firewall logs, VPN logs (from Prisma Access from the Panorama plugin), endpoint activity data (on Windows endpoints), Active Directory or a combination of those sources, to identify endpoints and users on network. After endpoints and users are identified, the analytics engine collects relevant details about every asset that it sees based on the information it obtains from the logs. The analytics engine can detect threats from only network data or only endpoint data, but for more context when investigating an alert, a combination of data sources are recommended.
 The list of what the engine looks for is large, varied, and constantly growing but, as a consequence of this analysis, the analytics engine is able to build profiles about every endpoint and user of which it knows about. Profiles allow the engine to put the activity of the endpoint or user in context by comparing it against similar endpoints or users. The analytics engine creates and maintains a very large number of profile types but, generally, they can all be placed into three categories.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics 343 © 2020 Palo Alto Networks, Inc.
 
  Analytics Sensors
 To detect anomalous behavior, Cortex XDR can analyze logs and data from a variety of sensors.
@@ -7991,7 +7119,7 @@ when traffic matches one of the Security Profiles attached to a security rule on
       Cortex XDR agent endpoint data
 With a Cortex XDR Pro per Endpoint license, deploy Cortex XDR agents on endpoints to protect them from malware and software exploits. The analytics engine can also analyze the EDR data collected by the Cortex XDR agent
 to raise alerts. To collect EDR data, must install Cortex XDR agent 6.0 or a later release on Windows endpoints (Windows 7 SP1 or later).
- 344 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics © 2020 Palo Alto Networks, Inc.
+
 
    Sensor
    Description
@@ -8011,7 +7139,7 @@ to facilitate log and alert ingestion. By sending firewall logs to Cortex XDR, i
   The Windows Event Collector (WEC) runs on the broker VM collecting event logs from Domain Controllers (DCs). The analytics engine can analyze these event logs to raise alerts such as for credential access and defense evasion.
  Coverage of the MITRE Attack Tactics
 Network attacks follow predictable patterns. If interfere with any portion of this pattern, the attack will be neutralized.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics 345 © 2020 Palo Alto Networks, Inc.
+
 
   The analytics engine can alert on any of the following attack tactics as defined by the MITRE ATT&CKTM knowledge base of tactics.
   Tactic
@@ -8026,7 +7154,6 @@ The Cortex XDR app detects malware and grayware on network using a combination o
 The app detects attacks that use this tactic by looking for symptoms in internal network traffic such as changes in connectivity patterns that including increased rates of connections, failed connections, and port scans.
       Lateral Movement To expand the footprint inside network, and attacker uses lateral movement techniques
 to obtain credentials to gain additional access to more data in the network.
-346 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics © 2020 Palo Alto Networks, Inc.
 
    Tactic
    Description
@@ -8045,7 +7172,6 @@ There are several meaningful time intervals for Cortex XDR Analytics detectors:
     Description
       Learning Period
 The shortest amount of log file time before the app can raise an alert. This is typically the time from when a detector first starts running and when see an alert but, in some cases, detectors pause after an upgrade as they enter a new learning period.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics 347 © 2020 Palo Alto Networks, Inc.
 
    Time Interval
    Description
@@ -8061,12 +7187,12 @@ When establishing a baseline, detectors compute limits beyond which network acti
 by Cortex XDR engineers. The engineers determine the values used for predetermined limits using statistical analysis of malicious activity recorded worldwide. The engineers routinely perform this statistical analysis and update the predetermined limits as needed with each release of the Cortex XDR.
       Deduplication Period
     The amount of time in which additional alerts for the same activity or behavior are suppressed before Cortex XDR raises another Analytics alert.
-  348 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics © 2020 Palo Alto Networks, Inc.
+
 
  These time periods are different for every Cortex XDR Analytics detector. The actual amount of logging data (measured in time) required to raise any given Cortex XDR Analytics alert is identified in the Cortex XDR Analytics Alert Reference.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics 349 © 2020 Palo Alto Networks, Inc.
 
-  350 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Analytics
+
+
 
     Asset Management
 > About Asset Management
@@ -8074,7 +7200,7 @@ by Cortex XDR engineers. The engineers determine the values used for predetermin
 > Manage Network Assets
         351
 
-  352 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Asset Management © 2020 Palo Alto Networks, Inc.
+
 
  About Asset Management
 Network asset visibility is a crucial investigative tool in discovering rogue devices in network and preventing malicious activity. Understanding how many managed and unmanaged assets are part of network provides with vital information to better assess security exposure and track network communication.
@@ -8089,8 +7215,7 @@ effectively and reduce the amount of research required to:
 - Distinguish between assets managed and unmanaged by a Cortex XDR Agent.
 - Identify assets that are part of internal network.
 - Track network data communications from within and outside network.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE |
-Asset Management 353 © 2020 Palo Alto Networks, Inc.
+
 
  Configure Network Parameters
 In order to track and identify assets in network, need to define internal IP address ranges and domain names to enable Cortex XDR to analyze, locate, and display assets.
@@ -8110,7 +7235,6 @@ After named and defined IP address ranges, review the following information:
    The IP Address Ranges table displays the following fields:
 - Range Name—Name of the IP address range define.
 - First IP Address—First IP address value of the defined range.
-354 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Asset Management © 2020 Palo Alto Networks, Inc.
 
  - Last IP Address—Last IP address value of the defined range.
 - Active Assets—Number of assets located within the defined range that are have reported Cortex
@@ -8124,9 +7248,9 @@ In the IP Address Ranges table, locate range and select:
 - Edit range—Edit the IP address configurations. Changes made will effect the Broker VM Network Mapper.
 - Delete range—Delete the IP address range. Define Domain Names
 - STEP 1 | In Cortex XDR, navigate to Assets > Network Configuration > Internal Domain Suffixes.
- STEP 2 | In the Internal Domain Suffixes section, +Add the domain suffix want to include as part of internal network. For example, acme.com.
+- STEP 2 | In the Internal Domain Suffixes section, +Add the domain suffix want to include as part of internal network. For example, acme.com.
 - STEP 3 | Select   to add to the Domains List.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Asset Management 355 © 2020 Palo Alto Networks, Inc.
+
 
  Manage Network Assets
 The Assets page provides a central location from which view and investigate information relating to assets in network. Using defined internal network configurations, Broker VM Network Mapper, Cortex XDR Agent, EDR data collected from Firewall logs, and Third-Party logs, Cortex XDR is able to aggregate and display a list of all the assets located within network according to their IP address.
@@ -8140,7 +7264,6 @@ By default the table is filtered according to unmanaged assets over the last 7 d
 MAC ADDRESS HOST NAME FIRST TIME SEEN
 LAST TIME SEEN AGENT INSTALLED
 COLLECTOR RUNNING RANGE NAMES
-356 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
 IP address related to the last asset associated with it.
 Mac address of the asset.
 Host name of the asset, if available.
@@ -8153,16 +7276,16 @@ Name of the IP address range allocated to the IP address.
                          AGENT ID
      ID of the agent installed on the asset. Cortex XDR only displays agents that send EDR data captured in the firewall logs.
 
- STEP 3 | Investigate an asset.
+- STEP 3 | Investigate an asset.
 Locate an IP address, right-click and select to:
 - Open asset view or —Pivot to the Asset View to view insights collected from the endpoint.
 Insights are only available for assets managed by a Cortex XDR Agent, if the asset is unmanaged, select Open IP View to view details of the associated IP address.
 - View agent details—Pivot to the Endpoints table filtered according to the agent ID. Only available for assets with Cortex XDR agent installed.
 - Open in Quick Launcher—Open the Quick Launcher search results for the IP address.
 - Remove Collector—Remove the Pathfinder Data Collector. Only available if a collector is status is In Process.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Asset Management 357 © 2020 Palo Alto Networks, Inc.
 
-  358 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Asset Management
+
+
 
     Monitoring
 > Cortex XDR Dashboard
@@ -8171,7 +7294,7 @@ Insights are only available for assets managed by a Cortex XDR Agent, if the ass
 > Forward Agent Audit Log > Monitor Agent Operational Status
         359
 
-  360 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
  Cortex XDR Dashboard
 The Dashboard screen is the first page see in the Cortex XDR app when log in.
@@ -8184,8 +7307,7 @@ Cortex XDR sorts widgets in the Cortex XDR app according to the following catego
 - Incident Management Widgets
 - Investigation Widgets
 - User Defined Widgets
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-© 2020 Palo Alto Networks, Inc.
+
 | Monitoring 361
 
  - •
@@ -8210,7 +7332,7 @@ Displays the total number of registered agents and their distribution according 
 Click a user to open a filtered view of incidents assigned to the selected user.
      Incidents By Status
     Provides a summary of the total current number of open incidents according to status. Click a status to open a filtered view of the incidents.
-  362 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
   Investigation Widgets
   Widget Name
@@ -8239,7 +7361,7 @@ Hover over the graph to view the number of open incidents on a specific day.
      Open Incidents by Severity
     Provides a summary of the total current number of open incidents according to severity.
 Click a severity percentage to open a filtered view of the incidents.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 363 © 2020 Palo Alto Networks, Inc.
+
 
    Widget Name
     Description
@@ -8266,7 +7388,7 @@ Displays a text box allowing to insert free text.
   Displays a detailed breakdown of active managed and unmanaged assets.
 Provides a summary of the total number of endpoint agents according to their status.
 Displays the total number of registered agents and their distribution according to agent versions.
-           364 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
    Widget Name
     Description
@@ -8290,7 +7412,6 @@ Filter the following information for each source:
 - First Seen—Timestamp of when product/ vendor were first ingested.
 - Last Seen—Timestamp of when product/vendor were last ingested.
 - Last Day Ingested-—Amount of data ingested over the past 30 days.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 365 © 2020 Palo Alto Networks, Inc.
 
    Widget Name
    Description
@@ -8310,7 +7431,6 @@ The dashboard is comprised of the following Dashboard Widgets:
 - Agent Version Breakdown (Top 5)
 - Operating Type Distribution
 - Top Hosts (Top 10)
-366 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
 
  Incident Management Dashboard
  The Incidents Management Dashboard provides a graphical summary of incidents in environment, with incidents prioritized and listed by severity, assignee, incident age, and affected hosts.
@@ -8321,7 +7441,7 @@ The dashboard is comprised of the following Dashboard Widgets:
 - Top Hosts (Top 10)
 - Top Incidents (Top 10)
 To filter a widget to display only incidents that match incident starring policies, select the star in the right corner. A purple star indicates that the widget is displaying only starred incidents. The starring filter is persistent and will continue to show the filtered results until clear the star.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 367 © 2020 Palo Alto Networks, Inc.
+
 
  Security Manager Dashboard
  The Security Manager Dashboard widgets display general information about Cortex XDR incidents and agents. If migrated from either Traps management service or the Endpoint Security Manager, will notice similarities between the dashboards.
@@ -8334,7 +7454,7 @@ The dashboard is comprised of the following Dashboard Widgets:
 - Open Incidents by Severity
 - Top Incidents (Top 10)
 For incident-related widgets also filter the results to display only incidents that match incident starring policies. To apply the filter, select the star in the right corner of the widget. A purple star indicates that the widget is displaying only starred incidents. The starring filter is persistent and will continue to show the filtered results until clear the star.
-  368 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
  Data Ingestion Dashboard
  The Data Ingestion dashboard displays an overview of the type and amount of data is consumed by Cortex XDR. For example, Syslog Collector, Check Point logs, and Authentication logs.
@@ -8349,7 +7469,7 @@ To create purposeful dashboards, must consider the information that and other an
 - STEP 3 | Choose the Dashboard Type. use an existing dashboard as a template, or build a new dashboard from scratch.
 - STEP 4 | Click Next.
 - STEP 5 | Customize dashboard.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 369 © 2020 Palo Alto Networks, Inc.
+
 
  To get a feel for how the data will look, Cortex XDR provides mock data. To see how the dashboard would look with real data in environment, use the toggle above the dashboard to use Real Data.
 Drag and drop widgets from the widget library to their desired position.
@@ -8363,7 +7483,6 @@ Otherwise, the dashboard is public and visible to all Cortex XDR app users with 
 - STEP 9 | Generate dashboard. Manage Dashboards
 From the Reporting > Dashboards Manager, view all custom and default dashboards. From the Dashboards Manager, also delete, edit, duplicate, disable, and perform additional management actions on dashboards.
 To manage an existing dashboard, right click the dashboard and select the desired action. - Delete - Permanently delete a dashboard.
-370 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
 
  - Edit - Edit an existing dashboard.not edit the default dashboards provided by Palo Alto Networks, but save it as a new dashboard.
 - Save as new - Duplicate an existing template.
@@ -8395,12 +7514,11 @@ Custom timeframe is limited to one month.
 - STEP 3 |
 - STEP 4 | STEP 5 |
 - STEP 6 |
- STEP 5 | Click Next.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE
-© 2020 Palo Alto Networks, Inc.
+- STEP 5 | Click Next.
+
 | Monitoring 371
 
- STEP 6 | Customize report.
+- STEP 6 | Customize report.
 To get a feel for how the data will look, Cortex XDR provides mock data. To see how the report would
 look with real data in environment, use the toggle above the report to use Real Data.
 Drag and drop widgets from the widget library to their desired position.
@@ -8412,7 +7530,7 @@ For incident-related widgets, also select the star to include only incidents tha
 - STEP 10 | Enter an optional Email Distribution or Slack workspace to send a PDF version of report. Select Add password for e-mailed report to set a password encryption.
 Ensure have #unique_342. STEP 11 | Save Template.
 - STEP 12 | After report completes, download it from the Reporting > Reports page.
-  372 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
  Monitor Cortex XDR Incidents
 The Incidents table lists all incidents in the Cortex XDR app.
@@ -8430,7 +7548,6 @@ The following table describes both the default and additional optional fields th
 Alerts Breakdown Assignee Email
 Manage multiple incidents with Actions.
 The total number of alerts and number of alerts by severity. Email address associated with the assigned incident owner.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 373 © 2020 Palo Alto Networks, Inc.
              Assigned To
     The user to which the incident is assigned. The assignee tracks which analyst is responsible for investigating the threat. Incidents that have not been assigned have a status of Unassigned.
 
@@ -8464,7 +7581,6 @@ The total number of alerts in the incident.
      Users
     Users affected by the alerts in the incident. If more than one user is affected, click on + <n> more to see the list of all users in the incident.
  From the Incidents page, right-click an incident to view the incident, and investigate the related assets, artifacts, and alerts. For more information see Investigate Incidents.
-374 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
 
  Monitor Administrative Activity
 From > Management Auditing, track the status of all administrative and investigative actions. Cortex XDR stores audit logs for 180 days. Use the page filters to narrow the results or Manage Columns and Rows to add or remove fields as needed.
@@ -8485,7 +7601,6 @@ Type of activity logged, one of the following:
 - Live Terminal—Remote terminal sessions created and actions taken in the file manager or task manager, a complete history of commands issued, their success, and the response.
 - Response—Remedial actions taken, for example to isolate a host and undo isolate host, or add file hash signature to block list, or undo add hash to block list
 - Result—Whether the action taken was successful or failed, and the result reason when available.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 375 © 2020 Palo Alto Networks, Inc.
 
    Field
    Description
@@ -8493,7 +7608,7 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 375 © 2020 Palo Alto Netw
 - Incident Management—Actions taken on incidents and on the assets, alerts, and artifacts in incidents.
 - Public API—Authentication activity using an associated Cortex XDR API key.
    User Name User who performed the action
-   376 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
+
 
  Monitor Agent Activity
 Viewing agent audit logs requires either a Cortex XDR Prevent or Cortex XDR Pro per Endpoint license.
@@ -8514,7 +7629,6 @@ Log message that describes the action. Domain to which the endpoint belongs. Uni
 If the action or activity failed, this field indicates the identified cause.
 Date and time when the action was received by the agent and reported back to Cortex XDR.
 The result of the action (Success, Fail, or N/A) Severity associated with the log:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 377 © 2020 Palo Alto Networks, Inc.
 
    Field
    Description
@@ -8555,7 +7669,6 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 377 © 2020 Palo Alto Netw
 - Restore
   Timestamp Date and time when the action occurred.
 XDR Agent Version Version of the Cortex XDR agent running on the endpoint.
-378 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring © 2020 Palo Alto Networks, Inc.
 
  Monitor Agent Operational Status
 From the Cortex XDR management console, have full visibility into the Cortex XDR agent operational status on the endpoint, which indicates whether the agent is providing protection according to its predefined security policies and profiles. By observing the operational status on the endpoint, identify when the agent may suffer from a technical issue or misconfiguration that interferes with the agent’s protection capabilities or interaction with Cortex XDR and other applications. The Cortex XDR agent reports the operational status as follows:
@@ -8589,7 +7702,7 @@ Linux
 - Anti-malware flow is asynchronous
 - Malware protection is not running
 - Exploit protection is not running
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring 379 © 2020 Palo Alto Networks, Inc.
+
 
    Status
     Description
@@ -8605,10 +7718,10 @@ Linux
 - Anti-malware flow is asynchronous
 - Malware protection is not running
 - Exploit protection is not running
-   380 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Monitoring
+
 
 ## Log Forwarding
-To stay informed and updated, easily forward Cortex XDRTM alerts and reports to an external syslog receiver, a Slack channel, or to email accounts.
+To stay informed and updated, easily forward Cortex XDR alerts and reports to an external syslog receiver, a Slack channel, or to email accounts.
 > Log Forwarding Data Types
 > Integrate Slack for Outbound Notifications
 > Integrate a Syslog Receiver
@@ -8644,13 +7757,12 @@ To configure a Slack notification, must first install and configure the Cortex X
 - STEP 1 | From Cortex XDR, select   > Settings > Integrations > External Applications.
 - STEP 2 | Select the provided link to install Cortex XDR on Slack workspace.
 are directed to the Slack browser to install the Cortex XDR app. only use this link to install Cortex XDR on Slack. Attempting to install from Slack marketplace will redirect to Cortex XDR documentation.
-384 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Log Forwarding © 2020 Palo Alto Networks, Inc.
 
 - STEP 3 | Click Submit.
 Upon successful installation, Cortex XDR displays the workspace to which connected.
 - STEP 4 | Configure Notification Forwarding.
 After integrate with Slack workspace, configure forwarding settings.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Log Forwarding 385 © 2020 Palo Alto Networks, Inc.
+
 
 ### Integrate a Syslog Receiver
 
@@ -8853,7 +7965,7 @@ Audit Logs|REPORTING|5|suser=test end=1584533117501 externalId=5820 cs1Label=ema
 
 #### Cortex XDR Log Format for IOC and BIOC Alerts
 
-Cortex XDRTM logs its IOC and BIOC alerts to the <kbd>Cortex Data Lake</kbd>.
+Cortex XDR logs its IOC and BIOC alerts to the <kbd>Cortex Data Lake</kbd>.
 - If configure Cortex XDR to forward logs in <kbd>legacy format</kbd>, when alert logs are forwarded from Cortex Data Lake, each log record has the following format:
 
 > Syslog format:
@@ -8926,7 +8038,7 @@ edrData/causality_actor* | Fields that begin with this prefix describe attribute
 ---
 
 #### Cortex XDR Analytics Log Format
-- Cortex XDRTM Analytics logs its alerts to the Cortex Data Lake as analytics alert logs. If you configure Cortex XDR to forward logs in legacy format, each log record has the following format:
+- Cortex XDR Analytics logs its alerts to the Cortex Data Lake as analytics alert logs. If you configure Cortex XDR to forward logs in legacy format, each log record has the following format:
 
 
 Syslog format:
@@ -8987,12 +8099,12 @@ Syslog format:
 > Manage a Child Tenant
         437
 
-  438 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security © 2020 Palo Alto Networks, Inc.
+
 
  About Managed Security
 Cortex XDR supports pairing multiple Cortex XDR environments with a single interface enabling Managed Security Services Providers (MSSP) and Managed Detection and Response (MDR) providers to easily manage security on behalf of their clients.
 Pairing an MSSP/MDR (parent) tenant with a client (child) tenant requires a separate Cortex XDR license for the parent tenant. To ensure tenant access is acceptable to the parent and child, alike, both need to approve the pairing from within the Cortex XDR app.
- CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 439 © 2020 Palo Alto Networks, Inc.
+
 
  Cortex XDR Managed Security Access Requirements
 To set up a managed security pairing, and child tenants must activate the Cortex XDR app, provide role permission, and define access configurations.
@@ -9008,7 +8120,7 @@ The following table describes what and where and child tenants need to define:
      Parent
      Hub
     Ensure the user name added to the child tenant’s CSP account has Admin role permissions on the parent Cortex XDR instance.
-  440 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security © 2020 Palo Alto Networks, Inc.
+
 
  Set up Managed Threat Hunting
 Cortex XDR provides the Managed Threat Hunting service as an add-on security service. To use Cortex XDR Managed Threat Hunting, must purchase a Managed Threat Hunting license and have a Cortex XDR Pro for Endpoint license with a minimum of 500 endpoints.
@@ -9025,7 +8137,7 @@ one.
 3. Save changes.
 - STEP 3 | (Optional) If desired, forward Managed Threat Hunting alerts to external sources such as email or slack from the > Settings > Notifications page.
 This will forward both the alert itself and the detailed report in a PDF format.
-     CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 441 © 2020 Palo Alto Networks, Inc.
+
 
  Pair a Parent Tenant with Child Tenant
 After and child tenants have acquired the appropriate role permissions, pair tenant to child tenants.
@@ -9052,12 +8164,11 @@ select Approve.
 - STEP 6 | Verify the parent-child pairing.
 After pairing has been approved, in the child tenant’s Cortex XDR app, when navigating to a page managed by a parent configuration, the child user is notified by a flag who is managing their security:
 In the child tenant’s, pages managed by appear with a read-only banner. Child tenant users cannot perform any actions from these pages, but can view the configurations create on their behalf.
-442 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security © 2020 Palo Alto Networks, Inc.
 
   Unpairing a Parent and Child Tenant
 When want to discontinue the pairing with a child tenant, in the Tenant Management page, right- click the tenant row and select Request Unpairing. For the unpairing to take effect, the child tenant must approve the request.
 When a child wants to unpair, the child user needs to navigate to and select Unpair.
-  CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 443 © 2020 Palo Alto Networks, Inc.
+
 
  Manage a Child Tenant
 Pairing a child tenant allows to view and investigate the child tenant Cortex XDR data, and initiate security actions on their behalf.
@@ -9087,7 +8198,6 @@ After successfully pairing child tenant, navigate to child tenant details.
   Status Indicator (   )
 Identifies whether the child tenant is connected.
    444
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security © 2020 Palo Alto Networks, Inc.
 
    Field
     Description
@@ -9115,7 +8225,6 @@ Name of the configuration managing the profile actions.
                   With Cortex XDR managed security, view Cortex XDR child tenant data.
 By default, Cortex XDR displays data for tenant. To display the child tenant data, select the tenant from the drop-down.
 Access the following child tenant data:
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 445 © 2020 Palo Alto Networks, Inc.
 
  - Incidents
 1. Navigate to Investigation > Incidents.
@@ -9143,10 +8252,10 @@ To manage security actions on behalf of child tenant, need to first create and a
 - Rules > Rules Exceptions
 - Investigation>Exclusions
 - Investigation > Starred Alerts
-  446 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE © 2020 Palo Alto Networks, Inc.
+
 | Managed Security
 
- STEP 2 | STEP 3 | STEP 4 |
+- STEP 2 | STEP 3 | STEP 4 |
 - STEP 5 | STEP 6 | STEP 7 |
 In the Configuration panel (1), select + Create New (2).
 In the Create New Configuration window, enter the configuration Name and Description.
@@ -9166,7 +8275,6 @@ After you’ve created and assigned a configuration for each of child tenant’s
 - Investigation > Starred Alerts
 - STEP 2 | In the corresponding Configuration panel, select the action configuration created and allocated to child tenant.
 The corresponding security action Table displays the actions managing the child tenant.
-CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 447 © 2020 Palo Alto Networks, Inc.
 
   STEP 3 | Depending on the security action, select:
 - + Add BIOC to create a BIOC Rule.
@@ -9175,4 +8283,3 @@ CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security 447 © 2020 Palo Alt
 - + Add Starring Configuration to create a started alert inclusion.
 - + New Profile to create a new endpoint profile.
 Profiles create are automatically cloned to child tenants.
-  448 CORTEX XDRTM PRO ADMINISTRATOR’S GUIDE | Managed Security

@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - Prisma Cloud - 3
+title: Palo Alto Networks - Prisma Generating Report
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -16,7 +16,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Prisma Cloud - Generating Reports Note
+# Prisma Cloud - Generating Report 
 
 --
 
@@ -163,7 +163,19 @@ An Alert report can be downloaded in which file format?
 
 
 
-
+"groups": {},
+"toPort": 15000,
+"fromPort": 80,
+"ipRanges": {
+  "items": [
+    {
+      "cidrIp": "10.0.0.0/8"
+    }
+  ]
+},
+"ipProtocol": "tcp",
+"ipv6Ranges": {},
+"prefixListIds": {}
 
 
 

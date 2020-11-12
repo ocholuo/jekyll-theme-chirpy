@@ -20,6 +20,17 @@ image: /assets/img/note/prisma.png
 
 ---
 
+```bash
+
+# data lake > log forwarding > query empty
+
+# Data Lake Terabyte?
+
+
+```
+
+---
+
 ## overview
 
 Palo Alto Networks® Cortex Data Lake
@@ -66,28 +77,23 @@ host Cortex Data Lake in the following regions:
 
 ![location](https://i.imgur.com/34pCbp3.png)
 
-
 ![privacy](https://i.imgur.com/yP1tuvE.png)
 
 ![compliance](https://i.imgur.com/54yjXdP.png)
 
+---
+
 ## Cortex Data Lake Log Sources
+
 Here are the products and services that can send logs to Cortex Data Lake:
-1. Palo Alto Networks Firewalls: onboard individual firewalls directly to Cortex Data Lake.
-   1. Use the Explore app to view all log records that the firewalls forward to Cortex Data Lake.
-2. Panorama-Managed Firewalls: onboard firewalls to Cortex Data Lake at scale, instead of onboarding each individual firewall. All Cortex Data Lake logs are visible directly in Panorama.
-3. Prisma Access:
-   1. With Prisma Access, Palo Alto Networks deploys and manages the security infrastructure globally to secure remote networks and mobile users.
-   2. Prisma Access logs directly to Cortex Data Lake.
-   3. can view the logs, ACC, and reports from Panorama for an aggregated view into remote network and mobile user traffic.
-   4. To enable logging for Prisma Access, must purchase a Cortex Data Lake license.
-   5. Log traffic does not use the licensed bandwidth purchased for Prisma Access.
-4. Cortex XDR: Cortex XDR alerts are automatically written to Cortex Data Lake as log records.
-   1. This is done so that other apps can read and respond to alerts.
-   2. These log records are not visible in Explore;
-   3. however, can use the Log Forwarding app to
-      1. forward Cortex XDR alerts to the email or Syslog destination
-      2. configure email alert notifications within Cortex XDR.
+
+sources | log type | Note
+---|---|---
+**Palo Alto Networks Firewalls** [link](https://www.paloaltonetworks.com/products/product-selection) | firewalls log | onboard individual firewalls directly to Cortex Data Lake. Use the `Explore app` to view all log records that the firewalls forward to Cortex Data Lake.
+**Panorama-Managed Firewalls** [link](https://www.paloguard.com/Panorama.asp)| firewalls log | onboard firewalls to Cortex Data Lake at scale, instead of onboarding each individual firewall. All Cortex Data Lake logs are visible directly in Panorama. 
+**Prisma Access** | the logs, ACC, and reports from Panorama for remote network and mobile user traffic | Prisma Access deploys and manages the security infrastructure globally to secure remote networks and mobile users. Prisma Access logs directly to Cortex Data Lake. <br> - To enable logging for Prisma Access, must purchase a Cortex Data Lake license. <br> - Log traffic does not use the licensed bandwidth purchased for Prisma Access.
+**Cortex XDR** | Cortex XDR alerts are automatically written to Cortex Data Lake as log records | other apps can read and respond to alerts. <br> - These log records are not visible in `Explore`; <br> - can use `Log Forwarding app` to forward XDR alerts to the email or Syslog destination and configure email alert notifications within XDR.
+
 
 ![Screen Shot 2020-10-28 at 01.20.32](https://i.imgur.com/6BY7k4M.png)
 
@@ -201,7 +207,6 @@ activation
 
 ![Screen Shot 2020-10-28 at 11.35.31](https://i.imgur.com/Nc7vYGW.png)
 
-![Screen Shot 2020-10-28 at 11.35.41](MySQL Circuit Breaker Open)
 
 ![Screen Shot 2020-10-28 at 11.36.32](https://i.imgur.com/F7eiARF.png)
 

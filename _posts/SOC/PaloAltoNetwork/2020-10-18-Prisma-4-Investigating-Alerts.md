@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - Prisma Cloud - 4
+title: Palo Alto Networks - Prisma Investigating Alerts with RQL
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -16,7 +16,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Prisma Cloud - Investigating Security Issues with RQL
+# Investigating Alerts with RQL
 
 --
 
@@ -36,13 +36,25 @@ Insights of RQL
 
 Types of RQL Constructs
 - `Config queries`
-  - provide a deeper understanding of resource configurations and vulnerabilities in the cloud environment.
+  - resource configurations and vulnerabilities in the cloud environment.
 - `Event queries`
-  - to search and `audit console and API access events` in the cloud environment.
+  - `search and audit console and API access events` in the cloud environment.
 - `Network queries`
-  - to `monitor network traffic to and from` assets deployed in the cloud environment, to find previously unidentified network security risks.
+  - `monitor network traffic to and from` assets deployed in the cloud environment, to find previously unidentified network security risks.
+
+The query syntax includes two main elements:
+- Query type and Filter.
+- The filter incorporates the API that was used to ingest the JSON attribute that defines the resource or event.
+  - Combining Filters
+    - combine more than one filter or attribute using `AND` and `OR`.
+  - Using Operators
+    - use `= , > , < , IN, and others`
+  - Using the JSON Rule Attribute
+    - Use the `json.rule attribute` to query or filter specific elements included in the JSON document.
+    - `config where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = "viewerCertificate.certificateSource CONTAINS cloudfront"`
 
 
+![large](https://i.imgur.com/LfAywqp.png)
 
 <kbd>Demo: Prisma Cloud Investigate</kbd>
 
@@ -61,7 +73,7 @@ Types of RQL Constructs
 
 Prisma Cloud ingests various services and associated configuration data from AWS, Azure, GCP, and Alibaba cloud services.
 
-Features of Config Queries
+Features of `Config Queries`
 - Retrieve
   - Retrieve resource information and identify misconfigurations
 - Gain
@@ -71,7 +83,7 @@ Features of Config Queries
 
 
 Config Query Options
-- When select `“config where”` for query, then have a number of choices available to start building your query.
+- select `“config where”` for query, number of choices available:
 - `api.name​`
   - Cloud APIs are integral to the cloud platform.
   - to identify a specific configuration aspect of the resource.
@@ -86,6 +98,17 @@ Config Query Options
 - `finding.severity` and `finding.type`
   - to identify host related security findings.
   - This option requires data that is ingested from third-party platforms that have been integrated with Prisma Cloud.
+- `json.rule`
+  - The `json.rule` is applied with an `operator`.
+  - Examples of operators include `greater than, equals, does not equal, contains, and exist`.
+- `JOIN` and `ADDCOLUMN`
+  - `JOIN`: search against multiple resource types (up to three).
+  - Up to three API calls are included in a query.   
+  - `ADDCOLUMN`: dynamically display columns for the config query results that are displayed on screen.
+- `Functions`
+  - performs a calculation on specific data that matches the clause contained in the function.
+  - Examples of functions include `_DateTime.ageInDays`, `_IPAddress.inRange`, and `_Port.inRange`.
+
 
 
 <kbd>Demo: RQL Config Query</kbd>
@@ -129,10 +152,11 @@ Event Query Options
 - `json.rule`
   - to specify a json rule in the query
 - `operation`
-  - n action performed by users on resources.
+  - action performed by users on resources.
   - If an operation is specified, Prisma Cloud will offer a list of matches to the operation criteria.
-- `user`
+- `user` or `role`
   - to identify a specific user or users
+- `Anomaly.type`
 
 
 <kbd>Demo: RQL Event Query</kbd>
@@ -157,14 +181,20 @@ Features of Network Queries
   - discover network traffic patterns and security risks.
 
 
-Network Query Options
-- RQL network queries can be used to determine all Internet traffic hitting sensitive workloads such as databases, and instances used to mine crypto currencies.
-- `bytes >`
-- cloud.account
-- cloud.region
-- destination or source IP, port, public network, resource IN/ resource where or state
-- packets >
-- protocol
+> this query type does not have `api.name or json.rule` as attributes.
+
+Network Query Attributes
+- Bytes, accepted.bytes, reponse.bytes, packets
+- Dest.ip / port / publicnetwork / resource / state / country
+- Source.ip / publicnetwork / resource / state / country
+- IN resource where finding.severity, finding.type, finding.source, securitygroup.name, virtualnetwork.name, role
+- Host vulnerability data from third party feeds:
+  - Qualys
+  - Tenable
+  - AWS GuardDuty
+  - AWS Inspector
+- Protocol
+- Tag
 
 
 <kbd>Demo: RQL Network Query</kbd>
@@ -181,6 +211,40 @@ Network Query Options
 ![Screen Shot 2020-10-22 at 16.29.06](https://i.imgur.com/svDOcS2.png)
 
 ![Screen Shot 2020-10-22 at 16.29.55](https://i.imgur.com/SSR2ui3.png)
+
+
+---
+
+## Advanced RQL Queries
+
+**Operators with JSON Arrays**
+- Operator `?` opens the array.
+- Operator `@` represents the current item being processed.
+
+example
+- examine a particular block in the JSON object so that you are matching only that block and no others:
+- `config where api.name='aws-ec2-describe-security-groups' AND json.rule='ipPermissions[?(@.fromPort==0)].ipRanges[*] contains 0.0.0.0/0'`
+
+![Screen Shot 2020-11-04 at 00.21.37](https://i.imgur.com/yscbWu3.png)
+
+
+**JOIN**
+- Use JOINs to get configuration data from two different APIs by combining two different conditions. 
+- Use JOINs for two different APIs
+  - to get configuration data from two different APIs by combining two different conditions:
+  - `config where api.name=".." as X; config where api.name="..." as Y; filter "$.X... <operator> $.Y"; show (X;|Y;)`
+- List EC2 instances as X
+  - `config where api.name = 'aws-ec2-describe-instances' as X;`
+- List subnets as Y
+  - `config where api.name = 'aws-ec2-describe-subnets' as Y;`
+- Set the filter
+  - `filter '$.X.subnetId == $.Y.subnetId and $.Y.mapPublicIpOnLaunch is true'; show X;`
+- List instances in subnets that have public IPs auto-assigned to them
+  - `config where api.name = 'aws-ec2-describe-instances' as X; config where api.name = 'aws-ec2-describe-subnets' as Y; filter '$.X.subnetId == $.X.subnetId and $.Y.mapPublicIpOnLaunch is true'; show X;`
+- JSON for the subnetId
+  - You can display the Y results for the query and then open the JSON config for a subnet resource listed in the results table:
+  - `config where api.name = 'aws-ec2-describe-instances' as X; config where api.name = 'aws-ec2-describe-subnets' as Y; filter '$.X.subnetId == $.X.subnetId and $.Y.mapPublicIpOnLaunch is true'; show Y;`
+
 
 
 ---

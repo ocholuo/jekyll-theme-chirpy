@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - Prisma Cloud - 6
+title: Palo Alto Networks - Prisma Inbound and Outbound
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -22,53 +22,81 @@ image: /assets/img/note/prisma.png
 
 ## Overview of Integration Core Concepts
 
-Prisma Cloud can be used to integrate with your existing security workflows and with the technologies you already use.
+Prisma Cloud can be used to integrate with existing security workflows and with the technologies you already use.
 
 
-Integrations
-- In Prisma Cloud, you can integrate with your existing tools to achieve compliance and manage security risks across your Amazon Web Services, Microsoft Azure, Google Cloud Platform, and Alibaba Cloud environments.
+**Integrations**
+- In Prisma Cloud, integrate with existing tools to achieve compliance and manage security risks across` Amazon Web Services, Microsoft Azure, Google Cloud Platform, and Alibaba` Cloud environments.
 - Options
   - Prisma Cloud provides multiple out-of-the-box integration options, which can be used to integrate Prisma Cloud into existing security workflows and technologies, as and if needed.
 - Support
   - Integration support is available for both data ingestion, and for outbound alert notifications.
 - Ability
   - Prisma Cloud supports the ability to enable, disable, or delete integrations.
-  - So if you just need to take a third party platform offline, you can disable that platform in Prisma Cloud and not have to delete it and then reintegrate the target platform over again.
+  - So if you just need to take a third party platform offline, disable that platform in Prisma Cloud and not have to delete it and then reintegrate the target platform over again.
 - Process
   - The integration process for each application differs slightly.
   - Procedures are available in the Help Center that describe the specific steps required for each third-party platform.
 
+![Screen Shot 2020-11-03 at 16.24.20](https://i.imgur.com/AneWt6h.png)
+
+
+Integration Types
+- Outbound and inbound (Export/Notifications and Ingest)
+  - **Outbound - Export/Notifications**
+  - to forward alerts. The advantage of using notifications is that there may be too many alerts to manage from the Prisma Cloud console. You also may want a special notification for highly critical alerts.
+  - **Inbound - Ingest/Host Findings**
+  - Inbound integrations provide host vulnerability data.
+  - These findings are presented in resource details under the Findings tab.
+  - Common inbound integrations are as follows:
+    - AWS GuardDuty
+    - AWS Inspector
+    - Qualys
+    - Tenable
 
 <kbd>Demo: Third-Party Platform Support</kbd>
 
-setting > integration
-
-![Screen Shot 2020-10-22 at 18.27.25](https://i.imgur.com/s4WPi03.png)
-
-![Screen Shot 2020-10-22 at 18.28.11](https://i.imgur.com/yaG0e6x.png)
-
-![Screen Shot 2020-10-22 at 18.28.49](https://i.imgur.com/ZDxCxUO.png)
-
-![Screen Shot 2020-10-22 at 18.28.58](https://i.imgur.com/tGAJRQB.png)
-
-![Screen Shot 2020-10-22 at 18.29.09](https://i.imgur.com/ABPY4UI.png)
+1. setting > integration
+   1. ![Screen Shot 2020-10-22 at 18.27.25](https://i.imgur.com/s4WPi03.png)
+   2. ![Screen Shot 2020-10-22 at 18.28.11](https://i.imgur.com/yaG0e6x.png)
+2. Alert > Notification Templates
+3. Alert > Alert Rules
+   1. ![Screen Shot 2020-10-22 at 18.28.49](https://i.imgur.com/ZDxCxUO.png)
+   2. ![Screen Shot 2020-10-22 at 18.28.58](https://i.imgur.com/tGAJRQB.png)
+   3. ![Screen Shot 2020-10-22 at 18.29.09](https://i.imgur.com/ABPY4UI.png)
 
 
 ---
 
 ## Inbound Integrations
 
-Prisma Cloud supports the configuration of inbound integrations for the detection and analysis of host vulnerabilities in your cloud infrastructure.
+Prisma Cloud supports the configuration of inbound integrations for the `detection and analysis of host vulnerabilities` in cloud infrastructure.
 
 Inbound Integration Platforms
 - Prisma Cloud can integrate with two platforms.
 - `Qualys`
-  - Qualys specializes in **vulnerability management security software**.
-  - Prisma Cloud integrates with the `Qualys` platform to `ingest and visualize vulnerability data` for your resources that are deployed on the AWS and Azure cloud platforms.
+  - **vulnerability management security software**.
+  - Prisma Cloud integrates with the `Qualys` platform to `ingest and visualize vulnerability data` for resources that are deployed on the AWS and Azure cloud platforms.
+  - Qualys Details
+    - Findings can be viewed from the Audit Trail under the Findings tab.
+    - The Finding Type will indicate the source of the Finding
+      - (AWS GuardDuty, AWS Inspector, Qualys, or Tenable).
+    - Qualys integration works only with AWS and Azure (GCP on roadmap).
+    - Data from host finding can be obtained as part of RQL using the 'config where' query type.
+
+![Screen Shot 2020-11-03 at 19.38.35](https://i.imgur.com/CcrBGQG.png)
+
+
 - `Tenable`
-  - `Tenable.io` is a cloud-hosted **Vulnerability Management solution**
-  - designed to provide accurate visibility and insight about dynamic assets and vulnerabilities in changing environments like the public cloud.  
-  - Prisma Cloud integrates with the `Tenable.io` platform to ingest and present vulnerability data within Prisma Cloud.
+  - cloud-hosted **Vulnerability Management solution**
+  - provides actionable insight into entire infrastructure's security risks. Prisma Cloud ingest its host findings to generate alerts.
+  - provide accurate visibility and insight about dynamic assets and vulnerabilities in changing environments like the public cloud.  
+  - ingest and present vulnerability data within Prisma Cloud.
+  - The `Tenable.io integration` works with three cloud service providers: `AWS, Azure, and GCP`.
+  - Qualys integration works only with `AWS and Azure`.
+  - Data from host finding can be obtained as part of RQL using the 'config where' query type.
+
+![Screen Shot 2020-11-03 at 19.40.52](https://i.imgur.com/572hXis.png)
 
 
 <kbd>Demo: Access Help for Inbound Integrations</kbd>
@@ -104,6 +132,9 @@ Prisma Cloud provides support for the outbound integrations for adding third-par
 
 Outbound Integration Platforms
 - Prisma Cloud can integrate with various platforms.
+
+
+[detailed step](https://beacon.paloaltonetworks.com/uploads/resource_courses/targets/1654399/original/index.html#/page/5ed91f6b64727667347e5f82)
 
 
 <kbd>AWS Security Hub</kbd>
@@ -162,7 +193,20 @@ Outbound Integration Platforms
 <kbd>Webhooks</kbd>
 - Integrate the Prisma Cloud Service with Webhooks to send `Prisma Cloud alerts` to Webhooks
 - and pass information to any third-party integrations that are not natively supported on the Prisma Cloud service.
+- Prisma Cloud can integrate with the Splunk log management system.
+  - There are two methods: natively and via AWS SQS.
+  - The natively method requires HTTP event collector URL and token.
+  - AWS SQS uses the SQS integration + Lambda.
+  - The resource config is sent with the notification and a JSON file is provided with the payload.
 
+Integration Steps
+- Prisma Cloud Steps
+  - Set up a `Splunk HTTP Event Collector (HEC)`:
+  - Use the Splunk documentation to set up the HEC.
+  - For source type, use `_json`.
+  - Verify the HEC is Enabled.
+- Prisma Cloud Steps
+  - Navigate to Settings > Integrations > Add New > Splunk
 
 
 <kbd>Demo: Access Help for Outbound Integrations</kbd>
