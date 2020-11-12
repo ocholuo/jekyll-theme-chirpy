@@ -1,8 +1,8 @@
 ---
-title: Security Orchestration
+title: SecConcept - Security Orchestration
 date: 2020-11-11 11:11:11 -0400
 categories: [SOC]
-tags: [SOC]
+tags: [SOC, SecConcept]
 toc: true
 image:
 ---

@@ -3,7 +3,7 @@ title: Cyber Kill Chain
 author: Cotes Chung
 date: 2020-09-15 11:11:11 -0400
 categories: [SOC]
-tags: [SOC, CKC]
+tags: [SOC, SecConcept, CKC]
 toc: true
 image:
 ---

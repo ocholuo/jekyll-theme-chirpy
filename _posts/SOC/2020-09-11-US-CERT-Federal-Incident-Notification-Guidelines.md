@@ -3,7 +3,7 @@ title: US-CERT Federal Incident Notification Guidelines
 author: Cotes Chung
 date: 2020-09-11 11:33:00 -0400
 categories: [SOC]
-tags: [SOC]
+tags: [SOC, SecConcept]
 toc: true
 image:
 ---
