@@ -10,65 +10,26 @@
 
 # • Application Security/ Threat Assessment with/without tools and Recommendation
 
-security assessment should broadly include two components:
-
-- **Security review**: A collaborative process that includes `identifying security issues and their level of risk, preparing a plan to mitigate these risks`.
-  1. Create a core assessment team.
-  2. Review existing security policies.
-  3. Create a database of IT assets.
-  4. Understand threats and vulnerabilities.
-  5. Estimate the impact. 
-     1. For example, what impact would a credit card data breach have on your business? 
-     2. The impact could be in monetary terms, loss of clients, or loss of brand value or credibility. 
-     3. Categorize the impact of a cyberattack as “high, “medium,” or “low” based on its severity and estimated cost.
-  6. Determine the likelihood. 
-     1. Categorize the likelihood that each potential risk would happen as “high,” “medium,” or “low.”
-  7. Plan the controls. 
-     1. List the `existing control systems` in place and outline further actions that can help mitigate the identified risks. 
-     2. These controls can include a `change in policies or procedures, application procurement, training content and configurations, or implementation of new applications and/or hardware`.
-  8. creating a risk matrix like the example below to assess your security posture.
-     1. Prepare a report that summarizes your findings
-     2. Take steps to implement the needed actions
-
-- **Security testing**: The process of `finding vulnerabilities` in software applications or processes.
-  - `Cyberattack simulation tests`. Authorized simulation attacks on your computer system help identify the weaknesses as well as the strengths of your existing system. For example, a phishing simulation tool can help identify risky employee behavior while training them to spot scam emails.
-  - `Security scanning`. Use security software to run a complete scan of applications, networks, and devices at least once a month to identify threats and risks. Most security software provides real-time and automatic scanning features. If you don't have security software in place, implementing such a system should be a priority.
-  - `Vulnerability scanning`. vulnerability assessment is a set of processes that help you identify vulnerabilities and rate them based on the severity of issue they can potentially cause. Some ways identify vulnerabilities include:
-    - Check whether you are using outdated versions of software.
-    - Use an Active Directory management tool to identify users with weak domain passwords. Eighty-one percent of security breaches leveraged stolen or weak passwords in 2017.
-    - Use vulnerability management software to automatically scan your systems and detect weaknesses.
-  - `Survey employees to identify weaknesses`. 
-    - human error is a major cause of cyber attacks. 
-    - Interviewing employees helps to identify risky behavior and correct bad practices. 
-    - Here are some sample questions ask when conducting your security assessment, as well as some potential responses to look out for and recommended actions take to mitigate risk:
-  - `Ensure supplier compliance`.
-    - ensure security compliance within your organization,
-    - verify the credentials of your vendors and other business partners. 
-    - Electronics company Acer suffered a breach because of a security issue at one of its third-party payment processing companies. The data of over 34,000 customers was reported stolen.
-    - As we saw above, the breach at Target was also engineered when hackers targeted a third-party vendor. Routinely check with your suppliers and business partners through surveys and questionnaires to ensure that they arecompliant with all industry regulations.
-
----
-
 # • Secure Coding Review and Analysis
 
-- applications require a “last look” to ensure that the application and its’ components, are free of security flaws. 
-- A secure code review serves to `detect all the inconsistencies` that weren’t found in other types of security testing – and to ensure the `application’s logic and business code` is sound. 
-- Reviews can be done via both manual and automated methods 
+- applications require a “last look” to ensure that the application and its’ components, are free of security flaws.
+- A secure code review serves to `detect all the inconsistencies` that weren’t found in other types of security testing – and to ensure the `application’s logic and business code` is sound.
+- Reviews can be done via both manual and automated methods
 - **cut down on time and resources it would take if vulnerabilities were detected after release**. The security bugs being looked for during a secure code review have been the cause of countless breaches which have resulted in billions of dollars in lost revenue, fines, and abandoned customers.
 - **focus on finding flaws in areas**:
-  - Authentication, authorization, security configuration, 
-  - session management, logging, 
-  - data validation, error handling, and encryption. 
+  - Authentication, authorization, security configuration,
+  - session management, logging,
+  - data validation, error handling, and encryption.
 - Code reviewers should be well-versed in the language of the application they’re testing, as well as knowledgeable on the secure coding practices and security controls that they need to be looking out for.
-- **need to understand the full context of the application**, 
-  - including its intended audience and use cases 
-  - Without that context, code may look secure at first glance, but easily be attacked. 
+- **need to understand the full context of the application**,
+  - including its intended audience and use cases
+  - Without that context, code may look secure at first glance, but easily be attacked.
   - Knowing the context by which an app is going to be used and how it will function is the only way to certify that the code adequately protects whatever you’ve relegating to it.
 
 - **5 Tips to a Better Secure Code Review**:
   1. **Produce code review checklists** to ensure consistency between reviews and by different developers
      1. all reviewers are working by the same `comprehensive checklist`. reviewers can forget to certain checks without a well-designed checklist.
-     2. enforce time constraints as well as `mandatory breaks` for manual code reviewers. especially when looking at high value applications. 
+     2. enforce time constraints as well as `mandatory breaks` for manual code reviewers. especially when looking at high value applications.
 
   2. Ensure a **positive security culture by not singling out developers**
      1. It can be easy, especially with reporting by some tools being able to compare results over time, to point the finger at developers who routinely make the same mistakes. It’s important when building a security culture to refrain from playing the blame game with developers; this only serves to deepen the gap between security and development. Use your findings to help guide your security education and awareness program, using those common mistakes as a jumping off point and relevant examples developers should be looking out for.
@@ -135,7 +96,7 @@ security assessment should broadly include two components:
     - 禁止访问一些文件系统的操作，比如创建新的设备、修改文件属性等；
     - 禁止模块加载。
   - 这样，就算攻击者在容器中取得了 root 权限，也不能获得本地主机的较高权限，能进行的破坏也有限。
-- 默认情况下，Docker采用白名单机制，禁用必需功能之外的其它权限。 
+- 默认情况下，Docker采用白名单机制，禁用必需功能之外的其它权限。
 - 当然，用户也可以根据自身需求来为 Docker 容器启用额外的权限。
 
 
@@ -158,9 +119,9 @@ security assessment should broadly include two components:
 # • Exposure to Application Security threat models
 
 Threat modeling works to `identify, communicate, and understand threats` and `mitigations within the context` of protecting something of value.
-- Threat modeling can be applied to a wide range of things, including software, applications, systems, networks, distributed systems, things in the Internet of things, business processes, etc. 
-- There are very few technical products which cannot be threat modeled; more or less rewarding, depending on how much it communicates, or interacts, with the world. 
-- Threat modeling can be done at any stage of development 
+- Threat modeling can be applied to a wide range of things, including software, applications, systems, networks, distributed systems, things in the Internet of things, business processes, etc.
+- There are very few technical products which cannot be threat modeled; more or less rewarding, depending on how much it communicates, or interacts, with the world.
+- Threat modeling can be done at any stage of development
 
 Most of the time, a threat model includes:
 - A description / design / model of what you’re worried about
@@ -196,12 +157,12 @@ Most threat model methodologies answer one or more of the following questions in
 - You will also need to gather people from different roles with sufficient technical and risk awareness to agree on the framework to be used during the Threat modeling exercise.
 
 1. **Identify threats**.
-   1. model the system either with data flow diagrams (DFDs) or UML deployment diagrams. 
-   2. From these diagrams, identify entry points to your system such as data sources, application programming interfaces (APIs), Web services and the user interface itself. 
-   3. Because an adversary gains access to your system via entry points, they are your starting points for understanding potential threats. 
-   4. To help identify security threats you should add "privilege boundaries" with dotted lines onto your diagrams. 
+   1. model the system either with data flow diagrams (DFDs) or UML deployment diagrams.
+   2. From these diagrams, identify entry points to your system such as data sources, application programming interfaces (APIs), Web services and the user interface itself.
+   3. Because an adversary gains access to your system via entry points, they are your starting points for understanding potential threats.
+   4. To help identify security threats you should add "privilege boundaries" with dotted lines onto your diagrams.
    5. Figure 1 depicts an example deployment diagram used to explain the boundaries applicable to testing a relational database. A privilege boundary separates processes, entities, nodes and other elements that have different trust levels. Wherever aspects of your system cross a privilege boundary, security problems can arise. For example, your system's ordering module interacts with the payment processing module. Anybody can place an order, but only manager-level employees can credit a customer's account when he or she returns a product. At the boundary between the two modules, someone could use functionality within the order module to obtain an illicit credit.
-2. **Understand the threat(s)**. 
+2. **Understand the threat(s)**.
    1. To understand the potential threats at an entry point, you must identify any security-critical activities that occur and imagine what an adversary might do to attack or misuse your system. Ask yourself questions such as "How could the adversary use an asset to modify control of the system, retrieve restricted information, manipulate information within the system, cause the system to fail or be unusable, or gain additional rights. In this way, determine the chances of the adversary accessing the asset without being audited, skipping any access control checks, or appearing to be another user. To understand the threat posed by the interface between the order and payment processing modules, you would identify and then work through potential security scenarios. For example, an adversary who makes a purchase using a stolen credit card and then tries to get either a cash refund or a refund to another card when he returns the purchase.
 3. Categorize the threats. To categorize security threats, consider the STRIDE (Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege) approach. Classifying a threat is the first step toward effective mitigation. For example, if you know that there is a risk that someone could order products from your company but then repudiate receiving the shipment, you should ensure that you accurately identify the purchaser and then log all critical events during the delivery process.
 4. Identify mitigation strategies. To determine how to mitigate a threat, create a diagram called a threat tree. At the root of the tree is the threat itself, and its children (or leaves) are the conditions that must be true for the adversary to realize that threat. Conditions may in turn have subconditions. For example, under the condition that an adversary makes an illicit payment. The fact that the person uses a stolen credit card or a stolen debit/check card is a subcondition. For each of the leaf conditions, you must identify potential mitigation strategies; in this case, to verify the credit card using the XYZ verification package and the debit card with the issuing financial institution itself. Every path through the threat tree that does not end in a mitigation strategy is a system vulnerability.
@@ -213,4 +174,3 @@ Most threat model methodologies answer one or more of the following questions in
 
 
 # • Experience and desire to work in a management consulting environment that requires regular travel
- 
