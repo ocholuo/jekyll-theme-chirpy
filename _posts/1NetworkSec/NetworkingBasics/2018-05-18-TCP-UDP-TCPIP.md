@@ -1,11 +1,11 @@
 ---
-title: Networking Basics - TCP & UDP, TCP/IP & OSI Model
+title: NetworkSec - TCP & UDP, TCP/IP & OSI Model
 # author: Grace JyL
 date: 2018-05-18 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [NetworkSecurity, NetworkingBasics]
-tags: [NetworkSecurity, TCP]
+categories: [NetworkSec, NetworkingBasics]
+tags: [NetworkSec, TCP]
 math: true
 # pin: true
 toc: true
@@ -16,7 +16,7 @@ image: /assets/img/note/tls-ssl-handshake.png
 
 ---
 
-# Networking Basics: TCP & UDP, TCP/IP & OSI Model
+# TCP & UDP, TCP/IP 
 
 The **Transmission Control Protocol/Internet Protocol (TCP/IP)** suite
 - created by the `U.S. Department of Defense (DoD)`
@@ -25,6 +25,7 @@ The **Transmission Control Protocol/Internet Protocol (TCP/IP)** suite
 The **Open Systems Interconnection Basic Reference Model (OSI Model)**
 - an abstract description for network protocol design
 - developed as an effort to standardize networking.
+
 ---
 
 ## The OSI Model
