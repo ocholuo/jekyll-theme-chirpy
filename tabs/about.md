@@ -15,12 +15,15 @@ title: Grace L
 
 Bright, eager, passionate practician, and an enthusiast of Information Security with an MS (Hons.) in Cyber Security and Information Assurance. 
 
-> quick, imaginative, and strategic mind
-> quick learner and like to take every chance to improve the knowledge and learn new technology. 
-> Highly curious, goal-oriented
-> always passionate, always up for a challenge and unforeseen possibilities
+> Quick, imaginative, and strategic mind;
 > 
-> like breaking into things; both physically and virtually.
+> Quick learner and like to take every chance to improve the knowledge and learn new technology;
+> 
+> Highly curious, goal-oriented;
+> 
+> Always passionate, always up for a challenge and unforeseen possibilities;
+> 
+> Like breaking into things; both physically and virtually;
 
 Currently, I work as a Cloud Security Analyst and spend my days studying courses for my CISSP& OSCP certification, being involved in projects for courses like Network Security, Secure Computer Systems and Software development. 
 
