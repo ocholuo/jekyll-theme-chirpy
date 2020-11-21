@@ -42,11 +42,11 @@ sleepy....
 
 Project/LAB |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-[JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03 | ✔️
+[JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03/20 | ✔️
 **codecamp** |
-[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
+[Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20 | ✏️
 **Web Security Academy** |
-[SQL injection](https://portswigger.net/web-security/sql-injection) 11/20/20 [Walkthrough Note](https://ocholuo.github.io/posts/SQL-injection-Lab/)| ✔️
+[SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
@@ -65,6 +65,7 @@ Project/LAB |  Mark |
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
 [Cortex XDR: Managed Threat Hunting (EDU-194)](https://beacon.paloaltonetworks.com/student/path/644210/activity/687279) 10/27/20 | ✔️
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
+[Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) |  ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 
 ---
