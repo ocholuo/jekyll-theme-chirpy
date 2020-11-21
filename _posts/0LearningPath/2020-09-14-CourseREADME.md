@@ -40,11 +40,13 @@ sleepy....
 ## InfoSec:
 
 
-[Coursera Specialization] |  Mark |
+Project/LAB |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03 | ✔️
 **codecamp** |
 [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
+**Web Security Academy** |
+[SQL injection](https://portswigger.net/web-security/sql-injection) 11/20/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
