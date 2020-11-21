@@ -187,7 +187,7 @@ GET /filter?category=Gifts'+UNION+SELECT+USERNAME_GHYBLH,+PASSWORD_NBSZJM+FROM+U
 
 # LAB: SQL injection UNION attack, retrieving multiple values in a single column
 
-[SQL injection UNION attack, retrieving multiple values in a single column](/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
+[SQL injection UNION attack, retrieving multiple values in a single column](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
 
 
 ```py
