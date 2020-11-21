@@ -46,7 +46,7 @@ Project/LAB |  Mark |
 **codecamp** |
 [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10 | ✏️
 **Web Security Academy** |
-[SQL injection](https://portswigger.net/web-security/sql-injection) 11/20/20 | ✔️
+[SQL injection](https://portswigger.net/web-security/sql-injection) 11/20/20 [Walkthrough Note](https://ocholuo.github.io/posts/SQL-injection-Lab/)| ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
