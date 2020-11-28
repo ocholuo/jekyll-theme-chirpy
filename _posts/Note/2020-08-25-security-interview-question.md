@@ -1055,6 +1055,7 @@ Type 2: This kind of hypervisor makes use of the underlying host operating syste
    - ensure that your application works seamlessly in any environment, be it development, test or production.
    - Docker containers, wrap a piece of software in a complete filesystem that contains everything needed to run: `code, runtime, system tools, system libraries, etc`. It wraps basically anything that can be installed on a server. This guarantees that the software will always run the same, regardless of its environment.
 
+```
 6. What is a Docker Container?
 Docker containers include the application and all of its dependencies. It shares the kernel with other containers, running as isolated processes in user space on the host operating system. Docker containers are not tied to any specific infrastructure: they run on any computer, on any infrastructure, and in any cloud. Docker containers are basically runtime instances of Docker images.
 
@@ -1333,6 +1334,8 @@ While using docker service with multiple containers across different hosts, you 
 This brings us to the end of the Docker Interview Questions article. With increasing business competition, companies have realized the importance of adapting and taking advantage of the changing market. Few things that kept them in the game were faster scaling of systems, better software delivery, adapting to new technologies, etc. That’s when docker swung into the picture and gave these companies boosting support to continue the race.
 
 If you want to learn more about DevOps, check out the DevOps training by Edureka, a trusted online learning company with a network of more than 250,000 satisfied learners spread across the globe. The Edureka DevOps Certification Training course helps learners gain expertise in various DevOps processes and tools such as Puppet, Jenkins, Nagios and GIT for automating multiple steps in SDLC.
+```
+
 
 ---
 
