@@ -33,8 +33,8 @@ Chess, piano and dance are three constructive hobbies I pursue.
 
 # EXPERIENCE
 
-- I interned at Cyber Defense Group from September 2020, work as a Cloud Security Analyst. 
-- I interned at Amzon LLC from June 2020, and work as a Data Center Security Sepecialist.
+- I worked at Cyber Defense Group from September 2020, work as a Cloud Security Analyst. 
+- I worked at Amzon LLC from June 2020, and work as a Data Center Security Sepecialist intern.
 - I worked at VUST from Febrary 2019 as a Graduate assistant & Juniors IT Engineer 
 
 ---
