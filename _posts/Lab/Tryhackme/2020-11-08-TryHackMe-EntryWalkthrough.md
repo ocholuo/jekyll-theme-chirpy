@@ -2,9 +2,9 @@
 title: Lab - TryHackMe - Entry Walkthrough
 date: 2020-11-08 11:11:11 -0400
 description: Learning Path
-categories: [Lab, THM]
+categories: [Lab, TryHackMe]
 # img: /assets/img/sample/rabbit.png
-tags: [Lab, THM]
+tags: [Lab, TryHackMe]
 ---
 
 [toc]
