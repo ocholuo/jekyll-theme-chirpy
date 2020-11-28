@@ -15,5 +15,4 @@ RUN apt-get install -y \
     nikto \
     wpscan \
     uniscan \
-
 CMD ["/bin/bash"]
