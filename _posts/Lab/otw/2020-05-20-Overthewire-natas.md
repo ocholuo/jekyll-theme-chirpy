@@ -4,8 +4,8 @@ title: Overthewire - Natas
 date: 2020-02-20 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [Wargame, Overthewire]
-tags: [Wargame, Overthewire]
+categories: [Lab, Overthewire]
+tags: [Lab, Overthewire, SSH]
 math: true
 # pin: true
 toc: true

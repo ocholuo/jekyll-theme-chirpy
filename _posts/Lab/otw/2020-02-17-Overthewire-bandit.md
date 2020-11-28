@@ -4,13 +4,18 @@ title: Overthewire - bandit
 date: 2020-02-17 11:11:11 -0400
 description: 
 excerpt_separator: 
-categories: [Wargame, Overthewire]
-tags: [Wargame, Overthewire, SSH]
+categories: [Lab, Overthewire]
+tags: [Lab, Overthewire, SSH]
 math: true
 # pin: true
 toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
+
+[toc]
+
+---
+
 
 ```
 2/17/2020 updated.

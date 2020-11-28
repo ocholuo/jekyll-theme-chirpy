@@ -1,5 +1,18 @@
+---
+title: Lab - HTB setup
+date: 2020-11-13 11:11:11 -0400
+description: Learning Path
+categories: [Lab, HTB]
+# img: /assets/img/sample/rabbit.png
+tags: [Lab, HTB]
+---
 
-# start
+[toc]
+
+---
+
+
+# HTB setup
 
 [toc]
 
