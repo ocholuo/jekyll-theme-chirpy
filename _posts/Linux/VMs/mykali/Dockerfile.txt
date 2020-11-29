@@ -8,11 +8,4 @@ RUN apt-get -y update && apt-get -y dist-upgrade && apt-get -y autoremove && apt
 # install Kali Linux "Top 10" metapackage and a couple "nice to have" tools
 RUN apt-get install -y \
     metasploit-framework \
-    kali-linux-top10 \
-    exploitdb \
-    man-db \
-    dirb \
     nikto \
-    wpscan \
-    uniscan \
-CMD ["/bin/bash"]
