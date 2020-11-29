@@ -598,7 +598,7 @@ Where do you get your security news from?
 97. What is capability-based security? Have you incorporated this pattern into your designs? How?
 98. Can you give me a few examples of security architecture requirements?
 99. Who typically owns security architecture requirements and what stakeholders contribute?
-100. What special security challenges does SOA present?
+100. What special security challenges does  present?
 101. What security challenges do unified communications present?
 102. Do you take a different approach to security architecture for a COTS vs a custom solution?
 103. Have you architected a security solution that involved SaaS components? What challenges did you face?
