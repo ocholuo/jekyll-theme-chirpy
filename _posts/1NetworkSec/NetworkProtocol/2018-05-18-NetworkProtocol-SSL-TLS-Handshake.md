@@ -4,7 +4,7 @@ title: NetworkProtocol SSL/TLS Handshake
 date: 2018-05-18 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [NetworkSec, NetworkProtocol]
+categories: [1NetworkSec, NetworkProtocol]
 tags: [NetworkSec, NetworkProtocol, SSL, TLS]
 math: true
 # pin: true

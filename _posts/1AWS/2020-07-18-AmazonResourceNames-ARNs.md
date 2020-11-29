@@ -1,7 +1,7 @@
 ---
 title: AWS - Amazon Resource Names (ARNs)
 date: 2020-07-18 11:11:11 -0400
-categories: [AWS]
+categories: [2AWS]
 tags: [AWS]
 toc: true
 image:

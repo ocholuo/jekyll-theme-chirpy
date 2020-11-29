@@ -4,7 +4,7 @@ title: Cross Site Scripting Prevention Cheat Sheet
 date: 2020-09-19 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [CyberAttack, XSS]
+categories: [1CyberAttack, XSS]
 tags: [CyberAttack, XSS, CheatSheet]
 math: true
 # pin: true

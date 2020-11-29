@@ -4,7 +4,7 @@ title: NetworkSec - TCP & UDP, TCP/IP & OSI Model
 date: 2018-05-18 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [NetworkSec, NetworkingBasics]
+categories: [1NetworkSec, NetworkingBasics]
 tags: [NetworkSec, TCP]
 math: true
 # pin: true

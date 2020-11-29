@@ -1,7 +1,7 @@
 ---
 title: Meow's CyberAttack - SQL Injection
 date: 2020-09-17 11:11:11 -0400
-categories: [CyberAttack, Injection]
+categories: [1CyberAttack, Injection]
 tags: [CyberAttack, Injection]
 toc: true
 image:

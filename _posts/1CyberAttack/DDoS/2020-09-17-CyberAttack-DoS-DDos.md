@@ -1,7 +1,7 @@
 ---
 title: Meow's CyberAttack - Dos DDos
 date: 2020-09-17 11:11:11 -0400
-categories: [CyberAttack, DDos]
+categories: [1CyberAttack, DDos]
 tags: [CyberAttack, DDos]
 toc: true
 image:

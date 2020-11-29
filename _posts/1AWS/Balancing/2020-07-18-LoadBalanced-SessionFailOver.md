@@ -1,7 +1,7 @@
 ---
 title: Load-Balanced vs Session Fail Over
 date: 2020-07-18 11:11:11 -0400-
-categories: [AWS, Balancing]
+categories: [2AWS, Balancing]
 tags: [AWS, Balancing]
 toc: true
 image:
