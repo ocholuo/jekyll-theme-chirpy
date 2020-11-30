@@ -1,12 +1,12 @@
 ---
-title: Data Structure
+title: Python - Data Structure
 date: 2020-09-10 11:11:11 -0400
 description:
 categories: [1LearningNote, PythonNote]
 tags:
 ---
 
-# Data Structure
+# Python - Data Structure
 
 [toc]
 
