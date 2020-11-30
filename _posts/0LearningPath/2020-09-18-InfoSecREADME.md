@@ -52,65 +52,91 @@ GoodWeb | Note
 
 Attack | Tool
 ------------------------------|-----------------------------------------------------------
-**malware** |  Layer 7
+---------|------------------------------
+🐰 **Code Security tools** |
+Kluwan <br> `Code Security/Analysis` | ![Kiuwan](https://i.imgur.com/PqQm3mh.png)
+---------|------------------------------
+🐰 **Pen test tools** |
+Kali Linux | Linux
+Metasploit <br> `Building anti-forensic and evasion tools` | ![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
+---------|------------------------------
+🐰 **Digital Forensic Tools** |
+Sleuth Kit (+Autopsy) | 
+---------|------------------------------
+🐰 **malware** |  Layer 7
 `malware packaging` | PEiD <br>![PEiD](https://i.imgur.com/y1AFinu.png)
 `malware` | IDA Freeware <br> ![IDA Freeware](https://i.imgur.com/CAsSCA1.png)
 `malware` | Pe Explorer <br> ![Pe Explorer](https://i.imgur.com/kzfck2A.png)
 ---------|------------------------------
-`vulnerability scanning & management` | OpenVAS <br> ![openvas10](https://i.imgur.com/8sJLdIh.png)
-`Finding vulnerabilities` | Intruder <br> ![Intruder](https://i.imgur.com/7BLUaKx.png)
-`Building anti-forensic and evasion tools` | Metasploit <br>![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
-`identified vulnerabilities` | Netsparker <br>![Netsparker](https://i.imgur.com/cuShMOy.jpg)
----------|------------------------------
-`phishing` | Gophish - opensource phishing platform |
-`Scanning` | Nmap <br> ![Nmap_Logo](https://i.imgur.com/7b3NKgE.png) ![Nmap](https://i.imgur.com/K2OvK5H.png) <br> - **Nmap suite has**: <br> - Data transfer, redirection, and debugging tool(Ncat), <br> - Scan results comparing utility(Ndiff), <br> - Packet generation and response analysis tool (Nping), <br> - GUI and Results viewer (Nping) <br> - **Using raw IP packets it can determine**: <br> - The available hosts, services offered, OS, Packet filters using...
-`Scanning` | Angry IP Scanner <br>![AngryIPScanner](https://i.imgur.com/5Qyj91h.png) <br> - scanning the IP addresses and ports. It can scan both on local network and Internet.
----------|------------------------------
-`Scanning web server` | Nikto <br>![Nikto](https://i.imgur.com/Kq5bZOe.png) <br> - It can check web servers for over 6700 potentially dangerous files. <br> -It has full HTTP proxy support. <br> -Using Headers, favicons, and files, it can identify the installed software. <br> -It can scan the server for outdated server components.
+🐰 **Application Link** | Layer 7
+sslstrip <br> `capturing HTTPS traffic` | ![sslstrip](https://i.imgur.com/aiocGts.png)
+Nmap <br> `network mapper`| ![Nmap_Logo](https://i.imgur.com/7b3NKgE.png) ![Nmap](https://i.imgur.com/K2OvK5H.png) <br> - scan networks and IT systems to identify existing security vulnerabilities. <br> - **Nmap suite has**: <br> - Data transfer, redirection, and debugging tool(Ncat), <br> - Scan results comparing utility(Ndiff), <br> - Packet generation and response analysis tool (Nping), <br> - GUI and Results viewer (Nping) <br> - **Using raw IP packets it can determine**: <br> - The available hosts, services offered, OS, Packet filters using...
+Nikto <br> `Scan web server vulnerabilities` | ![Nikto](https://i.imgur.com/Kq5bZOe.png) <br> - It can check web servers for over 6700 potentially dangerous files. <br> -It has full HTTP proxy support. <br> -Using Headers, favicons, and files, it can identify the installed software. <br> -It can scan the server for outdated server components. <br> - contains a database with more than 6400 different types of threats. 
 `web application vulnerabilities` | Acunetix <br>![dashboard-2](https://i.imgur.com/9oeYkzy.png)
+Nexpose <br> `scanning and managing vulnerabilities` |
+Paros Proxy <br> `web vulnerabilities` | - Some of the tools contained in the Paros Proxy utility include vulnerability scanners, a web spider, and traffic recorder for retaining network activities in real-time. <br> Paros Proxy is useful in identifying intrusion openings in a network, detects common cybersecurity threats such as XSS and SQLi.
+Burp Suite <br> `MITM/XSS web vulnerabilities` | ![BurpSuite](https://i.imgur.com/IJkeA2y.png) <br> - web vulnerability scanner
+Owasp ZAP <br> `XSS web vulnerabilities` | ![OwaspZAP](https://i.imgur.com/t6cqHVy.png)
+DOMinator Tool, DOM Snitch <br> `DOM Based XSS` | 
+Nessus <br> `vulnerability scanner` | 
+OpenVAS <br> `vulnerability scanning & management` | ![openvas10](https://i.imgur.com/8sJLdIh.png)
+Intruder <br> `Finding vulnerabilities` | ![Intruder](https://i.imgur.com/7BLUaKx.png)
+Netsparker <br> `identified vulnerabilities` | ![Netsparker](https://i.imgur.com/cuShMOy.jpg)
 ---------|------------------------------
-`Sniffing` | Ettercap <br>![Ettercap](https://i.imgur.com/bVAdWxn.png) <br> - Sniffing of live connections. <br> - Content filtering. <br> - Active and passive dissection of many protocols. <br> - Network and host analysis.
+tools | **Encryption cybersecurity tools**
+TrueCrypt | 
+KeyPass |
+Tor | 
+---------|------------------------------
+🐰 **Network Link** | Layer 7
+PackETH <br> `capturing network packet` | ![PackETH](https://i.imgur.com/HDvf8Du.png)
+Netstumbler <br> `identify open ports` | - designed for Win
+Aircrack-Ng <br> `Wireless sniffer & injector` | ![aircrack-ng](https://i.imgur.com/wgVZxJJ.png) <br> - focus on Replay attacks, de-authentication, fake access points, and others. <br> - It supports exporting data to text files. <br> - It can check Wi-Fi cards and driver capabilities. <br> - It can crack WEP keys and for that, it makes use of FMS attack, PTW attack, and dictionary attacks. <br> - It can crack WPA2-PSK and for that, it makes use of dictionary attacks.
+KisMAC <br> `wireless network security in the MAC` | 
+wireshark <br> `Sniffing` | ![Wireshark](https://i.imgur.com/L1ckSYt.png)
+---------|------------------------------
+tools | **monitoring network security**
+Splunk |
+PaloAlto |
+POf | 
+Argus `analyzing network traffics OpenS`| 
+Nagios | 
+OSSEC `real-time analyz security events of a system OpenS`| 
+---------|------------------------------
+tools | **detecting network intrusions**
+Snort `analysis on network traffic` | 
+Acunetix | 
+Forcepoint | 
+GFI LanGuard `monitor networks, scan for vulnerabilities` | 
+---------|------------------------------
+🐰 **Data Link** | Layer 2
+arpspoof <br> `ARP poisoning` | ![arpspoof](https://i.imgur.com/ZKZug7g.png)
+Ettercap <br> `ARP poisoning` | ![Ettercap](https://i.imgur.com/0ciXVzn.png) <br>![Ettercap](https://i.imgur.com/bVAdWxn.png) <br> - Sniffing of live connections. <br> - Content filtering. <br> - Active and passive dissection of many protocols. <br> - Network and host analysis.
 `Sniffing` | Etherflood
-`Sniffing` | dsniff
-`Sniffing` | wireshark <br> ![Wireshark](https://i.imgur.com/L1ckSYt.png)
-Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Security features
-`Wireless sniffer & injector` | Aircrack-Ng <br>![aircrack-ng](https://i.imgur.com/wgVZxJJ.png) <br> - focus on Replay attacks, de-authentication, fake access points, and others. <br> - It supports exporting data to text files. <br> - It can check Wi-Fi cards and driver capabilities. <br> - It can crack WEP keys and for that, it makes use of FMS attack, PTW attack, and dictionary attacks. <br> - It can crack WPA2-PSK and for that, it makes use of dictionary attacks.
----------|------------------------------
-`MITM/XSS` | Burp Suite <br>![BurpSuite](https://i.imgur.com/IJkeA2y.png) <br> - web vulnerability scanner
-`XSS` | Owasp ZAP <br>![OwaspZAP](https://i.imgur.com/t6cqHVy.png)
-`DOM Based XSS` | DOMinator Tool, DOM Snitch
----------|------------------------------
-`Code Security/Analysis` | Kluwan <br> ![Kiuwan](https://i.imgur.com/PqQm3mh.png)
-`PaswdCrack` | John The Ripper <br>![John-the-Ripper](https://i.imgur.com/zq4Ao7o.png)
----------|------------------------------
-**Application Link** | Layer 7
-`capturing HTTPS traffic` | sslstrip <br> ![sslstrip](https://i.imgur.com/aiocGts.png)
----------|------------------------------
-**Network Link** | Layer 7
-`capturing network packet` | PackETH <br> ![PackETH](https://i.imgur.com/HDvf8Du.png)
----------|------------------------------
-**Data Link** | Layer 2
-`ARP poisoning` | arpspoof <br> ![arpspoof](https://i.imgur.com/ZKZug7g.png)
-`ARP poisoning` | Ettercap <br> ![Ettercap](https://i.imgur.com/0ciXVzn.png)
-`ARP poisoning` | Cain and Abel <br> ![CainandAbel](https://i.imgur.com/8gSuAdg.png)
 `detect ARP poisoning` | AntiARP, ARPon, ArpStar,
 `detect ARP poisoning` | XARP <br> ![XARP](https://i.imgur.com/vWTIp91.png)
+`Sniffing` | dsniff
+Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Security features
 ---------|------------------------------
-**Digital Forensic Tools** | Layer 2
-. | `Sleuth Kit (+Autopsy)`
+tools | **Password auditing and packet sniffers cybersecurity tools**
+John The Ripper <br> `PaswdCrack` | ![John-the-Ripper](https://i.imgur.com/zq4Ao7o.png)
+Cain and Abel <br> `PaswdCrack / ARP poisoning` | ![CainandAbel](https://i.imgur.com/8gSuAdg.png)
+Tcpdump <br> `sniffing data packets` | - monitor log TCP and IP traffic communicated through a network
 ---------|------------------------------
 🐰 | **Reconnaissance** step 1 information gethering
 `passive` | visualping <br> ![visualping](https://i.imgur.com/TV47wYz.png)
 `website mirroring` | HTTrack <br> ![HTTrack](https://i.imgur.com/g0s74oj.png)
 `email foot-printing` | TheHarvester <br> ![TheHarvester](https://i.imgur.com/Ey7HrEQ.png)
 `link analysis and data mining` | Maltego <br> ![Maltego](https://i.imgur.com/oegrQtd.png) <br> - provide graphical picture about the weak points and abnormalities of the network.
-`foot-printing` | Recon-ng <br> ![Recon-ng](https://i.imgur.com/jgc9SSN.png)
+Recon-ng <br>  `foot-printing` | ![Recon-ng](https://i.imgur.com/jgc9SSN.png)
 `foot-printing` | OSRframwork <br> ![OSRframwork](https://i.imgur.com/vtJNROh.png)
 `hacker search engine` | Shodan <br> ![OSRframwork](https://i.imgur.com/F4Hmvxn.jpg) <br> - collects all information about all devices that are directly connected to the internet with the specified keywords that you enter.
 `web info gethering` | httprint <br> ![httprint](https://i.imgur.com/koDelg8.png)
 `Fingerprint web Framework` | whatweb <br> ![whatweb](https://i.imgur.com/PKmBLXt.png)
 `Fingerprint web Framework` | BlindElephant, Wappalyzer
 `website record` | HUNCHLY <br> ![HUNCHLY](https://i.imgur.com/2coiGDl.png)
+`phishing` | Gophish - opensource phishing platform |
+`Scanning` | Angry IP Scanner <br>![AngryIPScanner](https://i.imgur.com/5Qyj91h.png) <br> - scanning the IP addresses and ports. It can scan both on local network and Internet.
 
 
 ---
