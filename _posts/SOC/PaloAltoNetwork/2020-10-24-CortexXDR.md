@@ -19,15 +19,258 @@ image: /assets/img/note/prisma.png
 # Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis
 
 
-## Cortex XDR 2.0 - Architecture and Components
+Cortex is designed to
+- reduce alert fatigue,
+- address the problems associated with using disparate security products,
+- support the effective use of security expertise,
+- and reduce the complexity of SIEM use.
+
+Integrating Technology
+- Cortex collects data from different sources into one place
+- processes the data from the entire infrastructure together rather than processing the data in silos.
+
+
+Behavioral Analytics
+- When Cortex finds something it needs to respond to, it responds back to the entire infrastructure and automates as much of the whole process as possible.
+- With the rich data collected, Cortex applies ML-based data analytics to incorporate user behavior into its detection and response capabilities.
+
+> SIEM:
+> The variety of alert schemes and data forms provided by SIEMs makes it hard to automate searches and analysis
+> The alerts provided by SIEMs often do not contain enough rich context data to allow for effective analytics.
+
+> SOC: analyzing and responding to security events
+> Cloud computing changes the security model SOCs must work with.
+> SOCs must process more alerts from more security products.
+
+
+![original](https://i.imgur.com/rAypCfw.png)
+
+> How are XDR and EDR different?
+> XDR uses more data sources.
+
+
+![XDR and EDR](https://i.imgur.com/7Si3IFN.png)
+
+
+### The Product Suite.
+
+1. Cortex XDR and Cortex XSOAR
+   - **Cortex XDR**
+     - automates a big part of the investigative process.
+     - it hunts for attacks that previously humans hunted for, so humans can now hunt for attacks that Cortex XDR can’t.
+     - it automates alert reduction by consolidating many different alerts into single incidents.
+     - On average, Cortex XDR takes 50 alerts and converts them into a single incident, as a result of investigation automation, investigations are eight times faster using Cortex XDR than they are without it.
+
+   - Another part of Cortex is Cortex XSOAR.
+     - takes meaningful data from Cortex XDR and elsewhere.
+     - It automates the process of enriching that data, running playbooks against it,
+     - and making modifications to anything in the infrastructure that needs to be modified to deal with an attack.
+     - on average, 95% of their alerts are `handled automatically`. in stead of overwhelmed and dropping alerts, now able to handle all their alerts. The alerts customers handle with human involvement are on average handled 90% faster. Customer capacity to handle these alerts has increased tenfold.  
+
+
+Cortex XDR and Cortex XSOAR provide the key functionality for Cortex.
+
+![small](https://i.imgur.com/lWqln89.png)
+
+
+2. Cortex Data Lake
+   - the central repository for data used by Cortex.
+   - a scalable cloud-based service with global locations to support local data residency and privacy requirements.
+   - automatically collects, integrates, and normalizes data across a customer’s security infrastructure.
+
+![small-1](https://i.imgur.com/TqTHDBH.png)
+
+
+3. Cortex’s Threat Intelligence Provider
+   - AutoFocus provides threat intelligence to Cortex to enable deep visibility into attacks.
+   - AutoFocus' intel is crowdsourced from the industry’s largest footprint of network, endpoint, and cloud intel sources.
+   - It can be embedded in any tool customers use through a custom threat feed and APIs.
+   - AutoFocus' sources include `WildFire®, PAN-DB, DNS Security, Cortex Prevent, Prisma Access, Unit 42 Research, and third-party sources`.
+   - This data can be tagged, searched, and analyzed and fed through APIs, EDLs, Custom Feeds, Cortex, and Prisma Cloud.
+
+![small-2](https://i.imgur.com/MmjHbdf.png)
+
+
+
+
+```
+Cortex XDR Environment
+
+People
+- roles such as security analysts, security architects, security engineers, and administrators.
+
+ASK:
+Which roles do their people play and which skills do they have?
+Who has overall responsibility for cybersecurity?
+What is the level of skill available to those who would work with Cortex XDR?
+How does the security team work with the network team?
+What is the big picture about how these people organize their cybersecurity work?
+Do they have red teams and blue teams?
+Do they regularly engage penetration testing or do other security assessment?
+Does the customer have tightly defined formal cybersecurity roles?
+
+
+alerts
+- Most customers have too many alerts, and this is a huge issue to manage.
+- These alert issues are exactly the issues that Cortex XDR helps them address.
+ASK:
+Does the customer have orders-of-magnitude too many alerts?
+How do they approach the challenge of too many alerts?
+How do they determine which alerts to investigate?
+When the customer receives related alerts, how are they linked together?
+Is it easy for the customer to make full use of information about linked alerts?
+
+
+SIEMs
+- Cortex XDR is not a SIEM and does not replace SIEM functionality.
+- SIEMs collect logs from various sources. They often normalize these logs and prioritize alerts.
+- Cortex XDR also collects data from various sources. It has native integration with these sources to both collect data and enforce protection and SIEMs don’t do this.
+- It collects rich data from network, endpoint, and cloud sources.
+- The data SIEMs collect is often not sufficiently rich. Cortex XDR uses this rich data to help security operations teams investigate threats and to detect and help hunt even sophisticated attacks. SIEMs are beginning to offer detection capability but generally do not do detection and hunting. Cortex XDR also responds and provides enforcement back to those points, and traditional SIEMs do not do this.
+- Cortex XDR is better suited to work with a SIEM, rather than replacing one that has already been deployed.
+ASK
+Which SIEMs does the customer use?
+Where do the SIEMs get their data?
+Is the data coming from their SIEMs consistent?
+Are they able to do analysis on SIEM data?
+How do they do analysis on their SIEM data?
+
+
+
+```
+
+
+### TTP and MITRE ATT&CK
+
+Techniques, Tactics, and Procedures (TTP)
+- an industry standard term for approaching `advanced persistent attacks (APTs)`.
+- This method is used to break down the attack and analyze how they are meant to work.
+- Cortex XDR Prevent is very good at recognizing attack techniques.
+- Cortex XDR Pro’s strength lies in what it does with the rich data it collects.
+- Cortex XDR Pro uses data about the events and their context, helps hunting by showing the probable paths of the attack.
+- Its `causal analysis` traces back to the attack vector and can help identify an attack source by combining rich data from sensors and threat intelligence sources.
+- This approach also identifies and presents reconnaissance efforts to analysts.
+- Cortex XDR uses all of this data and the big picture of an attack and identifies possible targets of an attack.
+- Cortex XDR can identify and quarantine or control compromised endpoints.
+
+
+**MITRE ATT&CK**
+- MITRE ATT&CK is one of the most respected evaluation frameworks for TTP in the industry.
+- It provides coverage of capabilities and techniques that attackers use in real-world attacks.
+  - For example,
+  - the MITRE ATT&CK Matrix for Enterprise looks at an organization’s ability to protect against everything from `initial access through privilege escalation, C2, exfiltration, and final impact`.
+- use MITRE ATT&CK to evaluate their cybersecurity effectiveness.
+- According to the MITRE ATT&CK evaluation framework, Cortex XDR provides the best endpoint visibility and the highest coverage across different attack techniques among the ten tested endpoint detection and response vendors.
+- Cortex XDR’s highly automated AI approach also provides more coverage, consistency, and no delays compared with vendors who rely on human processes.
+
+
+
+---
+
+## Cortex XDR Functionality
+
+**Single View of Alerts**
+- Cortex XDR assists SOC analysts
+- allowing them to view all the alerts from all Palo Alto Networks products in one place, telling the full story of what has actually happened, in seconds.
+
+
+**Analysis, Threat Hunting, and Response**
+- providing the abilities to prevent, detect what cannot be prevented, and automate as much prevention, detection, and response as possible.
+- consumes data from the Cortex Data Lake to correlate and stitch together logs provided by different sensors.
+- This data is used to derive how events are ordered and create a causality chain. Agents on endpoints also provide their own protection.
+- Analysis: correlates data from endpoint, network, user, applications, and cloud.
+- `Threat Hunting`:
+  - helps humans hunt for threats when it cannot automatically hunt them.
+  - `Displays Process Activity`: Identifies and displays to analysts when there is a launch or installation of a process.
+  - `Sensing Event Sequences`: Accelerates hunting when it automatically determines a sequence of events with thread level visibility
+  - `Root Causes and Ramifications`: Automatically presents ramifications of the root cause associated with the attack
+- Response: enables rapid and seamless response to threats across an infrastructure.
+
+
+**Simple and Advanced Attacks**
+- Cortex XDR Prevent protects against simple attacks by comparing signature hashes.
+- It also protects against more sophisticated attacks by checking for exploit and malware techniques.
+- Agents on endpoints protect against even zero-day attacks.
+- Cortex XDR Pro applies ML and analytics to identify even advanced persistent threats.
+
+
+![small](https://i.imgur.com/Db2pauP.png)
+
+---
+
+### Data
+
+**The Right Data**
+- Good analysis through machine learning is all about having the right data.
+- Cortex XDR leverages all the data that firewalls and WildFire collects and extends that with third-party sources.
+- It has built a broad set of curated data, sorting known good data from known bad data.
+- This data trains the local analysis engine.
+- The more good data that’s used for this, the better the analysis will be.
+
+
+the importance of selecting the right data:
+- Machine Learning
+  - Palo Alto Networks evaluated hundreds of thousands of file attributes to determine which are the most accurate in predicting whether a never-before-seen file is good or bad.
+  - Palo Alto Networks selected the right attributes among those to use for machine learning analytics.
+  - This data is time dependent, and modules used for training machine learning analytics are updated daily or weekly as needed.
+
+- Detection of Suspicious Activity
+  - Palo Alto `Networks firewall session log data` is the richest context data available in the industry for detection analytics.
+  - Combined with endpoint baseline data, it enables Cortex XDR analytics to provide far better coverage than is typically enabled by SIEM provided data.
+
+
+![extraLarge](https://i.imgur.com/5m7wOQ3.png)
+
+
+### Types and Sources of Data
+
+
+Cortex XDR uses and correlates five types of data, collected from endpoint, network, and cloud sources.
+1. Network Data
+   - such as `source and destination IP addresses and ports comes from `PAN-OS™ traffic logs collected from the datacenter or cloud deployments, Cortex XDR Prevent agents, or third-party firewall logs.
+2. User Data:
+   - such as `usernames, login ID, and user organizational unit comes from `PAN-OS software, the Cortex XDR Prevent agent, and the Directory Sync Service.
+3. Process Data:
+   - such as the `name of the executable, who created it, and WildFire's analysis of the process` comes from the Cortex XDR Prevent agent, the Directory Sync Service, and WildFire.
+4. Host Data:
+   - such as `hostnames, MAC addresses, system organization units, and operating systems and versions` comes from PAN-OS enhanced application logs, Cortex XDR Prevent agents, and the Directory Sync Service.
+5. Application Data:
+   - such as an `applications protocol, domain name, and application context` comes from PAN-OS App-Id, enhanced application logs, and the Cortex XDR Prevent agent.
+
+6. Integration with Other Vendors
+   - Cortex XDR accepts data from third parties, including competitors, and uses that data to maximum effectiveness.
+   - For example, Cortex XDR collects alerts and logs from Check Point.
+   - It uses those for analytics, investigation, and response.
+
+---
+
+### Cortex XDR and Time
+
+Cortex XDR saves time for analysts in several ways.
+
+1. Alert Root Cause Identification
+   - Cortex XDR save significant `threat hunting and exploration time` when it automatically identifies the root cause of an alert and presents the ramifications of that event to analysts.
+
+2. Eliminates Many False Positive Alerts
+   - Analysts `save the time for false positives` when Cortex XDR uses good, rich data and machine learning analytics to eliminate them.
+
+3. Quickly Contains Threats
+   - With its `integrated response across network, endpoint, and cloud enforcement points`, Cortex XDR saves time by quickly containing threats.
+
+4. Allows Access and Control from User Interface
+   - Cortex XDR allows users to access and control endpoints directly from its user interface.
+   - For example, it can look at processes or tasks and kill them, or control USB device access.
+
+
+---
+
+## Architecture and Components
 
 ![Screen Shot 2020-10-23 at 23.51.17](https://i.imgur.com/nc8RKWC.png)
 
 ![Screen Shot 2020-10-23 at 23.52.51](https://i.imgur.com/VFJYgBA.png)
 
 ![Screen Shot 2020-10-23 at 23.55.35](https://i.imgur.com/uF0c22B.png)
-
-![Screen Shot 2020-10-23 at 23.56.01](https://i.imgur.com/1rkZuuG.png)
 
 ![Screen Shot 2020-10-23 at 23.56.33](https://i.imgur.com/QZ7Ztgk.png)
 
@@ -37,6 +280,56 @@ image: /assets/img/note/prisma.png
 
 ![Screen Shot 2020-10-23 at 23.59.44](https://i.imgur.com/nmzz16J.png)
 
+
+The Cortex XDR application provides complete visibility into all data in the Cortex Data Lake.
+- It provides a single interface from which you can investigate and triage alerts, take remediation actions, and define policies to detect the malicious activity in the future.
+
+1. Cortex Analytics Engine
+   - a cloud-based network security service
+   - utilizes data from the Cortex Data Lake to automatically detect and report on post-intrusion threats.
+   - The analytics engine does this by identifying good (normal) behavior on your network, so that it can notice bad (anomalous) behavior.
+
+1. Palo Alto Networks next-generation on premises or virtual firewalls
+   - provide rich network data and enforce network security policies in in the data centers of campuses, branch offices, and the cloud.
+
+1. Cortex XDR Prevent
+   - Cortex XDR Prevent agents protect endpoints from known and unknown malware and malicious behavior and techniques.
+   - Cortex XDR Prevent performs its own analysis locally on the endpoint but also consumes WildFire threat intelligence.
+   - The agent reports all endpoint activity to the Cortex Data Lake for analysis by Cortex XDR applications.
+
+1. Cortex Data Lake
+   - The Cortex Data Lake is a cloud-based logging infrastructure that centralizes the collection and storage of logs from log data sources.
+
+
+### Suggested SE Approaches
+SEs have provided suggestions on how to approach customer opportunities.
+
+Proof of Concept
+- Proof of Concepts (POCs) with Cortex XDR are often not as effective as POCs with other products, it needs a 30-day baseline of behavior, which is often hard to arrange. 
+- And it is sometimes hard to arrange for an advanced persistent threat or other threat that Cortex XDR shines with. 
+- Generally, use a POC when the customer wants the product's functionality, but needs to ensure it doesn't impact the customer's operation. 
+- However, a guided evaluation can be very effective. During one sales opportunity and guided evaluation, a customer engaged a penetration tester, and the SE identified an anomalous behavior of ipconfig /all. This led to the discovery of the tester, and convinced the customer to purchase the product.
+- Before discussing POCs or guided evaluations with customers, synchronize with sales on rules, context, scope, strategy, and expected outcomes. Stay aware of product lock down schedules.
+
+
+Existing Palo Alto Networks Firewall Use
+- Many customers still use our firewalls primarily on their perimeter, and do not segment their networks. 
+- Educate these customers on the value of segmentation. 
+- It is often a good strategy to sell only Cortex XDR endpoint prevention to customers who don’t segment. 
+- Cortex XDR analytics using endpoint data only is also a possibility, but this typically provides only about half of the Cortex XDR analytics functionality. It's a better product when combined with network logs from a fully segmented environment.
+
+
+SOCs
+- Many customers do not currently have SOCs, but still run into the same challenges that SOCs face. 
+- Customers do not need large SOCs to benefit from purchasing Cortex XDR.
+
+
+Strategically Preventing Unknown Threats
+- Customers often need to be explicitly taught the value of preventing unknown threats. They all understand the risk of applying patches but many may not fully appreciate the risk of not applying patches. Cortex XDR reduces that risk.
+- Cortex XDR Prevent is very strong as a best of breed EDR. But credibly explaining and demoing the XDR approach of combining rich data from multiple sources to enable more accuracy and a better picture of what is happening with an attack is often what convinces customers to go with Cortex XDR.
+
+
+
 ![Screen Shot 2020-10-24 at 00.05.22](https://i.imgur.com/3U1WKCt.png)
 
 ![Screen Shot 2020-10-24 at 00.05.56](https://i.imgur.com/YNl3NIr.png)
@@ -45,7 +338,8 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Analytics Overview
+
+## Analytics Overview
 
 ![Screen Shot 2020-10-24 at 00.09.20](https://i.imgur.com/n7U738P.png)
 
@@ -57,7 +351,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Causality Analysis Overview
+## Causality Analysis Overview
 
 ![Screen Shot 2020-10-24 at 00.22.41](https://i.imgur.com/viosBcj.png)
 
@@ -102,7 +396,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Incident Management
+## Incident Management
 
 ![Screen Shot 2020-10-24 at 01.32.25](https://i.imgur.com/IKJ9cbg.png)
 
@@ -157,7 +451,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Analysis Actions
+## Analysis Actions
 
 ![Screen Shot 2020-10-24 at 03.15.45](https://i.imgur.com/b72hum0.png)
 
@@ -215,7 +509,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Analysis Actions
+## Analysis Actions
 
 ![Screen Shot 2020-10-24 at 02.02.58](https://i.imgur.com/pM5r5tw.png)
 
@@ -303,7 +597,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Managing Rules
+## Managing Rules
 ![Screen Shot 2020-10-24 at 03.37.44](https://i.imgur.com/JVk1BFI.png)
 
 ![Screen Shot 2020-10-24 at 03.38.38](https://i.imgur.com/wkE9lzN.png)
@@ -353,7 +647,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-## Cortex XDR 2.0 - Search and Investigation
+## Search and Investigation
 
 ![Screen Shot 2020-10-24 at 03.57.14](https://i.loli.net/2020/10/24/tnreibA92mQl6Ro.png)
 
@@ -677,6 +971,150 @@ Impact Reports
 
 ---
 
+## XDR Prevent
+
+![Screen Shot 2020-12-02 at 02.45.03](https://i.imgur.com/CZtj61N.png)
+
+![Screen Shot 2020-12-02 at 02.52.24](https://i.imgur.com/ZXWNCOS.png)
+
+### Exploit Prevention Approaches
+
+Cortex XDR Prevent uses multiple methods to prevent exploits.
+- The `traditional` methods of preventing known exploits include
+  - antivirus, blacklisting, whitelisting, and aggressively applying patches supplied by software vendors.
+  - problematic in preventing even known exploits
+  - almost useless in preventing unknown exploits.
+    - Signature matching and aggressive patching help prevent known attacks.
+    - They cannot prevent unknown attacks.
+    - But in practice, signatures and patches are not always current and do not provide adequate prevention against even known attacks.
+
+- Multi-Method Approach for Exploits
+  - Cortex XDR Prevent uses a multi-method prevention approach for exploits.
+  - Rather than looking only at `signatures` and relying on `software and OS patches`,
+  - it identifies exploit techniques and prevents them from succeeding.
+  - All these methods work together to stop known and unknown attacks.
+  - This has security advantages, but also has operational advantages.
+
+```
+Memory Corruption Prevention
+Exploits sometimes manipulate the operating system's memory management.
+This manipulation can be used to allow a weaponized data file to redirect applications to execute an attacker's intended commands.
+
+
+Logic Flaw Prevention
+exploits manipulate an application's process management.
+allows the exploit to do things like alter system privilege management mechanisms.
+can manipulate the local file system or modify the location where dynamic link libraries (DLLs) are loaded and replace a legitimate DLL with the exploit’s malicious DLL with sufficient privilege.
+This is called “DLL hijacking.”
+The Logic Flaw Prevention method recognizes these exploitation techniques and stops them before they succeed.
+
+
+Code Execution Prevention
+Exploits to execute an attacker’s malicious commands, embedded in an exploit data file.
+Code Execution Prevention recognizes exploitation techniques that allow an attacker’s malicious codes to execute and blocks them before they succeed.
+
+```
+
+---
+
+### Exploits and Patches
+
+Cortex XDR prevents known as well as unknown exploits and malware, even on unpatched systems.
+- This technique-oriented approach reduces risk between patching cycles.
+
+Cortex XDR Prevent `Behavioral Rules` BIOCs.
+- These can be predefined or custom rules.
+- These rules match criteria including `process, file, registry, or network` information to identify attack tactics, techniques, and procedures.
+- Analysts can also save queries they've used for threat hunting as rules to detect future attacks and help automate threat hunting.
+  - **Anti-Ransomware Rules**:
+    - `target encryption-based activity` associated with ransomware.
+    - These rules can analyze and halt ransomware activity before any data loss occurs.
+  - **Behavioral Threat Rules**:
+    - prevent sophisticated attacks that leverage built-in OS executables and common administration utilities.
+    - They do this by continuously monitoring endpoint activity for chains of behavior that appear malicious.
+  - **Data Execution Prevention (DEP) Rules**
+    - prevent areas of memory that are designated to contain only data from running executable code.
+
+
+---
+
+### Machine Learning Analytics
+
+
+Behavioral Analytics
+- Cortex XDR Pro applies behavioral analytics to network and endpoint data to find hard-to-detect attack activity.
+- This activity includes behavior such as
+  - low and slow reconnaissance
+  - or one machine attempting to control another machine.
+- This works because even after malware is installed, an attacker must often perform thousands of actions.
+  - Each single action, such as a user connecting to an unknown site, might look innocent.
+  - But by profiling a baseline of behavior, organizations can detect behavioral changes that attackers cannot conceal.
+
+
+Cortex XDR applies machine learning to its behavioral analytics with `models of behavior` and `profiles of objects`.
+- Cortex XDR uses three behavior models in its analysis:
+  - command and control communication,
+  - lateral movement,
+  - and exfiltration.
+  - Cortex XDR looks for chains of events to fit these models to automatically detect them.
+- Profiles
+  - Time profiles: `compare past user and device activity to current` user and device activity.
+  - Peer profiles: `compare peer users and devices` to the activities of the user or device being analyzed.
+  - Entity profiles: compare the device type or user type to other device types or user types `exhibiting the same behavior`.
+
+
+
+Examples of Machine Learning Analytics
+- Some of the attacks that can typically only be detected using machine-learning informed behavioral analytics are the stealthiest and most dangerous types of threats.
+- They are the ones already acting inside a network that can lead to costly data breaches.
+
+
+Attacks That `Behavioral Analytics` Can Detect:
+
+- Targeted Manual Attacks by external attackers.
+  - These often lead to costly breaches.
+  - The average cost per incident of these breaches is $3.6 million.
+  - But large scale breaches can cost hundreds of millions of dollars.
+
+- Malicious Insiders
+  - exploit trusted credentials and cause major damage.
+  - take months to discover, because the users are trusted.
+  - But Cortex XDR Pro can detect this anomalous behavior.
+
+- Reckless Users
+  - Risky activity by well-meaning but reckless users can also lead to data breaches.
+  - Human error, such as a user posting valuable data on the internet, is directly responsible for about 15% of all breaches.
+  - But risky behavior can also invite external attacks.
+  - It's hard to detect threats and the increased risk of attack when users upload large files to unsanctioned sites or share credentials.
+  - Cortex XDR Pro detects this behavior.
+
+- Compromised Endpoints
+  - Compromised endpoints represent exploits that have succeeded, and often can be the source of attacks that go undetected.
+  - These also can be detected by applying machine learning-informed behavioral analytics that Cortex XDR provides.
+
+- Other Cases
+  - Cortex XDR is particularly good at detecting other use cases such as anomaly detection or lateral movement without legitimate credentials.
+
+
+
+Response Capability in Cortex XDR:
+- Native Integration with Endpoints and Firewalls
+  - Cortex XDR coordinates enforcement with Cortex XDR endpoint agents and with network and cloud-based firewalls.
+
+- Live Terminal Facilitates Analysts Response
+  - Live Terminal provides the ability to investigate and shut down attacks directly on endpoints.
+
+- Create BIOC Rules
+  - apply knowledge gained from investigations to detect and prevent similar future attacks by incorporating that knowledge in behavioral rules.
+
+- Leverage WildFire
+  - New protections will be automatically distributed to all WildFire users by coordinating with WildFire.
+
+
+
+
+---
+
 ## Managed Threat Hunting Techniques
 
 The Cortex XDR platform enables to conduct both manual and semi-automated threat hunting.
@@ -721,20 +1159,28 @@ The Cortex XDR platform enables to conduct both manual and semi-automated threat
 ![Screen Shot 2020-10-28 at 00.52.08](https://i.imgur.com/XBEoMAF.png)
 
 
-Threat Hunting Tools
-- Cortex XDR enables managed threat hunting by leveraging several threat hunting tools such as `AutoFocus` and `WildFire`.
-- Unit 42:
+### Threat Hunting Tools
+
+Cortex XDR enables managed threat hunting by leveraging several threat hunting tools such as `AutoFocus` and `WildFire`.
+- `Unit 42`:
   - team of expert threat hunters.
+
 - Cortex XDR:
   - A special version of Cortex XDR enables to keep an eye on all managed threat hunting customers, to pose questions, and to perform investigations.
-- AutoFocus:
+
+- `AutoFocus`:
   - provides a high-fidelity threat intelligence feed powered by WildFire findings.
-- WildFire:
+
+- `WildFire`:
   - a cloud-delivered malware analysis service
   - uses data and threat intelligence from the industry's largest community.
   - applies advanced analysis to automatically identify unknown threats and stop attackers in their tracks.
-- Cortex XSOAR
+  - ![Screen Shot 2020-12-02 at 02.49.44](https://i.imgur.com/iEgKx36.png)
+  - ![Screen Shot 2020-12-02 at 02.51.32](https://i.imgur.com/vukaied.png)
+
+- `Cortex XSOAR`
   - applies playbooks to aggregate and normalize threat intel, enrich incidents, reduce false positives, deduplicate activities, and produce experimental signals.
+
 - external resources:
   - The threat hunting team uses several external resources, such as `VT, Cuckoo, URL Analyzer, and GCP`.
 

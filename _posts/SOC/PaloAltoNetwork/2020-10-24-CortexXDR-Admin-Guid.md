@@ -976,11 +976,11 @@ Cortex XDR takes a more efficient and effective approach to preventing attacks t
 Cortex XDR provides a multi-method protection solution with exploit protection modules that target software vulnerabilities in processes that open non-executable files and malware protection modules that examine executable files, DLLs, and macros for malicious signatures and behavior. Using this multi-method approach, the Cortex XDR solution can prevent all types of attacks, whether they are known or unknown threats.
 
 
-  Exploit Protection Overview
+#### Exploit Protection Overview
 An exploit is a sequence of commands that takes advantage of a bug or vulnerability in a software application or process. Attackers use these exploits to access and use a system to their advantage. To gain control of a system, the attacker must exploit a chain of vulnerabilities in the system. Blocking any attempt to exploit a vulnerability in the chain will block the entire exploitation attempt.
 To combat an attack in which an attacker takes advantage of a software exploit or vulnerability, Cortex XDR employs exploit protection modules (EPMs). Each EPM targets a specific type of exploit attack in the attack chain. Some capabilities that Cortex XDR EPMs provide are reconnaissance prevention, memory corruption prevention, code execution prevention, and kernel protection.
 
-Malware Protection Overview
+#### Malware Protection Overview
 Malicious files, known as malware, are often disguised as or embedded in non-malicious files. These files can attempt to gain control, gather sensitive information, or disrupt the normal operations of the system. Cortex XDR prevents malware by employing the Malware Prevention Engine. This approach combines several layers of protection to prevent both known and unknown malware that has not been seen before from causing harm to endpoints. The mitigation techniques that the Malware Prevention Engine employs vary by the endpoint type:
 - Malware Protection for Windows
 - Malware Protection for Mac
@@ -995,8 +995,7 @@ Malware Protection for Windows
 Microsoft Office files on Windows endpoints.
 - PDF file protection—Enables Cortex XDR to block known and unknown PDFs when run on Windows
 endpoints.
-- Behavioral threat protection (Windows 7 SP1 and later versions)—Enables continuous monitoring of
-endpoint activity to identify and analyze chains of events—known as causality chains. This enables Cortex XDR to detect malicious activity that could otherwise appear legitimate if inspected as individual events. Behavioral threat protection requires Traps agent 6.0 or a later release.
+- Behavioral threat protection (Windows 7 SP1 and later versions)—Enables continuous monitoring of endpoint activity to identify and analyze chains of events—known as causality chains. This enables Cortex XDR to detect malicious activity that could otherwise appear legitimate if inspected as individual events. Behavioral threat protection requires Traps agent 6.0 or a later release.
 - Evaluation of trusted signers—Permits unknown files that are signed by highly trusted signers to run on the endpoint.
 - Malware protection modules—Targets behaviors—such as those associated with ransomware—and enables to block the creation of child processes.
 - Policy-based restrictions—Enables to block files from executing from within specific local folders, network folders, or external media locations.
@@ -1011,6 +1010,7 @@ Malware Protection for Mac
 endpoint.
 - Periodic and automated scanning—Enables to block dormant malware that has not yet tried to
 execute on endpoints. Scanning requires Cortex XDR agent 7.1 or a later release.
+
 Malware Protection for Linux
 - WildFire integration—Enables automatic detection of known malware and analysis of unknown malware using WildFire threat intelligence. WildFire integration requires Traps agent 6.0 or a later release.
 - Local static analysis—Enables the Cortex XDR agent to use machine learning to analyze unknown files and issue a verdict. The Cortex XDR agent uses the verdict returned by the local analysis module until it receives the WildFire verdict from Cortex XDR. Local analysis requires Traps agent 6.0 or a later release.
@@ -1023,7 +1023,8 @@ Malware Protection for Android
 - APK files examination—Analyze and prevent malicious APK files from running.
 - Evaluation of trusted signers—Permits unknown files that are signed by trusted signers to run on the
 Android device.
-File Analysis and Protection Flow
+
+#### File Analysis and Protection Flow
 The Cortex XDR agent utilizes advanced multi-method protection and prevention techniques to protect endpoints from both known and unknown malware and software exploits.
 Exploit Protection for Protected Processes
 In a typical attack scenario, an attacker attempts to gain control of a system by first corrupting or bypassing memory allocation or handlers. Using memory-corruption techniques, such as buffer overflows and heap corruption, a hacker can trigger a bug in software or exploit a vulnerability in a process. The attacker must then manipulate a program to run code provided or specified by the attacker while evading detection. If the attacker gains access to the operating system, the attacker can then upload malware, such as Trojan horses (programs that contain malicious executable files), or can otherwise use the system to their advantage. The Cortex XDR agent prevents such exploit attempts by employing roadblocks—or traps—at each stage of an exploitation attempt.
@@ -1072,7 +1073,9 @@ Local analysis is enabled by default in a Malware Security profile. Because loca
 Phase 4: Evaluation of Malware Security Policy
 If the prior evaluation phases do not identify a file as malware, the Cortex XDR agent observes the behavior of the file and applies additional malware protection rules. If a file exhibits malicious behavior, such as encryption-based activity common with ransomware, the Cortex XDR agent blocks the file and reports the security event to the Cortex XDR.
 If no malicious behavior is detected, the Cortex XDR agent permits the file (process) to continue running but continues to monitor the behavior for the lifetime of the process.
-Endpoint Protection Capabilities
+
+
+#### Endpoint Protection Capabilities
 Each security profile provides a tailored list of protection capabilities that configure for the platform select. The following table describes the protection capabilities customize in a security profile. The table also indicates which platforms support the protection capability (a dash (—) indicates the capability is not supported).
 Exploit Security Profiles
   Protection Capability
@@ -1192,7 +1195,8 @@ can restrict the executable files, that users can launch from optical disc drive
          —
    —
   —
- Endpoint Protection Modules
+
+#### Endpoint Protection Modules
 Each security profile applies multiple security modules to protect endpoints from a wide range of attack techniques. While the settings for each module are not configurable, the Cortex XDR agent activates a specific protection module depending on the type of attack, the configuration of security policy, and the operating system of the endpoint. When a security event occurs, the Cortex XDR agent logs details about the event including the security module employed by the Cortex XDR agent to detect and prevent the attack based on the technique. To help understand the nature of the attack, the alert identifies the protection module the Cortex XDR agent employed.
 The following table lists the modules and the platforms on which they are supported. A dash (—) indicates the module is not supported.
 APC Protection — — —
@@ -1401,53 +1405,60 @@ Identifies a file that was previously allowed to run
 on an endpoint that is now determined to be malware. Post-detection events provide notifications for each endpoint on which the file executed.
                           Alto
 
- Manage Cortex XDR Agents
+
+
+---
+
+
+### Manage Cortex XDR Agents
 - Create an Agent Installation Package
 - Set an Application Proxy for Cortex XDR Agents
 - Move Cortex XDR Agents Between Managing XDR Servers
 - Upgrade Cortex XDR Agents
 - Delete Cortex XDR Agents
 - Uninstall the Cortex XDR Agent
-Create an Agent Installation Package
-To install the Cortex XDR agent on the endpoint for the first time, must first create an agent installation package. After create and download an installation package, then install it directly on an endpoint or use a software deployment tool of choice to distribute the software to multiple endpoints. To install the Cortex XDR agent, must use a valid installation package that exists in Cortex XDR management console. If delete an installation package, any agents installed from this package are not able to register to Cortex XDR.
-After install the Cortex XDR agent for the first time, upgrade individual or batches of agents remotely from the Cortex XDR management console.
+
+#### Create an Agent Installation Package
+
+To install the Cortex XDR agent on the endpoint for the first time,
+1. create an agent installation package.
+2. download an installation package
+3. install it directly on an endpoint or use a software deployment tool of choice to distribute the software to multiple endpoints. 
+   - To install the Cortex XDR agent, must use a valid installation package that exists in Cortex XDR management console. 
+   - If delete an installation package, any agents installed from this package are not able to register to Cortex XDR.
+4. After install, upgrade individual or batches of agents remotely from the Cortex XDR management console.
+
+
 To create a new installation package:
-- STEP 1 | From Cortex XDR, select Endpoints > Endpoint Management > Agent Installations.
-- STEP 2 | Create a new installation package.
+- STEP 1 | `XDR > Endpoints > Endpoint Management > Agent Installations`.
+- STEP 2 | **Create** a new installation package.
+- STEP 3 | Enter a unique **Name** and an optional **Description** to identify the installation package.
+  - The package Name must be no more than 32 characters but can contain letters, numbers, or spaces.
+- STEP 4 | Select the **Package Type**.
+  - <kbd>Standalone Installers</kbd> — Use for fresh installations and to Upgrade Cortex XDR Agents on a registered endpoint that is connected to Cortex XDR.
+  - (Windows, macOS, and Linux only) <kbd>Upgrade from ESM</kbd> — Use this package to upgrade `Traps agents` which connect to the on-premise `Traps Endpoint Security Manager` to Cortex XDR.
 
-- STEP 3 | STEP 4 |
-- STEP 5 | STEP 6 | STEP 7 |
-- STEP 8 |
-Enter a unique Name and an optional Description to identify the installation package.
-The package Name must be no more than 32 characters but can contain letters, numbers, or spaces.
-Select the Package Type.
-- Standalone Installers—Use for fresh installations and to Upgrade Cortex XDR Agents on a registered endpoint that is connected to Cortex XDR.
-- (Windows, macOS, and Linux only) Upgrade from ESM—Use this package to upgrade Traps agents which connect to the on-premise Traps Endpoint Security Manager to Cortex XDR.
-Select the Platform for which want to create the installation package. (Windows, macOS, and Linux only) Select the Agent Version for the package.
-Create the installation package.
-Cortex XDR prepares installation package and makes it available on the Agent Installations page.
-Download installation package.
-When the status of the package shows Completed, right-click the agent version, and click Download.
-- For Windows endpoints, select between the architecture type.
-- For macOS endpoints, download the ZIP installation folder and upload it to the endpoint. To deploy
-the Cortex XDR agent using JAMF, upload the ZIP folder to JAMF. Alternatively, to install the agent
-manually on the endpoint, unzip the ZIP folder and double-click the pkg file.
-- For Linux endpoints, download .rpm or .deb installers (according to the endpoint
-Linux distribution), and deploy the installers on the endpoints using the Linux package manager. Alternatively, download a Shell installer and deploy it manually on the endpoint.
-When upgrade a Cortex XDR agent version without package manager, Cortex XDR will upgrade the installation process to package manager by default, according to the endpoint Linux distribution.
-- For Android endpoints, Cortex XDR creates a tenant-specific download link which distribute to Android endpoints. When a newer agent version is available, Cortex XDR identifies older package versions as [Outdated].
-Next steps:
-As needed, return to the Agent Installations page to manage agent installation packages. To manage a specific package, right click the agent version, and select the desired action:
-- Edit the package name or description.
-- Delete the installation package. Deleting an installation package does not uninstall the Cortex XDR
-agent software from any endpoints. However, if install the Cortex XDR agent from a package after delete it, Cortex XDR denies the registration request leaving the agent in an unprotected state. If this is undesirable, instead hide the installation package from the main view of the Agent Installations page. Hiding a package can be useful to filter earlier or less relevant versions from the main view.
-- Copy text to clipboard to copy the text from a specific field in the row of an installation package.
-- Hide installation packages. Using the Hide option provides a quick method to filter out results based
-on a specific value in the table. also use the filters at the top of the page to build a filter from scratch. To create a persistent filter, save ( ) it.
-- STEP 9 |
+- STEP 5 | Select the **Platform** (Windows, macOS, and Linux only) 
+- STEP 6 | Select the Agent Version for the package.
+- STEP 7 | Create the installation package.
+- STEP 8 | Download installation package.
+  - For Windows endpoints, select between the architecture type.
+  - For macOS endpoints, download the ZIP installation folder and upload it to the endpoint. To deploy the Cortex XDR agent using JAMF, upload the ZIP folder to JAMF. Alternatively, to install the agent
+  manually on the endpoint, unzip the ZIP folder and double-click the pkg file.
+  - For Linux endpoints, download .rpm or .deb installers (according to the endpoint
+  Linux distribution), and deploy the installers on the endpoints using the Linux package manager. Alternatively, download a Shell installer and deploy it manually on the endpoint.
+  - For Android endpoints, Cortex XDR creates a tenant-specific download link which distribute to Android endpoints. When a newer agent version is available, Cortex XDR identifies older package versions as [Outdated].
+
+> When upgrade a Cortex XDR agent version without package manager, Cortex XDR will upgrade the installation process to package manager by default, according to the endpoint Linux distribution.
+
+- STEP 9 | `Agent Installations page`: manage agent installation packages. 
+  - To manage a specific package, right click the agent version, and select the desired action:
+  - Edit
+  - Delete the installation package. Deleting an installation package does not uninstall the Cortex XDR agent software from any endpoints. However, if install the Cortex XDR agent from a package after delete it, Cortex XDR denies the registration request leaving the agent in an unprotected state. If this is undesirable, instead hide the installation package from the main view of the Agent Installations page. Hiding a package can be useful to filter earlier or less relevant versions from the main view.
+  - Hide installation packages. Using the Hide option provides a quick method to filter out results based on a specific value in the table. also use the filters at the top of the page to build a filter from scratch. To create a persistent filter, save ( ) it.
 
 
- Set an Application Proxy for Cortex XDR Agents
+#### Set an Application Proxy for Cortex XDR Agents
 This capability is supported on endpoints with Traps agent 5.0.9 (Windows only) or Cortex XDR agent 7.0 and later releases.
 In environments where agents communicate with the Cortex XDR server through a wide-system proxy, now set an application-specific proxy for the Traps and Cortex XDR agent without affecting the communication of other applications on the endpoint. set the proxy in one of three ways: during the agent installation or after installation using Cytool on the endpoint or from Endpoints Management in Cortex XDR as described in this topic. assign up to five different proxy servers per agent. The proxy server the agent uses is selected randomly and with equal probability. If the communication between the agent and the Cortex XDR sever through the app-specific proxies fails, the agent resumes communication through the system-wide proxy defined on the endpoint. If that fails as well, the agent resumes communication with Cortex XDR directly.
 - STEP 1 | From Cortex XDR, select Endpoints > Endpoint Management > Endpoint Administration.
@@ -1483,7 +1494,9 @@ managing server. This option is available only for an administrator in Cortex XD
 
   STEP 4 | Track the action.
 When track the action in the Action Center, the original managing server will keep displaying In progress (Sent) status also after the action has ended successfully, since the agent no longer reports to this managing server. The new managing server will add this as a new agent registration action.
-Upgrade Cortex XDR Agents
+
+
+#### Upgrade Cortex XDR Agents
 After install the Cortex XDR agent and the agent registers with Cortex XDR, upgrade the Cortex XDR agent software using a method supported by the endpoint platform:
 - Android—Upgrade the app directly from the Google Play Store or push the app to endpoints from an endpoint management system such as AirWatch.
 - Windows, Mac, or Linux—Create new installation packages and push the Cortex XDR agent package to up to 5,000 endpoints from Cortex XDR.not upgrade VDI endpoints. Additionally,not upgrade a Golden Image from Cortex XDR agent 6.1.x or an earlier release to a Cortex XDR agent 7.1.0 or a later release.
@@ -1504,31 +1517,95 @@ The Cortex XDR agent keeps the name of the original installation package after e
  Cortex XDR distributes the installation package to the selected endpoints at the next heartbeat communication with the agent. To monitor the status of the upgrades, go to Response > Action Center. From the Action Center also view additional information about the upgrade (right-click the action and select Additional data) or cancel the upgrade (right-click the action and select Cancel Agent Upgrade).
 - During the upgrade process, the endpoint operating system might request for a reboot. However, do not have to perform the reboot for the Cortex XDR agent upgrade process to complete successfully.
 - After upgrade to a Cortex XDR agent 7.2 or a later release on an endpoint with Cortex XDR Device Control rules, need to reboot the endpoint for the rules to take effect.
-Delete Cortex XDR Agents
-From Cortex XDR, delete a Cortex XDR agent from one or more Windows, Mac, or Linux endpoints that have disconnected from the Cortex XDR management console. Deleting an endpoint triggers the following lifespan flow:
+
+
+
+### Delete Cortex XDR Agents
+
+Deleting an endpoint triggers the following lifespan flow:
 - Standard agents are deleted after 180 days of inactivity.
 - VDI and TS agents are deleted after 6 hours of inactivity.
-To reinstate an endpoint, have to uninstall and reinstall the endpoint.
-After an endpoint is deleted, data associated with the deleted endpoint is displayed in the Action Center tables and in the Causality View with am Endpoint Name - N/A (Endpoint Deleted). Alerts that already include the endpoint data at the time of the alert creation are not affected.
-The following workflow describes how to delete the Cortex XDR agent from one or more Windows, Mac, or Linux endpoints.
-- STEP 1 | Select Endpoints > Endpoint Management > Endpoint Administration. STEP 2 | Right-click the endpoint want to remove. also select multiple endpoints if want to perform a bulk delete. STEP 3 | Select Endpoint Control > Delete Endpoint.
-Uninstall the Cortex XDR Agent
-From Cortex XDR, uninstall the Cortex XDR agent from one or more Windows, Mac, or Linux endpoints at any time. uninstall the Cortex XDR agent from an unlimited number of endpoints in a single bulk action. To uninstall the Cortex XDR app for Android, must do so from the Android endpoint.
-The following workflow describes how to uninstall the Cortex XDR agent from one or more Windows, Mac, or Linux endpoints.
-  STEP 1 | Log in to Cortex XDR.
-Go to Response > Action Center > + New Action.
-- STEP 2 | Select Agent Uninstall.
+
+> To reinstate an endpoint, have to uninstall and reinstall the endpoint.
 
 
+After an endpoint is deleted, data associated with the deleted endpoint is displayed in the Action Center tables and in the Causality View with am `Endpoint Name - N/A (Endpoint Deleted)`. 
+
+Alerts that already include the endpoint data at the time of the alert creation are not affected.
+
+to delete the Cortex XDR agent 
+- STEP 1 | `Endpoints > Endpoint Management > Endpoint Administration`. 
+- STEP 2 | `Right-click > Endpoint Control > Delete Endpoint`.
+
+
+
+#### Uninstall the Cortex XDR Agent
+
+To uninstall the Cortex XDR app
+- STEP 1 | XDR > Response > Action Center > + New Action.
+- STEP 2 | Select `Agent Uninstall`.
 - STEP 3 | Click Next.
 - STEP 4 | Select the target endpoints (up to 100) for which want to uninstall the Cortex XDR agent.
-If needed, Filter the list of endpoints by attribute or group name.
 - STEP 5 | Click Next.
 - STEP 6 | Review the action summary and click Done when finished.
 - STEP 7 | To track the status of the uninstallation, return to the Action Center.
 
 
- Define Endpoint Groups
+
+---
+
+
+### install the agent
+
+
+#### Install the Cortex XDR Agent 7.1 Using Msiexec
+
+
+When you install the Cortex XDR agent with Msiexec, you must install the Cortex XDR agent per-machine and not per-user.
+
+Although Msiexec supports additional options, the Cortex XDR agent installers support only the options listed here. 
+
+For example, with Msiexec, the option to install the software in a non-standard directory is not supported—you must use the default path.
+
+command | note
+---|---
+`/i<installpath>\<installerfilename>.msi` | Install a package. <br> example: `msiexec /i c:\install\cortexxdr.msi`
+`/qn` | Displays no user interface (quiet installation).
+`/L*v <logpath>\<logfilename>.txt` | Log verbose output to a file. <br> example: `/l*v c:\logs\install.txt`
+`VDI_ENABLED=1` | to install the agent on the golden image for a **non-persistent VDI**. <br> This option identifies the session as a VDI in Cortex XDR and applies license and endpoint management policy specific for non-persistent VDI. 
+`TS_ENABLED=1` | to install the agent on the golden image for a **temporary session**. <br> This option identifies the session as a temporary session in XDR and to apply license and endpoint management policy specific for temporary sessions. 
+`proxy_list` | to install agents that communicate with Cortex XDR through an **application-specific proxy for Cortex XDR**. <br> This option is relevant in environments where XDR agents communicate with XDR through a proxy, enabling Cortex XDR admins to control and manage the agent proxy configuration settings without affecting the communication of other applications on the endpoint.
+`RESTRICT_RESPONSE_ACTIONS=1` | permanently disable the option for Cortex XDR to perform all, or a combination, of the following actions on endpoints running a Cortex XDR agent: initiate a Live Terminal remote session on the endpoint, execute Python scripts on the endpoint, and retrieve files from the endpoint to Cortex XDR. <br> Disabling any of these actions is an irreversible action, so to enable the action again, must uninstall the Cortex XDR agent and install a new package without this flag. <br> To disable a specific action, use the corresponding flag: <br> `RESTRICT_LIVE_TERMINAL=1`: disable Live Terminal. <br> `RESTRICT_SCRIPT_EXECUTION=1`: disable script execution. <br> `RESTRICT_FILE_RETRIEVAL=1`: disable files retrieval.
+
+
+To install Cortex XDR using Msiexec:
+1. Windows endpoint, verify that the system meets the requirements described in Cortex XDR Agent for Windows Requirements.
+2. open a command prompt as an administrator.
+   - `Start > All Programs > Accessories > Command prompt > Run as administrator`
+   - `Start > cmd. open the command prompt as an administrator, press CTRL+SHIFT+ENTER`.
+3. Run the msiexec command followed by one or more supported options and properties. 
+   - `msiexec /i c:\install\cortexxdr.msi /l*v C:\temp\cortexxdrinstall.log /qn`
+
+After you complete the installation, verify the Cortex XDR agent can establish a connection.
+
+> If the Cortex XDR agent does not connect to Cortex XDR, verify your internet connection and perform a check-in on the endpoint. If the agent still does not connect, verify the installation package has not been removed from the Cortex XDR management console.
+
+
+#### Configure Cortex XDR Specific Proxy
+In environments where Cortex XDR agents communicate with Cortex XDR through a proxy, you can define a system-wide proxy that affects all communication on the endpoint, or a Cortex XDR specific proxy that you can set, manage, and disable in Cortex XDR. This topic describes how to install a Cortex XDR agent on the endpoint and assign it a Cortex XDR specific proxy.
+Install a Cortex XDR Agent Using Msiexec and include the proxy_list argument.
+The argument format is proxy_list=”<proxy>:<port>”
+To install a Cortex XDR agent with a Cortex XDR specific proxy, enter your proxy IP address and port number. You can assign up to five different IP addresses per agent, and the proxy for communication is selected randomly with equal probability.
+For example:
+msiexec /i c:\install\cortexxdr.msi proxy_list=”10.196.20.244:8080,10.196.20.245:8080”
+To install a Cortex XDR agent communicating through the Palo Alto Networks Broker Service, you must enter the Broker VM IP address and port number 8888 only.
+After the initial installation, you can change the proxy settings if necessary from the Endpoints page of Cortex XDR.
+
+
+
+---
+
+### Define Endpoint Groups
 To easily apply policy rules to specific endpoints, define an endpoint group. There are two methods use to define an endpoint group:
 - Create a dynamic group by allowing Cortex XDR to populate endpoint group dynamically using endpoint characteristics such as a partial hostname or alias; full or partial domain or workgroup name; IP address, range or subnet; installation type (VDI, temporary session, or standard endpoint); agent version; endpoint type (workstation, server, mobile); or operating system version.
 - Create a static group by selecting a list of specific endpoints.
@@ -1561,7 +1638,7 @@ manage a group, right-click the group and select the desired action:
 values (TSV) file.
 
 
- About Content Updates
+### About Content Updates
 To increase security coverage and quickly resolve any issues in policy, Palo Alto Networks can seamlessly deliver software packages for Cortex XDR called content updates. Content updates can contain changes or updates to any of the following:
 Starting with the Cortex XDR 7.1 agent release, Cortex XDR delivers to the agent the content update in parts and not as a single file, allowing the agent to retrieve only the updates and additions it needs.
 - Default security policy including exploit, malware, restriction, and agent settings profiles
@@ -1585,7 +1662,7 @@ Otherwise, if want the Cortex XDR agent to retrieve the latest content from the 
 - (Windows and Mac only) Perform manual check-in from the Cortex XDR agent console. - Initiate a check-in using the Cytool checkin command.
   104
 
- Endpoint Security Profiles
+### Endpoint Security Profiles
 Cortex XDR provides default security profiles that use out of the box to immediately begin protecting endpoints from threats. While security rules enable to block or allow files to run
 on endpoints, security profiles help customize and reuse settings across different groups of endpoints. When the Cortex XDR agent detects behavior that matches a rule defined in security policy, the Cortex XDR agent applies the security profile that is attached to the rule for further inspection.
   Profile Name
@@ -1605,6 +1682,7 @@ Add a New Restrictions Security Profile.
    Agent Settings profiles enable to customize settings that apply to the Cortex XDR agent (such as the disk space quota for log retention). For Mac and Windows platforms, also customize user interface options for the Cortex XDR console, such as accessibility and notifications.
 Add a New Agent Settings Profile.
       Exceptions Profiles
+
 Exceptions Security Profiles override the security policy to allow a process or file to run on an endpoint, to disable a specific BTP rule, to allow a known digital signer, and to import exceptions from the Cortex XDR support team. Exceptions
 
    Profile Name
@@ -2147,7 +2225,7 @@ The Usage Count should have a 0 value.
 4. Confirm the deletion and are done.
 
 
- Customizable Agent Settings
+### Customizable Agent Settings
 Each Agent Settings Profile provides a tailored list of settings that configure for the platform select.
 In addition to the customizable Agent Settings Profiles, also set:
 - Configure Global Agent Settings that apply to all the endpoints in network.
@@ -2720,7 +2798,7 @@ Newly set owner/attributes
 PID of the stopped process
 
 
- Apply Security Profiles to Endpoints
+### Apply Security Profiles to Endpoints
 Cortex XDR provides out-of-the-box protection for all registered endpoints with a default security policy customized for each supported platform type. To tune security policy, customize settings in a security profile and attach the profile to a policy. Each policy that create must apply to one or more endpoints or endpoint groups.
 - STEP 1 |
 - STEP 2 |
@@ -2745,7 +2823,7 @@ In the Policy Rules table, change the rule position, if needed, to order the pol
 Right-click to View Policy Details, Edit, Save as New, Disable, and Delete.
 
 
- Exceptions Security Profiles
+### Exceptions Security Profiles
 To allow full granularity, Cortex XDR allows to create exceptions from baseline policy. These exceptions allow to remove specific folders or paths from exemption or disable specific security modules. In Cortex XDR, configure the following types of policy exceptions:
   Exception Type
     Description
@@ -2869,7 +2947,7 @@ Review the alert data (Process, Path, and Hash) and select Exception Scope: Glob
 The relevant PHP file is added to the Global Exceptions in network and will be applied across all rules and policies. At any point, click the Generating Alert ID to return to the original alert from which the exception was originated. To delete a specific global exception, select it and click X.not edit global exceptions generated from a local file threat examination exception restriction security event.
 
 
- Hardened Endpoint Security
+### Hardened Endpoint Security
 Cortex XDR enables to extend the security on endpoints beyond the Cortex XDR agent built- in prevention capabilities to provide an increased coverage of network security within organization. By leveraging existing mechanisms and added capabilities, the Cortex XDR agent can enforce additional protections on endpoints to provide a comprehensive security posture.
 The following table describes these additional protections and indicates which platforms support the setting. A dash (—) indicates the setting is not supported.
 Hardened endpoint security capabilities are not supported for Android endpoints.
@@ -5561,8 +5639,17 @@ If at any time need to cancel the action, right-click it and select Cancel for p
 will see all endpoints from which files are being retrieved, including their IP Address, Status, and Additional Data.
 - STEP 8 | When the action status is Completed Successfully, right-click the action and download the retrieved logs.
 Cortex XDR retains retrieved files for up to 30 days.
+
+
 Scan an Endpoint for Malware
-In addition to blocking the execution of malware, the Cortex XDR agent can scan Windows and Mac endpoints and attached removable drives for dormant malware that is not actively attempting to run. The Cortex XDR agent examines the files on the endpoint according to the Malware security profile that is in effect on the endpoint (quarantine settings, unknown file upload, etc.) When a malicious file is detected during the scan, the Cortex XDR agent reports the malware to Cortex XDR so that manually take additional action to remove the malware before it is triggered and attempts to harm the endpoint. scan the endpoint in the following ways:
+
+Cortex XDR agent can scan Windows and Mac endpoints and attached removable drives for dormant malware that is not actively attempting to run. 
+
+The Cortex XDR agent examines the files on the endpoint according to the `Malware security profile` that is in effect on the endpoint (quarantine settings, unknown file upload, etc.) 
+
+When a malicious file is detected during the scan, the Cortex XDR agent reports the malware to Cortex XDR so that manually take additional action to remove the malware before it is triggered and attempts to harm the endpoint. 
+
+scan the endpoint in the following ways:
 - System scan—Initiate a full scan on demand from Endpoints Administration for an endpoint. To initiate a system scan, see Initiate a Full Scan from Cortex XDR
 - Periodic scan—Configure periodic full scans that run on the endpoint as part of the malware security profile. To configure periodic scans, see Add a New Malware Security Profile.
 - Custom scan—(Windows, requires a Cortex XDR agent 7.1 or later release) The end user can initiate a scan on demand to examine a specific file or folder. For more information, see the Cortex XDR agent administrator’s guide for Windows.

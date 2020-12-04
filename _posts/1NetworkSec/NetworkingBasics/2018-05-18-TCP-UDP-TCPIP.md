@@ -16,7 +16,7 @@ image: /assets/img/note/tls-ssl-handshake.png
 
 ---
 
-# TCP & UDP, TCP/IP 
+# TCP & UDP, TCP/IP
 
 The **Transmission Control Protocol/Internet Protocol (TCP/IP)** suite
 - created by the `U.S. Department of Defense (DoD)`
@@ -132,16 +132,16 @@ IP Vulnerabilities
 
 Two protocols: `Transmission Control Protocol (TCP)` and `User Datagram Protocol (UDP)` are defined for transmitting datagrams.
 1. UDP can be much faster than TCP, which often requires retransmissions and delaying of packets.
-2. UDP is often used
-   - time-sensitive applications
+2. **UDP is often used**
+   - `time-sensitive applications`
      - where data integrity is not as important as speed
      - Short client-server request like DNS, single message request
      - Voice over IP (VoIP).
      - High-perfomece networking
      - Application handles reliable transmission
-   - Primary use: send small packets of information.
-3. TCP is used for
-   -  applications where data order and data integrity is important
+   - Primary use: `send small packets of information`.
+3. **TCP is used for**
+   -  applications where `data order and data integrity is important`
      - like HTTP, SSH, and FTP.
 
 ![TCP7](https://i.imgur.com/pwrzleA.jpg)
