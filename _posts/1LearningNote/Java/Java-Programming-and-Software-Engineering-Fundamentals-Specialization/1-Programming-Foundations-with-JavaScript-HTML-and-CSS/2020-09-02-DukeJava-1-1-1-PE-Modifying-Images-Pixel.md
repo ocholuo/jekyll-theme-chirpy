@@ -12,7 +12,7 @@ img: /assets/img/sample/rabbit.png
 
 Java-Programming-and-Software-Engineering-Fundamentals-Specialization
 - 1.Programming-Foundations-with-JavaScript-HTML-and-CSS
-  - Programming Exercise: Modifying Images Pixel
+  - Programming Exercise: Modifying Images Pixel.
 
 ProjectCode: https://github.com/ocholuo/language/tree/master/0.project/javademo
 
