@@ -70,6 +70,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 ```
 
+`source ~/.bash_profile`
+
+
 
 ref:
 - [ref](https://natelandau.com/my-mac-osx-bash_profile/)
