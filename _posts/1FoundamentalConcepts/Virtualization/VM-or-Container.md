@@ -1,15 +1,19 @@
+---
+title: containers vs virtual machines (VM’s)
+date: 2020-11-26 11:11:11 -0400
+categories: [1SecConcept, VMs]
+tags: [Linux, VMs]
+math: true
+image:
+---
 
-
-
-
-
-
-# containers vs virtual machines (VM’s)
-
-
+[toc]
 
 ---
 
+# containers vs virtual machines (VM’s)
+
+---
 
 
 ## Application Cell / Container Virtualization
