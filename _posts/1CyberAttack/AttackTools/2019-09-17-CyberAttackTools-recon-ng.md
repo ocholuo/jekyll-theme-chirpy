@@ -34,16 +34,16 @@ options set SOURCE tesla.com
 
 
 
-[recon-ng][shein] > show companies
+[recon-ng][Mycompany] > show companies
 
   +------------------------------------------------------+
   | rowid | company | description | notes |    module    |
   +------------------------------------------------------+
-  | 1     | shein   |             |       | user_defined |
+  | 1     | Mycompany   |             |       | user_defined |
   +------------------------------------------------------+
 
 [*] 1 rows returned
-[recon-ng][shein] > marketplace search
+[recon-ng][Mycompany] > marketplace search
 
   +---------------------------------------------------------------------------------------------------+
   |                        Path                        | Version |     Status    |  Updated   | D | K |

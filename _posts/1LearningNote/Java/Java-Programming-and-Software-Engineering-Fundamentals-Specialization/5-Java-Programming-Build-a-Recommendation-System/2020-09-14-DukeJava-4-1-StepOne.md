@@ -7,12 +7,210 @@ tags: [Java]
 img: /assets/img/sample/rabbit.png
 ---
 
-# DukeJava 4-1 StepOne
-
 [toc]
 
 ---
 
+# DukeJava 4-1 StepOne
+
+Java-Programming-and-Software-Engineering-Fundamentals-Specialization
+- 5.Java-Programming-Build-a-Recommendation-System
+  - Step One : get the rating, rater, movie from the file
+
+Resource Link: https://www.coursera.org/learn/java-programming-recommender/supplement/KTrOQ/programming-exercise-step-two
+
+---
+
+The class <kbd>Movie</kbd>
+- a Plain Old Java Object (POJO) class for storing the data about one movie. 
+- It includes the following items:
+  - Eight `private variables` to represent information about a movie
+  - A `constructor` with eight parameters to initialize the private variables
+  - Eight `getter` methods to return the private information 
+    - such as the method `getGenres`: returns a String of all the genres for this movie.
+  - A `toString` method: represent movie information as a String for easy print.
+
+```java
+// id - a String variable representing the IMDB ID of the movie
+// title - a String variable for the movie’s title
+// year - an integer representing the year
+// genres - one String of one or more genres separated by commas
+// director - one String of one or more directors of the movie separated by commas
+// country - one String of one or more countries the film was made in, separated by commas
+// minutes - an integer for the length of the movie
+// poster - a String that is a link to an image of the movie poster if one exists, or “N/A” if no poster exists
+
+public class Movie {
+
+    private String id;
+    private String title;
+    private int year;
+    private String genres;
+    private String director;
+    private String country;
+    private String poster;
+    private int minutes;
+
+    public Movie (String anID, String aTitle, String aYear, String theGenres) {
+        // just in case data file contains extra whitespace
+        id = anID.trim();
+        title = aTitle.trim();
+        year = Integer.parseInt(aYear.trim());
+        genres = theGenres;
+    }
+
+    public Movie (String anID, String aTitle, String aYear, String theGenres, String aDirector,
+    String aCountry, String aPoster, int theMinutes) {
+        // just in case data file contains extra whitespace
+        id = anID.trim();
+        title = aTitle.trim();
+        year = Integer.parseInt(aYear.trim());
+        genres = theGenres;
+        director = aDirector;
+        country = aCountry;
+        poster = aPoster;
+        minutes = theMinutes;
+    }
+
+    // Returns ID associated with this item
+    public String getID () {return id;}
+    // Returns title of this item
+    public String getTitle () {return title;}
+    // Returns year in which this item was published
+    public int getYear () {return year;}
+    // Returns genres associated with this item
+    public String getGenres () {return genres;}
+    public String getCountry(){return country;}
+    public String getDirector(){return director;}
+    public String getPoster(){return poster;}
+    public int getMinutes(){return minutes;}
+
+    // Returns a string of the item's information
+    public String toString () {
+        String result = "Movie [id=" + id + ", title=" + title + ", year=" + year;
+        result += ", genres= " + genres + "]";return result;}
+}
+```
+
+The class <kbd>Rating</kbd>
+- POJO class for storing the data about one rating of an item. 
+- It includes
+  - Two `private variables` to represent information about a rating:
+  - A `constructor` with two parameters to initialize the private variables.
+  - Two `getter` methods 
+    - `getItem`
+    - `getValue`
+  - A `toString` method: represent rating information as a String.
+  - A `compareTo` method: compare this rating with another rating.
+
+
+```java
+// item - a String description of the item being rated (for this assignment you should use the IMDB ID of the movie being rated)
+// value - a double of the actual rating
+
+public class Rating implements Comparable<Rating> {
+    private String item;
+    private double value;
+
+    public Rating (String anItem, double aValue) {
+        item = anItem;
+        value = aValue;
+    }
+
+    // Returns item being rated
+    public String getItem () {return item;}
+    // Returns the value of this rating (as a number so it can be used in calculations)
+    public double getValue () {return value;}
+
+    // Returns a string of all the rating information
+    public String toString () {return "[" + getItem() + ", " + getValue() + "]";}
+
+    public int compareTo(Rating other) {
+        if (value < other.value) return -1;
+        if (value > other.value) return 1;
+        return 0;
+    }
+}
+```
+
+
+The class <kbd>Rater</kbd>
+- keeps track of one rater and all their ratings. 
+- This class includes:
+  - Two `private variables`:
+  - A `constructor` with one parameter of the ID for the rater.
+  - A method `addRating`
+    - two parameters, a String named item, a double named rating. 
+    - A new Rating is created and added to myRatings.
+  - A method `getID`
+    - no parameters
+    - get the ID of the rater.
+  - A method `getRating`
+    - one parameter item.
+    - returns the double rating of this item if it is in myRatings. 
+    - Otherwise this method returns -1.
+  - A method `numRatings`
+    - returns the number of ratings this rater has.
+  - A method `getItemsRated`
+    - no parameters.
+    - returns an ArrayList of Strings representing a list of all the items that have been rated. 
+
+
+```java
+// myID - a unique String ID for this rater
+// myRatings - an ArrayList of Ratings
+
+import java.util.*;
+
+public class Rater {
+
+    private String myID;
+    private ArrayList<Rating> myRatings;
+    // Rating (String anItem, double aValue)
+
+    public Rater(String id) {
+        myID = id;
+        myRatings = new ArrayList<Rating>();
+    }
+
+    public void addRating(String item, double rating) {
+        myRatings.add(new Rating(item,rating));
+    }
+
+    public boolean hasRating(String item) {
+        for(int k=0; k < myRatings.size(); k++){
+            if (myRatings.get(k).getItem().equals(item)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getID() {return myID;}
+
+    public double getRating(String item) {
+        for(int k=0; k < myRatings.size(); k++){
+            if (myRatings.get(k).getItem().equals(item)){
+                return myRatings.get(k).getValue();
+            }
+        }
+        return -1;
+    }
+
+    public int numRatings() {return myRatings.size();}
+
+    public ArrayList<String> getItemsRated() {
+        ArrayList<String> list = new ArrayList<String>();
+        for(int k=0; k < myRatings.size(); k++){
+            list.add(myRatings.get(k).getItem());
+        }
+        return list;
+    }
+
+}
+```
+
+---
 
 ratedmovies_short.csv
 
@@ -46,31 +244,30 @@ rater_id,movie_id,rating,time
 
 ## Assignment
 
-create a new class FirstRatings
+create a new class <kbd>FirstRatings</kbd>
 - to process the movie and ratings data and to answer questions about them.
 - use CSVParser and CSVRecord.
-- FirstRatings will need the following three import statements:
+
 
 
 ```java
-/**
- * This class has been created as a requirement for this Assignment.
- *
- * @grace
- * @1.1
- */
 import java.security.Principal;
 import java.util.*;
 import edu.duke.*;
 import org.apache.commons.csv.*;
 
-
 public class FirstRatings{
+
+
+// 1. Write a method named loadMovies 
+// has one parameter, a String named filename. 
+// process every record from the CSV file whose name is filename, a file of movie information, and return an ArrayList of type Movie with all of the movie data from the file.
 
     // loadMovies -> movieData [Movie, Movie, Movie, Movie, ...]
     // id,title,year,country,genre,director,minutes,poster
     // 0006414,"Screen",1916,"USA","Short, Comedy",30,"http://...jpg"
     // return an ArrayList of type Movie with all of the movie data from the file.
+
     public ArrayList<Movie> loadMovies(String filename){
         FileResource fr = new FileResource("data/" + filename);
         CSVParser parser = fr.getCSVParser();
@@ -85,20 +282,27 @@ public class FirstRatings{
                 movieData.add(temp);
                 // System.out.println(temp);
             }
-        } catch(Exception ioe) {
+        } 
+        catch(Exception ioe) {
             System.out.println("IOException caught");
         }
-        //Returning an ArrayList of type Movie with data processed from file [filename]
-        return movieData;
+        //Returning an ArrayList of type Movie with data processed from file [filename]return movieDa;
     }
 
+
+// 2. Write a void method named testLoadMovies
+// Call the method loadMovies on the file and store the result in an ArrayList local variable. Print the number of movies, and print each movie. 
+// 5 movies in ratedmovies_short.csv . 
+// 3143 movies in ratedmoviesfull.csv.
+// Add code to determine how many movies include the Comedy genre. (ratedmovies_short.csv, there is only one.)
+// Add code to determine how many movies are greater than 150 minutes in length. (ratedmovies_short.csv, there are two.)
+// Add code to determine the maximum number of movies by any director, and who the directors are that directed that many movies. some movies may have more than one director. (ratedmovies_short.csv the maximum number of movies by any director is one, and there are five directors that directed one such movie.)
 
     // movieData [Movie, Movie, Movie, Movie, ...]
     public void testLoadMovies(){
         // String filename = "ratedmovies_short.csv";
         String filename = "ratedmoviesfull.csv";
         ArrayList<Movie> movieData = loadMovies(filename);
-
         System.out.println("the number of movies: " + movieData.size());
         System.out.println("print each movie: ");
         for(Movie i:movieData){
@@ -138,16 +342,12 @@ public class FirstRatings{
                 directorsWithMaxMovies.add(dname);
             }
         }
-        System.out.print("how many movies include the Comedy genre: ");
-        System.out.println(ccount);
-
-
-        System.out.print("how many movies are greater than 150 minutes in length: ");
-        System.out.println(lcount);
-
+        System.out.println("how many movies include the Comedy genre: " + ccount);
+        System.out.println("how many movies are greater than 150 minutes in length: " + lcount);
 
         System.out.println("the maximum number of movies by any director is " + mNum);
         System.out.println(directorsWithMaxMovies.size() + " directors are directed that many movies are: ");
+
         for(String dir : directorsWithMaxMovies) {
             // System.out.println(dir + ", ");
             String[] questionL = {"Ridley Scott", "Alfred Hitchcock", "Steven Spielberg", "Woody Allen", "Martin Scorsese"};
@@ -162,12 +362,16 @@ public class FirstRatings{
     }
 
 
+// 3. write a method named loadRaters
+// has one parameter named filename. 
+// process every record from the CSV file whose name is filename, a file of raters and their ratings
+// return an ArrayList of type Rater with all the rater data from the file. 
 
     // -> raterData [Rater, Rater, Rater, ...]
     // -> raterList [String: [Rating, Rating, Rating], String: [Rating, Rating, Rating], ...]
                     // rater_id,movie_id,rating,time
                     // 1,0068646,10,1381620027
-    // process every record from the CSV file, a file of raters and their ratings, and return an ArrayList of type Rater with all the rater data from the file.
+
     public ArrayList<Rater> loadRaters(String filename){
         FileResource fr = new FileResource(filename);
         CSVParser pr = fr.getCSVParser();
@@ -181,6 +385,7 @@ public class FirstRatings{
                 double ratingValue = Double.parseDouble(csvr.get("rating"));
                 String raterID = csvr.get("rater_id");
                 Rating tempRating = new Rating(ratingItem, ratingValue);
+                
                 // System.out.println(raterID);
                 if(raterList.containsKey(raterID)){
                     // System.out.println("has");
@@ -192,6 +397,7 @@ public class FirstRatings{
                     raterList.get(raterID).add(tempRating);
                 }
             }
+
             for(String rname : raterList.keySet()){
                 Rater r = new Rater(rname);
                 for(Rating values : raterList.get(rname)){
@@ -202,10 +408,21 @@ public class FirstRatings{
         }
         catch(Exception ioe) {
             System.out.println("IOException caught");
-        }
-        return raterData;
-    }
+        }return raterData;}
 
+
+
+
+// Write a void method named testLoadRaters
+// Call the method loadRaters on the file ratings_short.csv and store the result in a local ArrayList variable. Print the total number of raters. Then for each rater, print the rater’s ID and the number of ratings they did on one line, followed by each rating (both the movie ID and the rating given) on a separate line. 
+// (ratings_short.csv, five raters; ratings.csv, 1048 raters)
+// Add code to find the number of ratings for a particular rater you specify in your code. For example, if you run this code on the rater whose rater_id is 2 for the file ratings_short.csv, you will see they have three ratings. 
+
+// Add code to find the maximum number of ratings by any rater. Determine how many raters have this maximum number of ratings and who those raters are. If you run this code on the file ratings_short.csv, you will see rater 2 has three ratings, the maximum number of ratings of all the raters, and that there is only one rater with three ratings.
+
+// Add code to find the number of ratings a particular movie has. If you run this code on the file ratings_short.csv for the movie “1798709”, you will see it was rated by four raters.
+
+// Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated. 
 
     // -> raterData [Rater, Rater, Rater, ...]
     // -> raterList [String: [Rating, Rating, Rating], String: [Rating, Rating, Rating], ...]

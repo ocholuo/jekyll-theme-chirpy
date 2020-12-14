@@ -1,3 +1,15 @@
+---
+title: OWASP TESTING FRAMEWORK WORK FLOW
+date: 2020-07-16 11:11:11 -0400
+categories: [SOC, ComplianceAndReport]
+tags: [SOC, OWASP]
+math: true
+image:
+---
+
+[toc]
+
+---
 
 
 # OWASP TESTING FRAMEWORK WORK FLOW
@@ -120,7 +132,7 @@ This header by web applications must be checked:
 
 
 ```bash
-$ curl --silent --head https://us.shein.com/ | grep -i strict
+$ curl --silent --head https://us.com/ | grep -i strict
 strict-transport-security: max-age=7776000000;
 includeSubDomains
 

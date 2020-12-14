@@ -55,13 +55,14 @@ Attack | Tool
 ---------|------------------------------
 🐰 **Code Security tools** |
 Kluwan <br> `Code Security/Analysis` | ![Kiuwan](https://i.imgur.com/PqQm3mh.png)
+spiderfoot | 
 ---------|------------------------------
 🐰 **Pen test tools** |
 Kali Linux | Linux
 Metasploit <br> `Building anti-forensic and evasion tools` | ![Metasploit](https://i.imgur.com/wY3EGbF.png) <br> - knowing about security vulnerabilities. <br> - Helps in penetration testing, IDS signature development. <br> - You can create security testing tools.
 ---------|------------------------------
 🐰 **Digital Forensic Tools** |
-Sleuth Kit (+Autopsy) | 
+Sleuth Kit (+Autopsy) |
 ---------|------------------------------
 🐰 **malware** |  Layer 7
 `malware packaging` | PEiD <br>![PEiD](https://i.imgur.com/y1AFinu.png)
@@ -71,43 +72,43 @@ Sleuth Kit (+Autopsy) |
 🐰 **Application Link** | Layer 7
 sslstrip <br> `capturing HTTPS traffic` | ![sslstrip](https://i.imgur.com/aiocGts.png)
 Nmap <br> `network mapper`| ![Nmap_Logo](https://i.imgur.com/7b3NKgE.png) ![Nmap](https://i.imgur.com/K2OvK5H.png) <br> - scan networks and IT systems to identify existing security vulnerabilities. <br> - **Nmap suite has**: <br> - Data transfer, redirection, and debugging tool(Ncat), <br> - Scan results comparing utility(Ndiff), <br> - Packet generation and response analysis tool (Nping), <br> - GUI and Results viewer (Nping) <br> - **Using raw IP packets it can determine**: <br> - The available hosts, services offered, OS, Packet filters using...
-Nikto <br> `Scan web server vulnerabilities` | ![Nikto](https://i.imgur.com/Kq5bZOe.png) <br> - It can check web servers for over 6700 potentially dangerous files. <br> -It has full HTTP proxy support. <br> -Using Headers, favicons, and files, it can identify the installed software. <br> -It can scan the server for outdated server components. <br> - contains a database with more than 6400 different types of threats. 
+Nikto <br> `Scan web server vulnerabilities` | ![Nikto](https://i.imgur.com/Kq5bZOe.png) <br> - It can check web servers for over 6700 potentially dangerous files. <br> -It has full HTTP proxy support. <br> -Using Headers, favicons, and files, it can identify the installed software. <br> -It can scan the server for outdated server components. <br> - contains a database with more than 6400 different types of threats.
 `web application vulnerabilities` | Acunetix <br>![dashboard-2](https://i.imgur.com/9oeYkzy.png)
 Nexpose <br> `scanning and managing vulnerabilities` |
 Paros Proxy <br> `web vulnerabilities` | - Some of the tools contained in the Paros Proxy utility include vulnerability scanners, a web spider, and traffic recorder for retaining network activities in real-time. <br> Paros Proxy is useful in identifying intrusion openings in a network, detects common cybersecurity threats such as XSS and SQLi.
 Burp Suite <br> `MITM/XSS web vulnerabilities` | ![BurpSuite](https://i.imgur.com/IJkeA2y.png) <br> - web vulnerability scanner
 Owasp ZAP <br> `XSS web vulnerabilities` | ![OwaspZAP](https://i.imgur.com/t6cqHVy.png)
-DOMinator Tool, DOM Snitch <br> `DOM Based XSS` | 
-Nessus <br> `vulnerability scanner` | 
+DOMinator Tool, DOM Snitch <br> `DOM Based XSS` |
+Nessus <br> `vulnerability scanner` |
 OpenVAS <br> `vulnerability scanning & management` | ![openvas10](https://i.imgur.com/8sJLdIh.png)
 Intruder <br> `Finding vulnerabilities` | ![Intruder](https://i.imgur.com/7BLUaKx.png)
 Netsparker <br> `identified vulnerabilities` | ![Netsparker](https://i.imgur.com/cuShMOy.jpg)
 ---------|------------------------------
 tools | **Encryption cybersecurity tools**
-TrueCrypt | 
+TrueCrypt |
 KeyPass |
-Tor | 
+Tor |
 ---------|------------------------------
 🐰 **Network Link** | Layer 7
 PackETH <br> `capturing network packet` | ![PackETH](https://i.imgur.com/HDvf8Du.png)
 Netstumbler <br> `identify open ports` | - designed for Win
 Aircrack-Ng <br> `Wireless sniffer & injector` | ![aircrack-ng](https://i.imgur.com/wgVZxJJ.png) <br> - focus on Replay attacks, de-authentication, fake access points, and others. <br> - It supports exporting data to text files. <br> - It can check Wi-Fi cards and driver capabilities. <br> - It can crack WEP keys and for that, it makes use of FMS attack, PTW attack, and dictionary attacks. <br> - It can crack WPA2-PSK and for that, it makes use of dictionary attacks.
-KisMAC <br> `wireless network security in the MAC` | 
+KisMAC <br> `wireless network security in the MAC` |
 wireshark <br> `Sniffing` | ![Wireshark](https://i.imgur.com/L1ckSYt.png)
 ---------|------------------------------
 tools | **monitoring network security**
 Splunk |
 PaloAlto |
-POf | 
-Argus `analyzing network traffics OpenS`| 
-Nagios | 
-OSSEC `real-time analyz security events of a system OpenS`| 
+POf |
+Argus `analyzing network traffics OpenS`|
+Nagios |
+OSSEC `real-time analyz security events of a system OpenS`|
 ---------|------------------------------
 tools | **detecting network intrusions**
-Snort `analysis on network traffic` | 
-Acunetix | 
-Forcepoint | 
-GFI LanGuard `monitor networks, scan for vulnerabilities` | 
+Snort `analysis on network traffic` |
+Acunetix |
+Forcepoint |
+GFI LanGuard `monitor networks, scan for vulnerabilities` |
 ---------|------------------------------
 🐰 **Data Link** | Layer 2
 arpspoof <br> `ARP poisoning` | ![arpspoof](https://i.imgur.com/ZKZug7g.png)

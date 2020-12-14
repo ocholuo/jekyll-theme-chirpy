@@ -7,6 +7,9 @@ math: true
 image: 
 ---
 
+[toc]
+
+---
 
 # CIS benchmarks
 

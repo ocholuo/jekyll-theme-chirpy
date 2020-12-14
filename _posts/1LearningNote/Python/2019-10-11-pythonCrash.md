@@ -113,6 +113,7 @@ students = [('Tommy', 95), ('Linda', 63), ('Carl', 70), ('Bob', 100), ('Raymond'
 passed = [ name for (name,grade) in students if grade>=70 ]
 ```
 
+---
 
 ## Sorted
 ```py
@@ -121,14 +122,74 @@ sorted_letters=sorted(letters, reverse=True)
 
 # according to the dic value
 medals = {'Japan':41, 'Russia':56, 'South Korea':21, 'United States':121, 'Germany':42, 'China':70}
-top_three=sorted(medals,reverse=True,key=lambda key:medals[key])[:3]
+sort_list = sorted(medals, reverse=True, key=lambda key:medals[key])
+top_three = sorted(medals, reverse=True, key=lambda key:medals[key])[:3]
 
 # according second letter
-ex_lst = ['hi', 'how are you', 'bye', 'apple', 'zebra', 'dance']
+list = ['hi', 'how are you', 'bye', 'apple', 'zebra', 'dance']
 lambda_sort=sorted(ex_lst, key=lambda str: str[1])
+
+
+# case-insensitive string comparison:
+sorted("This is a test string from Andrew".split(), key=str.lower)
+# ['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
+
+
+
+# Operator Module Functions
+# Python provides convenience functions to make accessor functions easier and faster. The operator module has itemgetter(), attrgetter(), and a methodcaller() function.
+from operator import itemgetter, attrgetter
+class Student:
+    def __init__(self, name, grade, age):
+        self.name = name
+        self.grade = grade
+        self.age = age
+    def __repr__(self):
+        return repr((self.name, self.grade, self.age))
+student_objects = [
+    Student('john', 'A', 15),
+    Student('jane', 'B', 12),
+    Student('dave', 'B', 10),
+]
+# sort by age:
+sorted(student_objects, key=lambda student: student.age)   
+# sort by age:
+sorted(student_tuples, key=itemgetter(2))
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+# sort by grade then by age:
+sorted(student_tuples, key=itemgetter(1,2))
+[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
+# sort by age:
+sorted(student_objects, key=attrgetter('age'))
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+# sort by grade then by age:
+sorted(student_objects, key=attrgetter('grade', 'age'))
+[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
+
+
+# Sort Stability and Complex Sorts
+s = sorted(student_objects, key=attrgetter('age'))     # sort first on secondary key
+sorted(s, key=attrgetter('grade'), reverse=True)       # now sort on primary key, descending
+# [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+def multisort(xs, specs):
+    for key, reverse in reversed(specs):
+        xs.sort(key=attrgetter(key), reverse=reverse)
+    return xs
+multisort(list(student_objects), (('grade', True), ('age', False)))
+
+
+
+# The Old Way Using Decorate-Sort-Undecorate¶
+decorated = [(student.grade, i, student) for i, student in enumerate(student_objects)]
+decorated.sort()
+[student for grade, i, student in decorated]               # undecorate
+[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+
+
+
 ```
 
-
+---
 
 ## Functions
 ```py

@@ -45,7 +45,7 @@ Project/LAB |  Mark |
 [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03/20 | ✔️
 **codecamp** |
 [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20 | ✏️
-**Web Security Academy** |
+**Portswigger - Web Security Academy** |
 [SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **AWS Certificate** |
@@ -59,13 +59,13 @@ Project/LAB |  Mark |
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Palo Alto Networks Learning** | 🐰
+**Palo Alto Networks Product Training** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 [Prisma Cloud: Onboarding and Operationalizing](https://beacon.paloaltonetworks.com/student/path/642701) 10/28/20 | ✏️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
 [Cortex XDR: Managed Threat Hunting (EDU-194)](https://beacon.paloaltonetworks.com/student/path/644210/activity/687279) 10/27/20 | ✔️
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
-[Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) |  ✏️
+[Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) 12/08/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 
 ---
@@ -96,6 +96,7 @@ Project/LAB |  Mark |
 [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17/20 | ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
 [COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✏️
+`- give the movie recommendations by calculate the movie rating` <br> `- user interface to add multiple Filter function for the movie rating` |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 **UMich. Python 3 Programming** 4/3/20  |
 [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming) | ✔️

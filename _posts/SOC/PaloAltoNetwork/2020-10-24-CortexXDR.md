@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - CortexXDR
+title: Palo Alto Networks - CortexXDR 2.0 - Architecture, Analytics, and Causality Analysis
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -51,6 +51,7 @@ Behavioral Analytics
 
 ![XDR and EDR](https://i.imgur.com/7Si3IFN.png)
 
+---
 
 ### The Product Suite.
 
@@ -305,22 +306,22 @@ The Cortex XDR application provides complete visibility into all data in the Cor
 SEs have provided suggestions on how to approach customer opportunities.
 
 Proof of Concept
-- Proof of Concepts (POCs) with Cortex XDR are often not as effective as POCs with other products, it needs a 30-day baseline of behavior, which is often hard to arrange. 
-- And it is sometimes hard to arrange for an advanced persistent threat or other threat that Cortex XDR shines with. 
-- Generally, use a POC when the customer wants the product's functionality, but needs to ensure it doesn't impact the customer's operation. 
+- Proof of Concepts (POCs) with Cortex XDR are often not as effective as POCs with other products, it needs a 30-day baseline of behavior, which is often hard to arrange.
+- And it is sometimes hard to arrange for an advanced persistent threat or other threat that Cortex XDR shines with.
+- Generally, use a POC when the customer wants the product's functionality, but needs to ensure it doesn't impact the customer's operation.
 - However, a guided evaluation can be very effective. During one sales opportunity and guided evaluation, a customer engaged a penetration tester, and the SE identified an anomalous behavior of ipconfig /all. This led to the discovery of the tester, and convinced the customer to purchase the product.
 - Before discussing POCs or guided evaluations with customers, synchronize with sales on rules, context, scope, strategy, and expected outcomes. Stay aware of product lock down schedules.
 
 
 Existing Palo Alto Networks Firewall Use
-- Many customers still use our firewalls primarily on their perimeter, and do not segment their networks. 
-- Educate these customers on the value of segmentation. 
-- It is often a good strategy to sell only Cortex XDR endpoint prevention to customers who don’t segment. 
+- Many customers still use our firewalls primarily on their perimeter, and do not segment their networks.
+- Educate these customers on the value of segmentation.
+- It is often a good strategy to sell only Cortex XDR endpoint prevention to customers who don’t segment.
 - Cortex XDR analytics using endpoint data only is also a possibility, but this typically provides only about half of the Cortex XDR analytics functionality. It's a better product when combined with network logs from a fully segmented environment.
 
 
 SOCs
-- Many customers do not currently have SOCs, but still run into the same challenges that SOCs face. 
+- Many customers do not currently have SOCs, but still run into the same challenges that SOCs face.
 - Customers do not need large SOCs to benefit from purchasing Cortex XDR.
 
 
@@ -971,16 +972,20 @@ Impact Reports
 
 ---
 
-## XDR Prevent
+# XDR Prevent
 
-![Screen Shot 2020-12-02 at 02.45.03](https://i.imgur.com/CZtj61N.png)
 
-![Screen Shot 2020-12-02 at 02.52.24](https://i.imgur.com/ZXWNCOS.png)
+---
 
-### Exploit Prevention Approaches
+## Exploit Prevention Approaches
 
 Cortex XDR Prevent uses multiple methods to prevent exploits.
-- The `traditional` methods of preventing known exploits include
+
+---
+
+### The traditional methods
+- The **traditional** methods
+  - preventing known exploits by
   - antivirus, blacklisting, whitelisting, and aggressively applying patches supplied by software vendors.
   - problematic in preventing even known exploits
   - almost useless in preventing unknown exploits.
@@ -988,8 +993,53 @@ Cortex XDR Prevent uses multiple methods to prevent exploits.
     - They cannot prevent unknown attacks.
     - But in practice, signatures and patches are not always current and do not provide adequate prevention against even known attacks.
 
-- Multi-Method Approach for Exploits
-  - Cortex XDR Prevent uses a multi-method prevention approach for exploits.
+---
+
+## Multi-Method Approach for Exploits
+
+
+
+![Screen Shot 2020-12-02 at 02.45.03](https://i.imgur.com/CZtj61N.png)
+
+
+### Exploit Protection for Protected Processes
+
+In a typical attack scenario, an attacker attempts to gain control of a system by
+- first `corrupting or bypassing
+memory allocation or handlers`.
+    - Using memory-corruption techniques, such as `buffer overflows` and `heap
+    corruption`, a hacker trigger a bug in software or exploit a vulnerability in a process.
+
+- The attacker must then `manipulate a program to run code` provided or specified by the attacker while evading detection.
+
+- If the attacker `gains access to the operating system`, the attacker can then `upload malware`, such as Trojan horses
+(programs that contain malicious executable files), or use the system to their advantage.
+
+The Cortex XDR agent prevents such exploit attempts by employing roadblocks / traps at each stage of an
+exploitation attempt.
+
+
+![Screen Shot 2020-12-10 at 12.26.45](https://i.imgur.com/jRoEM8E.png)
+
+
+When a user opens a non-executable file, such as a PDF or Word, and the process that opened the file is protected, the Cortex XDR agent seamlessly injects code into the software.
+- This occurs at the earliest possible stage before any files belonging to the process are loaded into memory.
+- The Cortex XDR agent then activates one or more protection modules inside the protected process.
+- Each protection module targets a specific exploitation technique and is designed to prevent attacks on program vulnerabilities based on memory corruption or logic flaws.
+
+In addition to automatically protecting processes from such attacks, the Cortex XDR agent reports any security events to Cortex XDR and performs additional actions as defined in the endpoint security policy.
+Common actions that the Cortex XDR agent performs include collecting forensic data and notifying the user about the event.
+
+
+> execution
+> -> whitelist/blacklist
+> -> publisher tursted?
+> not trusted -> WildFire
+> unknown -> conduct static analysisInc
+
+
+- **Multi-Method** Approach for Exploits
+  - `Cortex XDR Prevent` uses a multi-method prevention approach for exploits.
   - Rather than looking only at `signatures` and relying on `software and OS patches`,
   - it identifies exploit techniques and prevents them from succeeding.
   - All these methods work together to stop known and unknown attacks.
@@ -1017,7 +1067,89 @@ Code Execution Prevention recognizes exploitation techniques that allow an attac
 
 ---
 
-### Exploits and Patches
+
+### Malware Protection
+The Cortex XDR agent provides malware protection in a series of four evaluation phases:
+
+
+![Screen Shot 2020-12-10 at 12.37.56](https://i.imgur.com/ITS6Szb.png)
+
+1. **Phase 1: Evaluation of Child Process Protection Policy**
+   - When a user attempts to run an executable, the operating system attempts to run the executable as a process.
+   - If the process tries to launch any child processes, the Cortex XDR agent first evaluates the <kbd>child process protection policy</kbd>.
+   - If the parent process is a known targeted process that attempts to launch a restricted child process, the Cortex XDR agent blocks the child processes from running and reports the security event to Cortex XDR.
+   - For example,
+   - if a user tries to open a Microsoft Word document (using the winword.exe process) and that document has a macro that tries to run a `blocked child process (such as WScript)`, the Cortex XDR agent blocks the child process and reports the event to Cortex XDR.
+   - If the parent process does not try to launch any child processes or tries to launch a child process that is not restricted, the Cortex XDR agent next moves to Phase 2: Evaluation of the Restriction Policy.
+
+2. **Phase 2: Evaluation of the Restriction Policy**
+   - When a user or machine attempts to open an executable file, the Cortex XDR agent first evaluates the child process protection policy as described in Phase 1: Evaluation of Child Process Protection Policy.
+   - The Cortex XDR agent next verifies that the executable file does not violate any <kbd>restriction rules</kbd>.
+   - For example,
+   - have a restriction rule that blocks executable files launched from network locations.
+   - If a restriction rule applies to an executable file, the Cortex XDR agent blocks the file from executing and reports the security event to Cortex XDR and, depending on the configuration of each restriction rule, the Cortex XDR agent can also notify the user about the prevention event.
+   - If no restriction rules apply to an executable file, the Cortex XDR agent next moves to Phase 3: Evaluation of Hash Verdicts.
+
+
+3. **Phase 3: Hash Verdict Determination**
+   - The Cortex XDR agent `calculates a unique hash using the SHA-256` algorithm for every file that attempts to run on the endpoint.
+   - Depending on the features that you enable, the Cortex XDR agent performs additional analysis to determine whether an unknown file is malicious or benign.
+   - The Cortex XDR agent can also submit unknown files to Cortex XDR for in-depth analysis by WildFire.
+   - ![Screen Shot 2020-12-02 at 02.52.24](https://i.imgur.com/ZXWNCOS.png)
+   - To determine a verdict for a file, the Cortex XDR agent evaluates the file in the following order:
+     1. **Hash exception**
+        - A hash exception enables you to override the verdict for a specific file without affecting the settings in your Malware Security profile.
+        - The hash exception policy is evaluated first and takes precedence over all other methods to determine the hash verdict.
+        - For example, you may want to configure a hash exception for any of the following situations:
+          - • You want to block a file that has a benign verdict.
+          - • You want to allow a file that has a malware verdict to run.
+            - recommend that you only override the verdict for malware after you use available threat intelligence resources—such as WildFire and AutoFocus—to determine that the file is not malicious.
+          - • You want to specify a verdict for a file that has not yet received an official WildFire verdict.
+        - After you `configure a hash exception`, Cortex XDR distributes it at the next heartbeat communication with any endpoints that have previously opened the file.
+        - `When a file launches on the endpoint, the Cortex XDR agent first evaluates any relevant hash exception for the file`.
+          - The hash exception specifies whether to treat the file as malware.
+          - If the file is assigned a benign verdict, the Cortex XDR agent permits it to open.
+          - If a hash exception is not configured for the file, the Cortex XDR agent next evaluates the verdict to determine the likelihood of malware.
+        - multi-step evaluation process in the following order to determine the verdict: Highly trusted signers, WildFire verdict, and then Local analysis.
+     2. **Highly trusted signers (Windows and Mac)**
+        - The Cortex XDR agent distinguishes highly trusted signers such as Microsoft from other known signers.
+        - To keep parity with the signers defined in WildFire, Palo Alto Networks regularly reviews the list of highly trusted and known signers and delivers any changes with content updates.
+        - `The list of highly trusted signers also includes signers in allow list from Cortex XDR`.
+        - When an unknown file attempts to run, the Cortex XDR agent applies the following evaluation criteria:
+          - Files signed by highly trusted signers are permitted to run
+          - files signed by prevented signers are blocked, regardless of the WildFire verdict.
+          - when a file is not signed by a highly trusted signer or by a signer included in the block list, the Cortex XDR agent next evaluates the WildFire verdict.
+          - For Windows endpoints, evaluation of other known signers takes place if WildFire evaluation returns an unknown verdict for the file.
+     3. **WildFire verdict**
+        - If a file is not signed by a highly trusted signer on Windows and Mac endpoints, the Cortex XDR agent performs a hash verdict lookup to determine if a verdict already exists in its local cache.
+        - If the executable file has a malware verdict, the Cortex XDR agent reports the security event to the Cortex XDR and, depending on the configured behavior for malicious files, the Cortex XDR agent then does one of the following:
+          - • Blocks the malicious executable file
+          - • Blocks and quarantines the malicious executable file
+          - • Notifies the user about the file but still allows the file to execute
+          - • Logs the issue without notifying the user and allows the file to execute.
+        - If the verdict is benign, the Cortex XDR agent moves on to the next stage of evaluation (Phase 4: Evaluation of Malware Protection Policy).
+        - If the hash does not exist in the local cache or has an unknown verdict, the Cortex XDR agent next evaluates whether the file is signed by a known signer.
+     4. **Local analysis**
+        - When an unknown executable, DLL, or macro attempts to run on a Windows or Mac endpoint, the Cortex XDR agent uses local analysis to determine if it is likely to be malware.
+          - On Windows endpoints, if the file is signed by a known signer, the Cortex XDR agent permits the file to run and does not perform additional analysis.
+          - For files on Mac endpoints and files that are not signed by a known signer on Windows endpoints, the Cortex XDR agent `performs local analysis to determine whether the file is malware`.
+        - Local analysis uses a statistical model that was developed with machine learning on WildFire threat intelligence.
+        - The model enables the Cortex XDR agent to `examine hundreds of characteristics for a file and issue a local verdict (benign or malicious) while the endpoint is offline or Cortex XDR is unreachable`.
+        - The Cortex XDR agent can rely on the local analysis verdict until it receives an official WildFire verdict or hash exception.
+        - Local analysis is enabled by default in a Malware Security profile.
+        - Because local analysis always returns a verdict for an unknown file,
+          - if enable the Cortex XDR agent to Block files with unknown verdict, the agent only blocks unknown files if a local analysis error occurs or local analysis is disabled.
+        - To change the default settings (not recommended), see Add a New Malware Security Profile.
+
+4. **Phase 4: Evaluation of Malware Security Policy**
+   - If the prior evaluation phases do not identify a file as malware, the Cortex XDR agent observes the behavior of the file and applies additional malware protection rules.
+   - If a file exhibits malicious behavior, such as encryption-based activity common with ransomware, the Cortex XDR agent blocks the file and reports the security event to the Cortex XDR.
+   - If no malicious behavior is detected, the Cortex XDR agent permits the file (process) to continue running but continues to monitor the behavior for the lifetime of the process.
+
+
+---
+
+## Exploits and Patches
 
 Cortex XDR prevents known as well as unknown exploits and malware, even on unpatched systems.
 - This technique-oriented approach reduces risk between patching cycles.
@@ -1038,7 +1170,7 @@ Cortex XDR Prevent `Behavioral Rules` BIOCs.
 
 ---
 
-### Machine Learning Analytics
+## Machine Learning Analytics
 
 
 Behavioral Analytics
@@ -1063,54 +1195,50 @@ Cortex XDR applies machine learning to its behavioral analytics with `models of 
   - Entity profiles: compare the device type or user type to other device types or user types `exhibiting the same behavior`.
 
 
-
 Examples of Machine Learning Analytics
 - Some of the attacks that can typically only be detected using machine-learning informed behavioral analytics are the stealthiest and most dangerous types of threats.
 - They are the ones already acting inside a network that can lead to costly data breaches.
 
 
 Attacks That `Behavioral Analytics` Can Detect:
-
-- Targeted Manual Attacks by external attackers.
+- `Targeted Manual Attacks by external attackers`.
   - These often lead to costly breaches.
   - The average cost per incident of these breaches is $3.6 million.
   - But large scale breaches can cost hundreds of millions of dollars.
 
-- Malicious Insiders
+- `Malicious Insiders`
   - exploit trusted credentials and cause major damage.
   - take months to discover, because the users are trusted.
   - But Cortex XDR Pro can detect this anomalous behavior.
 
-- Reckless Users
+- `Reckless Users`
   - Risky activity by well-meaning but reckless users can also lead to data breaches.
   - Human error, such as a user posting valuable data on the internet, is directly responsible for about 15% of all breaches.
   - But risky behavior can also invite external attacks.
   - It's hard to detect threats and the increased risk of attack when users upload large files to unsanctioned sites or share credentials.
   - Cortex XDR Pro detects this behavior.
 
-- Compromised Endpoints
+- `Compromised Endpoints`
   - Compromised endpoints represent exploits that have succeeded, and often can be the source of attacks that go undetected.
   - These also can be detected by applying machine learning-informed behavioral analytics that Cortex XDR provides.
 
-- Other Cases
+- `Other Cases`
   - Cortex XDR is particularly good at detecting other use cases such as anomaly detection or lateral movement without legitimate credentials.
 
 
 
 Response Capability in Cortex XDR:
-- Native Integration with Endpoints and Firewalls
+- `Native Integration with Endpoints and Firewalls`
   - Cortex XDR coordinates enforcement with Cortex XDR endpoint agents and with network and cloud-based firewalls.
 
-- Live Terminal Facilitates Analysts Response
+- `Live Terminal Facilitates Analysts Response`
   - Live Terminal provides the ability to investigate and shut down attacks directly on endpoints.
 
-- Create BIOC Rules
+- `Create BIOC Rules`
   - apply knowledge gained from investigations to detect and prevent similar future attacks by incorporating that knowledge in behavioral rules.
 
-- Leverage WildFire
+- `Leverage WildFire`
   - New protections will be automatically distributed to all WildFire users by coordinating with WildFire.
-
-
 
 
 ---
@@ -1158,27 +1286,29 @@ The Cortex XDR platform enables to conduct both manual and semi-automated threat
 
 ![Screen Shot 2020-10-28 at 00.52.08](https://i.imgur.com/XBEoMAF.png)
 
+---
 
-### Threat Hunting Tools
+## Threat Hunting Tools
 
 Cortex XDR enables managed threat hunting by leveraging several threat hunting tools such as `AutoFocus` and `WildFire`.
-- `Unit 42`:
+
+- **Unit 42**:
   - team of expert threat hunters.
 
-- Cortex XDR:
+- **Cortex XDR**:
   - A special version of Cortex XDR enables to keep an eye on all managed threat hunting customers, to pose questions, and to perform investigations.
 
-- `AutoFocus`:
+- **AutoFocus**:
   - provides a high-fidelity threat intelligence feed powered by WildFire findings.
 
-- `WildFire`:
+- **WildFire**:
   - a cloud-delivered malware analysis service
   - uses data and threat intelligence from the industry's largest community.
   - applies advanced analysis to automatically identify unknown threats and stop attackers in their tracks.
   - ![Screen Shot 2020-12-02 at 02.49.44](https://i.imgur.com/iEgKx36.png)
   - ![Screen Shot 2020-12-02 at 02.51.32](https://i.imgur.com/vukaied.png)
 
-- `Cortex XSOAR`
+- **Cortex XSOAR**
   - applies playbooks to aggregate and normalize threat intel, enrich incidents, reduce false positives, deduplicate activities, and produce experimental signals.
 
 - external resources:
@@ -1438,6 +1568,114 @@ True or false? If you subscribe to Cortex Data Lake, then you do not need to own
 
 True or false? Cortex Data Lake provides built-in log redundancy.
 - True
+
+---
+
+```
+
+Which attack prevention technique does Cortex XDR use?
+memory corruption protection
+
+In which two ways does Cortex XDR Prevent complement Palo Alto Networks perimeter protection? (Choose two.)
+Endpoints sometimes are operated by their users outside the corporate network perimeter.
+Cortex XDR can prevent malevolent process execution spawned by traffic the NGFW allows through.
+
+
+Which sensor captures forensic information about a security event that occurs on an endpoint?
+Cortex XDR agent
+
+
+Which option best describes the functionality of Cortex XDR Prevent for endpoints?
+prevention
+
+
+Which statement is true regarding Cortex XDR Prevent Execution Restrictions?  
+They define where and how users can run executable files.
+
+
+What is an advantage of Cortex XDR cloud-based analysis?
+It puts attack steps in context for security analysts, even when each step in itself may look innocent.
+
+
+
+Which statement describes the malware protection flow in Cortex XDR Prevent?
+A trusted signed file is exempt from local static analysis.
+
+
+
+
+Which Cortex XSOAR functionality always is part of accessing external sources for alert enrichment?
+Integrations
+
+
+What are two sources of alert enrichment for Cortex XSOAR? (Choose two.)
+SIEMs
+AutoFocus
+
+
+
+What are two sources of log data for Cortex XDR? (Choose two.)
+next-generation firewalls
+agents on endpoints
+
+
+Which advantage is provided by unknown attack prevention?
+It provides protection before OS patches are applied.
+
+
+Which statement is true about advanced cyberthreats?
+A zero-day vulnerability is a product security flaw of which the product's vendor has no prior awareness.
+
+
+
+Which two analysis methods does WildFire use to detect malware? (Choose two.)
+Static
+Dynamic
+
+
+How does Cortex XDR use machine learning?
+It learns about normal user and process behavior in an infrastructure so it can recognize anomalous behavior.
+
+
+
+When is an existing Cortex XDR customer a suboptimal prospect for Cortex XSOAR?
+when they have no interest in automation
+
+
+
+What should a customer do to obtain a Cortex XSOAR dashboard that caters to its needs and processes?
+quickly design and build the dashboard they need within minutes
+
+
+What should a customer do that wants to keep a set of specific information for every event of a certain type?
+add custom fields to incidents representing events of that type
+
+
+
+Which action is required before a new integration can ingest a typed alert and automatically run a playbook for the resulting incident?
+An instance of the integration must be created.
+
+
+
+What should a customer do that wants to keep a set of specific information for every event of a certain type?
+add that information in the Evidence Board when investigating the incident
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
 
 
 

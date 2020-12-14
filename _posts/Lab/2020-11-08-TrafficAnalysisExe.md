@@ -1,7 +1,18 @@
+---
+title: Lab - TRAFFIC ANALYSIS EXERCISES
+date: 2020-11-08 11:11:11 -0400
+description: Learning Path
+categories: [Lab, codegame]
+# img: /assets/img/sample/rabbit.png
+tags: [Lab, codegame]
+---
+
+[toc]
+
+---
 
 # TRAFFIC ANALYSIS EXERCISES
 
-[toc]
 
 [TRAFFIC ANALYSIS EXERCISES](http://malware-traffic-analysis.net/training-exercises.html)
 password: infected
