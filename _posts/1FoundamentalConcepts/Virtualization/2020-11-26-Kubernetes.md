@@ -1,5 +1,5 @@
 ---
-title: Kubernetes
+title: Virtulization - Google Kubernetes
 date: 2020-11-26 11:11:11 -0400
 categories: [1SecConcept, VMs]
 tags: [Linux, VMs, Kubernetes]
@@ -12,7 +12,7 @@ image:
 ---
 
 
-# Kubernetes
+# Virtulization - Google Kubernetes
 
 ![k8s_architecture](https://i.imgur.com/ibs26v8.png)
 
