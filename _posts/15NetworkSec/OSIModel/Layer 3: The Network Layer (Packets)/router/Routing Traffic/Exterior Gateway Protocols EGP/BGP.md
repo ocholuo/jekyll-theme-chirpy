@@ -4,8 +4,8 @@ title: NetworkSec - Layer 3 - Border Gateway Protocol (BGP)
 date: 2018-05-18 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [1NetworkSec, 7Layer]
-tags: [NetworkSec, Rout]
+categories: [1NetworkSec]
+tags: [NetworkSec]
 math: true
 # pin: true
 toc: true
