@@ -4,8 +4,8 @@ title: NetworkSec - Layer 3 - Basic Routing Processes
 date: 2018-05-18 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [1NetworkSec, OSIModel]
-tags: [NetworkSec, Routing]
+categories: [1NetworkSec, 7Layer]
+tags: [NetworkSec, Rout]
 math: true
 # pin: true
 toc: true
