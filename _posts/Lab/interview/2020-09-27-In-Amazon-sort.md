@@ -1,6 +1,35 @@
 
+[toc]
 
-// 亚麻的每个订单第一段为认证号，后面接纯字母代表prime order； 后面接纯数字代表non-prime order。要求给prime order 按照字典顺序排在前面，non-prime order按照其原始顺序加到队尾。
+---
+
+# Amazon
+
+---
+
+##  calculate number of 1s in the binary form.
+
+```py
+numinput = int(raw_input())
+calnum= str(bin(numinput))
+num=calnum.count('1')
+print(num)
+
+
+def NumberOf1(self, n):
+    if n >= 0:
+        return bin(n).count('1')
+    else:
+        return bin(n & 0xffffffff).count('1')
+
+```
+
+## 1 亚麻order
+
+亚麻的每个订单第一段为认证号，后面接纯字母代表prime order； 后面接纯数字代表non-prime order。要求给prime order 按照字典顺序排在前面，non-prime order按照其原始顺序加到队尾。
+
+
+```java
 // Example:
 // Input:
 // {
@@ -150,11 +179,6 @@ public class solution200927{
         // System.out.println("result is: " + result);
         
     }
-
-
-
-
-
-
-
 }
+
+```
