@@ -81,16 +81,16 @@ Introduction to Netcat -->
 ## LAB EXERCISES
 
 Lab exercises designed by Syracuse university: 
-- [Syracuse university - XSS Attack Lab](https://ocholuo.github.io/posts/SEED-Labs-CrossSiteScripting-Attack-Lab/) - Self Replicating Worm attack on vulnerable web app  
+- [Syracuse university - SEED Lab - XSS Attack Lab](https://ocholuo.github.io/posts/SEED-Labs-CrossSiteScripting-Attack-Lab/) - Self Replicating Worm attack on vulnerable web app  
 <!-- Set UID Attack Lab - Exploiting setuid and LD_PRELOAD env variable. -->
 <!-- MD5 Attack Lab - Attack Merkle Damgard construction of MD5 using collisions. -->
-- [netdevgroup - PAN8 Cybersecurity Essentials](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/)
-- [netdevgroup - PAN8 Cybersecurity Gateway](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)
+- [Netdevgroup - PAN8 Cybersecurity Essentials](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/)
+- [Netdevgroup - PAN8 Cybersecurity Gateway](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)
 
 Wargames:
 - [Overthewire - bandit](https://ocholuo.github.io/posts/Overthewire-bandit/) - Based on SSH 
 - [Overthewire - natas](https://ocholuo.github.io/posts/Overthewire-natas/) - Based on WebSec 
-- [Hack The Box](https://ocholuo.github.io/tags/htb/) 
+- [Hack The Box](https://ocholuo.github.io/tags/hackthebox/) 
 
 <!-- Leviathan - Based on SetUID.
 Narnia - Based on binary exploitation.
