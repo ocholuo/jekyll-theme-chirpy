@@ -9,7 +9,7 @@ title: Grace L
 
 > A CYBER SECURITY PRACTICIAN
 
-[<img src="https://i.imgur.com/hOFYY7s.png" width="100" alt="function_calls">](https://www.linkedin.com/in/grace-jy-l-0aaa32a1/) [<img src="https://i.imgur.com/UYv2Cpd.png" width="100" alt="function_calls">](https://www.youracclaim.com/earner/earned/badge/ac3bb409-5729-4346-b8aa-e143bd73f2db) [<img src="https://i.imgur.com/vMmUZBI.png" width="100" alt="function_calls">](https://www.youracclaim.com/earner/earned/badge/df785da2-6675-4df0-96c6-edb1d5627e40) [<img src="https://i.imgur.com/0SQ0jOP.png" width="100" alt="function_calls">](https://www.youracclaim.com/earner/earned/badge/e57a3fc2-fa0a-4a9e-ba63-5d6f8fda05d1) [<img src="https://i.imgur.com/K3wKueK.png" width="90" alt="function_calls">](https://www.youracclaim.com/earner/earned/badge/2a38ffa3-3e26-42b1-b2a3-195be14d1a13) [<img src="https://i.imgur.com/tIMuMgk.jpg" width="120" alt="function_calls">](https://www.linkedin.com/in/grace-jy-l-0aaa32a1/)
+<img src="https://i.imgur.com/hOFYY7s.png" width="100" alt="function_calls"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" alt="function_calls"> <img src="https://i.imgur.com/vMmUZBI.png" width="100" alt="function_calls"> <img src="https://i.imgur.com/0SQ0jOP.png" width="100" alt="function_calls"> <img src="https://i.imgur.com/K3wKueK.png" width="90" alt="function_calls"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" alt="function_calls">
 
 > On my way to CISSP, OSCP ...
 
