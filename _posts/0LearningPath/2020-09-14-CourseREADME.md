@@ -59,7 +59,7 @@ Project/LAB |  Mark |
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Palo Alto Networks Product Training** | 🐰
+:books: **Palo Alto Networks Product Training** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 [Prisma Cloud: Onboarding and Operationalizing](https://beacon.paloaltonetworks.com/student/path/642701) 10/28/20 | ✏️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
@@ -74,7 +74,7 @@ Project/LAB |  Mark |
 
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**IBM Cybersecurity Analyst Professional Certificate** |
+:books: **IBM Cybersecurity Analyst Professional Certificate** |
 [COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
 [COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
@@ -85,10 +85,10 @@ Project/LAB |  Mark |
 [COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-[runestone](https://runestone.academy/runestone/default/user/register) | ✏️
+:books: [runestone](https://runestone.academy/runestone/default/user/register) | ✏️
 [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds/index.html) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
+:books: **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
 [COURSE 1 Programming Foundations with JavaScript, HTML and CSS](https://www.coursera.org/learn/duke-programming-web?specialization=java-programming) 100% 9/2/20 | ✔️
 [COURSE 2 Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming?specialization=java-programming) 100% 9/6/20 | ✔️
 [COURSE 3 Java Programming: Arrays, Lists, and Structured Data](https://www.coursera.org/learn/java-programming-arrays-lists-data?specialization=java-programming) 100% 9/10/20 | ✔️
@@ -98,45 +98,45 @@ Project/LAB |  Mark |
 [COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✏️
 `- give the movie recommendations by calculate the movie rating` <br> `- user interface to add multiple Filter function for the movie rating` |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**UMich. Python 3 Programming** 4/3/20  |
+:books: **UMich. Python 3 Programming** 4/3/20  |
 [COURSE 1 Python Basics](https://www.coursera.org/learn/python-basics?specialization=python-3-programming) | ✔️
 [COURSE 2 Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries?specialization=python-3-programming) | ✔️
 [COURSE 3 Data Collection and Processing with Python](https://www.coursera.org/learn/data-collection-processing-python?specialization=python-3-programming) | ✔️
 [COURSE 4 Python Classes and Inheritance](https://www.coursera.org/learn/python-classes-inheritance?specialization=python-3-programming) | ✔️
 [COURSE 5 Python Project: pillow, tesseract, and opencv](https://www.coursera.org/learn/python-project) 4/3/20  | ✔️
-**UMich. Python for Everybody** 4/13/20  |
+:books: **UMich. Python for Everybody** 4/13/20  |
 [COURSE 1 Programming for Everybody](https://www.coursera.org/learn/python?specialization=python) | ✔️
 [COURSE 2 Python Data Structures](https://www.coursera.org/learn/python-data?courseSlug=python-data&showOnboardingModal=checkAndRedirect&specialization=python) | ✔️
 [COURSE 3 Using Python to Access Web Data](https://www.coursera.org/learn/python-network-data?courseSlug=python-network-data&showOnboardingModal=checkAndRedirect&specialization=python) 4/12| ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Computer Security and Systems Management** |
+:books: **Computer Security and Systems Management** |
 [COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Palo Alto Networks Cybersecurity** |
+:books: **Palo Alto Networks Cybersecurity** |
 [COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**UMich. Web Design for Everybody: Basics of Web Development & Coding** |
+:books: **UMich. Web Design for Everybody: Basics of Web Development & Coding** |
 [COURSE 1 Introduction to HTML5](https://www.coursera.org/learn/html?specialization=web-design) | ✔️
 [COURSE 3 Interactivity with JavaScript](https://www.coursera.org/learn/javascript?specialization=web-design) | ✔️
 | :--------------------------------------------------------------------------------------------------- | :---
-**[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
-**[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
+:books: **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
+:books: **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
 
 
 <br>
 
 **[pluralsight]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**LFCE (Linux Foundation Certified Engineer) Path** |
+:books: **LFCE (Linux Foundation Certified Engineer) Path** |
 [LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18/20 | ✔️
 [LFCE: Advanced Network and System Administration](https://app.pluralsight.com/course-player?clipId=6f88f6c6-bea4-405e-b4c1-7bf38255c33c) | ✔️
 [LFCE: Network and Host Security](https://app.pluralsight.com/player?course=security-network-host-lfce&author=anthony-nocentino&name=security-network-host-lfce-m0&clip=0) | ✔️
 [LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20 | ✔️
 [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️
 [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents) | ✏️
-**CISSP (Certified Information Systems Security Professional) Path** |
+:books: **CISSP (Certified Information Systems Security Professional) Path** |
 [Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1/20 | ✔️
-**Web Application Penetration Testing Path** |
+:books: **Web Application Penetration Testing Path** |
 [1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9/20 | ✏️
 
 <br>
@@ -151,7 +151,7 @@ Project/LAB |  Mark |
 
 <br>
 
-**[Alexa]** | Mark
+:books:  **[Alexa]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
 `acloud` | ---
 [all](https://learn.acloud.guru/search?query=alexa&page=1) | ✏️
