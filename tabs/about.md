@@ -9,7 +9,7 @@ title: Grace L
 
 > A CYBER SECURITY PRACTICIAN
 
-<img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"/> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"/> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left"/>
+<img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
 
 <br>
 <br>
@@ -17,10 +17,8 @@ title: Grace L
 <br>
 <br>
 
-<img src="https://i.imgur.com/vMmUZBI.png" width="100" align="left"/> <img src="https://i.imgur.com/0SQ0jOP.png" width="100" align="left"/> <img src="https://i.imgur.com/K3wKueK.png" width="100" align="left"/>
+<img src="https://i.imgur.com/vMmUZBI.png" width="100" align="left"> <img src="https://i.imgur.com/0SQ0jOP.png" width="100" align="left"> <img src="https://i.imgur.com/K3wKueK.png" width="100" align="left">
 
-<br>
-<br>
 <br>
 <br>
 <br>
