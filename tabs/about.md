@@ -11,6 +11,8 @@ title: Grace L
 
 ![pan_pse_cortex-associate_logo esp](https://i.imgur.com/ZaztaxK.jpg =100x)
 
+![pan_pse_cortex-associate_logo esp](https://i.imgur.com/ZaztaxK.jpg =20x)
+
 <img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"/> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"/> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left"/>
 
 <br>
