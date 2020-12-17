@@ -18,6 +18,7 @@
 - You're essentially federating an identity.
 - You're allowing an external set of identities to get access to your account, to swap their credentials for something that's valid in your account.
 - cross account roles using the same AWS provider of identities, it may be that a different account has their own IAM instance, and you have your own IAM instance but at the backend, it's AWS providing those identities.
+- 
 
 
 `SAML 2.0`
