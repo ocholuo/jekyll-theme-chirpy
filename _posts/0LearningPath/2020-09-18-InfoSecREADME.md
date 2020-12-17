@@ -46,7 +46,19 @@ GoodWeb | Note
 **web knowledge** | Note
 [HTTP tutorial](https://www.tutorialspoint.com/http/http_caching.htm) | .
 
+
+
+
 ---
+
+
+
+
+
+
+
+
+
 
 ## Pentest tools
 
@@ -77,12 +89,12 @@ Acunetix `web application vulnerabilities` | <img src="https://i.imgur.com/9oeYk
 Nexpose <br> `scanning and managing vulnerabilities` |
 Paros Proxy <br> `web vulnerabilities` | - Some of the tools contained in the Paros Proxy utility include vulnerability scanners, a web spider, and traffic recorder for retaining network activities in real-time. <br> Paros Proxy is useful in identifying intrusion openings in a network, detects common cybersecurity threats such as XSS and SQLi.
 Burp Suite <br> `MITM/XSS web vulnerabilities/web vulnerability scanner` | <img src="https://i.imgur.com/IJkeA2y.png" width="600">
-Owasp ZAP <br> `XSS web vulnerabilities` | <img src="https://i.imgur.com/t6cqHVy.png" width="600"> 
+Owasp ZAP <br> `XSS web vulnerabilities` | <img src="https://i.imgur.com/t6cqHVy.png" width="600">
 DOMinator Tool, DOM Snitch <br> `DOM Based XSS` |
 Nessus <br> `vulnerability scanner` |
-OpenVAS <br> `vulnerability scanning & management` | <img src="https://i.imgur.com/8sJLdIh.png" width="600"> 
-Intruder <br> `Finding vulnerabilities` | <img src="https://i.imgur.com/7BLUaKx.png" width="600"> 
-Netsparker <br> `identified vulnerabilities` | <img src="https://i.imgur.com/cuShMOy.png" width="600"> 
+OpenVAS <br> `vulnerability scanning & management` | <img src="https://i.imgur.com/8sJLdIh.png" width="600">
+Intruder <br> `Finding vulnerabilities` | <img src="https://i.imgur.com/7BLUaKx.png" width="600">
+Netsparker <br> `identified vulnerabilities` | <img src="https://i.imgur.com/cuShMOy.png" width="600">
 ---------|------------------------------
 tools | **Encryption cybersecurity tools**
 TrueCrypt |
@@ -90,11 +102,11 @@ KeyPass |
 Tor |
 ---------|------------------------------
 🐰 **Network Link** | Layer 7
-PackETH <br> `capturing network packet` | <img src="https://i.imgur.com/HDvf8Du.png" width="600"> 
+PackETH <br> `capturing network packet` | <img src="https://i.imgur.com/HDvf8Du.png" width="600">
 Netstumbler <br> `identify open ports` | - designed for Win
 Aircrack-Ng <br> `Wireless sniffer & injector` | - focus on Replay attacks, de-authentication, fake access points, and others. <br> - It supports exporting data to text files. <br> - It can check Wi-Fi cards and driver capabilities. <br> - It can crack WEP keys and for that, it makes use of FMS attack, PTW attack, and dictionary attacks. <br> - It can crack WPA2-PSK and for that, it makes use of dictionary attacks. <br> <img src="https://i.imgur.com/wgVZxJJ.png" width="600">
 KisMAC <br> `wireless network security in the MAC` |
-wireshark <br> `Sniffing` | <img src="https://i.imgur.com/L1ckSYt.png" width="600"> 
+wireshark <br> `Sniffing` | <img src="https://i.imgur.com/L1ckSYt.png" width="600">
 ---------|------------------------------
 tools | **monitoring network security**
 Splunk |
@@ -111,34 +123,34 @@ Forcepoint |
 GFI LanGuard `monitor networks, scan for vulnerabilities` |
 ---------|------------------------------
 🐰 **Data Link** | Layer 2
-arpspoof <br> `ARP poisoning` | <img src="https://i.imgur.com/ZKZug7g.png" width="600"> 
+arpspoof <br> `ARP poisoning` | <img src="https://i.imgur.com/ZKZug7g.png" width="600">
 Ettercap <br> `ARP poisoning` ![Ettercap](https://i.imgur.com/bVAdWxn.png) | - Sniffing of live connections. <br> - Content filtering. <br> - Active and passive dissection of many protocols. <br> - Network and host analysis. <br> <img src="https://i.imgur.com/0ciXVzn.png" width="600">
-Etherflood <br> `Sniffing` | 
-AntiARP, ARPon, ArpStar <br> `detect ARP poisoning` | 
-XARP <br> `detect ARP poisoning` | <img src="https://i.imgur.com/vWTIp91.png" width="600"> 
-dsniff <br> `Sniffing` | 
+Etherflood <br> `Sniffing` |
+AntiARP, ARPon, ArpStar <br> `detect ARP poisoning` |
+XARP <br> `detect ARP poisoning` | <img src="https://i.imgur.com/vWTIp91.png" width="600">
+dsniff <br> `Sniffing` |
 Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Security features
 ---------|------------------------------
 tools | **Password auditing and packet sniffers cybersecurity tools**
-John The Ripper <br> `PaswdCrack` | <img src="https://i.imgur.com/zq4Ao7o.png" width="600"> 
-Cain and Abel <br> `PaswdCrack / ARP poisoning` | <img src="https://i.imgur.com/8gSuAdg.png" width="600"> 
+John The Ripper <br> `PaswdCrack` | <img src="https://i.imgur.com/zq4Ao7o.png" width="600">
+Cain and Abel <br> `PaswdCrack / ARP poisoning` | <img src="https://i.imgur.com/8gSuAdg.png" width="600">
 Tcpdump <br> `sniffing data packets` | - monitor log TCP and IP traffic communicated through a network
 ---------|------------------------------
 🐰 | **Reconnaissance** step 1 information gethering
-visualping <br> `passive` | <img src="https://i.imgur.com/TV47wYz.png" width="600"> 
-HTTrack <br> `website mirroring` | <img src="https://i.imgur.com/g0s74oj.png" width="600"> 
-TheHarvester <br> `email foot-printing` | <img src="https://i.imgur.com/Ey7HrEQ.png" width="600"> 
+visualping <br> `passive` | <img src="https://i.imgur.com/TV47wYz.png" width="600">
+HTTrack <br> `website mirroring` | <img src="https://i.imgur.com/g0s74oj.png" width="600">
+TheHarvester <br> `email foot-printing` | <img src="https://i.imgur.com/Ey7HrEQ.png" width="600">
 Maltego <br> `link analysis and data mining` | - provide graphical picture about the weak points and abnormalities of the network. <br> <img src="https://i.imgur.com/oegrQtd.png" width="600">
-Recon-ng <br>  `foot-printing` | <img src="https://i.imgur.com/jgc9SSN.png" width="600"> 
-OSRframwork <br> `foot-printing` | <img src="https://i.imgur.com/vtJNROh.png" width="600"> 
+Recon-ng <br>  `foot-printing` | <img src="https://i.imgur.com/jgc9SSN.png" width="600">
+OSRframwork <br> `foot-printing` | <img src="https://i.imgur.com/vtJNROh.png" width="600">
 Shodan <br> `hacker search engine` | - collects all information about all devices that are directly connected to the internet with the specified keywords that you enter. <br> <img src="https://i.imgur.com/F4Hmvxn.png" width="600">
-httprint <br> `web info gethering` | <img src="https://i.imgur.com/koDelg8.png" width="600"> 
-whatweb <br> `Fingerprint web Framework` | <img src="https://i.imgur.com/PKmBLXt.png" width="600"> 
-BlindElephant, Wappalyzer <br> `Fingerprint web Framework` | 
-HUNCHLY <br> `website record` | <img src="https://i.imgur.com/2coiGDl.png" width="600"> 
-Gophish <br> `phishing` | - opensource phishing platform 
-Angry IP Scanner <br> `Scanning` | - scanning the IP addresses and ports. It can scan both on local network and Internet. <br> <img src="https://i.imgur.com/5Qyj91h.png" width="600"> 
-Sublist3r <br> `enumerate subdomains` | <img src="https://i.imgur.com/6cbDegs.png" width="600"> 
+httprint <br> `web info gethering` | <img src="https://i.imgur.com/koDelg8.png" width="600">
+whatweb <br> `Fingerprint web Framework` | <img src="https://i.imgur.com/PKmBLXt.png" width="600">
+BlindElephant, Wappalyzer <br> `Fingerprint web Framework` |
+HUNCHLY <br> `website record` | <img src="https://i.imgur.com/2coiGDl.png" width="600">
+Gophish <br> `phishing` | - opensource phishing platform
+Angry IP Scanner <br> `Scanning` | - scanning the IP addresses and ports. It can scan both on local network and Internet. <br> <img src="https://i.imgur.com/5Qyj91h.png" width="600">
+Sublist3r <br> `enumerate subdomains` | <img src="https://i.imgur.com/6cbDegs.png" width="600">
 
 
 

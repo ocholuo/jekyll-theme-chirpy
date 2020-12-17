@@ -1,5 +1,5 @@
 ---
-title: Cross Site Scripting Prevention Cheat Sheet
+title: Meow's CyberAttack - Cross Site Scripting Prevention Cheat Sheet
 # author: Grace JyL
 date: 2020-09-19 11:11:11 -0400
 description:
@@ -12,9 +12,14 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
+[toc]
+
+---
+
+
 # Cross Site Scripting Prevention Cheat Sheet
 
-[toc]
+---
 
 ## Introduction
 
