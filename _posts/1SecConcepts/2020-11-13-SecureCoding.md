@@ -18,10 +18,11 @@ image:
 
 # Secure Coding Review and Analysis
 
-- applications require a “last look” to ensure that the application and its’ components, are free of security flaws.
+- applications require a “`last look`” to ensure that the application and its’ components, are free of security flaws.
 - A secure code review serves to `detect all the inconsistencies` that weren’t found in other types of security testing – and to ensure the `application’s logic and business code` is sound.
-- Reviews can be done via both manual and automated methods
-- **cut down on time and resources it would take if vulnerabilities were detected after release**. The security bugs being looked for during a secure code review have been the cause of countless breaches which have resulted in billions of dollars in lost revenue, fines, and abandoned customers.
+- Reviews can be done via both `manual` and `automated methods`
+- **cut down on time and resources it would take if vulnerabilities were detected after release**.
+  - The security bugs being looked for during a secure code review have been the cause of countless breaches which have resulted in billions of dollars in lost revenue, fines, and abandoned customers.
 - **focus on finding flaws in areas**:
   - Authentication, authorization, security configuration,
   - session management, logging,
@@ -41,7 +42,7 @@ image:
      1. It can be easy, especially with reporting by some tools being able to compare results over time, to point the finger at developers who routinely make the same mistakes. It’s important when building a security culture to refrain from playing the blame game with developers; this only serves to deepen the gap between security and development. Use your findings to help guide your security education and awareness program, using those common mistakes as a jumping off point and relevant examples developers should be looking out for.
      2. Again, developers aren’t going to improve in security if they feel someone’s watching over their shoulder, ready to jump at every mistake made. Facilitate their security awareness in more positive ways and your relationship with the development team, but more importantly the organization in general, will reap the benefits.
 
-  3. **Review code each time a meaningful change** in the code has been introduced
+  3. Review code each time a **meaningful change** in the code has been introduced
      1. If you have a secure SDLC in place, you understand the value of testing code on a regular basis. Secure code reviews don’t have to wait until just before release. For major applications, we suggest performing manual code reviews when new changes are introduced, saving time and human brainpower by having the app reviewed in chunks.
 
   4. A **mix of human review and tool use is best** to detect all flaws

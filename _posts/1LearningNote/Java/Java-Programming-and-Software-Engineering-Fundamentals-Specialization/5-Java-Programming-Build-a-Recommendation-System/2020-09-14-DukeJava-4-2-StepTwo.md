@@ -2,7 +2,7 @@
 title: Java - DukeJava 4-2 Step Two Simple recommendations
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [1LearningNote, JavaNote]
+categories: [1CodeNote, JavaNote]
 tags: [Java]
 img: /assets/img/sample/rabbit.png
 ---

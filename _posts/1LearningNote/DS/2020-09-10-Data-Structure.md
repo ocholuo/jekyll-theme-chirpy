@@ -2,7 +2,7 @@
 title: Python - Data Structure
 date: 2020-09-10 11:11:11 -0400
 description:
-categories: [1LearningNote, PythonNote]
+categories: [1CodeNote, PythonNote]
 tags:
 ---
 
