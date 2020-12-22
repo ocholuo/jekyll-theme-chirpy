@@ -1,9 +1,0 @@
-{"username": "gh0st", "Firstname Lastname": "William L. Simon", "password": "", "Mother’s Favorite Search Engine": "Searx"}
-
-{"username":"jet-setter", "Firstname Lastname":"Frank Abignale", "password":"r0u7!nG", "Mother’s Favorite Search Engine":"Bing"}
-
-{"username":"kvothe", "Firstname Lastname":"Patrick Rothfuss", "password":"3##Heel7sa*9-zRwT", "Mother’s Favorite Search Engine":"Duck Duck Go"}
-
-{"username":"tpratchett", "Firstname Lastname":"Terry Pratchett", "password":"Thats Sir Terry to you!", "Mother’s Favorite Search Engine":"Google"}
-
-{"username":"lmb", "Firstname Lastname":"Lois McMaster Bujold", "password":"null", "Mother’s Favorite Search Engine":"Yandex"}
