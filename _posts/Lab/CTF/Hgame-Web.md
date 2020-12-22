@@ -1,9 +1,7 @@
 ---
 title: Lab - CTF：2019-Hgame-Web-Week4
 date: 2019-12-13 11:11:11 -0400
-description: Learning Path
 categories: [Lab, CTF]
-# img: /assets/img/sample/rabbit.png
 tags: [Lab, CTF]
 ---
 
