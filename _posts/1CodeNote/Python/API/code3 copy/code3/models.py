@@ -1,0 +1,12 @@
+from . import db
+from flask_login import UserMixin
+
+class User(db.Model, UserMixin):
+    db_id = db.Column(db.Integer, primary_key=True)
+    db_username = db.Column(db.String(256), unique=True)
+    db_flname = db.Column(db.String(100))
+    db_password = db.Column(db.String(100))
+    db_engine = db.Column(db.String(100))
+
+
+# echo '{"username":"a",  "Firstname Lastname":"ab", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/signup

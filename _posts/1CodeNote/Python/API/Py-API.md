@@ -1,4 +1,15 @@
+---
+title: Python Crash
+date: 2019-10-11 11:11:11 -0400
+description:
+categories: [1CodeNote, PythonNote]
+img: /assets/img/sample/rabbit.png
+tags: [Python]
+---
 
+[toc]
+
+---
 
 
 # use python to working with APIs
@@ -63,7 +74,7 @@ def refund(transaction_id):
     # Transaction id to refund.
     # Raises:
     # Return (RefundResponse)
-    
+
     try:
         data = make_payment_request('/refund', {
             'uid': str(uuid.uuid4()),
@@ -75,7 +86,7 @@ def refund(transaction_id):
 
 
     except (requests.ConnectionError, requests.Timeout) as e:
-        raise errors.Unavailable() from e 
+        raise errors.Unavailable() from e
 
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 400:
@@ -88,10 +99,10 @@ def refund(transaction_id):
         elif code == 2:
             raise errors.Stolen(code, message) from e        
         else:
-            raise errors.PaymentGatewayError(code, message) from e 
-        
+            raise errors.PaymentGatewayError(code, message) from e
+
         logger.exception("Payment service had internal error.")
-        raise errors.Unavailable() from e 
+        raise errors.Unavailable() from e
 
 ```
 
@@ -107,7 +118,7 @@ Let's start by defining an imaginary payment service.
 To charge a credit card we need a `credit card token`, an `amount to charge` and `unique ID by client`:
 
 ```html
-POST 
+POST
 {
     token: <string>,
     amount: <number>,
@@ -142,16 +153,16 @@ If the charge was not successful we get a 400 status with an `error code` and an
 ```
 
 
-There are two error codes we want to handle 
+There are two error codes we want to handle
 
 ```
-- 1 = refused, 
+- 1 = refused,
 2 = stolen.
 ```
 
 
 
-## Naive Implementation
+## Native Implementation
 
 To get the ball rolling, we start with a naive implementation and build from there:
 
@@ -191,7 +202,7 @@ def charge(amount,token,timeout=5):
         timeout=timeout,
     )
 
-    # POST 
+    # POST
     # {
     #     token: <string>,
     #     amount: <number>,
@@ -262,7 +273,7 @@ def charge(amount,token,timeout=5):
         response.raise_for_status()
 
     except (requests.ConnectionError, requests.Timeout) as e:
-        raise errors.Unavailable() from e 
+        raise errors.Unavailable() from e
 
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 400:
@@ -275,14 +286,14 @@ def charge(amount,token,timeout=5):
         elif code == 2:
             raise errors.Stolen(code, message) from e        
         else:
-            raise errors.PaymentGatewayError(code, message) from e 
-        
+            raise errors.PaymentGatewayError(code, message) from e
+
         logger.exception("Payment service had internal error.")
-        raise errors.Unavailable() from e 
+        raise errors.Unavailable() from e
 ```
 
 
-Great! Our function no longer raises `requests` exceptions. 
+Great! Our function no longer raises `requests` exceptions.
 - Important errors such as stolen card or refusal are raised as custom exceptions.
 
 ---
@@ -344,8 +355,8 @@ By using a custom "class" as the return value we reduce the dependency in the pa
 
 ## Using a Session
 
-To skim some extra milliseconds from API calls we can use a session. [Requests session] uses a connection pool internally. 
-- Requests to the same host can benefit from that. 
+To skim some extra milliseconds from API calls we can use a session. [Requests session] uses a connection pool internally.
+- Requests to the same host can benefit from that.
 - We also take the opportunity to add useful configuration such as blocking cookies:
 
 
@@ -377,7 +388,7 @@ def charge(amount,token,timeout=5):
 
 Any external service, and a payment service in particular, has more than one action.
 
-- The first section of our function takes care of `authorization, the request and HTTP errors`. 
+- The first section of our function takes care of `authorization, the request and HTTP errors`.
 - The second part handle `protocol errors and serialization specific to the charge action`.
 - The first part is relevant to all actions while the second part is specific only to the charge.
 
@@ -490,7 +501,7 @@ def refund(transaction_id):
     # Transaction id to refund.
     # Raises:
     # Return (RefundResponse)
-    
+
     try:
         data = make_payment_request('/refund', {
             'uid': str(uuid.uuid4()),
@@ -508,7 +519,7 @@ def refund(transaction_id):
 
 ---
 
-## Testing 
+## Testing
 
 The challenge with external APIs is that you can't (or at least, shouldn't) make calls to them in automated tests. I want to focus on **testing code that uses our payments module** rather than testing the actual module.
 
@@ -553,7 +564,7 @@ Pretty straight forward - no need to mock the API response. The tests are contai
 
 
 
-## Note About Dependency Injection 
+## Note About Dependency Injection
 
 Another approach to test a service is to provide two implementations: the real one, and a fake one. Then for tests, inject the fake one.
 
@@ -569,7 +580,7 @@ Whether you choose to mock the service calls as illustrated above or inject a "f
 
 ## Summary
 
-We have an external service we want to use in our app. 
+We have an external service we want to use in our app.
 - We want to implement a module to communicate with that external service and make it robust, resilient and reusable.
 
 We worked the following steps:
@@ -592,7 +603,7 @@ We worked the following steps:
 // GET /tasks/
 // Return a list of items on the to-do list, in the following format:
 {
-    "id": "<item_id>", 
+    "id": "<item_id>",
     "summary": "<one-line summary>"
 }
 
@@ -600,31 +611,31 @@ We worked the following steps:
 // GET /tasks/<item_id>/
 // Fetch all available information for a specific to-do item, in the following format:
 {
-    "id": "<item_id>", 
-    "summary": "<one-line summary>", 
+    "id": "<item_id>",
+    "summary": "<one-line summary>",
     "description" : "<free-form text field>"
 }
 
 
 // POST /tasks/
-// Create a new to-do item. The POST body is a JSON object with two fields: 
-// “summary” (must be under 120 characters, no newline), 
-// and “description” (free-form text field). 
-// On success, 
-// the status code is 201, 
+// Create a new to-do item. The POST body is a JSON object with two fields:
+// “summary” (must be under 120 characters, no newline),
+// and “description” (free-form text field).
+// On success,
+// the status code is 201,
 // and the response body is an object with one field: the id created by the server (for example, { "id": 3792 }).
 
 
 
 // DELETE /tasks/<item_id>/
-// Mark the item as done: strike it off the list so that GET /tasks/ will not show it. 
+// Mark the item as done: strike it off the list so that GET /tasks/ will not show it.
 // The response body is empty.
 
 
 
 // PUT /tasks/<item_id>/
-// Modify an existing task. 
-// The PUT body is a JSON object with two fields: 
+// Modify an existing task.
+// The PUT body is a JSON object with two fields:
 // summary (must be under 120 characters, no newline), and description (free-form text field).
 
 
@@ -653,7 +664,6 @@ $ pip install requests
 
 ### get a list of action items, via the `GET /tasks/ endpoint`:
 
-
 ```py
 import requests
 
@@ -673,7 +683,7 @@ for todo_item in resp.json():
 ---
 
 
-### create a new task: add something to my to-do list. 
+### create a new task: add something to my to-do list.
 
 
 In our API, this requires an `HTTP POST`. I start by creating a Python dictionary with the required fields, “summary” and “description”, which define the task.
@@ -711,13 +721,13 @@ resp = requests.post('https://todolist.example.com/tasks/', data=json.dumps(task
 - If you are doing anything more than a few API calls
 - if you are the one providing the API and want to develop that library so others can easily use your service.
 
-The structure of the library depends on how the API authenticates, if it does at all. 
-- For the moment, let’s ignore authentication, to get the basic structure. 
+The structure of the library depends on how the API authenticates, if it does at all.
+- For the moment, let’s ignore authentication, to get the basic structure.
 - Then we’ll look at how to install the auth layer.
 
 
 ```py
-# Let’s start with the simplest thing that could possibly work. 
+# Let’s start with the simplest thing that could possibly work.
 # todo.py
 import requests
 

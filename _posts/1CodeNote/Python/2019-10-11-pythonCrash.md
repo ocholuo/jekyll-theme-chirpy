@@ -9,10 +9,10 @@ tags: [Python]
 
 [toc]
 
+---
+
 
 # Python Crash
-
-[toc]
 
 ---
 
