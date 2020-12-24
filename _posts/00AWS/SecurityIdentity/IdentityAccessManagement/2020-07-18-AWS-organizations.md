@@ -1,7 +1,7 @@
 ---
 title: AWS - SecurityIdentity - AWS Organizations and SCP
 date: 2020-07-18 11:11:11 -0400
-categories: [00AWS, UserControl]
+categories: [00AWS, SecurityIdentity]
 tags: [AWS]
 toc: true
 image:
