@@ -10,15 +10,17 @@ pin: true
 # InfoSec - Note
 
 ```
+can't reiterate this enough: Do not go looking for vulnerable servers and exploits on systems you don't own without the proper approval.
+
     __∧_∧__    ~~~~~
 　／(*´O｀)／＼
 ／|￣∪∪￣|＼／
 　|＿＿ ＿|／
 
-can't reiterate this enough: Do not go looking for vulnerable servers and exploits on systems you don't own without the proper approval.
-
 por favor, no lo usar para hacer algo malo
+
 just learning note, please don't use it to do something wrong
+
 kali用得好，监狱进得早，与君共勉
 
 ```
