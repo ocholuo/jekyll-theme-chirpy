@@ -1,7 +1,7 @@
 ---
-title: AWS - AWS Organizations and SCP
+title: AWS - SecurityIdentity - AWS Organizations and SCP
 date: 2020-07-18 11:11:11 -0400
-categories: [20AWS]
+categories: [20AWS, UserControl]
 tags: [AWS]
 toc: true
 image:
@@ -175,13 +175,13 @@ AWS Organizations enables you to:
   - it specify the maximum permissions for an organization or OU.
   - SCPs are filters that <font color=blue> allow only the specified services and actions to be used </font> in affected accounts.
   - <font color=red> overwrite the admin permissions </font>
-    - Even if a user is granted full administrator permissions with an IAM permission policy, 
+    - Even if a user is granted full administrator permissions with an IAM permission policy,
     - offer central control over the maximum available permissions for all accounts in organization, ensure accounts stay in organization’s access control guidelines.
   - any access that is <font color=red> not explicitly allowed or is explicitly denied </font> by the SCPs that affect that account is blocked.
-  
+
 - <font color=red> restrict a root user of an Organization Unit account </font>
   - defines a safeguard for the actions that accounts in the organization root or OU can do.
-  - Attaching an SCP to the organization root/unit (OU) 
+  - Attaching an SCP to the organization root/unit (OU)
     - Log in to the master account and `create the SCP`
     - `Select the Organizational Unit`
     - `Enable the SCP` for the Organizational Unit
@@ -198,12 +198,12 @@ AWS Organizations enables you to:
 
 
 - `FullAWSAccess`
-  - a service control policy 
+  - a service control policy
   - allows users to access services/resources on an attached account.
   - allows access to all AWS services within an attached member account
 
 - SCPs are available only when you enable all features in your organization.
-  - has all features enabled, 
+  - has all features enabled,
   - including consolidated billing.
 
 
@@ -257,16 +257,16 @@ In contrast, with Organizations,
 
 ![fopYerU](https://i.imgur.com/RMGqWu0.png)
 
-- **AWS Management Console**: 
-  - browser-based interface to manage organization and AWS resources. 
+- **AWS Management Console**:
+  - browser-based interface to manage organization and AWS resources.
   - You can perform any task in your organization by using the console.
-- **AWS Command Line Interface(AWS CLI)**: 
-  - issue commands at your system's command line to perform AWS Organizations tasks and AWS tasks. 
+- **AWS Command Line Interface(AWS CLI)**:
+  - issue commands at your system's command line to perform AWS Organizations tasks and AWS tasks.
   - faster and more convenient than using the console.
-- **AWS software development kits (SDKs)**: 
-  - to handle tasks such as cryptographically signing requests, managing errors, and retrying requests automatically. 
+- **AWS software development kits (SDKs)**:
+  - to handle tasks such as cryptographically signing requests, managing errors, and retrying requests automatically.
   - AWS SDKs consist of libraries and sample code for various programming languages and platforms (Java, Python, Ruby, .NET, iOS, and Android).
-- **AWS Organizations HTTPS Query API**: 
-  - programmatic access to AWS Organizations and AWS. 
-  - use the API to issue HTTPS requests directly to the service. 
+- **AWS Organizations HTTPS Query API**:
+  - programmatic access to AWS Organizations and AWS.
+  - use the API to issue HTTPS requests directly to the service.
   - to use HTTPS API, must include code to digitally sign requests by using your credentials.

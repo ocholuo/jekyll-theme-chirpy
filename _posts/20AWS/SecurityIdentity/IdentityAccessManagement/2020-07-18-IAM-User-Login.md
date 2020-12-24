@@ -1,7 +1,7 @@
 ---
-title: AWS - IAM User Login
+title: AWS - SecurityIdentity - IAM User Login
 date: 2020-07-18 11:11:11 -0400
-categories: [20AWS]
+categories: [20AWS, UserControl]
 tags: [AWS]
 toc: true
 image:
