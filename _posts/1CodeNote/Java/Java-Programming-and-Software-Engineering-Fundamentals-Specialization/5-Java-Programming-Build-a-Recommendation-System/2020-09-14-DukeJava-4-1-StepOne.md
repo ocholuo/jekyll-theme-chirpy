@@ -88,7 +88,9 @@ public class Movie {
     // Returns a string of the item's information
     public String toString () {
         String result = "Movie [id=" + id + ", title=" + title + ", year=" + year;
-        result += ", genres= " + genres + "]";return result;}
+        result += ", genres= " + genres + "]";
+        return result;
+    }
 }
 ```
 
@@ -167,6 +169,7 @@ public class Rater {
     private String myID;
     private ArrayList<Rating> myRatings;
     // Rating (String anItem, double aValue)
+    // {Rating1, Rating2, Rating3}
 
     public Rater(String id) {
         myID = id;
