@@ -1,7 +1,7 @@
 ---
 title: AWS - AWS Inspector
 date: 2020-07-18 11:11:11 -0400
-categories: [20AWS, Detection]
+categories: [00AWS, Detection]
 tags: [AWS]
 toc: true
 image:

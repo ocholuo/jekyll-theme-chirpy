@@ -1,7 +1,7 @@
 ---
 title: AWS - SecurityIdentity - AWS Organizations and SCP
 date: 2020-07-18 11:11:11 -0400
-categories: [20AWS, UserControl]
+categories: [00AWS, UserControl]
 tags: [AWS]
 toc: true
 image:
@@ -46,7 +46,7 @@ AWS Organizations enables you to:
 
 ## benefits of using AWS Organizations
 
-- to <font color=red> consolidate multiple AWS accounts into an organization and centrally manage </font>.
+- to <font color=red> consolidate multiple AWS accounts into an organization and centrally manage </font>
   - An OU is a container for accounts with a root.
     - on OU can have different account inside.
     - An OU can contain other OUs.
@@ -75,7 +75,7 @@ AWS Organizations enables you to:
     - IAM provides granular control over users and roles in individual accounts.
     - Organizations expands that <font color=blue> control to the account level </font>, control over what users and roles in an account or a group of accounts can do.
     - The resulting permissions are the logical intersection of what is allowed by Organizations at the account level, and what permissions are explicitly granted by IAM at the user or role level within that account.
-    - the user can access only what is allowed by both <font color=blue> Organizations policies </font> and <font color=blue> IAM policies </font>.
+    - the user can access only what is allowed by both <font color=blue> Organizations policies </font> and <font color=blue> IAM policies </font>
     - If either blocks an operation, the user can't access that operation.
 
 
@@ -91,7 +91,7 @@ AWS Organizations enables you to:
   - better meet the budgetary, security, and compliance needs of your business.
 
 
-- <font color=red> Organizations integrate with other Amazon web services </font>.
+- <font color=red> Organizations integrate with other Amazon web services </font>
   - enable <font color=blue> select Amazon web services </font> to access accounts in organization and perform actions on the resources in the accounts.
   - For this service to work, all accounts in an organization have a <font color=blue> service-linked role </font> that enables AWS Organizations to create other service-linked roles.
     - These other roles are required by the AWS services that you configure to perform organizational-level tasks.
@@ -141,7 +141,7 @@ AWS Organizations enables you to:
 
 - Invitations also can be sent to all current member accounts when the organization needs all members to approve the change from `supporting only consolidated billing features` to `supporting all features in the organization`.
 
-- Invitations work by accounts exchanging <font color=red> handshakes </font>.
+- Invitations work by accounts exchanging <font color=red> handshakes </font>
   - might not see handshakes in AWS Organizations console,
   - if use the AWS CLI, or AWS Organizations API must work directly with handshakes
   - A handshake
@@ -232,7 +232,7 @@ With IAM policies
   - <font color=blue> individual AWS resources </font> (such as a specific S3 bucket)
   - or <font color=blue> individual API actions </font> (such as s3:CreateBucket)
 - An IAM policy can applied only to `IAM users, groups, or roles`,
-- but <font color=red> can never restrict the AWS account root user </font>.
+- but <font color=red> can never restrict the AWS account root user </font>
 
 In contrast, with Organizations,
 - use service control policies (SCPs) to <font color=red> allow or deny access </font> to <font color=blue> particular AWS services </font> for `individual AWS accounts` or `groups of accounts in an OU`.

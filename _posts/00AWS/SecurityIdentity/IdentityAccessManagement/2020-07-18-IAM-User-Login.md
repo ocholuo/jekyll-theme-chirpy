@@ -1,7 +1,7 @@
 ---
 title: AWS - SecurityIdentity - IAM User Login
 date: 2020-07-18 11:11:11 -0400
-categories: [20AWS, UserControl]
+categories: [00AWS, UserControl]
 tags: [AWS]
 toc: true
 image:
@@ -36,7 +36,7 @@ The following diagram shows the different methods of authentication available wi
 - provides <font color=red> short-term authorization </font> that IAM roles utilize.
 
 **Access Keys**:
-- A combination of an <font color=red> access key ID </font> and a <font color=red> secret access key </font>.
+- A combination of an <font color=red> access key ID </font> and a <font color=red> secret access key </font>
   - can assign two active access keys to a user at a time.
   - max limit of access keys an IAM User may possess at a time: 2
   - IAM users are allowed two sets of access keys.
