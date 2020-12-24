@@ -1,7 +1,7 @@
 ---
 title: AWS - Logging and monitoring for Amazon VPC
 date: 2020-07-18 11:11:11 -0400
-categories: [2AWS, Network]
+categories: [20AWS, Network]
 tags: [AWS, Network, VPC]
 toc: true
 image:

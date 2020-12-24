@@ -1,7 +1,7 @@
 ---
 title: AWS - CodeDeploy
 date: 2020-07-18 11:11:11 -0400
-categories: [2AWS]
+categories: [20AWS]
 tags: [AWS]
 toc: true
 image:

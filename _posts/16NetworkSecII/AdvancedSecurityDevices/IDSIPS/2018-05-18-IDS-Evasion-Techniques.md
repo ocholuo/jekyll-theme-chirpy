@@ -1,4 +1,16 @@
-
+---
+title: NetworkSec - Advanced SecDevices - IDS Evasion Techniques
+# author: Grace JyL
+date: 2018-05-18 11:11:11 -0400
+description:
+excerpt_separator:
+categories: [15NetworkSec]
+tags: [NetworkSec]
+math: true
+# pin: true
+toc: true
+# image: /assets/img/note/tls-ssl-handshake.png
+---
 
 [toc]
 

@@ -1,7 +1,7 @@
 ---
 title: AWS - Session Affinity and Sticky Sessions
 date: 2020-07-18 11:11:11 -0400-
-categories: [2AWS, Balancing]
+categories: [20AWS, Balancing]
 tags: [AWS, Balancing]
 toc: true
 image:
