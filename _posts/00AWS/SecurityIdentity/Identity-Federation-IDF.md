@@ -27,9 +27,12 @@
 - re-use identities, from on-premises systems like Microsoft Active Directory or AWS Directory Service), to assume a role in an AWS account.
 
 
-`Web Identity Federation`
-- use identity providers such as Google, Amazon, and Facebook and `allow them to assume roles inside our AWS accounts and access resources`
-- the way that SAML 2.0 or Web Identity Federation is supported in AWS is using the `Cognito` and `secure token service STS.`
+## Web Identity Federation
+- use identity providers such as Google, Amazon, and Facebook and allow them to <font color=red> assume roles inside our AWS accounts and access resources </font>
+
+
+
+- the way that SAML 2.0 or Web Identity Federation is supported in AWS is using the **Cognito** and **STS secure token service**.
   - STS:
     - get short term temporary credentials.
     - a secure token service responsible for generating the temporary or short term security credentials that you will use to access that account.
