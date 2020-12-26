@@ -27,16 +27,17 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 
 2. provides <font color=red> authentication, authorization, and user management </font> for web and mobile apps .
 
-3. <font color=red> Access Control </font>  to AWS resources from your application.
-   - define roles and map users to different roles,
-   - so application can access only the resources that are authorized for each user.
-
-4. actes as an identity broker between app and web id providers
+3. actes as an <font color=blue> identity broker </font> between app and web id providers
    - no additional code
    - no credentials is stored on the devices.
 
-5. <font color=red> seamless experience </font> across all different devices.
+4. <font color=red> Access Control </font>  to AWS resources from your application.
+   - define roles and map users to different roles,
+   - so application can access only the resources that are authorized for each user.
+
+5. <font color=red> seamless experience </font> across devices with Push Synchronization function.
    - syncs user data for a seamless experience across your devices.
+   - use Push Synchronization to send a silent push notification of user data updates to multiple devices associated with a user ID.
 
 6. uses common identity management standards, such as <font color=red> Security Assertion Markup Language (SAML) 2.0 </font>.
    - SAML: open standard for exchanging identity and security information with applications and service providers.
@@ -48,21 +49,22 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
    - for workloads that are compliant with the `Payment Card Industry Data Security Standard(PCI DSS)`; `the American Institute of CPAs (AICPA)`, `Service Organization Control (SOC)`; `the International Organization for Standardization (ISO)` `and International Electrotechnical Commission (IEC)` `standardsISO/IEC 27001`, `ISO/IEC 27017`, and `ISO/IEC 27018`; and `ISO 9001`
 
 
-
-
 ---
 
 
 ## <font color=red> Secure and scalable user directory </font>
 
 ![scenario-authentication-cup](https://i.imgur.com/R0SLuZ1.png)
+
+![Screen Shot 2020-12-25 at 14.19.01](https://i.imgur.com/UK7uxxF.png)
+
 - The two main components of Amazon Cognito are <font color=red> user pools and identity pools </font>.
   - can use identity pools and user pools separately or together.
-
-
+  - ![Screen Shot 2020-12-25 at 14.10.07](https://i.imgur.com/nGMQv12.png)
 ---
 
 ### user pools
+
 
 - <font color=red> secure user directories </font>
   - can scales to hundreds of millions of users.
@@ -74,9 +76,15 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 1. Getting Started with User Pools
    - Prerequisite: Sign Up for an AWS Account
    - Step 1. Create a User Pool
+     - ![User Pool](https://i.imgur.com/eSKnfun.png)
    - Step 2. Add an App to Enable the Hosted Web UI
+     - ![App client](https://i.imgur.com/GewXuXa.png)
+     - `callbackURL`: url redirect after user authentication.
+     - `Authorization code grant` cognito give back a authorization code which can provide back to the backend authorization process.
+     - `Implicit grant`: JWT token
    - Step 3. Add Social Sign-in to a User Pool (Optional)
    - Step 4. Add Sign-in with a SAML Identity Provider to a User Pool (Optional)
+
 
 
 ---

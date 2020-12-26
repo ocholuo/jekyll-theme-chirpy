@@ -1,0 +1,517 @@
+
+
+
+[toc]
+
+
+---
+
+
+# STS Security Token Service    
+
+> request temporary credentials
+
+- Lightweight web service
+- to request temporary, limited-privilege credentials for IAM users or identity federated users
+
+
+Advantages of `STS` and `Temporary security credentials` are:
+- work almost identically to long-term access key credentials that IAM users use, but:
+- <font color=red> do not distribute or embed long-term AWS security credentials </font> with an application.
+  - Temporary security credentials are <font color=red> not stored with the user </font>
+  - but <font color=blue> generated dynamically and provided to the user when requested </font>
+- provide access to AWS resources to users without <font color=red> having to define an AWS identity </font> for them
+  - (temporary security credentials are the basis for IAM Roles and ID Federation).
+- have a limited lifetime, no need to rotate or explicitly revoke when no longer needed.
+  - short-term.
+  - can be configured to last from a few minutes to several hours.
+- After expire, <font color=red> cannot be reused </font>
+  - AWS no longer recognizes them or allows any kind of access to API requests made with them.
+  - the user can request new credentials, as long as the user requesting them still has permission to do so.
+
+
+---
+
+
+## Using AWS STS with AWS regions
+
+By default, a global service,
+- all AWS STS requests go to a single endpoint at `https://sts.amazonaws.com`
+
+- All regions are enabled for STS by default but can be disabled
+  - The region in which temporary credentials are requested must be enabled.
+  - Credentials will always work globally.
+  - such as Asia Pacific (Hong Kong), must be manually enabled.
+    - cannot activate the STS endpoint for a Region that is disabled. 
+  - Tokens valid in all Regions are longer than tokens valid in Regions that are enabled by default.
+  - Changing this setting might affect existing systems where you temporarily store tokens.
+
+
+
+Direct AWS STS API calls
+
+1. send <font color=blue> AWS STS API calls </font> either to a global endpoint or to one of the Regional endpoints.
+   - recommends using <font color=blue> Regional AWS STS endpoints closer to you </font> instead of the global endpoint
+     - After activate a Region for use with AWS STS, can direct AWS STS API calls to that Region.
+     - <font color=red> reduce latency, build in redundancy, increase session token validity and improve the performance of the API calls </font>
+
+   - recommends to provide both the `Region` and `endpoint` when make calls to a Regional endpoint.
+     - provide the Region alone for manually enabled Regions
+       - such as Asia Pacific (Hong Kong).
+       - calls are directed to the <font color=blue> STS Regional endpoint </font>
+     - provide the Region alone for Regions enabled by default
+       - calls are directed to the global endpoint of https://sts.amazonaws.com.  Northern Virginia
+
+
+2. choose to direct calls to an  <font color=blue> alternative Regional endpoint </font> if you can no longer communicate with the original endpoint.
+
+3. using one of the various AWS SDKs, then use that SDK's method to select a Region before you make the API call.
+
+4. manually constructing HTTP API requests
+  - then must direct the request to the correct endpoint yourself.
+
+
+
+
+---
+
+## Common scenarios for temporary credentials
+
+Temporary credentials are useful in scenarios that involve
+- identity federation, delegation,
+- cross-account access,
+- and IAM roles.
+
+---
+
+### Identity federation
+
+<font color=red> manage user identities in an external system </font> outside of AWS and <font color=red> grant users who sign in from those systems access to perform AWS tasks and access AWS resources </font>
+- IAM supports two types of identity federation.
+- In both cases, the identities are stored outside of AWS.
+- The distinction is <font color=blue> where the external system resides </font>
+  - <font color=red> in your data center </font>
+  - <font color=red> or an external third party on the web </font>
+
+**Enterprise identity federation**
+- known as the <font color=red> single sign-on (SSO) approach to temporary access </font>
+- authenticate users <font color=blue> in your organization's network </font>, and then provide those users access to AWS
+- adventage:
+  - <font color=blue> without creating new AWS identities or sign in with new user name and password </font>
+
+- AWS STS supports open standards like `Security Assertion Markup Language (SAML) 2.0`
+  - with SAML 2.0, use Microsoft AD FS to leverage Microsoft Active Directory.
+  - use SAML 2.0 to manage your own solution for federating user identities.
+
+- **Custom federation broker**
+  - use organization's authentication system to grant access to AWS resources.
+  - For example
+  - Enabling custom identity broker access to the AWS console.
+- **Federation using SAML 2.0**
+  - use organization's authentication system and SAML to grant access to AWS resources.
+
+
+**Web identity federation**
+- known as the <font color=red> web identity federation approach to temporary access </font>
+
+- let users sign in using third party identity provider
+  - Amazon, Facebook, Google,
+  - or any OpenID Connect (OIDC) 2.0 compatible provider
+- exchange the credentials from that provider for temporary permissions to use resources in AWS account.
+
+- adventage:
+  - use web identity federation for mobile or web application, <font color=blue> do not need to create custom sign-in code or manage your own user identities </font>
+  - helps keep AWS account secure, <font color=blue> no need to distribute long-term security credentials, such as IAM user access keys, with application </font>
+
+
+
+
+---
+
+## Recording API requests
+
+<font color=blue> STS supports AWS CloudTrail </font>
+- records AWS calls for AWS account and delivers log files to an S3 bucket.
+- If activate AWS STS endpoints in Regions other than the default global endpoint,
+  - then must also turn on CloudTrail logging in those Regions.
+  - This is necessary to record any AWS STS API calls that are made in those Regions. 
+
+
+---
+
+
+## Requesting temporary security credentials
+
+To request temporary security credentials, you can use <font color=red> AWS Security Token Service (AWS STS) operations </font> in the <font color=red> AWS API </font>
+- These include operations to create and provide trusted users with temporary security credentials that can control access to your AWS resources.
+
+To <font color=red> call the API operations </font>
+- use <font color=blue> **AWS SDKs** </font>
+  - The SDKs are available for a variety of programming languages and environments, including `Java, .NET, Python, Ruby, Android, and iOS`.
+  - The SDKs take care of tasks such as cryptographically signing your requests, retrying requests if necessary, and handling error responses.
+- use <font color=blue> **AWS STS Query API** </font>
+- <font color=blue> **command line tools** </font> support the AWS STS commands:
+  - the AWS Command Line Interface,
+  - and the AWS Tools for Windows PowerShell.
+
+> The AWS STS API operations create <font color=red> a new session with temporary security credentials </font> that include an `access key pair (an access key ID and a secret key)` and a `session token`
+> - Users/application can use these credentials to access AWS resources.
+
+
+You can create a role session and pass session policies and session tags programmatically using AWS STS API operations.
+- The resulting session's permissions are the intersection of the role's identity-based policies and the session policies.
+- allows a trusted entity to assume a role by calling the `AssumeRole API operation` of the STS
+
+---
+
+## AWS STS with SDKs
+Alternative to using the API, can use AWS SDKs
+- which consist of libraries and sample code for various programming languages and platforms (Java, Ruby, .NET, iOS, Android, etc.).
+- The SDKs provide a convenient way to create programmatic access to STS.
+- For example
+- the SDKs take care of cryptographically signing requests, managing errors, and retrying requests automatically.
+
+There are a couple of ways STS can be used.
+Scenario 1:
+1. Develop an Identity Broker to communicate with LDAP and AWS STS.
+2. Identity Broker always authenticates with LDAP first, then with AWS STS.
+3. Application then gets temporary access to AWS resources.
+
+Scenario 2:
+1. Develop an Identity Broker to communicate with LDAP and AWS STS.
+2. Identity Broker authenticates with LDAP first, then gets an IAM role associated with the user.
+3. Application then authenticates with STS and assumes that IAM role.
+4. Application uses that IAM role to interact with the service.
+
+
+---
+
+
+## AWS STS Query API
+
+
+
+With STS you can request a session token using one of the following <font color=red> APIs </font>:
+- `AssumeRole`
+  - only used by IAM users (can be used for MFA).
+- `AssumeRoleWithSAML`
+  - can be used by any user who passes a SAML authentication response that indicates authentication from a known (trusted) identity provider.
+- `AssumeRoleWithWebIdentity`
+  - used by an user passes a web identity token that indicates authentication from a known/trusted identity provider.
+- `GetSessionToken`
+  - can be used by an IAM user or AWS account root user (can be used for MFA).
+- `GetFederationToken`
+  - can be used by an IAM user or AWS account root user.
+
+> AWS recommends using Cognito for identity federation with Internet identity providers.
+
+---
+
+### call the `AssumeRole` action of AWS STS
+
+> use the `AssumeRole` operation for `cross-account delegation and federation` through a custom identity broker
+> Typically, use `AssumeRole` within your account or for cross-account access.
+
+
+The `AssumeRole` API operation is useful for
+- <font color=blue> allowing existing IAM users to access AWS resources that they don't already have access to </font>x
+  - For example, the user might need access to resources in another AWS account.
+- <font color=blue> temporarily gain privileged access </font>
+  - for example, to provide multi-factor authentication (MFA).
+
+
+The `AssumeRole` operation returns a set of <font color=blue> temporary security credentials </font> that Users/application use these credentials to access AWS resources
+- An access key ID
+- A secret access key
+- A session token.
+- Expiration or duration of validity.
+
+
+![AssumeRole](https://i.imgur.com/4UVCYdF.png)
+
+Federated users authenticate users to their own identity store.
+- First, write an identity broker application.
+- users try to access AWS services from their local machine
+- users will authenticate from identity broker. they are authenticated within their corporate identity store.
+- After authentication, identity broker eaches back to AWS STS to gain a token, provisions temporary credentials
+- After the identity broker has a token, the end user is redirected to the AWS console or to one of the APIs.
+- This process allows you to use single sign-on, SSO. Temporary credentials can be used to sign users directly into the AWS Management Console.
+
+
+<font color=red> Users can come from three sources </font>
+
+1. <font color=blue> Federation (typically AD) </font>:
+   - Uses SAML 2.0.
+   - Grants temporary access based on the users AD credentials.
+   - Does not need to be a user in IAM.
+   - Single sign-on allows users to login to the AWS console without assigning IAM credentials.
+
+2. <font color=blue> Federation with Mobile Apps </font>:
+   - Use Facebook/Amazon/Google or other OpenID providers to login.
+
+3. <font color=blue> Cross Account Access </font>:
+   - Lets users from one AWS account access resources in another.
+   - To make a request in a different account, the resource in that account must have an <font color=red> attached resource-based policy with the permissions you need </font>
+   - Or you must <font color=red> assume a role (identity-based policy) within that account with the permissions you need </font>
+
+---
+
+#### make call
+You must call this API using existing valid IAM user credentials. When you make this call, you pass the following information:
+
+```
+- The Amazon Resource Name (ARN) of the role that the app should assume.
+- (Optional) Duration
+  - specifies the duration of the temporary security credentials.
+  - Use the DurationSeconds parameter to specify the duration of the role session from 900 seconds (15 minutes) up to the maximum session duration setting for the role.
+  - If you do not pass this parameter, the temporary credentials expire in one hour.
+  - The DurationSeconds parameter from this API is separate from the SessionDuration HTTP parameter that you use to specify the duration of a console session.
+  - Use the SessionDuration HTTP parameter in the request to the federation endpoint for a console sign-in token.
+
+- Role session name
+  - a string value that you can use to identify the session.
+  - For security purposes, administrators can view this field in AWS CloudTrail logs to learn who performed an action in AWS.
+  - Your administrator might require that you specify your IAM user name as the session name when you assume the role
+  - aws:RoleSessionName
+
+- (Optional) Inline or managed session policies.
+  - These policies limit the permissions from the role's identity-based policy that are assigned to the role session.
+  - The resulting session's permissions are the intersection of the role's identity-based policies and the session policies.
+  - Session policies cannot be used to grant more permissions than those allowed by the identity-based policy of the role that is being assumed 
+
+- (Optional) Session tags.
+  - You can assume a role and then use the temporary credentials to make a request
+  - When you do, the session's principal tags: role's tags and passed session tags
+  - If you make this call using temporary credentials, the new session also inherits transitive session tags from the calling session.
+
+- (Optional) MFA information.
+  - If configured to use multi-factor authentication (MFA), then you include the identifier for an MFA device and the one-time code provided by that device.
+
+- (Optional) ExternalId value
+  - that can be used when delegating access to your account to a third party.
+  - This value helps ensure that only the specified third party can access the role.
+```
+
+The following example shows a sample request and response using AssumeRole. 
+
+```py
+# This example request assumes the demo role for the specified duration with the included session policy, session tags, and external ID. 
+# The resulting session is named John-session.
+
+https://sts.amazonaws.com/
+?Version=2011-06-15
+&Action=AssumeRole
+&RoleSessionName=John-session
+&RoleArn=arn:aws::iam::123456789012:role/demo
+&Policy=%7B%22Version%22%3A%222012-10-17%22%2C%22Statement%22%3A%5B%7B%22Sid%22%3A%20%22Stmt1%22%2C%22Effect%22%3A%20%22Allow%22%2C%22Action%22%3A%20%22s3%3A*%22%2C%22Resource%22%3A%20%22*%22%7D%5D%7D
+&DurationSeconds=1800
+&Tags.member.1.Key=Project
+&Tags.member.1.Value=Pegasus
+&Tags.member.2.Key=Cost-Center
+&Tags.member.2.Value=12345
+&ExternalId=123ABC
+&AUTHPARAMS
+# The AUTHPARAMS parameter: a placeholder for your signature. 
+# A signature is the authentication information that you must include with AWS HTTP API requests. 
+# We recommend using the AWS SDKs to create API requests, and SDKs will handle request signing for you. 
+# If create and sign API requests manually, Sign the AWS Requests By yourself
+
+
+# The policy value shown in the preceding example is the URL-encoded version of the following policy:
+{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}
+
+
+# In addition to the temporary security credentials, the response includes the Amazon Resource Name (ARN) for the federated user and the expiration time of the credentials.
+<AssumeRoleResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">
+<AssumeRoleResult>
+<Credentials>
+  <SessionToken>AQoDYXdzEPT//////////wEXAMPLEtc764bNrC9SAPBSM22wDOk4x4HIZ8j4FZTwdQW
+   LWsKWHGBuFqwAeMicRXmxfpSPfIeoIYRqTflfKD8YUuwthAx7mSEI/qkPpKPi/kMcGd
+   QrmGdeehM4IC1NtBmUpp2wUE8phUZampKsburEDy0KPkyQDYwT7WZ0wq5VSXDvp75YU
+   9HFvlRd8Tx6q6fE8YQcHNVXAkiY9q6d+xo0rKwT38xVqr7ZD0u0iPPkUL64lIZbqBAz
+   +scqKmlzm8FDrypNC9Yjc8fPOLn9FX9KSYvKTr4rvx3iSIlTJabIQwj2ICCR/oLxBA==</SessionToken>
+  <SecretAccessKey>wJalrXUtnFEMI/K7MDENG/bPxRfiCYzEXAMPLEKEY</SecretAccessKey>
+  <Expiration>2019-07-15T23:28:33.359Z</Expiration>
+  <AccessKeyId>AKIAIOSFODNN7EXAMPLE</AccessKeyId>
+</Credentials>
+<AssumedRoleUser>
+  <Arn>arn:aws:sts::123456789012:assumed-role/demo/John</Arn>
+  <AssumedRoleId>ARO123EXAMPLE123:John</AssumedRoleId>
+</AssumedRoleUser>
+<PackedPolicySize>8</PackedPolicySize>
+</AssumeRoleResult>
+<ResponseMetadata>
+<RequestId>c6104cbe-af31-11e0-8154-cbc7ccf896c7</RequestId>
+</ResponseMetadata>
+</AssumeRoleResponse>
+```
+
+> `AssumedRoleUser:ARN` and `AssumedRoleUser:AssumedRoleId`: 
+> - programatically reference the temporary credentials
+> - not an IAM role or user.
+
+---
+
+### call the `AssumeRoleWithSAML` action of AWS STS
+
+Returns a set of `temporary security credentials` for users who have been authenticated <font color=red> via a SAML authentication response </font>
+- provides a mechanism for tying an enterprise identity store or directory to role-based AWS access without user-specific credentials or configuration.
+
+
+AWS supports <font color=red> identity federation </font>
+- makes it easier to manage users by maintaining their identities in a single place.
+- support Identity federation with `Security Assertion Markup Language (SAML2.0)`
+  - open standard used by many identity providers.
+  - quick to implement federation
+  - use existing identity management software to manage access to AWS resources.
+  - No coding required.
+
+- can use this feature to implement federation more quickly because it enables federated SSO.
+  - With federated SSO, users can <font color=blue> sign in to the AWS Management Console </font> or <font color=blue> make programmatic calls to AWS APIs </font>
+
+- Identity federation uses existing identity management software to manage access to AWS resources.
+- makes user administration easier.
+  - For instance
+  - if a user leaves your company, simply delete the user’s corporate identity, which then also revokes access to AWS.
+  - End users also benefit because they only need to remember one user name and password.
+
+- can use SAML to make configuring federation with AWS straightforward, because system administrators can set it up using identity provider software instead of writing code.
+
+
+In order to use single sign-on for the AWS Management Console, identity provider must initiate a web single sign-on session via SAML 2.0 by using the <font color=red> HTTP-POST binding </font>
+- A new sign-on URL greatly simplifies this process.
+- In this case, the SAML authentication response and the API federation uses a new `AssumeRoleWithSAML` operation within the code.
+
+
+
+![AssumeRoleWithSAML](https://i.loli.net/2020/12/26/RekhJv21TZFwNUr.png)
+
+SSO federation works within SAML.
+- user browses to an <font color=blue> internal portal </font> in your network.
+
+- The internal portal
+  - handles the SAML trust between your organization and AWS.
+  - functions as the <font color=blue> identity provider (IdP) </font>
+  - The identity provider
+    - authenticates the user’s identity against the ID Store.
+    - After authenticated, the client receives a <font color=red> SAML assertion </font> in the form of authentication response from the IdP.
+    - user post the SAML assertion to the new AWS sign-in portal.
+    - sign-in uses the <font color=red> AssumeRoleWithSAML API operation </font> to request temporary security credentials and construct a sign-in URL.
+- user’s browser receives the sign-in URL and is automatically redirected to the AWS Management Console.
+
+- From the user’s perspective, the process happens transparently. The user starts at your organization’s internal portal and ends up at the AWS Management Console without ever having to supply any AWS credentials.
+
+
+---
+
+### call the `AssumeRoleWithWebIdentity` action of AWS STS
+
+> Supported web identity providers:
+> - Amazon Cognito, recommended for mobile
+> - Amazon, Facebook, Google,
+> - or any OpenID Connect-compatible identity provider.
+> - regular web applications can use the STS
+>   - assume-role-with-web-identity API
+
+> Instead of directly calling AssumeRoleWithWebIdentity, AWS recommend Amazon Cognito and the Amazon Cognito credentials provider with the AWS SDKs for mobile development.
+
+
+
+- Calling `AssumeRoleWithWebIdentity` does not require the use of AWS security credentials.
+  - Web identity federation: great for mobile apps where don’t want to use server-side code, and don’t want to distribute long term credentials.
+  - Therefore, can distribute an application (like mobile devices) that requests temporary security credentials without including long-term AWS credentials in the application.
+  - also don't need to deploy server-based proxy services that use long-term AWS credentials.
+  - Instead, the identity of the caller is validated by using a token from the web identity provider.
+
+- This operation is useful for creating mobile / client-based web applications that require access to AWS. 
+
+- an unsigned call
+  - meaning that the <font color=red> app does not need to have access to any AWS security credentials to make the call </font>
+  - <font color=blue> users do not need their own AWS or IAM identities </font>
+
+- Returns <font color=red> temporary security credentials </font> for federated users who have been authenticated in mobile/web application with a web identity provider.   
+  - The temporary security credentials returned by this API
+    - <font color=blue> an access key ID, a secret access key, and a security token </font>
+  - Applications can use these temporary security credentials to sign calls to AWS service API operations.
+
+
+
+![AssumeRoleWithWebIdentity](https://i.loli.net/2020/12/26/QRqw8VD9YfIme3a.png)
+
+use case for web identity federation.
+- user logs in from a mobile phone.
+  - the login request then goes to Amazon to authenticate the user ID.
+- After authenticated, user receives the authorization from the Web Identity Federation to return a token.
+- the user can now to log in to AWS with the token to the AWS services they can access.
+  - By default, the credentials can be used for one hour.
+- If the role’s access policy uses variables that reference the application ID and the user ID,
+  - the temporary security credentials are scoped to that end user
+  - will prevent him or her from accessing objects owned by other users.
+
+---
+
+
+#### make call
+
+make this call, you pass the following information:
+
+```json
+- The Amazon Resource Name (ARN) of the role that the app should assume. 
+  - If your app supports multiple ways for users to sign in, you must define multiple roles, one per identity provider. 
+  - The call to AssumeRoleWithWebIdentity should include the ARN of the role that is specific to the provider through which the user signed in.
+
+- The token that the app gets from the IdP after the app authenticates the user.
+
+- You can configure your IdP to pass attributes into your token as session tags.
+
+- (Optional) Duration
+  - specifies the duration of the temporary security credentials. 
+  - Use the DurationSeconds parameter to specify the duration of the role session from 900 seconds (15 minutes) up to the maximum session duration setting for the role. 
+  - If you do not pass this parameter, the temporary credentials expire in one hour. 
+  - The DurationSeconds parameter from this API is separate from the SessionDuration HTTP parameter that you use to specify the duration of a console session. 
+  - Use the SessionDuration HTTP parameter in the request to the federation endpoint for a console sign-in token.
+  
+- Role session name
+  - a string value to identify the session. 
+  - For security purposes, administrators can view this field in AWS CloudTrail logs to learn who performed an action in AWS. Your administrator might require that you provide a specific value for the session name when you assume the role. 
+
+- (Optional) Inline or managed session policies. 
+  - These policies limit the permissions from the role's identity-based policy that are assigned to the role session. 
+  - The resulting session's permissions are the intersection of the role's identity-based policies and the session policies. 
+  - Session policies cannot be used to grant more permissions than those allowed by the identity-based policy of the role that is being assumed.
+
+```
+
+> A call to AssumeRoleWithWebIdentity is not signed (encrypted).
+> should only include optional session policies if the request is transmitted through a trusted intermediary. 
+> In this case, someone could alter the policy to remove the restrictions.
+
+
+When you call AssumeRoleWithWebIdentity, AWS verifies the authenticity of the token. 
+- For example, depending on the provider, 
+- AWS might make a call to the provider and include the token that the app has passed. 
+- Assuming that the identity provider validates the token, AWS returns the following information to you:
+
+```
+A set of temporary security credentials 
+- an access key ID, a secret access key, and a session token.
+
+The role ID and the ARN of the assumed role.
+
+A SubjectFromWebIdentityToken value that contains the unique user ID.
+```
+
+
+When you have the temporary security credentials, you can use them to make AWS API calls.
+- same process as making an AWS API call with long-term security credentials. 
+- The difference is that you must include the session token, which lets AWS verify that the temporary security credentials are valid.
+
+Your app should cache the credentials. 
+- As noted, by default the credentials expire after an hour. 
+- If you are not using the AmazonSTSCredentialsProvider operation in the AWS SDK, it's up to you and your app to call AssumeRoleWithWebIdentity again. 
+- Call this operation to get a new set of temporary security credentials before the old ones expire.
+
+
+
+
+.
