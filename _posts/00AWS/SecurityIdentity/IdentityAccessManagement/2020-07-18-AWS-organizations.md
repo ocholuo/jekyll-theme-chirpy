@@ -13,7 +13,7 @@ image:
 
 # AWS Organizations
 
-- an account management service
+- an account management service.
 
 ![xFQwzro](https://i.imgur.com/naqy9zK.png)
 ￼
