@@ -1,5 +1,5 @@
 ---
-title: AWS - SecurityIdentity - IAM User Login
+title: AWS - IdenAccessManage - IAM User Login
 date: 2020-07-18 11:11:11 -0400
 categories: [00AWS, SecurityIdentity]
 tags: [AWS, IdenAccessManage]
