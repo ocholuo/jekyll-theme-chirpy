@@ -13,8 +13,7 @@ image:
 
 # Amazon Cognito
 
-![Screen Shot 2020-12-25 at 13.59.04](https://i.imgur.com/2YWMkhv.png)
-
+![Cognito](https://i.imgur.com/QqV5Uoe.png)
 
 <font color=red> web identity federation </font>
 - allows user to authenticate with a web identity ptovider (google, facebook)
@@ -68,7 +67,7 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
 
 - <font color=red> secure user directories </font>
   - can scales to hundreds of millions of users.
-- provide sign-up and sign-in options for web and mobile app users.
+- <font color=red> provide sign-up and sign-in options </font> for web and mobile app users.
 - fully managed service, set up without any worries about standing up server infrastructure.
 - user can sign in directly to the user pool, or indirectly via an iderntity provider.
 
@@ -85,17 +84,14 @@ Amazon Cognito provide <font color=red> web identity federation </font> with the
    - Step 3. Add Social Sign-in to a User Pool (Optional)
    - Step 4. Add Sign-in with a SAML Identity Provider to a User Pool (Optional)
 
-
-
 ---
 
-### Identity pools
+### Identity pools (federated identities)
 
-Amazon Cognito identity pools (federated identities) enable you to
 - <font color=red> create unique identities </font> for your users
 - and assign permissions for users.
 - and federate them with identity providers.
-- then obtain temporary, limited-privilege AWS credentials with permissions pre-define to directly access other AWS services or to access resources through Amazon API Gateway.
+- then obtain <font color=blue> temporary, limited-privilege AWS credentials with permissions pre-define </font> to directly access other AWS services or to access resources through Amazon API Gateway.
 
 
 Identity pool can include:

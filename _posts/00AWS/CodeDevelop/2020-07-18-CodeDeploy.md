@@ -1,7 +1,7 @@
 ---
-title: AWS - CodeDeploy
+title: AWS - CodeDevelop - CodeDeploy
 date: 2020-07-18 11:11:11 -0400
-categories: [00AWS]
+categories: [00AWS, CodeDevelop]
 tags: [AWS]
 toc: true
 image:
