@@ -1,7 +1,7 @@
 ---
 title: AWS - IdenAccessManage - IAM User Login
 date: 2020-07-18 11:11:11 -0400
-categories: [00AWS, SecurityIdentity]
+categories: [00AWS, IdenAccessManage]
 tags: [AWS, IdenAccessManage]
 toc: true
 image:
