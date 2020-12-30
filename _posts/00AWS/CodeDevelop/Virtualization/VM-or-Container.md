@@ -20,25 +20,23 @@ image:
 
 
 
-
-
 **Application cell / container / Container-based virtualization**:
 
-- runs services or applications within isolated `application cells / containers`. 
-  - the containers don’t host an entire operating system. 
-    - Instead, the host’s operating system and kernel run the service or app within each of the containers. 
+- runs services or applications within isolated `application cells / containers`.
+  - the containers don’t host an entire operating system.
+    - Instead, the host’s operating system and kernel run the service or app within each of the containers.
     - However, because they are running in separate containers, none of the services or apps can interfere with services and apps in other containers.
-  
-- Benefit: 
+
+- Benefit:
   - uses fewer resources
-    - can be more efficient than a system using a traditional Type II hypervisor virtualization. 
-    - Internet Service Providers (ISPs) often use it for customers who need specific applications. 
+    - can be more efficient than a system using a traditional Type II hypervisor virtualization.
+    - Internet Service Providers (ISPs) often use it for customers who need specific applications.
 - Drawback
-  - containers must use the operating system of the host. 
+  - containers must use the operating system of the host.
     - example
     - if the host is running Linux, all the containers must run Linux.
     - `Docker is different`
-  
+
 
 
 
@@ -59,9 +57,9 @@ Virtual Machines provide a very strong isolation on the host level and don’t s
 
 
 
-some people believe that containers are inherently more secure than vm’s. 
+some people believe that containers are inherently more secure than vm’s.
 
-- The argument is that `breaking applications` into `microservices with well-defined interfaces and limited packaged services` **reduces the attack surface** overall. 
+- The argument is that `breaking applications` into `microservices with well-defined interfaces and limited packaged services` **reduces the attack surface** overall.
 
 - The key point is that a well-implemented container deployment which includes security precautions can be at least as secure, if not more secure, than vm’s.
 
@@ -173,7 +171,7 @@ There are particular concerns about containers and security, as the varied image
 
 
 
-In computer systems, the attack surface includes anything where the attacker (or software acting on his behalf) can “touch” the target system. 
+In computer systems, the attack surface includes anything where the attacker (or software acting on his behalf) can “touch” the target system.
 
 Network interfaces, hardware connections, and shared resources are all possible attack points. Note that the attack surface doesn’t imply that an actual vulnerability exists. All 10 doors might be perfectly secure. But a larger attack surface means more places to protect and the greater likelihood the attacker will find a weakness in at least one.
 
@@ -264,4 +262,3 @@ Do damage. This is similar to finding sensitive data, but with write access: Th
 Exfiltrate data. A more closed and closely controlled network of containers (such as that in the Apcera Platform) has a smaller attack surface for exfiltration than one with open VMs. However, the ability to apply the controls is key. VMs can be similarly protected (at least VM to VM, if not between services inside a single VM) by appropriate configuration of networking infrastructure, but the process is often manual, tedious, and error prone. Similarly, a container network without inherent platform support for network controls would be difficult to make both operational and secure.
 
 Comparing container and VM security yields no runaway winner. Much depends on how the containers and VMs are used, and specifically on the architecture of the applications they support. In this regard, containers often have an edge because they are more likely to be used for new applications. In some sense it is unfair to compare VMs running within legacy architectures with containers and microservices, but that is often the reality of how they are used. Perimeter controls cannot contain modern attacks. We need to evolve our approach to security and adapt to new architectures. Containers, along with solid platforms for securing and managing these architectures, will be an important part of that evolution.
-
