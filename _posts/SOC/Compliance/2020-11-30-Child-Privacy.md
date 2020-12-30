@@ -1,5 +1,5 @@
 ---
-title: Privacy - GDPR, CCPA and SOC2
+title: Privacy - GDPR, CCPA and SOC2 - Child Privacy
 date: 2020-07-16 11:11:11 -0400
 categories: [SOC, ComplianceAndReport]
 tags: [SOC, GDPR, CCPA, SOC2]
