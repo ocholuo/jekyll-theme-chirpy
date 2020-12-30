@@ -14,6 +14,9 @@ image:
 # dockerfile Template
 
 ```dockerfile
+
+# example from AWS WhitePaper, no real credential inside
+
 FROM ubuntu:12.04
 # Install dependencies
 RUN apt-get update -y

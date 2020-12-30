@@ -12,6 +12,8 @@ image:
 
 
 ```yml
+# example from AWS WhitePaper, no real credential inside
+
 version:[1]version-number                      # version: 0.0
 os:[1]operating-system-name                    # os: linux OR windows
 files:                                         # files:

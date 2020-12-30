@@ -11,6 +11,9 @@ image:
 
 
 ```yml
+
+# example from AWS WhitePaper, no real credential inside, no real credential inside
+
 version: 0.2 
  
 #env: 
