@@ -15,18 +15,18 @@ image:
 
 - a deployment service
 - CodeDeploy makes it easier to:
-  - <font color=red> Rapidly release </font> new features
+  - <font color=red> Rapidly release new features </font> 
   - <font color=red> Update AWS Lambda function versions</font>
-  - <font color=red> Avoid downtime </font> during application deployment.
+  - <font color=red> Avoid downtime during application deployment </font> 
   - <font color=red> avoid risks associated with manual deployments </font>
     - CodeDeploy handle the complexity of updating the applications
 
 
 2 <font color=red> deployment approaches </font> type options:
-- <font color=blue> In-place / rolling update deployment </font>:
+- <font color=blue> In-place / rolling update deployment </font>
   - The application is stopped on each instance in the deployment group, and the new version is installed.
   - roll back: <font color=red> re-deploy, time consume </font>
-- <font color=blue> Blue/Green deployment </font>: `more save`
+- <font color=blue> Blue/Green deployment </font> `more save`
   - new release is installed on the new instances.
   - blue: active deployment
   - green: new release
@@ -492,21 +492,20 @@ The following is the correct format for AppSpec file spacing. The numbers in squ
 > CodeDeploy raises an error that might be difficult to debug if the locations and number of spaces in an AppSpec file are not correct.
 
 
-
-```json
-version:[1]version-number                      // version: 0.0
-os:[1]operating-system-name                    // os: linux OR windows
-files:                                         // files:
-[2]-[1]source:[1]source-files-location         //  - source: /
-[4]destination:[1]destination-files-location   //    destination: /var/www/html/WordPress
-permissions:                                   // permissions:
+```yml
+version:[1]version-number                      # version: 0.0
+os:[1]operating-system-name                    # os: linux OR windows
+files:                                         # files:
+[2]-[1]source:[1]source-files-location         #  - source: /
+[4]destination:[1]destination-files-location   #    destination: /var/www/html/WordPress
+permissions:                                   # permissions:
 [2]-[1]object:[1]object-specification
 [4]pattern:[1]pattern-specification
 [4]except:[1]exception-specification
 [4]owner:[1]owner-account-name
 [4]group:[1]group-name
 [4]mode:[1]mode-specification
-[4]acls:                                       // [4]acls:
+[4]acls:                                       # [4]acls:
 [6]-[1]acls-specification
 [4]context:
 [6]user:[1]user-specification
@@ -514,27 +513,26 @@ permissions:                                   // permissions:
 [6]range:[1]range-specification
 [4]type:
 [6]-[1]object-type
-hooks:                                         // hooks:
-[2]deployment-lifecycle-event-name:            //   BeforeInstall:
-[4]-[1]location:[1]script-location             //     - location: scripts/install_dependencies.sh
-[6]timeout:[1]timeout-in-seconds               //       timeout: 300
-[6]runas:[1]user-name                          //       runas: root
-                                               //   AfterInstall:
-                                               //     - location: scripts/change_permissions.sh
-                                               //       timeout: 300
-                                               //       runas: root
-                                               //   ApplicationStart:
-                                               //     - location: scripts/start_server.sh
-                                               //     - location: scripts/create_test_db.sh
-                                               //       timeout: 300
-                                               //       runas: root
-                                               //   ApplicationStop:
-                                               //     - location: scripts/stop_server.sh
-                                               //       timeout: 300
-                                               //       runas: root
+hooks:                                         # hooks:
+[2]deployment-lifecycle-event-name:            #   BeforeInstall:
+[4]-[1]location:[1]script-location             #     - location: scripts/install_dependencies.sh
+[6]timeout:[1]timeout-in-seconds               #       timeout: 300
+[6]runas:[1]user-name                          #       runas: root
+                                               #   AfterInstall:
+                                               #     - location: scripts/change_permissions.sh
+                                               #       timeout: 300
+                                               #       runas: root
+                                               #   ApplicationStart:
+                                               #     - location: scripts/start_server.sh
+                                               #     - location: scripts/create_test_db.sh
+                                               #       timeout: 300
+                                               #       runas: root
+                                               #   ApplicationStop:
+                                               #     - location: scripts/stop_server.sh
+                                               #       timeout: 300
+                                               #       runas: root
 
-
-// example of a correctly spaced AppSpec file:
+# example of a correctly spaced AppSpec file:
 version: 0.0
 os: linux
 files:
@@ -560,7 +558,7 @@ hooks:
       runas: root
 
 
-// example of a correctly spaced AppSpec file:
+# example of a correctly spaced AppSpec file:
 version: 0.0
 os: linux
 files:

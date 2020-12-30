@@ -27,8 +27,9 @@ image:
 - fully managed
 - <font color=red> Continuous integration / continuous delivery service. </font>
   - Orchestrates <font color=blue> Build, Test & Deployment (the end-to-end software release process) </font> based on the workflow pre-defined.
+  - A pipeline is a workflow construct that describes how code changes go through a release process.
 
-- <font color=red> Automated release process </font>
+- <font color=red> Automated release process required to release the code </font>
   - fast, consistent, fewer mistakes
   - The pipeline is triggered every time there is a changeto your code
   - enables quick release of new features and bug fixes.

@@ -1,5 +1,5 @@
 ---
-title: AWS - CodeDevelop - CloudFormationTemplate - EC2forCodeBuild
+title: AWS - CodeDevelop - CloudFormation - Template setup EC2forCodeBuild 
 date: 2020-07-18 11:11:11 -0400
 categories: [00AWS, CodeDevelop]
 tags: [AWS]
@@ -11,7 +11,7 @@ image:
 
 ---
 
-# AWS - CodeDevelop - CloudFormationTemplate - EC2forCodeBuild
+# Template setup EC2forCodeBuild 
 
 Automate provisioning of CodeBuild with CodePipeline, CodeCommit, and CodeDeploy. 
 
