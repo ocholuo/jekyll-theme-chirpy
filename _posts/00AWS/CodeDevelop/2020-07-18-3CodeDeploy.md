@@ -15,9 +15,9 @@ image:
 
 - a deployment service
 - CodeDeploy makes it easier to:
-  - <font color=red> Rapidly release new features </font> 
+  - <font color=red> Rapidly release new features </font>
   - <font color=red> Update AWS Lambda function versions</font>
-  - <font color=red> Avoid downtime during application deployment </font> 
+  - <font color=red> Avoid downtime during application deployment </font>
   - <font color=red> avoid risks associated with manual deployments </font>
     - CodeDeploy handle the complexity of updating the applications
 
@@ -201,9 +201,6 @@ CodeDeploy provides two <font color=red> deployment approaches </font> type opti
 
 ### <font color=red> In-place deployment </font>
 
-
-
-
 In-place deployment:
 - <font color=red> rolling update </font>
 - The application on each instance in the deployment group is stopped
@@ -253,8 +250,28 @@ Here's how it works:
 
 ### <font color=red> Blue/Green deployment </font>
 
-A blue/green deployment is used to update your applications while <font color=blue> minimizing interruptions caused by the changes </font> of a new application version.
-- CodeDeploy provisions your new application version alongside the old version <font color=red> before rerouting your production traffic </font>
+One of the challenges of automating deployment is the cutover,
+- take software from the <font color=red> final stage of testing to live production </font>
+
+Blue/Green deployment
+1. <font color=red> test new hardware or applications without going fully into production </font>
+
+1. update the applications while <font color=red> minimizing interruptions caused by the changes </font> of a new application version.
+
+1. CodeDeploy provisions your new application version alongside the old version <font color=red> before rerouting your production traffic </font>
+   - After the green deployment is complete and functional, begin to shut down or upgrade the blue deployment.
+
+1. <font color=red> rapid roll back </font>
+   - switching back to blue deployment if the green environment is not working properly.
+
+
+blue/green deployment is highly desirable
+- the live production environment is “blue”
+- the matching environment is “green”
+
+
+
+#### Blue/green deployment on different compute platform
 
 **Blue/green deployment**: The behavior of your deployment depends on which compute platform you use:
 
@@ -272,11 +289,12 @@ A blue/green deployment is used to update your applications while <font color=bl
 3. <font color=red> EC2/On-Premises </font>:
    - Traffic is shifted from <font color=blue> one set of instances in the original environment to a replacement/different set of instances </font>
    - the original environment -> the replacement environment
-   - Instances are provisioned for the replacement environment.
-   - The latest application revision is installed on the replacement instances.
-   - An optional wait time occurs for activities such as application testing and system verification.
-   - Instances in the replacement environment are registered with an <font color=red> Elastic Load Balancing load balancer </font>, causing traffic to be rerouted to them.
-   - Instances in the original environment are deregistered and can be terminated or kept running for other uses.
+     - Instances are provisioned for the replacement environment.
+     - The latest application revision is installed on the replacement instances.
+     - An optional wait time occurs for activities such as application testing and system verification.
+   - Elastic Load Balancing load balancer
+     - <font color=blue> Instances in the replacement environment </font> are registered with an <font color=red> Elastic Load Balancing load balancer </font>, causing traffic to be rerouted to them.
+     - <font color=blue> Instances in the original environment </font> are deregistered and can be terminated or kept running for other uses.
 
 
 4. <font color=red> AWS CloudFormation </font>:
