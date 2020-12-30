@@ -84,7 +84,7 @@ CodeDeploy offers these benefits:
      - maximize the application availability.
      - CodeDeploy performs a <font color=red> rolling update across Amazon EC2 instances </font>
      - specify the number of instances to be taken offline at a time for updates.
-   - [blue/green deployment](#bluegreen-deployment) update
+   - <font color=blue> blue/green deployment update </font>
        - the latest application revision is installed on replacement instances.
        - new version of application is launched alongside the old version.
        - Once the new revision is tested and declared ready, CodeDeploy shift the traffic from your prior version to new version according to the specifications.

@@ -19,6 +19,8 @@ Automate provisioning of CodeBuild with CodePipeline, CodeCommit, and CodeDeploy
 
 ```json
 
+// example from AWS WhitePaper
+
 {
   "Description":"create instance for codedeploy",
   "AWSTemplateFormatVersion":"2010-09-09",
