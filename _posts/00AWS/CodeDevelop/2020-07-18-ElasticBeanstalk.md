@@ -1,4 +1,3 @@
-
 ---
 title: AWS - CodeDevelop - ElasticBeanstalk
 date: 2020-07-18 11:11:11 -0400
@@ -18,6 +17,7 @@ image:
 ![ElasticBeanstalk](https://i.imgur.com/poyMxI7.png)
 
 
+
 ---
 
 
@@ -35,6 +35,21 @@ image:
 
 <img src="https://i.imgur.com/pr7Dh9z.png" width="400">
 
+Setup:
+1. Elastic Beanstalk > create a web app
+   - single docker container or multiple docker container
+   - upload application code zip
+     - `dockerfile`
+     - `application.py`
+   - create application
+   - get the url
+     - <font color=red> web application server from the container running in Elastic Beanstalk </font>
+
+2. upgrade
+   - select <font color=blue> upload and deploy </font>
+   - go to version page and select the previous version.
+
+
 ---
 
 ## benefits
@@ -42,27 +57,25 @@ image:
 - fully managed
   - The entire platform is already built, <font color=red> only need to upload code </font>
 
-- fast and simple way to <font color=red> get web application up and runninng </font>
-  - quick deployment, scaling, and management of web applications and services.
-    - Choose instance type, database, set and adjust automaticscaling, update application, access the server log files, and enable HTTPS on the load balancer.
-  - provides all the application services that you need for your application.
-    - make deploying your application a quick and easy process.
-    - Use the AWS Management Console, a Git repository, or an integrated development environment(IDE) such as Eclipse or Visual Studio to upload your application.
-    - deploy code through the AWS Management Console, AWS CLI, Visual Studio, and Eclipse.
-    - supports a broad range of platforms (Docker, Go, Java, .NET, Node.js, PHP, Python, and Ruby).
-
+- fast and simple way
+  1. to <font color=red> get web application up and runninng </font>
+     - quick deployment, scaling, and management of web applications and services.
+       - Choose instance type, database, set and adjust automaticscaling, update application, access the server log files, and enable HTTPS on the load balancer.
+     - provides all the application services that you need for your application.
+       - make deploying your application a quick and easy process.
+       - Use the AWS Management Console, a Git repository, or an integrated development environment(IDE) such as Eclipse or Visual Studio to upload your application.
+       - deploy code through the AWS Management Console, AWS CLI, Visual Studio, and Eclipse.
+       - supports a broad range of platforms (Docker, Go, Java, .NET, Node.js, PHP, Python, and Ruby).
+  2. <font color=red> supports the deployment of Docker containers </font>
+     - Docker containers: are self-containered and include all the cofiguration information and software your web application required to run,
+       - libraries, system tools, code&runtime
 
 - <font color=red> automated deployment scaling service for web applications </font>
   - Elastic Beanstalk automatically handles the deployment details of
-    - capacity provisioning,
-    - Load balancing
-    - Health monitoring
-    - Auto scaling
+    - <font color=blue> capacity provisioning, Load balancing, auto scaling, and application health monitoring </font>
     - Application platform management
     - automated infrastructure management
     - Code deployment
-    - capacity provisioning,
-    - and monitoring application health.
 
 - <font color=red> improve developer productivity </font>
   - focusing on writing code
@@ -133,3 +146,28 @@ Blue/green deployment on AWS CloudFormation
     - application container > environment > a single application version
   - An application version
     - a distinct version of an app's code that's packaged into a source bundle.
+
+
+---
+
+## Elastic Beanstalk for docker
+
+1. deploy docker container
+   - <font color=red> single docker container </font>
+     - run a <font color=blue> single docker container on an EC2 instance </font> provisioned by Elastic Beanstalk
+   - <font color=red> multiple docker container </font>
+     - use Elastic Beanstalk to <font color=blue> build an ECS cluster and deploy multiple docker container on each instance </font>
+
+2. deploy your code
+   - upload a zip file containing the code bundle and Elastic Beanstalk will do the rest.
+
+3. upload your code
+   - upgrade your application to a new version
+   - one easy step in the concole to upload and deploy.
+
+---
+
+
+
+
+.
