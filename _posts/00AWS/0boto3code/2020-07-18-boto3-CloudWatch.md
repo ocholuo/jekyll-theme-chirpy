@@ -1,7 +1,7 @@
 ---
-title: AWS - boto3 - CloudWatch `boto3.client('cloudwatch')`
+title: AWS - boto3 - boto3.client('cloudwatch') CloudWatch
 date: 2020-07-18 11:11:11 -0400
-categories: [00AWS]
+categories: [00AWS, boto3]
 tags: [AWS]
 toc: true
 image:
