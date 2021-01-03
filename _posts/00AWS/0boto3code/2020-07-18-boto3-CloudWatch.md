@@ -78,3 +78,74 @@ cloudwatch.delete_alarms(
 
 ```
 
+
+---
+
+
+
+## example
+
+
+### AWS CloudWatch Log Group Retention to 60
+
+pleaze go to the follow link for the original code
+ref: [AWS CloudWatch Log Group Retention to 60](https://dev.to/akloya/aws-cloudwatch-log-group-retention-3l47)
+
+
+CloudWatch organises logs in a log group and when a new log group is created, it’s retention period is set to Never expire by default (be retained forever)
+
+
+to changing the retention days to 60
+
+```py
+import boto3
+
+# set the number of retention days 
+retention_days = 60
+
+# list the regions you are interested to run this script on
+regions=['us-east-1']
+
+for region in regions:
+    logclient = boto3.client('logs',region)
+    response = logclient.describe_log_groups()
+    nextToken = response.get('nextToken', None)
+    retention = response['logGroups']
+
+    while (nextToken is not None):
+        response = logclient.describe_log_groups(nextToken=nextToken)
+        nextToken = response.get('nextToken', None)
+        retention = retention + response['logGroups']
+    
+    for group in retention:
+        if 'retentionInDays' in group.keys():
+            print(group['logGroupName'], group['retentionInDays'],region)
+        else:
+            print("Retention Not found for ",group['logGroupName'],region)
+            setretention = logclient.put_retention_policy(
+                logGroupName = group['logGroupName'],
+                retentionInDays = retention_days
+                )
+            print(setretention)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
