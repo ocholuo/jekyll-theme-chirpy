@@ -1,5 +1,5 @@
 ---
-title: AWS - Session Affinity and Sticky Sessions
+title: AWS - Session Affinity, Load-Balanced, Session Fail Over, Sticky Sessions
 date: 2020-07-18 11:11:11 -0400-
 categories: [00AWS, Balancing]
 tags: [AWS, Balancing]
@@ -11,7 +11,7 @@ image:
 
 ---
 
-# Session Affinity 类同 and Sticky Sessions
+# Session Affinity 类同, Load-Balanced, Session Fail Over, Sticky Sessions
 
 ---
 
@@ -48,88 +48,162 @@ Use-Case 2:
 > The IT administrator would also have to update the load-balancer to indicate the disaster recovery servers can be used.
 > If the load balancer has sticky-IP time out configured then users may have to wait until the time out threshold is reached and re-access the URL.
 
+
 ---
 
-## solution
-There are two ways to solve this problem of forgetting the context.
-1. the client remind the application of the context every time he requests something
-2. the application remember the context by creating an associated memento
-   1. This memento is given to the client and returned to the application on subsequent requests.
-   2. via URL: http://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH
-   3. via cookies, placed within the HTTP request so they can be discovered by the application even if a load balancer intervenes.
+## session location
 
-**Manage user session**
+
+goal: <font color=red> Manage user session </font>
 - storing those sessions locally to the node responding to the HTTP request
 - design a layer in architecture which can store those sessions in a scalable and robust manner.
 
 
+2 ways to solve this problem of forgetting the context.
+
+1. <font color=red> the client remind the application of the context every time </font> he requests something
+
+2. <font color=red> the application remember the context </font> by creating an associated memento
+   - This memento is given to the client and returned to the application on subsequent requests.
+     1. via URL 
+        - `http://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH`
+     2. via cookies
+        - placed within the HTTP request 
+        - so they can be discovered by the application even if a load balancer intervenes.
+
+
+
+Use-Case:
 > Large websites may be "load balanced" across multiple machines.
 > - a user may hit any of the backend machines during a session.
 > - several methods exist to allow many machines to share user sessions.
 > - The method chosen will depend on the style of load balancing employed, as well as the availability/capacity of backend storage:
 
 
-### Session information stored in cookies only:
-- not just a session identifier, Session information is stored in a user's `cookie`.
-- For example
-  - the user's cookie might contain the contents of their shopping basket.
-- to prevent users from tampering with the session data, an `HMAC` may be provided along with the cookie.
 
-> This method is probably least suitable for most applications:
-> - No backend storage is required
-> - The user does not need to hit the same machine each time, so DNS load balancing can be employed
-> - no latency associated with retrieving the session information from a database machine (as it is provided with the HTTP request). Useful if your site is load-balanced by machines on different continents.
-> - The amount of data that can be stored in the session is limited (by the 4K cookie size limit)
-> - Encryption has to be employed if a user should not be able to see the contents of their session
-> - HMAC (or similar) has to be employed to prevent user tampering of session data
-> - Since the session data is not stored server-side, more difficult for developers to debug
+---
 
 
-### Load balancer always directs the user to the same machine:
-- Many load balancers may set `session cookie`, indicating which backend machine a user is making requests from, and direct them to that machine in the future.
-- Because the user is always directed to the same machine, session sharing between multiple machines is not required.
-
-> This may be good in some situations:
-> - An `existing application's session handling may not need to be changed` to become multiple machines aware
-> - `No shared database system (or similar) is required` for storing sessions, possibly increasing reliability, but at the cost of complexity
-> - A backend machine going down will take down any user sessions started on it, with it.
-> - Taking machines out of service is more difficult. Users with sessions on a machine to be taken down for maintenance should be allowed to complete their tasks before the machine is turned off. To support this, web load balancers may have a feature to "drain" requests to a certain backend machine.
+## Load balanced
+- a user may hit any of the backend machines during a session.
+- several methods exist to allow many machines to share user sessions.
+- The method chosen will depend on the style of load balancing employed, as well as the availability/capacity of backend storage:
 
 
-### Shared backend database or memcached or key/value store:
-- `Session information is stored in a backend database`
-- all web servers have access to query and update.
-- `The user's browser stores a cookie containing an identifier (like session ID), pointing to the session information`.
+way in which the Application Session State is stored. 
+- Stateful
+  - the application session state is stored locally on the same server as the application. 
+    - This is also referred to as a stateful server
+  - to scale up/down the application server
+    - there <font color=red> would be user interruption </font>
 
-> This is probably the cleanest method of the three:
-> - The user never needs to be exposed to the stored session information.
-> - The user does not need to hit the same machine each time, so DNS load balancing can be employed
-> - One disadvantage is `the bottleneck that can be placed on whichever backend storage system is employed`.
-> - Session information may be expired and backed up consistently.
-> - Overall, most dynamic web applications perform several database queries or key/value store requests, so the database or key/value store is the logical storage location of session data.
-
-
+- Stateless
+  - the application session state is stored remotely on another server rather than locally on the application server. 
+    - This is also referred to as a stateless server
+  - to scale up/down the application server
+    - <font color=red> no user interruption </font>
 
 
 
 ---
 
+
+### 1. Session information stored in client-side cookies only
+
+> least suitable for most applications:
+
+- <font color=red> session identifier + Session information </font> is stored in a user's <font color=red> cookie </font>
+  - example: the user's cookie might contain the contents of their shopping basket.
+
+- <font color=red> No backend storage </font> is required
+  - the session data is not stored server-side
+  - more difficult for developers to debug
+  - The amount of data that can be stored in the session is limited (by the 4K cookie size limit)
+
+- The user does not need to hit the same machine each time, so DNS load balancing can be employed
+
+- <font color=red> no latency </font> associated with retrieving the session information from a database machine 
+  - (as it is provided with the HTTP request). 
+  - Useful if your site is load-balanced by machines on different continents.
+
+
+- <font color=red> Encryption </font> has to be employed 
+  - if a user should not be able to see the contents of their session
+  - <font color=blue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
+
+
+---
+
+
+### 2. Load balancer directs the user to the same machine:
+
+> may be good in some situations:
+
+- load balancers may set <font color=red> session cookie </font>
+  - indicating which backend machine a user is making requests from
+  - and direct them to that machine in the future.
+
+- An `existing application's session handling may not need to be changed` to become multiple machines aware
+
+- <font color=red> No shared database system (or similar) is required </font> for storing sessions
+  - possibly increasing reliability
+  - but at the cost of complexity
+
+- <font color=red> A backend machine going down will take down user sessions started on/with it </font>
+  - Because the user is always directed to the same machine, <font color=red> session sharing between multiple machines is not required. </font>
+
+- <font color=red> Taking machines out of service is more difficult </font>
+  - Users with sessions on a machine to be taken down for maintenance should be allowed to complete their tasks before the machine is turned off. 
+  - To support this, web load balancers may have a feature to "drain" requests to a certain backend machine.
+
+
+---
+
+
+### 3. Shared backend database or memcached or key/value store:
+
+> probably the cleanest method of the three:
+
+- <font color=red> Session information is stored in a backend database </font>
+  - The user's <font color=blue> browser stores a cookie containing an identifier (like session ID), pointing to the session information </font>
+  - The user never needs to be exposed to the stored session information.
+
+- all web servers have access to query and update.
+  - The user does not need to hit the same machine each time, so DNS load balancing can be employed
+
+- Session information may be expired and backed up consistently.
+
+- One disadvantage is `the bottleneck that can be placed on whichever backend storage system is employed`.
+
+- most dynamic web applications perform <font color=red> several database queries or key/value store requests </font>
+  - so the database or key/value store is the logical storage location of session data.
+
+
+
+---
+
+## example
+
+![Screen Shot 2020-06-22 at 15.07.33](https://i.imgur.com/gE2TVx5.png)
+
 A cloud design pattern that uses multiple load balancers
 - 2 separate ELB going to a set of servers.
   - a load balancer that is separated by a certificate
-  - another load balancer that is keeping the `session sticky`.
-- When a website is served by **only one web server**
-  - for each client-server pair, a session object is created and remains in the memory of the web server.
-  - All requests from the client go to this web server and update this session object.
-- When a website is served by **multiple web servers behind a load balancer**
-  - the load balancer decides which web server the request goes to.
-  - If the load balancer use `sticky sessions`
-    - all interactions happen with the same physical server.
-  - Stickiness
-    - important because mobile applications need to keep those `sticky sessions`.
-    - For desktop users, common not require `sticky sessions`.
+  - another load balancer that is keeping the <font color=red> session sticky </font>
 
-Cache
+- When a website is served by <font color=red> only one web server </font>
+  - for each client-server pair
+    - a session object is created and remains in the memory of the web server.
+  - All requests from the client go to this web server and update this session object.
+
+- When a website is served by <font color=red> multiple web servers behind a load balancer </font>
+  - the load balancer decides which web server the request goes to.
+  - load balancer use <font color=blue> sticky sessions </font> or <font color=blue> Stickiness sessions </font>
+  
+
+---
+
+cache
 
 ![Screen Shot 2020-06-20 at 23.23.50](https://i.imgur.com/bTDwJPr.png)
 ￼
@@ -137,73 +211,106 @@ Cache
 
 ---
 
-## Sticky sessions / session affinity
 
-> load balancer had the freedom to forward each incoming HTTP or TCP request to any of the EC2 instances under its purview.
-> reasonably even load on each instance,
-> but it also meant that each instance would have to retrieve, manipulate, and store session data for each request without any possible benefit from locality of reference.
+## Stickiness vs Sticky sessions
 
-![elb_not_sticky](https://i.imgur.com/b2u9xtx.png)
+> Stickiness vs Sticky sessions
 
+<img src="https://i.imgur.com/b2u9xtx.png" width="400">
 
-> the new sticky session feature, it is possible to instruct the load balancer to route repeated requests to the same EC2 instance whenever possible.
-> the instances can cache user data locally for better performance.
-> A series of requests from the user will be routed to the same EC2 instance if possible.
-> If the instance has been terminated or has failed a recent health check, the load balancer will route the request to another instance.
+<img src="https://i.imgur.com/0HkpZ99.png" width="400">
 
 
-![elb_sticky](https://i.imgur.com/0HkpZ99.png)
+1. If the load balancer use <font color=red> sticky sessions </font>
+   - <font color=blue> all interactions happen with the same physical server </font>
+   - the new sticky session feature instruct the load balancer 
+     - to <font color=blue> route repeated requests to the same EC2 instance whenever possible </font>
+       - A series of requests from the user will be routed to the same EC2 instance if possible.
+     - If the instance has been terminated or has failed a recent health check
+       - the load balancer will route the request to another instance.
+   - the instances can cache user data locally for better performance.
+
+
+1. If the load balancer use <font color=red> Stickiness sessions </font>
+   - important because mobile applications need to keep sticky sessions
+   - For desktop users, common not require sticky sessions
+   - load balancer had the freedom to forward each incoming HTTP or TCP request to any of the EC2 instances under its purview.
+   - even load on each instance,
+   - but also meant that each instance would have to retrieve, manipulate, and store session data for each request without any possible benefit from locality of reference.
 
 
 ---
 
 
+### Sticky sessions / session affinity
+
 - By default, load balancer routes each request independently to the registered instance with the smallest load.
-- Use `sticky session`:
-  - enables the load balancer to bind user's session to a specific instance.
+   - Stickiness sessions
+   - even load on each instance
+
+
+by sticky session 
+
+- enables the load balancer to <font color=red> bind user's session to a specific instance </font>
   - all requests from the user during the session are sent to the same server instance.
   - can use `sticky sessions` for only `HTTP/HTTPS load balancer listeners`
 
+- <font color=red> limit application’s scalability </font>
+  - the load balancer is unable to truly balance the load each time it receives request from a client.
+  - send all the requests to their original server where the session state was created
+    - even that server might be heavily loaded
+    - and another less-loaded server is available to take on this request.
 
-- `Sticky sessions`
-  - **can limit application’s scalability**
-    - the load balancer is unable to truly balance the load each time it receives request from a client.
-    - send all the requests to their original server where the session state was created
-      - even that server might be heavily loaded
-      - and another less-loaded server is available to take on this request.
-  - **allow to route a user to the particular web server** which is managing that individual user’s session.
+- allow to <font color=red> route user to the particular web server </font> which is managing that individual user’s session.
   - better user experience.
 
-- The `session’s validity` can be determined by:
-  - a client-side cookies
-  - via configurable duration parameters that set at the load balancer
-    - which routes requests to the web servers.
+
+The <font color=red> session’s validity </font> can be determined by:
+- a client-side cookies
+- via configurable duration parameters that set at the load balancer
+  - which routes requests to the web servers.
 
 
-- **Duration-based session stickiness**
-  - The load balancer uses a special `load balancer–generated cookie` to `track the application instance for each request`.
-  - When the load balancer receives a request, first checks whether this cookie is present in the request.
-    - If there is a cookie
-      - the request is sent to the application instance specified in the cookie.
-    - If there is no cookie
-      - the load balancer chooses an application instance based on the existing load balancing algorithm.
-      - A cookie is inserted into the response
-        - for binding subsequent requests from the same user to that application instance.
-  - `The stickiness policy configuration` defines a cookie expiration
-    - establishes the duration of validity for each cookie.
-    - The cookie is `automatically updated` after its duration expires.
+
+#### Duration-based session stickiness
+
+- The load balancer uses a special `load balancer–generated cookie` to <font color=red> track the application instance for each request </font>
+- When the load balancer receives a request
+  - first <font color=blue> checks whether this cookie is present in the request </font>
+  - If there is a cookie
+    - the request is sent to the application instance specified in the cookie.
+  - If there is no cookie
+    - the load balancer chooses an application instance based on the existing load balancing algorithm.
+    - A cookie is inserted into the response
+      - for binding subsequent requests from the same user to that application instance.
+
+- The stickiness policy configuration
+  - <font color=red> defines a cookie expiration </font>
+  - establishes the duration of validity for each cookie.
+  - The cookie is <font color=blue> automatically updated after its duration expires </font>
 
 
-- **Application-controlled session stickiness**
-  - The load balancer uses a special cookie to `associate the session with the original server` that handled the request
-  - `The stickiness policy configuration`
-    - follows the lifetime of the application-generated cookie corresponding to the cookie name specified in the policy configuration.
-    - The load balancer only inserts a new `stickiness cookie` if the application response includes a new application cookie.
-  - The load balancer stickiness cookie does not update with each request.
-  - If the application cookie is explicitly removed or expiresthe session stops being sticky until a new application cookie is issued.
-  - This means that can perform maintenance, such as deploying software upgrades or replacing backend instances, without affecting customers’ experience.
-  - Applications often store session data in memory, but this approach doesn’t scale well. Options available to manage session data without `sticky sessions` include:
-    - Using ElastiCache or DynamoDB to store session data.
+
+#### Application-controlled session stickiness
+- The load balancer uses a special cookie to <font color=red> associate the session with the original server that handled the request </font>
+
+- The stickiness policy configuration
+  - follows the lifetime of the application-generated cookie corresponding to the cookie name specified in the policy configuration.
+  - The load balancer only inserts a new `stickiness cookie` <font color=blue> if the application response includes a new application cookie </font>
+
+
+- The load balancer stickiness cookie does not update with each request.
+- If the application cookie is explicitly removed or expires the session stops being sticky until a new application cookie is issued.
+  - This means that can perform maintenance without affecting customers’ experience.
+  - such as deploying software upgrades or replacing backend instances,
+
+
+- Applications often store session data in memory, but this approach doesn’t scale well. 
+  - Options available to manage session data without `sticky sessions` include:
+  - Using ElastiCache or DynamoDB to store session data.
+
+
+
 
 ---
 
