@@ -48,10 +48,7 @@ Table of Contents
 ---
 
 
-# EC2 - InternetGateway
-
-[InternetGateway](#id1241)
-----------------------------------------------------------------------------
+# EC2 - InternetGateway 
 
 _class_ EC2.InternetGateway(_id_)
 

@@ -15,15 +15,15 @@ image:
 
 
 use automated monitoring tools to watch components in VPC and report when something is wrong:
-1. **Flow logs**: 
-   1. Flow logs capture information about the IP traffic going to and from network interfaces in VPC. 
-   2. create a flow log for a VPC, subnet, or individual network interface. 
+1. **Flow logs**:
+   1. Flow logs capture information about the IP traffic going to and from network interfaces in VPC.
+   2. create a flow log for a VPC, subnet, or individual network interface.
    3. Flow log data is published to CloudWatch Logs or Amazon S3
-   4. help diagnose overly restrictive or overly permissive security group and network ACL rules. 
-2. **Monitoring NAT gateways**: 
-   1. monitor NAT gateway using CloudWatch, which collects information from NAT gateway and creates readable, near real-time metrics. 
-3. **Traffic Mirroring** 
-   1. provides deeper insight into the network traffic by allow analyze actual traffic content, including payload. 
+   4. help diagnose overly restrictive or overly permissive security group and network ACL rules.
+2. **Monitoring NAT gateways**:
+   1. monitor NAT gateway using CloudWatch, which collects information from NAT gateway and creates readable, near real-time metrics.
+3. **Traffic Mirroring**
+   1. provides deeper insight into the network traffic by allow analyze actual traffic content, including payload.
    2. Traffic Mirroring is targeted for the following types of cases:
       1. Analyzing the actual packets to perform a root-cause analysis on a performance issue
       2. Reverse-engineering a sophisticated network attack
@@ -34,8 +34,8 @@ use automated monitoring tools to watch components in VPC and report when someth
 ## Monitoring NAT gateways using Amazon CloudWatch
 
 monitor NAT gateway using CloudWatch
-- collects information from NAT gateway and creates readable, near real-time metrics. 
-- use this information to monitor and troubleshoot NAT gateway. 
+- collects information from NAT gateway and creates readable, near real-time metrics.
+- use this information to monitor and troubleshoot NAT gateway.
 - NAT gateway metric data is provided at 1-minute intervals, and statistics are recorded for a period of 15 months.
 
 For more information about Amazon CloudWatch, see the Amazon CloudWatch User Guide. For more information about pricing, see Amazon CloudWatch Pricing.
@@ -43,42 +43,79 @@ For more information about Amazon CloudWatch, see the Amazon CloudWatch User Gui
 ---
 
 ## VPC Flow Logs
-- capture information about the IP traffic going to and from network interfaces in VPC.
-- can be published to Amazon CloudWatch Logs or Amazon S3.
 
-Flow log data is collected outside of the path of network traffic, and therefore does not affect network throughput or latency.
-- create or delete flow logs without any risk of impact to network performance.
+
+> to verify that the configured network access rules are working as expected
+
+
+
 
 ### Flow logs basics
-- Flow log data for a monitored network interface is recorded as flow `log records`
-  - log events consisting of fields that describe the traffic flow.
+VPC Flow Logs
+1. <font color=red> captures accepted and rejected traffic flow information </font> that goes to and from all network interfaces in your VPC or in the selected resource.
+   - <font color=blue> troubleshoot connectivity and security issues </font>
+     - why specific traffic is not reaching an instance
+   - <font color=blue> test network access rules </font>
+     - diagnose overly restrictive security group rules.
+   - <font color=blue> monitor traffic that reaching the instance </font>
+     - Determining the `direction of the traffic` to and from the network interfaces
+   - <font color=blue> detect and investigate security incidents </font>
 
-Flow logs can help:
-- **captures accepted and rejected traffic flow information** that goes to and from all network interfaces in VPC or in selected resource.
-  - `troubleshoot connectivity and security issues`
-    - detect and investigate security incidents
-    - why specific traffic is not reaching an instance
-  - test network access rules
-  - `diagnose overly restrictive security group rules`.
-  - `monitor traffic` that is reaching instance.
-- **can create alarms**
-  - to notify if certain types of traffic are detected
-  - create metrics to help to identify trends and patterns.
-- Determining the `direction of the traffic` to and from the network interfaces
-- can be enable create `flow log for VPC, subnet, or network interface`
-  - If you create a flow log for a subnet or VPC, each network interface in the VPC or subnet is monitored.
+2. can <font color=red> create alarms </font>
+   - notify if certain types of traffic are detected
+   - create metrics to identify trends and patterns.
 
-- log data is published / stored to a log group in CloudWatchLogs
-  - each network interface has a unique log stream.
-  - Log streams contain flow log records,
-  - which are log events that consist of fields that describe the traffic for that network interface.
+
+3. <font color=red> enable flow log </font> 
+   - Flow logs can be enabled/created at the following levels:
+     - VPC.
+     - Subnet.
+     - Network interface.
+   - If create a flow log for a subnet / VPC, each network interface in the VPC or subnet is monitored.
+
+
+4. Flow log data is recorded as <font color=red> flow log records </font>
+   - log events consisting of fields that describe the traffic flow.
+   - Flow log data is collected outside of the path of network traffic
+     - therefore does not affect network throughput or latency.
+     - create or delete flow logs without any risk of impact to network performance.
+
+
+
+
+5. can be published to <font color=red> Amazon CloudWatch Logs or Amazon S3 </font>
+   - CloudWatch Logs
+     - Flow log data is published / stored to a <font color=blue> log group in CloudWatchLogs </font>
+     - each network interface has a unique <font color=blue> log stream </font>
+     - Log streams contain flow log records,
+     - which are log events that consist of fields that describe the traffic for that network interface.
+
+   - it can take several minutes to begin collecting and publishing data to the chosen destinations.
+     - Flow logs <font color=blue> do not capture real-time log streams for network interfaces </font>
+   - If you launch more instances into subnet after you've created a flow log for subnet or VPC, a new log stream (for CloudWatch Logs) or log file object (for Amazon S3) is created for each new network interface.
+     - This occurs as soon as any network traffic is recorded for that network interface.
+
+
+6. analyze flow logs with your own applications or with solutions from AWS Marketplace.
+
+---
 
 You cannot:
-- can’t enable flow logs for VPC’s that are peered with VPC unless the peer VPC is in account.
+- can’t enable flow logs for VPC’s that are peered with your VPC unless the peer VPC is in your account.
 - can’t tag a flow log.
-- can’t change the configuration of a flow log after it’s been created.
+- <font color=blue> can’t change the configuration </font> of a flow log after it’s been created.
   - need to delete and re-create
 
+
+Not all traffic is monitored, e.g. the following traffic is excluded:
+- Traffic that goes to Route53.
+- Traffic generated for Windows license activation.
+- Traffic to and from 169.254.169.254 (instance metadata).
+- Traffic to and from 169.254.169.123 for the Amazon Time Sync Service.
+- DHCP traffic.
+- Traffic to the reserved IP address for the default VPC router.
+
+---
 
 To create a flow log, you specify:
 - `The resource` for which to create the flow log
@@ -87,10 +124,9 @@ To create a flow log, you specify:
 
 ![flow-logs-diagram](https://i.imgur.com/sBGBdBd.png)
 
-- it can take several minutes to begin collecting and publishing data to the chosen destinations. 
-  - Flow logs do not capture real-time log streams for network interfaces. 
-- If you launch more instances into subnet after you've created a flow log for subnet or VPC, a new log stream (for CloudWatch Logs) or log file object (for Amazon S3) is created for each new network interface. 
-  - This occurs as soon as any network traffic is recorded for that network interface.
+
+
+
 
 You can create flow logs for network interfaces that are created by other AWS services, such as:
 - Elastic Load Balancing
@@ -102,21 +138,21 @@ You can create flow logs for network interfaces that are created by other AWS se
 - Transit gateways
 - Regardless of the type of network interface, you must use the `Amazon EC2 console` or the `Amazon EC2 API` to create a flow log for a network interface.
 
-You can apply tags to flow logs. 
-- Each tag consists of a key and an optional value, both of which you define. 
+You can apply tags to flow logs.
+- Each tag consists of a key and an optional value, both of which you define.
 - Tags can help to organize flow logs
-  
+
 delete
-- Deleting a flow log disables the flow log service for the resource, and no new flow log records are created or published to CloudWatch Logs / Amazon S3. 
-- Deleting the flow log does not delete any existing flow log records or log streams (for CloudWatch Logs) or log file objects (for Amazon S3) for a network interface. 
-- To delete an existing log stream, use the CloudWatch Logs console. 
-- To delete existing log file objects, use the Amazon S3 console. 
+- Deleting a flow log disables the flow log service for the resource, and no new flow log records are created or published to CloudWatch Logs / Amazon S3.
+- Deleting the flow log does not delete any existing flow log records or log streams (for CloudWatch Logs) or log file objects (for Amazon S3) for a network interface.
+- To delete an existing log stream, use the CloudWatch Logs console.
+- To delete existing log file objects, use the Amazon S3 console.
 - After you've deleted a flow log, it can take several minutes to stop collecting data.
 
 ---
 
 ### Flow log records
-- A flow log record represents a network flow in VPC. 
+- A flow log record represents a network flow in VPC.
 - By default, each record captures a network internet protocol (IP) traffic flow (characterized by a 5-tuple on a per network interface basis) that occurs within an aggregation interval, also referred to as a capture window.
 - By default, the record includes values for the different components of the IP flow, including the source, destination, and protocol.
 - When you create a flow log, you can use the default format for the flow log record, or you can specify a custom format.
@@ -127,27 +163,27 @@ delete
   - Available fields
 
 **Aggregation interval**
-- the period of time during which a particular flow is captured and aggregated into a flow log record. 
-  - By default, the maximum is 10min. 
-  - when you create a flow log, you can optionally specify a maximum aggregation interval of 1 minute. 
+- the period of time during which a particular flow is captured and aggregated into a flow log record.
+  - By default, the maximum is 10min.
+  - when you create a flow log, you can optionally specify a maximum aggregation interval of 1 minute.
   - Flow logs with a maximum aggregation interval of 1 minute produce a higher volume of flow log records than flow logs with a maximum aggregation interval of 10 minutes.
 - When a network interface is attached to a Nitro-based instance, the aggregation interval is always 1 minute or less, regardless of the specified maximum aggregation interval.
-- After data is captured within an aggregation interval, it takes additional time to process and publish the data to CloudWatch Logs or Amazon S3. 
+- After data is captured within an aggregation interval, it takes additional time to process and publish the data to CloudWatch Logs or Amazon S3.
   - around 5 min to publish to CloudWatch Logs,
-  - around 10 min to publish to Amazon S3. 
+  - around 10 min to publish to Amazon S3.
   - The flow logs service delivers within this additional time in a best effort manner. In some cases, logs might be delayed beyond the 5 to 10 minutes additional time mentioned previously.
 
 **Default format**
 - By default, the log line format for a flow log record is a space-separated string that has the following set of fields in the following order.
   - `<version> <account-id> <interface-id> <srcaddr> <dstaddr> <srcport> <dstport> <protocol> <packets> <bytes> <start> <end> <action> <log-status>`
-  - The default format captures only a subset of all of the available fields for a flow log record. 
-  - To capture all available fields or a different subset of fields, specify a `custom format`. 
+  - The default format captures only a subset of all of the available fields for a flow log record.
+  - To capture all available fields or a different subset of fields, specify a `custom format`.
   - cannot customize or change the default format.
 
 
 **Custom format**
-- specify a custom format for the flow log record. 
-- This enables you to create flow logs that are specific to needs and to omit fields that are not relevant to you. 
+- specify a custom format for the flow log record.
+- This enables you to create flow logs that are specific to needs and to omit fields that are not relevant to you.
 - reduce the need for separate processes to extract specific information from published flow logs. You can specify any number of the available flow log fields, but you must specify at least one.
 
 
@@ -184,7 +220,7 @@ sublocation-id | The ID of the sublocation that contains the network interface f
 
 ### Flow log limitations
 - To use flow logs, you need to be aware of the following limitations:
-- cannot enable flow logs for network interfaces that are in the EC2-Classic platform. 
+- cannot enable flow logs for network interfaces that are in the EC2-Classic platform.
   - This includes EC2-Classic instances that have been linked to a VPC through ClassicLink.
 - can't enable flow logs for VPCs that are peered with VPC unless the peer VPC is in account.
 - After you've created a flow log, you cannot change its configuration or the flow log record format. For example, you can't associate a different IAM role with the flow log, or add or remove fields in the flow log record. but delete the flow log and create a new one with the required configuration.
@@ -204,12 +240,12 @@ Flow logs do not capture all IP traffic. The following types of traffic are not 
 - Traffic between an endpoint network interface and a Network Load Balancer network interface. For more information, see VPC endpoint services (AWS PrivateLink).
 
 ### Flow logs pricing
-- `Data ingestion and archival` charges for vended logs apply when you publish flow logs to CloudWatch Logs / S3. 
-- To track charges from publishing flow logs to S3 buckets, apply `cost allocation tags` to flow log subscriptions. 
-- To track charges from publishing flow logs to CloudWatch Logs, apply `cost allocation tags` to destination CloudWatch Logs log group. 
-- Thereafter, AWS cost allocation report will include usage and costs aggregated by these tags. You can apply tags that represent business categories (such as cost centers, application names, or owners) to organize costs. 
+- `Data ingestion and archival` charges for vended logs apply when you publish flow logs to CloudWatch Logs / S3.
+- To track charges from publishing flow logs to S3 buckets, apply `cost allocation tags` to flow log subscriptions.
+- To track charges from publishing flow logs to CloudWatch Logs, apply `cost allocation tags` to destination CloudWatch Logs log group.
+- Thereafter, AWS cost allocation report will include usage and costs aggregated by these tags. You can apply tags that represent business categories (such as cost centers, application names, or owners) to organize costs.
 
-CloudWatch Container Insights ingests performance events as CloudWatch Logs that automatically create CloudWatch metrics. These performance events are analyzed using CloudWatch Logs Insights queries and are automatically executed as part of some Container Insights automated dashboards (e.g., task/pod, service, node, namespace). 
+CloudWatch Container Insights ingests performance events as CloudWatch Logs that automatically create CloudWatch metrics. These performance events are analyzed using CloudWatch Logs Insights queries and are automatically executed as part of some Container Insights automated dashboards (e.g., task/pod, service, node, namespace).
 
 into CloudWatch | price
 ---|---
@@ -228,7 +264,7 @@ example:
 
 ```bash
 # detailed monitoring
-# The number of metrics sent by EC2 instance as detailed monitoring is dependent on the EC2 instance type 
+# The number of metrics sent by EC2 instance as detailed monitoring is dependent on the EC2 instance type
 # This example assumes 7 metrics, which covers the most commonly used instance types.  
 If application runs on 10 EC2 instances 24x7 for a 30-day month, and enable EC2 Detailed Monitoring on all instances:
 Total number of metrics: 7 metrics per instance * 10 instances = 70 metrics
