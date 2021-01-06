@@ -1,7 +1,7 @@
 ---
 title: Virtulization - Running Kali on Docker
 date: 2020-11-26 11:11:11 -0400
-categories: [10SecConcept, VMs]
+categories: [19VMs, Containers]
 tags: [Linux, VMs, Docker]
 math: true
 image:

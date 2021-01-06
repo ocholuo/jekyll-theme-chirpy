@@ -1,7 +1,7 @@
 ---
 title: Virtualization
 date: 2020-11-26 11:11:11 -0400
-categories: [10SecConcept, VMs]
+categories: [19VMs, VMs]
 tags: [Linux, VMs]
 math: true
 image:
