@@ -220,6 +220,7 @@ AWS CloudFormation provides 2 methods for <font color=red> updating stacks </fon
   - you can preview the changes AWS CloudFormation will make to your stack
   - and then decide whether to apply those changes.
 
+---
 
 ### StackSets.
 - AWS CloudFormation StackSets extends the functionality of stacks by enabling you to create, update, or delete stacks across multiple accounts and regions with a single operation.
@@ -259,13 +260,13 @@ Description: Template to create an EC2 instance and enable SSH
 
 
 
-# data about the data, Some AWS CloudFormation features retrieve settings or configuration information that you define from the Metadata section. 
+# data about the data, Some AWS CloudFormation features retrieve settings or configuration information that you define from the Metadata section.
 Metadata:
 
 
 
 # input custom values, pass the value of your template at runtime.
-Parameters: 
+Parameters:
   KeyName:
     Description: Name of SSH KeyPair
     Type: 'AWS::EC2::KeyPair::KeyName'
@@ -301,7 +302,7 @@ Resources:
       Tags:
         - Key: Name
           Value: My CF Instance
-      # How AWS CloudFormation should wait to launch a resource 
+      # How AWS CloudFormation should wait to launch a resource
       # until a specific, different resource has finished being created.
       DependsOn: myDB
   InstanceSecurityGroup:
@@ -315,9 +316,9 @@ Resources:
         CidrIp: 0.0.0.0/0
 
 
-# create custom mappings 
+# create custom mappings
 # like different Region for diffenet AMI
-# customize the properties of a resource based on certain conditions, which enables you to have fine-grained control over how your templates are launched. 
+# customize the properties of a resource based on certain conditions, which enables you to have fine-grained control over how your templates are launched.
 Mappings:
   RegionMap:
     us-east-1: (t2.micro: ami-0bdb1d6c15a40392c)
@@ -328,8 +329,8 @@ Mappings:
 Transforms:
 
 
-# values that are returned whenever you view the properties of your stack. 
-Outputs: 
+# values that are returned whenever you view the properties of your stack.
+Outputs:
   InstanceID:
     Description: The Instance ID
     Value: !Ref MyEC2Instance
@@ -338,7 +339,7 @@ Outputs:
 
 ---
 
-## setup 
+## setup
 
 1. cloudformation
 2. create stack
