@@ -1,7 +1,7 @@
 ---
 title: SecurityDefend - Control Types
 date: 2018-05-18 11:11:11 -0400
-categories: [SecurityDefend]
+categories: [18DefendSec]
 tags: [SecurityDefend]
 toc: true
 image:

@@ -1,7 +1,7 @@
 ---
 title: Cryptography - Symmetric Block Ciphers
 date: 2018-05-18 11:11:11 -0400
-categories: [cryptography]
+categories: [13Cryptography]
 tags: [cryptography]
 toc: true
 image:

@@ -1,7 +1,7 @@
 ---
 title: Course - Learning Path
 date: 2017-01-01 11:11:11 -0400
-categories: [0LearningPath]
+categories: [00LearningPath]
 tags: [LearningPath, code]
 pin: true
 toc: true
