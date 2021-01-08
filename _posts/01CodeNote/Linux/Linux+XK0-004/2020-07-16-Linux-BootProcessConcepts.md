@@ -7,13 +7,16 @@ math: true
 image: 
 ---
 
-# CompTIA Linux+ XK0-004
-
 [toc]
 
 ---
 
-# Linux - Boot Process Concepts
+# CompTIA Linux+ XK0-004
+
+
+---
+
+## Linux - Boot Process Concepts
 
 ## ✔️ | **Legacy GRUB**
 
