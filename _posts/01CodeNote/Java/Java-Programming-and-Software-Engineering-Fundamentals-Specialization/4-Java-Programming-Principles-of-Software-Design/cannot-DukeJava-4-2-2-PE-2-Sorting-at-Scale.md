@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-2-2 Programming Exercise 2 Sorting at Scale
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [01CodeNote, JavaNote]
+categories: [1CodeNote, JavaNote]
 tags: [Java]
 img: /assets/img/sample/rabbit.png
 ---

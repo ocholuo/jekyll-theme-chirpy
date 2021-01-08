@@ -1,22 +1,19 @@
 ---
 title: Linux - Boot Process Concepts
 date: 2020-07-16 11:11:11 -0400
-categories: [01CodeNote, LinuxNote]
+categories: [1CodeNote, LinuxNote]
 tags: [Linux, Boot]
 math: true
 image: 
 ---
 
+# CompTIA Linux+ XK0-004
+
 [toc]
 
 ---
 
-# CompTIA Linux+ XK0-004
-
-
----
-
-## Linux - Boot Process Concepts
+# Linux - Boot Process Concepts
 
 ## ✔️ | **Legacy GRUB**
 

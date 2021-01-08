@@ -2,7 +2,7 @@
 title: Python Crash
 date: 2019-10-11 11:11:11 -0400
 description:
-categories: [01CodeNote, PythonNote]
+categories: [1CodeNote, PythonNote]
 img: /assets/img/sample/rabbit.png
 tags: [Python]
 ---
