@@ -1,11 +1,75 @@
+---
+title: CI/CD - Github Action Template
+date: 2020-11-11 11:11:11 -0400
+categories: [10SecConcept]
+tags: [SecConcept]
+toc: true
+image:
+---
+
+[toc]
+
+---
+
+
+# CI/CD - Github Action Template
+
+---
+
+
+## exmple 1
+
+```yml
+# This is a basic workflow to help you get started with Actions
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+```
+
+
+---
 
 
 
-
+## exmple 2: build a website
 
 ```yml
 name: 'Automatic build'
-on:                     # setup the way to be triggered
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:                 # when push
     branches:           # which brances will trigger 
       - master
@@ -13,17 +77,24 @@ on:                     # setup the way to be triggered
       - '.gitignore'
       - 'README.md'
       - 'LICENSE'
+  pull_request:
+    branches: [ main ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-n-test:                          # job 1 name             
+   # job 1 name： This workflow contains a single job called "build-n-test"
+  build-n-test: 
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    steps:                              # the test step
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
       - uses: actions/setup-ruby@v1     # run official "actions/checkout@v2" code to setup the environment
         with:
           ruby-version: '2.6.x'
 
-      - name: Checkout
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout                  # name the shell
         uses: actions/checkout@v2       # run official "actions/checkout@v2" code to copy the current code 
         with:
           fetch-depth: 0
