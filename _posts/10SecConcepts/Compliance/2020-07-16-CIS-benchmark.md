@@ -1,8 +1,8 @@
 ---
 title: CIS benchmarks
 date: 2020-07-16 11:11:11 -0400
-categories: [SOC]
-tags: [SOC, CIS]
+categories: [10SecConcept, ComplianceAndReport]
+tags: [CIS]
 math: true
 image: 
 ---

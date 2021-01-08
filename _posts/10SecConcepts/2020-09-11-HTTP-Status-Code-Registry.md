@@ -1,8 +1,8 @@
 ---
 title: Hypertext Transfer Protocol (HTTP) Status Code Registry
 date: 2020-09-11 11:33:00 -0400
-categories: [SOC]
-tags: [SOC, HTTP]
+categories: [10SecConcept]
+tags: [HTTP]
 math: true
 image:
 ---

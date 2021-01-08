@@ -4,8 +4,8 @@ title: Info security One Page
 date: 2020-09-28 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [SOC]
-tags: [SOC, OnePage]
+categories: [10SecConcept]
+tags: [OnePage]
 math: true
 # pin: true
 toc: true
