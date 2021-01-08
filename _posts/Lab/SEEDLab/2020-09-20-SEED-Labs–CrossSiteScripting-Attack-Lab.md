@@ -435,7 +435,7 @@ ff.send(params);
 
 
 - another built-in PHP method called `htmlspecialchars()`
-  - to encode the special characters in the user input, such as encoding `"<" to &lt`, `">" to &gt`, etc. 
+  - to encode the special characters in the user input, such as encoding `"<" to &lt`, `">" to &gt;`, etc. 
   - Go to the directory `elgg/views/default/output` and find the function call `htmlspecialchars` in `text.php, tagcloud.php, tags.php, access.php, tag.php, friendlytime.php, url.php, dropdown.php, email.php` and `confirmlink.php` files. 
   - Uncomment the corresponding `htmlspecialchars` function calls in each file.
 
