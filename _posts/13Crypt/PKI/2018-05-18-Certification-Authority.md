@@ -9,6 +9,11 @@ image:
 
 [toc]
  
+
+- ref:
+  - [Basics of Digital Certificates and Certificate Authority](https://sites.google.com/site/ddmwsst/digital-certificates#TOC-PEM-Privacy-Enhanced-Mail-Encoding)
+
+
 --- 
 
 # Authority
@@ -107,36 +112,6 @@ Nothing is preventing any organization from simply setting up shop as a CA.
 
 
 
----
-
-
-## certification practices statement (CPS)
-
-Every CA should have a <font color=red> certification practices statement (CPS) </font>
-- outlines 
-  - how identities are verified; 
-    - the steps the CA follows to generate, maintain, and transmit certificates; 
-  - why the CA can be trusted to fulfill its responsibilities. 
-  - describes how keys are secured, 
-  - what data is placed within a digital certificate, 
-  - and how revocations will be handled. 
-
-- If a company is going to use and depend on a public CA
-  - security officers and legal department should review the CA’s entire CPS 
-  - to ensure that it will properly meet the company’s needs, 
-  - and to make sure that the level of security claimed by the CA is high enough for their use and environment. 
-
-- A critical aspect of a PKI is the trust between the users and the CA
-  - so the CPS should be reviewed and understood to ensure that this level of trust is warranted. 
-
-The certificate server: 
-- the actual service that issues certificates 
-  - based on the data provided during the initial registration process. 
-  - <font color=red> constructs and populates the digital certificate </font> with the necessary information 
-  - and <font color=red> combines the user’s public key with the resulting certificate </font>
-  - The certificate is then <font color=red> digitally signed with the CA’s private key </font>
-    - private key assures the recipient that the certificate came from the CA. 
-
 
 ---
 
@@ -203,49 +178,11 @@ Three Tier Hierarchy
   - can perform it at the Second Tier level, leaving other “branches from the root” available.
 
 - Second Tier CAs in this hierarchy can, like the Root, be kept offline.
-
-
-
-
+ 
+ 
 ---
 
-### Obtaining a Certificate From CA
-
-You can obtain a certificate for your business from commercial CAs.
-- The Issuing entities of commercial CAs provide certificate with a cost.  
-- User without key
-  - directly approach to a issuing CA
-  - issuing CA will generate a Key pair on user's behalf.
-  - give the private key and certificate containing the public key with Issuing CA's signature to user
-    - after all necessary validations as per CA's policy.  
-
-- User with key
-  - User generate key and CSR then send to Issuing CA for a certificate.
-    - a Key pair
-      - tool like Keytool in Java
-    - a Certificate Signing Request (CSR)
-      - tool like Keytool
-      - CSR contains the public key of the user and user identity information
-
-
-![key](https://sites.google.com/site/ddmwsst/digital-certificates/obtain-cert.gif?attredirects=0)
-
-
-User must keep the private key secret.
-- If private key is compromised or lost then issuing CA must be informed.
-- CAs keep the certificates in Certificate Revocation List whose private keys believed to have been compromised or lost.  
-
-self signed certificates
-- You can yourself be a CA and issue your own certificates
-- but for commercial purpose your self signed certificated will not be trusted.
-- Only established and well known CAs self signed certificates are trusted.
-- Root certificate of a CA is always self signed.  
-
-
-
----
-
-### Certificate Chain / trust / Path
+## Certificate Chain / trust / Path
 
 When you get a certificate for your public key from a commercial CA
 - then <font color=red> your certificate is associated with a chain of certificates / trust </font>

