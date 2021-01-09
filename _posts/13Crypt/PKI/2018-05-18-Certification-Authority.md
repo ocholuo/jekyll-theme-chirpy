@@ -179,7 +179,7 @@ Three Tier Hierarchy
 
 - Second Tier CAs in this hierarchy can, like the Root, be kept offline.
  
- 
+
 ---
 
 ## Certificate Chain / trust / Path
@@ -199,6 +199,32 @@ During a User's certificate validation by a browser or a program,
 - The process will continue until the root certificate is reached.
 - Root CA is self signed and must be trusted by the browser at the end.
 - Browsers keep all well known CAs root certificates in their trust store.  
+
+
+---
+
+### The most common trust model: 
+
+hierarchical / centralized trust model. 
+- the public CA creates the first CA, root CA. 
+- If the organization is large, it can create intermediate and child CAs.
+  - it includes a section used to store intermediate CA certificates. 
+- A large trust chain works like this:
+  - The root CA issues certificates to intermediate CAs. 
+  - Intermediate CAs issue certificates to child CAs.
+  - Child CAs issue certificates to devices or end users.
+
+
+web of trust / decentralized trust model
+- sometimes used with PGP and GPG. 
+- A web of trust uses self-signed certificates, and a third party vouches for these certificates. 
+- Example
+  - five of your friends trust a certificate, you can trust the certificate. 
+- If the third party is a reliable source, 
+  - the web of trust provides a secure alternative. 
+- if the third party does not adequately verify certificates, 
+  - the use of certificates that shouldn’t be trusted.
+
 
 
 ---
@@ -353,6 +379,13 @@ In all cases, even if a matching certificate is not found in the store, the curr
 ---
 
 #### Caching
+
+Certificate chaining: 
+- combines all the certificates from the root CA down to the certificate issued to the end user. 
+  - In a small organization, the root CA can simply issue certificates to the devices and end users. 
+  - not necessary to have intermediate / child CAs.
+
+
 
 <font color=red> least recently used (LRU) caching scheme </font>
 - To increase performance, the **certificate chain engine** uses a least recently used (LRU) caching scheme.

@@ -1,6 +1,20 @@
+---
+title: Cryptography - PKI - Public Key Infrastructure 
+date: 2018-05-18 11:11:11 -0400
+categories: [13Cryptography, PKI]
+tags: [cryptography]
+toc: true
+image:
+---
+ 
+
+[toc]
+
+---
 
 
-# Public Key Infrastructure 
+
+# PKI Public Key Infrastructure 
 
 
 public key encryption’s major strength: 
@@ -38,8 +52,9 @@ A public key infrastructure (PKI)
      - HTTPS sessions protect Internet credit card transactions, and these transactions depend on a PKI.
 
 4. primary benefit of a PKI: 
-   - allows two people or entities to communicate securely without knowing each other previously.
-   - allows communicate securely through an insecure public medium: like Internet.
+   - allows two people or entities to <font color=red>  communicate securely without knowing each other previously </font>
+   - allows  <font color=red> communicate securely through an insecure public medium </font>
+     - like Internet
    - small groups: 
      - possible for users to exchange public keys based on a previously established level of trust.
    - big organizations: 
