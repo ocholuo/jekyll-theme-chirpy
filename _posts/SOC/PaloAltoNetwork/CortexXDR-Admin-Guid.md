@@ -7807,6 +7807,9 @@ Linux
 - Exploit protection is not running
 
 
+
+---
+
 ## Log Forwarding
 
 forward Cortex XDR alerts and reports to an external syslog receiver, a Slack channel, or to email accounts.
@@ -7819,13 +7822,18 @@ forward Cortex XDR alerts and reports to an external syslog receiver, a Slack ch
 
 ![Screen Shot 2020-10-28 at 11.47.01](https://i.imgur.com/i5Ii8AW.png)
 
+---
+
 ### Log Forwarding Data Types
 
-to informed and updated about events in Cortex XDR deployment, Configure Notification Forwarding to Email, Slack, or a syslog receiver.
+to informed and updated about events in Cortex XDR deployment
+- Configure Notification Forwarding to Email, Slack, or a syslog receiver.
 
 the data types supported by each notification receiver.
 
 ![Screen Shot 2020-10-26 at 14.45.12](https://i.imgur.com/OCwEvhx.png)
+
+---
 
 ### Log Forwarding App
 
@@ -7838,6 +7846,9 @@ the data types supported by each notification receiver.
 ![Screen Shot 2020-10-28 at 11.52.21](https://i.imgur.com/xsP61Ej.png)
 
 ![Screen Shot 2020-10-28 at 11.52.35](https://i.imgur.com/W6wNXNw.png)
+
+---
+
 
 ### Integrate Slack for Outbound Notifications
 Integrate Cortex XDR app with Slack workspace to better manage and highlight Cortex XDR alerts and reports. By creating a Cortex XDR Slack channel, ensure that defined Cortex XDR alerts are exposed on laptop and mobile devices using the Slack interface. Unlike email notifications, Slack channels are dedicated to spaces that use to contact specific members regrading Cortex XR alerts.
@@ -7852,47 +7863,49 @@ Upon successful installation, Cortex XDR displays the workspace to which connect
 - STEP 4 | Configure Notification Forwarding.
 After integrate with Slack workspace, configure forwarding settings.
 
+---
 
 ### Integrate a Syslog Receiver
 
-![Screen Shot 2020-10-26 at 14.49.51](https://i.imgur.com/E4LLA3v.png)
+To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, define the settings for the <kbd>Syslog receiver</kbd> from which want to send notifications.
 
-
-### Integrate a Syslog Receiver
-
-To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, need to define the settings for the <kbd>Syslog receiver</kbd> from which want to send notifications.
-
-- STEP 1 | Before define the Syslog settings, enable access to the following Cortex XDR IP addresses for deployment region in <kbd>firewall configurations</kbd>:
-
+- STEP 1 | Before define the Syslog settings, enable access to the following Cortex XDR IP addresses for deployment region in <font color=red> firewall configurations </font>
+  - ![Screen Shot 2020-10-26 at 14.49.51](https://i.imgur.com/E4LLA3v.png)
 
 - STEP 2 | Settings > Integrations > External Applications.
+
 - STEP 3 | In Syslog Servers, add a <kbd>+ New Server</kbd>.
+  - ![Screen Shot 2020-10-26 at 14.51.13](https://i.imgur.com/01E8dAP.png)
 
-![Screen Shot 2020-10-26 at 14.51.13](https://i.imgur.com/01E8dAP.png)
-
-- STEP 4 | Define the Syslog server parameters:
-    - Name — Unique name for the server profile.
-    - Destination — `IP address or fully qualified domain name (FQDN)` of the Syslog server.
-    - Port — The port number on which `to send Syslog messages`.
-    - Facility — Choose one of the `Syslog standard values`.
-      - The value maps to how Syslog server uses the facility field to manage messages.
-      - For details on the facility field, see RFC 5424.
-    - Protocol — Select a method of communication with the Syslog server:
-      - TCP — No validation is made on the connection with the Syslog server. However, if an error occurred with the domain used to make the connection, the Test connection will fail.
-      - UDP — Cortex XDR runs a validation to ensure connection was made with the syslog server.
-      - TCP + SSL — Cortex XDR validates the syslog server certificate and uses the certificate signature and public key to encrypt the data sent over the connection.
-   - Certificate — The communication between **Cortex XDR** and the **Syslog destination** can use TLS.
-     - In this case, upon connection, Cortex XDR validates that the Syslog receiver has a certificate signed by either a `trusted root CA` or a `self signed certificate`.
-       - If syslog receiver uses a `self signed CA`, Browse and upload Self Signed Syslog Receiver CA. Make sure the `self signed CA` includes public key.
-       - If only use a `trusted root CA` leave the Certificate field empty.
-  - Ignore Certificate Error — Cortex XDR does not recommend, but choose to select this option to ignore certificate errors if they occur. This will forward alerts and logs even if the certificate contains errors.
+- STEP 4 | Define the <font color=red> Syslog server parameters </font>
+  - Name — Unique name for the server profile.
+  - Destination — <font color=blue> IP address or fully qualified domain name (FQDN) </font> of the Syslog server.
+  - Port — The port number on which <font color=blue> to send Syslog messages </font>
+  - Facility
+    - Choose one of the <font color=blue> Syslog standard values </font>
+    - The value maps to how Syslog server uses the facility field to manage messages.
+    - For details on the facility field, see RFC 5424.
+  - Protocol — Select a method of communication with the Syslog server:
+    - TCP — No validation is made on the connection with the Syslog server. However, if an error occurred with the domain used to make the connection, the Test connection will fail.
+    - UDP — Cortex XDR runs a validation to ensure connection was made with the syslog server.
+    - TCP + SSL — Cortex XDR validates the syslog server certificate and uses the certificate signature and public key to encrypt the data sent over the connection.
+  - Certificate
+    - The communication between **Cortex XDR** and the **Syslog destination** can use TLS.
+    - Cortex XDR validates that the Syslog receiver has a certificate signed by either a `trusted root CA` or a `self signed certificate`.
+     - If syslog receiver uses a `self signed CA`
+       - Browse and upload Self Signed Syslog Receiver CA.
+       - Make sure the `self signed CA` includes public key.
+     - If only use a `trusted root CA`
+       - leave the Certificate field empty.
+  - Ignore Certificate Error
+    - Cortex XDR does not recommend, but choose to select this option to ignore certificate errors if they occur.
+    - This will forward alerts and logs even if the certificate contains errors.
 
 
 - STEP 5 | <kbd>Test</kbd> the parameters to ensure a valid connection and <kbd>Create</kbd> when ready.
   - define up to five Syslog servers.
   - Upon success, the table displays the Syslog servers and their status.
-
-![Screen Shot 2020-10-26 at 14.55.39](https://i.imgur.com/5lygz1T.png)
+  - ![Screen Shot 2020-10-26 at 14.55.39](https://i.imgur.com/5lygz1T.png)
 
 - STEP 6 | (Optional) Manage Syslog server connection.
   - In the Syslog Servers table
@@ -7906,7 +7919,10 @@ To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, need to defi
 - STEP 7 | Configure Notification Forwarding.
   - After integrate with Syslog receiver, configure forwarding settings.
 
-### Configure Notification Forwarding
+
+---
+
+#### Configure Notification Forwarding
 With Cortex XDR, choose to receive notifications to keep up with the alerts and events that matter to teams.
 
 To forward notifications, create a forwarding configuration that specifies the log type want to forward.
@@ -7950,6 +7966,7 @@ To forward notifications, create a forwarding configuration that specifies the l
 ---
 
 ### Cortex XDR Log Notification Formats
+
 When Cortex XDR alerts and audit logs are forwarded to an external data source, notifications are sent in the following formats.
 - `Alert` Notification Format
 - `Agent Audit Log` Notification Format
@@ -7959,6 +7976,7 @@ When Cortex XDR alerts and audit logs are forwarded to an external data source, 
 
 > If prefer Cortex XDR to forward logs in <kbd>legacy format</kbd>, choose the legacy option in log forwarding configuration.
 
+---
 
 #### Alert Notification Format
 Cortex XDR Agent, BIOC, IOC, Analytics and third-party alerts are forwarded to external data resources according to the following formats.
@@ -8177,6 +8195,7 @@ Syslog format:
 
 Syslog format:
 - recordType, class, FUTURE_USE, subClassId, eventType, eventCategory, generatedTime, serverTime, FUTURE_USE, facility, customerId, trapsId, serverHost, serverComponentVersion, regionId, isEndpoint, agentId, severity, trapsSeverity, messageCode, friendlyName, FUTURE_USE, msgTextEn, userFullName, username, userRole, userDomain, agentTime, tzOffset, osType, isVdi, osVersion, is64, agentIp, deviceName, deviceDomain, agentVersion, contentVersion, protectionStatus, userFullName, username, userRole, userDomain, messageName, messageId, processStatus, errorText, errorData, resultData, parameters, additionalData(Array)
+
 
 ---
 

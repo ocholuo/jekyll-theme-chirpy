@@ -60,7 +60,7 @@ Project/LAB |  Mark |
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Palo Alto Networks Product Training** | 🐰
+**Palo Alto Networks Product Training** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 [Prisma Cloud: Onboarding and Operationalizing](https://beacon.paloaltonetworks.com/student/path/642701) 10/28/20 | ✏️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
@@ -86,7 +86,7 @@ Project/LAB |  Mark |
 [COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
 [IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  [runestone](https://runestone.academy/runestone/default/user/register) | ✏️
+💾  **Runestone** | ✏️
 [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/book/published/pythonds/index.html) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **DukeU. Java Programming and Software Engineering Fundamentals Specialization** | [code](https://github.com/ocholuo/language/tree/master/0.project/javademo/)
