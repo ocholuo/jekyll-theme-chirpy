@@ -1,10 +1,21 @@
-
+---
+title: Palo Alto Networks - AutoFocus: Prioritize, Research, and Mitigate Threats
+# author: Grace JyL
+date: 2020-10-18 11:11:11 -0400
+description:
+excerpt_separator:
+categories: [SOC, PaloAlto]
+tags: [SOC]
+math: true
+# pin: true
+toc: true
+image: /assets/img/note/prisma.png
+---
 
 [toc]
 
+--- 
 
-
----
 
 # AutoFocus: Prioritize, Research, and Mitigate Threats
 

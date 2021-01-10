@@ -1,10 +1,23 @@
+---
+title: Palo Alto Networks - Cortex SOAR Security Orchestration
+# author: Grace JyL
+date: 2020-10-18 11:11:11 -0400
+description:
+excerpt_separator:
+categories: [SOC, PaloAlto]
+tags: [SOC]
+math: true
+# pin: true
+toc: true
+image: /assets/img/note/prisma.png
+---
 
 [toc]
 
+--- 
 
----
 
-# Cortex XSOAR Security Orchestration
+# Cortex SOAR Security Orchestration
 
 an environment with applications targeted at current security operations team needs
 

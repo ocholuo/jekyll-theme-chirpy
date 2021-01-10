@@ -1423,8 +1423,8 @@ on an endpoint that is now determined to be malware. Post-detection events provi
 To install the Cortex XDR agent on the endpoint for the first time,
 1. create an agent installation package.
 2. download an installation package
-3. install it directly on an endpoint or use a software deployment tool of choice to distribute the software to multiple endpoints. 
-   - To install the Cortex XDR agent, must use a valid installation package that exists in Cortex XDR management console. 
+3. install it directly on an endpoint or use a software deployment tool of choice to distribute the software to multiple endpoints.
+   - To install the Cortex XDR agent, must use a valid installation package that exists in Cortex XDR management console.
    - If delete an installation package, any agents installed from this package are not able to register to Cortex XDR.
 4. After install, upgrade individual or batches of agents remotely from the Cortex XDR management console.
 
@@ -1438,7 +1438,7 @@ To create a new installation package:
   - <kbd>Standalone Installers</kbd> — Use for fresh installations and to Upgrade Cortex XDR Agents on a registered endpoint that is connected to Cortex XDR.
   - (Windows, macOS, and Linux only) <kbd>Upgrade from ESM</kbd> — Use this package to upgrade `Traps agents` which connect to the on-premise `Traps Endpoint Security Manager` to Cortex XDR.
 
-- STEP 5 | Select the **Platform** (Windows, macOS, and Linux only) 
+- STEP 5 | Select the **Platform** (Windows, macOS, and Linux only)
 - STEP 6 | Select the Agent Version for the package.
 - STEP 7 | Create the installation package.
 - STEP 8 | Download installation package.
@@ -1451,7 +1451,7 @@ To create a new installation package:
 
 > When upgrade a Cortex XDR agent version without package manager, Cortex XDR will upgrade the installation process to package manager by default, according to the endpoint Linux distribution.
 
-- STEP 9 | `Agent Installations page`: manage agent installation packages. 
+- STEP 9 | `Agent Installations page`: manage agent installation packages.
   - To manage a specific package, right click the agent version, and select the desired action:
   - Edit
   - Delete the installation package. Deleting an installation package does not uninstall the Cortex XDR agent software from any endpoints. However, if install the Cortex XDR agent from a package after delete it, Cortex XDR denies the registration request leaving the agent in an unprotected state. If this is undesirable, instead hide the installation package from the main view of the Agent Installations page. Hiding a package can be useful to filter earlier or less relevant versions from the main view.
@@ -1529,12 +1529,12 @@ Deleting an endpoint triggers the following lifespan flow:
 > To reinstate an endpoint, have to uninstall and reinstall the endpoint.
 
 
-After an endpoint is deleted, data associated with the deleted endpoint is displayed in the Action Center tables and in the Causality View with am `Endpoint Name - N/A (Endpoint Deleted)`. 
+After an endpoint is deleted, data associated with the deleted endpoint is displayed in the Action Center tables and in the Causality View with am `Endpoint Name - N/A (Endpoint Deleted)`.
 
 Alerts that already include the endpoint data at the time of the alert creation are not affected.
 
-to delete the Cortex XDR agent 
-- STEP 1 | `Endpoints > Endpoint Management > Endpoint Administration`. 
+to delete the Cortex XDR agent
+- STEP 1 | `Endpoints > Endpoint Management > Endpoint Administration`.
 - STEP 2 | `Right-click > Endpoint Control > Delete Endpoint`.
 
 
@@ -1563,7 +1563,7 @@ To uninstall the Cortex XDR app
 
 When you install the Cortex XDR agent with Msiexec, you must install the Cortex XDR agent per-machine and not per-user.
 
-Although Msiexec supports additional options, the Cortex XDR agent installers support only the options listed here. 
+Although Msiexec supports additional options, the Cortex XDR agent installers support only the options listed here.
 
 For example, with Msiexec, the option to install the software in a non-standard directory is not supported—you must use the default path.
 
@@ -1572,8 +1572,8 @@ command | note
 `/i<installpath>\<installerfilename>.msi` | Install a package. <br> example: `msiexec /i c:\install\cortexxdr.msi`
 `/qn` | Displays no user interface (quiet installation).
 `/L*v <logpath>\<logfilename>.txt` | Log verbose output to a file. <br> example: `/l*v c:\logs\install.txt`
-`VDI_ENABLED=1` | to install the agent on the golden image for a **non-persistent VDI**. <br> This option identifies the session as a VDI in Cortex XDR and applies license and endpoint management policy specific for non-persistent VDI. 
-`TS_ENABLED=1` | to install the agent on the golden image for a **temporary session**. <br> This option identifies the session as a temporary session in XDR and to apply license and endpoint management policy specific for temporary sessions. 
+`VDI_ENABLED=1` | to install the agent on the golden image for a **non-persistent VDI**. <br> This option identifies the session as a VDI in Cortex XDR and applies license and endpoint management policy specific for non-persistent VDI.
+`TS_ENABLED=1` | to install the agent on the golden image for a **temporary session**. <br> This option identifies the session as a temporary session in XDR and to apply license and endpoint management policy specific for temporary sessions.
 `proxy_list` | to install agents that communicate with Cortex XDR through an **application-specific proxy for Cortex XDR**. <br> This option is relevant in environments where XDR agents communicate with XDR through a proxy, enabling Cortex XDR admins to control and manage the agent proxy configuration settings without affecting the communication of other applications on the endpoint.
 `RESTRICT_RESPONSE_ACTIONS=1` | permanently disable the option for Cortex XDR to perform all, or a combination, of the following actions on endpoints running a Cortex XDR agent: initiate a Live Terminal remote session on the endpoint, execute Python scripts on the endpoint, and retrieve files from the endpoint to Cortex XDR. <br> Disabling any of these actions is an irreversible action, so to enable the action again, must uninstall the Cortex XDR agent and install a new package without this flag. <br> To disable a specific action, use the corresponding flag: <br> `RESTRICT_LIVE_TERMINAL=1`: disable Live Terminal. <br> `RESTRICT_SCRIPT_EXECUTION=1`: disable script execution. <br> `RESTRICT_FILE_RETRIEVAL=1`: disable files retrieval.
 
@@ -1583,7 +1583,7 @@ To install Cortex XDR using Msiexec:
 2. open a command prompt as an administrator.
    - `Start > All Programs > Accessories > Command prompt > Run as administrator`
    - `Start > cmd. open the command prompt as an administrator, press CTRL+SHIFT+ENTER`.
-3. Run the msiexec command followed by one or more supported options and properties. 
+3. Run the msiexec command followed by one or more supported options and properties.
    - `msiexec /i c:\install\cortexxdr.msi /l*v C:\temp\cortexxdrinstall.log /qn`
 
 After you complete the installation, verify the Cortex XDR agent can establish a connection.
@@ -5643,11 +5643,11 @@ Cortex XDR retains retrieved files for up to 30 days.
 
 Scan an Endpoint for Malware
 
-Cortex XDR agent can scan Windows and Mac endpoints and attached removable drives for dormant malware that is not actively attempting to run. 
+Cortex XDR agent can scan Windows and Mac endpoints and attached removable drives for dormant malware that is not actively attempting to run.
 
-The Cortex XDR agent examines the files on the endpoint according to the `Malware security profile` that is in effect on the endpoint (quarantine settings, unknown file upload, etc.) 
+The Cortex XDR agent examines the files on the endpoint according to the `Malware security profile` that is in effect on the endpoint (quarantine settings, unknown file upload, etc.)
 
-When a malicious file is detected during the scan, the Cortex XDR agent reports the malware to Cortex XDR so that manually take additional action to remove the malware before it is triggered and attempts to harm the endpoint. 
+When a malicious file is detected during the scan, the Cortex XDR agent reports the malware to Cortex XDR so that manually take additional action to remove the malware before it is triggered and attempts to harm the endpoint.
 
 scan the endpoint in the following ways:
 - System scan—Initiate a full scan on demand from Endpoints Administration for an endpoint. To initiate a system scan, see Initiate a Full Scan from Cortex XDR
@@ -7808,12 +7808,14 @@ Linux
 
 
 ## Log Forwarding
-To stay informed and updated, easily forward Cortex XDR alerts and reports to an external syslog receiver, a Slack channel, or to email accounts.
+
+forward Cortex XDR alerts and reports to an external syslog receiver, a Slack channel, or to email accounts.
+
 > Log Forwarding Data Types
-> Integrate Slack for Outbound Notifications
-> Integrate a Syslog Receiver
-> Configure Notification Forwarding
-> Cortex XDR Log Notification Formats
+> - Integrate Slack for Outbound Notifications
+> - Integrate a Syslog Receiver
+> - Configure Notification Forwarding
+> - Cortex XDR Log Notification Formats
 
 ![Screen Shot 2020-10-28 at 11.47.01](https://i.imgur.com/i5Ii8AW.png)
 
