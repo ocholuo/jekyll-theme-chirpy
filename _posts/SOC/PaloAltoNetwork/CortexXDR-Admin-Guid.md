@@ -7870,14 +7870,15 @@ After integrate with Slack workspace, configure forwarding settings.
 To receive Cortex XDR notifications using <kbd>Syslog server</kbd>, define the settings for the <kbd>Syslog receiver</kbd> from which want to send notifications.
 
 - STEP 1 | Before define the Syslog settings, enable access to the following Cortex XDR IP addresses for deployment region in <font color=red> firewall configurations </font>
-  - ![Screen Shot 2020-10-26 at 14.49.51](https://i.imgur.com/E4LLA3v.png)
+  - ![ip](https://i.imgur.com/E4LLA3v.png)
 
 - STEP 2 | Settings > Integrations > External Applications.
 
 - STEP 3 | In Syslog Servers, add a <kbd>+ New Server</kbd>.
-  - ![Screen Shot 2020-10-26 at 14.51.13](https://i.imgur.com/01E8dAP.png)
+  - ![ip](https://i.imgur.com/01E8dAP.png)
 
 - STEP 4 | Define the <font color=red> Syslog server parameters </font>
+  - ![configure](https://i.imgur.com/j3TvQpP.png)
   - Name — Unique name for the server profile.
   - Destination — <font color=blue> IP address or fully qualified domain name (FQDN) </font> of the Syslog server.
   - Port — The port number on which <font color=blue> to send Syslog messages </font>
