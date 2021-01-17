@@ -82,8 +82,8 @@ modify class SecondRatings:
 ```java
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 public class SecondRatings {
 
@@ -145,8 +145,8 @@ Create a new class MovieRunnerAverage.
 
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 public class MovieRunnerAverage {
 
@@ -251,8 +251,8 @@ In the MovieRunnerAverage class in the printAverageRatings method
 
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 public class MovieRunnerAverage {
 

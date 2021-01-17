@@ -179,7 +179,7 @@ Create a new public interface named `Rater`.
 // Add methods to this new interface by copying all the method signatures from the PlainRater class.
 // Copy just the methods—do not include the constructors or the private instance variables.
 
-import org.apache.commons.csv.*;
+import lib.org.apache.commons.csv.*;
 import java.util.*;
 
 public interface Rater {
@@ -321,8 +321,8 @@ Now change FirstRatings to use EfficientRater instead of PlainRater.
 ```java
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 public class FirstRatings{
 
@@ -564,8 +564,8 @@ The class MovieDatabase
 // This class has the following parts:
 
 import java.util.*;
-import org.apache.commons.csv.*;
-import edu.duke.FileResource;
+import lib.org.apache.commons.csv.*;
+import lib.edu.duke.FileResource;
 
 public class MovieDatabase {
 
@@ -881,8 +881,8 @@ MovieRunnerWithFilters
 
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 
 public class MovieRunnerWithFilters {

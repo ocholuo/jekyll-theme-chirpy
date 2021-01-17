@@ -107,9 +107,9 @@ create a new class FirstRatings
 - FirstRatings will need the following three import statements:
 
 ```java
-import edu.duke.*;
+import lib.edu.duke.*;
 import java.util.*;
-import org.apache.commons.csv.*;
+import lib.org.apache.commons.csv.*;
 ```
 
 
@@ -122,8 +122,8 @@ import org.apache.commons.csv.*;
  */
 import java.security.Principal;
 import java.util.*;
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import lib.edu.duke.*;
+import lib.org.apache.commons.csv.*;
 
 
 public class FirstRatings{
