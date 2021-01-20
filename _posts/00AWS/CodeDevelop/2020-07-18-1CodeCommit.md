@@ -115,8 +115,88 @@ With CodeCommit, you can:
 ![Screen Shot 2020-12-27 at 03.34.47](https://i.imgur.com/Tb6tPsF.png)
 
 
+---
 
 
+## setup
+
+1. Create a Server from an Amazon Linux 2 AMI
+2. Create IAM user for CodeCommit
+   1. user:`cloud_user`
+   2. User ARN: `arn:aws:iam::183169071737:user/cloud_user`
+   3. Add permissions > Attach existing policies directly.
+      1. `AWSCodeCommitFullAccess` policy
+   4. user credentials:
+      1. create access Key: <font color=red> for aws configure </font>
+         - `AcessKeyID` and `cloud_user_accessKeys.csv`
+      2. create HTTPS Git credentials for AWS CodeCommit: <font color=red> for git clone </font>
+         - Username: `cloud_user-at-183169071737`
+         - credentials: `cloud_user_codecommit_credentials.csv`
+
+
+```bash
+aws configure
+# AWS Access Key ID [None]: AKIASVJN2HJ4ULJBBUEH
+# AWS Secret Access Key [None]: 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
+# Default region name [None]: us-east-1
+# Default output format [None]: json
+
+aws codecommit create-repository --repository-name RepoFromCLI --repository-description "My 1st repository"
+# {
+#     "repositoryMetadata": {
+#         "accountId": "183169071737",
+#         "repositoryId": "bfc04a5a-833f-4d33-b2aa-6b50f91db4ee",
+#         "repositoryName": "RepoFromCLI",
+#         "repositoryDescription": "My 1st repository",
+#         "lastModifiedDate": "2021-01-18T16:53:00.294000-05:00",
+#         "creationDate": "2021-01-18T16:53:00.294000-05:00",
+#         "cloneUrlHttp": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/RepoFromCLI",
+#         "cloneUrlSsh": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/RepoFromCLI",
+#         "Arn": "arn:aws:codecommit:us-east-1:183169071737:RepoFromCLI"
+#     }
+# }
+
+git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/RepoFromCLI
+cd RepoFromCLI/
+cat "hello" > test.text
+git add test.text
+
+git commit -m "added test.txt"
+# [master 16ac6f1] added test.txt
+#  1 file changed, 1 insertion(+)
+#  create mode 100644 test.text
+
+git log
+# commit 16ac6f1cd97caef191132db56095efc126960753 (HEAD -> master)
+# Author: L.desk <54053176+ocholuo@users.noreply.github.com>
+# Date:   Mon Jan 18 16:59:52 2021 -0500
+#     added test.txt
+# commit 7e0c3566758489d4afb3394e95b48ffcbba524d6 (origin/master, origin/HEAD)
+# Author: 1 <1111@aws.com>
+# Date:   Mon Jan 18 21:54:10 2021 +0000
+#     Added Screen Shot 2021-01-18 at 16.28.28.png
+
+git push -u origin master
+# Enumerating objects: 4, done.
+# Counting objects: 100% (4/4), done.
+# Delta compression using up to 8 threads
+# Compressing objects: 100% (2/2), done.
+# Writing objects: 100% (3/3), 327 bytes | 327.00 KiB/s, done.
+# Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+# To https://git-codecommit.us-east-1.amazonaws.com/v1/repos/RepoFromCLI
+#    7e0c356..16ac6f1  master -> master
+# Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+git log
+# commit 16ac6f1cd97caef191132db56095efc126960753 (HEAD -> master, origin/master, origin/HEAD)
+# Author: L.desk <54053176+ocholuo@users.noreply.github.com>
+# Date:   Mon Jan 18 16:59:52 2021 -0500
+#     added test.txt
+# commit 7e0c3566758489d4afb3394e95b48ffcbba524d6
+# Author: 1 <1111@aws.com>
+# Date:   Mon Jan 18 21:54:10 2021 +0000
+#     Added Screen Shot 2021-01-18 at 16.28.28.png
+```
 
 
 

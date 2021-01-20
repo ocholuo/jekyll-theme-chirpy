@@ -244,6 +244,76 @@ For more information, see Pipeline Definition File Syntax.
 
 ## setup
 
+---
+
+### CodePipeline: CodeCommit - ManualAppove - CloudFormation
+
+![Screen Shot 2021-01-18 at 19.41.32](https://i.imgur.com/DDhcJmb.png)
+
+
+1. Create an AWS IAM Role
+   - the service that will use this role: `CloudFormation`
+   - role name: <font color=blue> pipeRoleFullAdminAcess </font>
+   - Click Next: Permissions:
+     - + `AdministratorAccess` permissions policy.
+     - Allows CloudFormation to create and manage AWS stacks and resources on your behalf.
+
+2. Create an AWS CodeCommit Repository and SNS Topic
+   - Create an AWS CodeCommit Repository
+     - Repository name: <font color=blue> pipeTestsRepo </font>
+   - Navigate to Simple Notification Service (SNS).
+     - Enter "manualapprove" as the topic name.
+     - Click Next step > Create topic.
+     - Create subscription: Email as the protocol.
+     - Enter your email address as the endpoint.
+     - Click Create subscription.
+     - Navigate to your inbox and Confirm subscription link.
+
+3. Create an AWS CodePipeline Pipeline
+   - CodePipeline.
+   - Create pipeline.
+     - pipeline name: "ManualApprove4CF"
+       - Ensure `New service role` is selected.
+       - Ensure `Allow AWS CodePipeline to create service role so it can be used with this new pipeline` is checked.
+     - Advanced settings section
+       - ensure the `Default location` and `Default AWS Managed Key options` are selected.
+     - Add <font color=red> source stage </font> page:
+       - Source provider: <font color=blue> AWS CodeCommit </font>
+       - Repository name: <font color=blue> pipeTestsRepo </font>
+       - Branch name: master
+       - Change detection options: Amazon CloudWatch Events (recommended)
+     - Skip build stage
+     - Add <font color=red> deploy stage </font> page:
+       - Deploy provider: <font color=blue> AWS CloudFormation </font>
+       - Region: US East - (N. Virginia)
+       - Action mode: Create or update a stack
+       - Stack name: deploywithmanualapprove
+       - Artifact name: SourceArtifact
+       - File name: S3Retain.yaml
+       - Role name: <font color=blue> pipeRoleFullAdminAcess </font>
+       - Click Next > Create pipeline.
+     - Click the AWS CloudFormation link in the Deploy panel.
+     - Once CloudFormation shows complete, return to the CodePipeline service and verify the manualapprove pipeline status shows Succeeded in the Deploy panel.
+   - Add stage between the Source and Deploy panels.
+     - stage name: <font color=blue> manualapprove </font>
+     - Add action group.
+       - action name: `manualapproval`
+       - action provider: `Manual approval`
+       - Select the `SNS topic ARN` created earlier in the lab.
+     - Click Done > Save > Save.
+   - Click Release change to restart the pipeline.
+   - Navigate to email, open the APPROVAL NEEDED... message.
+   - Navigate back to Code Pipeline.
+   - Click Review in the Manual approve panel.
+   - Enter "Looks good — approved." in the comments, and click Approve.
+
+
+
+---
+
+### CodePipeline: S3 - CodeDeploy - CloudFormation
+
+
 ```
 cloudFormation.json
 
@@ -255,7 +325,6 @@ myapp1.zip
 
 myapp2.zip
 myapp3.zip
-
 
 1. create s3 bucket
 2. upload the cloudFormation file into a S3 bucket
@@ -312,7 +381,6 @@ myapp3.zip
               }
             ]
           }
-
           ```
 
 4. run the cloudformation to create the ec2
@@ -338,15 +406,16 @@ myapp3.zip
     sudo service codedeploy-agent status
     ```
 
-5. <font color=red> setup CodeDeploy and deploy </font>
+5. <font color=red> CodeDeploy </font> : setup and deploy
    - <font color=blue> create application </font>
-     - application name + compute plantform
+     - application name
+     - compute plantform
    - <font color=blue> create deployment group </font>
      - deployment group name
      - service role
      - deployment type
      - environment configuration
-       - EC2 instance: Key&Value, you created EC2
+       - EC2 instance: Key&Value of created EC2
      - deployment setting
      - Load balancer
    - <font color=blue> create deployment <- create the application </font>
@@ -362,11 +431,10 @@ myapp3.zip
      - service role (create a new service role)
      - role name
    - source stage
-     - source provider (S3/Github)
-     - bucket name
+     - source provider
+       - (S3/Github): bucket name
      - detection option
-       - Cloudwatch
-       - pipelinr
+       - Cloudwatch: pipeline
    - build stage
      - CodeBuild or Jenkins
    - deploy stage

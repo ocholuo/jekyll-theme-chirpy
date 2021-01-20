@@ -195,7 +195,27 @@ Application	| A collection of deployment groups and revisions. <br> An EC2/On-Pr
 
 CodeDeploy provides two <font color=red> deployment approaches </font> type options:
 - <font color=red> In-place deployment </font>
+  - hook: de-registering, installation, re-registering
 - <font color=red> Blue/Green deployment </font>
+
+---
+
+### blue/green deployment vs in-place deployment
+A blue/green deployment offers a number of advantages over an in-place deployment:
+
+- install and test an application in the new replacement environment and <font color=blue> deploy it to production simply by rerouting traffic </font>
+
+- the EC2/On-Premises compute platform, <font color=blue> switching back to the most recent version of an application is faster and more reliable </font>
+  - traffic can be routed back to the original instances as long as they have not been terminated.
+  - With an in-place deployment, versions must be rolled back by redeploying the previous version of the application.
+
+- EC2/On-Premises compute platform, new instances are provisioned for a blue/green deployment and reflect the most up-to-date server configurations. This helps you avoid the types of problems that sometimes occur on long-running instances.
+
+- AWS Lambda compute platform, you control how traffic is shifted from your original AWS Lambda function version to your new AWS Lambda function version.
+
+- Amazon ECS compute platform, you control how traffic is shifted from your original task set to your new task set.
+
+
 
 ---
 
@@ -243,6 +263,12 @@ Here's how it works:
    - polls CodeDeploy to determine what and when to pull from the specified Amazon S3 bucket or GitHub repository.
    - pulls the target revision from the Amazon S3 bucket or GitHub repository
    - using the instructions in the AppSpec file, deploys the contents to the instance.
+
+![Screen Shot 2021-01-18 at 16.07.37](https://i.imgur.com/04Fr8pe.png)
+
+![Screen Shot 2021-01-18 at 16.08.10](https://i.imgur.com/KporMZq.png)
+
+![Screen Shot 2021-01-18 at 16.08.23](https://i.imgur.com/W3jDElq.png)
 
 
 ---
@@ -316,23 +342,6 @@ overall
 - All AWS Lambda and Amazon ECS deployments are blue/green. For this reason, do not need to specify a deployment type.
 - An EC2/On-Premises deployment can be in-place or blue/green.
   - blue/green deployments work with Amazon EC2 instances only.
-
----
-
-#### blue/green deployment vs in-place deployment
-A blue/green deployment offers a number of advantages over an in-place deployment:
-
-- install and test an application in the new replacement environment and <font color=blue> deploy it to production simply by rerouting traffic </font>
-
-- the EC2/On-Premises compute platform, <font color=blue> switching back to the most recent version of an application is faster and more reliable </font>
-  - traffic can be routed back to the original instances as long as they have not been terminated.
-  - With an in-place deployment, versions must be rolled back by redeploying the previous version of the application.
-
-- EC2/On-Premises compute platform, new instances are provisioned for a blue/green deployment and reflect the most up-to-date server configurations. This helps you avoid the types of problems that sometimes occur on long-running instances.
-
-- AWS Lambda compute platform, you control how traffic is shifted from your original AWS Lambda function version to your new AWS Lambda function version.
-
-- Amazon ECS compute platform, you control how traffic is shifted from your original task set to your new task set.
 
 
 ---

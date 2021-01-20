@@ -1,5 +1,5 @@
 ---
-title: AWS - CodeDevelop - CloudFormation - Template setup EC2 with ssh
+title: AWS - CodeDevelop - CloudFormation Template - setup EC2 with ssh
 date: 2020-07-18 11:11:11 -0400
 categories: [00AWS, CodeDevelop]
 tags: [AWS]

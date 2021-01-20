@@ -256,8 +256,8 @@ create a new class <kbd>FirstRatings</kbd>
 ```java
 import java.security.Principal;
 import java.util.*;
-import lib.edu.duke.*;
-import lib.org.apache.commons.csv.*;
+import edu.duke.*;
+import org.apache.commons.csv.*;
 
 public class FirstRatings{
 

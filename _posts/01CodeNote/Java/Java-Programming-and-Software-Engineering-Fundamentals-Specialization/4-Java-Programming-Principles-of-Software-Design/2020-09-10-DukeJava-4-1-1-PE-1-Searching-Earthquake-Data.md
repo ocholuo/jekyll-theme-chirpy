@@ -90,8 +90,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import lib.org.w3c.dom.*;
-import lib.org.xml.sax.SAXException;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 
 public class EarthQuakeParser {
@@ -199,7 +199,7 @@ public class EarthQuakeParser {
 
 ```java
 import java.util.*;
-import lib.edu.duke.*;
+import edu.duke.*;
 
 public class EarthQuakeClient {
 

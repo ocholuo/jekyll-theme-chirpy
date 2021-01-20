@@ -407,8 +407,8 @@ var sanitized = sanitizer.Sanitize(html);
 **[OWASP Java HTML Sanitizer](https://owasp.org/www-project-java-html-sanitizer/)**
 
 ```java
-import lib.org.owasp.html.Sanitizers;
-import lib.org.owasp.html.PolicyFactory;
+import org.owasp.html.Sanitizers;
+import org.owasp.html.PolicyFactory;
 PolicyFactory sanitizer = Sanitizers.FORMATTING.and(Sanitizers.BLOCKS);
 String cleanResults = sanitizer.sanitize("<p>Hello, <b>World!</b>");
 ```

@@ -11,7 +11,7 @@ tags: [Lab, HackTheBox]
 
 
 - ref
-  - [youtube](https://www.youtube.com/channel/UCh35oGf3_djXJbJVZ1KJ40g)
+  - [na5c4r](https://www.youtube.com/channel/UCh35oGf3_djXJbJVZ1KJ40g)
   - [masahiro331/CVE-2020-9484](https://github.com/masahiro331/CVE-2020-9484)
   - [Apache Tomcat RCE by deserialization (CVE-2020-9484) – write-up and exploit](https://www.redtimmy.com/apache-tomcat-rce-by-deserialization-cve-2020-9484-write-up-and-exploit/)
   - [CVE-2020-9484 Tomcat RCE漏洞分析](https://mp.weixin.qq.com/s/OGdHSwqydiDqe-BUkheTGg)
