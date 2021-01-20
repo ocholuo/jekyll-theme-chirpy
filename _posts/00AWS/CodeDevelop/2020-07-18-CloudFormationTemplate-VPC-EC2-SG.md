@@ -19,7 +19,7 @@ AWS CloudFormation Sample Template VPC_Single_Instance_In_Subnet:
 
 **WARNING** This template creates an Amazon EC2 instance.
 
-
+![Screen Shot 2021-01-18 at 19.49.45](https://i.imgur.com/ZulzkQY.png)
 
 ```json
 {
