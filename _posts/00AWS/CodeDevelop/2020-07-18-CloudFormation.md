@@ -367,7 +367,22 @@ AWS CloudFormation StackSets
 
 ---
 
-## CloudFormationTemplate.yml
+
+# setup
+
+1. cloudformation
+2. create stack
+   1. select template
+   2. stack name
+   3. keypaire
+   4. rollback on failure
+3. delete stack
+
+
+---
+
+
+# CloudFormationTemplate.yml
 
 ```yml
 AWSTemplateFormatVersion: 2010-09-09
@@ -454,14 +469,480 @@ Outputs:
 ```
 
 
+
+
 ---
 
-## setup
+# template Section
 
-1. cloudformation
-2. create stack
-   1. select template
-   2. stack name
-   3. keypaire
-   4. rollback on failure
-3. delete stack
+
+---
+
+## Description: text string that describes the template    ￼
+![Screen Shot 2020-06-26 at 10.13.23](https://i.imgur.com/ZcU1VMh.png)
+
+
+---
+
+
+## Metadata: data about the data  
+  ￼
+![Screen Shot 2020-06-26 at 10.44.06](https://i.imgur.com/xGuoh3a.png)
+
+- Some AWS CloudFormation features retrieve settings or configuration information defined from the Metadata section.
+- Define in the AWS CloudFormation-specific metadata keys:
+  - `AWS::CloudFormation::Init`
+    - Defines configuration tasks for the cfn-init helper script.
+    - This script is useful for configuring and installing app on EC2 instances.
+  - `AWS::CloudFormation::Interface`
+    - Defines the grouping and ordering of input parameters when they are displayed in the AWS CloudFormation console.
+    - By default, the AWS CloudFormationconsole alphabetically sorts parameters by their logical ID.
+  - `AWS::CloudFormation::Designer`
+    - Describes how your resources are laid out in AWS CloudFormationDesigner.
+    - Designer automatically adds this information when you use it create and update templates.
+
+---
+
+
+
+
+## Parameter : to pass the value of the template at runtime
+
+```json
+"Parameters" : {
+    "InstanceTypeParameter" : {
+        "Type" : "String",
+        "Default" : "t2.micro",
+        "AllowedValues" : [ "t2.micro", "m1.small", "m1.large"],
+        "Description" : "Enter t2.micro, m1.small, m1.large. Default is t2.micro"
+        // appears in the AWS CloudFormationConsole when the template is launched.
+    }
+},
+"Resources" : {
+    // when an EC2 instance is launched in the Resources section
+    "Instances" : {
+        "Type" : "AWS::EC2::Instance",
+        "Properties" : {
+            // the Properties section of the instance can reference the InstanceTypeParameter specification.
+            // the "Ec2Instance" resource references the InstanceTypeParameter specification for its instancetype.
+            "InstanceType" : { "Ref" : "InstanceTypeParameter" },
+            "ImageId" : "ami-20b65349",
+        }
+    }
+}
+```
+
+- to pass the value of the template at runtime.
+  - to customize things in the stack.
+
+- specify details like
+  - the range of acceptable AMI ImageIdnumbers,
+  - key pairs,
+  - subnets,
+  - or any properties that must be specified for a resource.
+
+- can specify allowed and default values for each parameter.
+
+- declare parameters in a template's Parameters object.
+
+- A parameter contains a list of attributes that define its value, and constraints against its value.
+  - Type:
+    - The only required attribute
+    - can be String, Number, or CommaDelimitedList.
+  - Description attribute:
+    - what kind of value they should specify.
+  - The parameter's name and description appear in the Specify Parameters page when a user uses the template in the Create Stack wizard
+
+
+---
+
+
+
+## Resources: declare the AWS resources be included/created in stack
+
+![Screen Shot 2020-06-26 at 10.44.06](https://i.imgur.com/fQBHEj4.png)
+
+- declare the AWS resources be included / created in the stack
+  - such as an EC2 instance, an S3 bucket.
+- These properties could also be set in the Parameters or Conditions sections
+
+- must declare each resource separately;
+- can specify multiple resources of the same type.
+  - declare multiple resources, separate them with commas
+
+```json
+// a resource declaration defines 2 resources.
+"Resources" : {
+  // 1st resource is an EC2 instance, MyInstance
+  "Instances1" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+          // MyQueue resource as part of its UserData property,
+          "UserData" : { "Fn::Base64" : { "Fn::Join" : [ "", [ "Queue=", { "Ref" : "MyQueue" }]]}},
+          // AvailabilityZone setting: the EC2 instance will be hosted in Northern Virginia us-east-1a.
+          "AvailabilityZOne" : "us-east-1a",
+          "ImageId" : "ami-20b65349"
+      },
+      // DependsOn:
+      // How AWS CloudFormation should wait to launch a resource until a specific, different resource has finished being created.
+      // create the EC@ after the myDB instance has been created
+      "DependsOn" : "myDB"
+  },
+  // 2nd resource is an Amazon Simple Queue Service SQS—queue "MyQueue".
+  "MyQueue" : {
+      "Type" : "AWS::SQS::Queue",
+      "Properties" : {}
+  },
+  "myDB" : {
+      "Type" : "AWS::RDS::DBInstance",
+      "Properties" : {}
+  }
+}
+```
+
+
+### DependsOn
+
+```json
+"Resources" : {
+  "Instances1" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+          "UserData" : { "Fn::Base64" : { "Fn::Join" : [ "", [ "Queue=", { "Ref" : "MyQueue" }]]}},
+          "AvailabilityZOne" : "us-east-1a",
+          "ImageId" : "ami-20b65349"
+      },
+      // DependsOn:
+      // How AWS CloudFormation should wait to launch a resource until a specific, different resource has finished being created.
+      // create the EC@ after the myDB instance has been created
+      "DependsOn" : "myDB"
+  },
+  "myDB" : {
+      "Type" : "AWS::RDS::DBInstance",
+      "Properties" : {}
+  }
+}
+```
+
+The DependsOn attribute should be used when
+- need to wait for something.
+- Some resources in a VPC require a gateway (either internet gateway / VPN gateway)
+  - If AWS CloudFormation template defines a VPC, a gateway, and a gateway attachment,
+  - any resources that require the gateway depend on the gateway attachment.
+
+  - Other VPC-dependent resources
+    - Auto Scaling groups,
+    - Amazon EC2 instances,
+      - an EC2 instance with a public IP address depends on the VPC gateway attachment if the VPC and internet gateway resources are also declared in the same template.
+    - Elastic Load Balancing load balancers,
+    - Elastic IP addresses,
+    - Amazon RDS—database instances,
+    - Amazon Virtual Private Cloud VPC—routes that include the internet gateway
+
+
+
+### wait condition: wait/pause and receive a signal to continue
+
+```json
+"Resources" : {
+  "Instances1" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+          "UserData" : { "Fn::Base64" : { "Fn::Join" : [ "", [ "Queue=", { "Ref" : "MyQueue" }]]}},
+          "AvailabilityZOne" : "us-east-1a",
+          "ImageId" : "ami-20b65349"
+      },
+      // DependsOn:
+      // How AWS CloudFormation should wait to launch a resource until a specific, different resource has finished being created.
+      // create the EC2 after the myDB instance has been created
+      "DependsOn" : "myDB"
+  },
+  "myWaitCondition" : {
+      "Type" : "AWS::CloudFormation::WaitCondition",
+      // create the EC after the myDB instance has been created
+      "DependsOn" : "myDB",
+      "Properties" : {
+          "Handle" : { "R2ef" : "myWaitHandle"},
+          "Timeout" : "4500"
+          // It will wait for that EC2 instance or it will time out after 4,500 seconds.
+      }
+  },
+  "myDB" : {
+      "Type" : "AWS::RDS::DBInstance",
+      "Properties" : {}
+  }
+}
+```
+
+- `AWS::CloudFormation::WaitConditionHandle`
+  - has no properties.
+  - reference the `WaitCondition Handlere source` by using the Ref function,
+    - AWS CloudFormation returns a pre-signed URL.
+    - You pass this URL to applications or scripts that are running on your EC2 instances to send signals to that URL.
+  - An associated `AWS::CloudFormation::WaitCondition` resource checks the URL for the required number of success signals or for a failure signal.
+  - The timeout value is in seconds
+
+
+### creation policy: pause stack creation and wait for specified number of successful signals.
+
+```json
+"Resources" : {
+  "AutoScalingGroup" : {
+      "Type" : "AWS::AutoScaling::AutoScalingGroup",
+      "Properties" : {
+          "AvailabilityZOne" : {"Fn::GetAZs" : ""},
+          "LaunchConfigurationName" : { "Ref" : "LaunchConfig" },
+          "DesiredCapacity" : "3",
+          "MinSize" : "1",
+          "MaxSize" : "4"
+      },
+      "CreationPolicy" : {
+          " ResourceSignal" : {
+              "Count" : "3",
+              // “PT#H#M#S: # is the number of hours, minutes, and seconds.
+              "Timeout" : "PT15M"
+              // wait for 3 AutoCaling instance but time out after 15m
+          }
+      }
+  }
+}
+```
+
+- This creation policy is associated with <font color=red> the creation of an Auto Scaling group </font>
+  - <font color=blue> three successful signals within fifteen minutes are required or it will time out </font>
+    - Set timeouts to give resources enough time to get up and running.
+  - When the timeout period expires, or a failure signal is received,
+  - the creation of the resource fails,
+  - and AWS CloudFormation rolls the stack back.
+
+---
+
+
+## Mappings : keys and their associated values
+
+![Screen Shot 2020-06-26 at 13.18.49](https://i.imgur.com/lTWjdxg.png)
+
+
+- specify conditional parameter values.
+- customize the properties of a resource based on certain conditions
+  - enables fine-grained control over how the templates launched.
+
+
+```json
+"Mappings" : {
+  "RegionAndAMIID" : {
+    "us-east-1" : {
+        "m1.small" : " ami-aa",
+        "te.micro" : " ami-bb",
+    },
+    "us-east-2" : {
+        "m1.small" : " ami-cc",
+        "te.micro" : " ami-dd",
+    }
+  }
+}
+```
+
+
+- For example,
+  - use Regions and specify multiple mapping levels
+    - an AMI ImageId number is unique to a Region, and the person who use the template not necessarily know which AMI to use.
+    - provide the `AMI lookup list` using the Mappings parameter.
+    - contains a map for Regions.
+    - The mapping
+      - lists the AMI that should be used, based on the Region the instance will launch in
+      - specifies an AMI based on the type of instance that is launched within a specific Region.
+      - if an m1.small instance is used, the AMI be used is ami-1ccae774.
+      - This mapping ties specific machine images to instances.
+
+---
+
+## Conditions section : includes statements, control (optional)
+
+![Screen Shot 2020-06-26 at 13.25.07](https://i.imgur.com/wr4a92A.png)
+
+- whether certain resources are created, or certain properties are assigned a value during the creation or update of a stack.
+  - can compare whether a value is equal to another value.
+  - Based on the result of that condition, conditionally create resources.
+  - If multiple conditions, separate them with commas.
+
+- use conditions when
+  - reuse a template that can create resources in different contexts,
+    - such as a test environment vs a production environment.
+    - In template, add an EnvironmentType input parameter, which accepts either “prod” or “test” as inputs.
+      - For the production environment,
+        - include EC2 instances with certain capabilities;
+      - for the test environment,
+        - use reduced capabilities to save money.
+    - define which resources are created, and how they're configured for each environment type.
+
+- Conditions are evaluated based on input parameter values specified when create or update a stack.
+  - if values or tags have been assigned,
+  - the template will do something different based on the assigned value.
+
+- Within each condition, you can reference another condition, a parameter value, or a mapping.
+
+- After define all conditions, associate them with `resources` and `resource properties` in the `Resources` and `Outputs` sections of a template.
+
+
+```json
+"Parameters" : {
+    "InstanceTypeParameter" : {
+        "Type" : "String",
+        "Default" : "t2.micro",
+        "AllowedValues" : [ "t2.micro", "m1.small", "m1.large"],
+        "Description" : "Enter t2.micro, m1.small, m1.large. Default is t2.micro"
+    },
+    // the EnvType parameter specifies whether to create a Dev / QA / Prod environment.
+    "EnvType" : {
+        "Type" : "String",
+        "Default" : "Dev",
+        "AllowedValues" : [ "Dev", "QA", "Prod"],
+        "Description" : "Enter the environment"
+    },
+},
+"Resources" : {
+    "Instances" : {
+        "Type" : "AWS::EC2::Instance",
+        "Properties" : {
+            "InstanceType" : { "Ref" : "InstanceTypeParameter" },
+            "ImageId" : "ami-20b65349",
+        }
+    }
+},
+
+// use “Condition” to evaluate this, and specify appropriate resources for each environment.
+"Conditions" : {
+    "CreateProdResources" : { "Fn::Equals" : [{ "Ref" : "EnvType"}, "Prod" ]}
+}
+```
+
+- Example
+  - the EnvType parameter specifies whether to create a Dev environment, a QA—environment, or a Prod environment.
+  - Depending on the environment, to specify different configurations, such as which database it points to.
+  - use “Condition” to evaluate this, and specify appropriate resources for each environment.
+
+
+![Screen Shot 2020-06-26 at 15.06.07](https://i.imgur.com/YdjU8aF.png)
+
+- Build environment with conditions:  
+  - when the target environment is development DEV.
+    - only one set of resources in one Availability Zone is launched
+  - When this template is used in production PROD
+    - the solution launches two sets of resources in two different AZ.
+  - get a redundant environment from the same template without single change
+
+- production environment and DEV environment
+  - must have the same stack
+  - in order to ensure that application works the way that it was designed.
+
+- DEV environment and QA environment
+  - must have the same stack of applications and the same configuration.
+  - You might have several QA environments for functional testing, user acceptance testing, load testing, and so on.
+  - The process of creating those environments manually can be -prone.
+  - use a Conditions statement in the template to solve this problem.
+
+
+
+---
+
+
+## Output     ￼
+
+
+![Screen Shot 2020-06-26 at 15.17.56](https://i.imgur.com/pI7Bf8n.png)
+
+- Outputs are values that are returned whenever view the properties of the stack.
+
+- For example,
+  - if something executes properly,
+  - it is helpful to provide an indication that the execution completed and was successful.
+
+- Outputs can specify the string output of any logical identifier that is available in the template.
+
+- It's a convenient way to capture important information about your resources or input parameters
+
+
+---
+
+# Resources and Features outside AWS CloudFormation
+
+For Resources and Features Not Directly Supported by AWS CloudFormation
+
+- AWS CloudFormation is extensible with custom resources
+  - so can use part of your own logic to create stacks.
+  - With custom resources, write custom provisioning logic in templates.
+  - CloudFormation runs the custom logic when you create, update, or delete stacks.
+
+- For example
+- to include resources that are not available as AWS CloudFormation resource types.
+  - include those resources by using custom resources,
+  - which means that you can still manage all your related resources in a single stack.
+  - Use the `AWS::CloudFormation::CustomResource` or `Custom::String` resource type to define custom resources in your templates.
+  - Custom resources require one property: <font color=red> the service token </font>
+    - specifies where AWS CloudFormationsends requests to, such as an Amazon SNS topic.
+  - Examples include
+    - provisioning a third-party application subscription and passing the authentication key back to the EC2 instance that needs it.
+    - use an AWS Lambda function to peer a new VPC with another VPC
+
+
+
+example:
+
+
+![Screen Shot 2020-06-26 at 15.24.01](https://i.imgur.com/RSa5TWf.png)
+
+
+```json
+cfnVerifier
+    Type: AWS::CloudFormation::CustomResource
+    Properties:
+        ServiceToken
+          Fn::Join [ "", [ "arn:aws:lambda:", !Ref: "AWS::Region", ":", !Ref: "AWS::AccountId", ":function:cfnVerifierLambda"]]
+```
+
+- user creates an AWS CloudFormation template by using a stack that has a `custom resource operation`.
+  - This custom resource operation was defined by using `AWS::CloudFormation::CustomResource` or `Custom::CustomResource`.
+- The template includes a <font color=red> ServiceToken </font>
+  - from the third-party resource provider
+  - used for authentication.
+- The template also includes any provider-defined parameters required for the custom resource.  
+
+- AWS CloudFormation
+  - communicates with the custom resource provider by using Amazon Simple Notification Service SNS—message that includes
+    - a Create, Update, or Delete request.
+    - any input data that is stored in the stack template
+    - and an Amazon S3 URL for the response.
+- The custom resource provider
+  - processes the message
+  - returns a Success or Fail response to AWS CloudFormation.
+  - can also return 
+    - the names and values of resource attributes if the request succeeded (output data) 
+    - or send a string that provides details when the request fails.
+
+- AWS CloudFormation
+  - sets the stack status according to the response that is received,
+  - provides the values of any custom resource output data.
+
+- can use an AWS Lambda function to act as a custom resource.
+  - To implement this, can replace the ServiceToken for custom resource with the Amazon Resource Name, ARN, of your Lambda custom resource.
+  - do not need to create an Amazon SNS topic for a custom resource when you use AWS Lambda because AWS CloudFormation is Lambda-aware.
+
+- As in the previous scenarios, your code is responsible for doing any required processing.
+
+- It uses the pre-signed URL (sent by AWS CloudFormation) to signal to the service that the creation of the custom resource either succeeded or failed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.

@@ -1,6 +1,5 @@
 ---
-title: Palo Alto Networks - AutoFocus: Prioritize, Research, and Mitigate Threats
-# author: Grace JyL
+title: Palo Alto Networks - AutoFocus - Prioritize, Research, and Mitigate Threats 
 date: 2020-10-18 11:11:11 -0400
 description:
 excerpt_separator:

