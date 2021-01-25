@@ -852,31 +852,35 @@ make content private
 
 ---
 
-## Restricting Access to S3 Content by Origin Access Identity
+## Restricting Access to S3 Content by OAI Origin Access Identity
 
 ![Screen Shot 2021-01-22 at 12.30.06](https://i.imgur.com/oGIQIXW.png)
 
-Origin access identity to restrict access
-- restrict access to S3 content by creating an origin access identity (OAI), a special CloudFront user.
-  - CloudFront OAI gets objects from S3 on behalf of the users.
-  - Direct access to the objects through S3 URLs will be denied.
+> When your Amazon Cloudfront CDN distributions are using AWS S3 as an origin, the distributions content should be kept private and delivered only via Cloudfront network, using an origin access identity to regulate access. 
 
-- To use this feature to restrict access to content from S3 buckets
-  - Create a special CloudFront user called an origin access identity (OAI) and associate it with your distribution.
-  - Configure your S3 bucket permissions
-    - change the permissions either on your S3 bucket or the objects in bucket
-      - so only the origin access identity has read permission.
-    - so CloudFront can use the OAI to access the files in your bucket and serve them to your users.
-    - Make sure that users can’t use a direct URL to the S3 bucket to access a file there.
-  - After these steps, users can only access the files through CloudFront, not directly from the S3 bucket.
 
 
 In general, using an S3 bucket as the origin for a CloudFront distribution
-- either allow everyone to have access to the files there,
-- or you can restrict access.
-  - restrict access by CloudFront signed URLs or signed cookies,
-  - if don’t want people to be able to view files by simply using the direct S3 URL for the file.
-  - lwt them to only access the files by using the CloudFront URL, so hte protections work. For more information about using signed URLs and signed cookies, see Serving private content with signed URLs and signed cookies.
+- either <font color=red> allow everyone </font> to have access to the files there,
+- or restrict the access.
+  - restrict access by <font color=red> CloudFront signed URLs or signed cookies </font>
+  - to restrict access to view files by the direct S3 URL for the file.
+  - let them only access the files by the CloudFront URL, so the protections work.  
+
+
+<font color=red> Origin access identity </font>
+
+- to restrict access
+  - restrict access to S3 content by creating an OAI, a special CloudFront user.
+  - CloudFront OAI gets objects from S3 on behalf of the users.
+  - Direct access to the objects through S3 URLs will be denied.
+- Cloudfront distributions can be much more cost effective 
+  - the price for CloudFront data transfer is lower than the price for S3 data transfer. 
+- downloads are faster 
+  - only the CloudFront service is used to deliver the application objects instead of S3 
+  - because the objects are copied to all edge locations within the distribution in order to be stored closer to your users.
+
+
 
 > Important
 > If you use an S3 bucket configured as a website endpoint
@@ -889,6 +893,58 @@ In general, using an S3 bucket as the origin for a CloudFront distribution
 - create an origin access identity by CloudFront console or the CloudFront API.
   - CloudFront console: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-console
   - CloudFrontAPI: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-api
+
+
+- To use this feature to restrict access to content from S3 buckets
+  - Create a special CloudFront user called an origin access identity (OAI) and associate it with your distribution.
+  - Configure your S3 bucket permissions
+    - change the permissions either on your S3 bucket or the objects in bucket
+      - so only the origin access identity has read permission.
+    - so CloudFront can use the OAI to access the files in your bucket and serve them to your users.
+    - Make sure that users can’t use a direct URL to the S3 bucket to access a file there.
+  - After these steps, users can only access the files through CloudFront, not directly from the S3 bucket.
+
+---
+
+### Audit
+To determine if origin access identity is enabled for your Cloudfront distributions configured with S3 as origin, perform the following:
+
+
+AWS CLI:
+
+```bash
+aws cloudfront list-distributions \
+	--output table \
+	--query 'DistributionList.Items[*].Id'
+# ---------------------
+# | ListDistributions |
+# +-------------------+
+# |   E7GGTQ8UCFC4G   |
+# |   G31A16G5KZMUX   |
+# |   D8E6G5KZMPDT0   |
+# +-------------------+ 
+
+
+# return multiple values using query argument
+aws cloudfront list-distributions \
+  --output text
+  --query "DistributionList.Items[*].Origins.Items[*].{id:Id,name:DomainName}" 
+  
+aws cloudfront list-distributions \
+  --output text
+  --query "DistributionList.Items[*].{id:Id, origin:Origins.Items[0].Id}[?origin=='S3-BUCKET_NAME'].id" 
+ 
+
+# expose the name of the origin access identity set for each S3 origin entry associated with the selected AWS Cloudfront distribution:
+aws cloudfront get-distribution-config \
+	--id DistributionList.Id \
+
+aws cloudfront get-distribution-config \
+	--id E7GGTQ8UCFC4G \
+	--query 'DistributionConfig.Origins.Items[*].S3OriginConfig.OriginAccessIdentity'
+ 
+```
+
 
 
 ---
@@ -1022,6 +1078,67 @@ An AWS account can have up to 100 CloudFront origin access identities (OAIs)
    - Update an existing web distribution
 
 
+```bash
+# Run get-distribution-config command to extract the configuration metadata from the Cloudfront distribution that you want to reconfigure 
+# returns the configuration details of an AWS Cloudfront CDN distribution identified by the ID E7GGTQ8UCFC4G:
+aws cloudfront get-distribution-config \
+	--id E7GGTQ8UCFC4G
+  --profile yourrole
+
+# output
+{
+    "ETag": "E1VEIGDP0YISPR",
+    "DistributionConfig": {
+        "Comment": "",
+        "CacheBehaviors": { "Quantity": 0 },
+        "IsIPV6Enabled": true,
+        "Origins": {
+            "Items": [
+                {
+                    # modify this
+                    # "S3OriginConfig": { "OriginAccessIdentity": "" },
+                    "S3OriginConfig": {
+                        "OriginAccessIdentity": "access-identity-cloudconformity-web-assets.s3.amazonaws.com"
+                    },
+                    "OriginPath": "/static",
+                    "CustomHeaders": { "Quantity": 0 },
+                    "Id": "S3-cloudconformity-web-assets",
+                    "DomainName": "cloudconformity-web-assets..."
+                }
+            ],
+            "Quantity": 1
+        },
+
+       ...
+
+        "CallerReference": "1495036941163",
+        "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true,
+            "MinimumProtocolVersion": "SSLv3",
+            "CertificateSource": "cloudfront"
+        },
+        "CustomErrorResponses": { "Quantity": 0 },
+        "HttpVersion": "http2",
+        "Restrictions": {
+            "GeoRestriction": {
+                "RestrictionType": "none",
+                "Quantity": 0
+            }
+        },
+        "Aliases": { "Quantity": 0 }
+    }
+}
+
+# to enable origin access identity for other Cloudfront CDN distributions
+# Run update-distribution to update your AWS Cloudfront distribution in order to enable origin access identity and restrict user access to the S3 bucket used as distribution origin. 
+# updates an AWS CloudFront CDN web distribution with the ID E7GGTQ8UCFC4G and the ETag E1VEIGDP0YISPR, using the JSON configuration document named cloudfront-distconfig-enable-oai.json, created at the previous step:
+aws cloudfront update-distribution \
+	--id E7GGTQ8UCFC4G \
+	--distribution-config file://cloudfront-distconfig-enable-oai.json \
+	--if-match E1VEIGDP0YISPR
+
+```
+
 ---
 
 
@@ -1140,10 +1257,10 @@ To give the OAI the permissions to access objects in the S3 bucket, use keywords
 
 #### S3 Bucket Policy Examples
 
-S3 bucket policies that grant access to a CloudFront OAI. 
+S3 bucket policies that grant access to a CloudFront OAI.
 
-* OAI’s ID: `EH1HDMB1FH2TC` 
-* S3 bucket: `awsexamplebucket` 
+* OAI’s ID: `EH1HDMB1FH2TC`
+* S3 bucket: `awsexamplebucket`
 
 **Example S3 bucket policy that gives the OAI read access**
 - allows the OAI to read objects in the specified bucket (`s3:GetObject`).
@@ -1164,7 +1281,7 @@ S3 bucket policies that grant access to a CloudFront OAI.
 ```
 
 **Example S3 bucket policy that gives the OAI read and write access**
-- allows the OAI to read and write objects in the specified bucket (`s3:GetObject` and `s3:PutObject`). 
+- allows the OAI to read and write objects in the specified bucket (`s3:GetObject` and `s3:PutObject`).
 - This allows viewers to upload files to your S3 bucket through CloudFront.
 
 ```json
@@ -1193,19 +1310,19 @@ give a CloudFront OAI access to files in an S3 bucket by creating or updating th
 
 
 to grant access to an OAI using an ACL
-- must specify the OAI using its S3 canonical user ID 
+- must specify the OAI using its S3 canonical user ID
 - in CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the OAI, or call [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API.
 
 
 ---
 
 
-### Using an OAI in S3 Regions that Support Only Signature Version 4 Authentication 
+### Using an OAI in S3 Regions that Support Only Signature Version 4 Authentication
 
 Newer S3 Regions require that you use <font color=red> Signature Version 4 </font> for authenticated requests.  
-- when create an origin access identity and add it to a CloudFront distribution, 
-- CloudFront typically uses Signature Version 4 for authentication when it requests files in your S3 bucket. 
- 
+- when create an origin access identity and add it to a CloudFront distribution,
+- CloudFront typically uses Signature Version 4 for authentication when it requests files in your S3 bucket.
+
 * `DELETE`, `GET`, `HEAD`, `OPTIONS`, and `PATCH` requests are supported without qualifications.
 
 * to submit `PUT` requests to CloudFront to upload files to your S3 bucket
@@ -1214,7 +1331,7 @@ Newer S3 Regions require that you use <font color=red> Signature Version 4 </fon
 
 * `POST` requests are not supported.
 
- 
+
 
 
 
