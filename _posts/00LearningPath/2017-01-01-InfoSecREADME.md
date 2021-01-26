@@ -179,7 +179,8 @@ XiongHaizimen | Note
 [youtube](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw) | not yet
 [youtube](https://www.youtube.com/watch?v=fScttW55D_U) | Boston SDE girl
 [youtube](https://www.youtube.com/channel/UCZLJf_R2sWyUtXSKiKlyvAw) | DS Pro, clear and step by step
-
+[CTFblog](https://philkeeble.com/cloud/Flaws.Cloud-Walkthrough/) | Cloud CTF blog Professional Red Teamer / Pentester
+[CTFblog](https://medium.com/@itsc0rg1) | Security Engineer
 
 ---
 
