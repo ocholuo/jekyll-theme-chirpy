@@ -4,7 +4,7 @@ date: 2020-09-14 11:11:11 -0400
 description:
 categories: [1CodeNote, JavaNote]
 tags: [Java]
-img: /assets/img/sample/rabbit.png
+toc: true
 ---
 
 # DukeJava - 4-3-4 Programming Exercise 4 WordGram Class
