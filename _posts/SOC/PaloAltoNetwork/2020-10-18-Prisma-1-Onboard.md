@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - Prisma Onboarding and Initial Setup 
+title: Palo Alto Networks - Prisma Onboarding and Initial Setup
 # author: Grace JyL
 date: 2020-10-18 11:11:11 -0400
 description:
@@ -16,7 +16,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Onboarding and Initial Setup 
+# Onboarding and Initial Setup
 
 ---
 
@@ -86,15 +86,14 @@ Prisma Cloud Compute
 
 ---
 
-## Public Cloud Accounts
-
-### Onboarding Public Cloud Accounts
+## Onboarding Public Cloud Accounts
 
 Prisma Cloud administrators can use the cloud account onboarding with all supported cloud platforms: `AWS, Alibaba Cloud, Azure, and Google Cloud`.
 
 requirements for each cloud provider.
 
-AWS requirements
+### AWS requirements
+
 1. Create a `Prisma Cloud read-only custom role` in AWS to be used to connect to AWS environment.
    1. Read-write permissions are required to monitor and protect account through auto-remediation of policy violations.
    2. to allow/authenticate Prisma Cloud to make the required API calls to cloud account for collecting the metadata for cloud resources.
@@ -131,7 +130,7 @@ AWS requirements
 ![Screen Shot 2020-10-20 at 19.03.24](https://i.imgur.com/E2aa2cB.png)
 
 
-Azure requirements
+### Azure requirements
 
 > Collect Azure subscription information, which includes and Subscription ID and Azure Active Directory ID or Tenant ID.
 > Setup `access control` for the Prisma Cloud service. Register the Prisma Cloud service in Azure by `adding the Prisma Cloud application to the Azure Active Directory`.
@@ -139,7 +138,7 @@ Azure requirements
 > Configure the `Azure Network Security Groups Flow Logs` and `assign a storage account to enable Flow Log ingestion`.
 
 
-GCP requirements
+### GCP requirements
 
 > In GCP account, create a `custom role` such as Prisma cloud viewer.
 > Create a `service account` and generate the required security keys.
@@ -150,7 +149,7 @@ GCP requirements
 > Prisma Cloud also supports onboarding multiple GCP projects or an entire organization in a single operation.
 
 
-Alibaba requirementsAlibaba
+### Alibaba requirementsAlibaba
 
 > Permissions
 > Custom Policy vs. System Policy
@@ -159,12 +158,10 @@ Alibaba requirementsAlibaba
 > Obtain the Alibaba Cloud Resource Name (ARN)
 
 
-Demo: Validating Cloud Permissions
+## Validating Cloud Permissions
 
 ![Screen Shot 2020-10-20 at 19.07.24](https://i.imgur.com/N1yDLjj.png)
 
 ---
 
-### delete Public Cloud Accounts
-
-
+## delete Public Cloud Accounts
