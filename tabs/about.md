@@ -106,9 +106,10 @@ Lab exercises designed by Syracuse university:
 - [Netdevgroup - PAN8 Cybersecurity Gateway](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)
 
 Wargames:
-- [Overthewire - bandit](https://ocholuo.github.io/posts/Overthewire-bandit/) - Based on SSH
-- [Overthewire - natas](https://ocholuo.github.io/posts/Overthewire-natas/) - Based on WebSec
+- [Overthewire - bandit](https://ocholuo.github.io/posts/Overthewire-bandit/) - SSH related
+- [Overthewire - natas](https://ocholuo.github.io/posts/Overthewire-natas/) - WebSec related
 - [Hack The Box](https://ocholuo.github.io/tags/hackthebox/)
+- [Flaws Cloud CTF](https://ocholuo.github.io/tags/Flaws/)
 
 <!-- Leviathan - Based on SetUID.
 Narnia - Based on binary exploitation.

