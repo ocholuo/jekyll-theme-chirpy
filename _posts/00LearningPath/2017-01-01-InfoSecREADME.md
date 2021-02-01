@@ -27,11 +27,21 @@ kali用得好，监狱进得早，与君共勉
 
 ---
 
-# Test
-- Common Vulnerabilities and Exposures (CVE®)
+# AWS Test
+
+
+Script | Use
+---|---
+🐰 **IAM** |
+[enumerate-iam.py](https://github.com/andresriancho/enumerate-iam) | quickly verify the role permissions. <br> `python enumerate-iam.py --access-key <ACCESS-ID> --secret-key <SECRET-KEY>` <img src="https://i.imgur.com/QDioFjG.png" width="800">
+[aws_escalate.py](https://github.com/andresriancho/enumerate-iam) | enumerates all the policies of an IAM identity for permissions that can potentially lead to privilege escalation. <br> `python aws_escalate.py` <img src="https://i.imgur.com/lenRY16.png" width="800">
+
 
 
 ---
+
+# Test
+- Common Vulnerabilities and Exposures (CVE®)
 
 
 GoodWeb | Note
@@ -50,15 +60,7 @@ GoodWeb | Note
 
 
 
-
 ---
-
-
-
-
-
-
-
 
 
 
@@ -181,20 +183,13 @@ XiongHaizimen | Note
 [youtube](https://www.youtube.com/channel/UCZLJf_R2sWyUtXSKiKlyvAw) | DS Pro, clear and step by step
 [CTFblog](https://philkeeble.com/cloud/Flaws.Cloud-Walkthrough/) | Cloud CTF blog Professional Red Teamer / Pentester
 [CTFblog](https://medium.com/@itsc0rg1) | Security Engineer
+[crf](https://rhinosecuritylabs.com/cloud-security/cloudgoat-aws-scenario-ec2_ssrf/) | cloud ctf
 
 ---
 
 vulnerability | Note
 ---|---
 [CVE-2005-2453 - Web Server Generic XSS] | [1](https://nvd.nist.gov/vuln/detail/CVE-2005-2453#VulnChangeHistorySection), [2](https://securitytracker.com/id?1014624)
-
-
-
-
-
-
-
-
 
 
 

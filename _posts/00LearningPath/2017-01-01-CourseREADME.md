@@ -219,10 +219,11 @@ Network Security & Database Vulnerabilities https://www.coursera.org/learn/netwo
 
 ---
 
-## Lab map:
+## Lab Playground:
 
 Name | S | Mark |
 ---|---|---
+[Play with Docker](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml#)
 [PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) |  | ✔️
 [PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) |  | ✏️
 [Overthewire_bandit](https://overthewire.org/wargames/bandit/) | [S](https://github.com/ocholuo/language/tree/master/codegame/Overthewire_bandit(Fin).md) | ✔️
