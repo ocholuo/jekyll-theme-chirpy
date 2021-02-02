@@ -72,7 +72,7 @@ When you are finished with the scenario
 - then run the `destroy` command.
 - take a quick glance at AWS web-console afterwards - in case something didn't get deleted.
 
-You can read the full documentation for CloudGoat's commands [here in the Usage Guide section](#usage-guide).
+You can read the full documentation for CloudGoat's commands [here in the Usage Guide section].
 
 
 ---
