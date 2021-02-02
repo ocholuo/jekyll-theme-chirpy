@@ -41,15 +41,21 @@ sleepy....
 ## Project/LAB:
 
 
-Project/LAB |  Mark |
+💾  Project/LAB |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 [JPMorgan Chase Software Engineering Virtual Experience](https://www.theforage.com/virtual-internships/R5iK7HMxJGBgaSbvk) 10/03/20 | ✔️
-**codecamp** |
+[Cloud-CTF-Cloudgoat](https://github.com/RhinoSecurityLabs/cloudgoat) - Walkthrough Note [📜](https://ocholuo.github.io/posts/CloudGoat/) | ✔️
+[Cloud-CTF-Flaws](http://flaws.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw/) | ✔️
+[Cloud-CTF-Flaws2](http://level1.flaws2.cloud/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/flaw2/) | ✔️
+[PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) - Walkthrough Note [📜](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/) | ✔️
+[PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) - Walkthrough Note [📜](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/) | ✔️
+[Overthewire_bandit](https://overthewire.org/wargames/bandit/) - Walkthrough Note [📜](https://ocholuo.github.io/posts/Overthewire-bandit/) | ✔️
+💾  **codecamp** |
 [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20 | ✏️
-**Portswigger - Web Security Academy** |
+💾  **Portswigger - Web Security Academy** |
 [SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**AWS Certificate** |
+💾  **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
 [AWS-ACFv2EN-Interns](https://awsacademy.instructure.com/courses/69) - AWS Academy Cloud Foundations [Amazon Interns] 5/6/20 | ✔️
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=27076) - AWS Cloud Practitioner Essentials (Second Edition) 5/8/20 | ✔️
@@ -60,7 +66,7 @@ Project/LAB |  Mark |
 [AWSTraining](https://www.aws.training/Details/Curriculum?id=20685) - Exam Readiness: AWS Certified Solutions Architect – Associate (Digital) 7.25 | ✔️
 [LinuxAcademy](https://linuxacademy.com/cp/modules/view/id/341) - AWS Certified Solutions Architect - Associate Level 6/14/20 | ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-**Palo Alto Networks Product Training** | 🐰
+💾  **Palo Alto Networks Product Training** | 🐰
 [Prisma Cloud Monitoring and Securing](https://beacon.paloaltonetworks.com/student/path/642700) 10/22/20 | ✔️
 [Prisma Cloud: Onboarding and Operationalizing](https://beacon.paloaltonetworks.com/student/path/642701) 10/28/20 | ✏️
 [Cortex XDR 2.0: Architecture, Analytics, and Causality Analysis (EDU-160)](https://beacon.paloaltonetworks.com/student/path/642702) 10/24/20 | ✔️
@@ -96,7 +102,7 @@ Project/LAB |  Mark |
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
 [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17/20 | ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
-[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✏️
+[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✔️
 `- give the movie recommendations by calculate the movie rating` <br> `- user interface to add multiple Filter function for the movie rating` |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **UMich. Python 3 Programming** 4/3/20  |
@@ -223,10 +229,6 @@ Network Security & Database Vulnerabilities https://www.coursera.org/learn/netwo
 
 Name | S | Mark |
 ---|---|---
-[Play with Docker](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml#)
-[PAN8 Cybersecurity Essentials](https://portal.netdevgroup.com/learn/pan8-ce-pilot/wb79h483WM) |  | ✔️
-[PAN8 Cybersecurity Gateway](https://portal.netdevgroup.com/learn/pan8-cg-pilot/aiuWjM6CWr/) |  | ✏️
-[Overthewire_bandit](https://overthewire.org/wargames/bandit/) | [S](https://github.com/ocholuo/language/tree/master/codegame/Overthewire_bandit(Fin).md) | ✔️
 [TRAFFIC ANALYSIS EXERCISE](http://malware-traffic-analysis.net/training-exercises.html) | [S](https://github.com/ocholuo/language/tree/master/codegame/TrafficAnalysisExe.md) | ✏️
 [premiumexam](https://premiumexam.com/) <br> <img src="https://i.imgur.com/6JAb2Cm.png" width="400"> |
 [NDG Online Courses & Labs](https://www.netdevgroup.com/online/courses/cybersecurity#courses) <br> <img src="https://i.imgur.com/0sDYnaC.png" width="400"> |
@@ -248,6 +250,18 @@ platform | goal
 
 
 https://www.eventbrite.com/u/487798027239/
+
+
+---
+
+
+## Tools:
+
+Name | S | Mark |
+---|---|---
+[Play with Docker](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml#)
+
+---
 
 
 ## pending
