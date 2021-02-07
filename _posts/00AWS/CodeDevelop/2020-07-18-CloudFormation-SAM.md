@@ -13,6 +13,8 @@ image:
 
 # AWS Serverless Application Model (AWS SAM)
 
+![Screen Shot 2021-01-04 at 22.17.51](https://i.imgur.com/idVQYiw.png)
+
 - an open-source framework
 - to build serverless applications on AWS.
 
@@ -104,7 +106,7 @@ This application implements a basic API backend. It consists of an Amazon API Ga
 
 # Installing Homebrew.  
 # Installing the AWS SAM command line interface (CLI).
-# Check the version 
+# Check the version
 sam --version command.
 
 # If you select the Image package type, having an Amazon Elastic Container Registry (Amazon ECR) repository URI to perform a deployment.
@@ -131,7 +133,7 @@ sam init
 # ------------------ Step 2 - Build your application
 cd sam-app
 sam build
-# sam build command builds any dependencies that your application has, 
+# sam build command builds any dependencies that your application has,
 # and copies your application source code to folders under .aws-sam/build to be zipped and uploaded to Lambda.
 # You can see the following top-level tree under .aws-sam:
  .aws_sam/
@@ -142,8 +144,8 @@ sam build
 
 # ------------------ Step 3 - Deploy your application
 sam deploy --guided
-# This command deploys your application to the AWS Cloud. 
-# It takes the deployment artifacts that you build with the sam build command, packages and uploads them to an Amazon Simple Storage Service (Amazon S3) bucket that the AWS SAM CLI creates, and deploys the application using AWS CloudFormation. 
+# This command deploys your application to the AWS Cloud.
+# It takes the deployment artifacts that you build with the sam build command, packages and uploads them to an Amazon Simple Storage Service (Amazon S3) bucket that the AWS SAM CLI creates, and deploys the application using AWS CloudFormation.
 # In the output of the sam deploy command, you can see the changes being made to your AWS CloudFormation stack.
 
 
@@ -163,7 +165,7 @@ curl http://127.0.0.1:3000/hello
 sam local invoke "HelloWorldFunction" -e events/event.json
 
 
-        
+
 ```
 
 
@@ -188,8 +190,8 @@ sam init \
 
 
 # Step 2: Package the application
-# create a Lambda deployment package, which you use to deploy the application to the AWS Cloud. 
-# This deployment creates the necessary AWS resources and permissions that are required to test the application locally. 
+# create a Lambda deployment package, which you use to deploy the application to the AWS Cloud.
+# This deployment creates the necessary AWS resources and permissions that are required to test the application locally.
 
 # Create an S3 bucket where to save the packaged code.
 aws s3 mb s3://bucketname
@@ -211,8 +213,8 @@ sam deploy \
     --stack-name aws-sam-ocr \
     --capabilities CAPABILITY_IAM \   # allows AWS CloudFormation to create an IAM role.
     --region us-east-1
-    
-    
+
+
 
 # Step 4: test the serverless application in the AWS Cloud
 # Upload an image to the Amazon S3 bucket that you created for this sample application.
@@ -224,7 +226,7 @@ sam deploy \
 # Step 4: Test the application locally
 # retrieve the names of the AWS resources that were created by AWS CloudFormation.
 
-# Retrieve the Amazon S3 key name and bucket name from AWS CloudFormation. 
+# Retrieve the Amazon S3 key name and bucket name from AWS CloudFormation.
 # Modify the SampleEvent.json file by replacing the values for the object key, bucket name, and bucket ARN.
 
 # Retrieve the DynamoDB table name. This name is used for the following sam local invoke command.
@@ -232,7 +234,7 @@ sam deploy \
 # generate a sample Amazon S3 event and invoke the Lambda function:
 TABLE_NAME="Table name obtained from AWS CloudFormation console" sam local invoke --event SampleEvent.json
 
-# The TABLE_NAME= portion sets the DynamoDB table name. 
+# The TABLE_NAME= portion sets the DynamoDB table name.
 # The --event parameter specifies the file that contains the test event message to pass to the Lambda function.
 #  now verify that the expected DynamoDB records were created, based on the results returned by Amazon Rekognition.
 ```

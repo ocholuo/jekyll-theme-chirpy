@@ -81,6 +81,9 @@ sleepy....
 
 [Coursera Specialization] |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **Architecting with Google Kubernetes Engine Specialization** | 
+[Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?) | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **IBM Cybersecurity Analyst Professional Certificate** |
 [COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
 [COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
@@ -102,7 +105,7 @@ sleepy....
 `- Cryptography: Keeping Information Secret` <br> `- GladLibs: Stories from Templates` <br> `- Web Server Logs: From Logs to Visits` <br> `- MiniProject: Vigenère Cipher` |
 [COURSE 4 Java Programming: Principles of Software Design](https://www.coursera.org/learn/java-programming-design-principles?specialization=java-programming) 9/17/20 | ✔️
 `- Earthquakes: Programming and Interfaces` <br> `- Earthquakes: Sorting Algorithms` <br> `- N-Grams: Predictive Text`|
-[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) | ✔️
+[COURSE 5 Java Programming: Build a Recommendation System](https://www.coursera.org/learn/java-programming-recommender) 100% 1/6/21 | ✔️
 `- give the movie recommendations by calculate the movie rating` <br> `- user interface to add multiple Filter function for the movie rating` |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **UMich. Python 3 Programming** 4/3/20  |
