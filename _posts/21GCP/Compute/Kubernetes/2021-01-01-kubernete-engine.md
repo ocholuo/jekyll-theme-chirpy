@@ -224,6 +224,7 @@ docker run -d py-server
 
 
 to build Kubernetes cluster
+
 1. build on the own hardware, or environment that provides virtual machines
    - if you've built it theself, you have to maintain it.
    - That's even more toil.
@@ -231,11 +232,13 @@ to build Kubernetes cluster
 2. <font color=red> Kubernetes Engine </font>
    - Kubernetes as a managed service in the cloud.
    - create a Kubernetes cluster with Kubernetes Engine
-     - by `GCP console` or the `g-cloud command` by the Cloud SDK.
+     - by `GCP console` 
+     - or the `g-cloud command` by the Cloud SDK.
    - GKE clusters can be customized
      - support different machine types, numbers of nodes and network settings.
    - the resources used to build Kubernetes Engine clusters come from Compute Engine
      - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities.
+     - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
    - The Kubernetes Engine team periodically performs automatic upgrades of your cluster master to newer stable versions of Kubernetes, and you can enable automatic node upgrades too.
 
 
