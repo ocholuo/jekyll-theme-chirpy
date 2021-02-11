@@ -18,7 +18,7 @@ image:
 ---
 
 
-## Introduction to Containers
+## GCP Compute Engine 
 
 ![Screen Shot 2021-02-07 at 00.06.44](https://i.imgur.com/DIreiTC.png)
 
@@ -35,52 +35,10 @@ Kubernetes Engine.
 - like a platform as a service offering,
   - it was built with the needs of developers in mind.
 
-
+ 
 ---
 
-### infrastructure as a service
-
-<img src="https://i.imgur.com/FLT3IBp.png" width="300">
-
-
-- share compute resources with others by virtualizing the hardware.
-- Each Virtual Machine has its own instance of an operating system
-- and you build and run applications on it with access to <font color=blue> memory, file systems, networking interfaces, and the other attributes </font> that physical computers also have.
-
-- <font color=red> But flexibility comes with a cost </font>
-  - the smallest unit of compute is a <font color=red> Virtual Machine together with its application </font>
-  - The guest operating system maybe large, even gigabytes
-  - It can take minutes to boot up.
-  - Virtual Machine
-    - highly configurable
-    - can install and run the tools of choice.
-    - can configure the underlying system resources
-      - such as disks and networking,
-    - can install the own web server database or a middle ware.
-
-  - But the application demand increases,
-    - have to scale out in units of an entire Virtual Machine with a guest operating system for each.
-    - the resource consumption grows faster
-
-
----
-
-### Platform as a Service
-
-
-<img src="https://i.imgur.com/Gldwl2x.png" width="400">
-
-- like App Engine
-  - Instead of getting a blank Virtual Machine, get access to a family of services that applications need.
-  - write the code and self-contained workloads that use these services and include any dependent libraries.
-- As demand for the application increases
-  - the platform scales the applications seamlessly and independently by workload and infrastructure.
-  - scales rapidly
-  - but you give up control of the underlying server architecture.
-
----
-
-### Containers
+## Containers
 
 <img src="https://i.imgur.com/pb2kD6d.png" width="400">
 
@@ -110,8 +68,9 @@ Kubernetes Engine.
   - Scale them,
   - roll out new versions of them, and even roll back to the old version if things go wrong.
 
+---
 
-#### build and run containers
+### build and run containers
 
 > Google Cloud offers Cloud Build
 > a managed service for building Containers.

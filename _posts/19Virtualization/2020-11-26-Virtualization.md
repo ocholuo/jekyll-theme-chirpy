@@ -35,6 +35,10 @@ image:
 
 > Virtualization helped by making it possible to run multiple virtual servers and operating systems on the same physical computer.
 
+
+![Screen Shot 2021-02-11 at 17.47.31](https://i.imgur.com/26faY8t.png)
+
+
 virtualization
 - takes less time to deploy new solutions
 - waste less of the resources on those physical computers
@@ -55,6 +59,8 @@ solve this problem with:
 2. add integration tests to ensure that applications work.
    - Integration tests are great, but dependency problems can cause new failure modes that are harder to troubleshoot, and it really slows down development if you have to rely on integration tests to simply just perform basic integrity checks of your application environment.
 
+![Screen Shot 2021-02-11 at 17.49.44](https://i.imgur.com/KVMQ1Yk.png)
+
 3. Now, the VM-centric way to solve this problem is to run a dedicated virtual machine for each application.
    - Each application maintains its own dependencies, and the kernel is isolated.
    - So one application won't affect the performance of another.
@@ -63,6 +69,7 @@ solve this problem with:
      - Scale this approach to hundreds of thousands of applications, and you can quickly see the limitation.
      - trying to do a simple kernel update. So for large systems, dedicated VMs are redundant and wasteful.
      - VMs are also relatively slow to start up because the entire operating system has to boot.
+
 
 > containers
 >
@@ -74,11 +81,11 @@ solve this problem with:
 >
 > the user space is all the code that resides above the kernel, and includes the applications and their dependencies.
 
+![Screen Shot 2021-02-11 at 17.49.28](https://i.imgur.com/Edp2Re5.png)
 
 ---
 
 ## Virtualization component
-
 
 
 - **Hypervisor**:
