@@ -15,15 +15,80 @@ image:
 
 ---
 
+## traditional way
 
-## Implementing Virtualization
 
-- allows you to host one or more virtual systems, or VMs on a single physical system.
-- can host an entire virtual network within a single physical system and organizations are increasingly using virtualization to reduce costs.
+![Screen Shot 2021-02-11 at 17.21.07](https://i.imgur.com/iUnkAWY.png)
+
+- the default way to deploy an application was on its own physical computer.
+  - find some physical space, power, cooling, network connectivity for it
+  - and then install an operating system, any software dependencies, and then finally the application itself
+- If need more processing power, redundancy, security, or scalability
+  - simply add more computers.
+  - It was very common for each computer to have a single-purpose.
+    - Example: a database, web server, or content delivery.
+- Applications were built for a specific operating system even for specific hardware
+
+---
+
+## Virtualization
+
+> Virtualization helped by making it possible to run multiple virtual servers and operating systems on the same physical computer.
+
+virtualization
+- takes less time to deploy new solutions
+- waste less of the resources on those physical computers
+- get some improved portability because virtual machines can be imaged and then moved around.
+
+However
+1. the application, all of its dependencies and operating system are still bundled together and it's not very easy to move from a VM from one hypervisor product to another.
+2. Every time you start up a VM, it's operating system still takes time to boot up.
+3. Running multiple applications within a single VM creates tricky problem,
+   1. applications that share dependencies are not isolated from each other
+   2. the resource requirements from one application, can starve out other applications of the resources that they need.
+   3. a dependency upgrade for one application might cause another to simply stop working.
+
+solve this problem with:
+1. rigorous software engineering policies.  
+   - lock down the dependencies that no application is allowed to make changes,
+   - but this leads to new problems because dependencies do need to be upgraded occasionally.
+2. add integration tests to ensure that applications work.
+   - Integration tests are great, but dependency problems can cause new failure modes that are harder to troubleshoot, and it really slows down development if you have to rely on integration tests to simply just perform basic integrity checks of your application environment.
+
+3. Now, the VM-centric way to solve this problem is to run a dedicated virtual machine for each application.
+   - Each application maintains its own dependencies, and the kernel is isolated.
+   - So one application won't affect the performance of another.
+   - One you can get as you can see here, is two complete copies of the kernel that are running.
+   - issues
+     - Scale this approach to hundreds of thousands of applications, and you can quickly see the limitation.
+     - trying to do a simple kernel update. So for large systems, dedicated VMs are redundant and wasteful.
+     - VMs are also relatively slow to start up because the entire operating system has to boot.
+
+> containers
+>
+> A more efficient way to resolve the dependency problem
+>
+> Implement abstraction at the level of the application and its dependencies.
+>
+> Don't have to virtualize the entire machine or even the entire operating system, but just the user space.
+>
+> the user space is all the code that resides above the kernel, and includes the applications and their dependencies.
+
+
+---
+
+## Virtualization component
+
+
 
 - **Hypervisor**:
   - The software that creates, runs, and manages the VMs.
-  - Several virtualization technologies: VMware, Microsoft Hyper-V products, and Oracle VM VirtualBox.
+  - the software layer that breaks the dependencies of an operating system with its underlying hardware, and allow several virtual machines to share that same hardware
+  - Several virtualization technologies:
+    - VMware,
+    - Microsoft Hyper-V products,
+    - and Oracle VM VirtualBox.
+    - KVM
   - These applications have their own hypervisor software.
 
 - **Host**:
@@ -57,6 +122,7 @@ In contrast, imagine the organization has nine servers with each using about 80 
 - The savings from less electricity and less heating and ventilation is offset by the cost of the new servers.
 
 
+
 ---
 
 ## Comparing Hypervisors
@@ -74,7 +140,7 @@ Hypervisor virtualization is divided into primarily two different types:
   - Example
   - Microsoft `Hyper-V hypervisor` runs within a Microsoft operating system.
   - each guest has a full operating system, including its own kernel.
-  - kernel is just the central part or most important part of something. 
+  - kernel is just the central part or most important part of something.
   - When referring to a computer, the kernel is the central part of the operating system.
 
 ![Image21](https://i.imgur.com/aRoAODK.png)
@@ -91,7 +157,7 @@ Hypervisor virtualization is divided into primarily two different types:
 - Full virtualization
 - Paravirtualization
 
-### full virtualization scenario 
+### full virtualization scenario
 - `HVM, hardware virtual machine`
 - the hypervisor `creates emulated virtual devices`. 
   - Including a virtual motherboard, virtual processor, virtual RAM, and virtual versions of all of the hardware, a system needs to operate. 
@@ -104,7 +170,7 @@ Hypervisor virtualization is divided into primarily two different types:
 - Emulation software can provide almost any kind of device to a virtual machine. 
   - Even memory and a processor. 
   - Though, emulating the activity of processors, can be pretty slow. 
-  - To speed up virtual machine, 
+  - To speed up virtual machine,
   - the processor manufacturers, add a set of instructors to their chips, that allow a hypervisor to pass processor instructions directly from a VM to a real processor. 
   - Rather than emulating the processor, while keeping those instructors and their results, separate from other instructors from the host machine and from other guest operating systems. 
 - can install any operating system, `OS doesn't need to be modified` to run correctly. 
@@ -143,7 +209,7 @@ On Linux systems:
   - The Linux kernel has support both hypervisors, and both are widely used in industry. 
   - hypervisors such as `Xen`, `Proxmox` and `ESX`, 
     - run as the bare metal, or the native operating system on a host. 
-  - `KVM` 
+  - `KVM`
     - runs inside of a Linux installation, as a module within the kernel, 
     - leaving an operating system that can be used for other things.
   - In addition to acting as a hypervisor for guest operating systems. 
@@ -206,9 +272,10 @@ when we create virtual machines, few options:
 
 ![image1](https://i.imgur.com/DQxrAq8.png)
 
+---
+
+
 ## QEMU and KVM
-
-
 
 - QEMU can run independently, but due to the emulation being performed entirely in software it is extremely slow.
 - To overcome this, QEMU allows to use KVM as an accelerator so that the `physical CPU virtualization extensions` can be used.

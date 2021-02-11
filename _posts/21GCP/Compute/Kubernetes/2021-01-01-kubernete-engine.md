@@ -180,11 +180,16 @@ docker run -d py-server
 ![Screen Shot 2021-02-07 at 14.29.23](https://i.imgur.com/zoPNLpx.png)
 
 > kubectl
+- a software layer that sits between your applications and your hardware infrastructure. 
 
 - an open-source orchestrator for containers to better manage and scale the applications.
-  - describe a set of applications and how they should interact with each other, and Kubernetes figures out how to make that happen.
+  - describe a set of applications and how they should interact with each other, 
+  - and Kubernetes figures out how to make that happen.
+  - it abstracts away your underlying infrastructure, 
+  - to easier consistently run and manage your applications. 
 - Kubernetes offers an API that let authorized people control its operation through several utilities.
 - Kubernetes deploy containers on a set of nodes called cluster
+
 
 
 ### cluster
@@ -220,17 +225,14 @@ docker run -d py-server
 
 ## GKE (Kubernetes Engine)
 
-![Screen Shot 2021-02-07 at 14.45.26](https://i.imgur.com/o0IN3Ou.png)
-
-
 to build Kubernetes cluster
 
-1. build on the own hardware, or environment that provides virtual machines
-   - if you've built it theself, you have to maintain it.
+1. build on the own hardware/environment that provides virtual machines
+   - built it yourself, you have to maintain it.
    - That's even more toil.
 
-2. <font color=red> Kubernetes Engine </font>
-   - Kubernetes as a managed service in the cloud.
+2. <font color=red> Google Kubernetes Engine GKE </font>
+   - brings Kubernetes as a managed service on Google Cloud Platform.
    - create a Kubernetes cluster with Kubernetes Engine
      - by `GCP console` 
      - or the `g-cloud command` by the Cloud SDK.
@@ -242,9 +244,25 @@ to build Kubernetes cluster
    - The Kubernetes Engine team periodically performs automatic upgrades of your cluster master to newer stable versions of Kubernetes, and you can enable automatic node upgrades too.
 
 
+- implement solutions using Google Kubernetes Engine, 
+  - including, building, scheduling, load balancing, and monitoring workloads, 
+  - providing for discovery of services, 
+  - managing role-based access control and security, 
+  - and providing persistent storage to these applications. 
+ 
+- creating a container using Cloud Build and storing a container in Container Registry.
+- compare and contrast the features of Kubernetes and Google Kubernetes Engine
+ 
+
 ---
 
-### build Kubernetes cluster by Kubernetes Engine
+### build Kubernetes cluster, deploy pods, by Kubernetes Engine
+
+> deploy a Kubernetes cluster using GKE, deploy pods to a GKE cluster and view and managed Kubernetes objects.
+
+
+![Screen Shot 2021-02-07 at 14.45.26](https://i.imgur.com/o0IN3Ou.png)
+
 
 ```bash
 # ------------------- google cloud shell
