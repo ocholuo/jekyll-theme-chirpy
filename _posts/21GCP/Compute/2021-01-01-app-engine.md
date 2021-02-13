@@ -1,5 +1,5 @@
 ---
-title: GCP - App Engine
+title: GCP - Google Cloud Computing - App Engine
 date: 2021-01-01 11:11:11 -0400
 categories: [21GCP]
 tags: [GCP]
@@ -12,7 +12,7 @@ image:
 ---
 
 
-# App Engine
+# Google Cloud Computing - App Engine
 
 
 ---
@@ -25,26 +25,52 @@ compute infrastructure for applications:
 - choose the infrastructure in which the application runs.
 - Based on virtual machines for Compute Engine and containers for Kubernetes Engine.
 
+> when don't want to focus on the infrastructure at all, but focus on the code.
 
-> when don't want to focus on the infrastructure at all, but want to focus on the code.
-
-App Engine `PaaS`
-- The App Engine platform manages the hardware and networking infrastructure required to run the code.
-  - To deploy an application on App Engine
+App Engine
+- <font color=blue> Platform as a Service </font>
+- fully managed serverless application framework.
+  - deploy an application on App Engine
     - hand App Engine the code
     - and the App Engine service takes care of the rest.
-- provides
-  - built-in services that many web applications need.
-    - NoSQL databases, in-memory caching, load balancing, health checks, logging and a way to authenticate users.
-    - code the application to take advantage of these services and App Engine provides them.
-  - scale the application automatically in response to the amount of traffic it receives.
-  - only pay for those resources you use.
+  - focus on code and run code in the Cloud 
+    - without worry about infrastructure.
+    - focus on building applications instead of deploying and managing the environment. 
+    - Google deal with all the provisioning and resource management.
+      - no worry about building the highly reliable and scalable infrastructure 
+      - zero server management or configuration deployments for deploying applications
+      - The App Engine platform manages the hardware and networking infrastructure for the code.
+
+- provides built-in services that many web applications need.
+  - code the application to take advantage of these services and App Engine provides them.
+  - `NoSQL databases, in-memory caching, load balancing, health checks, logging` and a `way to authenticate users`.
+  - could also `run container workloads`. 
+  - `Stackdriver monitoring, logging, and diagnostics`
+    - such as debugging and error reporting are also tightly integrated with App Engine. 
+    - use Stackdriver's real time debugging features to analyze and debug your source code. 
+    - Stackdriver integrates with tools such as Cloud SDK, cloud source repositories, IntelliJ, Visual Studio, and PowerShell. 
+  - App Engine also supports `version control and traffic splitting`.
+
+- scale the application automatically in response to the amount of traffic it receives.
+
+- only pay for those resources you use.
   - no servers to provision or maintain.
+
+- App Engine offers two environments:
+  - standard and flexible
+
+- App Engine supports popular languages like Java and Node.js, Python, PHP, C#, .NET, Ruby, and Go. 
+ 
 - especially suited for applications
   - where the workload is highly variable or unpredictable
   - like web applications and mobile backend.
-- App Engine offers two environments:
-  - standard and flexible
+  - for websites, mobile apps, gaming backends, 
+  - and as a way to present a RESTful API to the Internet
+    - an application program interface
+    - resembles the way a web browser interacts with the web server. 
+    - RESTful APIs are easy for developers to work with and extend. 
+    - And App Engine makes them easy to operate
+
 
 ---
 

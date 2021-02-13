@@ -18,7 +18,7 @@ image:
 ---
 
 
-## GCP Compute Engine 
+## GCP Compute Engine
 
 ![Screen Shot 2021-02-07 at 00.06.44](https://i.imgur.com/DIreiTC.png)
 
@@ -35,101 +35,6 @@ Kubernetes Engine.
 - like a platform as a service offering,
   - it was built with the needs of developers in mind.
 
- 
----
-
-## Containers
-
-<img src="https://i.imgur.com/pb2kD6d.png" width="400">
-
-- give the independent scalability of workloads like PaaS, and an abstraction layer of the operating system and hardware, like Infrastructure as a Service.
-- starts as quickly as a new process.
-  - Compare that to how long it takes to boot up an entirely new instance of an operating system.
-  - All you need on each host is an operating system that supports Containers and a Container run-time.
-  - In essence, it visualize the os rather than the hardware.
-- The environment scales like PaaS
-- but gives you nearly the same flexibility as Infrastructure as a Service.
-- The container abstraction makes the code very portable.
-  - treat the os and hardware as a black box.
-  - can move the code from development, to staging, to production, or from the laptop to the Cloud without changing or rebuilding anything.
-
-- case:
-  - to scale a web server
-    - can do so in seconds
-    - and deploy dozens or hundreds of them depending on the size of the workload on a single host.
-  - to build the applications using lots of Containers,
-    - each performing their own function, using the micro-services pattern.
-    - The units of code running in these Containers can communicate with each other over a network fabric.
-- If you build this way, you can make applications modular.
-  - They deploy it easily and scale independently across a group of hosts.
-- The host can scale up and down, and start and stop Containers as demand for the application changes, or even as hosts fail and are replaced.
-- A tool that helps you do this well is Kubernetes.
-  - Kubernetes makes it easy to orchestrate many Containers on many hosts.
-  - Scale them,
-  - roll out new versions of them, and even roll back to the old version if things go wrong.
-
----
-
-### build and run containers
-
-> Google Cloud offers Cloud Build
-> a managed service for building Containers.
-
-Docker
-- to bundle an application and its dependencies into a Container.
-
-```py
-# a Python web application
-# uses the very popular Flask framework.
-
-app.py
-from flask import Flask
-app = Flask(__name__)
-# - Whenever a web browser go to its top-most document, it replies "hello world".
-@app.route("/")
-def hello():
-    return "Hello World!\n"
-# - Or if the browser instead appends/version to the request, the application replies with its version.
-@app.route("/version")
-def hello():
-    return "Hello World!\n"
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
-```
-
-- deploy this application
-
-```bash
-requirements.txt
-# It needs a specific version of Python and a specific version of Flask, which we control using Python's requirements.txt file, together with its other dependencies too.
-Flask==0.12
-uwsgi==2.0.15
-```
-
-
-- use a Docker file to specify how the code gets packaged into a Container.
-
-```Docker
-From ubuntu:18.10
-RUN apt-get update -y
-COPY requirement.txt /app/requirement.txt
-WORKDIR /app
-RUN pip3 install - r requirement.txt
-COPY . /app
-ENTRYPOINT ["python3", "app.py"]
-```
-
-- use the Docker build command to build the Container.
-
-```bash
-# - builds the Container and stores it on the local system as a runnable image.
-docker build -t py-server .
-
-# - to run the image.
-docker run -d py-server
-```
-
-
 
 ---
 
@@ -139,17 +44,188 @@ docker run -d py-server
 ![Screen Shot 2021-02-07 at 14.29.23](https://i.imgur.com/zoPNLpx.png)
 
 > kubectl
-- a software layer that sits between your applications and your hardware infrastructure. 
 
-- an open-source orchestrator for containers to better manage and scale the applications.
-  - describe a set of applications and how they should interact with each other, 
+![Screen Shot 2021-02-11 at 23.08.12](https://i.imgur.com/lUUjWuY.png)
+
+- a software layer that sits between the applications and the hardware infrastructure.
+
+- an open-source orchestrator
+  - a project of the Vendor Neutral Cloud Native Computing Foundation.
+
+- a popular container management and orchestration solution
+  - for containers to better manage and scale the applications.
+  - describe a set of applications and how they should interact with each other,
   - and Kubernetes figures out how to make that happen.
-  - it abstracts away your underlying infrastructure, 
-  - to easier consistently run and manage your applications. 
-- Kubernetes offers an API that let authorized people control its operation through several utilities.
-- Kubernetes deploy containers on a set of nodes called cluster
+  - it abstracts away the underlying infrastructure,
+  - to easier consistently run and manage the applications.
+
+- offers an API that let authorized people control its operation through several utilities.
+
+- deploy containers on a set of nodes called cluster
 
 
+- Kubernetes also facilitates
+  - the features of PaaS
+    - it automates the deployment scaling, load balancing, logging, monitoring, and other management features of containerized applications.  
+  - the features of IaaS
+    - such as allowing a wide range of user preferences and configuration flexibility.
+
+
+- Kubernetes supports <font color=red> declarative configurations </font>
+  - administer the infrastructure declaratively,
+    - describe the desired state to achieve instead of commands to achieve that state.
+    - Kubernetes make the deployed system conform to the desired state
+    - and then keep it there in spite of failures.
+  - Declarative configuration
+    - saves you work.
+    - Because the system is desired state is always documented,
+    - reduces the risk of error.
+
+- Kubernetes also allows <font color=red> imperative configuration </font>
+  - issue commands to change the system state.
+  - But administering Kubernetes as scale imperatively, will be a big missed opportunity.
+
+  - <font color=blue> One of the primary strengths of Kubernetes is its ability to automatically keep a system in a state that you declare </font>
+    - Experienced Kubernetes administrators use imperative configuration
+      - only for quick temporary fixes
+      - and as a tool in building a declarative configuration.
+
+
+features.
+- Kubernetes supports different workload types.
+  - stateless applications
+    - such as an Nginx or Apache web server,
+  - stateful applications
+    - where user in session data can be stored persistently.
+  - It also supports batched jobs and demon tasks.
+
+- automatically scale in and out containerized applications based on resource utilization.
+  - can specify resource requests levels and resource limits for the workloads and Kubernetes will obey them.
+  - These resource controls like Kubernetes, improve overall workload performance within the cluster.
+
+- extensibility
+  - Developers extend Kubernetes through a rich ecosystem of plugins and add-ons.
+  - For example, there's a lot of creativity going on currently with Kubernetes custom resource definitions which bring the Kubernetes declarative Management Model to amazing variety of other things that need to be managed.
+
+- portability
+  - open source,
+  - Kubernetes also supports workload portability across On-premises or multiple Cloud service providers such as GCP and others.
+  - This allows Kubernetes to be deployed anywhere.
+  - You can move Kubernetes workloads freely without a vendor login.
+
+
+---
+
+## to build Kubernetes cluster
+
+![Screen Shot 2021-02-07 at 14.45.26](https://i.imgur.com/o0IN3Ou.png)
+
+to build Kubernetes cluster
+
+1. build on the own hardware/environment that provides virtual machines
+   - built it theself, you have to maintain it.
+   - That's even more toil.
+
+2. <font color=red> Google Kubernetes Engine GKE </font>
+   - deploy, manage and scale Kubernetes environments for the containerized applications on GCP.
+     - easy to brings Kubernetes as a managed service on Google Cloud Platform.
+     - building, scheduling, load balancing, and monitoring workloads,
+     - providing for discovery of services,
+     - managing role-based access control and security,
+     - and providing persistent storage to these applications.
+   - a component of the GCP compute offerings
+
+![Screen Shot 2021-02-12 at 01.06.57](https://i.imgur.com/VHpeVXq.png)
+ 
+---
+
+## GKE (Kubernetes Engine)
+
+Google Kubernetes Engine GKE
+ 
+  - Kubernetes, a way to orchestrate code in those containers.
+
+
+
+- <font color=red> fully managed </font>
+  - don't have to provision the underlying resources
+  - These operating systems are maintained by Google.
+  - optimized to scale quickly and with a minimal resource footprint.
+
+
+- <font color=red> an orchestration system for applications in containers </font>
+  - uses a <font color=red> container-optimized operating system </font>
+    - <font color=blue> containerization </font>
+      - a way to package code that's designed to be highly portable and to use resources very efficiently.
+    - <font color=blue> Kubernetes </font>
+      - a way to orchestrate code in those containers.
+  - automates deployment, scaling, load balancing, logging, and monitoring, and other management features
+  - A managed environment for deploying containerized applications
+  - run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.
+
+- Google Kubernetes Engine <font color=red> extends Kubernetes management on GCP </font>
+  - by adding features and integrating with other GCP services automatically
+  - <font color=red> adding features </font>
+    - GKE supports 
+      - <font color=blue> cluster scaling </font>
+      - <font color=blue> persistent disks </font>
+      - <font color=blue> automated updates to the latest version of Kubernetes </font>
+      - <font color=blue> and auto repair for unhealthy nodes </font>
+    1. Just as Kubernetes support scaling workloads
+       - GKE support scaling the cluster itself.
+    2. direct the service to instantiate a <font color=blue> Kubernetes system, cluster </font>
+       - GKE clusters can be customized
+         - support different machine types, numbers of nodes and network settings.
+       - the resources used to build Kubernetes Engine clusters come from Compute Engine
+         - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
+         - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities. 
+       - If enable GKE's `auto upgrade feature`
+         - the clusters are automatically upgraded with the latest and greatest version of Kubernetes.
+         - and you can enable automatic node upgrades too.
+    3. <font color=blue> nodes, the virtual machines </font> that host the containers inside of a GKE cluster
+       - If enable GKE's `auto repair feature`
+       - the service will automatically repair unhealthy nodes
+         - make periodic health checks on each node in the cluster.
+         - If a node is determined to be unhealthy and requires repair, GKE would drain the node.
+         - cause it's workloads to gracefully exit and then recreate that node.
+ 
+  - <font color=red> seamlessly integrates with </font>
+    1. with <font color=blue> Google Cloud build and container registry. </font>
+       - create container using Cloud Build
+       - and storing a container in Container Registry.
+       - automate deployment using private container images that securely stored in container registry.
+
+    2. with <font color=blue> Google's identity and access management </font>
+       - control access through the use of accounts and role permissions.
+
+    3. with <font color=blue> Stackdriver monitoring </font>
+       - Stackdriver, Google Cloud system for monitoring and management for services, containers, applications, and infrastructure.
+       - to help you understand the applications performance.
+
+    4. with <font color=blue> Google VPCs </font> virtual private clouds
+       - makes use of GCP's networking features.
+
+    5. <font color=blue> the GCP console </font> 
+       - provides insights into GKE clusters and the resources 
+       - view, inspect and delete resources in those clusters.
+       - open source Kubernetes 
+         - contains a dashboard
+         - but takes a lot of work to set it up securely.
+       - the GCP console
+         - dashboard for GKE clusters and workloads that you don't have to manage.
+         - more powerful than the Kubernetes dashboard.
+
+    6. <font color=blue> Existing workloads running within on-premise clusters can easily be moved on to GCP </font> 
+
+- very well suited for 
+  - containerized applications. 
+  - Cloud-native distributed systems and hybrid applications.  
+
+![Screen Shot 2021-02-12 at 01.19.15](https://i.imgur.com/0nlsQ3W.png)
+
+
+
+---
 
 ### cluster
 - a set of master components that control the system as a whole and a set of nodes that run containers.
@@ -182,46 +258,13 @@ docker run -d py-server
 
 ---
 
-## GKE (Kubernetes Engine)
-
-to build Kubernetes cluster
-
-1. build on the own hardware/environment that provides virtual machines
-   - built it yourself, you have to maintain it.
-   - That's even more toil.
-
-2. <font color=red> Google Kubernetes Engine GKE </font>
-   - brings Kubernetes as a managed service on Google Cloud Platform.
-   - create a Kubernetes cluster with Kubernetes Engine
-     - by `GCP console` 
-     - or the `g-cloud command` by the Cloud SDK.
-   - GKE clusters can be customized
-     - support different machine types, numbers of nodes and network settings.
-   - the resources used to build Kubernetes Engine clusters come from Compute Engine
-     - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities.
-     - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
-   - The Kubernetes Engine team periodically performs automatic upgrades of your cluster master to newer stable versions of Kubernetes, and you can enable automatic node upgrades too.
-
-
-- implement solutions using Google Kubernetes Engine, 
-  - including, building, scheduling, load balancing, and monitoring workloads, 
-  - providing for discovery of services, 
-  - managing role-based access control and security, 
-  - and providing persistent storage to these applications. 
- 
-- creating a container using Cloud Build and storing a container in Container Registry.
-- compare and contrast the features of Kubernetes and Google Kubernetes Engine
- 
-
----
-
 ### build Kubernetes cluster, deploy pods, by Kubernetes Engine
 
 > deploy a Kubernetes cluster using GKE, deploy pods to a GKE cluster and view and managed Kubernetes objects.
 
-
-![Screen Shot 2021-02-07 at 14.45.26](https://i.imgur.com/o0IN3Ou.png)
-
+- create a Kubernetes cluster with Kubernetes Engine
+  - by `GCP console`
+  - or the `g-cloud command` by the Cloud SDK.
 
 ```bash
 # ------------------- google cloud shell
