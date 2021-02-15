@@ -45,36 +45,6 @@ image:
 
 ---
 
-### Cloud Functions
-
-> Many applications contain event-driven parts.
-> - example,
-> - application that lets users upload images.
->   - need to process that image in various ways:
->   - convert it to a standard image format,
->   - thumbnail into various sizes,
->   - and store each in a repository.
-> - integrate this function in application, then you have to worry about providing compute resources for it, no matter whether it happens once a day or once a millisecond.
-> - What if you could just make that provisioning problem go away? write a single purpose function that did the necessary image manipulations and then arrange for it to automatically run whenever a new image gets uploaded.
-
-
-- Cloud Functions
-  - create single-purpose functions that respond to events without servers or runtime binaries.
-    - just write code in JavaScript for a Node.js environment that GCP provides and then configure when it should fire.
-  - no need to pay for servers either.
-    - just pay whenever the functions run, in 100 millisecond intervals.
-  - can trigger on events in Cloud Storage, Cloud Pub/Sub, or in HTTP call.
-  - to enhance existing applications without having to worry about scaling.
-
-  - setting up a Cloud Function works.
-    - choose which events you care about.
-    - For each event type, you tell Cloud Functions you're interested in it.
-    - These declarations are called triggers.
-    - Then attach JavaScript functions to the triggers.
-    - From now on, the functions will respond whenever the events happen.
-  - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.  
-
----
 
 
 ## Infrastructure as code
@@ -124,12 +94,12 @@ vim mydeploy.yaml
 #   properties:
 #     zone: ZONE
 #     machineType: zones/ZONE/machineTypes/na-standard-1
-    
+
 #     metadata:
 #      items:
 #      - key: startup_script
 #        value: "apt-get update"
-    
+
 #     disks:
 #     - deviceName: boot
 #     type: PERSISTENT
@@ -186,7 +156,7 @@ Stackdriver
 ### Stackdriver Monitoring
 - checks the endpoints of web applications and other Internet accessible services running on the cloud environment.
 - configure uptime checks associated with URLs, groups or resources such as Instances and load balancers.
-- set up alerts on interesting criteria, 
+- set up alerts on interesting criteria,
   - like when health check results or uptimes fall into levels that need action.
 - use Monitoring with a lot of popular notification tools.
 - create dashboards to help visualize the state of the application.
@@ -210,20 +180,20 @@ Stackdriver
 
 > debugging
 > go back into it and add lots of logging statements.
- 
+
 Stackdriver Debugger
 - offers a different way.
 - It connects the applications production data to the source code.
 - inspect the state of the application at any code location in production.
 - view the application stage without adding logging statements.
- 
+
 - works best when the application source code is available, such as in Cloud Source repositories.
 - it can be in other repositories too.
 
 ```bash
 dd if=/dev/urandom | gzip -9 >> /dev/null &
 
-# Google CLoud Platform > Stackdriver Monitoring 
+# Google CLoud Platform > Stackdriver Monitoring
 ```
 
 

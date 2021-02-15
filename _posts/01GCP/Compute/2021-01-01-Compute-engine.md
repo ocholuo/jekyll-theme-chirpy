@@ -50,6 +50,11 @@ Compute Engine
 - import images for many of the physical servers.
 
 <font color=red> Machine type </font>
+<font color=red> OS </font>
+- Linux and Windows Server images provided by Google or customized versions of these images
+- import images for many of the physical servers.
+
+<font color=red> Machine type </font>
 - how much memory and virtual CPUs
 - range from very small to very large indeed.
 - can make a custom VM.

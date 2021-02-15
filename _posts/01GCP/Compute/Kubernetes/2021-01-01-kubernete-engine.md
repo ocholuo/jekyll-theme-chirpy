@@ -1,5 +1,5 @@
 ---
-title: GCP - Kubernetes and Kubernetes Engine
+title: GCP - Google Cloud Computing - Kubernetes and Kubernetes Engine
 date: 2021-01-01 11:11:11 -0400
 categories: [21GCP]
 tags: [GCP]
@@ -12,7 +12,7 @@ image:
 ---
 
 
-# Kubernetes and Kubernetes Engine
+# Google Cloud Computing - Kubernetes and Kubernetes Engine
 
 
 ---
@@ -45,6 +45,7 @@ Kubernetes Engine.
 
 > kubectl
 
+
 ![Screen Shot 2021-02-11 at 23.08.12](https://i.imgur.com/lUUjWuY.png)
 
 - a software layer that sits between the applications and the hardware infrastructure.
@@ -63,13 +64,11 @@ Kubernetes Engine.
 
 - deploy containers on a set of nodes called cluster
 
-
 - Kubernetes also facilitates
   - the features of PaaS
     - it automates the deployment scaling, load balancing, logging, monitoring, and other management features of containerized applications.  
   - the features of IaaS
     - such as allowing a wide range of user preferences and configuration flexibility.
-
 
 - Kubernetes supports <font color=red> declarative configurations </font>
   - administer the infrastructure declaratively,
@@ -142,10 +141,7 @@ to build Kubernetes cluster
 ## GKE (Kubernetes Engine)
 
 Google Kubernetes Engine GKE
- 
-  - Kubernetes, a way to orchestrate code in those containers.
-
-
+- a way to orchestrate code in those containers.
 
 - <font color=red> fully managed </font>
   - don't have to provision the underlying resources
