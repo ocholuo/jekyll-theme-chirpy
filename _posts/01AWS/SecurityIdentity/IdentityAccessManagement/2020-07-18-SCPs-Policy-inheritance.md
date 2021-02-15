@@ -57,8 +57,7 @@ Exactly how policies affect the OUs and accounts that inherit them depends on th
   - At each level, the result of the evaluation at the parent becomes the policy on the left of the diagram and is compared to the SCPs attached to the child OU.
 
 
-Example
----
+### Example 
 
 ![How_SCP_Permissions_Work](https://i.imgur.com/82X5eFC.png)
 
@@ -109,7 +108,7 @@ When you attach SCPs to the organization root, OUs, or directly to accounts
 ---
 
 
-### with SCPs' `FullAWSAccess`
+### SCPs' `FullAWSAccess`
 
 
 - By default, an SCP named `FullAWSAccess` is attached to every organization root, OU, and account. 
@@ -134,8 +133,7 @@ see list of policies applied to an account and where that policy comes from.
 ---
 
 
-Example: to allow an AWS service API at the member account level 
----
+### Example: to allow an AWS service API at the member account level
 
 - must allow that API at **_every_** level between the member account and the root of your organization. 
 - must attach SCPs to every level from your organization’s root to the member account that allows the given AWS service API (such as ec2:RunInstances). 
