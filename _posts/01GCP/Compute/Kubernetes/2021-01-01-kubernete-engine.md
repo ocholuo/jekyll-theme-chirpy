@@ -59,16 +59,19 @@ Kubernetes Engine.
   - and Kubernetes figures out how to make that happen.
   - it abstracts away the underlying infrastructure,
   - to easier consistently run and manage the applications.
+  - launch one or more Pods and ensure that a specified number of them succcessfully run to completion and exit.
 
-- offers an API that let authorized people control its operation through several utilities.
-
-- deploy containers on a set of nodes called cluster
-
-- Kubernetes also facilitates
+- Kubernetes facilitates
   - the features of PaaS
     - it automates the deployment scaling, load balancing, logging, monitoring, and other management features of containerized applications.  
   - the features of IaaS
     - such as allowing a wide range of user preferences and configuration flexibility.
+
+- automatically scale in and out containerized applications based on resource utilization.
+  - can specify resource requests levels and resource limits for the workloads and Kubernetes will obey them.
+  - These resource controls like Kubernetes, improve overall workload performance within the cluster.
+
+- offers an API that let authorized people control its operation through several utilities.
 
 - Kubernetes supports <font color=red> declarative configurations </font>
   - administer the infrastructure declaratively,
@@ -79,28 +82,20 @@ Kubernetes Engine.
     - saves you work.
     - Because the system is desired state is always documented,
     - reduces the risk of error.
-
-- Kubernetes also allows <font color=red> imperative configuration </font>
-  - issue commands to change the system state.
-  - But administering Kubernetes as scale imperatively, will be a big missed opportunity.
-
+  - Kubernetes also allows <font color=red> imperative configuration </font>
+    - issue commands to change the system state.
+    - But administering Kubernetes as scale imperatively, will be a big missed opportunity.
   - <font color=blue> One of the primary strengths of Kubernetes is its ability to automatically keep a system in a state that you declare </font>
     - Experienced Kubernetes administrators use imperative configuration
       - only for quick temporary fixes
       - and as a tool in building a declarative configuration.
 
-
-features.
 - Kubernetes supports different workload types.
   - stateless applications
     - such as an Nginx or Apache web server,
   - stateful applications
     - where user in session data can be stored persistently.
   - It also supports batched jobs and demon tasks.
-
-- automatically scale in and out containerized applications based on resource utilization.
-  - can specify resource requests levels and resource limits for the workloads and Kubernetes will obey them.
-  - These resource controls like Kubernetes, improve overall workload performance within the cluster.
 
 - extensibility
   - Developers extend Kubernetes through a rich ecosystem of plugins and add-ons.
@@ -111,13 +106,341 @@ features.
   - Kubernetes also supports workload portability across On-premises or multiple Cloud service providers such as GCP and others.
   - This allows Kubernetes to be deployed anywhere.
   - You can move Kubernetes workloads freely without a vendor login.
+ 
+---
+
+### cluster
+- a set of master components that control the system as a whole and a set of nodes that run containers.
+- A group of machines where Kubernetes can schedule workloads
+
+![Screen Shot 2021-02-16 at 00.47.00](https://i.imgur.com/C11YGDm.png)
+
+GKE regional cluster
+- if the entire Compute Zone goes down
+- Regional clusters have a single API endpoint for the cluster.
+  - but it's masters and nodes are spread out across `multiple Compute Engine zones` within a region.
+- ensure that the availability of the application is maintained across multiple zones in a single region.
+- In addition, the availability of the master is also maintained so that both the application and management functionality can withstand the loss of one or more, but not all zones.
+- By default are regional cluster is spread across three zones
+  - each containing one master and three nodes.
+  - These numbers can be increased or decreased.
+  - but will have exactly the same number of nodes in each of the other zones
+
+zonal cluster
+- By default, a cluster launches in a single GCP Compute Zone with three identical nodes, all in one node pool.
+  - The number of nodes can be changed during or after the creation of the cluster.
+  - Adding more nodes and deploying multiple replicas of an application
+    - will improve an applications availability
+- Once you build a zonal cluster, you can't convert it into a regional cluster or vice versa.
+
+
+![Screen Shot 2021-02-16 at 00.47.21](https://i.imgur.com/ihgt55y.png)
+
+private cluster.
+- `Regional and zonal GKE clusters` can also be setup as a private cluster.
+- The entire cluster that is the master
+- and it's nodes are hidden from the public Internet.
+- Cluster masters can be accessed by Google Cloud products such as Stack driver through an internal IP address.
+- They can also be accessed by authorized networks through an external IP address.
+  - Authorize networks are basically IP address ranges that are trusted to access the master.
+- nodes can have limited outbound access through private Google access, which allows them to communicate with other GCP services.
+  - Example,
+  - nodes can pull Container images from Google Container Registry without needing external IP addresses.  
 
 
 ---
 
+### node
+- a group of containers
+- a node represents a computing instance.
+- nodes are virtual machines running in Compute Engine.
+
+- In any Kubernetes environment, nodes are created externally by cluster administrators, not by Kubernetes itself.
+  - GKE automates this process for you.
+  - It launches Compute Engine virtual machine instances and registers them as nodes.
+  - You can manage node settings directly from the GCP console.
+
+- You pay per hour of life of your nodes, not counting the master.
+
+- Because nodes run on Compute Engine
+  - choose your node machine type when you create your cluster.
+    - By default, the node machine type is N1 standard one, which provides one virtual CPU and 3.75 gigabytes of memory.
+  - customize your nodes, number of cores, and their memory capacity.
+  - select a CPU Platform.
+  - choose a baseline minimum CPU platform for the nodes or node pool.
+  - This allows you to improve node performance.
+
+- You can also select multiple node machine types by creating multiple node pools.
+
+![Screen Shot 2021-02-16 at 00.46.34](https://i.imgur.com/HDPNMqy.png)
+
+A node pool
+- a subset of nodes within a cluster that share a configuration
+  - such as their amount of memory or their CPU generation.
+- easy way to ensure that workloads run on the right hardware within your cluster.
+  - You just label them with a desired node pool.
+- node pool are GKE feature rather than a Kubernetes feature.
+
+- You can build an analogist mechanism within open-source Kubernetes, but you would have to maintain it yourself.
+
+- You can enable automatic node upgrades, automatic node repairs, and cluster auto-scaling at this node pool level.
+
+- Some of each node CPU and memory are needed to run the GKE and Kubernetes components that let it work as part of your cluster.
+  - For example
+  - allocate nodes with 15 gigabytes of memory,
+  - not quite all of that 15 gigabytes will be available for use by pods.
+
+---
+
+### pod
+
+![Screen Shot 2021-02-07 at 14.51.15](https://i.imgur.com/86QrtZe.png)
+
+![Screen Shot 2021-02-15 at 20.45.25](https://i.imgur.com/GxzAwZP.png)
+
+- Kubernetes deploys <font color=blue> a container or a set of related containers </font> inside pod.
+- the <font color=blue> smallest deployable unit </font> in Kubernetes.
+  - the basic building block of the standard Kubernetes model
+  - the smallest deployable Kubernetes object.
+  - pod is like running process on the cluster.
+- the pod could be <font color=blue> one component of the application or an entire application </font>
+
+- A pod embodies the environment where the containers live.
+  - That environment can accommodate one or more containers.
+  - If there is more than one container in a pod
+    - have multiple containers with a hard dependency
+    - they are tightly coupled and share resources including networking and storage.
+    - package them into a single pod.
+  - Each pod gets <font color=red> a unique IP address and set of ports </font> for containers.
+    - Every container within a pod shares the network namespace, including IP address and network ports.
+    - containers inside a pod can communicate with each other
+      - using the <font color=blue> localhost network interface </font>
+      - they don't know or care which nodes they're deployed on.
+      - The famous 127.0.0.1 IP address
+  - A pod can also specify a set of Storage volumes to be shared among its containers.
+
+Example
+- 3 instances of the NginX Web server, each in its own container, running all the time.
+- Kubernetes embodies the principle of declarative management.
+  - declare some objects to represent those NginX containers: pods
+  - Now it is Kubernetes job to launch those pods and keep them in existence.
+    - pods are not self healing.
+    - to keep all our NginX Web servers not just in existence, but also working together as a team, we might want to ask for them using a more sophisticated object.
+  - given Kubernetes a desired state that consists of three NginX pods always kept running.
+    - telling Kubernetes to create and maintain one or more objects that represent them.
+  - Now, Kubernetes compares the desired state to the current state.
+    - The current state does not match the desired state.
+  - Kubernetes, specifically it's control plane
+    - remedy the situation
+    - the number of desired pods running declared as three
+    - zero while presently running,
+    - three will be launched.
+  - The Kubernetes control plane will continuously monitor the state of the cluster, endlessly comparing reality to what has been declared and remedying the state as needed.
+
+---
+
+
+
+## The Kubernetes Control Plane
+
+Kubernetes control plane
+- the fleet of cooperating processes that make a Kubernetes cluster work.
+
+build up a Kubernetes cluster part by part
+- master
+  - cluster needs computers.
+  - Nowadays, the computers that compose your clusters are usually virtual machines.
+  - They always are in GKE, but they could be physical computers too.
+  - One computer is called the master and the others are called nodes.  
+    - The job of the nodes is to run pods.
+    - The job of the master is to coordinate the entire cluster.  
+  - Several Kubernetes components run on the master.  
+
+
+![Screen Shot 2021-02-15 at 23.31.17](https://i.imgur.com/pGNhbnF.png)
+
+Kubernetes components
+
+- <font color=red> kubectl command </font>
+  - to connect/communicate to kube-APIserver by Kubernetes API.
+
+- <font color=red> kube-APIserver </font>
+  - The single component to interact directly
+    - accept commands that view or change the state of the cluster,
+    - including launching pods.
+  - Kube-API server also authenticates incoming requests
+    - determines whether they are authorized, invalid,
+    - and manages admission control.
+  - Kube-API server talk with kubectl, and any query or change to the cluster state
+
+- <font color=red> Etcd </font>
+  - the cluster's database.
+    - reliably store the state of the cluster.
+  - includes all the cluster configuration data and more dynamic information
+    -  such as what nodes are part of the cluster,
+    -  what pods should be running,
+    -  and where they should be running.
+  - not interact directly with etcd.
+    - kube-APIserver interacts with the database on behalf of the rest of the system.
+
+- <font color=red> Kube-scheduler </font>
+  - scheduling pods onto the nodes.
+  - evaluates the requirements of each individual pod
+    - selects which node is most suitable.
+  - But it doesn't actually launching pods onto nodes.
+    - it discovers a pod object that doesn't yet have an assignment to a node,
+    - it chooses a node
+    - and simply write the name of that node into the pod object.
+  - when kube-scheduler decide where to run a pod
+    - It knows the state of all the nodes,
+    - it obey constraints you defined on where a pod may run,
+      - based on hardware, software, and policy.
+    - Example
+      - specify certain pod is only allowed to run on nodes with a certain amount of memory.
+      - define affinity specifications
+        - which cause groups of pods to prefer running on the same node.
+      - anti-affinity specifications
+        - which ensure that pods do not run on the same node.  
+
+- <font color=red> Kube-controller manager </font>
+  - continuously monitors the state of a cluster through kube-APIserver.
+    - Whenever the current state of the cluster doesn't match the desired state,
+    - kube-controller manager will attempt to make changes, to achieve the desired state.
+
+- <font color=red> controllers </font>
+  - many Kubernetes objects are maintained by loops of code called controllers.
+  - These loops of code handle the process of remediation.
+  - Controllers will be very useful to you.
+  - To be specific
+    - you all use certain kinds of Kubernetes controllers to manage workloads.
+    - Example
+      - keeping three engine x pods always running.
+        - gather them together into a controller object called a deployment,
+        - that not only keeps them running,
+        - but also lets us scale them and bring them together underneath our front end.  
+      - Other kinds of controllers have system-level responsibilities.
+        - node controller's job is to monitor and respond when a node is offline.
+
+- <font color=red> Kube-cloud-manager </font>
+  - manages controllers that interact with underlying cloud providers.
+    - Example
+    - manually launched a Kubernetes cluster on Google Compute Engine,
+  - responsible for bringing in GCP features like load balancers and storage volumes when you needed them.
+
+- <font color=red> node </font>
+  - Each node runs a small family of control-plane components too.
+  - For example, each node runs a kubelet.
+  - kubelet
+    - Kubernetes agent on each node.
+    - When the kube-APIserver wants to start a pod on a node, it connects to that node's kubelet.
+    - Kubelet uses the container runtime to start the pod and monitor its lifecycle
+      - including readiness and liveness probes, and reports back to kube-APIserver.
+      - <font color=red> container runtime </font>
+        - is the software that knows how to launch a container from a container image.
+        - Kubernetes offers several choices of container runtimes
+        - Linux distribution, that GKE uses for its nodes, launches containers using containerd.
+        - The runtime component of docker.
+
+- <font color=red> Kube proxy </font>
+  - maintain network connectivity among the pods in a cluster.
+  - In open-source Kubernetes, using the firewalling capabilities of IP tables (in Linux kernel)
+
+
+---
+
+## GKE (Kubernetes Engine)
+
+![Screen Shot 2021-02-16 at 00.36.35](https://i.imgur.com/v9RlU7Z.png)
+
+Google Kubernetes Engine GKE
+- a way to orchestrate code in those containers.
+  - Setting up a Kubernetes cluster by hand is tons of work.
+
+- <font color=red> fully managed </font>
+  - don't have to provision the underlying resources
+  - These operating systems are maintained by Google.
+  - optimized to scale quickly and with a minimal resource footprint.
+
+- <font color=red> an orchestration system for applications in containers </font>
+  - uses a <font color=red> container-optimized operating system </font>
+    - <font color=blue> containerization </font>
+      - a way to package code that's designed to be highly portable and to use resources very efficiently.
+    - <font color=blue> Kubernetes </font>
+      - a way to orchestrate code in those containers.
+  - automates deployment, scaling, load balancing, logging, and monitoring, and other management features
+  - A managed environment for deploying containerized applications
+  - run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.
+
+- Google Kubernetes Engine <font color=red> extends Kubernetes management on GCP </font>
+  - by adding features and integrating with other GCP services automatically
+  - <font color=red> adding features </font>
+    - GKE supports
+      - <font color=blue> cluster scaling </font>
+      - <font color=blue> persistent disks </font>
+      - <font color=blue> automated updates to the latest version of Kubernetes </font>
+      - <font color=blue> and auto repair for unhealthy nodes </font>
+    1. Just as Kubernetes support scaling workloads
+       - GKE support scaling the cluster itself.
+    2. direct the service to instantiate a <font color=blue> Kubernetes system, cluster </font>
+       - GKE clusters can be customized
+         - support different machine types, numbers of nodes and network settings.
+       - the resources used to build Kubernetes Engine clusters come from Compute Engine
+         - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
+         - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities.
+       - If enable GKE's `auto upgrade feature`
+         - the clusters are automatically upgraded with the latest and greatest version of Kubernetes.
+         - and you can enable automatic node upgrades too.
+    3. <font color=blue> nodes, the virtual machines </font> that host the containers inside of a GKE cluster
+       - If enable GKE's `auto repair feature`
+       - the service will automatically repair unhealthy nodes
+         - make periodic health checks on each node in the cluster.
+         - If a node is determined to be unhealthy and requires repair, GKE would drain the node.
+         - cause it's workloads to gracefully exit and then recreate that node.
+
+  - <font color=red> seamlessly integrates with </font>
+    1. with <font color=blue> Google Cloud build and container registry. </font>
+       - create container using Cloud Build
+       - and storing a container in Container Registry.
+       - automate deployment using private container images that securely stored in container registry.
+
+    2. with <font color=blue> Google's identity and access management </font>
+       - control access through the use of accounts and role permissions.
+
+    3. with <font color=blue> Stackdriver monitoring </font>
+       - Stackdriver, Google Cloud system for monitoring and management for services, containers, applications, and infrastructure.
+       - to help you understand the applications performance.
+
+    4. with <font color=blue> Google VPCs </font> virtual private clouds
+       - makes use of GCP's networking features.
+
+    5. <font color=blue> the GCP console </font>
+       - provides insights into GKE clusters and the resources
+       - view, inspect and delete resources in those clusters.
+       - open source Kubernetes
+         - contains a dashboard
+         - but takes a lot of work to set it up securely.
+       - the GCP console
+         - dashboard for GKE clusters and workloads that you don't have to manage.
+         - more powerful than the Kubernetes dashboard.
+
+    6. <font color=blue> Existing workloads running within on-premise clusters can easily be moved on to GCP </font>
+
+- very well suited for
+  - containerized applications.
+  - Cloud-native distributed systems and hybrid applications.  
+
+![Screen Shot 2021-02-12 at 01.19.15](https://i.imgur.com/0nlsQ3W.png)
+
+
+
+---
+
+
 ## to build Kubernetes cluster
 
 ![Screen Shot 2021-02-07 at 14.45.26](https://i.imgur.com/o0IN3Ou.png)
+
+- deploy containers on a set of nodes called cluster
 
 to build Kubernetes cluster
 
@@ -135,122 +458,6 @@ to build Kubernetes cluster
    - a component of the GCP compute offerings
 
 ![Screen Shot 2021-02-12 at 01.06.57](https://i.imgur.com/VHpeVXq.png)
- 
----
-
-## GKE (Kubernetes Engine)
-
-Google Kubernetes Engine GKE
-- a way to orchestrate code in those containers.
-
-- <font color=red> fully managed </font>
-  - don't have to provision the underlying resources
-  - These operating systems are maintained by Google.
-  - optimized to scale quickly and with a minimal resource footprint.
-
-
-- <font color=red> an orchestration system for applications in containers </font>
-  - uses a <font color=red> container-optimized operating system </font>
-    - <font color=blue> containerization </font>
-      - a way to package code that's designed to be highly portable and to use resources very efficiently.
-    - <font color=blue> Kubernetes </font>
-      - a way to orchestrate code in those containers.
-  - automates deployment, scaling, load balancing, logging, and monitoring, and other management features
-  - A managed environment for deploying containerized applications
-  - run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.
-
-- Google Kubernetes Engine <font color=red> extends Kubernetes management on GCP </font>
-  - by adding features and integrating with other GCP services automatically
-  - <font color=red> adding features </font>
-    - GKE supports 
-      - <font color=blue> cluster scaling </font>
-      - <font color=blue> persistent disks </font>
-      - <font color=blue> automated updates to the latest version of Kubernetes </font>
-      - <font color=blue> and auto repair for unhealthy nodes </font>
-    1. Just as Kubernetes support scaling workloads
-       - GKE support scaling the cluster itself.
-    2. direct the service to instantiate a <font color=blue> Kubernetes system, cluster </font>
-       - GKE clusters can be customized
-         - support different machine types, numbers of nodes and network settings.
-       - the resources used to build Kubernetes Engine clusters come from Compute Engine
-         - <font color=blue> Kubernetes Engine workloads run in clusters built from Compute Engine virtual machines </font>
-         - Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities. 
-       - If enable GKE's `auto upgrade feature`
-         - the clusters are automatically upgraded with the latest and greatest version of Kubernetes.
-         - and you can enable automatic node upgrades too.
-    3. <font color=blue> nodes, the virtual machines </font> that host the containers inside of a GKE cluster
-       - If enable GKE's `auto repair feature`
-       - the service will automatically repair unhealthy nodes
-         - make periodic health checks on each node in the cluster.
-         - If a node is determined to be unhealthy and requires repair, GKE would drain the node.
-         - cause it's workloads to gracefully exit and then recreate that node.
- 
-  - <font color=red> seamlessly integrates with </font>
-    1. with <font color=blue> Google Cloud build and container registry. </font>
-       - create container using Cloud Build
-       - and storing a container in Container Registry.
-       - automate deployment using private container images that securely stored in container registry.
-
-    2. with <font color=blue> Google's identity and access management </font>
-       - control access through the use of accounts and role permissions.
-
-    3. with <font color=blue> Stackdriver monitoring </font>
-       - Stackdriver, Google Cloud system for monitoring and management for services, containers, applications, and infrastructure.
-       - to help you understand the applications performance.
-
-    4. with <font color=blue> Google VPCs </font> virtual private clouds
-       - makes use of GCP's networking features.
-
-    5. <font color=blue> the GCP console </font> 
-       - provides insights into GKE clusters and the resources 
-       - view, inspect and delete resources in those clusters.
-       - open source Kubernetes 
-         - contains a dashboard
-         - but takes a lot of work to set it up securely.
-       - the GCP console
-         - dashboard for GKE clusters and workloads that you don't have to manage.
-         - more powerful than the Kubernetes dashboard.
-
-    6. <font color=blue> Existing workloads running within on-premise clusters can easily be moved on to GCP </font> 
-
-- very well suited for 
-  - containerized applications. 
-  - Cloud-native distributed systems and hybrid applications.  
-
-![Screen Shot 2021-02-12 at 01.19.15](https://i.imgur.com/0nlsQ3W.png)
-
-
-
----
-
-### cluster
-- a set of master components that control the system as a whole and a set of nodes that run containers.
-- A group of machines where Kubernetes can schedule workloads
-
-### node
-- a group of containers
-- a node represents a computing instance.
-- nodes are virtual machines running in Compute Engine.
-
-### pod
-
-![Screen Shot 2021-02-07 at 14.51.15](https://i.imgur.com/86QrtZe.png)
-
-- <font color=red> pod </font>
-  - Kubernetes deploys <font color=blue> a container or a set of related containers </font> inside pod.
-  - the <font color=blue> smallest deployable unit </font> in Kubernetes.
-    - pod is like running process on the cluster.
-  - the pod could be <font color=blue> one component of the application or an entire application </font>
-  - container : pod
-    - common:
-      - only one container per pod.
-    - have multiple containers with a hard dependency
-      - package them into a single pod.
-      - They'll automatically share networking
-      - and they can have disk storage volumes in common.
-  - Each pod in Kubernetes gets <font color=red> a unique IP address and set of ports </font> for containers.
-    - containers inside a pod can communicate with each other
-    - using the <font color=blue> localhost network interface </font>, they don't know or care which nodes they're deployed on.
 
 ---
 
@@ -318,6 +525,12 @@ kubectl autoscale nginx --min=10 --max=15 --cpu=80
 ```
 
 
+
+---
+
+
+### deployment
+
 - <font color=red> deployment </font>
   - A deployment: represents <font color=blue> a group of replicas of the same pod. </font>
   - keeps the pods running
@@ -329,13 +542,33 @@ kubectl autoscale nginx --min=10 --max=15 --cpu=80
 
 > cluster > master + node > pod > containers
 
+---
 
 
-- <font color=red> pod access </font>
-  - default
-    - pods in a deployment is <font color=blue> only accessible inside the cluster </font>
+### Services
 
-  - To <font color=blue> make the pods in the deployment publicly available </font>
+Services
+- provide load-balanced access to specified Pods.
+- There are three primary types of Services:
+  - ClusterIP:
+    - Exposes the service on an IP address that is only accessible from within this cluster.
+    - the default type.
+  - NodePort:
+    - Exposes the service on the IP address of each node in the cluster, at a specific port number.
+  - LoadBalancer:
+    - Exposes the service externally,
+    - using a load balancing service provided by a cloud provider.
+
+- In Google Kubernetes Engine
+  - LoadBalancers give you access to a <font color=blue> regional Network Load Balancing configuration </font> by default.
+  - To get access to a <font color=blue> global HTTP(S) Load Balancing configuration </font>, use an Ingress object.
+
+
+<font color=red> pod access </font>
+
+- default: pods in a deployment is <font color=blue> only accessible inside the cluster </font>
+
+- To <font color=blue> make the pods in the deployment publicly available </font>
     - to let people on the Internet to access the content in nginx web server
     - <font color=red> connect a load balancer </font> to it
       ```bash
@@ -364,7 +597,45 @@ kubectl autoscale nginx --min=10 --max=15 --cpu=80
   - This technique allows you to share the load and scale the service in Kubernetes.
 
 
+
+---
+
+
+## Kubernetes object model.
+
+- Each thing Kubernetes manages is represented by an object.
+  - can view and change these objects, attributes, and state.
+
+- the principle of declarative management,
+  - tell it what you want, the state of the objects under each management to be.
+  - Kubernetes will work to bring that state into being and keep it there.
+
+- Kubernetes object
+  - is defined as a persistent entity
+  - represents the state of something running in a cluster, it's desired state and its current state.
+  - Various kinds of objects represent containerized applications, the resources that are available to them, and the policies that affect their behavior.
+
+![Screen Shot 2021-02-15 at 20.44.14](https://i.imgur.com/diYW6tQ.png)
+
+- Kubernetes objects have two important elements.
+  - objects spec
+    - You give Kubernetes an objects spec for each object you wanted to create.
+    - define the desired state of the object
+    - providing the characteristics that you want.
+  - The object's status
+    - the current state of the object provided by the Kubernetes control plane.
+- Kubernetes control plane:
+  - the various system processes that collaborate to make a Kubernetes cluster work.
+
+---
+
+
 ### configuration file
+
+define the objects you want Kubernetes to create and maintain with manifest files.
+
+
+
 
 - <font color=red> configuration file </font>
   - use configuration file tells Kubernetes the desired state
@@ -378,8 +649,9 @@ kubectl autoscale nginx --min=10 --max=15 --cpu=80
 # get a starting point for one of these files based on the work we've already done.
 kubectl get pods -l "app=nginx" -o yaml
 # output
+
 # nginx.deployment.yaml
-apiVerison: v1
+apiVerison: v1 # which Kubernetes API version is used to create the object.
 kind: Deployment
 metadata:
     name: nginx
