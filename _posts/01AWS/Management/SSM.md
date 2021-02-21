@@ -242,11 +242,11 @@ AWS Systems Manager
 
 Distributor
 
-Use [Distributor](./distributor.html) to create and deploy packages to managed instances. Distributor lets you package the own software—or find AWS-provided agent software packages, such as **AmazonCloudWatchAgent**—to install on AWS Systems Manager managed instances. After you install a package for the first time, you can use Distributor to completely uninstall and reinstall a new package version, or perform an in-place update that adds new or changed files only. Distributor publishes resources, such as software packages, to AWS Systems Manager managed instances.
+Use Distributor to create and deploy packages to managed instances. Distributor lets you package the own software—or find AWS-provided agent software packages, such as **AmazonCloudWatchAgent**—to install on AWS Systems Manager managed instances. After you install a package for the first time, you can use Distributor to completely uninstall and reinstall a new package version, or perform an in-place update that adds new or changed files only. Distributor publishes resources, such as software packages, to AWS Systems Manager managed instances.
 
 Hybrid Activations
 
-To set up servers and VMs in the hybrid environment as managed instances, you need to create a managed instance [activation](./systems-manager-managedinstances.html). After you complete the activation, you receive an activation code and ID. This code/ID combination functions like an Amazon EC2 access ID and secret key to provide secure access to the Systems Manager service from the managed instances.
+To set up servers and VMs in the hybrid environment as managed instances, you need to create a managed instance activation . After you complete the activation, you receive an activation code and ID. This code/ID combination functions like an Amazon EC2 access ID and secret key to provide secure access to the Systems Manager service from the managed instances.
 ---
 
 
@@ -256,7 +256,7 @@ Systems Manager uses the following shared resources for managing and configuring
 
 Documents
 
-A [Systems Manager document](./sysman-ssm-docs.html) (SSM document) defines the actions that Systems Manager performs. SSM document types include Command documents, which are used by State Manager and Run Command, and Automation documents, which are used by Systems Manager Automation. Systems Manager includes dozens of pre-configured documents that you can use by specifying parameters at runtime. Documents can be expressed in JSON or YAML, and include steps and parameters that you specify.
+A Systems Manager document (SSM document) defines the actions that Systems Manager performs. SSM document types include Command documents, which are used by State Manager and Run Command, and Automation documents, which are used by Systems Manager Automation. Systems Manager includes dozens of pre-configured documents that you can use by specifying parameters at runtime. Documents can be expressed in JSON or YAML, and include steps and parameters that you specify.
 
 
 ---

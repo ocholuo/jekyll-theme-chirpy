@@ -324,7 +324,9 @@ mySet.add();
 
 keep finding the smallest one, and put in the `arr[0]`
 
-![SelectionSort](./images/sort-SelectionSort.png)
+
+![Selection-sort-1](https://i.imgur.com/Ok74yxY.png)
+
 
 ```java
 public void SelectionSort(int[] num) {
@@ -343,9 +345,10 @@ public void SelectionSort(int[] num) {
 ```
 
 
+
 ## BubbleSort - if bigger, back
 
-![BubbleSort](./images/sort-BubbleSort.png)
+![1_7QsZkfrRGhAu5yxxeDdzsA](https://i.imgur.com/qoeN7kJ.png)
 
 - Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
 - Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
@@ -356,15 +359,18 @@ public void SelectionSort(int[] num) {
 
 
 ## InsertionSort - if smaller, forward
-![insertionsort](./images/sort-InsertionSort.png)
+
+![download](https://i.imgur.com/xTvF4Yn.png)
+
 
 ## QuickSort
-![QuickSort](./images/sort-QuickSort.png)
+
+![download-2](https://i.imgur.com/joPmStj.png)
+
 
 ## MergeSort
-![MergeSort](./images/sort-MergeSort.png)
 
-
+![download-3](https://i.imgur.com/f90CphJ.png)
 
 
 

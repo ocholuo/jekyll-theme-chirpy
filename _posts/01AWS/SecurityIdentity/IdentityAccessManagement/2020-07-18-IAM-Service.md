@@ -165,7 +165,7 @@ The AWS services listed below are grouped by their AWS product categories and in
 [AWS Directory Service](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/iam_policy.html) | Yes | Yes | No | Yes | Yes | No
 [AWS Firewall Manager](https://docs.aws.amazon.com/waf/latest/developerguide/fms-auth-and-access-control.html) | Yes | Yes | No | Yes | Yes | [Partial](https://docs.aws.amazon.com/waf/latest/developerguide/fms-using-service-linked-roles.html)
 [Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html) | Yes | Yes | No | Yes | Yes | [Partial](https://docs.aws.amazon.com/guardduty/latest/ug/using-service-linked-roles.html)
-[AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) | Yes | Yes | Partial¹ | [Partial²](./access_iam-tags.html) | Partial³ | No
+[AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) | Yes | Yes | Partial¹ | Partial² | Partial³ | No
 [IAM Access Analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-access.html) | Yes | Yes | No | Yes | Yes
 [Partial](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-using-service-linked-roles.html)
 [Amazon Inspector](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html) | Yes | No | No | No | Yes | [Yes](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
@@ -183,9 +183,9 @@ The AWS services listed below are grouped by their AWS product categories and in
 [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-auth-and-access-control.html) | Yes | Yes | No | Yes | Yes | [Yes](https://docs.aws.amazon.com/waf/latest/developerguide/using-service-linked-roles.html)
 [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-auth-and-access-control.html) | Yes | Yes | No | Yes | Yes | [Yes](https://docs.aws.amazon.com/waf/latest/developerguide/classic-using-service-linked-roles.html)
 
-¹ IAM supports only one type of resource-based policy called a role _trust policy_, which is attached to an IAM role. For more information, see [Granting a user permissions to switch roles](./id_roles_use_permissions-to-switch.html).
+¹ IAM supports only one type of resource-based policy called a role _trust policy_, which is attached to an IAM role. For more information, see Granting a user permissions to switch roles .
 
-² IAM supports tag-based access control for most IAM resources. For more information, see [Tagging IAM resources](./id_tags.html).
+² IAM supports tag-based access control for most IAM resources. For more information, see Tagging IAM resources .
 
 ³ Only some of the API actions for IAM can be called with temporary credentials. For more information, see [Comparing your API options](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html).
 
