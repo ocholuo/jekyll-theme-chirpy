@@ -472,7 +472,7 @@ To further strengthen the security of the BeyondCorp Enterprise secured resource
   - Access Context Manager references the device attributes gathered by Endpoint Verification to enforce fine grained access control with access levels
 
 Next steps
-- Set up [Cloud Audit Logs](/audit-logs)
+- Set up Cloud Audit Logs
 
 
 ---
