@@ -288,7 +288,441 @@ Statement:
 ### IAM JSON policy elements: Condition
 
 
+Use condition operators in the `Condition` element
+- to match the condition key and value in the policy against values in the request context.  
+- The condition operator use in a policy depends on the condition key
+  - can choose a global condition key or a service-specific condition key.
+  - If the key that you specify in a policy condition is not present in the request context, the values do not match.
+  - This applies to all condition operators `except ...IfExists` and `Null check`. These operators test whether the key is present (exists) in the request context.
 
+The condition operators can be grouped into the following categories:
+
+- `String`
+
+- `Numeric`
+
+- `Date`
+
+- `Boolean`
+
+- `Binary`
+
+- `IPAddress`
+
+- `Arn` (available for only some services.)
+
+- `IfExists` (checks if the key value exists as part of another check)
+
+- `Null check` (checks if the key value exists as a standalone check)
+
+---
+
+
+#### String condition operators
+
+- restrict access based on comparing a key to a string value.
+
+Condition operator | Description
+---|---
+`StringEquals` | Exact matching, case sensitive
+`StringNotEquals` | Negated matching
+`StringEqualsIgnoreCase` | Exact matching, ignoring case
+`StringNotEqualsIgnoreCase` | Negated matching, ignoring case
+`StringLike` | Case-sensitive matching. The values can include a multi-character match wildcard `*` or a single-character match wildcard `?` anywhere in the string. <br> If a key contains multiple values, `StringLike` can be qualified with set operators—`ForAllValues:StringLike` and `ForAnyValue:StringLike`.
+`StringNotLike` | Negated case-sensitive matching. The values can include a multi-character match wildcard `*` or a single-character match wildcard `?` anywhere in the string.
+
+Example, the following statement contains a `Condition` element that
+
+```json
+
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "iam:*AccessKey*",
+    "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*",
+    "Condition": {
+        "StringEquals": {
+            "aws:PrincipalTag/job-category": "iamuser-admin"
+        }
+        // uses the `StringEquals` condition operator with the `aws:PrincipalTag` key
+        // to specify that the principal making the request must be tagged with the `iamuser-admin` job category.
+    }
+  }
+}
+
+// the `aws:PrincipalTag/job-category` key is present in the request context
+// if the principal is using an IAM user with attached tags. It is also included for a principal using an IAM role with attached tags or session tags.
+// If a user without the tag attempts to view or edit an access key, the condition returns `false` and the request is implicitly denied by this statement.
+```
+
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListAllMyBuckets",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::BUCKET-NAME",
+      "Condition": {"StringLike": {"s3:prefix": ["","home/","home/${aws:username}/"]}}
+    },
+    // The policy allows the specified actions on an S3 bucket
+    // as long as the `s3:prefix` matches any one of the specified patterns.
+    {
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::BUCKET-NAME/home/${aws:username}",
+        "arn:aws:s3:::BUCKET-NAME/home/${aws:username}/*"
+      ]
+    //   lets an IAM user use the Amazon S3 console to manage his or her own "home directory" in an Amazon S3 bucket.
+    }
+  ]
+}
+```
+
+restrict access to resources based on an application ID and a user ID for web identity federation, [link](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_cognito-bucket.html)
+
+
+---
+
+
+#### Numeric condition operators
+
+Numeric condition operators let you construct `Condition` elements that restrict access based on comparing a key to an integer or decimal value.
+
+Condition operator | Description
+---|---
+`NumericEquals` | Matching
+`NumericNotEquals` | Negated matching
+`NumericLessThan` | "Less than" matching
+`NumericLessThanEquals` | "Less than or equals" matching
+`NumericGreaterThan` | "Greater than" matching
+`NumericGreaterThanEquals` | "Greater than or equals" matching
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "s3:ListBucket",
+    "Resource": "arn:aws:s3:::example_bucket",
+    "Condition": {"NumericLessThanEquals": {"s3:max-keys": "10"}}
+    // specify that the requester can list _up to_ 10 objects in `example_bucket` at a time.
+  }
+}
+// the `s3:max-keys` key is always present in the request when perform the `ListBucket` operation.
+// If this policy allowed all Amazon S3 operations, then only the operations that include the `max-keys` context key with a value of less than or equal to 10 would be allowed.
+
+```
+
+
+
+---
+
+
+#### Date condition operators
+
+- restrict access based on comparing a key to a date/time value.
+- use these condition operators with the `aws:CurrentTime` key or `aws:EpochTime` keys.  
+- Wildcards are not permitted for date condition operators.
+
+Condition operator | Description
+---|---
+`DateEquals` | Matching a specific date
+`DateNotEquals` | Negated matching
+`DateLessThan` | Matching before a specific date and time
+`DateLessThanEquals` | Matching at or before a specific date and time
+`DateGreaterThan` | Matching after a specific a date and time
+`DateGreaterThanEquals` | Matching at or after a specific date and time
+
+Example, the following statement contains a `Condition` element that uses the `DateGreaterThan` condition operator with the `aws:TokenIssueTime` key. This condition
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "iam:*AccessKey*",
+    "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*",
+    "Condition": {"DateGreaterThan": {"aws:TokenIssueTime": "2020-01-01T00:00:01Z"}}
+    // specifies that the temporary security credentials used to make the request were issued in 2020.
+    // This policy can be updated programmatically every day to ensure that account members use fresh credentials.
+  }
+}
+// If the key that you specify in a policy condition is not present in the request context, the values do not match.
+// The `aws:TokenIssueTime` key is present in the request context only when the principal uses temporary credentials to make the request.
+// They key is not present in AWS CLI, AWS API, or AWS SDK requests that are made using access keys.
+// In this example, if an IAM user attempts to view or edit an access key, the request is denied.
+
+```
+
+
+---
+
+
+#### Boolean condition operators
+
+- restrict access based on comparing a key to "true" or "false."
+
+Condition operator | Description
+---|---
+`Bool` | Boolean matching
+
+Example
+- uses the `Bool` condition operator with the `aws:SecureTransport` key to specify that the request must use SSL.
+- If the key that you specify in a policy condition is not present in the request context, the values do not match. 
+- The `aws:SecureTransport` key is always present in the request context.
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "iam:*AccessKey*",
+    "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*",
+    "Condition": {"Bool": {"aws:SecureTransport": "true"}}
+  }
+}
+```
+
+
+---
+
+
+#### Binary condition operators
+
+- onstruct `Condition` elements that test key values that are in binary format. 
+- It compares the value of the specified key byte for byte against a [base-64](https://en.wikipedia.org/wiki/Base64) encoded representation of the binary value in the policy.
+
+If the key that you specify in a policy condition is not present in the request context, the values do not match.
+
+```json
+"Condition" : {
+  "BinaryEquals": {
+    "`key`" : "QmluYXJ5VmFsdWVJbkJhc2U2NA=="
+  }
+}
+```
+
+
+---
+
+
+#### IP address condition operators
+
+- construct `Condition` elements that restrict access based on comparing a key to an IPv4 or IPv6 address or range of IP addresses. 
+- use these with the `aws:SourceIp` key. 
+- The value must be in the standard CIDR format (Example, 203.0.113.0/24 or 2001:DB8:1234:5678::/64). 
+- If you specify an IP address without the associated routing prefix, IAM uses the default prefix value of `/32`.
+- Some AWS services support IPv6, using `::` to represent a range of 0s.
+
+Condition operator | Description
+---|---
+`IpAddress` | The specified IP address or range
+`NotIpAddress` | All IP addresses except the specified IP address or range
+
+Example
+- uses the `IpAddress` condition operator with the `aws:SourceIp` key to specify that the request must come from the IP range 203.0.113.0 to 203.0.113.255.
+- The `aws:SourceIp` condition key resolves to the IP address that the request originates from. 
+- If the requests originates from an Amazon EC2 instance, `aws:SourceIp` evaluates to the instance's public IP address.
+- If the key that you specify in a policy condition is not present in the request context, the values do not match. 
+- The `aws:SourceIp` key is always present in the request context, except when the requester uses a VPC endpoint to make the request.
+- In this case, the condition returns `false` and the request is implicitly denied by this statement.
+
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "iam:*AccessKey*",
+    "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*",
+    "Condition": {"IpAddress": {"aws:SourceIp": "203.0.113.0/24"}}
+  }
+}
+``` 
+
+Example
+- mix IPv4 and IPv6 addresses to cover all of your organization's valid IP addresses.  
+- The `aws:SourceIp` condition key works only in a JSON policy if you are calling the tested API directly as a user. 
+- If you instead use a service to call the target service on your behalf, the target service sees the IP address of the calling service rather than the IP address of the originating user. 
+- This can happen, Example, if you use AWS CloudFormation to call Amazon EC2 to construct instances for you. There is currently no way to pass the originating IP address through a calling service to the target service for evaluation in a JSON policy. 
+- For these types of service API calls, do not use the `aws:SourceIp` condition key.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "`someservice`:*",
+    "Resource": "*",
+    "Condition": {
+      "IpAddress": {
+        "aws:SourceIp": [
+          "203.0.113.0/24",
+          "2001:DB8:1234:5678::/64"
+        ]
+      }
+    }
+  }
+}
+```
+
+
+---
+
+
+#### Amazon Resource Name (ARN) condition operators
+
+- construct `Condition` elements that restrict access based on comparing a key to an ARN. 
+- The ARN is considered a string. 
+- Not all services support comparing ARNs using this operator. 
+
+Condition operator | Description
+---|---
+`ArnEquals`, `ArnLike` | Case-sensitive matching of the ARN. Each of the six colon-delimited components of the ARN is checked separately and each can include a multi-character match wildcard `*` or a single-character match wildcard `?`. These behave identically.
+`ArnNotEquals`, `ArnNotLike` | Negated matching for ARN. These behave identically.
+
+
+Example
+- policy attached to an Amazon SQS queue to which you want to send SNS messages. 
+- It gives Amazon SNS permission to send messages to the queue (or queues) of your choice, but only if the service is sending the messages on behalf of a particular Amazon SNS topic (or topics). 
+- specify the queue in the `Resource` field, and the Amazon SNS topic as the value for the `SourceArn` key.
+- If the key that you specify in a policy condition is not present in the request context, the values do not match. 
+- The `aws:SourceArn` key is present in the request context only if a resource triggers a service to call another service on behalf of the resource owner. 
+- If an IAM user attempts to perform this operation directly, the condition returns `false` and the request is implicitly denied by this statement.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "SQS:SendMessage",
+    "Principal": {"AWS": "`123456789012`"},
+    "Resource": "arn:aws:sqs:`REGION`:`123456789012`:`QUEUE-ID`",
+    "Condition": {"ArnEquals": 
+        {"aws:SourceArn": "arn:aws:sns:`REGION`:`123456789012`:`TOPIC-ID`"}}
+  }
+}
+```
+
+---
+
+
+#### ...IfExists condition operators
+
+- add `IfExists` to the end of any condition operator name except the `Null` condition—Example, `StringLikeIfExists`. 
+- You do this to say "If the policy key is present in the context of the request, process the key as specified in the policy. If the key is not present, evaluate the condition element as true." 
+- Other condition elements in the statement can still result in a nonmatch, but not a missing key when checked with `...IfExists`.
+
+- Many condition keys describe information about a certain type of resource and only exist when accessing that type of resource. 
+- These condition keys are not present on other types of resources. 
+- This doesn't cause an issue when the policy statement applies to only one type of resource. 
+- However, there are cases where a single statement can apply to multiple types of resources, such as when the policy statement references actions from multiple services or when a given action within a service accesses several different resource types within the same service. 
+- In such cases, including a condition key that applies to only one of the resources in the policy statement can cause the `Condition` element in the policy statement to fail such that the statement's `"Effect"` does not apply.
+
+
+Example:
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Sid": "`THISPOLICYDOESNOTWORK`",
+    "Effect": "Allow",
+    "Action": "ec2:RunInstances",
+    "Resource": "*",
+    "Condition": {"StringLike": 
+        {"ec2:InstanceType": ["t1.*","t2.*","m3.*"]}}
+  }
+}
+```
+
+- enable the user to launch any instance that is type t1, t2 or m3. 
+- However, launching an instance actually requires accessing many resources in addition to the instance itself; Example, images, key pairs, security groups, etc. 
+- The entire statement is evaluated against every resource that is required to launch the instance. 
+- These additional resources do not have the `ec2:InstanceType` condition key, so the `StringLike` check fails, and the user is not granted the ability to launch _any_ instance type. 
+- To address this, use the `StringLikeIfExists` condition operator instead. 
+  - the test only happens if the condition key exists. 
+- You could read the following as: 
+  - If the resource being checked has an "`ec2:InstanceType`" condition key, then allow the action only if the key value begins with `"t1.\*", "t2.\*", or "m3.\*"`. 
+  - If the resource being checked does not have that condition key, then don't worry about it.
+- The `DescribeActions` statement includes the actions required to view the instance in the console.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "RunInstance",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "*",
+            "Condition": {
+                "StringLikeIfExists": {"ec2:InstanceType": ["t1.*","t2.*","m3.*"]}}
+        },
+        {
+            "Sid": "DescribeActions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeImages",
+                "ec2:DescribeInstances",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeSecurityGroups"
+            ],
+            "Resource": "*"
+        }]
+}
+```
+
+
+---
+
+
+#### Condition operator to check existence of condition keys
+
+Use a `Null` condition operator to check if a condition key is present at the time of authorization. 
+- `true` (the key doesn't exist — it is null) or 
+- `false` (the key exists and its value is not null).
+ 
+
+Example
+- determine whether a user is using their own credentials for the operation or temporary credentials. 
+- If the user is using temporary credentials, then the key `aws:TokenIssueTime` exists and has a value. 
+- condition that states that the user must not be using temporary credentials (the key must not exist) for the user to use the Amazon EC2 API.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement":{
+      "Action":"ec2:*",
+      "Effect":"Allow",
+      "Resource":"*",
+      "Condition":{
+          "Null":{"aws:TokenIssueTime":"true"}
+      }
+  }
+}
+```
+
+ 
 ---
 
 ### Variables and tags

@@ -73,6 +73,54 @@ Resources:
 
 ## AWS::IAM::Role
  
+The AssumeRolePolicyDocument
+- describes who can assume the role, and under what conditions.
+- The trust policy that is associated with this role. Trust policies define which entities can assume the role.
+- can associate only one trust policy with a role.  
+
+The ManagedPolicyArns
+- ARNs of policies that describe what someone assuming that role can do.
+- reference them instead of copy their contents. 
+- A list of Amazon Resource Names (ARNs) of the IAM managed policies that you want to attach to the role.
+- This way if the service adds new features or something that require new permissions, they'll just work instead of you having to go in and change them.
+
+Policies
+- Adds or updates an inline policy document that is embedded in the specified IAM role.
+- When you embed an inline policy in a role, the inline policy is used as part of the role's access (permissions) policy. 
+- The role's trust policy is created at the same time as the role. You can update a role's trust policy later.
+- A role can also have an attached managed policy. 
+
+```yaml 
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  Role:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: my-role1
+      Path: /
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Sid: myAssumePolicy
+            Effect: Allow
+            Action: 'sts:AssumeRole'
+            Principal:
+              Service: ec2.amazonaws.com
+              AWS: !Sub 'arn:aws:iam::12345678:role/role2'
+      Policies:
+        - PolicyName: myPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: '*'
+                Resource: '*'
+      # apply your existing IAM managed policy to your new IAM role
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+```
+
+
 
 ### IAM Role with Embedded Policy and Instance Profiles
 - This example shows an embedded policy in the `AWS::IAM::Role`. 
@@ -119,7 +167,6 @@ Resources:
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
-
 Resources: 
   
   RootRole: 

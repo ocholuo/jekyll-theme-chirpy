@@ -478,15 +478,15 @@ Outputs:
 
 ---
 
-## Intrinsic function reference 
+## Intrinsic function reference
 
 ### Ref
-- provided `logical ID of this resource` to the Ref intrinsic function, 
+- provided `logical ID of this resource` to the Ref intrinsic function,
 - Ref returns `the resource name`.
 
 ```yaml
 { "Ref": "RootRole" }
-# Ref will return the role name for the AWS::IAM::Role resource with the logical ID "RootRole" 
+# Ref will return the role name for the AWS::IAM::Role resource with the logical ID "RootRole"
 
 
 MyEIP:
@@ -499,16 +499,16 @@ MyEIP:
 
 ### Fn::GetAtt
 - returns the value of an attribute from a resource in the template
-- returns a value for a specified attribute of this type. 
+- returns a value for a specified attribute of this type.
 - The following are the available attributes and sample return values.
 
 ```yaml
 {"Fn::GetAtt" : ["MyRole", "Arn"] }
-# Returns the Amazon Resource Name (ARN) for the role. 
+# Returns the Amazon Resource Name (ARN) for the role.
 # This will return a value such as arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF.
 
-{"Fn::GetAtt" : ["MyRole", "RoleId"] } 
-# Returns the stable and unique string identifying the role. For example, AIDAJQABLZS4A3QDU576Q. 
+{"Fn::GetAtt" : ["MyRole", "RoleId"] }
+# Returns the stable and unique string identifying the role. For example, AIDAJQABLZS4A3QDU576Q.
 
 !GetAtt myELB.DNSName
 # returns a string containing the DNS name of the load balancer with the logical name myELB.
@@ -516,7 +516,7 @@ MyEIP:
 
 AWSTemplateFormatVersion: 2010-09-09
 Resources:
-  
+
   myELB:
     Type: AWS::ElasticLoadBalancing::LoadBalancer
     Properties:
@@ -525,7 +525,7 @@ Resources:
         - LoadBalancerPort: '80'
           InstancePort: '80'
           Protocol: HTTP
-  
+
   myELBIngressGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -542,7 +542,7 @@ Resources:
 
 ### Fn::Sub
 
-- The intrinsic function `Fn::Sub` substitutes variables in an input string with values that you specify. 
+- The intrinsic function `Fn::Sub` substitutes variables in an input string with values that you specify.
 - In your templates, you can use this function to construct commands or outputs that include values that aren't available until you create or update a stack.
 
 ```yaml
@@ -567,7 +567,7 @@ UserData:
       yum update -y aws-cfn-bootstrap
       /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfig --configsets wordpress_install --region ${AWS::Region}
       /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerGroup --region ${AWS::Region}
- 
+
 
 ```
 
@@ -1380,23 +1380,23 @@ Metadata:
 
 
 Metadata:
-  
+
   AWS::CloudFormation::Interface:
     ParameterGroups:
-      
+
       - Label:
           default: "Network Configuration"
         Parameters:
           - VPCID
           - SubnetId
           - SecurityGroupID
-      
+
       - Label:
           default: "Amazon EC2 Configuration"
         Parameters:
           - InstanceType
           - KeyName
-    
+
     ParameterLabels:
       VPCID:
         default: "Which VPC should this be deployed to?"
@@ -1422,10 +1422,10 @@ Using the metadata key from this example, the following figure shows how the con
 - must declare each resource separately;
 - can specify multiple resources of the same type.
   - declare multiple resources, separate them with commas
- 
 
-```json 
-"Resources" : { 
+
+```json
+"Resources" : {
   "Instances1" : {
       "Type" : "AWS::EC2::Instance",
       "Properties" : {
@@ -1458,7 +1458,7 @@ Resources:
     Type: Resource type
     Properties:
       String: OneStringValue
-      String: A longer string value 
+      String: A longer string value
       Number: 123
       LiteralList:
         - "[first]-string-value with a special characters"
@@ -1475,18 +1475,18 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       ImageId: "ami-0ff8a91507f77f867"
- 
-  MyInstance: 
+
+  MyInstance:
     Type: "AWS::EC2::Instance"
-    Properties: 
-      UserData: 
+    Properties:
+      UserData:
         "Fn::Base64":
           !Sub |
             Queue=${MyQueue}
       AvailabilityZone: "us-east-1a"
       ImageId: "ami-0ff8a91507f77f867"
-  
-  MyQueue: 
+
+  MyQueue:
     Type: "AWS::SQS::Queue"
     Properties: {}
 ```
@@ -1670,6 +1670,40 @@ The DependsOn attribute should be used when
 - Outputs can specify the string output of any logical identifier that is available in the template.
 
 - It's a convenient way to capture important information about your resources or input parameters
+
+
+### example
+
+
+1. Stack output
+
+```yaml
+# the output named BackupLoadBalancerDNSName 
+# returns the DNS name for the resource with the logical ID BackupLoadBalancer only when the CreateProdResources condition is true. 
+# (The second output shows how to specify multiple outputs.)
+Outputs:
+  BackupLoadBalancerDNSName:
+    Description: The DNSName of the backup load balancer
+    Value: !GetAtt BackupLoadBalancer.DNSName
+    Condition: CreateProdResources
+  InstanceID:
+    Description: The Instance ID
+    Value: !Ref EC2Instance
+```
+
+2. Cross-stack output
+
+```yaml
+# the output named StackVPC returns the ID of a VPC, 
+# and then exports the value for cross-stack referencing with the name VPCID appended to the stack's name.
+Outputs:
+  StackVPC:
+    Description: The ID of the VPC
+    Value: !Ref MyVPC
+    Export:
+      Name: !Sub "${AWS::StackName}-VPCID"
+```
+
 
 
 ---
