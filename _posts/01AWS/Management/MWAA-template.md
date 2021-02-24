@@ -18,15 +18,16 @@ Before getting started, you must have the following prerequisites:
 
 - An AWS account that provides access to AWS services.
 - [AWS Command Line Interface](https://aws.amazon.com/cli) (AWS CLI) version 1.18.128 or later installed on your workstation.
-- An [Amazon Simple Storage Service](https://aws.amazon.com/s3) (Amazon S3) bucket that meets the following [Amazon MWAA requirements](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html):
+- An [Amazon Simple Storage Service](https://aws.amazon.com/s3) (Amazon S3) bucket that meets the following Amazon MWAA requirements:
   - The bucket must be in the same AWS Region where you create the MWAA environment.
   - The bucket name must start with `airflow-` and should be globally unique.
   - Bucket versioning is enabled.
   - A folder named `dags` must be created in the same bucket to store DAGs and associated support files.
-- An [AWS Identity and Access Management](https://aws.amazon.com/iam/) (IAM) user with an access key and secret access key to configure the AWS CLI.
+- An IAM user with an access key and secret access key to configure the AWS CLI.
   - The IAM user has permissions to create an IAM role and policies, launch an EMR cluster, create an Amazon MWAA environment, and create stacks in AWS CloudFormation.
 - A possible limit increase for your account. (Usually a limit increase isn’t necessary. See [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) if you encounter a limit error while building the solution.)
-- An EMR notebook created through the Amazon EMR console, using the notebook file [find\_best\_sellers.ipynb](https://aws-bigdata-blog.s3.amazonaws.com/artifacts/aws-blog-emr-mwaa/demo/notebook/find_best_sellers.ipynb). See [Creating a Notebook](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-notebooks-create.html) for instructions on creating an EMR notebook. Record the ID of the EMR notebook (for example, <**e-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***\>); you will use this later in this post.
+- An EMR notebook created through the Amazon EMR console, using the notebook file [find\_best\_sellers.ipynb](https://aws-bigdata-blog.s3.amazonaws.com/artifacts/aws-blog-emr-mwaa/demo/notebook/find_best_sellers.ipynb). See [Creating a Notebook](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-notebooks-create.html) for instructions on creating an EMR notebook. Record the ID of the EMR notebook (for example, `<**e-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***\>`);
+
 
 ---
 
@@ -47,122 +48,120 @@ We use the following services and configurations in this solution:
 
 ## Setting up an Amazon MWAA environment 
 
-To make it easier to get started, we created a CloudFormation template that automatically configures and deploys the Amazon MWAA environment. The template takes care of the following tasks for you:
+CloudFormation template takes care of the following tasks 
 
 - [Create an Amazon MWAA execution IAM role](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
-- [Set up the VPC network for the Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html), deploying the following resources:
-  - A VPC with a pair of public and private subnets spread across two Availability Zones.
-  - An internet gateway, with a default route on the public subnets.
-  - A pair of NAT gateways (one in each Availability Zone), and default routes for them in the private subnets.
-  - Amazon S3 gateway VPC endpoints and EMR interface VPC endpoints in the private subnets in two Availability Zones.
-  - A security group to be used by the Amazon MWAA environment that only allows local inbound traffic and all outbound traffic.
-- [Create an Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html). For this post, we select mw1.small for the environment class and choose maximum worker count as 1. For monitoring, we choose to publish environment performance to CloudWatch Metrics. For Airflow logging configuration, we choose to send only the task logs and use log level `INFO`.
 
-If you want to manually create, configure, and deploy the Amazon MWAA environment without using AWS CloudFormation, see [Get started with Amazon Managed Workflows for Apache Airflow (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/get-started.html).
+- [Set up the VPC network for the Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html), deploying the following resources:
+  - A <font color=red> VPC with a pair of public and private subnets across two Availability Zones </font>
+    - a <font color=blue> VPC </font>
+      - `10.192.0.0/16` CIDR rule
+    - a <font color=blue> VPC security group </font>
+      - directs all inbound traffic to Amazon MWAA environment and all outbound traffic to `0.0.0.0/0`
+    - <font color=blue> one public subnet </font>
+      - `10.192.10.0/24` CIDR rule in 1st availability zone
+    - <font color=blue> one public subnet </font>
+      - `10.192.11.0/24` CIDR rule in 2nd availability zone
+    - <font color=blue> one private subnet </font>
+      - `10.192.20.0/24` CIDR rule in 1st availability zone
+    - <font color=blue> one private subnet </font>
+      - `10.192.21.0/24` CIDR rule in 2nd availability zone
+  - An <font color=red> internet gateway </font> 
+    - with a default route on the public subnets.
+    - creates and attaches to the public subets
+  - A pair of <font color=red> NAT gateways </font> 
+    - one in each Availability Zone
+    - and default routes for them in the private subnets.
+    - creates and attaches to the private subnets
+    - `two elastic IP addresses (EIPs)`
+      - creates and attaches to the NAT gateways
+  - 2 <font color=red> VPC endpoint </font> 
+    - Amazon **S3 gateway VPC endpoints** 
+    - and **EMR interface VPC endpoints** 
+    - in the private subnets in two Availability Zones.
+  - A <font color=red> security group </font> 
+    - **security group** to be used by the Amazon MWAA environment
+    - only allows local inbound traffic and all outbound traffic.
+
+- [Create an Amazon MWAA environment](https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html)
+  - select `mw1.small` for the environment class and choose maximum worker count as `1`. 
+  - For monitoring, publish environment performance to CloudWatch Metrics. 
+  - For Airflow logging configuration, send only the task logs and use log level `INFO`.
+
+
+to manually create, configure, and deploy the Amazon MWAA environment without using AWS CloudFormation, see [Get started with Amazon Managed Workflows for Apache Airflow (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/get-started.html).
+
+
+---
 
 ### Launching the CloudFormation template
 
 To launch your stack and provision your resources, complete the following steps:
 
 1. Choose [**Launch Stack**](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/quickcreate?templateURL=https://aws-bigdata-blog.s3.amazonaws.com/artifacts/aws-blog-emr-mwaa/demo/cloudformation/airflow_cft.yml):
- 
+   - automatically launches AWS CloudFormation in your AWS account with a template. 
+   - It prompts you to sign in as needed. 
+   - You can view the template on the AWS CloudFormation console as required. 
+   - The Amazon MWAA environment is created in the same Region as you launched the CloudFormation stack. 
+   - Make sure that you create the stack in your intended Region.
 
-This automatically launches AWS CloudFormation in your AWS account with a template. It prompts you to sign in as needed. You can view the template on the AWS CloudFormation console as required. The Amazon MWAA environment is created in the same Region as you launched the CloudFormation stack. Make sure that you create the stack in your intended Region.
-
-The CloudFormation stack requires a few parameters, as shown in the following screenshot.
+The CloudFormation stack requires a few parameters:
 
 ![The CloudFormation stack requires a few parameters, as shown in the following screenshot.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-2.jpg)
 
 ![The CloudFormation stack requires a few parameters, as shown in the following screenshot.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20703%201014%22%3E%3C/svg%3E)
 
-The following table describes the parameters.
 
-**Parameter**
+**Parameter** | **Description** | **Default Value**
+---|---|---
+Stack name | Enter a meaningful name for the stack. We use `MWAAEmrNBDemo` for this example. Replace it with your own value. | None
+AirflowBucketName | Name of the S3 bucket to store DAGs and support files. The S3 bucket must be in the same Region where you create the environment. The name must start with `airflow-`. Enter the S3 bucket created as a prerequisite. We use the S3 bucket `airflow-emr-demo-us-west-2` for this post. You must replace it with your own value for this field. | None
+EnvironmentName | An MWAA environment name that is prefixed to resource names. All the resources created by this templated are named after the value saved for this field. We name our environment `mwaa-emr-blog-demo` for this post. Replace it with your own value for this field. | mwaa-
+PrivateSubnet1CIDR | The IP range (CIDR notation) for the private subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.20.0/24
+PrivateSubnet2CIDR | The IP range (CIDR notation) for the private subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).. | 10.192.21.0/24
+PublicSubnet1CIDR | The IP range (CIDR notation) for the public subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.10.0/24
+PublicSubnet2CIDR | The IP range (CIDR notation) for the public subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.11.0/24
+VpcCIDR | The IP range (CIDR notation) for this VPC being created. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). | 10.192.0.0/16
 
-**Description**
-
-**Default Value**
-
-Stack name
-
-Enter a meaningful name for the stack. We use `MWAAEmrNBDemo` for this example. Replace it with your own value.
-
-None
-
-AirflowBucketName
-
-Name of the S3 bucket to store DAGs and support files. The S3 bucket must be in the same Region where you create the environment. The name must start with `airflow-`. Enter the S3 bucket created as a prerequisite. We use the S3 bucket `airflow-emr-demo-us-west-2` for this post. You must replace it with your own value for this field.
-
-None
-
-EnvironmentName
-
-An MWAA environment name that is prefixed to resource names. All the resources created by this templated are named after the value saved for this field. We name our environment `mwaa-emr-blog-demo` for this post. Replace it with your own value for this field.
-
-mwaa-
-
-PrivateSubnet1CIDR
-
-The IP range (CIDR notation) for the private subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).
-
-10.192.20.0/24
-
-PrivateSubnet2CIDR
-
-The IP range (CIDR notation) for the private subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components)..
-
-10.192.21.0/24
-
-PublicSubnet1CIDR
-
-The IP range (CIDR notation) for the public subnet in the first Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).
-
-10.192.10.0/24
-
-PublicSubnet2CIDR
-
-The IP range (CIDR notation) for the public subnet in the second Availability Zone. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).
-
-10.192.11.0/24
-
-VpcCIDR
-
-The IP range (CIDR notation) for this VPC being created. For more information, see [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components).
-
-10.192.0.0/16
-
-The default values for the IP range (CIDR notation) fields refer to the [AWS CloudFormation VPC stack specifications](https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-create.html#vpc-create-template-components). You can make changes based on the requirements of your own network settings.
 
 2. Enter the parameter values from the preceding table.
-3. Review the details on the **Capabilities** section and select the check boxes confirming AWS CloudFormation might create IAM resources with custom names.
-4. Choose **Create Stack**.
 
-Stack creation takes a few minutes. After the CloudFormation stack is complete, on the **Resources** tab, you can find the resources being created in this CloudFormation stack. Now, we’re ready to run our example.
+3. Review the details on the **Capabilities** section and select the check boxes confirming AWS CloudFormation might create IAM resources with custom names.
+
+4. Choose **Create Stack**.
+   - Stack creation takes a few minutes. A
+   - fter the CloudFormation stack is complete, on the **Resources** tab, you can find the resources being created in this CloudFormation stack. 
+   - Now, we’re ready to run our example.
 
 ---
 
 
 ## Orchestrating Hive analytics jobs on EMR Notebooks using Apache Airflow 
 
-The following diagram illustrates the workflow: As a user, you first need to create the DAG file that describes how to run the analytics jobs and upload it to the dags folder under the S3 bucket specified. The DAG can be triggered in Apache Airflow UI to orchestrate the job workflow, which includes creating an EMR cluster, waiting for the cluster to be ready, running Hive analytics jobs on EMR notebooks, uploading the results to Amazon S3, and cleaning up the cluster after the job is complete.
+1. As a user, first need to create the DAG file that describes how to run the analytics jobs and upload it to the dags folder under the S3 bucket specified. 
+2. The DAG can be triggered in Apache Airflow UI to orchestrate the job workflow, which includes 
+   - creating an EMR cluster, 
+   - waiting for the cluster to be ready, 
+   - running Hive analytics jobs on EMR notebooks, 
+   - uploading the results to Amazon S3, 
+   - and cleaning up the cluster after the job is complete.
 
 ![The following diagram illustrates the workflow.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-3-1.jpg)
-
-![The following diagram illustrates the workflow.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20795%20456%22%3E%3C/svg%3E)
+ 
 
 ### Input notebook file
 
-Let’s take a look at the following input notebook file `find_best_sellers.ipynb`, which we use for our example.
-
 ![Let’s take a look at the following input notebook file find_best_sellers.ipynb, which we use for our example.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-NEW.jpg)
 
-![Let’s take a look at the following input notebook file find_best_sellers.ipynb, which we use for our example.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201527%20908%22%3E%3C/svg%3E)
 
-`find_best_sellers.ipynb` is a Python script that does analysis on the public [Amazon Customer Reviews Dataset](https://s3.amazonaws.com/amazon-reviews-pds/readme.html). It generates the top 20 best sellers in a given list of categories over a given period of time and saves the results to the given S3 output location. For demonstration purpose only, we rank the seller simply by the sum of review star ratings from verified purchases.
+input notebook file `find_best_sellers.ipynb`
+- Python script that does analysis on the public [Amazon Customer Reviews Dataset](https://s3.amazonaws.com/amazon-reviews-pds/readme.html). 
+- It generates the top 20 best sellers in a given list of categories over a given period of time and saves the results to the given S3 output location. 
+- For demonstration purpose only, we rank the seller simply by the sum of review star ratings from verified purchases.
 
 The explanations of the default parameters in the first cell and each code block are included in the notebook itself.
+- The last line in the first cell, we have `OUTPUT_LOCATION = "s3://airflow-emr-demo-us-west-2/query_output/`” as a default value for the input parameter. Replace it with your own value for the output location. You can also supply a different value for this for this parameter in the Airflow Variables later.
 
-The last line in the first cell, we have `OUTPUT_LOCATION = "s3://airflow-emr-demo-us-west-2/query_output/`” as a default value for the input parameter. Replace it with your own value for the output location. You can also supply a different value for this for this parameter in the Airflow Variables later.
 
 ### DAG file
 
@@ -176,6 +175,7 @@ The DAG file [test\_dag.py](https://aws-bigdata-blog.s3.amazonaws.com/artifacts/
 
 Here is the full source code of the DAG:
 
+```bash
     # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
     # SPDX-License-Identifier: MIT-0
     from airflow import DAG
@@ -342,12 +342,16 @@ Here is the full source code of the DAG:
         )
 
         create_cluster >> cluster_sensor >> start_execution >> execution_sensor >> cluster_remover
+```
 
+The very last line of the DAG code explains how the tasks are linked in the orchestration workflow. 
+- It’s [overloading](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types) the right shift `>>` operator to create a dependency, meaning that the task on the left should be run first, and the output passed to the task on the right.
 
-The very last line of the DAG code explains how the tasks are linked in the orchestration workflow. It’s [overloading](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types) the right shift `>>` operator to create a dependency, meaning that the task on the left should be run first, and the output passed to the task on the right.
+Instead of hard-coding the variables in the DAG code, we choose to supply these variables by importing a JSON file in the Airflow UI before actually running the DAG. This way, we can also update the variables without having to update the DAG code, which requires updating the DAG file in Amazon S3. We walk you through how to do so in the later steps.
 
-Instead of hard-coding the variables in the DAG code, we choose to supply these variables by importing a JSON file in the Airflow UI before actually running the DAG. This way, we can also update the variables without having to update the DAG code, which requires updating the DAG file in Amazon S3. We walk you through how to do so in the later steps. You can see the lines for `VARIABLES` that we repeated:
+1. the lines for `VARIABLES` that we repeated:
 
+```bash
     # =============== VARIABLES ===============
     NOTEBOOK_ID = Variable.get('NOTEBOOK_ID')
     NOTEBOOK_FILE_NAME = Variable.get('NOTEBOOK_FILE_NAME')
@@ -358,9 +362,11 @@ Instead of hard-coding the variables in the DAG code, we choose to supply these 
     OUTPUT_LOCATION = Variable.get('OUTPUT_LOCATION')
     FROM_DATE = Variable.get('FROM_DATE')
     TO_DATE = Variable.get('TO_DATE')
+```
 
-We create a JSON formatted file named `variables.json` for our example. See the following code:
+2. create a JSON formatted file named `variables.json`  
 
+```json
     {
         "REGION": "us-west-2",
         "SUBNET_ID": "<subnet-********>",
@@ -372,134 +378,78 @@ We create a JSON formatted file named `variables.json` for our example. See the 
         "TO_DATE": "2015-08-31",
         "OUTPUT_LOCATION": "s3://<S3 path for query output>/"
     }
-
-To use this JSON code, you need to replace all the variable values (subnet and S3 paths) with the actual values.
+```
+ 
 
 ### Accessing Apache Airflow UI and running the workflow
 
 To run the workflow, complete the following steps:
 
 1. On the Amazon MWAA console, find the new environment `mwaa-emr-blog-demo` we created earlier with the CloudFormation template.
+   - ![On the Amazon MWAA console, find the new environment mwaa-emr-blog-demo we created earlier with the CloudFormation template.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-MISSING.jpg)
 
-![On the Amazon MWAA console, find the new environment mwaa-emr-blog-demo we created earlier with the CloudFormation template.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-MISSING.jpg)
-
-![On the Amazon MWAA console, find the new environment mwaa-emr-blog-demo we created earlier with the CloudFormation template.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201620%20848%22%3E%3C/svg%3E)
 
 2. Choose **Open Airflow UI**.
+
 3. Log in as an authenticated user.
-
-![Log in as an authenticated user.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-5.jpg)
-
-![Log in as an authenticated user.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20257%22%3E%3C/svg%3E)
-
-Next, we import the JSON file for the variables into Airflow UI.
-
-As we mentioned earlier, we want to supply the variable values for our DAG definition later upon triggering the DAG in Airflow UI instead of hard-coding the values.
+   - ![Log in as an authenticated user.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-5.jpg)
+   - import the JSON file for the variables into Airflow UI.
+   - to supply the variable values for our DAG definition later upon triggering the DAG in Airflow UI instead of hard-coding the values.
 
 4. On the **Admin** menu, choose **Variables**.
 5. Choose **Browse**.
 6. Choose **json**.
 7. Choose **Import Variables**.
+   - ![pic](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-MISSING-2.jpg)
 
-![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-MISSING-2.jpg)
+8. Run the following command in the same directory as where file `test_dag.py` is to upload the DAG file to the `dags` folder under the S3 bucket specified for the Airflow environment. 
+   - Replace `<**your\_airflow\_bucket\_name**_\>_` with the S3 bucket name that you created as a prerequisite:
+   - `test_dag.py` should automatically appear in the Airflow UI.
 
-![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%202122%201168%22%3E%3C/svg%3E)
-
-For more information about importing variables, see [Variables](https://airflow.apache.org/docs/apache-airflow/stable/concepts.html#variables).
-
-8. Run the following command in the same directory as where file `test_dag.py` is to upload the DAG file to the `dags` folder under the S3 bucket specified for the Airflow environment. Replace <**your\_airflow\_bucket\_name**_\>_ with the S3 bucket name that you created as a prerequisite:
-
-        aws s3 cp test_dag.py s3://<your_airflow_bucket_name>/dags/
-
-
-`test_dag.py` should automatically appear in the Airflow UI.
+```bash
+aws s3 cp test_dag.py s3://<your_airflow_bucket_name>/dags/
+```
 
 9. Trigger the DAG by turning it to **On**
+    - ![Trigger the DAG by turning it to On](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-7.jpg)
 
-![Trigger the DAG by turning it to On](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-7.jpg)
-
-![Trigger the DAG by turning it to On](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20205%22%3E%3C/svg%3E)
-
-10. Choose **test\_dag** to go to the detail page for the DAG.
-
-On the **Graph View** tab, we can see the whole workflow of our pipeline and each individual task as defined in our DAG code.
-
-![On the Graph View tab, we can see the whole workflow of our pipeline and each individual task as defined in our DAG code.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-8.jpg)
-
-![On the Graph View tab, we can see the whole workflow of our pipeline and each individual task as defined in our DAG code.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20316%22%3E%3C/svg%3E)
+10. Choose **test\_dag**
+    - go to the detail page for the DAG.
+    - On the **Graph View** tab, we can see the whole workflow of our pipeline and each individual task as defined in our DAG code.
+    - ![On the Graph View tab, we can see the whole workflow of our pipeline and each individual task as defined in our DAG code.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-8.jpg)
+  
 
 11. Optionally, to trigger the DAG, choose **Trigger DAG** and add the following JSON formatted configuration before activate the DAG.
-
-![Optionally, to trigger the DAG, choose Trigger DAG and add the following JSON formatted configuration before activate the DAG.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-9.jpg)
-
-![Optionally, to trigger the DAG, choose Trigger DAG and add the following JSON formatted configuration before activate the DAG.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20243%22%3E%3C/svg%3E)
-
-You now get an email when failure happens on any of the tasks. You can also configure to get email notification when retry happens as well.
+    - ![Optionally, to trigger the DAG, choose Trigger DAG and add the following JSON formatted configuration before activate the DAG.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-9.jpg)
+    - You now get an email when failure happens on any of the tasks. 
+    - You can also configure to get email notification when retry happens as well.
 
 12. On the Amazon EMR console, find the EMR cluster created by the `create_cluster_task` definition.
-
-![On the Amazon EMR console, find the EMR cluster created by the create_cluster_task definition.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-10.jpg)
-
-![On the Amazon EMR console, find the EMR cluster created by the create_cluster_task definition.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20971%20533%22%3E%3C/svg%3E)
+    - ![On the Amazon EMR console, find the EMR cluster created by the create_cluster_task definition.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-10.jpg) 
 
 13. On the Airflow UI, you can switch tabs to check the status of the workflow tasks.
-
-After a few minutes, we can see on the **Tree View** tab that the workflow is complete and all the tasks are successful.
-
-![After a few minutes, we can see on the Tree View tab that the workflow is complete and all the tasks are successful.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-11.jpg)
-
-![After a few minutes, we can see on the Tree View tab that the workflow is complete and all the tasks are successful.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20309%22%3E%3C/svg%3E)
-
-On the **Gantt** tab, we can see the time distribution of all the tasks of our workflow.
-
-![On the Gantt tab, we can see the time distribution of all the tasks of our workflow.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-12.jpg)
-
-![On the Gantt tab, we can see the time distribution of all the tasks of our workflow.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20245%22%3E%3C/svg%3E)
-
-As specified in our DAG definition, the EMR cluster is stopped when the workflow is complete.
-
-Because we use the cron expression `0 * * * *` as the scheduled running interval for our workflow, if the triggered status of the DAG is **ON**, it runs every hour. You need to switch the status to **OFF** if you don’t want it to run again.
+    - see on the **Tree View** tab that the workflow is complete and all the tasks are successful.
+    - ![After a few minutes, we can see on the Tree View tab that the workflow is complete and all the tasks are successful.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-11.jpg)
+    - On the **Gantt** tab, we can see the time distribution of all the tasks of our workflow.
+    - ![On the Gantt tab, we can see the time distribution of all the tasks of our workflow.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-12.jpg) 
+    - As specified in our DAG definition, the EMR cluster is stopped when the workflow is complete.
+    - Because we use the cron expression `0 * * * *` as the scheduled running interval for our workflow, if the triggered status of the DAG is **ON**, it runs every hour. You need to switch the status to **OFF** if you don’t want it to run again.
 
 14. On the Amazon S3 console, view the result of our notebook job in the S3 folder.
+    - ![On the Amazon S3 console, view the result of our notebook job in the S3 folder.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-13.jpg) 
 
-![On the Amazon S3 console, view the result of our notebook job in the S3 folder.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-13.jpg)
-
-![On the Amazon S3 console, view the result of our notebook job in the S3 folder.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20469%22%3E%3C/svg%3E)
 
 For example, the following screenshot is the output for the `Books` category that we provided as a value in the `CATEGORIES` parameter. As we can see, `Go Set a Watchman: A Novel` is the best `Books` seller from the week of 8-25-2015 to 8-31-2015.
 
 ![As we can see, Go Set a Watchman: A Novel is the best Books seller from the week of 8-25-2015 to 8-31-2015.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/26/BDB-1140-14.jpg)
 
-![As we can see, Go Set a Watchman: A Novel is the best Books seller from the week of 8-25-2015 to 8-31-2015.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20894%20748%22%3E%3C/svg%3E)
 
-Cleaning up
------------
 
-To avoid ongoing charges, delete the CloudFormation stack and any files in Amazon S3 that were created by running the examples in this post.
+---
 
-Conclusion
-----------
 
-This post showed how to use the Amazon EMR Notebooks API and use orchestration services such as Amazon MWAA to build ETL pipelines. It demonstrated how set up a secured Amazon MWAA environment using a CloudFormation template and run a sample workflow with Apache Airflow.
+## [Building complex workflows with Amazon MWAA, AWS Step Functions, AWS Glue, and Amazon EMR](https://noise.getoto.net/2021/01/11/building-complex-workflows-with-amazon-mwaa-aws-step-functions-aws-glue-and-amazon-emr/) 
 
-If you want to learn how to run Amazon EMR applications such as PySpark with Amazon MWAA, see [Running Spark Jobs on Amazon EMR with Apache Airflow](https://itnext.io/running-spark-jobs-on-amazon-emr-with-apache-airflow-2e16647fea0c).
-
-* * *
-
-### About the Authors
-
-![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2020/11/17/Fei-Lang.jpg)
-
-![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20133%22%3E%3C/svg%3E)**Fei Lang** is a senior big data architect at Amazon Web Services. She is passionate about building the right big data solution for customers. In her spare time, she enjoys the scenery of the Pacific Northwest, going for a swim, and spending time with her family.
-
-![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2020/11/17/Ray-Liu.png)
-
-![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20104%22%3E%3C/svg%3E)**Ray Liu** is a software development engineer at AWS. Besides work, he enjoys traveling and spending time with family.
-
-[Amazon EMR](https://noise.getoto.net/tag/amazon-emr/)[Amazon Managed Workflows for Apache Airflow (Amazon MWAA)](https://noise.getoto.net/tag/amazon-managed-workflows-for-apache-airflow-amazon-mwaa/)[AWS Big Data](https://noise.getoto.net/tag/aws-big-data/)
-
-[Building complex workflows with Amazon MWAA, AWS Step Functions, AWS Glue, and Amazon EMR](https://noise.getoto.net/2021/01/11/building-complex-workflows-with-amazon-mwaa-aws-step-functions-aws-glue-and-amazon-emr/)
-========================================================================================================================================================================================================================
 
 [2021-01-11](https://noise.getoto.net/2021/01/11/building-complex-workflows-with-amazon-mwaa-aws-step-functions-aws-glue-and-amazon-emr/) [Dipankar Ghosal](https://noise.getoto.net/author/dipankar-ghosal/)
 
@@ -665,32 +615,12 @@ The following screenshot shows the output.
 
 ![The following screenshot shows the output.](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/05/BDB1205-13.jpg)
 
-![The following screenshot shows the output.](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20800%20373%22%3E%3C/svg%3E)
 
-Cleaning up
------------
 
-To clean up the resources created as part of our CloudFormation template, delete the mwaa-demo-foundations stack. You can either use the AWS CloudFormation console or the [AWS Command Line Interface](https://aws.amazon.com/cli) (AWS CLI).
 
-Conclusion
-----------
 
-In this post, we used Amazon MWAA to orchestrate an ETL pipeline on Amazon EMR and AWS Glue with Step Functions. We created an Airflow DAG to demonstrate how to run data processing jobs concurrently and extended the DAG to start a Step Functions state machine to build a complex ETL pipeline. A custom Airflow operator submitted and then monitored the Amazon EMR steps synchronously.
+## [Introducing Amazon Managed Workflows for Apache Airflow (MWAA)](https://noise.getoto.net/2020/11/24/introducing-amazon-managed-workflows-for-apache-airflow-mwaa/)
 
-If you have comments or feedback, please leave them in the comments section.
-
-* * *
-
-### About the Author
-
-![Dipankar Ghosal](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/01/05/Dipankar-Ghosal.jpg)
-
-![Dipankar Ghosal](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20133%22%3E%3C/svg%3E)**Dipankar Ghosal** is a Sr Data Architect at Amazon Web Services and is based out of Minneapolis, MN. He has a focus in analytics and enjoys helping customers solve their unique use cases. When he’s not working, he loves going hiking with his wife and daughter.
-
-[Amazon EMR](https://noise.getoto.net/tag/amazon-emr/)[Amazon Managed Workflows for Apache Airflow (Amazon MWAA)](https://noise.getoto.net/tag/amazon-managed-workflows-for-apache-airflow-amazon-mwaa/)[AWS Big Data](https://noise.getoto.net/tag/aws-big-data/)[AWS Glue](https://noise.getoto.net/tag/aws-glue/)[AWS Step Functions](https://noise.getoto.net/tag/aws-step-functions/)
-
-[Introducing Amazon Managed Workflows for Apache Airflow (MWAA)](https://noise.getoto.net/2020/11/24/introducing-amazon-managed-workflows-for-apache-airflow-mwaa/)
-===================================================================================================================================================================
 
 [2020-11-24](https://noise.getoto.net/2020/11/24/introducing-amazon-managed-workflows-for-apache-airflow-mwaa/) [Danilo Poccia](https://noise.getoto.net/author/danilo-poccia/)
 
@@ -1010,108 +940,4 @@ With Amazon MWAA you can spend more time building workflows for your engineering
 
 The collective thoughts of the interwebz
 ----------------------------------------
-
-Contributors
-============
-
-- [/dev/ttyS0](http://www.devttys0.com "Embedded Device Hacking")
-- [Armed and Dangerous](http://esr.ibiblio.org "Sex, software, politics, and firearms. Life’s simple pleasures…")
-- [arp242.net](https://www.arp242.net/ "Website of Martin Tournoij/arp242/Carpetsmoker. I write about stuff, occasionally.")
-- [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/ "Just another Amazon Web Services site")
-- [AWS Big Data Blog](https://aws.amazon.com/blogs/big-data/ "Official Big Data Blog of Amazon Web Services")
-- [AWS Compute Blog](https://aws.amazon.com/blogs/compute/)
-- [AWS DevOps Blog](https://aws.amazon.com/blogs/devops/ "Just another AWS Brew Blogs  site")
-- [AWS Managed Services by Anchor](https://www.anchor.com.au "AWS automation, management and DevOps consulting services")
-- [AWS Messaging & Targeting Blog](https://aws.amazon.com/blogs/messaging-and-targeting/ "Just another AWS Brew Blogs  site")
-- [AWS News Blog](https://aws.amazon.com/blogs/aws/ "Announcements, Updates, and Launches")
-- [AWS Security Blog](https://aws.amazon.com/blogs/security/ "The latest AWS security, identity, and compliance launches, announcements, and how-to posts.")
-- [Backblaze Blog | Cloud Storage & Cloud Backup](https://www.backblaze.com/blog "Cloud Storage & Cloud Backup")
-- [BeardedTinker](https://www.youtube.com/channel/UCuqokNoK8ZFNQdXxvlE129g)
-- [Bivol.bg](https://bivol.bg "Съ рогата напрѣдъ!")
-- [Bozho's tech blog](https://techblog.bozho.net "Tips and thoughts on developing software, by Bozhidar Bozhanov")
-- [Bradley M. Kuhn's Blog ( bkuhn )](http://ebb.org/bkuhn/blog/ "The personal blog of Bradley M. Kuhn (aka bkuhn ), in which he covers issues related to Free, Libre and Open Source Software, software freedom, licensing, GPL, copyleft and various other computer science topics.")
-- [Crosstalk Solutions](https://www.youtube.com/channel/UCVS6ejD9NLZvjsvhcbiDzjw)
-- [Curious Droid](https://www.youtube.com/channel/UC726J5A0LLFRxQ0SZqr2mYQ)
-- [Darknet](https://www.darknet.org.uk "Hacking Tools, Hacker News & Cyber Security")
-- [Delian’s Tech blog](https://deliantech.blogspot.com/ "A little blog on IT topics, telecommunications and programming")
-- [Devil’s Advocate Security](https://devilsadvocatesecurity.blogspot.com/ "<center>Devil’s Advocate Security is a blog dedicated to even handed discussion of security topics, security news, and  observations from the front lines of the daily business of IT security.</center>")
-- [digiblurDIY](https://www.youtube.com/channel/UC5ZdPKE2ckcBhljTc2R_qNA)
-- [Engineering – The GitHub Blog](https://github.blog "Updates, ideas, and inspiration from GitHub to help developers build and design software.")
-- [Errata Security](https://blog.erratasec.com/ "Advanced persistent cybersecurity")
-- [Explosm.net](http://explosm.net "Flash Animations, Daily Comics and more!")
-- [fuzzy notepad](https://eev.ee/)
-- [Geographics](https://www.youtube.com/channel/UCHKRfxkMTqiiv4pF99qGKIw)
-- [Grab Tech](https://engineering.grab.com/ "Grab’s Engineering team solves critical transportation challenges and makes transport freedom a reality for 620 million people in Southeast Asia.
-    ")
-- [Grigor Gatchev – A Weblog](http://www.gatchev.info/blog "(Personal – mostly in Bulgarian. English readers, please check the “In English” category.)")
-- [Home Assistant](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w)
-- [IBM 360 Model 20 Rescue and Restoration](https://ibms360.co.uk "Documenting the recovery and restoration of an IBM System 360 Model 20 and potentially an IBM System 370 Model 125")
-- [IEEE Spectrum Recent Content full text](https://spectrum.ieee.org "IEEE Spectrum Recent Content headlines")
-- [Joel on Software](https://www.joelonsoftware.com)
-- [Kendov.com](http://kendov.com "Новини")
-- [LastWeekTonight](https://www.youtube.com/channel/UC3XTzVzaHQEd30rQbuvCtTQ)
-- [laur.ie's blog](https://laur.ie/blog "Sometimes I make things or think things. Here they are.")
-- [lcamtuf’s blog](https://lcamtuf.blogspot.com/)
-- [Let's Encrypt – Free SSL/TLS Certificates](https://letsencrypt.org/ "  Let’s Encrypt is a free, automated, and open certificate
-    authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
-    ")
-- [LGR](https://www.youtube.com/channel/UCLx053rWZxCiYWsBETgdKrQ)
-- [LWN.net](https://lwn.net "
-    LWN.net is a comprehensive source of news and opinions from
-    and about the Linux community. This is the main LWN.net feed,
-    listing all articles which are posted to the site front page. ")
-- [Matt Granger](https://www.youtube.com/channel/UCL5Hf6_JIzb3HpiJQGqs8cQ)
-- [Matthew Garrett](https://mjg59.dreamwidth.org/ "Matthew Garrett – Dreamwidth Studios")
-- [Monty says](https://monty-says.blogspot.com/ "Rambling thoughts about recent events in MariaDB / MySQL or Free software/Open source")
-- [Netflix TechBlog – Medium](https://netflixtechblog.com "Learn about Netflix’s world class engineering efforts, company culture, product developments and more. – Medium")
-- [NTPsec Project Blog](https://blog.ntpsec.org/ "The blog for the NTPsec Project. NTPsec is a secure, hardened, and improved implementation of Network Time Protocol derived from NTP Classic, Dr. David Mills’s original. Our goal is to deliver code that can be used with confidence in deployments with the ")
-- [Oglaf! — Comics. Often dirty.](https://www.oglaf.com/latest/ "Comics. Often dirty. Updates Sundays.")
-- [Pid Eins](http://0pointer.net/blog/)
-- [Prometheus Blog](https://prometheus.io/)
-- [Rapid7 Blog](https://blog.rapid7.com/ "Rapid7 transforms data into insight, empowering security professionals to progress and protect their organizations.")
-- [Raspberry Pi Blog – Raspberry Pi](https://www.raspberrypi.org "Teach, learn and make with Raspberry Pi")
-- [Schneier on Security](https://www.schneier.com)
-- [Show Notes](http://devopscafe.org/show/ "Show Notes")
-- [Sprites mods](http://spritesmods.com "Sprites mods: website documenting various hardware and software mods and hacks.")
-- [Talks at Google](https://www.youtube.com/channel/UCbmNph6atAoGfqLoCL_duAg)
-- [Techmoan](https://www.youtube.com/channel/UC5I2hjZYiW9gZPVkvzM8_Cw)
-- [Technology Connextras](https://www.youtube.com/channel/UClRwC5Vc8HrB6vGx6Ti-lhA)
-- [The Atlantic](https://www.youtube.com/channel/UCK0z0_5uL7mb9IjntOKi5XQ)
-- [The Cloudflare Blog](https://blog.cloudflare.com/ "The Cloudflare Blog")
-- [The Codeless Code](http://thecodelesscode.com "Kōans for the Software Engineer — An illustrated collection of (sometimes violent) fables, concerning the Art and Philosophy of software development.")
-- [The History Guy: History Deserves to Be Remembered](https://www.youtube.com/channel/UC4sEmXUuWIFlxRIFBRV6VXQ)
-- [The Hook Up](https://www.youtube.com/channel/UC2gyzKcHbYfqoXA5xbyGXtQ)
-- [turnoff.us – geek comic site](https://turnoff.us/ "turnoff.us is a geek comic site. Comics about Programming Languages, Web, Cloud, Linux, etc.")
-- [xkcd.com](https://xkcd.com/)
-- [Yahoo Engineering](https://yahooeng.tumblr.com/ "A peek under the purple rug!")
-- [Yate – Software Defined Mobile Networks](https://blog.yate.ro)
-- [Zabbix Blog](https://blog.zabbix.com "The Future of Monitoring")
-- [БЛОГодаря](https://blog.bozho.net "блог на Божидар Божанов")
-- [Блогът на Делян Делчев](https://delian.blogspot.com/ "Трябва много да ви е скучно, щом сте стигнали дотук…")
-- [Блогът на Юруков](https://yurukov.net/blog "Нещата които искам да споделя с другите")
-- [Дневникът на Георги](http://georgi.unixsol.org/diary/ "Мрън, мрън, всеки ден.")
-- [Дни](http://dni.li)
-- [Йовко Ламбрев](https://yovko.net/ "Размисли и идеи")
-- [Како Сийке, не съм от тях!](http://kaka-cuuka.com)
-- [Кътчето на Селин](https://nookofselene.wordpress.com)
-- [Медийно право](https://nellyo.wordpress.com " [Media Law]   [Nelly Ognyanova]  ")
-- [Неосъзнато](https://alex.stanev.org/blog "мисли, чувства, съмнения…")
-- [татко Крокодил](https://vasil.ludost.net/blog "Имам теле в главата.")
-- [Тоест](https://toest.bg "Смисълът на новините")
-
-Tags
-====
-
-[AD](https://noise.getoto.net/tag/ad/) [AI](https://noise.getoto.net/tag/ai/) [All](https://noise.getoto.net/tag/all/) [app](https://noise.getoto.net/tag/app/) [art](https://noise.getoto.net/tag/art/) [ATI](https://noise.getoto.net/tag/ati/) [AWS](https://noise.getoto.net/tag/aws/) [BEC](https://noise.getoto.net/tag/bec/) [ble](https://noise.getoto.net/tag/ble/) [C](https://noise.getoto.net/tag/c/) [CAS](https://noise.getoto.net/tag/cas/) [ci](https://noise.getoto.net/tag/ci/) [code](https://noise.getoto.net/tag/code/) [Curity](https://noise.getoto.net/tag/curity/) [data](https://noise.getoto.net/tag/data/) [ec](https://noise.getoto.net/tag/ec/) [ed](https://noise.getoto.net/tag/ed/) [et](https://noise.getoto.net/tag/et/) [Go](https://noise.getoto.net/tag/go/) [HAT](https://noise.getoto.net/tag/hat/) [ICE](https://noise.getoto.net/tag/ice/) [IP](https://noise.getoto.net/tag/ip/) [irs](https://noise.getoto.net/tag/irs/) [iss](https://noise.getoto.net/tag/iss/) [Make](https://noise.getoto.net/tag/make/) [mit](https://noise.getoto.net/tag/mit/) [NES](https://noise.getoto.net/tag/nes/) [OSS](https://noise.getoto.net/tag/oss/) [Other](https://noise.getoto.net/tag/other/) [R](https://noise.getoto.net/tag/r/) [rat](https://noise.getoto.net/tag/rat/) [rest](https://noise.getoto.net/tag/rest/) [ROV](https://noise.getoto.net/tag/rov/) [RTI](https://noise.getoto.net/tag/rti/) [S.](https://noise.getoto.net/tag/s/) [security](https://noise.getoto.net/tag/security/) [sts](https://noise.getoto.net/tag/sts/) [support](https://noise.getoto.net/tag/support/) [ted](https://noise.getoto.net/tag/ted/) [tor](https://noise.getoto.net/tag/tor/) [UI](https://noise.getoto.net/tag/ui/) [un](https://noise.getoto.net/tag/un/) [US](https://noise.getoto.net/tag/us/) [win](https://noise.getoto.net/tag/win/) [Work](https://noise.getoto.net/tag/work/)
-
-Proudly powered by Ants
-
-.lazyload{display:none;}
-
-window.lazySizesConfig=window.lazySizesConfig||{};window.lazySizesConfig.loadMode=1; var eucookielaw\_data = {"euCookieSet":"","autoBlock":"0","expireTimer":"360","scrollConsent":"0","networkShareURL":"","isCookiePage":"","isRefererWebsite":""};
-
-By continuing to use the site, you agree to the use of cookies. [more information](#) Accept
-
-The cookie settings on this website are set to "allow cookies" to give you the best browsing experience possible. If you continue to use this website without changing your cookie settings or you click "Accept" below then you are consenting to this.
-
-[Close](#)
+ 

@@ -1,8 +1,8 @@
 ---
 title: ShellScripts
 date: 2020-07-16 11:11:11 -0400
-categories: [31Linux, Basic]
-tags: [System]
+categories: [05CodeNote]
+tags: [Script]
 math: true
 image: 
 ---

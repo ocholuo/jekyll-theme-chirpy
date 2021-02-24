@@ -1,8 +1,8 @@
 ---
 title: GitHub - A successful Git branching model
 date: 2020-11-11 11:11:11 -0400
-categories: [10SecConcept]
-tags: [SecConcept]
+categories: [05CodeNote]
+tags: [git]
 toc: true
 image:
 ---

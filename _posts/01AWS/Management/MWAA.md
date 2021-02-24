@@ -160,9 +160,9 @@ Benefits of using Amazon MWAA
 
 
 For example:
-- use the following VPC endpoints to ensure extra security, availability, and Amazon S3 data transfer performance:
-    - An Amazon S3 [gateway VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-gateway.html) to establish a private connection between the Amazon MWAA VPC and Amazon S3
-    - An EMR [interface VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html) to securely route traffic directly to Amazon EMR from Amazon MWAA, instead of connecting over the internet
+- use the VPC endpoints to ensure extra security, availability, and Amazon S3 data transfer performance:
+- An Amazon S3 [gateway VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-gateway.html) to establish a private connection between the Amazon MWAA VPC and Amazon S3
+- An EMR [interface VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html) to securely route traffic directly to Amazon EMR from Amazon MWAA, instead of connecting over the internet
 
 
 ---
@@ -374,18 +374,7 @@ Amazon MWAA console > Create environment
 
 ## Amazon MWAA AWS CloudFormation template
 
-The following Amazon MWAA AWS CloudFormation template creates a VPC network in default region with the following specifications.
-- a `VPC` with a 10.192.0.0/16 CIDR rule
-- a `VPC security group` that directs all inbound traffic to your Amazon MWAA environment and all outbound traffic to 0.0.0.0/0
-- `one public subnet` with a 10.192.10.0/24 CIDR rule in your region's first availability zone
-- `one public subnet` with a 10.192.11.0/24 CIDR rule in your region's second availability zone
-- `one private subnet` with a 10.192.20.0/24 CIDR rule in your region's first availability zone
-- `one private subnet` with a 10.192.21.0/24 CIDR rule in your region's second availability zone
-- creates and attaches an `Internet gateway` to the public subets
-- creates and attaches `two NAT gateways` to the private subnets
-- creates and attaches `two elastic IP addresses (EIPs)` to the NAT gateways
-- creates and attaches `two public route tables` to the public subnets
-- creates and attaches `two private route tables` to the private subnets
+![BDB-1140-1](https://i.imgur.com/eqV5cHY.jpg)
 
 
 ```yaml
