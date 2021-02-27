@@ -9,6 +9,10 @@ image:
 
 [toc]
 
+- ref
+  - [AWSdoc](https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+
+
 ---
 
 # AWS::IAM

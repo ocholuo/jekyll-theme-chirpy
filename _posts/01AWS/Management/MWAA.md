@@ -7,6 +7,9 @@
 
 - ref
   - [Orchestrating analytics jobs on Amazon EMR Notebooks using Amazon MWAA](https://noise.getoto.net/2021/01/27/orchestrating-analytics-jobs-on-amazon-emr-notebooks-using-amazon-mwaa/)
+  - [Introducing Amazon Managed Workflows for Apache Airflow (MWAA)](https://noise.getoto.net/2020/11/24/introducing-amazon-managed-workflows-for-apache-airflow-mwaa/)
+  - Post Syndicated from original [link](https://aws.amazon.com/blogs/aws/introducing-amazon-managed-workflows-for-apache-airflow-mwaa/)
+  - [Amazon Managed Workflows for Apache Airflow User Guide](https://docs.aws.amazon.com/mwaa/latest/userguide/amazon-mwaa-user-guide.pdf)
 
 
 
@@ -17,11 +20,41 @@
 
 ---
 
+
+## Apache Airflow
+
+[Apache Airflow](https://airflow.apache.org/)
+- As the volume and complexity of your data processing pipelines increase
+- simplify the overall process by decomposing it into a series of smaller tasks and coordinate the execution of these tasks as part of a **workflow**.
+- platform created by the community to <font color=red> programmatically author, schedule, and monitor workflows </font>
+- manage workflows as scripts,
+- monitor them via the user interface (UI),
+- and extend their functionality through a set of powerful plugins.
+
+
+---
+
+
 ## basic
 
 Amazon MWAA
 
-- a fully managed service that makes it easy to run open-source versions of Apache Airflow on AWS, and to build workflows to run your extract, transform, and load (ETL) jobs and data pipelines.
+- a fully managed service
+- makes it easy to
+  - run open-source versions of Apache Airflow on AWS,
+  - build workflows to run extract, transform, and load (ETL) jobs and data pipelines.
+- aviod manually installing, maintaining, and scaling Airflow, and handling security, authentication, and authorization for its users
+
+Airflow workflows
+- retrieve input from sources like [Amazon Simple Storage Service (S3)](https://aws.amazon.com/s3/) using [Amazon Athena](https://aws.amazon.com/athena) queries,
+- perform transformations on [Amazon EMR](https://aws.amazon.com/emr) clusters,
+- can use the resulting data to train machine learning models on [Amazon SageMaker](https://aws.amazon.com/sagemaker/).
+- Workflows in Airflow are authored as [Directed Acyclic Graphs (DAGs)](https://airflow.apache.org/docs/stable/concepts.html#dags) using the Python programming language.
+- Airflow **metrics** can be published as CloudWatch Metrics, and **logs** can be sent to CloudWatch Logs.
+- Amazon MWAA provides automatic minor version **upgrades** and patches by default, with an option to designate a maintenance window in which these upgrades are performed.
+
+
+
 
 Benefits of using Amazon MWAA
 
@@ -272,20 +305,26 @@ Amazon MWAA console > Create environment
 - provide a name for your environment
 - select the Apache Airflow version to use.
   -![mwaa-create-environment-1-1024x342](https://i.imgur.com/njWTLzN.png)
+
 - <font color=red> Under DAG code in Amazon S3: </font>
   -![mwaa-dag-code-s3-1012x1024](https://i.imgur.com/lsE8wTe.png)
+
   - <font color=blue> For S3 bucket </font>
     - choose the bucket that you created for Amazon MWAA
     - Enter the Amazon S3 URI to the bucket.
+
   - <font color=blue> For DAGs folder </font>
     - choose the DAG folder that you added to the bucket for Amazon MWAA
     - Enter the Amazon S3 URI to the DAG folder in the bucket.
+
   - (Optional). <font color=blue> For Plugins file </font>
     - The plugins file is a ZIP file <font color=blue> containing the plugins used by my DAGs </font>
     - do one of the following:
-    - Choose Browse S3 and select the plugins.zip file that you added to the bucket. You must also select a version from the drop-down menu.
-    - Enter the Amazon S3 URI to the plugin.zip file that you added to the bucket.
+      - Choose Browse S3 and select the plugins.zip file that you added to the bucket. You must also select a version from the drop-down menu.
+      - Enter the Amazon S3 URI to the plugin.zip file that you added to the bucket.
     - You can create an environment and then add a plugins.zip file later.
+
+
   - (Optional) <font color=blue> For Requirements file </font>
     - The requirements file <font color=blue> describes the Python dependencies to run my DAGs </font>
     - do one of the following:
@@ -293,24 +332,37 @@ Amazon MWAA console > Create environment
     - Enter the Amazon S3 URI to the requirements.txt file in the bucket.
     - You can add a requirements file to your bucket after you create an environment. After you add or update the file you can edit the environment to modify these settings.
 
-- Configure advanced settings page
-  - under Networking
+  - For plugins and requirements, I can select the [S3 object version](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) to use. In case the plugins or the requirements I use create a non-recoverable error in my environment, Amazon MWAA will automatically roll back to the previous working version.
+
+
+- Configure advanced settings page (Networking)
   - ![mwaa-networking-1-881x1024](https://i.imgur.com/I1CbouT.png)
+  - under VPC
+    - Each environment runs in a VPC using private subnets in two AZ
     - choose the VPC that was you created for Amazon MWAA.
   - Under Subnets
     - Only private subnets are supported.
     - You can't change the VPC for an environment after you create it.
+
   - Under <font color=red> Web server access </font>
+    - Web server access to the Airflow UI is always protected by a secure login using IAM
+      - can have web server access on a public network to login over the Internet,
+      - or on a private network in your VPC.  
     - <font color=blue> Public Network </font>
-    - This creates a public URL to access the Apache Airflow user interface in the environment.
+      - This creates a public URL to access the Apache Airflow user interface in the environment.
     - <font color=blue> Private Network </font>
-    - restrict access to the Apache Airflow UI to be accessible only from within the VPC selected
-    - This creates a VPC endpoint that requires additional configuration to allow access, including a Linux Bastion.
+      - restrict access to the Apache Airflow UI to be accessible only from within the VPC selected
+      - This creates a VPC endpoint that requires additional configuration to allow access, including a Linux Bastion.
     - The VPC endpoint for to access the Apache Airflow UI is listed on the Environment details page after you create the environment.
 
+
+
   - Under <font color=red> Security group </font>
-    - Create new security group to have Amazon MWAA create a new security group with inbound and outbound rules based on your Web server access selection.
-    - select up to 5 security groups from your account to use for the environment.
+    - Create new security group
+    - to have Amazon MWAA create a new security group with inbound and outbound rules based on your Web server access selection.
+    - can add one or more existing security groups to fine-tune control of inbound and outbound traffic for the environment.
+      - select up to 5 security groups from your account to use for the environment.
+
 
   - Under <font color=red> Environment class </font>
   - ![mwaa-environment-class-1024x555](https://i.imgur.com/HhVwUCZ.png)
@@ -362,387 +414,283 @@ Amazon MWAA console > Create environment
     - Choose Add new tag, and then enter a Key and optionally, a Value for the key.
 
   - Under <font color=red> Permissions, </font>
-  - ![mwaa-permissions-1024x361](https://i.imgur.com/tz09fDs.png)
+    - ![mwaa-permissions-1024x361](https://i.imgur.com/tz09fDs.png)
+    - configure the **permissions** that will be used by environment to <font color=blue> access the DAGs, write logs, and run DAGs accessing other AWS resources </font>
     - choose the role to use as the execution role.
     - To have Amazon MWAA create a role for this environment, choose Create new role.
-    - You must have permission to create IAM roles to use this option.
+      - You must have permission to create IAM roles to use this option.
     - If you or someone in your organization created a role to use for Amazon MWAA
     - Choose Create environment.
-    - takes about twenty to thirty minutes to create an environment.
+      - takes about twenty to thirty minutes to create an environment.
 
 ---
 
-## Amazon MWAA AWS CloudFormation template
+### 4. Accessing an Amazon MWAA environment
 
-![BDB-1140-1](https://i.imgur.com/eqV5cHY.jpg)
+To use Amazon Managed Workflows for Apache Airflow (MWAA), you must use an account, user, or role
+with the necessary permissions.
 
+The resources and services used in an Amazon MWAA environment are not accessible to all IAM entities (users, roles, or groups). 
+- must create a policy that grants your Apache Airflow users permission to access these resources. 
+- For example
+  - grant access to your Apache Airflow development team. 
+- Amazon MWAA uses these policies to validate whether a user has the permissions needed to perform an action on the AWS console or via the APIs used by an environment. 
 
-```yaml
-# $ aws cloudformation create-stack \
-#     --stack-name mwaaenvironment \
-#     --template-body file://vpctemplate.yaml
+use the JSON policies in this topic to create a policy for your Apache Airflow users in IAM, and then attach the policy to a user, group, or role in IAM. 
 
-
-Description:  This template deploys a VPC, with a pair of public and private subnets spread
-  across two Availability Zones. It deploys an internet gateway, with a default
-  route on the public subnets. It deploys a pair of NAT gateways (one in each AZ),
-  and default routes for them in the private subnets.
-
-Parameters:
-  EnvironmentName:
-    Description: An environment name that is prefixed to resource names
-    Type: String
-    Default: mwaa-
-
-  VpcCIDR:
-    Description: Please enter the IP range (CIDR notation) for this VPC
-    Type: String
-    Default: 10.192.0.0/16
-
-  PublicSubnet1CIDR:
-    Description: Please enter the IP range (CIDR notation) for the public subnet in the first Availability Zone
-    Type: String
-    Default: 10.192.10.0/24
-
-  PublicSubnet2CIDR:
-    Description: Please enter the IP range (CIDR notation) for the public subnet in the second Availability Zone
-    Type: String
-    Default: 10.192.11.0/24
-
-  PrivateSubnet1CIDR:
-    Description: Please enter the IP range (CIDR notation) for the private subnet in the first Availability Zone
-    Type: String
-    Default: 10.192.20.0/24
-
-  PrivateSubnet2CIDR:
-    Description: Please enter the IP range (CIDR notation) for the private subnet in the second Availability Zone
-    Type: String
-    Default: 10.192.21.0/24
-
-Resources:
-  VPC:
-    Type: AWS::EC2::VPC
-    Properties:
-      CidrBlock: !Ref VpcCIDR
-      EnableDnsSupport: true
-      EnableDnsHostnames: true
-      Tags:
-    - Key: Name
-          Value: !Ref EnvironmentName
-
-  InternetGateway:
-    Type: AWS::EC2::InternetGateway
-    Properties:
-      Tags:
-    - Key: Name
-          Value: !Ref EnvironmentName
-
-  InternetGatewayAttachment:
-    Type: AWS::EC2::VPCGatewayAttachment
-    Properties:
-      InternetGatewayId: !Ref InternetGateway
-      VpcId: !Ref VPC
-
-  PublicSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      AvailabilityZone: !Select [ 0, !GetAZs '' ]
-      CidrBlock: !Ref PublicSubnet1CIDR
-      MapPublicIpOnLaunch: true
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Public Subnet (AZ1)
-
-  PublicSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      AvailabilityZone: !Select [ 1, !GetAZs  '' ]
-      CidrBlock: !Ref PublicSubnet2CIDR
-      MapPublicIpOnLaunch: true
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Public Subnet (AZ2)
-
-  PrivateSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      AvailabilityZone: !Select [ 0, !GetAZs  '' ]
-      CidrBlock: !Ref PrivateSubnet1CIDR
-      MapPublicIpOnLaunch: false
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Private Subnet (AZ1)
-
-  PrivateSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      AvailabilityZone: !Select [ 1, !GetAZs  '' ]
-      CidrBlock: !Ref PrivateSubnet2CIDR
-      MapPublicIpOnLaunch: false
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Private Subnet (AZ2)
-
-  NatGateway1EIP:
-    Type: AWS::EC2::EIP
-    DependsOn: InternetGatewayAttachment
-    Properties:
-      Domain: vpc
-
-  NatGateway2EIP:
-    Type: AWS::EC2::EIP
-    DependsOn: InternetGatewayAttachment
-    Properties:
-      Domain: vpc
-
-  NatGateway1:
-    Type: AWS::EC2::NatGateway
-    Properties:
-      AllocationId: !GetAtt NatGateway1EIP.AllocationId
-      SubnetId: !Ref PublicSubnet1
-
-  NatGateway2:
-    Type: AWS::EC2::NatGateway
-    Properties:
-      AllocationId: !GetAtt NatGateway2EIP.AllocationId
-      SubnetId: !Ref PublicSubnet2
-
-  PublicRouteTable:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Public Routes
-
-  DefaultPublicRoute:
-    Type: AWS::EC2::Route
-    DependsOn: InternetGatewayAttachment
-    Properties:
-      RouteTableId: !Ref PublicRouteTable
-      DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref InternetGateway
-
-  PublicSubnet1RouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PublicRouteTable
-      SubnetId: !Ref PublicSubnet1
-
-  PublicSubnet2RouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PublicRouteTable
-      SubnetId: !Ref PublicSubnet2
+Here are the policies available:
+- `AmazonMWAAFullConsoleAccess`
+  - to configure an environment on the Amazon MWAA console.
+- `AmazonMWAAFullApiAccess`
+  - if need access to all Amazon MWAA APIs used to manage an environment.
+- `AmazonMWAAReadOnlyAccess`
+  - if they need to view the resources used by an environment on the Amazon MWAA console.
+- `AmazonMWAAWebServerAccess`
+  - if they need to access the Apache Airflow UI.
+- `AmazonMWAAAirflowCliAccess`
+  - to run Apache Airflow CLI commands.
 
 
-  PrivateRouteTable1:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Private Routes (AZ1)
-
-  DefaultPrivateRoute1:
-    Type: AWS::EC2::Route
-    Properties:
-      RouteTableId: !Ref PrivateRouteTable1
-      DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: !Ref NatGateway1
-
-  PrivateSubnet1RouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PrivateRouteTable1
-      SubnetId: !Ref PrivateSubnet1
-
-  PrivateRouteTable2:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-    - Key: Name
-          Value: !Sub ${EnvironmentName} Private Routes (AZ2)
-
-  DefaultPrivateRoute2:
-    Type: AWS::EC2::Route
-    Properties:
-      RouteTableId: !Ref PrivateRouteTable2
-      DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: !Ref NatGateway2
-
-  PrivateSubnet2RouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PrivateRouteTable2
-      SubnetId: !Ref PrivateSubnet2
-
-  NoIngressSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupName: "no-ingress-sg"
-      GroupDescription: "Security group with no ingress rule"
-      VpcId: !Ref VPC
-
-Outputs:
-  VPC:
-    Description: A reference to the created VPC
-    Value: !Ref VPC
-
-  PublicSubnets:
-    Description: A list of the public subnets
-    Value: !Join [ ",", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]
-
-  PrivateSubnets:
-    Description: A list of the private subnets
-    Value: !Join [ ",", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2 ]]
-
-  PublicSubnet1:
-    Description: A reference to the public subnet in the 1st Availability Zone
-    Value: !Ref PublicSubnet1
-
-  PublicSubnet2:
-    Description: A reference to the public subnet in the 2nd Availability Zone
-    Value: !Ref PublicSubnet2
-
-  PrivateSubnet1:
-    Description: A reference to the private subnet in the 1st Availability Zone
-    Value: !Ref PrivateSubnet1
-
-  PrivateSubnet2:
-    Description: A reference to the private subnet in the 2nd Availability Zone
-    Value: !Ref PrivateSubnet2
-
-  NoIngressSecurityGroup:
-    Description: Security group with no ingress rule
-    Value: !Ref NoIngressSecurityGroup
-```
-
-
----
-
-
-## Managing access to an Amazon MWAA environment
-
-
-Amazon MWAA needs to be permitted to use other AWS services and resources used in an environment. You also need to be granted permission to access an Amazon MWAA environment and your Apache Airflow UI in AWS Identity and Access Management (IAM).
-
-
-Amazon MWAA creates a service-linked role when create an Amazon MWAA environment.
-- Amazon MWAA creates and attaches a JSON policy to your account's service-linked role
-- to allow Amazon MWAA to use other AWS services used by your Amazon MWAA environment.
-- For example, permission to CloudWatch logs and the VPC network for your environment.
+4. Apache Airflow UI access policy: `AmazonMWAAWebServerAccess`
+   - A user may need access to the AmazonMWAAWebServerAccess permissions policy if they need to access the Apache Airflow UI. 
+   - It does not allow the user to view environments on the Amazon MWAA console or use the Amazon MWAA APIs to perform any actions. 
+   - Specify the Admin, Op, User, Viewer or the Public role in {airflow-role} to customize the level of access for the user of the web token. 
+   - For more information, see Default Roles in the Apache Airflow reference guide.
+   - Note: Amazon MWAA does not support custom Apache Airflow role-based access control (RBAC) roles as of yet.
 
 
 ```json
 {
-    "PolicyVersion": {
-        "Document": {
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "logs:CreateLogStream",
-                        "logs:CreateLogGroup",
-                        "logs:DescribeLogGroups"
-                    ],
-                    "Resource": "arn:aws:logs:*:*:log-group:airflow-*:*"
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "ec2:AttachNetworkInterface",
-                        "ec2:CreateNetworkInterface",
-                        "ec2:CreateNetworkInterfacePermission",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DeleteNetworkInterfacePermission",
-                        "ec2:DescribeDhcpOptions",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DescribeSecurityGroups",
-                        "ec2:DescribeSubnets",
-                        "ec2:DescribeVpcEndpoints",
-                        "ec2:DescribeVpcs",
-                        "ec2:DetachNetworkInterface"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateVpcEndpoint",
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
-                    "Condition": {
-                        "ForAnyValue:StringEquals": {
-                            "aws:TagKeys": "AmazonMWAAManaged"
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "ec2:ModifyVpcEndpoint",
-                        "ec2:DeleteVpcEndpoints"
-                    ],
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
-                    "Condition": {
-                        "Null": {
-                            "aws:ResourceTag/AmazonMWAAManaged": false
-                        }
-                    }
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "ec2:CreateVpcEndpoint",
-                        "ec2:ModifyVpcEndpoint"
-                    ],
-                    "Resource": [
-                        "arn:aws:ec2:*:*:vpc/*",
-                        "arn:aws:ec2:*:*:security-group/*",
-                        "arn:aws:ec2:*:*:subnet/*"
-                    ]
-                },
-                {
-                    "Effect": "Allow",
-                    "Action": "ec2:CreateTags",
-                    "Resource": "arn:aws:ec2:*:*:vpc-endpoint/*",
-                    "Condition": {
-                        "StringEquals": {
-                            "ec2:CreateAction": "CreateVpcEndpoint"
-                        },
-                        "ForAnyValue:StringEquals": {
-                            "aws:TagKeys": "AmazonMWAAManaged"
-                        }
-                    }
-                }
-            ]
-        },
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "airflow:CreateWebLoginToken",
+      "Resource": "arn:aws:airflow:{your-region}:{your-account-id}:role/{your-environmentname}/{airflow-role}"
     }
+  ]
 }
 ```
 
 ---
 
+### 5. Using the Airflow UI  
+
+- In the Amazon MWAA console, look for the new environment and click on **Open Airflow UI**.
+- A new browser window is created and I am authenticated with a secure login via AWS IAM.
+
+There, I look for a DAG that I put on S3 in the `movie_list_dag.py` file. The DAG is
+- downloading the [MovieLens dataset](https://grouplens.org/datasets/movielens/),
+- processing the files on S3 using [Amazon Athena](https://aws.amazon.com/athena),
+- and loading the result to a Redshift cluster, creating the table if missing.
 
 
+Here’s the full source code of the DAG:
+
+```py
+    from airflow import DAG
+    from airflow.operators.python_operator import PythonOperator
+    from airflow.operators import HttpSensor, S3KeySensor
+    from airflow.contrib.operators.aws_athena_operator import AWSAthenaOperator
+    from airflow.utils.dates import days_ago
+    from datetime import datetime, timedelta
+    from io import StringIO
+    from io import BytesIO
+    from time import sleep
+    import csv
+    import requests
+    import json
+    import boto3
+    import zipfile
+    import io
+    s3_bucket_name = 'my-bucket'
+    s3_key='files/'
+    redshift_cluster='redshift-cluster-1'
+    redshift_db='dev'
+    redshift_dbuser='awsuser'
+    redshift_table_name='movie_demo'
+    test_http='https://grouplens.org/datasets/movielens/latest/'
+    download_http='http://files.grouplens.org/datasets/movielens/ml-latest-small.zip'
+    athena_db='demo_athena_db'
+    athena_results='athena-results/'
+    create_athena_movie_table_query="""
+    CREATE EXTERNAL TABLE IF NOT EXISTS Demo_Athena_DB.ML_Latest_Small_Movies (
+      `movieId` int,
+      `title` string,
+      `genres` string
+    )
+    ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+    WITH SERDEPROPERTIES (
+      'serialization.format' = ',',
+      'field.delim' = ','
+    ) LOCATION 's3://pinwheeldemo1-pinwheeldagsbucketfeed0594-1bks69fq0utz/files/ml-latest-small/movies.csv/ml-latest-small/'
+    TBLPROPERTIES (
+      'has_encrypted_data'='false',
+      'skip.header.line.count'='1'
+    );
+    """
+    create_athena_ratings_table_query="""
+    CREATE EXTERNAL TABLE IF NOT EXISTS Demo_Athena_DB.ML_Latest_Small_Ratings (
+      `userId` int,
+      `movieId` int,
+      `rating` int,
+      `timestamp` bigint
+    )
+    ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+    WITH SERDEPROPERTIES (
+      'serialization.format' = ',',
+      'field.delim' = ','
+    ) LOCATION 's3://pinwheeldemo1-pinwheeldagsbucketfeed0594-1bks69fq0utz/files/ml-latest-small/ratings.csv/ml-latest-small/'
+    TBLPROPERTIES (
+      'has_encrypted_data'='false',
+      'skip.header.line.count'='1'
+    );
+    """
+    create_athena_tags_table_query="""
+    CREATE EXTERNAL TABLE IF NOT EXISTS Demo_Athena_DB.ML_Latest_Small_Tags (
+      `userId` int,
+      `movieId` int,
+      `tag` int,
+      `timestamp` bigint
+    )
+    ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+    WITH SERDEPROPERTIES (
+      'serialization.format' = ',',
+      'field.delim' = ','
+    ) LOCATION 's3://pinwheeldemo1-pinwheeldagsbucketfeed0594-1bks69fq0utz/files/ml-latest-small/tags.csv/ml-latest-small/'
+    TBLPROPERTIES (
+      'has_encrypted_data'='false',
+      'skip.header.line.count'='1'
+    );
+    """
+    join_tables_athena_query="""
+    SELECT REPLACE ( m.title , '"' , '' ) as title, r.rating
+    FROM demo_athena_db.ML_Latest_Small_Movies m
+    INNER JOIN (SELECT rating, movieId FROM demo_athena_db.ML_Latest_Small_Ratings WHERE rating > 4) r on m.movieId = r.movieId
+    """
+    def download_zip():
+        s3c = boto3.client('s3')
+        indata = requests.get(download_http)
+        n=0
+        with zipfile.ZipFile(io.BytesIO(indata.content)) as z:       
+            zList=z.namelist()
+            print(zList)
+            for i in zList:
+                print(i)
+                zfiledata = BytesIO(z.read(i))
+                n += 1
+                s3c.put_object(Bucket=s3_bucket_name, Key=s3_key+i+'/'+i, Body=zfiledata)
+    def clean_up_csv_fn(**kwargs):    
+        ti = kwargs['task_instance']
+        queryId = ti.xcom_pull(key='return_value', task_ids='join_athena_tables' )
+        print(queryId)
+        athenaKey=athena_results+"join_athena_tables/"+queryId+".csv"
+        print(athenaKey)
+        cleanKey=athena_results+"join_athena_tables/"+queryId+"_clean.csv"
+        s3c = boto3.client('s3')
+        obj = s3c.get_object(Bucket=s3_bucket_name, Key=athenaKey)
+        infileStr=obj['Body'].read().decode('utf-8')
+        outfileStr=infileStr.replace('"e"', '')
+        outfile = StringIO(outfileStr)
+        s3c.put_object(Bucket=s3_bucket_name, Key=cleanKey, Body=outfile.getvalue())
+    def s3_to_redshift(**kwargs):    
+        ti = kwargs['task_instance']
+        queryId = ti.xcom_pull(key='return_value', task_ids='join_athena_tables' )
+        print(queryId)
+        athenaKey='s3://'+s3_bucket_name+"/"+athena_results+"join_athena_tables/"+queryId+"_clean.csv"
+        print(athenaKey)
+        sqlQuery="copy "+redshift_table_name+" from '"+athenaKey+"' iam_role 'arn:aws:iam::163919838948:role/myRedshiftRole' CSV IGNOREHEADER 1;"
+        print(sqlQuery)
+        rsd = boto3.client('redshift-data')
+        resp = rsd.execute_statement(
+            ClusterIdentifier=redshift_cluster,
+            Database=redshift_db,
+            DbUser=redshift_dbuser,
+            Sql=sqlQuery
+        )
+        print(resp)
+        return "OK"
+    def create_redshift_table():
+        rsd = boto3.client('redshift-data')
+        resp = rsd.execute_statement(
+            ClusterIdentifier=redshift_cluster,
+            Database=redshift_db,
+            DbUser=redshift_dbuser,
+            Sql="CREATE TABLE IF NOT EXISTS "+redshift_table_name+" (title	character varying, rating	int);"
+        )
+        print(resp)
+        return "OK"
+    DEFAULT_ARGS = {
+        'owner': 'airflow',
+        'depends_on_past': False,
+        'email': ['[email protected]'],
+        'email_on_failure': False,
+        'email_on_retry': False
+    }
+    with DAG(
+        dag_id='movie-list-dag',
+        default_args=DEFAULT_ARGS,
+        dagrun_timeout=timedelta(hours=2),
+        start_date=days_ago(2),
+        schedule_interval='*/10 * * * *',
+        tags=['athena','redshift'],
+    ) as dag:
+        check_s3_for_key = S3KeySensor(
+            task_id='check_s3_for_key',
+            bucket_key=s3_key,
+            wildcard_match=True,
+            bucket_name=s3_bucket_name,
+            s3_conn_id='aws_default',
+            timeout=20,
+            poke_interval=5,
+            dag=dag
+        )
+        files_to_s3 = PythonOperator(
+            task_id="files_to_s3",
+            python_callable=download_zip
+        )
+        create_athena_movie_table = AWSAthenaOperator(task_id="create_athena_movie_table",query=create_athena_movie_table_query, database=athena_db, output_location='s3://'+s3_bucket_name+"/"+athena_results+'create_athena_movie_table')
+        create_athena_ratings_table = AWSAthenaOperator(task_id="create_athena_ratings_table",query=create_athena_ratings_table_query, database=athena_db, output_location='s3://'+s3_bucket_name+"/"+athena_results+'create_athena_ratings_table')
+        create_athena_tags_table = AWSAthenaOperator(task_id="create_athena_tags_table",query=create_athena_tags_table_query, database=athena_db, output_location='s3://'+s3_bucket_name+"/"+athena_results+'create_athena_tags_table')
+        join_athena_tables = AWSAthenaOperator(task_id="join_athena_tables",query=join_tables_athena_query, database=athena_db, output_location='s3://'+s3_bucket_name+"/"+athena_results+'join_athena_tables')
+        create_redshift_table_if_not_exists = PythonOperator(
+            task_id="create_redshift_table_if_not_exists",
+            python_callable=create_redshift_table
+        )
+        clean_up_csv = PythonOperator(
+            task_id="clean_up_csv",
+            python_callable=clean_up_csv_fn,
+            provide_context=True     
+        )
+        transfer_to_redshift = PythonOperator(
+            task_id="transfer_to_redshift",
+            python_callable=s3_to_redshift,
+            provide_context=True     
+        )
+        check_s3_for_key >> files_to_s3 >> create_athena_movie_table >> join_athena_tables >> clean_up_csv >> transfer_to_redshift
+        files_to_s3 >> create_athena_ratings_table >> join_athena_tables
+        files_to_s3 >> create_athena_tags_table >> join_athena_tables
+        files_to_s3 >> create_redshift_table_if_not_exists >> transfer_to_redshift
+```
 
 
+- different tasks are created using operators like `PythonOperator`, for generic Python code, or `AWSAthenaOperator`, to use the integration with [Amazon Athena](https://aws.amazon.com/athena).
+- To see how those tasks are connected in the workflow, you can see the latest few lines
 
+```py
+    check_s3_for_key >> files_to_s3 >> create_athena_movie_table >> join_athena_tables >> clean_up_csv >> transfer_to_redshift
+    files_to_s3 >> create_athena_ratings_table >> join_athena_tables
+    files_to_s3 >> create_athena_tags_table >> join_athena_tables
+    files_to_s3 >> create_redshift_table_if_not_exists >> transfer_to_redshift
+```
 
+- The Airflow code is [overloading](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types) the right shift `>>` operator in Python to create a dependency,
+- meaning that the task on the left should be executed first, and the output passed to the task on the right. L
+- Each of the four lines above is adding dependencies, and all evaluated together to execute the tasks in the right order.
 
+In the Airflow console
+- a **graph view** of the DAG to have a clear representation of how tasks are executed:
 
+![pic](https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2020/11/17/mwaa-graph-view-1024x466.png)
 
-
-
-
-
-
-
-
-
-..
+.

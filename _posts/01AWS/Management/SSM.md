@@ -2,14 +2,11 @@
 
 
 
-
-
+[toc]
 
 ---
 
-
-
-AWS Systems Manager
+# AWS Systems Manager
 - a management service
 - view and control of the infrastructure on AWS. 
   - a unified user interface to view operational data from multiple AWS services
@@ -55,6 +52,7 @@ AWS Systems Manager
   - Change Management
   - Node Management
   - Shared Resources
+
 - This collection of capabilities is a powerful set of tools and features to perform operational tasks. 
   - For example:
     - Group AWS resources together by any purpose or activity you choose
@@ -74,7 +72,7 @@ AWS Systems Manager
 
 ---
 
-### Operations Management
+## Operations Management
 - a suite of capabilities that help you manage the AWS resources. 
 
 - Explorer
@@ -110,7 +108,7 @@ AWS Systems Manager
 
 ---
 
-### Application Management
+## Application Management
 - a suite of capabilities that help you manage the applications running in AWS
 
 - Application Manager
@@ -147,7 +145,7 @@ AWS Systems Manager
 ---
 
 
-### Change Management
+## Change Management
 
 - taking action against or changing the AWS resources.
 
@@ -183,7 +181,7 @@ AWS Systems Manager
 ---
 
 
-### Node Management
+## Node Management
 
 - managing the EC2 instances, the on-premises servers and VMs in the hybrid environment, and other types of AWS resources (nodes).
 
@@ -240,17 +238,18 @@ AWS Systems Manager
   - automate the process of patching the managed instances with both security related and other types of updates. 
   - apply patches for both operating systems and applications. (On Windows Server, application support is limited to updates for Microsoft applications.) This capability enables you to scan instances for missing patches and apply missing patches individually or to large groups of instances by using EC2 instance tags. Patch Manager uses patch baselines_, which can include rules for auto-approving patches within days of their release, as well as a list of approved and rejected patches. You can install security patches on a regular basis by scheduling patching to run as a Systems Manager maintenance window task, or you can patch the managed instances on demand at any time. For Linux operating systems, you can define the repositories that should be used for patching operations as part of the patch baseline. This allows you to ensure that updates are installed only from trusted repositories regardless of what repositories are configured on the instance. For Linux, you also have the ability to update any package on the instance, not just those that are classified as operating system security updates. For Windows Server, you can also use Patch Manager to update supported Microsoft applications.
 
-Distributor
+- Distributor
+  - Use Distributor to create and deploy packages to managed instances. Distributor lets you package the own software—or find AWS-provided agent software packages, such as **AmazonCloudWatchAgent**—to install on AWS Systems Manager managed instances. After you install a package for the first time, you can use Distributor to completely uninstall and reinstall a new package version, or perform an in-place update that adds new or changed files only. Distributor publishes resources, such as software packages, to AWS Systems Manager managed instances.
 
-Use Distributor to create and deploy packages to managed instances. Distributor lets you package the own software—or find AWS-provided agent software packages, such as **AmazonCloudWatchAgent**—to install on AWS Systems Manager managed instances. After you install a package for the first time, you can use Distributor to completely uninstall and reinstall a new package version, or perform an in-place update that adds new or changed files only. Distributor publishes resources, such as software packages, to AWS Systems Manager managed instances.
+- Hybrid Activations
+  - To set up servers and VMs in the hybrid environment as managed instances, you need to create a managed instance activation . After you complete the activation, you receive an activation code and ID. This code/ID combination functions like an Amazon EC2 access ID and secret key to provide secure access to the Systems Manager service from the managed instances.
 
-Hybrid Activations
 
-To set up servers and VMs in the hybrid environment as managed instances, you need to create a managed instance activation . After you complete the activation, you receive an activation code and ID. This code/ID combination functions like an Amazon EC2 access ID and secret key to provide secure access to the Systems Manager service from the managed instances.
+
 ---
 
 
-### Shared Resources
+## Shared Resources
 
 Systems Manager uses the following shared resources for managing and configuring the AWS resources. Choose the tabs to learn more.
 
@@ -319,12 +318,15 @@ Run Command:
 - Use Systems Manager Run Command to remotely and securely manage the configuration of the managed instances at scale. 
 - Use Run Command to perform on-demand changes like updating applications or running Linux shell scripts and Windows PowerShell commands on a target set of dozens or hundreds of instances.
 
-Session Manager:
+---
+
+### Session Manager:
 - AWS Systems Manager provides you safe, secure remote management of the instances at scale without logging into the servers, replacing the need for bastion hosts, SSH, or remote PowerShell.
 - It provides a simple way of automating common administrative tasks across groups of instances such as registry edits, user management, and software and patch installations.
 - Through integration with AWS IAM, you can apply granular permissions to control the actions users can perform on instances.
 - All actions taken with Systems Manager are recorded by AWS CloudTrail, allowing you to audit changes throughout the environment.
 
+---
 
 Patch Manager:
 - AWS Systems Manager helps you select and deploy operating system and software patches automatically across large groups of Amazon EC2 or on-premises instances.
