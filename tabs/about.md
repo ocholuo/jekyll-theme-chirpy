@@ -53,11 +53,11 @@ I love chocolate! 🍫
 
 ---
 
-# EXPERIENCE
+<!-- # EXPERIENCE
 
 - I work at Cyber Defense Group from September 2020 as a Cloud Security Analyst.
 - I worked at Amzon AWS from June 2020 as a Data Center Security Sepecialist intern.
-- I worked at VUST from Febrary 2019 as a Graduate assistant & Juniors IT Engineer
+- I worked at VUST from Febrary 2019 as a Graduate assistant & Juniors IT Engineer -->
 
 ---
 
@@ -66,11 +66,10 @@ I love chocolate! 🍫
 I have been fortunate enough to meet great folks, come across ample valuable resources, have the opportunity to learn my favorite security field, and been able to have my step in Cyber Security.
 
 I have documented the exercises and learning path throughout my journey. This blog is all about:
-- Real-world experience
 - Classroom learning
 - Online learning
 - Hands-on training(CTFs, labs, hackathons, etc)
-- Recognized Sec certifications learning
+- Security certifications learning
 
 Hope it can also be helpful for you in your study.
 
@@ -80,25 +79,12 @@ Hope it can also be helpful for you in your study.
 
 I have worked on a number of projects during my studies, some of which include:
 - [Course - Learning Path](https://ocholuo.github.io/posts/CourseREADME/)
-- [InfoSec - Note](https://ocholuo.github.io/posts/InfoSecREADME/)
+- [InfoSec - Tools](https://ocholuo.github.io/posts/InfoSecREADME/)
 - [Programming - Code & Learning Path](https://ocholuo.github.io/posts/CodeREADME/)
 - [Web - demo & Learning Path](https://ocholuo.github.io/posts/WebREADME/)
 
 <!-- To know more about the projects vist the Projects page using the button below. The page has "Learn More" links to navigate to their respective GitHub repository home pages. -->
 
-
-## GENERAL (CS AND INFOSEC)
-Write-Ups from various domains of computer science and info-sec that I documented while learning.
-- Coding skill:
-  - Python 3 Programming - UMich
-  - Java Programming and Software Engineering Fundamentals Specialization - DukeU
-  - Linux & Bash Scripting
-- IBM Cybersecurity Analyst Professional Certificate - IBM ✏️
-<!-- Analysis of Marriott Data Breach - Diamond Model
-Introduction to Linux Device Drivers
-Make your own command in linux
-Basics of Socket Programming in Java
-Introduction to Netcat -->
 
 ## LAB EXERCISES
 

@@ -126,7 +126,7 @@ sort_list = sorted(medals, reverse=True, key=lambda key:medals[key])
 top_three = sorted(medals, reverse=True, key=lambda key:medals[key])[:3]
 
 # according second letter
-list = ['hi', 'how are you', 'bye', 'apple', 'zebra', 'dance']
+list = ['hi', 'how are you', 'bye', 'BigBlueberry', 'zebra', 'dance']
 lambda_sort=sorted(ex_lst, key=lambda str: str[1])
 
 
@@ -227,7 +227,7 @@ mult = lambda int,x=6: int*x
 greeting = lambda name, greeting="Hello ", excl="!": greeting + name + excl
 
 
-lst_check = ['plums', 'watermelon', 'kiwi', 'strawberries', 'blueberries', 'peaches', 'apples', 'mangos', 'papaya']
+lst_check = ['plums', 'watermelon', 'kiwi', 'strawberries', 'blueberries', 'peaches', 'BigBlueberry', 'mangos', 'papaya']
 map_testing= map( lambda s: 'Fruit: '+s, lst_check)
 
 countries = ['Canada', 'Mexico', 'Brazil', 'Chile', 'Denmark', 'Botswana', 'Spain', 'Britain', 'Portugal', 'Russia', 'Thailand', 'Bangladesh', 'Nigeria', 'Argentina', 'Belarus', 'Laos', 'Australia', 'Panama', 'Egypt', 'Morocco', 'Switzerland', 'Belgium']
@@ -264,7 +264,7 @@ map(lambda x: x ** 2, [1, 2, 3, 4, 5])
 
 filter(function, sequence)
 
-lst_check = ['plums', 'watermelon', 'kiwi', 'strawberries', 'blueberries', 'peaches', 'apples', 'mangos', 'papaya']
+lst_check = ['plums', 'watermelon', 'kiwi', 'strawberries', 'blueberries', 'peaches', 'BigBlueberry', 'mangos', 'papaya']
 # elements in lst_check that have a w
 filter_testing=list( filter( lambda value: 'w' in value, lst_check) )
 ```

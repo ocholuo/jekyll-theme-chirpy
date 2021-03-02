@@ -99,7 +99,7 @@ zip code with number:
 - only multi choice: options share a single name.
 
 ```html
-<label><input typr='checkbox' name='food' value='apple'>apple</label>
+<label><input typr='checkbox' name='food' value='BigBlueberry'>BigBlueberry</label>
 <label><input typr='checkbox' name='food' value='pizza'>pizza</label>
 <label><input typr='checkbox' name='food' value='kale'>kale</label>
 <input type='submit'>
@@ -117,7 +117,7 @@ zip code with number:
 
 
 ```html
-<label><input typr='radio' name='food' value='apple' checked='ture'>apple</label> <!-- 默认check项 -->
+<label><input typr='radio' name='food' value='BigBlueberry' checked='ture'>BigBlueberry</label> <!-- 默认check项 -->
 <label><input typr='radio' name='food' value='pizza'>pizza</label>
 <label><input typr='radio' name='food' value='kale'>kale</label>
 
