@@ -201,7 +201,8 @@ Properties:
     # The resource types of only those AWS resources that you want to trigger an evaluation for the rule.
     # can only specify one type if you also specify a resource ID for ComplianceResourceId.
     ComplianceResourceTypes:
-      - String
+      - String 
+      - "AWS::EC2::Volume"
     # The tag key that is applied to only those AWS resources that you want to trigger an evaluation for the rule.
     TagKey: String
     # The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for TagValue, you must also specify a value for TagKey.
@@ -215,13 +216,15 @@ Properties:
     # Indicates whether AWS or the customer owns and manages the AWS Config rule.
     SourceDetails:
       - SourceDetail
-    # Provides the source and type of the event 
+    # Provides the source and type of the event
     # that causes AWS Config to evaluate your AWS resources.
     SourceIdentifier: String
     # For AWS Config managed rules, a predefined identifier from a list.
     # - For example, IAM_PASSWORD_POLICY is a managed rule.
+    SourceIdentifier: "REQUIRED_TAGS"
     # For custom rules, the identifier is the ARN of the rule's AWS Lambda function
     # - such as arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name.
+    SourceIdentifier: "arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name"
 ```
 
 Return values

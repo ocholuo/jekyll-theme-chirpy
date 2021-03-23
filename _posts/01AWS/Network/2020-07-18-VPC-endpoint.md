@@ -11,7 +11,59 @@ image:
 
 ---
 
+
 # VPC endpointis
+
+---
+
+
+- [VPC endpointis](#vpc-endpointis)
+  - [without VPC endpointis](#without-vpc-endpointis)
+  - [basic](#basic)
+  - [3 types of VPC endpoints](#3-types-of-vpc-endpoints)
+    - [Interface endpoint](#interface-endpoint)
+    - [Gateway endpoints:](#gateway-endpoints)
+    - [Gateway Load Balancer endpoints](#gateway-load-balancer-endpoints)
+- [AWS PrivateLink](#aws-privatelink)
+  - [AWS PrivateLink access over Inter-Region VPC Peering:](#aws-privatelink-access-over-inter-region-vpc-peering)
+
+---
+
+## without VPC endpointis
+
+
+![image](https://i.imgur.com/nTiSXWl.png)
+
+**workflow**:
+- the EC2 instance is in a public subnet, has access to the internet
+- the EC2 instance can reach the AWS S3 URL to copy the file from the S3 bucket
+
+
+
+![image](https://i.imgur.com/DcLHLMW.jpg)
+
+![image-2](https://i.imgur.com/GVIKCR9.png)
+
+S3 access from a private subnet doesn’t work, because:
+- the EC2 instance is in a private subnet
+  - has no internet access
+  - can’t reach the AWS S3 URL, and the request will time out
+
+**S3 VPC endpoint**
+- provides a way for an S3 request to be routed through to the Amazon S3 service, without having to connect a subnet to an internet gateway.
+- ![image-1](https://i.imgur.com/858oda3.png)
+- S3 VPC endpoint is what’s known as a gateway endpoint. It works by adding an entry to the route table of a subnet, forwarding S3 traffic to the S3 VPC endpoint.
+- have a route for requests with a destination s3.eu-west-1.amazonaws.com to target the VPC endpoint. Therefore any S3 requests will be routed through to S3.
+- ![route-table-with-s3-endpoint-small](https://i.imgur.com/o1oIQZJ.png)
+
+
+
+
+---
+
+
+## basic
+
 - a virtual device
 - horizontally scaled, redundant, and highly available VPC components.
 - They allow communication between instances in your VPC and services without imposing availability risks.
@@ -31,33 +83,48 @@ image:
 
 ![Pasted Graphic 6](https://i.imgur.com/iYbP71R.jpg)
 
+---
+
 
 ### Interface endpoint
 
-<font color=blue> an elastic network interface with a private IP address </font> from the IP address range of your subnet
-- use DNS names to resolve requests to a public AWS service.
+A VPC interface endpoint is <font color=blue> an elastic network interface </font> 
 
-- It serves as an entry point for <font color=blue> traffic destined to a supported AWS service or a VPC endpoint service </font>
-  - Interface endpoints are powered by <font color=blue> AWS PrivateLink </font>
+- a logical networking component in a VPC 
+- represents a **virtual network card** with a `private IP address` from the IP address range of your subnet.
+- use DNS names to resolve requests to a public AWS service.
+- It serves as an entry point for <font color=blue> traffic destined to a supported AWS/VPC endpoint service </font>
+
+- **Interface endpoints** are powered by <font color=blue> AWS PrivateLink </font>
+  - AWS PrivateLink
+    - a technology that enables you to <font color=blue> privately access services by using private IP addresses. </font>
   - connect to services that are powered by <font color=blue> AWS PrivateLink </font>
   - These services include:
     - some AWS services,
     - services that are hosted by other AWS customers and AWS Partner Network (APN) Partners in their own VPCs (referred to as endpoint services),
     - and supported AWS Marketplace APN Partner services.
+
 - service provider: The owner of the service
+
 - service consumer: you, the principal who creates the interface endpoint
   - You are charged for creating and using an interface endpoint to a service.
   - Hourly usage rates and data processing rates apply.
 
 
+---
+
+
 ### Gateway endpoints:
-- a target for a specified route in your route table, used for traffic destined to a supported AWS service.
-- incurs no additional charge.
+- a gateway specify as a target for a specified route in route table, used for traffic destined to a supported AWS service.
+- no additional charge.
   - Standard charges for data transfer and resource usage apply.
 - Gateway endpoints are only available for:
-  - Amazon DyanmoDB
-  - Amazon S3
-- use When a private instance needs to access a supported AWS public services such as DynamoDB or S3 without leaving the AWS network
+  - <font color=blue> Amazon DyanmoDB </font>
+  - <font color=blue> Amazon S3 </font>
+- use case:
+  - When a private instance needs to access a supported AWS public services such as DynamoDB or S3 without leaving the AWS network
+
+
 
 
 ### Gateway Load Balancer endpoints

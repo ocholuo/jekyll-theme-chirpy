@@ -1,5 +1,5 @@
 ---
-title: Virtulization - Docker Develop
+title: Virtulization - DockerFile Develop
 date: 2020-11-26 11:11:11 -0400
 categories: [19VMs, Containers]
 tags: [Linux, VMs, Docker]
@@ -12,7 +12,7 @@ image:
 ---
 
 
-# Docker Develop
+# DockerFile Develop
 
 
 ## Best practices for writing Dockerfiles
