@@ -210,7 +210,7 @@ Volumes can be used in combination with `--read-only` to control where a contain
     $ docker run -t -i -v /var/run/docker.sock:/var/run/docker.sock -v /path/to/static-docker-binary:/usr/bin/docker busybox sh
     
 
-By bind-mounting the docker unix socket and statically linked docker binary (refer to [get the linux binary](/engine/install/binaries/#install-static-binaries)), you give the container the full access to create and manipulate the host’s Docker daemon.
+By bind-mounting the docker unix socket and statically linked docker binary (refer to get the linux binary ), you give the container the full access to create and manipulate the host’s Docker daemon.
 
 On Windows, the paths must be specified using Windows-style semantics.
 
@@ -231,13 +231,13 @@ The following examples will fail when using Windows-based containers, as the des
     docker run -v c:\foo:c:\existing-directory-with-contents ...
     
 
-For in-depth information about volumes, refer to [manage data in containers](/storage/volumes/)
+For in-depth information about volumes, refer to manage data in containers 
 
 ### Add bind mounts or volumes using the --mount flag
 
 The `--mount` flag allows you to mount volumes, host-directories and `tmpfs` mounts in a container.
 
-The `--mount` flag supports most options that are supported by the `-v` or the `--volume` flag, but uses a different syntax. For in-depth information on the `--mount` flag, and a comparison between `--volume` and `--mount`, refer to the [service create command reference](/engine/reference/commandline/service_create/#add-bind-mounts-volumes-or-memory-filesystems).
+The `--mount` flag supports most options that are supported by the `-v` or the `--volume` flag, but uses a different syntax. For in-depth information on the `--mount` flag, and a comparison between `--volume` and `--mount`, refer to the service create command reference
 
 Even though there is no plan to deprecate `--volume`, usage of `--mount` is recommended.
 
@@ -254,9 +254,10 @@ Examples:
     $ docker run -p 127.0.0.1:80:8080/tcp ubuntu bash
     
 
-This binds port `8080` of the container to TCP port `80` on `127.0.0.1` of the host machine. You can also specify `udp` and `sctp` ports. The [Docker User Guide](/network/links/) explains in detail how to manipulate ports in Docker.
+This binds port `8080` of the container to TCP port `80` on `127.0.0.1` of the host machine. You can also specify `udp` and `sctp` ports. The Docker User Guide explains in detail how to manipulate ports in Docker.
 
-Note that ports which are not bound to the host (i.e., `-p 80:80` instead of `-p 127.0.0.1:80:80`) will be accessible from the outside. This also applies if you configured UFW to block this specific port, as Docker manages his own iptables rules. [Read more](/network/iptables/)
+Note that ports which are not bound to the host (i.e., `-p 80:80` instead of `-p 127.0.0.1:80:80`) will be accessible from the outside. This also applies if you configured UFW to block this specific port, as Docker manages his own iptables rules. 
+
 
     $ docker run --expose 80 ubuntu bash
     
@@ -330,7 +331,7 @@ The label-file format is similar to the format for loading environment variables
 
 You can load multiple label-files by supplying multiple `--label-file` flags.
 
-For additional information on working with labels, see [_Labels - custom metadata in Docker_](/config/labels-custom-metadata/) in the Docker User Guide.
+For additional information on working with labels, see Labels - custom metadata in Docker in the Docker User Guide.
 
 ### Connect a container to a network (--network)
 
@@ -420,7 +421,7 @@ By default, the container will be able to `read`, `write` and `mknod` these devi
 > 
 > The `--device` option cannot be safely used with ephemeral devices. Block devices that may be removed should not be added to untrusted containers with `--device`.
 
-For Windows, the format of the string passed to the `--device` option is in the form of `--device=<IdType>/<Id>`. Beginning with Windows Server 2019 and Windows 10 October 2018 Update, Windows only supports an IdType of `class` and the Id as a [device interface class GUID](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/overview-of-device-interface-classes). Refer to the table defined in the [Windows container docs](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/hardware-devices-in-containers) for a list of container-supported device interface class GUIDs.
+For Windows, the format of the string passed to the `--device` option is in the form of `--device=<IdType>/<Id>`. Beginning with Windows Server 2019 and Windows 10 October 2018 Update, Windows only supports an IdType of `class` and the Id as a device interface class GUID . Refer to the table defined in the Windows container docs for a list of container-supported device interface class GUIDs.
 
 If this option is specified for a process-isolated Windows container, _all_ devices that implement the requested device interface class GUID are made available in the container. For example, the command below makes all COM ports on the host visible in the container.
 
@@ -433,7 +434,8 @@ If this option is specified for a process-isolated Windows container, _all_ devi
 
 ### Access an NVIDIA GPU
 
-The `--gpus­` flag allows you to access NVIDIA GPU resources. First you need to install [nvidia-container-runtime](https://nvidia.github.io/nvidia-container-runtime/). Visit [Specify a container’s resources](/config/containers/resource_constraints/) for more information.
+The `--gpus­` flag allows you to access NVIDIA GPU resources. First you need to install nvidia-container-runtime .
+Visit Specify a container’s resources for more information.
 
 To use `--gpus`, specify which GPUs (or all) to use. If no value is provied, all available GPUs are used. The example below exposes all available GPUs.
 
@@ -479,7 +481,7 @@ Always restart the container regardless of the exit status. When you specify alw
 
 This will run the `redis` container with a restart policy of **always** so that if the container exits, Docker will restart it.
 
-More detailed information on restart policies can be found in the [Restart Policies (--restart)](/engine/reference/run/#restart-policies---restart) section of the Docker run reference page.
+More detailed information on restart policies can be found in the  Restart Policies (--restart) section of the Docker run reference page.
 
 ### Add entries to container hosts file (--add-host)
 
