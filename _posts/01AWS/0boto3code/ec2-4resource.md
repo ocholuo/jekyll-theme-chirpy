@@ -1,12 +1,3 @@
----
-title: AWS - boto3 - boto3.resource('ec2')
-date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, boto3]
-tags: [AWS]
-toc: true
-image:
----
-
 
 [toc]
 
