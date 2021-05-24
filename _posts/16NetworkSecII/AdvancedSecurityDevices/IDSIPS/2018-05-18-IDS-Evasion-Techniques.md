@@ -2,8 +2,8 @@
 title: NetworkSec - Advanced SecDevices - IDS Evasion Techniques
 # author: Grace JyL
 date: 2018-05-18 11:11:11 -0400
-description:
-excerpt_separator:
+# description:
+# excerpt_separator:
 categories: [15NetworkSec, AdvancedDev]
 tags: [NetworkSec]
 math: true
