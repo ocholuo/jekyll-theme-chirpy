@@ -7,7 +7,7 @@ toc: true
 image:
 ---
 
-[toc]
+- [Internet gateway (IGWs)](#internet-gateway-igws)
 
 ---
 

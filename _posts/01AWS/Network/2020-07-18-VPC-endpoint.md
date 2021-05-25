@@ -1,5 +1,5 @@
 ---
-title: AWS - VPC - VPC endpointis
+title: AWS - VPC - VPC endpoint
 date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, Network]
 tags: [AWS, Network, VPC]
@@ -7,18 +7,8 @@ toc: true
 image:
 ---
 
-[toc]
-
----
-
-
-# VPC endpointis
-
----
-
-
-- [VPC endpointis](#vpc-endpointis)
-  - [without VPC endpointis](#without-vpc-endpointis)
+- [VPC endpoint](#vpc-endpoint)
+  - [without VPC endpoint](#without-vpc-endpoint)
   - [basic](#basic)
   - [3 types of VPC endpoints](#3-types-of-vpc-endpoints)
     - [Interface endpoint](#interface-endpoint)
@@ -29,7 +19,10 @@ image:
 
 ---
 
-## without VPC endpointis
+
+# VPC endpoint
+
+## without VPC endpoint
 
 
 ![image](https://i.imgur.com/nTiSXWl.png)

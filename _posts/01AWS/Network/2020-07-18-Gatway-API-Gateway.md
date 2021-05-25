@@ -7,7 +7,12 @@ toc: true
 image:
 ---
 
-[toc]
+- [API Gateway](#api-gateway)
+  - [benefits](#benefits)
+  - [Security](#security)
+    - [Application Firewall](#application-firewall)
+    - [Resource Policy](#resource-policy)
+    - [AuthZ](#authz)
 
 ---
 

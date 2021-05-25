@@ -7,7 +7,14 @@ toc: true
 image:
 ---
 
-[toc]
+- [Logging and monitoring for Amazon VPC](#logging-and-monitoring-for-amazon-vpc)
+  - [Monitoring NAT gateways using Amazon CloudWatch](#monitoring-nat-gateways-using-amazon-cloudwatch)
+  - [VPC Flow Logs](#vpc-flow-logs)
+    - [Flow logs basics](#flow-logs-basics)
+    - [Flow log records](#flow-log-records)
+    - [Flow log limitations](#flow-log-limitations)
+    - [Flow logs pricing](#flow-logs-pricing)
+    - [price](#price)
 
 ---
 

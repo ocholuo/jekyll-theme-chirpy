@@ -7,7 +7,10 @@ toc: true
 image:
 ---
 
-[toc]
+- [Network address translation (NAT)](#network-address-translation-nat)
+  - [NAT instances](#nat-instances)
+  - [Network address translation (NAT) gateway](#network-address-translation-nat-gateway)
+  - [difference between the VPC NAT gateway and a NAT instance](#difference-between-the-vpc-nat-gateway-and-a-nat-instance)
 
 ---
 

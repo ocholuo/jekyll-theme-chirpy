@@ -7,7 +7,11 @@ toc: true
 image:
 ---
 
-[toc]
+- [BadNetwork](#badnetwork)
+  - [Misconfiguration 1: Unnecessary Service Exposure](#misconfiguration-1-unnecessary-service-exposure)
+  - [Misconfiguration 2: Soft Center](#misconfiguration-2-soft-center)
+  - [Misconfiguration 3: Bad Failover](#misconfiguration-3-bad-failover)
+  - [Misconfiguration 4: Typo in Security Group](#misconfiguration-4-typo-in-security-group)
 
 - ref
   - [Spotting Misconfigurations With CloudMapper](https://duo.com/blog/spotting-misconfigurations-with-cloudmapper)

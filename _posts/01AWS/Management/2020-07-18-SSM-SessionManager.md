@@ -7,8 +7,34 @@ toc: true
 image:
 ---
 
-[toc]
-
+- [Session Manager](#session-manager)
+  - [session](#session)
+  - [Session document schema](#session-document-schema)
+  - [赋予System Manager 对实例可执行操作的权限：](#赋予system-manager-对实例可执行操作的权限)
+    - [0. setup](#0-setup)
+    - [1. 修改 instance profile 和加裝 ssm agent](#1-修改-instance-profile-和加裝-ssm-agent)
+      - [Embed permissions for Session Manager actions in a custom instance profile](#embed-permissions-for-session-manager-actions-in-a-custom-instance-profile)
+      - [Create a custom IAM instance profile for Session Manager](#create-a-custom-iam-instance-profile-for-session-manager)
+    - [2. 確認 instance 上面都有安裝好 SSM agent](#2-確認-instance-上面都有安裝好-ssm-agent)
+    - [3: Control user session access to instances](#3-control-user-session-access-to-instances)
+      - [Enforce a session document permission check for the AWS CLI](#enforce-a-session-document-permission-check-for-the-aws-cli)
+    - [4. 設定 user 的 iam policy](#4-設定-user-的-iam-policy)
+      - [end user policies for Session Manager](#end-user-policies-for-session-manager)
+      - [administrator policy for Session Manager](#administrator-policy-for-session-manager)
+      - [Allow full (administrative) access to all sessions](#allow-full-administrative-access-to-all-sessions)
+    - [5. user IAM group](#5-user-iam-group)
+    - [6. 設定完以上的基本設定後，登入機器](#6-設定完以上的基本設定後登入機器)
+    - [more session preferencse:](#more-session-preferencse)
+    - [修改 ssm-user sudo 权限](#修改-ssm-user-sudo-权限)
+    - [配置ec2 的安全组：](#配置ec2-的安全组)
+    - [记录会话数据](#记录会话数据)
+  - [使用 scp](#使用-scp)
+    - [設定](#設定)
+    - [進階設定](#進階設定)
+  - [Port forwarding](#port-forwarding)
+  - [Monitoring](#monitoring)
+    - [Logging AWS Systems Manager API calls with AWS CloudTrail.](#logging-aws-systems-manager-api-calls-with-aws-cloudtrail)
+  - [Reference](#reference)
 
 - ref
   - [aws doc](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html)

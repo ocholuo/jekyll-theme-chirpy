@@ -7,10 +7,18 @@ toc: true
 image:
 ---
 
-[toc]
+- [cloud governance on AWS](#cloud-governance-on-aws)
+  - [overview](#overview)
+  - [value of the NIST CSF](#value-of-the-nist-csf)
+  - [NIST CSF](#nist-csf)
+    - [NIST CSF use case with identity](#nist-csf-use-case-with-identity)
+  - [The organizational context: AWS Cloud Adoption Framework](#the-organizational-context-aws-cloud-adoption-framework)
+    - [AWS CAF use case with identity](#aws-caf-use-case-with-identity)
+  - [Secure and resilient system architecture: AWS Well-Architected Framework](#secure-and-resilient-system-architecture-aws-well-architected-framework)
+    - [AWS Well-Architected use case with identity](#aws-well-architected-use-case-with-identity)
+  - [Putting it all together](#putting-it-all-together)
 
-
-[toc]
+---
 
 # cloud governance on AWS
 
