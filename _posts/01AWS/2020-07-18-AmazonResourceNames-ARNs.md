@@ -1,6 +1,9 @@
 
+- [Amazon Resource Name (ARNs)](#amazon-resource-name-arns)
+  - [Format](#format)
 
-# Amazon Resource Names (ARNs)
+
+# Amazon Resource Name (ARNs)
 
 Amazon Resource Names (ARNs) uniquely identify AWS resources.
 - require an ARN when you need to specify a resource unambiguously 明白地 across all of AWS, such as in IAM policies, Amazon Relational Database Service (Amazon RDS) tags, and API calls.

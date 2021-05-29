@@ -7,7 +7,18 @@ toc: true
 image:
 ---
 
-[toc]
+- [Session Affinity 类同, Load-Balanced, Session Fail Over, Sticky Sessions](#session-affinity-类同-load-balanced-session-fail-over-sticky-sessions)
+  - [The application can’t remember who the client is](#the-application-cant-remember-who-the-client-is)
+  - [session location](#session-location)
+  - [Load balanced](#load-balanced)
+    - [1. Session information stored in client-side cookies only](#1-session-information-stored-in-client-side-cookies-only)
+    - [2. Load balancer directs the user to the same machine:](#2-load-balancer-directs-the-user-to-the-same-machine)
+    - [3. Shared backend database or memcached or key/value store:](#3-shared-backend-database-or-memcached-or-keyvalue-store)
+  - [example](#example)
+  - [Stickiness vs Sticky sessions](#stickiness-vs-sticky-sessions)
+    - [Sticky sessions / session affinity](#sticky-sessions--session-affinity)
+      - [Duration-based session stickiness](#duration-based-session-stickiness)
+      - [Application-controlled session stickiness](#application-controlled-session-stickiness)
 
 ---
 

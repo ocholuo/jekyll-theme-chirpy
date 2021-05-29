@@ -7,7 +7,9 @@ categories: [Lab, HackTheBox]
 tags: [Lab, HackTheBox]
 ---
 
-[toc]
+- [HTB setup](#htb-setup)
+	- [starting point](#starting-point)
+	- [invite](#invite)
 
 ---
 
