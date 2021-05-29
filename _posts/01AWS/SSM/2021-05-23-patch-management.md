@@ -1,5 +1,49 @@
 
 
+- [AWS Systems Manager Patch Manager](#aws-systems-manager-patch-manager)
+  - [Patch Manager prerequisites](#patch-manager-prerequisites)
+    - [SSM Agent version](#ssm-agent-version)
+    - [Connectivity to the patch source](#connectivity-to-the-patch-source)
+    - [S3 endpoint access](#s3-endpoint-access)
+    - [Supported OSs](#supported-oss)
+  - [How security patches are selected](#how-security-patches-are-selected)
+    - [[ Amazon Linux and Amazon Linux 2 ]](#-amazon-linux-and-amazon-linux-2-)
+    - [[ CentOS ]](#-centos-)
+    - [[ Debian Server ]](#-debian-server-)
+    - [[ Oracle Linux ]](#-oracle-linux-)
+    - [[ RHEL ]](#-rhel-)
+    - [[ SLES ]](#-sles-)
+    - [[ Ubuntu Server ]](#-ubuntu-server-)
+    - [[ Windows ]](#-windows-)
+  - [Linux: specify an alternative patch source repository](#linux-specify-an-alternative-patch-source-repository)
+    - [considerations for alternative repositories](#considerations-for-alternative-repositories)
+    - [Sample uses for alternative patch source repositories](#sample-uses-for-alternative-patch-source-repositories)
+  - [How patches are installed](#how-patches-are-installed)
+    - [[ Amazon Linux and Amazon Linux 2 ]](#-amazon-linux-and-amazon-linux-2--1)
+  - [predefined and custom patch baselines](#predefined-and-custom-patch-baselines)
+  - [How patch baseline rules work on Linux-based systems](#how-patch-baseline-rules-work-on-linux-based-systems)
+    - [patch baseline rules work on Amazon Linux and Amazon Linux 2](#patch-baseline-rules-work-on-amazon-linux-and-amazon-linux-2)
+    - [Key differences between Linux and Windows patching](#key-differences-between-linux-and-windows-patching)
+- [patching operations](#patching-operations)
+  - [patching configurations](#patching-configurations)
+  - [SSM documents for patching instances](#ssm-documents-for-patching-instances)
+    - [SSM documents recommended for patching instances](#ssm-documents-recommended-for-patching-instances)
+      - [AWS-ConfigureWindowsUpdate](#aws-configurewindowsupdate)
+      - [AWS-InstallWindowsUpdates](#aws-installwindowsupdates)
+      - [AWS-RunPatchBaseline](#aws-runpatchbaseline)
+      - [AWS-RunPatchBaselineAssociation](#aws-runpatchbaselineassociation)
+      - [AWS-RunPatchBaselineWithHooks](#aws-runpatchbaselinewithhooks)
+    - [Legacy SSM documents for patching instances](#legacy-ssm-documents-for-patching-instances)
+      - [AWS-ApplyPatchBaseline](#aws-applypatchbaseline)
+      - [AWS-InstallMissingWindowsUpdates](#aws-installmissingwindowsupdates)
+      - [AWS-InstallSpecificWindowsUpdates](#aws-installspecificwindowsupdates)
+- [Patch baselines](#patch-baselines)
+  - [predefined and custom patch baselines](#predefined-and-custom-patch-baselines-1)
+  - [predefined baselines](#predefined-baselines)
+  - [custom baselines](#custom-baselines)
+- [patch groups](#patch-groups)
+  - [How it works](#how-it-works)
+
 ---
 
 
@@ -300,7 +344,7 @@ On Linux systems
 To specify alternative patch source repositories
 1. **Example: Using the console**   
    - use the **Patch sources** section on the **Create patch baseline** page.
-   - For information about using the **Patch sources** options, see [Creating a custom patch baseline (Linux)]([create-baseline-console-linux.md](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-baseline-console-linux.html)).
+   - For information about using the **Patch sources** options, see [Creating a custom patch baseline](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-baseline-console-linux.html).
 
 2. **Example: Using the AWS CLI**  
    - using the `--sources` option
@@ -399,20 +443,19 @@ On Amazon Linux and Amazon Linux 2 instances, the patch installation workflow is
    - and for **custom patch baselines** where the `Approved patches include non-security updates` check box is *not* selected
    - only patches specified in `updateinfo.xml` are applied (security updates only).
 
-     ```
-	 # The equivalent yum command for this workflow is:
-     sudo yum update-minimal --sec-severity=critical,important --bugfix -y
-     ```
+```bash
+# The equivalent yum command for this workflow is:
+sudo yum update-minimal --sec-severity=critical,important --bugfix -y
+```
 
    - For **custom patch baselines** where the **Approved patches include non-security updates** check box *is* selected
    - both patches in `updateinfo.xml` and those not in `updateinfo.xml` are applied (security and nonsecurity updates).
 
 
-
-     ```
-	 # The equivalent yum command for this workflow is:
-     sudo yum update --security --bugfix
-     ```
+```bash
+# The equivalent yum command for this workflow is:
+sudo yum update --security --bugfix
+```
 
 8. The instance is rebooted if any updates were installed.
    - (Exception: If the `RebootOption` parameter is set to `NoReboot` in the `AWS-RunPatchBaseline` document, the instance is not rebooted after Patch Manager runs.)
@@ -590,7 +633,8 @@ This SSM document provides **basic patching functionality**
 1. Available in all AWS Regions.
 2. This SSM document **control patch approvals using the patch baseline currently specified as the "default" for an OS type**.
    - Installs patches on the instances or scans instances to determine whether any qualified patches are missing.
-   - This document supports Linux, macOS, and Windows Server instances. The document will perform the appropriate actions for each platform.
+     - This document supports Linux, macOS, and Windows Server instances. 
+     - The document will perform the appropriate actions for each platform.
    - can apply patches for both OSs and applications. 
      - On Windows Server, application support is limited to updates for Microsoft applications.
      - For Linux OSs, compliance information is provided for patches from both the default source repository configured on an instance and from any alternative source repositories you specify in a custom patch baseline.  
@@ -789,13 +833,11 @@ This tracking file is stored in the following locations on the managed instances
   - `C:\ProgramData\Amazon\PatchBaselineOperations\State\PatchStatesConfiguration.json`
   - `C:\ProgramData\Amazon\PatchBaselineOperations\State\PatchInventoryFromLastOperation.json`
 
-
 Parameter name: `BaselineOverride`
 - **Usage**: Optional.
 - define patching preferences at runtime using the `BaselineOverride` parameter. 
 - This baseline override is maintained as a JSON object in an S3 bucket. 
 - It ensures patching operations use the provided baselines that match the host OS instead of applying the rules from the default patch baseline
-
 
 ---
 

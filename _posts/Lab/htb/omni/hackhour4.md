@@ -1,17 +1,18 @@
 ---
-title: Lab - HackyHour4
+title: Lab - HTB - Easy - omni (HackyHour4)
 date: 2020-11-13 11:11:11 -0400
 description: Learning Path
 categories: [Lab, HackTheBox]
 tags: [Lab, HackTheBox]
 ---
 
-[toc]
+- [Lab - HTB - Hard - omni (HackyHour4)](#lab---htb---hard---omni-hackyhour4)
+  - [Step 1: Recon](#step-1-recon)
 
 ---
 
 
-# omni
+# Lab - HTB - Hard - omni (HackyHour4)
 
 
 <img src="https://i.imgur.com/GcY1wEq.png" width="700">

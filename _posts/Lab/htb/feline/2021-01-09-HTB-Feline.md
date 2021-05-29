@@ -1,5 +1,5 @@
 ---
-title: Lab - HackyHour5- Feline
+title: Lab - HTB - Hard - Feline (HackyHour5)
 date: 2020-11-13 11:11:11 -0400
 description: HackTheBox
 categories: [Lab, HackTheBox]
@@ -7,7 +7,7 @@ categories: [Lab, HackTheBox]
 tags: [Lab, HackTheBox]
 ---
 
-- [Feline](#feline)
+- [Lab - HTB - Hard - Feline (HackyHour5)](#lab---htb---hard---feline-hackyhour5)
   - [Initial：](#initial)
     - [Recon NMAP](#recon-nmap)
     - [CVE in 2020](#cve-in-2020)
@@ -31,11 +31,7 @@ tags: [Lab, HackTheBox]
 
 ---
 
-hexout="bash -c {echo,$(echo -n $cmd | base64) }|{base64,-d}|{bash,-i}"
-
-
-
-# Feline
+# Lab - HTB - Hard - Feline (HackyHour5)
 
 ![feline](https://i.imgur.com/DPdHOxS.png)
 > Machine: Feline

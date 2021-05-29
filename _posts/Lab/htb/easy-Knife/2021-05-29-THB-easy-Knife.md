@@ -1,4 +1,11 @@
-
+---
+title: Lab - HTB - Esay - Knife
+date: 2021-05-29 11:11:11 -0400
+description: HackTheBox
+categories: [Lab, HackTheBox]
+# img: /assets/img/sample/rabbit.png
+tags: [Lab, HackTheBox]
+---
 
 - [Knife](#knife)
 	- [Initial](#initial)

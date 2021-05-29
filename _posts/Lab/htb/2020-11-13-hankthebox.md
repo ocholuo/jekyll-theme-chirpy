@@ -1,5 +1,5 @@
 ---
-title: Lab - HTB setup
+title: Lab - HTB - Setup
 date: 2020-11-13 11:11:11 -0400
 description: Learning Path
 categories: [Lab, HackTheBox]
@@ -7,18 +7,14 @@ categories: [Lab, HackTheBox]
 tags: [Lab, HackTheBox]
 ---
 
-- [HTB setup](#htb-setup)
+- [Lab - HTB - Setup](#lab---htb---setup)
 	- [starting point](#starting-point)
 	- [invite](#invite)
 
 ---
 
+# Lab - HTB - Setup
 
-# HTB setup
-
-[toc]
-
----
 
 ## starting point
 
