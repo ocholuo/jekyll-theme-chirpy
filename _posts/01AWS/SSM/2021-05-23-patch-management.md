@@ -106,12 +106,12 @@ If the instances don't have a direct connection to the Internet and you are usin
 2. Windows Server instances
    - must be able to connect to the **Windows Update Catalog or Windows Server Update Services (WSUS)**.
    - Confirm that the instances have connectivity to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/home.aspx) through an `internet gateway, NAT gateway, or NAT instance`.
-   - If you are using WSUS, confirm that the instance has connectivity to the WSUS server in the environment. For more information, see [Troubleshooting instance does not have access to Windows Update Catalog or WSUS](patch-manager-troubleshooting.md#patch-manager-troubleshooting-instance-access).
+   - If you are using WSUS, confirm that the instance has connectivity to the WSUS server in the environment. For more information, see [Troubleshooting instance does not have access to Windows Update Catalog or WSUS].
 
 ### S3 endpoint access
 Whether the instances operate in a private or public network, without access to the required AWS managed Amazon S3 buckets, patching operations fail.
 
-- For information about the S3 buckets the managed instances must be able to access, see [About minimum S3 Bucket permissions for SSM Agent](ssm-agent-minimum-s3-permissions.md) and [Step 6: (Optional) Create a Virtual Private Cloud endpoint](setup-create-vpc.md).
+- For information about the S3 buckets the managed instances must be able to access, see [About minimum S3 Bucket permissions for SSM Agent] and [Step 6: (Optional) Create a Virtual Private Cloud endpoint].
 
 
 ### Supported OSs
