@@ -13,7 +13,7 @@ tags: [Lab, HackTheBox]
 		- [Recon: Brup](#recon-brup)
 		- [CVE](#cve)
 			- [漏洞概述](#漏洞概述)
-	- [#### 漏洞复现](#-漏洞复现)
+			- [漏洞复现](#漏洞复现)
 	- [Gain acess to shell: Brup](#gain-acess-to-shell-brup)
 		- [user.txt: Brupsuite](#usertxt-brupsuite)
 		- [user.txt: ReverseShell](#usertxt-reverseshell)
@@ -117,6 +117,7 @@ try msfvenom
 
 
 #### 漏洞复现
+
 ---
 
 ## Gain acess to shell: Brup
