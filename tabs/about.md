@@ -9,7 +9,6 @@ title: Grace L
 
 > A CYBER SECURITY PRACTICIAN
 
-
 <p align="center">
 
 <img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
