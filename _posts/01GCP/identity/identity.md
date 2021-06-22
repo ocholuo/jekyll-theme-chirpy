@@ -161,8 +161,6 @@ If you are a Microsoft Office 365 or Azure customer, you might have connected yo
 
 ## Patterns for extending an external IdP to Google Cloud
 
-
-
 Some of the applications you plan to deploy on Google Cloud might require the use of authentication protocols not offered by Cloud Identity. To support these workloads, you must allow these applications to use your IdP from within Google Cloud.
 
 The following sections describe common patterns for allowing your IdP to be used by workloads deployed on Google Cloud.
