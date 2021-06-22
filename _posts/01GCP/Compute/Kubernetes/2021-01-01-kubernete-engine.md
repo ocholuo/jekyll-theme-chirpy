@@ -7,7 +7,26 @@ toc: true
 image:
 ---
 
-[toc]
+- [Google Cloud Computing - Kubernetes and Kubernetes Engine](#google-cloud-computing---kubernetes-and-kubernetes-engine)
+  - [GCP Compute Engine](#gcp-compute-engine)
+  - [Kubernetes](#kubernetes)
+    - [cluster](#cluster)
+    - [node](#node)
+    - [pod](#pod)
+  - [The Kubernetes Control Plane](#the-kubernetes-control-plane)
+  - [GKE (Kubernetes Engine)](#gke-kubernetes-engine)
+  - [to build Kubernetes cluster](#to-build-kubernetes-cluster)
+    - [build Kubernetes cluster, deploy pods, by Kubernetes Engine](#build-kubernetes-cluster-deploy-pods-by-kubernetes-engine)
+    - [deployment](#deployment)
+    - [Services](#services)
+  - [Kubernetes object model.](#kubernetes-object-model)
+    - [configuration file](#configuration-file)
+    - [update version of the application/container](#update-version-of-the-applicationcontainer)
+  - [modern Hybrid on Multi-Cloud Computing (Anthos)](#modern-hybrid-on-multi-cloud-computing-anthos)
+    - [on-premises distributed systems architecture.](#on-premises-distributed-systems-architecture)
+    - [modern hybrid ON multi-cloud architecture](#modern-hybrid-on-multi-cloud-architecture)
+  - [Anthos](#anthos)
+    - [build a modern hybrid infrastructure stack with Anthos.](#build-a-modern-hybrid-infrastructure-stack-with-anthos)
 
 ---
 

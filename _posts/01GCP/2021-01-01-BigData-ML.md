@@ -7,7 +7,21 @@ toc: true
 image:
 ---
 
-[toc]
+- [Big Data and Machine Learning](#big-data-and-machine-learning)
+  - [Google Cloud Big Data Platform](#google-cloud-big-data-platform)
+  - [Cloud Dataproc](#cloud-dataproc)
+  - [cloud Dataflow](#cloud-dataflow)
+  - [Cloud BigQuery](#cloud-bigquery)
+  - [Cloud Pub/Sub](#cloud-pubsub)
+  - [Cloud Datalab](#cloud-datalab)
+  - [Cloud ML Machine Learning](#cloud-ml-machine-learning)
+  - [Cloud Machine Learning Platform for applications.](#cloud-machine-learning-platform-for-applications)
+  - [Machine learning APIs](#machine-learning-apis)
+    - [The Cloud Vision API](#the-cloud-vision-api)
+    - [The Cloud Speech API](#the-cloud-speech-api)
+    - [The Cloud Natural Language API](#the-cloud-natural-language-api)
+    - [The Cloud Translation API](#the-cloud-translation-api)
+    - [The Cloud Video Intelligence API](#the-cloud-video-intelligence-api)
 
 ---
 

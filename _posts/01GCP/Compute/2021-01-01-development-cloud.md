@@ -7,7 +7,17 @@ toc: true
 image:
 ---
 
-[toc]
+- [Development in the cloud](#development-in-the-cloud)
+  - [development.](#development)
+    - [Cloud Source Repositories](#cloud-source-repositories)
+  - [Infrastructure as code](#infrastructure-as-code)
+    - [Deployment Manager `declarative rather than imperative`](#deployment-manager-declarative-rather-than-imperative)
+  - [Proactive instrumentation: Stackdriver](#proactive-instrumentation-stackdriver)
+    - [Stackdriver Monitoring](#stackdriver-monitoring)
+    - [Stackdriver Logging](#stackdriver-logging)
+    - [Stackdriver Error Reporting](#stackdriver-error-reporting)
+    - [Stackdriver Trace](#stackdriver-trace)
+    - [Stackdriver Debugger](#stackdriver-debugger)
 
 ---
 

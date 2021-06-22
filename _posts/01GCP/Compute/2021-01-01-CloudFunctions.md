@@ -7,7 +7,8 @@ toc: true
 image:
 ---
 
-[toc]
+- [Google Cloud Computing - Cloud Functions](#google-cloud-computing---cloud-functions)
+  - [basic](#basic)
 
 ---
 

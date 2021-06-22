@@ -2,7 +2,18 @@
 
 
 
-[toc]
+- [Patterns for authenticating corporate users in a hybrid environment](#patterns-for-authenticating-corporate-users-in-a-hybrid-environment)
+  - [Introduction](#introduction)
+  - [federating an external IdP with Google Cloud](#federating-an-external-idp-with-google-cloud)
+    - [Federating `Active Directory` with `Cloud Identity` by using GCDS and AD FS](#federating-active-directory-with-cloud-identity-by-using-gcds-and-ad-fs)
+      - [User experience](#user-experience)
+      - [Advantages](#advantages)
+      - [Best practices](#best-practices)
+    - [Federating `Azure AD` with `Cloud Identity`](#federating-azure-ad-with-cloud-identity)
+      - [User experience](#user-experience-1)
+      - [Advantages](#advantages-1)
+      - [Best practices](#best-practices-1)
+  - [Patterns for extending an external IdP to Google Cloud](#patterns-for-extending-an-external-idp-to-google-cloud)
 
 
 # Patterns for authenticating corporate users in a hybrid environment

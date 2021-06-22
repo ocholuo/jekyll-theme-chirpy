@@ -7,7 +7,10 @@ toc: true
 image:
 ---
 
-[toc]
+- [Google Cloud Computing Solutions](#google-cloud-computing-solutions)
+  - [Cloud Computing](#cloud-computing)
+  - [Google Cloud Computing Solutions](#google-cloud-computing-solutions-1)
+  - [which compute service to you adopt](#which-compute-service-to-you-adopt)
 
 ---
 

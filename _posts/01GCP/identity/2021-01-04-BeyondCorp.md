@@ -7,7 +7,27 @@ toc: true
 image:
 ---
 
-[toc]
+- [Zero-trust BeyondCorp](#zero-trust-beyondcorp)
+  - [basic](#basic)
+  - [BeyondCorp](#beyondcorp)
+    - [Guiding Principles of BeyondCorp](#guiding-principles-of-beyondcorp)
+    - [Benefits to users](#benefits-to-users)
+    - [use cases](#use-cases)
+    - [Common signals](#common-signals)
+    - [BeyondCorp Enterprise access protection overview](#beyondcorp-enterprise-access-protection-overview)
+    - [The Reference Architecture](#the-reference-architecture)
+  - [How BeyondCorp Enterprise works](#how-beyondcorp-enterprise-works)
+  - [quickstart](#quickstart)
+  - [step](#step)
+    - [Configure Chrome, create DLP rules, and set up alerts](#configure-chrome-create-dlp-rules-and-set-up-alerts)
+    - [View the audit log and security reports, and perform investigations](#view-the-audit-log-and-security-reports-and-perform-investigations)
+    - [BeyondCorp Threat and Data Protection URLs](#beyondcorp-threat-and-data-protection-urls)
+    - [Before you make the apps and resources context-aware, need to:](#before-you-make-the-apps-and-resources-context-aware-need-to)
+    - [Secure the apps and resources with IAP](#secure-the-apps-and-resources-with-iap)
+      - [Virtual machine resources](#virtual-machine-resources)
+    - [Creating an access level with Access Context Manager](#creating-an-access-level-with-access-context-manager)
+    - [Applying access levels](#applying-access-levels)
+    - [Enabling device trust and security with Endpoint Verification](#enabling-device-trust-and-security-with-endpoint-verification)
 
 --- 
 
