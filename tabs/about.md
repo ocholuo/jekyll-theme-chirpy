@@ -7,7 +7,7 @@ title: Grace L
 # MIT License
 ---
 
-> A CYBER SECURITY PRACTICIANj0
+> A CYBER SECURITY PRACTICIAN
 
 <p align="center">
 
