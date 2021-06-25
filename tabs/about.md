@@ -1,5 +1,5 @@
 ---
-title: Grace L
+title: About
 # The About page
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
@@ -58,7 +58,7 @@ I love chocolate! 🍫
 - I worked at Amzon AWS from June 2020 as a Data Center Security Sepecialist intern.
 - I worked at VUST from Febrary 2019 as a Graduate assistant & Juniors IT Engineer -->
 
----
+<!-- --- -->
 
 ## WRITE-UPS
 
