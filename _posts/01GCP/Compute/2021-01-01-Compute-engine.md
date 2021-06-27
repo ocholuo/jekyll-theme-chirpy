@@ -10,6 +10,7 @@ image:
 - [Google Cloud Computing - Compute Engine](#google-cloud-computing---compute-engine)
   - [basic](#basic)
   - [create a virtual machine instance](#create-a-virtual-machine-instance)
+  - [VM access and lifecycle](#vm-access-and-lifecycle)
 
 ---
 
@@ -17,6 +18,8 @@ image:
 # Google Cloud Computing - Compute Engine
 
 ---
+
+![Screen Shot 2021-06-27 at 1.25.24 AM](https://i.imgur.com/5oKaZlZ.png)
 
 ## basic
 
@@ -44,6 +47,25 @@ Compute Engine
 
 ## create a virtual machine instance
 - by Google Cloud Platform console or the GCloud command line tool.
+
+<font color=red> SSD </font>
+- standard, SSD, or local SSD.
+  - the standard spinning hard disk drives or HDDs, or flash memory solid state drives SSDs.
+  - Both of these options provide the same amount of capacity in terms of disk size when choosing a persistent disk.
+- Therefore, the question really is about performance versus cost
+- standard disks
+  - higher amount of capacity for your dollar.
+- SSDs
+  - higher number of IOPS per dollar
+- local SSDs
+  - even higher throughput and lower latency than SSD persistent disks because they're attached to the physical hardware.
+  - but data on local SSD persists only until stop or delete the instance.
+  - Typically is used as a swap disk just like a RAM disc.
+  - But if you need more capacity, you can store those on a local SSD.
+- one instances with up to 8 separate 375 GB local SSD partitions for total of 3 TB of local SSD space for each instance.
+- Standard and non-local SSD disks can be sized up to 64 TB for each instance. The performance of these disks scales with each GB of space allocated.
+
+
 
 <font color=red> OS </font>
 - Linux and Windows Server images provided by Google or customized versions of these images
@@ -141,3 +163,33 @@ Virtual machines need <font color=red> block storage </font>
 <font color=red> Availability policies </font>
 - If a VM is stopped (outage or a hardware failure), the automatic restart feature starts it back up. Is this the behavior you want? Are the applications idempotent (written to handle a second startup properly)?
 - During host maintenance, the VM is set for live migration. However, you can have the VM terminated instead of migrated.
+
+
+---
+
+
+## VM access and lifecycle
+
+
+![Screen Shot 2021-06-27 at 1.39.29 AM](https://i.imgur.com/GBBhyUX.png)
+
+![Screen Shot 2021-06-27 at 1.41.00 AM](https://i.imgur.com/fTqBfTf.png)
+
+![Screen Shot 2021-06-27 at 1.42.10 AM](https://i.imgur.com/d9Pcelb.png)
+
+![Screen Shot 2021-06-27 at 1.48.25 AM](https://i.imgur.com/aaih5Nl.png)
+
+![Screen Shot 2021-06-27 at 1.51.58 AM](https://i.imgur.com/CWHsaKB.png)
+
+
+
+
+
+
+
+
+
+
+
+
+.

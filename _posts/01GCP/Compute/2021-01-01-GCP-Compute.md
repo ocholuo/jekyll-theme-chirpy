@@ -51,6 +51,8 @@ image:
 
 > GCP products that provide the compute infrastructure for applications
 
+![Screen Shot 2021-06-27 at 1.20.06 AM](https://i.imgur.com/tXqN8CH.png)
+
 ![Screen Shot 2021-02-12 at 13.25.46](https://i.imgur.com/uuTClRK.png)
 
 ![Screen Shot 2021-02-03 at 14.34.02](https://i.imgur.com/e2nAsAC.png)
