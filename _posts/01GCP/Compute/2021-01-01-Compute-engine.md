@@ -224,12 +224,41 @@ Virtual machines need <font color=red> block storage </font>
 
 ![Screen Shot 2021-06-27 at 11.56.32 PM](https://i.imgur.com/Lr7inWQ.png)
 
+![Screen Shot 2021-06-27 at 11.59.10 PM](https://i.imgur.com/wHPtuB0.png)
+
+![Screen Shot 2021-06-28 at 12.00.49 AM](https://i.imgur.com/sEuNJy3.png)
+
+![Screen Shot 2021-06-28 at 12.01.07 AM](https://i.imgur.com/SJuKjJ7.png)
+
+![Screen Shot 2021-06-28 at 12.01.30 AM](https://i.imgur.com/Rs6oXMF.png)
+
+
+![Screen Shot 2021-06-28 at 12.03.00 AM](https://i.imgur.com/Bazf2mM.png)
+
+---
+
+## Common Compute Engine actions
+
+
+![Screen Shot 2021-06-28 at 12.36.17 AM](https://i.imgur.com/y26HA8Z.png)
+
+![Screen Shot 2021-06-28 at 12.37.06 AM](https://i.imgur.com/NB1sYG4.png)
+
+![Screen Shot 2021-06-28 at 12.37.33 AM](https://i.imgur.com/lHDVssB.png)
+
+![Screen Shot 2021-06-28 at 12.37.50 AM](https://i.imgur.com/SPxxH6M.png)
+
+![Screen Shot 2021-06-28 at 12.38.35 AM](https://i.imgur.com/QIFNlYf.png)
 
 
 
+## disk snapshiots
+
+![Screen Shot 2021-06-28 at 12.38.53 AM](https://i.imgur.com/81kulI6.png)
 
 
 
+![Screen Shot 2021-06-28 at 12.40.06 AM](https://i.imgur.com/IqfAcHn.png)
 
 
 
