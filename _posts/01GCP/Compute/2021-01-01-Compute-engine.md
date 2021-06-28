@@ -9,6 +9,7 @@ image:
 
 - [Google Cloud Computing - Compute Engine](#google-cloud-computing---compute-engine)
   - [basic](#basic)
+  - [compute options](#compute-options)
   - [create a virtual machine instance](#create-a-virtual-machine-instance)
   - [VM access and lifecycle](#vm-access-and-lifecycle)
 
@@ -42,6 +43,19 @@ Compute Engine
     - customize operating systems and even run applications that rely on a mix of operating systems.
   - best option <font color=blue> if other computing options don't support your applications or requirements </font>
     - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
+
+
+---
+
+## compute options
+
+![Screen Shot 2021-06-27 at 11.26.51 PM](https://i.imgur.com/ul5zJGm.png)
+
+![Screen Shot 2021-06-27 at 11.30.34 PM](https://i.imgur.com/FyopVkg.png)
+
+![Screen Shot 2021-06-27 at 11.31.34 PM](https://i.imgur.com/E1QdnJw.png)
+
+
 
 ---
 
@@ -170,7 +184,6 @@ Virtual machines need <font color=red> block storage </font>
 
 ## VM access and lifecycle
 
-
 ![Screen Shot 2021-06-27 at 1.39.29 AM](https://i.imgur.com/GBBhyUX.png)
 
 ![Screen Shot 2021-06-27 at 1.41.00 AM](https://i.imgur.com/fTqBfTf.png)
@@ -180,6 +193,41 @@ Virtual machines need <font color=red> block storage </font>
 ![Screen Shot 2021-06-27 at 1.48.25 AM](https://i.imgur.com/aaih5Nl.png)
 
 ![Screen Shot 2021-06-27 at 1.51.58 AM](https://i.imgur.com/CWHsaKB.png)
+
+
+---
+
+## price
+
+![Screen Shot 2021-06-27 at 11.32.27 PM](https://i.imgur.com/RyUriRl.png)
+
+![Screen Shot 2021-06-27 at 11.39.50 PM](https://i.imgur.com/Yp597og.png)
+
+![Screen Shot 2021-06-27 at 11.40.30 PM](https://i.imgur.com/xH8t5cU.png)
+
+![Screen Shot 2021-06-27 at 11.41.41 PM](https://i.imgur.com/0KRYWtj.png)
+
+---
+
+
+## images
+
+![Screen Shot 2021-06-27 at 11.48.19 PM](https://i.imgur.com/yVpn2Me.png)
+
+![Screen Shot 2021-06-27 at 11.49.56 PM](https://i.imgur.com/x9Xh4xR.png)
+
+
+---
+
+
+## boot disk
+
+![Screen Shot 2021-06-27 at 11.56.32 PM](https://i.imgur.com/Lr7inWQ.png)
+
+
+
+
+
 
 
 
