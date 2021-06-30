@@ -73,13 +73,16 @@ sleepy....
 
 💾  Cloud Security |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **GCP - Cloud Engineer Professional Certificate** | 🐰
+💾  **GCP Certificate** |
+⭐ `GCP - Cloud Engineer Professional Certificate` | 🐰
 [COURSE 1 Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/learn/gcp-fundamentals?specialization=cloud-engineering-gcp) 06/15/21 | ✔️
 [COURSE 2 Essential Google Cloud Infrastructure: Foundation](https://www.coursera.org/learn/gcp-infrastructure-foundation?specialization=cloud-engineering-gcp) 06/20/21 | ✔️
 [COURSE 3 Essential Google Cloud Infrastructure: Core Services](https://www.coursera.org/learn/gcp-infrastructure-core-services?specialization=cloud-engineering-gcp) 06/29/21 | ✔️
 [COURSE 4 Elastic Google Cloud Infrastructure: Scaling and Automation](https://www.coursera.org/learn/gcp-infrastructure-scaling-automation?specialization=cloud-engineering-gcp) | ✏️
 [COURSE 5 Architecting with Google Kubernetes Engine: Foundations](https://www.coursera.org/learn/foundations-google-kubernetes-engine-gke?specialization=cloud-engineering-gcp) | ✏️
 [COURSE 6 Preparing for the Google Cloud Associate Cloud Engineer Exam](https://www.coursera.org/learn/preparing-cloud-associate-cloud-engineer-exam?specialization=cloud-engineering-gcp) | ✏️
+⭐ `Architecting with Google Kubernetes Engine Specialization` | 
+[Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
@@ -100,10 +103,8 @@ sleepy....
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
 [Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) 12/08/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Architecting with Google Kubernetes Engine Specialization** | 
-[Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾   **Alexa** |
+💾  **Alexa** |
 `acloud` | ---
 [all](https://learn.acloud.guru/search?query=alexa&page=1) | ✏️
 [Introduction to Alexa](https://learn.acloud.guru/course/intro-alexa-free/dashboard) | ✏️ soso
@@ -120,7 +121,7 @@ sleepy....
 
 ## Programmnig and Computer Science
 
-[Coursera Specialization] |  Mark |
+💾  Coursera Specialization |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :---
 💾  **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
 💾  **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
@@ -166,6 +167,7 @@ sleepy....
 ## Cyber Security
 
 
+💾  Cyber Security |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **IBM Cybersecurity Analyst Professional Certificate** |
 [COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
@@ -188,7 +190,7 @@ sleepy....
 💾  **Palo Alto Networks Cybersecurity** |
 [COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- | 
-💾  `linuxacademy Security Analyst - Entry Level` |
+💾  **linuxacademy Security Analyst - Entry Level** |
 [CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6/20 | ✏️
 [Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1/20 | ✔️
 
