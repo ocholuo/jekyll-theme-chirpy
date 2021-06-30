@@ -145,13 +145,17 @@ gcloud deployment-manager deployments update my-dep1 \
 
 ## Proactive instrumentation: Stackdriver
 
+![Screen Shot 2021-06-30 at 1.11.02 AM](https://i.imgur.com/9sLtQFa.png)
+
 - Monitoring
   - lets you figure out whether the changes you made were good or bad.
   - lets you respond with information rather than with panic, when one of the end users complains that the application is down.
 
 
 
-Stackdriver
+### Stackdriver
+
+
 
 - GCP's tool for monitoring, logging and diagnostics (debug, error reporting, trace)
   - gives access to many different kinds of signals from the infrastructure platforms, virtual machines, containers, middleware and application tier, logs, metrics and traces.
@@ -160,10 +164,41 @@ Stackdriver
 - core components of Stackdriver:
   - Monitoring, Logging, Trace, Error Reporting and Debugging.
 
+
+![Screen Shot 2021-06-30 at 1.13.54 AM](https://i.imgur.com/NlEdSpl.png)
+
+
 ![Screen Shot 2021-02-09 at 01.38.29](https://i.imgur.com/rRIi5gV.png)
 
 
+![Screen Shot 2021-06-30 at 1.14.23 AM](https://i.imgur.com/UvolPWA.png)
+
+
+
+
 ### Stackdriver Monitoring
+
+![Screen Shot 2021-06-30 at 1.14.50 AM](https://i.imgur.com/F9RrJ3c.png)
+
+![Screen Shot 2021-06-30 at 1.15.14 AM](https://i.imgur.com/G4ZLaXt.png)
+
+![Screen Shot 2021-06-30 at 1.15.35 AM](https://i.imgur.com/olL8dTe.png)
+
+![Screen Shot 2021-06-30 at 1.16.24 AM](https://i.imgur.com/K39mhuB.png)
+
+![Screen Shot 2021-06-30 at 1.16.52 AM](https://i.imgur.com/2fqQzkE.png)
+
+![Screen Shot 2021-06-30 at 1.17.23 AM](https://i.imgur.com/OFwsCQ5.png)
+
+![Screen Shot 2021-06-30 at 1.18.07 AM](https://i.imgur.com/pO5CT99.png)
+
+![Screen Shot 2021-06-30 at 1.18.51 AM](https://i.imgur.com/5TyCIe8.png)
+
+
+![Screen Shot 2021-06-30 at 1.19.25 AM](https://i.imgur.com/ZKSuj9X.png)
+
+![Screen Shot 2021-06-30 at 1.19.52 AM](https://i.imgur.com/NSWwXF2.png)
+
 - checks the endpoints of web applications and other Internet accessible services running on the cloud environment.
 - configure uptime checks associated with URLs, groups or resources such as Instances and load balancers.
 - set up alerts on interesting criteria,
@@ -173,20 +208,39 @@ Stackdriver
 
 
 ### Stackdriver Logging
+
+![Screen Shot 2021-06-30 at 1.36.12 AM](https://i.imgur.com/m1p8cOr.png)
+
+![Screen Shot 2021-06-30 at 1.36.38 AM](https://i.imgur.com/PaX7hvz.png)
+
+
+![Screen Shot 2021-06-30 at 1.37.17 AM](https://i.imgur.com/DjbicRa.png)
+
 - view logs from the applications and filter and search on them.
 - define metrics based on log
   - based on log contents that are incorporated into dashboards and alerts.
 - export logs to BigQuery, Cloud Storage and Cloud PubSub.
 
+
+
 ### Stackdriver Error Reporting
+
+![Screen Shot 2021-06-30 at 1.37.46 AM](https://i.imgur.com/3lwE35H.png)
+
 - tracks and groups the errors in the cloud applications.
 - notifies you when new errors are detected.
 
+
 ### Stackdriver Trace
+
+![Screen Shot 2021-06-30 at 1.38.11 AM](https://i.imgur.com/gAFEdwa.png)
+
 - sample the latency of app engine applications and report Per-URL statistics.
 
 
 ### Stackdriver Debugger
+
+![Screen Shot 2021-06-30 at 1.38.53 AM](https://i.imgur.com/gFT2uFY.png)
 
 > debugging
 > go back into it and add lots of logging statements.
