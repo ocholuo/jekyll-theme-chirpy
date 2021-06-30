@@ -16,7 +16,6 @@ toc: true
   - [other source](#other-source)
   - [Lab Playground:](#lab-playground)
   - [platform](#platform)
-  - [⭐ eventbrite | ticket for evert](#-eventbrite--ticket-for-evert)
   - [Tools:](#tools)
   - [pending](#pending)
 
@@ -270,10 +269,8 @@ platform | goal
 ⭐ [aws academy](https://awsacademy.instructure.com/courses/69/pages/webinar-q-and-a) <br> <img src="https://i.imgur.com/7UEa24X.png" width="200"> | aws learning resource
 ⭐ [aws training](https://www.aws.training/SignIn) <br> <img src="https://i.imgur.com/2L8TU8S.png" width="200"> | aws learning resource
 ⭐ [eventbrite](https://www.eventbrite.com/u/487798027239/) | ticket for evert
----
 
 
-https://www.eventbrite.com/u/487798027239/
 
 
 ---
@@ -281,9 +278,10 @@ https://www.eventbrite.com/u/487798027239/
 
 ## Tools:
 
+
 Name | S | Mark |
 ---|---|---
-[Play with Docker](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml#)
+[Play with Docker](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/RhinoSecurityLabs/cloudgoat/master/docker_stack.yml#) | |
 
 ---
 
@@ -444,21 +442,6 @@ Linux Server Management and Security
 Palo Alto Networks Academy Cybersecurity Foundation
 In Progress
 ```
-
-
-
-```
-Last login: Mon Jun  1 23:05:09 on ttys001
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
-
-```
-
-
-
-
 
 
 
