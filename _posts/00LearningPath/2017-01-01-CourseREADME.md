@@ -7,7 +7,18 @@ pin: true
 toc: true
 ---
 
-[toc]
+- [Course - Learning Path](#course---learning-path)
+  - [Project/LAB:](#projectlab)
+  - [Cloud Security](#cloud-security)
+  - [Programmnig and Computer Science](#programmnig-and-computer-science)
+  - [Cyber Security](#cyber-security)
+  - [link](#link)
+  - [other source](#other-source)
+  - [Lab Playground:](#lab-playground)
+  - [platform](#platform)
+  - [⭐ eventbrite | ticket for evert](#-eventbrite--ticket-for-evert)
+  - [Tools:](#tools)
+  - [pending](#pending)
 
 ---
 
@@ -54,6 +65,22 @@ sleepy....
 [Python for Penetration Testing Challenges](https://www.freecodecamp.org/learn/information-security/python-for-penetration-testing/) 9/10/20 | ✏️
 💾  **Portswigger - Web Security Academy** |
 [SQL injection](https://portswigger.net/web-security/sql-injection) - Walkthrough Note [📜](https://ocholuo.github.io/posts/SQL-injection-Lab/) 11/20/20 | ✔️
+
+
+---
+
+## Cloud Security
+
+
+💾  Cloud Security |  Mark |
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **GCP - Cloud Engineer Professional Certificate** | 🐰
+[COURSE 1 Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/learn/gcp-fundamentals?specialization=cloud-engineering-gcp) 06/15/21 | ✔️
+[COURSE 2 Essential Google Cloud Infrastructure: Foundation](https://www.coursera.org/learn/gcp-infrastructure-foundation?specialization=cloud-engineering-gcp) 06/20/21 | ✔️
+[COURSE 3 Essential Google Cloud Infrastructure: Core Services](https://www.coursera.org/learn/gcp-infrastructure-core-services?specialization=cloud-engineering-gcp) 06/29/21 | ✔️
+[COURSE 4 Elastic Google Cloud Infrastructure: Scaling and Automation](https://www.coursera.org/learn/gcp-infrastructure-scaling-automation?specialization=cloud-engineering-gcp) | ✏️
+[COURSE 5 Architecting with Google Kubernetes Engine: Foundations](https://www.coursera.org/learn/foundations-google-kubernetes-engine-gke?specialization=cloud-engineering-gcp) | ✏️
+[COURSE 6 Preparing for the Google Cloud Associate Cloud Engineer Exam](https://www.coursera.org/learn/preparing-cloud-associate-cloud-engineer-exam?specialization=cloud-engineering-gcp) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **AWS Certificate** |
 ⭐ `AWS Cloud Practitioner (CLF-C01)` | 🐰
@@ -74,26 +101,30 @@ sleepy....
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
 [Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) 12/08/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-
----
-
-## Coursera finished:
-
-[Coursera Specialization] |  Mark |
-| :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **Architecting with Google Kubernetes Engine Specialization** | 
 [Google Cloud Platform Fundamentals: Core Infrastructure](https://www.coursera.org/specializations/architecting-google-kubernetes-engine?) | ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
-[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
-[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
-[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
-[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
-[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) |
-[COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
-[COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
-[IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
+💾   **Alexa** |
+`acloud` | ---
+[all](https://learn.acloud.guru/search?query=alexa&page=1) | ✏️
+[Introduction to Alexa](https://learn.acloud.guru/course/intro-alexa-free/dashboard) | ✏️ soso
+`qwiklabs` | ---
+[all](https://run.qwiklabs.com/catalog?keywords=alexa&locale=&cloud%5B%5D=any&format%5B%5D=any&level%5B%5D=any&duration%5B%5D=any&modality%5B%5D=any&language%5B%5D=any)| ✏️
+[linuxacademy](https://app.linuxacademy.com/search?query=alexa) | ✏️
+`AWS internal` | ---
+[knet--Alexa OE101](https://knet.csod.com/LMS/LoDetails/DetailsLo.aspx?loid=fc4f2400-66f4-4132-9183-439204619c1b&query=%3Fs%3D1%26q%3Dalexa&back_key=1&isCompletionRedirect=true&loStatus=16&regnum=1#t=1) | ✔️
+[kiku-AWS internal](https://kiku.aws.training/Details/Curriculum?id=25534) | ✏️
+[kiku-AWS internal](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
+[AWSacademy-ExamReadiness:AWS Certified Alexa Skill Builder-Specialty](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
+
+---
+
+## Programmnig and Computer Science
+
+[Coursera Specialization] |  Mark |
+| :--------------------------------------------------------------------------------------------------- | :---
+💾  **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
+💾  **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **Runestone** | ✏️
 [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/book/published/pythonds/index.html) | ✏️
@@ -119,23 +150,9 @@ sleepy....
 [COURSE 2 Python Data Structures](https://www.coursera.org/learn/python-data?courseSlug=python-data&showOnboardingModal=checkAndRedirect&specialization=python) | ✔️
 [COURSE 3 Using Python to Access Web Data](https://www.coursera.org/learn/python-network-data?courseSlug=python-network-data&showOnboardingModal=checkAndRedirect&specialization=python) 4/12| ✏️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Computer Security and Systems Management** |
-[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
-| :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Palo Alto Networks Cybersecurity** |
-[COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
-| :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **UMich. Web Design for Everybody: Basics of Web Development & Coding** |
 [COURSE 1 Introduction to HTML5](https://www.coursera.org/learn/html?specialization=web-design) | ✔️
 [COURSE 3 Interactivity with JavaScript](https://www.coursera.org/learn/javascript?specialization=web-design) | ✔️
-| :--------------------------------------------------------------------------------------------------- | :---
-💾  **[CourseraLink] [UMich](https://www.coursera.org/umich)** - Main Page |
-💾  **[CourseraLink] [DukeU](https://www.coursera.org/duke)** - Main Page |
-
-
-<br>
-
-**[pluralsight]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **LFCE (Linux Foundation Certified Engineer) Path** |
 [LFCE: Advanced Linux Networking](https://app.pluralsight.com/library/courses/linux-networking-advanced-lfce/table-of-contents) 4/18/20 | ✔️
@@ -144,36 +161,40 @@ sleepy....
 [LFCE: Linux Service Management - HTTP Services](https://app.pluralsight.com/library/courses/linux-http-services-administration/table-of-contents) 5/24/20 | ✔️
 [LFCE: Linux Service Management - Advanced HTTP Services](https://app.pluralsight.com/player?course=https-advanced-services-linux-lfce&author=anthony-nocentino&name=5fcf9867-8ecc-42f3-af73-00a287ae7728&clip=0&mode=live) | ✔️
 [LFCE: Linux Service Management - Advanced Email Services](https://app.pluralsight.com/library/courses/linux-service-management-advanced-email-services/table-of-contents) | ✏️
+
+---
+
+## Cyber Security
+
+
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **IBM Cybersecurity Analyst Professional Certificate** |
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
+[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
+[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
+[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
+[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
+[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) |
+[COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
+[COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
+[IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
 💾  **CISSP (Certified Information Systems Security Professional) Path** |
 [Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1/20 | ✔️
 💾  **Web Application Penetration Testing Path** |
 [1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9/20 | ✏️
-
-<br>
-
-**[linux academy]** | Mark
 | :--------------------------------------------------------------------------------------------------- | :--- |
-`AWS Certification` |
-[AWS Cloud Practitioner (CLF-C01)](https://linuxacademy.com/cp/modules/view/id/376) 6/26/20 | ✔️
-`Security Analyst - Entry Level` |
+💾  **Computer Security and Systems Management** |
+[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **Palo Alto Networks Cybersecurity** |
+[COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- | 
+💾  `linuxacademy Security Analyst - Entry Level` |
 [CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6/20 | ✏️
 [Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1/20 | ✔️
 
-<br>
 
-💾   **[Alexa]** | Mark
-| :--------------------------------------------------------------------------------------------------- | :--- |
-`acloud` | ---
-[all](https://learn.acloud.guru/search?query=alexa&page=1) | ✏️
-[Introduction to Alexa](https://learn.acloud.guru/course/intro-alexa-free/dashboard) | ✏️ soso
-`qwiklabs` | ---
-[all](https://run.qwiklabs.com/catalog?keywords=alexa&locale=&cloud%5B%5D=any&format%5B%5D=any&level%5B%5D=any&duration%5B%5D=any&modality%5B%5D=any&language%5B%5D=any)| ✏️
-[linuxacademy](https://app.linuxacademy.com/search?query=alexa) | ✏️
-`AWS internal` | ---
-[knet--Alexa OE101](https://knet.csod.com/LMS/LoDetails/DetailsLo.aspx?loid=fc4f2400-66f4-4132-9183-439204619c1b&query=%3Fs%3D1%26q%3Dalexa&back_key=1&isCompletionRedirect=true&loStatus=16&regnum=1#t=1) | ✔️
-[kiku-AWS internal](https://kiku.aws.training/Details/Curriculum?id=25534) | ✏️
-[kiku-AWS internal](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
-[AWSacademy-ExamReadiness:AWS Certified Alexa Skill Builder-Specialty](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
+
 
 ---
 
