@@ -8,10 +8,9 @@ toc: true
 ---
 
 - [Course - Learning Path](#course---learning-path)
-  - [Project/LAB:](#projectlab)
-  - [Cloud Security](#cloud-security)
+  - [Security Project/LAB](#security-projectlab)
+  - [Security](#security)
   - [Programmnig and Computer Science](#programmnig-and-computer-science)
-  - [Cyber Security](#cyber-security)
   - [link](#link)
   - [other source](#other-source)
   - [Lab Playground:](#lab-playground)
@@ -48,7 +47,7 @@ sleepy....
 
 ---
 
-## Project/LAB:
+## Security Project/LAB
 
 
 💾  Project/LAB |  Mark |
@@ -68,10 +67,9 @@ sleepy....
 
 ---
 
-## Cloud Security
+## Security
 
-
-💾  Cloud Security |  Mark |
+Security |  Mark |
 | :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **GCP Certificate** |
 ⭐ `GCP - Cloud Engineer Professional Certificate` | 🐰
@@ -103,7 +101,6 @@ sleepy....
 [Cortex Data Lake](https://beacon.paloaltonetworks.com/student/path/646288) 10/28/20 | ✔️
 [Palo Alto Networks Accredited Systems Engineer (PSE): Cortex Associate](https://beacon.paloaltonetworks.com/student/path/646118-palo-alto-networks-accredited-systems-engineer-pse-cortex-associate) 12/08/20 |  ✔️
 | :--------------------------------------------------------------------------------------------------- | :--- |
-| :--------------------------------------------------------------------------------------------------- | :--- |
 💾  **Alexa** |
 `acloud` | ---
 [all](https://learn.acloud.guru/search?query=alexa&page=1) | ✏️
@@ -116,6 +113,32 @@ sleepy....
 [kiku-AWS internal](https://kiku.aws.training/Details/Curriculum?id=25534) | ✏️
 [kiku-AWS internal](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
 [AWSacademy-ExamReadiness:AWS Certified Alexa Skill Builder-Specialty](https://kiku.aws.training/Details/eLearning?id=34489) | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **IBM Cybersecurity Analyst Professional Certificate** |
+[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
+[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
+[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
+[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
+[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
+[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) |
+[COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
+[COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
+[IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
+💾  **CISSP (Certified Information Systems Security Professional) Path** |
+[Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1/20 | ✔️
+💾  **Web Application Penetration Testing Path** |
+[1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9/20 | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **Computer Security and Systems Management** |
+[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
+| :--------------------------------------------------------------------------------------------------- | :--- |
+💾  **Palo Alto Networks Cybersecurity** |
+[COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
+| :--------------------------------------------------------------------------------------------------- | :--- | 
+💾  **linuxacademy Security Analyst - Entry Level** |
+[CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6/20 | ✏️
+[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1/20 | ✔️
+
 
 ---
 
@@ -164,40 +187,6 @@ sleepy....
 
 ---
 
-## Cyber Security
-
-
-💾  Cyber Security |  Mark |
-| :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **IBM Cybersecurity Analyst Professional Certificate** |
-[COURSE 1 Introduction to Cybersecurity Tools & Cyber Attacks](https://www.coursera.org/learn/introduction-cybersecurity-cyber-attacks?specialization=ibm-cybersecurity-analyst) 9/25/20 | ✔️
-[COURSE 2 Cybersecurity Roles, Processes & Operating System Security](https://www.coursera.org/learn/cybersecurity-roles-processes-operating-system-security?specialization=ibm-cybersecurity-analyst) | ✏️
-[COURSE 3 Cybersecurity Compliance Framework & System Administration](https://www.coursera.org/learn/cybersecurity-compliance-framework-system-administration?specialization=ibm-cybersecurity-analyst) |
-[COURSE 4 Network Security & Database Vulnerabilities](https://www.coursera.org/learn/network-security-database-vulnerabilities?specialization=ibm-cybersecurity-analyst) |
-[COURSE 5 Penetration Testing, Incident Response and Forensics](https://www.coursera.org/learn/ibm-penetration-testing-incident-response-forensics) |
-[COURSE 6 Cyber Threat Intelligence](https://www.coursera.org/learn/ibm-cyber-threat-intelligence) |
-[COURSE 7 Cybersecurity Capstone: Breach Response Case Studies](https://www.coursera.org/learn/ibm-cybersecurity-breach-case-studies) |
-[COURSE 8 IBM Cybersecurity Analyst Assessment](https://www.coursera.org/learn/ibm-cybersecurity-analyst-assessment) |
-[IBM Resilient SOAR Platform](https://www.securitylearningacademy.com/local/navigator/index.php?level=inre01&roadmaps=true) |
-💾  **CISSP (Certified Information Systems Security Professional) Path** |
-[Physical Security](https://app.pluralsight.com/library/courses/physical-security/table-of-contents) 5/1/20 | ✔️
-💾  **Web Application Penetration Testing Path** |
-[1. Web Application Penetration Testing Fundamentals](https://app.pluralsight.com/player?course=web-app-pentesting-fundamentals&author=mike-woolard&name=web-app-pentesting-fundamentals-m0&clip=0) 5/9/20 | ✏️
-| :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Computer Security and Systems Management** |
-[COURSE 3 Linux Server Management and Security](https://www.coursera.org/learn/linux-server-management-security) 4/13/20 |  ✔️
-| :--------------------------------------------------------------------------------------------------- | :--- |
-💾  **Palo Alto Networks Cybersecurity** |
-[COURSE 1 Palo Alto Networks Academy Cybersecurity Foundation](https://www.coursera.org/learn/cybersecurity-foundation?specialization=palo-alto-networks-cybersecurity) | ✏️
-| :--------------------------------------------------------------------------------------------------- | :--- | 
-💾  **linuxacademy Security Analyst - Entry Level** |
-[CompTIA Linux+ XK0-004 Certification Exam](https://linuxacademy.com/cp/modules/view/id/331) 6/6/20 | ✏️
-[Python 3 Scripting for System Administrators](https://linuxacademy.com/cp/modules/view/id/168) 7/1/20 | ✔️
-
-
-
-
----
 
 
 ## link
