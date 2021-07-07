@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); </script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-proxy-endpoint" content="https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw"><meta name="pv-cache-path" content="/true"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="AWS - IdenAccessManage - IAM policy" /><meta property="og:locale" content="en_US" /><meta name="description" content="[toc]" /><meta property="og:description" content="[toc]" /><link rel="canonical" href="https://ocholuo.github.io//posts/IAM-policy/" /><meta property="og:url" content="https://ocholuo.github.io//posts/IAM-policy/" /><meta property="og:site_name" content="Grace" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-07-18T11:11:11-04:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="AWS - IdenAccessManage - IAM policy" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"[toc]","headline":"AWS - IdenAccessManage - IAM policy","dateModified":"2021-02-23T12:09:52-05:00","url":"https://ocholuo.github.io//posts/IAM-policy/","datePublished":"2020-07-18T11:11:11-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ocholuo.github.io//posts/IAM-policy/"},"@context":"https://schema.org"}</script><title>AWS - IdenAccessManage - IAM policy | Grace</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Grace"><meta name="application-name" content="Grace"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://myochosite-291718.appspot.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://myochosite-291718.appspot.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script> <script async src="/assets/js/dist/pvreport.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/rabbit.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Grace</a></div><div class="site-subtitle font-italic">2021 Jun 22 updated</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ocholuo" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>AWS - IdenAccessManage - IAM policy</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>AWS - IdenAccessManage - IAM policy</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Grace JyL </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Jul 18, 2020, 11:11 AM -0400" prep="on" > Jul 18, 2020 <i class="unloaded">2020-07-18T11:11:11-04:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Tue, Feb 23, 2021, 12:09 PM -0500" prefix="Updated " > Feb 23 <i class="unloaded">2021-02-23T12:09:52-05:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3472 words">19 min</span> <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span></div></div><div class="post-content"><p>[toc]</p><hr /><h1 id="iam-policy">IAM policy</h1><hr /><h2 id="iam-json-policy-elements-reference">IAM JSON policy elements reference</h2><hr /><h3 id="iam-json-policy-elements-version">IAM JSON policy elements: Version</h3><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="na">Version </span><span class="pi">:</span> <span class="s2">"</span><span class="s">2012-10-17"</span>
+</pre></table></code></div></div><hr /><h3 id="iam-json-policy-elements-id">IAM JSON policy elements: Id</h3><p>The Id element specifies an optional identifier for the policy.</p><ul><li>The ID is used differently in different services.<li>For services that let you set an ID element, we recommend you use a UUID (GUID) for the value, or incorporate a UUID as part of the ID to ensure uniqueness.</ul><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="s2">"</span><span class="s">Id"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">cd3ad3d9-2776-4ef1-a904-4c229d1642ee"</span>
+</pre></table></code></div></div><hr /><h3 id="iam-json-policy-elements-statement-required">IAM JSON policy elements: Statement (required)</h3><p>The Statement element is the main element for a policy.</p><ul><li>The Statement element can contain a single statement or an array of individual statements.<li>Each individual statement block must be enclosed in curly braces { }.<li>For multiple statements, the array must be enclosed in square brackets [ ].</ul><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="s2">"</span><span class="s">Statement"</span><span class="pi">:</span> <span class="pi">[</span>
+    <span class="pi">{</span><span class="nv">...</span><span class="pi">},</span>
+    <span class="pi">{</span><span class="nv">...</span><span class="pi">},</span>
+    <span class="pi">{</span><span class="nv">...</span><span class="pi">}</span>
+<span class="pi">]</span>
+
+<span class="na">Version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2012-10-17'</span>
+<span class="na">Statement</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+  <span class="na">Action</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">s3:ListAllMyBuckets</span>
+  <span class="pi">-</span> <span class="s">s3:GetBucketLocation</span>
+  <span class="na">Resource</span><span class="pi">:</span> <span class="s">arn:aws:s3:::*</span>
+
+<span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+  <span class="na">Action</span><span class="pi">:</span> <span class="s">s3:ListBucket</span>
+  <span class="na">Resource</span><span class="pi">:</span> <span class="s">arn:aws:s3:::BUCKET-NAME</span>
+  <span class="na">Condition</span><span class="pi">:</span>
+    <span class="na">StringLike</span><span class="pi">:</span>
+      <span class="s">s3:prefix:</span>
+      <span class="s">- ''</span>
+      <span class="s">- home/</span>
+      <span class="s">- home/${aws:username}/</span>
+
+<span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+  <span class="na">Action</span><span class="pi">:</span> <span class="s">s3:*</span>
+  <span class="na">Resource</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKET-NAME/home/${aws:username}</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKET-NAME/home/${aws:username}/*</span>
+</pre></table></code></div></div><hr /><h3 id="iam-json-policy-elements-sid-statement-id">IAM JSON policy elements: Sid (statement ID)</h3><p>The Sid (statement ID) is an optional identifier that you provide for the policy statement.</p><ul><li>You can assign a Sid value to each statement in a statement array.<li>In services that let you specify an ID element, such as SQS and SNS,<li>the Sid value is just a sub-ID of the policy document’s ID.<li>In IAM, the Sid value must be unique within a JSON policy.</ul><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="s2">"</span><span class="s">Sid"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1"</span>
+</pre></table></code></div></div><hr /><h3 id="iam-json-policy-elements-effect-required">IAM JSON policy elements: Effect (required)</h3><ul><li>specifies whether the statement results in an allow or an explicit deny.<li>Valid values for Effect are <code class="language-plaintext highlighter-rouge">Allow</code> and <code class="language-plaintext highlighter-rouge">Deny</code>.</ul><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="s2">"</span><span class="s">Effect":"Allow/Deny"</span>
+</pre></table></code></div></div><hr /><h3 id="aws-json-policy-elements-principal">AWS JSON policy elements: Principal</h3><ul><li>to specify the principal that is allowed or denied access to a resource.<li>You cannot use the Principal element in an IAM identity-based policy.<li>You can use it in the trust policies for IAM roles and in resource-based policies.<ul><li>Resource-based policies are policies that you embed directly in a resource.<li>For example, you can embed policies in an Amazon S3 bucket or an AWS KMS customer master key (CMK).</ul></ul><p>You can specify any of the following principals in a policy:</p><ul><li><p>AWS account and root user</p><li>Specific AWS accounts<ul><li>All identities inside the account can access the resource if they have the appropriate IAM permissions attached to explicitly allow access.<li>This includes IAM users and roles in that account.<li><p>to specify an AWS account,use the account ARN <code class="language-plaintext highlighter-rouge">arn:aws:iam::AWS-account-ID:root</code>, or a shortened form <code class="language-plaintext highlighter-rouge">AWS:account ID</code></p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arn:aws:iam::123456789012:root"</span> <span class="pi">}</span>
+<span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">123456789012"</span> <span class="pi">}</span>
+
+<span class="c1"># more than one AWS account as a principal using an array,</span>
+<span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span>
+    <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="pi">[</span>
+        <span class="s2">"</span><span class="s">arn:aws:iam::123456789012:root"</span><span class="pi">,</span>
+        <span class="s2">"</span><span class="s">999999999999"</span>
+    <span class="pi">]</span>
+<span class="pi">}</span>
+</pre></table></code></div></div></ul><li><p>IAM users</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arn:aws:iam::AWS-account-ID:user/user-name"</span> <span class="pi">}</span>
+  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span>
+  <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="pi">[</span>
+      <span class="s2">"</span><span class="s">arn:aws:iam::AWS-account-ID:user/user-name-1"</span><span class="pi">,</span> 
+      <span class="s2">"</span><span class="s">arn:aws:iam::AWS-account-ID:user/UserName2"</span>
+  <span class="pi">]</span>
+  <span class="pi">}</span>
+</pre></table></code></div></div><li><p>Federated users (using web identity or SAML federation)</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>  <span class="c1"># "Principal": { "Federated": "arn:aws:iam::AWS-account-ID:saml-provider/provider-name" }</span>
+  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">Federated"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">cognito-identity.amazonaws.com"</span> <span class="pi">}</span>
+  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">Federated"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">www.amazon.com"</span> <span class="pi">}</span>
+  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">Federated"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">graph.facebook.com"</span> <span class="pi">}</span>
+  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">Federated"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">accounts.google.com"</span> <span class="pi">}</span>
+</pre></table></code></div></div><li><p>IAM roles</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arn:aws:iam::AWS-account-ID:role/role-name"</span> <span class="pi">}</span>
+</pre></table></code></div></div><li><p>Assumed-role sessions</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arn:aws:sts::AWS-account-ID:assumed-role/role-name/role-session-name"</span> <span class="pi">}</span>
+</pre></table></code></div></div><li><p>AWS services</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>  <span class="na">Version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2012-10-17'</span>
+  <span class="na">Statement</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Allow</span>
+  <span class="na">Principal</span><span class="pi">:</span>
+      <span class="na">Service</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ecs.amazonaws.com</span>
+      <span class="pi">-</span> <span class="s">elasticloadbalancing.amazonaws.com</span>
+  <span class="na">Action</span><span class="pi">:</span> <span class="s">sts:AssumeRole</span>
+</pre></table></code></div></div><li><p>Anonymous users (not recommended)</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>  <span class="s2">"</span><span class="s">Principal"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*"</span>
+  <span class="s2">"</span><span class="s">Principal"</span> <span class="pi">:</span> <span class="pi">{</span> <span class="s2">"</span><span class="s">AWS"</span> <span class="pi">:</span> <span class="s2">"</span><span class="s">*"</span> <span class="pi">}</span>
+</pre></table></code></div></div></ul><p>Use the Principal element in these ways:</p><ul><li>In IAM roles, use the Principal element in the role’s trust policy to specify who can assume the role.<li>For cross-account access, you must specify the 12-digit identifier of the trusted account.<li>In resource-based policies, use the Principal element to specify the accounts or users who are allowed to access the resource.</ul><p>Note:</p><ol><li>Do not use the Principal element in policies that you attach to IAM users and groups.<li>do not specify a principal in the permission policy for an IAM role.<ul><li>In those cases, the principal is implicitly the user that the policy is attached to (for IAM users) or the user who assumes the role (for role access policies).<li>When the policy is attached to an IAM group, the principal is the IAM user in that group who is making the request.</ul></ol><hr /><h3 id="aws-json-policy-elements-notprincipal">AWS JSON policy elements: NotPrincipal</h3><p>Example IAM user in the same or a different account</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="na">Version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2012-10-17'</span>
+<span class="na">Statement</span><span class="pi">:</span>
+
+
+<span class="c1"># all principals  are explicitly denied access to a resource. </span>
+<span class="c1"># except the user named Bob in AWS account 444455556666 </span>
+<span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Deny</span>
+  <span class="na">Action</span><span class="pi">:</span> <span class="s">s3:*</span>
+  <span class="na">Resource</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKETNAME</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKETNAME/*</span>
+  <span class="na">NotPrincipal</span><span class="pi">:</span>
+    <span class="na">AWS</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">arn:aws:iam::444455556666:user/Bob</span>
+    <span class="pi">-</span> <span class="s">arn:aws:iam::444455556666:root</span>
+
+
+<span class="c1"># all principals are explicitly denied access to a resource. </span>
+<span class="c1"># except the assumed-role user named cross-account-audit-app in AWS account 444455556666</span>
+<span class="pi">-</span> <span class="na">Effect</span><span class="pi">:</span> <span class="s">Deny</span>
+  <span class="na">Action</span><span class="pi">:</span> <span class="s">s3:*</span>
+  <span class="na">Resource</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKETNAME</span>
+  <span class="pi">-</span> <span class="s">arn:aws:s3:::BUCKETNAME/*</span>
+  <span class="na">NotPrincipal</span><span class="pi">:</span>
+    <span class="na">AWS</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">arn:aws:sts::444455556666:assumed-role/cross-account-read-only-role/cross-account-audit-app</span>
+    <span class="pi">-</span> <span class="s">arn:aws:iam::444455556666:role/cross-account-read-only-role</span>
+    <span class="pi">-</span> <span class="s">arn:aws:iam::444455556666:root</span>   
+
+</pre></table></code></div></div><hr /><h3 id="iam-json-policy-elements-action">IAM JSON policy elements: Action</h3><hr /><h3 id="iam-json-policy-elements-notaction">IAM JSON policy elements: NotAction</h3><hr /><h3 id="iam-json-policy-elements-resource">IAM JSON policy elements: Resource</h3><hr /><h3 id="iam-json-policy-elements-notresource">IAM JSON policy elements: NotResource</h3><hr /><h3 id="iam-json-policy-elements-condition">IAM JSON policy elements: Condition</h3><p>Use condition operators in the <code class="language-plaintext highlighter-rouge">Condition</code> element</p><ul><li>to match the condition key and value in the policy against values in the request context.<li>The condition operator use in a policy depends on the condition key<ul><li>can choose a global condition key or a service-specific condition key.<li>If the key that you specify in a policy condition is not present in the request context, the values do not match.<li>This applies to all condition operators <code class="language-plaintext highlighter-rouge">except ...IfExists</code> and <code class="language-plaintext highlighter-rouge">Null check</code>. These operators test whether the key is present (exists) in the request context.</ul></ul><p>The condition operators can be grouped into the following categories:</p><ul><li><p><code class="language-plaintext highlighter-rouge">String</code></p><li><p><code class="language-plaintext highlighter-rouge">Numeric</code></p><li><p><code class="language-plaintext highlighter-rouge">Date</code></p><li><p><code class="language-plaintext highlighter-rouge">Boolean</code></p><li><p><code class="language-plaintext highlighter-rouge">Binary</code></p><li><p><code class="language-plaintext highlighter-rouge">IPAddress</code></p><li><p><code class="language-plaintext highlighter-rouge">Arn</code> (available for only some services.)</p><li><p><code class="language-plaintext highlighter-rouge">IfExists</code> (checks if the key value exists as part of another check)</p><li><p><code class="language-plaintext highlighter-rouge">Null check</code> (checks if the key value exists as a standalone check)</p></ul><hr /><h4 id="string-condition-operators">String condition operators</h4><ul><li>restrict access based on comparing a key to a string value.</ul><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">StringEquals</code><td>Exact matching, case sensitive<tr><td><code class="language-plaintext highlighter-rouge">StringNotEquals</code><td>Negated matching<tr><td><code class="language-plaintext highlighter-rouge">StringEqualsIgnoreCase</code><td>Exact matching, ignoring case<tr><td><code class="language-plaintext highlighter-rouge">StringNotEqualsIgnoreCase</code><td>Negated matching, ignoring case<tr><td><code class="language-plaintext highlighter-rouge">StringLike</code><td>Case-sensitive matching. The values can include a multi-character match wildcard <code class="language-plaintext highlighter-rouge">*</code> or a single-character match wildcard <code class="language-plaintext highlighter-rouge">?</code> anywhere in the string. <br /> If a key contains multiple values, <code class="language-plaintext highlighter-rouge">StringLike</code> can be qualified with set operators—<code class="language-plaintext highlighter-rouge">ForAllValues:StringLike</code> and <code class="language-plaintext highlighter-rouge">ForAnyValue:StringLike</code>.<tr><td><code class="language-plaintext highlighter-rouge">StringNotLike</code><td>Negated case-sensitive matching. The values can include a multi-character match wildcard <code class="language-plaintext highlighter-rouge">*</code> or a single-character match wildcard <code class="language-plaintext highlighter-rouge">?</code> anywhere in the string.</table></div><p>Example, the following statement contains a <code class="language-plaintext highlighter-rouge">Condition</code> element that</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iam:*AccessKey*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"aws:PrincipalTag/job-category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iamuser-admin"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`StringEquals`</span><span class="w"> </span><span class="err">condition</span><span class="w"> </span><span class="err">operator</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`aws:PrincipalTag`</span><span class="w"> </span><span class="err">key</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">specify</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">principal</span><span class="w"> </span><span class="err">making</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">must</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">tagged</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`iamuser-admin`</span><span class="w"> </span><span class="err">job</span><span class="w"> </span><span class="err">category.</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`aws:PrincipalTag/job-category`</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">present</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">context</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">principal</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">using</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">IAM</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">attached</span><span class="w"> </span><span class="err">tags.</span><span class="w"> </span><span class="err">It</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">also</span><span class="w"> </span><span class="err">included</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">principal</span><span class="w"> </span><span class="err">using</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">IAM</span><span class="w"> </span><span class="err">role</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">attached</span><span class="w"> </span><span class="err">tags</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">session</span><span class="w"> </span><span class="err">tags.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">without</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">tag</span><span class="w"> </span><span class="err">attempts</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">edit</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">access</span><span class="w"> </span><span class="err">key,</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">condition</span><span class="w"> </span><span class="err">returns</span><span class="w"> </span><span class="err">`</span><span class="kc">false</span><span class="err">`</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">implicitly</span><span class="w"> </span><span class="err">denied</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">statement.</span><span class="w">
+</span></pre></table></code></div></div><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"s3:ListAllMyBuckets"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:GetBucketLocation"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::*"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::BUCKET-NAME"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"StringLike"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"s3:prefix"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">""</span><span class="p">,</span><span class="s2">"home/"</span><span class="p">,</span><span class="s2">"home/${aws:username}/"</span><span class="p">]}}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">policy</span><span class="w"> </span><span class="err">allows</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">specified</span><span class="w"> </span><span class="err">actions</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">S</span><span class="mi">3</span><span class="w"> </span><span class="err">bucket</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">long</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`s</span><span class="mi">3</span><span class="err">:prefix`</span><span class="w"> </span><span class="err">matches</span><span class="w"> </span><span class="err">any</span><span class="w"> </span><span class="err">one</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">specified</span><span class="w"> </span><span class="err">patterns.</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:*"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"arn:aws:s3:::BUCKET-NAME/home/${aws:username}"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"arn:aws:s3:::BUCKET-NAME/home/${aws:username}/*"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="err">//</span><span class="w">   </span><span class="err">lets</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">IAM</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Amazon</span><span class="w"> </span><span class="err">S</span><span class="mi">3</span><span class="w"> </span><span class="err">console</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">manage</span><span class="w"> </span><span class="err">his</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">her</span><span class="w"> </span><span class="err">own</span><span class="w"> </span><span class="s2">"home directory"</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">Amazon</span><span class="w"> </span><span class="err">S</span><span class="mi">3</span><span class="w"> </span><span class="err">bucket.</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>restrict access to resources based on an application ID and a user ID for web identity federation, <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_cognito-bucket.html">link</a></p><hr /><h4 id="numeric-condition-operators">Numeric condition operators</h4><p>Numeric condition operators let you construct <code class="language-plaintext highlighter-rouge">Condition</code> elements that restrict access based on comparing a key to an integer or decimal value.</p><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">NumericEquals</code><td>Matching<tr><td><code class="language-plaintext highlighter-rouge">NumericNotEquals</code><td>Negated matching<tr><td><code class="language-plaintext highlighter-rouge">NumericLessThan</code><td>“Less than” matching<tr><td><code class="language-plaintext highlighter-rouge">NumericLessThanEquals</code><td>“Less than or equals” matching<tr><td><code class="language-plaintext highlighter-rouge">NumericGreaterThan</code><td>“Greater than” matching<tr><td><code class="language-plaintext highlighter-rouge">NumericGreaterThanEquals</code><td>“Greater than or equals” matching</table></div><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::example_bucket"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"NumericLessThanEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"s3:max-keys"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">}}</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">specify</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">requester</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">_up</span><span class="w"> </span><span class="err">to_</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="err">objects</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">`example_bucket`</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">time.</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`s</span><span class="mi">3</span><span class="err">:max-keys`</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">always</span><span class="w"> </span><span class="err">present</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">when</span><span class="w"> </span><span class="err">perform</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`ListBucket`</span><span class="w"> </span><span class="err">operation.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">policy</span><span class="w"> </span><span class="err">allowed</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">Amazon</span><span class="w"> </span><span class="err">S</span><span class="mi">3</span><span class="w"> </span><span class="err">operations,</span><span class="w"> </span><span class="err">then</span><span class="w"> </span><span class="err">only</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">operations</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">`max-keys`</span><span class="w"> </span><span class="err">context</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">less</span><span class="w"> </span><span class="err">than</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">equal</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="err">would</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">allowed.</span><span class="w">
+
+</span></pre></table></code></div></div><hr /><h4 id="date-condition-operators">Date condition operators</h4><ul><li>restrict access based on comparing a key to a date/time value.<li>use these condition operators with the <code class="language-plaintext highlighter-rouge">aws:CurrentTime</code> key or <code class="language-plaintext highlighter-rouge">aws:EpochTime</code> keys.<li>Wildcards are not permitted for date condition operators.</ul><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">DateEquals</code><td>Matching a specific date<tr><td><code class="language-plaintext highlighter-rouge">DateNotEquals</code><td>Negated matching<tr><td><code class="language-plaintext highlighter-rouge">DateLessThan</code><td>Matching before a specific date and time<tr><td><code class="language-plaintext highlighter-rouge">DateLessThanEquals</code><td>Matching at or before a specific date and time<tr><td><code class="language-plaintext highlighter-rouge">DateGreaterThan</code><td>Matching after a specific a date and time<tr><td><code class="language-plaintext highlighter-rouge">DateGreaterThanEquals</code><td>Matching at or after a specific date and time</table></div><p>Example, the following statement contains a <code class="language-plaintext highlighter-rouge">Condition</code> element that uses the <code class="language-plaintext highlighter-rouge">DateGreaterThan</code> condition operator with the <code class="language-plaintext highlighter-rouge">aws:TokenIssueTime</code> key. This condition</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iam:*AccessKey*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"DateGreaterThan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:TokenIssueTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:01Z"</span><span class="p">}}</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">specifies</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">temporary</span><span class="w"> </span><span class="err">security</span><span class="w"> </span><span class="err">credentials</span><span class="w"> </span><span class="err">used</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">were</span><span class="w"> </span><span class="err">issued</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="mi">2020</span><span class="err">.</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">policy</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">updated</span><span class="w"> </span><span class="err">programmatically</span><span class="w"> </span><span class="err">every</span><span class="w"> </span><span class="err">day</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">ensure</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">account</span><span class="w"> </span><span class="err">members</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">fresh</span><span class="w"> </span><span class="err">credentials.</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">specify</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">policy</span><span class="w"> </span><span class="err">condition</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">present</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">context,</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">match.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">`aws:TokenIssueTime`</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">present</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">context</span><span class="w"> </span><span class="err">only</span><span class="w"> </span><span class="err">when</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">principal</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">temporary</span><span class="w"> </span><span class="err">credentials</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">make</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">They</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">present</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">AWS</span><span class="w"> </span><span class="err">CLI,</span><span class="w"> </span><span class="err">AWS</span><span class="w"> </span><span class="err">API,</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">AWS</span><span class="w"> </span><span class="err">SDK</span><span class="w"> </span><span class="err">requests</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">made</span><span class="w"> </span><span class="err">using</span><span class="w"> </span><span class="err">access</span><span class="w"> </span><span class="err">keys.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">example,</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">IAM</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="err">attempts</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">edit</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">access</span><span class="w"> </span><span class="err">key,</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">denied.</span><span class="w">
+
+</span></pre></table></code></div></div><hr /><h4 id="boolean-condition-operators">Boolean condition operators</h4><ul><li>restrict access based on comparing a key to “true” or “false.”</ul><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">Bool</code><td>Boolean matching</table></div><p>Example</p><ul><li>uses the <code class="language-plaintext highlighter-rouge">Bool</code> condition operator with the <code class="language-plaintext highlighter-rouge">aws:SecureTransport</code> key to specify that the request must use SSL.<li>If the key that you specify in a policy condition is not present in the request context, the values do not match.<li>The <code class="language-plaintext highlighter-rouge">aws:SecureTransport</code> key is always present in the request context.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iam:*AccessKey*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"Bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:SecureTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">}}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="binary-condition-operators">Binary condition operators</h4><ul><li>onstruct <code class="language-plaintext highlighter-rouge">Condition</code> elements that test key values that are in binary format.<li>It compares the value of the specified key byte for byte against a <a href="https://en.wikipedia.org/wiki/Base64">base-64</a> encoded representation of the binary value in the policy.</ul><p>If the key that you specify in a policy condition is not present in the request context, the values do not match.</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nl">"Condition"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"BinaryEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"`key`"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"QmluYXJ5VmFsdWVJbkJhc2U2NA=="</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="ip-address-condition-operators">IP address condition operators</h4><ul><li>construct <code class="language-plaintext highlighter-rouge">Condition</code> elements that restrict access based on comparing a key to an IPv4 or IPv6 address or range of IP addresses.<li>use these with the <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> key.<li>The value must be in the standard CIDR format (Example, 203.0.113.0/24 or 2001:DB8:1234:5678::/64).<li>If you specify an IP address without the associated routing prefix, IAM uses the default prefix value of <code class="language-plaintext highlighter-rouge">/32</code>.<li>Some AWS services support IPv6, using <code class="language-plaintext highlighter-rouge">::</code> to represent a range of 0s.</ul><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">IpAddress</code><td>The specified IP address or range<tr><td><code class="language-plaintext highlighter-rouge">NotIpAddress</code><td>All IP addresses except the specified IP address or range</table></div><p>Example</p><ul><li>uses the <code class="language-plaintext highlighter-rouge">IpAddress</code> condition operator with the <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> key to specify that the request must come from the IP range 203.0.113.0 to 203.0.113.255.<li>The <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> condition key resolves to the IP address that the request originates from.<li>If the requests originates from an Amazon EC2 instance, <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> evaluates to the instance’s public IP address.<li>If the key that you specify in a policy condition is not present in the request context, the values do not match.<li>The <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> key is always present in the request context, except when the requester uses a VPC endpoint to make the request.<li>In this case, the condition returns <code class="language-plaintext highlighter-rouge">false</code> and the request is implicitly denied by this statement.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iam:*AccessKey*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:user/*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203.0.113.0/24"</span><span class="p">}}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>Example</p><ul><li>mix IPv4 and IPv6 addresses to cover all of your organization’s valid IP addresses.<li>The <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> condition key works only in a JSON policy if you are calling the tested API directly as a user.<li>If you instead use a service to call the target service on your behalf, the target service sees the IP address of the calling service rather than the IP address of the originating user.<li>This can happen, Example, if you use AWS CloudFormation to call Amazon EC2 to construct instances for you. There is currently no way to pass the originating IP address through a calling service to the target service for evaluation in a JSON policy.<li>For these types of service API calls, do not use the <code class="language-plaintext highlighter-rouge">aws:SourceIp</code> condition key.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"`someservice`:*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"IpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"203.0.113.0/24"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"2001:DB8:1234:5678::/64"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="amazon-resource-name-arn-condition-operators">Amazon Resource Name (ARN) condition operators</h4><ul><li>construct <code class="language-plaintext highlighter-rouge">Condition</code> elements that restrict access based on comparing a key to an ARN.<li>The ARN is considered a string.<li>Not all services support comparing ARNs using this operator.</ul><div class="table-wrapper"><table><thead><tr><th>Condition operator<th>Description<tbody><tr><td><code class="language-plaintext highlighter-rouge">ArnEquals</code>, <code class="language-plaintext highlighter-rouge">ArnLike</code><td>Case-sensitive matching of the ARN. Each of the six colon-delimited components of the ARN is checked separately and each can include a multi-character match wildcard <code class="language-plaintext highlighter-rouge">*</code> or a single-character match wildcard <code class="language-plaintext highlighter-rouge">?</code>. These behave identically.<tr><td><code class="language-plaintext highlighter-rouge">ArnNotEquals</code>, <code class="language-plaintext highlighter-rouge">ArnNotLike</code><td>Negated matching for ARN. These behave identically.</table></div><p>Example</p><ul><li>policy attached to an Amazon SQS queue to which you want to send SNS messages.<li>It gives Amazon SNS permission to send messages to the queue (or queues) of your choice, but only if the service is sending the messages on behalf of a particular Amazon SNS topic (or topics).<li>specify the queue in the <code class="language-plaintext highlighter-rouge">Resource</code> field, and the Amazon SNS topic as the value for the <code class="language-plaintext highlighter-rouge">SourceArn</code> key.<li>If the key that you specify in a policy condition is not present in the request context, the values do not match.<li>The <code class="language-plaintext highlighter-rouge">aws:SourceArn</code> key is present in the request context only if a resource triggers a service to call another service on behalf of the resource owner.<li>If an IAM user attempts to perform this operation directly, the condition returns <code class="language-plaintext highlighter-rouge">false</code> and the request is implicitly denied by this statement.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SQS:SendMessage"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"`123456789012`"</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:sqs:`REGION`:`123456789012`:`QUEUE-ID`"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"ArnEquals"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">{</span><span class="nl">"aws:SourceArn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:sns:`REGION`:`123456789012`:`TOPIC-ID`"</span><span class="p">}}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="ifexists-condition-operators">…IfExists condition operators</h4><ul><li>add <code class="language-plaintext highlighter-rouge">IfExists</code> to the end of any condition operator name except the <code class="language-plaintext highlighter-rouge">Null</code> condition—Example, <code class="language-plaintext highlighter-rouge">StringLikeIfExists</code>.<li>You do this to say “If the policy key is present in the context of the request, process the key as specified in the policy. If the key is not present, evaluate the condition element as true.”<li><p>Other condition elements in the statement can still result in a nonmatch, but not a missing key when checked with <code class="language-plaintext highlighter-rouge">...IfExists</code>.</p><li>Many condition keys describe information about a certain type of resource and only exist when accessing that type of resource.<li>These condition keys are not present on other types of resources.<li>This doesn’t cause an issue when the policy statement applies to only one type of resource.<li>However, there are cases where a single statement can apply to multiple types of resources, such as when the policy statement references actions from multiple services or when a given action within a service accesses several different resource types within the same service.<li>In such cases, including a condition key that applies to only one of the resources in the policy statement can cause the <code class="language-plaintext highlighter-rouge">Condition</code> element in the policy statement to fail such that the statement’s <code class="language-plaintext highlighter-rouge">"Effect"</code> does not apply.</ul><p>Example:</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"`THISPOLICYDOESNOTWORK`"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2:RunInstances"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"StringLike"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">{</span><span class="nl">"ec2:InstanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"t1.*"</span><span class="p">,</span><span class="s2">"t2.*"</span><span class="p">,</span><span class="s2">"m3.*"</span><span class="p">]}}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><ul><li>enable the user to launch any instance that is type t1, t2 or m3.<li>However, launching an instance actually requires accessing many resources in addition to the instance itself; Example, images, key pairs, security groups, etc.<li>The entire statement is evaluated against every resource that is required to launch the instance.<li>These additional resources do not have the <code class="language-plaintext highlighter-rouge">ec2:InstanceType</code> condition key, so the <code class="language-plaintext highlighter-rouge">StringLike</code> check fails, and the user is not granted the ability to launch <em>any</em> instance type.<li>To address this, use the <code class="language-plaintext highlighter-rouge">StringLikeIfExists</code> condition operator instead.<ul><li>the test only happens if the condition key exists.</ul><li>You could read the following as:<ul><li>If the resource being checked has an “<code class="language-plaintext highlighter-rouge">ec2:InstanceType</code>” condition key, then allow the action only if the key value begins with <code class="language-plaintext highlighter-rouge">"t1.\*", "t2.\*", or "m3.\*"</code>.<li>If the resource being checked does not have that condition key, then don’t worry about it.</ul><li>The <code class="language-plaintext highlighter-rouge">DescribeActions</code> statement includes the actions required to view the instance in the console.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RunInstance"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2:RunInstances"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"StringLikeIfExists"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"ec2:InstanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"t1.*"</span><span class="p">,</span><span class="s2">"t2.*"</span><span class="p">,</span><span class="s2">"m3.*"</span><span class="p">]}}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DescribeActions"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"ec2:DescribeImages"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ec2:DescribeInstances"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ec2:DescribeVpcs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ec2:DescribeKeyPairs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ec2:DescribeSubnets"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ec2:DescribeSecurityGroups"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="condition-operator-to-check-existence-of-condition-keys">Condition operator to check existence of condition keys</h4><p>Use a <code class="language-plaintext highlighter-rouge">Null</code> condition operator to check if a condition key is present at the time of authorization.</p><ul><li><code class="language-plaintext highlighter-rouge">true</code> (the key doesn’t exist — it is null) or<li><code class="language-plaintext highlighter-rouge">false</code> (the key exists and its value is not null).</ul><p>Example</p><ul><li>determine whether a user is using their own credentials for the operation or temporary credentials.<li>If the user is using temporary credentials, then the key <code class="language-plaintext highlighter-rouge">aws:TokenIssueTime</code> exists and has a value.<li>condition that states that the user must not be using temporary credentials (the key must not exist) for the user to use the Amazon EC2 API.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="s2">"ec2:*"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Condition"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"Null"</span><span class="p">:{</span><span class="nl">"aws:TokenIssueTime"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h3 id="variables-and-tags">Variables and tags</h3><hr /><h3 id="supported-data-types">Supported data types</h3><hr /><h2 id="example">example</h2><h2 id="aws-allows-access-based-on-date-and-time">AWS: Allows access based on date and time</h2><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="err">//</span><span class="w"> </span><span class="err">restricts</span><span class="w"> </span><span class="err">access</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">actions</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">occur</span><span class="w"> </span><span class="err">between</span><span class="w"> </span><span class="err">April</span><span class="w"> </span><span class="mi">1</span><span class="err">,</span><span class="w"> </span><span class="mi">2020</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">June</span><span class="w"> </span><span class="mi">30</span><span class="err">,</span><span class="w"> </span><span class="mi">2020</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-prefix:action-name"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"DateGreaterThan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:CurrentTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-01T00:00:00Z"</span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DateLessThan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:CurrentTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-30T23:59:59Z"</span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h2 id="aws-denies-access-to-aws-based-on-the-requested-region">AWS: Denies access to AWS based on the requested Region</h2><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DenyAllOutsideRequestedRegions"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"NotAction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"cloudfront:*"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"iam:*"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"route53:*"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"support:*"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="err">//</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">NotAction</span><span class="w"> </span><span class="err">element</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Deny</span><span class="w"> </span><span class="err">effect</span><span class="p">,</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">explicitly</span><span class="w"> </span><span class="err">denies</span><span class="w"> </span><span class="err">access</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">actions</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">listed</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">statement.</span><span class="w">
+            </span><span class="err">//</span><span class="w"> </span><span class="err">Actions</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">CloudFront</span><span class="p">,</span><span class="w"> </span><span class="err">IAM</span><span class="p">,</span><span class="w"> </span><span class="err">Route</span><span class="w"> </span><span class="mi">53</span><span class="p">,</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">AWS</span><span class="w"> </span><span class="err">Support</span><span class="w"> </span><span class="err">services</span><span class="w"> </span><span class="err">should</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">denied</span><span class="w">
+            </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"StringNotEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"aws:RequestedRegion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"eu-central-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"eu-west-1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"eu-west-2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"eu-west-3"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><hr /><h2 id="aws-denies-access-to-aws-based-on-the-source-ip">AWS: Denies access to AWS based on the source IP</h2><p>denies access to all AWS actions in the account when the request comes <code class="language-plaintext highlighter-rouge">from principals outside the specified IP range</code>.</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"NotIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"192.0.2.0/24"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"203.0.113.0/24"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"Bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"aws:ViaAWSService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/01aws/'>01AWS</a>, <a href='/categories/idenaccessmanage/'>IdenAccessManage</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/aws/" class="post-tag no-text-decoration" >AWS</a> <a href="/tags/idenaccessmanage/" class="post-tag no-text-decoration" >IdenAccessManage</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=AWS - IdenAccessManage - IAM policy - Grace&url=https://ocholuo.github.io//posts/IAM-policy/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=AWS - IdenAccessManage - IAM policy - Grace&u=https://ocholuo.github.io//posts/IAM-policy/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=AWS - IdenAccessManage - IAM policy - Grace&url=https://ocholuo.github.io//posts/IAM-policy/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ocholuo.github.io//posts/IAM-policy/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/CI-CD/">CI/CD - Continuous Integration & Continous Delivery</a><li><a href="/posts/Github-Action-example/">CI/CD - Github Action Template</a><li><a href="/posts/CloudMap/">AWS - EKS - Cloud Map</a><li><a href="/posts/DataWrangler/">AWS - ML - Data Wrangler</a><li><a href="/posts/0CodePipeline/">AWS - CodeDevelop - CodePipeline</a><li><a href="/posts/1CodeCommit/">AWS - CodeDevelop - CodeCommit</a><li><a href="/posts/2CodeBuild/">AWS - CodeDevelop - CodeBuild</a><li><a href="/posts/2CodeBuildTemplate-buildspec/">AWS - CodeDevelop - CodeBuild - buildspec.yml Template</a><li><a href="/posts/ElasticBeanstalk/">AWS - CodeDevelop - ElasticBeanstalk</a><li><a href="/posts/CourseREADME/">Course - Learning Path</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Amazon-Cognito/"><div class="card-body"> <span class="timeago small" > Jul 18, 2020 <i class="unloaded">2020-07-18T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>AWS - IdenAccessManage - Amazon Cognito</h3><div class="text-muted small"><p> [toc] Amazon Cognito web identity federation allows user to authenticate with a web identity ptovider (google, facebook) ther user authenticates first with the web id provider and rece...</p></div></div></a></div><div class="card"> <a href="/posts/AWS-organizations/"><div class="card-body"> <span class="timeago small" > Jul 18, 2020 <i class="unloaded">2020-07-18T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>AWS - IdenAccessManage - AWS Organizations and SCP</h3><div class="text-muted small"><p> [toc] AWS Organizations an account management service. ￼ AWS Organizations enables you to: policy-based account management: Create  service control policies (SCPs)  that ce...</p></div></div></a></div><div class="card"> <a href="/posts/IAM-Service/"><div class="card-body"> <span class="timeago small" > Jul 18, 2020 <i class="unloaded">2020-07-18T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>AWS - IdenAccessManage - AWS services that work with IAM</h3><div class="text-muted small"><p> [toc] AWS services that work with IAM The AWS services listed below are grouped by their AWS product categories and include information about what IAM features they support: Service ...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/STS/" class="btn btn-outline-primary" prompt="Older"><p>AWS - IdenAccessManage - STS Security Token Service</p></a> <a href="/posts/SCPs-Policy-inheritance/" class="btn btn-outline-primary" prompt="Newer"><p>AWS - IdenAccessManage - SCPs policy inheritance</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//https-ocholuo-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'AWS - IdenAccessManage - IAM policy'; this.page.url = 'https://ocholuo.github.io//posts/IAM-policy/'; this.page.identifier = '/posts/IAM-policy/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ocholuo">Grace JyL</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ocholuo.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

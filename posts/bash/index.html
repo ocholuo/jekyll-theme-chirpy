@@ -1,0 +1,1086 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); </script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-proxy-endpoint" content="https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw"><meta name="pv-cache-path" content="/true"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="Bash Note" /><meta property="og:locale" content="en_US" /><meta name="description" content="[toc]" /><meta property="og:description" content="[toc]" /><link rel="canonical" href="https://ocholuo.github.io//posts/bash/" /><meta property="og:url" content="https://ocholuo.github.io//posts/bash/" /><meta property="og:site_name" content="Grace" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-09-25T11:11:11-04:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Bash Note" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"[toc]","headline":"Bash Note","dateModified":"2020-09-25T11:11:11-04:00","url":"https://ocholuo.github.io//posts/bash/","datePublished":"2020-09-25T11:11:11-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ocholuo.github.io//posts/bash/"},"@context":"https://schema.org"}</script><title>Bash Note | Grace</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Grace"><meta name="application-name" content="Grace"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://myochosite-291718.appspot.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://myochosite-291718.appspot.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script> <script async src="/assets/js/dist/pvreport.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/rabbit.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Grace</a></div><div class="site-subtitle font-italic">2021 Jun 22 updated</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ocholuo" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>Bash Note</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Bash Note</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Grace JyL </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Sep 25, 2020, 11:11 AM -0400" prep="on" > Sep 25, 2020 <i class="unloaded">2020-09-25T11:11:11-04:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3448 words">19 min</span> <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span></div></div><div class="post-content"><p>[toc]</p><hr /><h1 id="bash-note">bash Note</h1><hr /><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>Number of elements: <span class="k">${#</span><span class="nv">ARRAY</span><span class="p">[@]</span><span class="k">}</span>
+<span class="nb">echo</span> <span class="k">${</span><span class="nv">ARRAY</span><span class="p">[@]</span><span class="k">}</span>
+
+stdin
+<span class="c"># standard input. It takes text as input.</span>
+stdout
+<span class="c"># standard output. The text output of a command is stored in the stdout stream.</span>
+stderr
+<span class="c"># standard error. Whenever a command faces an error, the error message is stored in this stream.</span>
+
+</pre></table></code></div></div><hr /><h2 id="hello-world-bash-shell-script">Hello World Bash Shell Script</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="nt">---</span> check bash interpreter location
+<span class="nv">$ </span>which bash
+/bin/bash
+
+<span class="nt">---</span> create file called hello_world.sh.
+<span class="c">#!/bin/bash</span>
+<span class="c"># declare STRING variable</span>
+<span class="nv">STRING</span><span class="o">=</span><span class="s2">"Hello World"</span>
+<span class="c">#print variable on a screen</span>
+<span class="nb">echo</span> <span class="nv">$STRING</span>
+
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span><span class="nb">chmod</span> +x hello_world.sh
+<span class="nv">$ </span>./hello_world.sh
+</pre></table></code></div></div><hr /><h2 id="simple-backup-bash-shell-script">Simple Backup bash shell script</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">tar</span> <span class="nt">-czf</span> myhome_directory.tar.gz /home/linuxconfig
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./backup.sh
+<span class="nb">tar</span>: Removing leading <span class="s1">'/'</span> from member names
+
+<span class="nv">$ </span><span class="nb">ls </span>myhome_directory.tar.gz
+myhome_directory.tar.gz
+</pre></table></code></div></div><hr /><h2 id="variables">Variables</h2><ol><li>declare simple bash variable and print it on the screen (stdout) with echo command.</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="nt">---</span> create file called hello_world.sh.
+<span class="c">#!/bin/bash</span>
+<span class="nv">STRING</span><span class="o">=</span><span class="s2">"HELLO WORLD!!!"</span>
+<span class="nb">echo</span> <span class="nv">$STRING</span>
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./hello_world.sh
+</pre></table></code></div></div><ol><li>Bash backup Script with bash Variables</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nt">---</span> backup script:
+<span class="c">#!/bin/bash</span>
+<span class="nv">OF</span><span class="o">=</span>myhome_directory_<span class="si">$(</span><span class="nb">date</span> +%Y%m%d<span class="si">)</span>.tar.gz
+<span class="nb">tar</span> <span class="nt">-czf</span> <span class="nv">$OF</span> /home/linuxconfig
+</pre></table></code></div></div><h3 id="global-vs-local-variables">Global vs. Local variables</h3><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="c">#Define bash global variable</span>
+<span class="c">#global variable can be used anywhere in this bash script</span>
+<span class="nv">VAR</span><span class="o">=</span><span class="s2">"global variable"</span>
+<span class="k">function </span>bash <span class="o">{</span>
+    <span class="c">#Define bash local variable</span>
+    <span class="c">#This variable is local to bash function only</span>
+    <span class="nb">local </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">"local variable"</span>
+    <span class="nb">echo</span> <span class="nv">$VAR</span>
+<span class="o">}</span>
+<span class="nb">echo</span> <span class="nv">$VAR</span>
+bash
+<span class="nb">echo</span> <span class="nv">$VAR</span>
+
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./variable.sh
+<span class="c"># global variable</span>
+<span class="c"># local variable</span>
+<span class="c"># global variable</span>
+</pre></table></code></div></div><hr /><h2 id="passing-arguments-to-the-bash-script">Passing arguments to the bash script</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># 1.</span>
+<span class="c"># use predefined variables to access passed arguments</span>
+<span class="c"># echo arguments to the shell</span>
+<span class="nb">echo</span> <span class="nv">$1</span> <span class="nv">$2</span> <span class="nv">$3</span> <span class="s1">' -&gt; echo $1 $2 $3'</span>
+
+<span class="c"># 2.</span>
+<span class="c"># store arguments from bash command line in special array</span>
+<span class="nv">args</span><span class="o">=(</span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span>
+<span class="nb">echo</span> <span class="k">${</span><span class="nv">args</span><span class="p">[0]</span><span class="k">}</span> <span class="k">${</span><span class="nv">args</span><span class="p">[1]</span><span class="k">}</span> <span class="k">${</span><span class="nv">args</span><span class="p">[2]</span><span class="k">}</span> <span class="s1">' -&gt; args=("$@"); echo ${args[0]} ${args[1]} ${args[2]}'</span>
+
+<span class="c"># 3.</span>
+<span class="c"># use $@ to print out all arguments at once</span>
+<span class="nb">echo</span> <span class="nv">$@</span> <span class="s1">' -&gt; echo $@'</span>
+
+<span class="c"># 4.</span>
+<span class="c"># use $# variable to print out</span>
+<span class="c"># number of arguments passed to the bash script</span>
+<span class="nb">echo </span>Number of arguments passed: <span class="nv">$# </span><span class="s1">' -&gt; echo Number of arguments passed: $#'</span>
+
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./arguments.sh Bash Scripting Tutorial
+<span class="c"># Bash Scripting Tutorial -&gt; echo $1 $2 $3</span>
+<span class="c"># Bash Scripting Tutorial -&gt; args=("$@"); echo ${args[0]} ${args[1]} ${args[2]}</span>
+<span class="c"># Bash Scripting Tutorial -&gt; echo $@</span>
+<span class="c"># Number of arguments passed: 3 -&gt; echo Number of arguments passed: $#</span>
+</pre></table></code></div></div><hr /><h2 id="executing-shell-commands-with-bash">Executing shell commands with bash</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># use backticks " ` ` " to execute shell command</span>
+<span class="nb">echo</span> <span class="sb">`</span><span class="nb">uname</span> <span class="nt">-o</span><span class="sb">`</span>
+<span class="c"># executing bash command without backticks, just print out</span>
+<span class="nb">echo uname</span> <span class="nt">-o</span>
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./test.sh
+<span class="c"># $ uname -o</span>
+<span class="c"># GNU/Linux</span>
+<span class="c"># uname -o</span>
+</pre></table></code></div></div><hr /><h2 id="reading-user-input">Reading User Input</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Hi, please type the word: </span><span class="se">\c</span><span class="s2"> "</span>
+<span class="nb">read  </span>word <span class="c"># user input</span>
+<span class="nb">echo</span> <span class="s2">"The word you entered is: </span><span class="nv">$word</span><span class="s2">"</span>
+
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Can you please enter two words? "</span>
+<span class="nb">read </span>word1 word2
+<span class="nb">echo</span> <span class="s2">"Here is your input: </span><span class="se">\"</span><span class="s2"> </span><span class="nv">$word1</span><span class="s2"> </span><span class="se">\"</span><span class="s2"> </span><span class="se">\"</span><span class="s2"> </span><span class="nv">$word2</span><span class="s2"> </span><span class="se">\"</span><span class="s2"> "</span>
+
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"How do you feel about bash scripting? "</span>
+<span class="c"># read command now stores a reply into the default build-in variable $REPLY</span>
+<span class="nb">read
+echo</span> <span class="s2">"You said </span><span class="nv">$REPLY</span><span class="s2">, I'm glad to hear that! "</span>
+
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"What are your favorite colours ? "</span>
+<span class="c"># -a makes read command to read into an array</span>
+<span class="nb">read</span> <span class="nt">-a</span> colours
+<span class="nb">echo</span> <span class="s2">"My favorite colours are also </span><span class="k">${</span><span class="nv">colours</span><span class="p">[0]</span><span class="k">}</span><span class="s2">, </span><span class="k">${</span><span class="nv">colours</span><span class="p">[1]</span><span class="k">}</span><span class="s2"> and </span><span class="k">${</span><span class="nv">colours</span><span class="p">[2]</span><span class="k">}</span><span class="s2">:-)"</span>
+</pre></table></code></div></div><hr /><h2 id="bash-trap-command">Bash Trap Command</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># bash trap command</span>
+<span class="nb">trap </span>bashtrap INT
+<span class="c"># bash clear screen command, clear and then run</span>
+clear<span class="p">;</span>
+
+<span class="c"># bash trap function is executed when CTRL-C is pressed:</span>
+<span class="c"># bash prints message =&gt; Executing bash trap subrutine !</span>
+bashtrap<span class="o">(){</span>
+    <span class="nb">echo</span> <span class="s2">"CTRL+C Detected !...executing bash trap !"</span>
+<span class="o">}</span>
+
+<span class="c"># for loop from 1/10 to 10/10</span>
+<span class="k">for </span>a <span class="k">in</span> <span class="sb">`</span><span class="nb">seq </span>1 10<span class="sb">`</span><span class="p">;</span> <span class="k">do
+    </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">/10 to Exit."</span>
+    <span class="nb">sleep </span>1<span class="p">;</span>
+<span class="k">done
+
+</span><span class="nb">echo</span> <span class="s2">"Exit Bash Trap Example!!!"</span>
+</pre></table></code></div></div><hr /><h2 id="arrays">Arrays</h2><ol><li>Declare simple bash array</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># Declare array with 4 elements</span>
+<span class="nv">ARRAY</span><span class="o">=(</span> <span class="s1">'Debian Linux'</span> <span class="s1">'Redhat Linux'</span> Ubuntu Linux <span class="o">)</span>
+<span class="c"># get number of elements in the array</span>
+<span class="nv">ELEMENTS</span><span class="o">=</span><span class="k">${#</span><span class="nv">ARRAY</span><span class="p">[@]</span><span class="k">}</span>
+
+<span class="c"># echo each element in array</span>
+<span class="c"># for loop</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span>0<span class="p">;</span> i&lt;<span class="nv">$ELEMENTS</span><span class="p">;</span> i++<span class="o">))</span><span class="p">;</span> <span class="k">do
+    </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">ARRAY</span><span class="p">[</span><span class="k">${</span><span class="nv">i</span><span class="k">}</span><span class="p">]</span><span class="k">}</span>
+<span class="k">done</span>
+</pre></table></code></div></div><ol><li>Read file into bash array</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># Declare array</span>
+<span class="nb">declare</span> <span class="nt">-a</span> ARRAY
+
+<span class="c"># Link filedescriptor 10 with stdin</span>
+<span class="nb">exec </span>10&lt;&amp;0
+<span class="c"># stdin replaced with a file supplied as a first argument</span>
+<span class="nb">exec</span> &lt; <span class="nv">$1</span>
+
+<span class="nb">let </span><span class="nv">count</span><span class="o">=</span>0
+
+<span class="k">while </span><span class="nb">read </span>LINE<span class="p">;</span> <span class="k">do
+    </span>ARRAY[<span class="nv">$count</span><span class="o">]=</span><span class="nv">$LINE</span>
+    <span class="o">((</span>count++<span class="o">))</span>
+<span class="k">done
+
+</span><span class="nb">echo </span>Number of elements: <span class="k">${#</span><span class="nv">ARRAY</span><span class="p">[@]</span><span class="k">}</span>
+<span class="c"># echo array's content</span>
+<span class="nb">echo</span> <span class="k">${</span><span class="nv">ARRAY</span><span class="p">[@]</span><span class="k">}</span>
+
+<span class="c"># restore stdin from filedescriptor 10</span>
+<span class="c"># and close filedescriptor 10</span>
+<span class="nb">exec </span>0&lt;&amp;10 10&lt;&amp;-
+</pre></table></code></div></div><ol><li>Bash script execution with an output:</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>linuxconfig.org <span class="nv">$ </span><span class="nb">cat </span>bash.txt
+Bash
+Scripting
+Tutorial
+Guide
+
+linuxconfig.org <span class="nv">$ </span>./bash-script.sh bash.txt
+Number of elements: 4
+Bash Scripting Tutorial Guide
+</pre></table></code></div></div><hr /><h2 id="bash-if--else--fi-statements">Bash if / else / fi statements</h2><p>Simple Bash if/else statement</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="c"># note the spacing inside the [ and ] brackets!</span>
+<span class="c"># Without the spaces, it won't work!</span>
+
+<span class="c">#!/bin/bash</span>
+<span class="nv">directory</span><span class="o">=</span><span class="s2">"./BashScripting"</span>
+
+<span class="c"># bash check if directory exists</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-d</span> <span class="nv">$directory</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"Directory exists"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> <span class="s2">"Directory does not exists"</span>
+<span class="k">fi</span>
+
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./if.sh
+<span class="c"># Directory does not exists</span>
+<span class="nv">$ </span><span class="nb">mkdir </span>BashScripting
+<span class="nv">$ </span>./if.sh
+<span class="c"># Directory exists</span>
+</pre></table></code></div></div><h3 id="nested-ifelse">Nested if/else</h3><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="c"># Declare variable choice and assign value 4</span>
+<span class="nv">choice</span><span class="o">=</span>4
+<span class="c"># Print to stdout</span>
+<span class="nb">echo</span> <span class="s2">"1. Bash"</span>
+<span class="nb">echo</span> <span class="s2">"2. Scripting"</span>
+<span class="nb">echo</span> <span class="s2">"3. Tutorial"</span>
+<span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Please choose a word [1,2 or 3]? "</span>
+<span class="c"># Loop while the variable choice is equal 4</span>
+<span class="c"># bash while loop</span>
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$choice</span> <span class="nt">-eq</span> 4 <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+
+<span class="c"># read user input</span>
+<span class="nb">read </span>choice
+<span class="c"># bash nested if/else</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$choice</span> <span class="nt">-eq</span> 1 <span class="o">]</span> <span class="p">;</span> <span class="k">then
+        </span><span class="nb">echo</span> <span class="s2">"You have chosen word: Bash"</span>
+<span class="k">else                   
+        if</span> <span class="o">[</span> <span class="nv">$choice</span> <span class="nt">-eq</span> 2 <span class="o">]</span> <span class="p">;</span> <span class="k">then
+                 </span><span class="nb">echo</span> <span class="s2">"You have chosen word: Scripting"</span>
+        <span class="k">else
+                if</span> <span class="o">[</span> <span class="nv">$choice</span> <span class="nt">-eq</span> 3 <span class="o">]</span> <span class="p">;</span> <span class="k">then
+                        </span><span class="nb">echo</span> <span class="s2">"You have chosen word: Tutorial"</span>
+                <span class="k">else
+                        </span><span class="nb">echo</span> <span class="s2">"Please make a choice between 1-3 !"</span>
+                        <span class="nb">echo</span> <span class="s2">"1. Bash"</span>
+                        <span class="nb">echo</span> <span class="s2">"2. Scripting"</span>
+                        <span class="nb">echo</span> <span class="s2">"3. Tutorial"</span>
+                        <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Please choose a word [1,2 or 3]? "</span>
+                        <span class="nv">choice</span><span class="o">=</span>4
+                <span class="k">fi   
+        fi
+fi
+done</span>
+</pre></table></code></div></div><hr /><h1 id="bash-comparisons">Bash Comparisons</h1><h2 id="arithmetic-comparisons">Arithmetic Comparisons</h2><div class="table-wrapper"><table><thead><tr><th>.<th>.<tbody><tr><td>-lt<td>&lt;<tr><td>-gt<td>&gt;<tr><td>-le<td>&lt;=<tr><td>-ge<td>&gt;=<tr><td>-eq<td>==<tr><td>-ne<td>!=</table></div><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># declare integers</span>
+<span class="nv">NUM1</span><span class="o">=</span>2
+<span class="nv">NUM2</span><span class="o">=</span>2
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$NUM1</span> <span class="nt">-eq</span> <span class="nv">$NUM2</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"Both Values are equal"</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$NUM1</span> <span class="nt">-gt</span> <span class="nv">$NUM2</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"NUM1 is greater then NUM2"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> <span class="s2">"NUM2 is greater then NUM1"</span>
+<span class="k">fi</span>
+</pre></table></code></div></div><hr /><h2 id="string-comparisons">String Comparisons</h2><div class="table-wrapper"><table><thead><tr><th>.<th>.<tbody><tr><td>=<td>equal<tr><td>!=<td>not equal<tr><td>&lt;<td>less then<tr><td>&gt;<td>greater then<tr><td>-n s1<td>string s1 is not empty<tr><td>-z s1<td>string s1 is empty</table></div><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c">#Declare string S1</span>
+<span class="nv">S1</span><span class="o">=</span><span class="s2">"Bash"</span>
+<span class="c">#Declare string S2</span>
+<span class="nv">S2</span><span class="o">=</span><span class="s2">"Scripting"</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$S1</span> <span class="o">=</span> <span class="nv">$S2</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"Both Strings are equal"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> <span class="s2">"Strings are NOT equal"</span>
+<span class="k">fi</span>
+</pre></table></code></div></div><hr /><h2 id="bash-file-testing">Bash File Testing</h2><div class="table-wrapper"><table><thead><tr><th>.<th>.<tbody><tr><td>-b filename<td>Block special file<tr><td>-c filename<td>Special character file<tr><td>-d directoryname<td>Check for directory <code class="language-plaintext highlighter-rouge">existence</code><tr><td>-e filename<td>Check for file <code class="language-plaintext highlighter-rouge">existence</code><tr><td>-f filename<td>Check for regular file existence not a directory<tr><td>-G filename<td>Check if file exists and is owned by effective group ID.<tr><td>-g filename<td>true if file exists and is set-group-id.<tr><td>-k filename<td>Sticky bit<tr><td>-L filename<td>Symbolic link<tr><td>-O filename<td>True if file exists and is owned by the effective user id.<tr><td>-r filename<td>Check if file is a readable<tr><td>-S filename<td>Check if file is socket<tr><td>-s filename<td>Check if file is nonzero size<tr><td>-u filename<td>Check if file set-ser-id bit is set<tr><td>-w filename<td>Check if file is writable<tr><td>-x filename<td>Check if file is executable</table></div><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nv">file</span><span class="o">=</span><span class="s2">"./file"</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-e</span> <span class="nv">$file</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"File exists"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> <span class="s2">"File does not exists"</span>
+<span class="k">fi</span>
+</pre></table></code></div></div><p>Similarly for example we can use while loop to check if file does not exists. This script will sleep until file does exists. Note bash negator “!” which negates the -e option.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="k">while</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-e</span> myfile <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+<span class="c"># Sleep until file does exists/is created</span>
+<span class="nb">sleep </span>1
+<span class="k">done</span>
+</pre></table></code></div></div><hr /><h1 id="loops">Loops</h1><h2 id="bash-for-loop">Bash <code class="language-plaintext highlighter-rouge">for loop</code></h2><ol><li>echo evry file name under <code class="language-plaintext highlighter-rouge">/var/</code><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># bash for loop</span>
+<span class="k">for </span>f <span class="k">in</span> <span class="si">$(</span> <span class="nb">ls</span> /var/ <span class="si">)</span><span class="p">;</span> <span class="k">do
+ </span><span class="nb">echo</span> <span class="nv">$f</span>
+<span class="k">done</span>
+</pre></table></code></div></div><li>Run <code class="language-plaintext highlighter-rouge">for loop</code> from bash shell command line:</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="k">for </span>f <span class="k">in</span> <span class="si">$(</span> <span class="nb">ls</span> /var/ <span class="si">)</span><span class="p">;</span> <span class="k">do </span><span class="nb">echo</span> <span class="nv">$f</span><span class="p">;</span> <span class="k">done</span>
+</pre></table></code></div></div><hr /><h3 id="bash-while-loop">Bash <code class="language-plaintext highlighter-rouge">while loop</code></h3><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nv">COUNT</span><span class="o">=</span>6
+<span class="c"># bash while loop</span>
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$COUNT</span> <span class="nt">-gt</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">do
+	</span><span class="nb">echo </span>Value of count is: <span class="nv">$COUNT</span>
+	<span class="nb">let </span><span class="nv">COUNT</span><span class="o">=</span>COUNT-1
+<span class="k">done</span>
+</pre></table></code></div></div><hr /><h3 id="bash-until-loop">Bash <code class="language-plaintext highlighter-rouge">until loop</code></h3><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nv">COUNT</span><span class="o">=</span>0
+<span class="c"># bash until loop</span>
+<span class="k">until</span> <span class="o">[</span> <span class="nv">$COUNT</span> <span class="nt">-gt</span> 5 <span class="o">]</span><span class="p">;</span> <span class="k">do
+        </span><span class="nb">echo </span>Value of count is: <span class="nv">$COUNT</span>
+        <span class="nb">let </span><span class="nv">COUNT</span><span class="o">=</span>COUNT+1
+<span class="k">done</span>
+</pre></table></code></div></div><hr /><h3 id="control-bash-loop-with">Control bash loop with</h3><p>Here is a example of <code class="language-plaintext highlighter-rouge">while loop</code> controlled by standard input.</p><p>Until the redirection chain from <code class="language-plaintext highlighter-rouge">STDOUT</code> to <code class="language-plaintext highlighter-rouge">STDIN</code> to the <code class="language-plaintext highlighter-rouge">read</code> command exists the <code class="language-plaintext highlighter-rouge">while loop</code> continues.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># This bash script will locate and replace spaces in the filenames</span>
+<span class="nv">DIR</span><span class="o">=</span><span class="s2">"."</span>
+<span class="c"># Controlling a loop with bash read command by redirecting STDOUT as a STDIN to while loop</span>
+<span class="c"># find will not truncate filenames containing spaces</span>
+find <span class="nv">$DIR</span> <span class="nt">-type</span> f | <span class="k">while </span><span class="nb">read </span>file<span class="p">;</span> <span class="k">do</span>
+<span class="c"># using POSIX class [:space:] to find space in the filename</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span> <span class="o">=</span> <span class="k">*</span><span class="o">[[</span>:space:]]<span class="k">*</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="c"># substitute space with "_" character and consequently rename the file</span>
+<span class="nb">mv</span> <span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span> <span class="sb">`</span><span class="nb">echo</span> <span class="nv">$file</span> | <span class="nb">tr</span> <span class="s1">' '</span> <span class="s1">'_'</span><span class="sb">`</span>
+<span class="k">fi</span><span class="p">;</span>
+<span class="c"># end of while loop</span>
+<span class="k">done
+</span>Bash script to replace spaces <span class="k">in </span>the filenames with _
+</pre></table></code></div></div><hr /><h1 id="bash-functions">Bash <code class="language-plaintext highlighter-rouge">Functions</code></h1><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="o">!</span>/bin/bash
+<span class="c"># BASH FUNCTIONS CAN BE DECLARED IN ANY ORDER</span>
+<span class="k">function </span>function_B <span class="o">{</span>
+        <span class="nb">echo </span>Function B.
+<span class="o">}</span>
+<span class="k">function </span>function_A <span class="o">{</span>
+        <span class="nb">echo</span> <span class="nv">$1</span>
+<span class="o">}</span>
+<span class="k">function </span>function_D <span class="o">{</span>
+        <span class="nb">echo </span>Function D.
+<span class="o">}</span>
+<span class="k">function </span>function_C <span class="o">{</span>
+        <span class="nb">echo</span> <span class="nv">$1</span>
+<span class="o">}</span>
+<span class="c"># FUNCTION CALLS</span>
+<span class="c"># Pass parameter to function A</span>
+function_A <span class="s2">"Function A."</span>
+function_B
+<span class="c"># Pass parameter to function C</span>
+function_C <span class="s2">"Function C."</span>
+function_D
+</pre></table></code></div></div><hr /><h1 id="bash-select">Bash <code class="language-plaintext highlighter-rouge">Select</code></h1><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nv">PS3</span><span class="o">=</span><span class="s1">'Choose one word: '</span>
+
+<span class="c"># bash select</span>
+<span class="k">select </span>word <span class="k">in</span> <span class="s2">"linux"</span> <span class="s2">"bash"</span> <span class="s2">"scripting"</span> <span class="s2">"tutorial"</span>
+<span class="k">do
+  </span><span class="nb">echo</span> <span class="s2">"The word you have selected is: </span><span class="nv">$word</span><span class="s2">"</span>
+<span class="c"># Break, otherwise endless loop</span>
+  <span class="nb">break  
+</span><span class="k">done
+
+</span><span class="nb">exit </span>0
+</pre></table></code></div></div><hr /><h1 id="case-statement-conditional">Case statement conditional</h1><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">"What is your preferred programming / scripting language"</span>
+<span class="nb">echo</span> <span class="s2">"1) bash"</span>
+<span class="nb">echo</span> <span class="s2">"2) perl"</span>
+<span class="nb">echo</span> <span class="s2">"3) phyton"</span>
+<span class="nb">echo</span> <span class="s2">"4) c++"</span>
+<span class="nb">echo</span> <span class="s2">"5) I do not know !"</span>
+<span class="nb">read </span><span class="k">case</span><span class="p">;</span>
+<span class="c">#simple case bash structure</span>
+<span class="c"># note in this case $case is variable and does not have to</span>
+<span class="c"># be named case this is just an example</span>
+<span class="k">case</span> <span class="nv">$case</span> <span class="k">in
+    </span>1<span class="p">)</span> <span class="nb">echo</span> <span class="s2">"You selected bash"</span><span class="p">;;</span>
+    2<span class="p">)</span> <span class="nb">echo</span> <span class="s2">"You selected perl"</span><span class="p">;;</span>
+    3<span class="p">)</span> <span class="nb">echo</span> <span class="s2">"You selected phyton"</span><span class="p">;;</span>
+    4<span class="p">)</span> <span class="nb">echo</span> <span class="s2">"You selected c++"</span><span class="p">;;</span>
+    5<span class="p">)</span> <span class="nb">exit
+</span><span class="k">esac</span>
+</pre></table></code></div></div><hr /><h1 id="bash-quotes-and-quotations">Bash quotes and quotations</h1><p>Quotations and quotes are important part of bash and bash scripting. Here are some bash quotes and quotations basics.</p><hr /><h2 id="escaping-meta-characters">Escaping Meta characters</h2><p>Before we start with quotes and quotations we should know something about escaping meta characters. Escaping will suppress a special meaning of meta characters and therefore meta characters will be read by bash literally. To do this we need to use backslash <code class="language-plaintext highlighter-rouge">"\"</code> character. Example:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="c">#Declare bash string variable</span>
+<span class="nv">BASH_VAR</span><span class="o">=</span><span class="s2">"Bash Script"</span>
+
+<span class="c"># echo variable BASH_VAR</span>
+<span class="nb">echo</span> <span class="nv">$BASH_VAR</span>
+
+<span class="c">#when meta character such us "$" is escaped with "\" it will be read literally</span>
+<span class="nb">echo</span> <span class="nv">$BASH_VAR</span>
+
+<span class="c"># backslash has also special meaning and it can be suppressed with yet another "\"</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">
+</span></pre></table></code></div></div><hr /><h2 id="single-quotes">Single quotes</h2><p>Single quotes in bash will suppress special meaning of every meta characters. Therefore meta characters will be read literally. It is not possible to use another single quote within two single quotes not even if the single quote is escaped by backslash.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c">#Declare bash string variable</span>
+<span class="nv">BASH_VAR</span><span class="o">=</span><span class="s2">"Bash Script"</span>
+
+<span class="c"># echo variable BASH_VAR</span>
+<span class="nb">echo</span> <span class="nv">$BASH_VAR</span>
+
+<span class="c"># meta characters special meaning in bash is suppressed when  using single quotes</span>
+<span class="nb">echo</span> <span class="s1">'$BASH_VAR  "$BASH_VAR"'</span>
+</pre></table></code></div></div><hr /><h2 id="double-quotes">Double Quotes</h2><p>Double quotes in bash will suppress special meaning of every meta characters except “$”, “" and “`”. Any other meta characters will be read literally. It is also possible to use single quote within double quotes. If we need to use double quotes within double quotes bash can read them literally when escaping them with “". Example:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="c">#Declare bash string variable</span>
+<span class="nv">BASH_VAR</span><span class="o">=</span><span class="s2">"Bash Script"</span>
+
+<span class="c"># echo variable BASH_VAR</span>
+<span class="nb">echo</span> <span class="nv">$BASH_VAR</span>
+
+<span class="c"># meta characters and its special meaning in bash is</span>
+<span class="c"># suppressed when using double quotes except "$", "\" and "`"</span>
+<span class="nb">echo</span> <span class="s2">"It's </span><span class="nv">$BASH_VAR</span><span class="s2">  and </span><span class="se">\"</span><span class="nv">$BASH_VAR</span><span class="se">\"</span><span class="s2"> using backticks: </span><span class="sb">`</span><span class="nb">date</span><span class="sb">`</span><span class="s2">"</span>
+</pre></table></code></div></div><hr /><h2 id="bash-quoting-with-ansi-c-style">Bash quoting with ANSI-C style</h2><p>There is also another type of quoting and that is ANSI-C. In this type of quoting characters escaped with “" will gain special meaning according to the ANSI-C standard.</p><div class="table-wrapper"><table><thead><tr><th>ANSI-C<th>.<tbody><tr><td>\a<td>alert (bell)<tr><td>\b<td>backspace<tr><td>\e<td>an escape character<tr><td>\f<td>form feed<tr><td>\n<td>newline<tr><td>\r<td>carriage return<tr><td>\t<td>horizontal tab<tr><td>\v<td>vertical tab<tr><td>\<td>backslash<tr><td>`<td>single quote<tr><td>\nnn<td>octal value of characters ( see [http://www.asciitable.com/ ASCII table] )<tr><td>\xnn<td>hexadecimal value of characters ( see [http://www.asciitable.com/ ASCII table] )</table></div><p>The syntax fo ansi-c bash quoting is: $’’ . Here is an example:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># used \n as a new line, \x40 is hex value for @ and  is octal value for .</span>
+<span class="nb">echo</span> <span class="s1">$'web: www.linuxconfig.org</span><span class="se">\n</span><span class="s1">email: web</span><span class="se">\x</span><span class="s1">40linuxconfigorg'</span>
+<span class="c"># web: www.linuxconfig.org</span>
+<span class="c"># email: web@linuxconfigorg</span>
+</pre></table></code></div></div><hr /><h1 id="arithmetic-operations">Arithmetic Operations</h1><hr /><h2 id="bash-addition-calculator-example">Bash Addition Calculator Example</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nb">let </span><span class="nv">RESULT1</span><span class="o">=</span><span class="nv">$1</span>+<span class="nv">$2</span>
+
+<span class="nb">echo</span> <span class="nv">$1</span>+<span class="nv">$2</span><span class="o">=</span><span class="nv">$RESULT1</span> <span class="s1">' -&gt; # let RESULT1=$1+$2'</span>
+
+<span class="nb">declare</span> <span class="nt">-i</span> RESULT2
+<span class="nv">RESULT2</span><span class="o">=</span><span class="nv">$1</span>+<span class="nv">$2</span>
+
+<span class="nb">echo</span> <span class="nv">$1</span>+<span class="nv">$2</span><span class="o">=</span><span class="nv">$RESULT2</span> <span class="s1">' -&gt; # declare -i RESULT2; RESULT2=$1+$2'</span>
+<span class="nb">echo</span> <span class="nv">$1</span>+<span class="nv">$2</span><span class="o">=</span><span class="k">$((</span><span class="nv">$1</span> <span class="o">+</span> <span class="nv">$2</span><span class="k">))</span> <span class="s1">' -&gt; # $(($1 + $2))'</span>
+
+
+<span class="nt">---</span> make the file executable:
+<span class="nv">$ </span>./calc.sh 88 12
+88+12<span class="o">=</span>100 -&gt; <span class="c"># let RESULT1=$1+$2</span>
+88+12<span class="o">=</span>100 -&gt; <span class="c"># declare -i RESULT2; RESULT2=$1+$2</span>
+88+12<span class="o">=</span>100 -&gt; <span class="c"># $(($1 + $2))</span>
+
+</pre></table></code></div></div><hr /><h2 id="bash-arithmetics">Bash Arithmetics</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s1">'### let ###'</span>
+<span class="c"># bash addition</span>
+<span class="nb">let </span><span class="nv">ADDITION</span><span class="o">=</span>3+5
+<span class="nb">echo</span> <span class="s2">"3 + 5 ="</span> <span class="nv">$ADDITION</span>
+
+<span class="c"># bash subtraction</span>
+<span class="nb">let </span><span class="nv">SUBTRACTION</span><span class="o">=</span>7-8
+<span class="nb">echo</span> <span class="s2">"7 - 8 ="</span> <span class="nv">$SUBTRACTION</span>
+
+<span class="c"># bash multiplication</span>
+<span class="nb">let </span><span class="nv">MULTIPLICATION</span><span class="o">=</span>5<span class="k">*</span>8
+<span class="nb">echo</span> <span class="s2">"5 * 8 ="</span> <span class="nv">$MULTIPLICATION</span>
+
+<span class="c"># bash division</span>
+<span class="nb">let </span><span class="nv">DIVISION</span><span class="o">=</span>4/2
+<span class="nb">echo</span> <span class="s2">"4 / 2 ="</span> <span class="nv">$DIVISION</span>
+
+<span class="c"># bash modulus</span>
+<span class="nb">let </span><span class="nv">MODULUS</span><span class="o">=</span>9%4
+<span class="nb">echo</span> <span class="s2">"9 % 4 ="</span> <span class="nv">$MODULUS</span>
+
+<span class="c"># bash power of two</span>
+<span class="nb">let </span><span class="nv">POWEROFTWO</span><span class="o">=</span>2<span class="k">**</span>2
+<span class="nb">echo</span> <span class="s2">"2 ^ 2 ="</span> <span class="nv">$POWEROFTWO</span>
+
+<span class="nb">echo</span> <span class="s1">'### Bash Arithmetic Expansion ###'</span>
+<span class="c"># There are two formats for arithmetic expansion: $[ expression ]</span>
+<span class="c"># and $(( expression #)) its your choice which you use</span>
+
+<span class="nb">echo </span>4 + 5 <span class="o">=</span> <span class="k">$((</span><span class="m">4</span> <span class="o">+</span> <span class="m">5</span><span class="k">))</span>
+<span class="nb">echo </span>7 - 7 <span class="o">=</span> <span class="nv">$[</span> 7 - 7 <span class="o">]</span>
+<span class="nb">echo </span>4 x 6 <span class="o">=</span> <span class="k">$((</span><span class="m">3</span> <span class="o">*</span> <span class="m">2</span><span class="k">))</span>
+<span class="nb">echo </span>6 / 3 <span class="o">=</span> <span class="k">$((</span><span class="m">6</span> <span class="o">/</span> <span class="m">3</span><span class="k">))</span>
+<span class="nb">echo </span>8 % 7 <span class="o">=</span> <span class="k">$((</span><span class="m">8</span> <span class="o">%</span> <span class="m">7</span><span class="k">))</span>
+<span class="nb">echo </span>2 ^ 8 <span class="o">=</span> <span class="nv">$[</span> 2 <span class="k">**</span> 8 <span class="o">]</span>
+
+
+<span class="nb">echo</span> <span class="s1">'### Declare ###'</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Please enter two numbers </span><span class="se">\c</span><span class="s2">"</span>
+<span class="c"># read user input</span>
+<span class="nb">read </span>num1 num2
+<span class="nb">declare</span> <span class="nt">-i</span> result
+<span class="nv">result</span><span class="o">=</span><span class="nv">$num1</span>+<span class="nv">$num2</span>
+<span class="nb">echo</span> <span class="s2">"Result is:</span><span class="nv">$result</span><span class="s2"> "</span>
+
+<span class="c"># bash convert binary number 10001</span>
+<span class="nv">result</span><span class="o">=</span>2#10001
+<span class="nb">echo</span> <span class="nv">$result</span>
+
+<span class="c"># bash convert octal number 16</span>
+<span class="nv">result</span><span class="o">=</span>8#16
+<span class="nb">echo</span> <span class="nv">$result</span>
+
+<span class="c"># bash convert hex number 0xE6A</span>
+<span class="nv">result</span><span class="o">=</span>16#E6A
+<span class="nb">echo</span> <span class="nv">$result</span>
+</pre></table></code></div></div><hr /><h2 id="round-floating-point-number">Round floating point number</h2><p><code class="language-plaintext highlighter-rouge">%.0f $floating_point_number</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># get floating point number</span>
+<span class="nv">floating_point_number</span><span class="o">=</span>3.3446
+<span class="nb">echo</span> <span class="nv">$floating_point_number</span>
+<span class="c"># round floating point number with bash</span>
+<span class="k">for </span>bash_rounded_number <span class="k">in</span> <span class="si">$(</span><span class="nb">printf</span> %.0f <span class="nv">$floating_point_number</span><span class="si">)</span><span class="p">;</span> <span class="k">do
+</span><span class="nb">echo</span> <span class="s2">"Rounded number with bash:"</span> <span class="nv">$bash_rounded_number</span>
+<span class="k">done</span>
+</pre></table></code></div></div><hr /><h2 id="bash-floating-point-calculations">Bash floating point calculations</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># Simple linux bash calculator</span>
+<span class="nb">echo</span> <span class="s2">"Enter input:"</span>
+<span class="nb">read </span>userinput
+<span class="nb">echo</span> <span class="s2">"Result with 2 digits after decimal point:"</span>
+<span class="nb">echo</span> <span class="s2">"scale=2; </span><span class="k">${</span><span class="nv">userinput</span><span class="k">}</span><span class="s2">"</span> | bc
+<span class="nb">echo</span> <span class="s2">"Result with 10 digits after decimal point:"</span>
+<span class="nb">echo</span> <span class="s2">"scale=10; </span><span class="k">${</span><span class="nv">userinput</span><span class="k">}</span><span class="s2">"</span> | bc
+<span class="nb">echo</span> <span class="s2">"Result as rounded integer:"</span>
+<span class="nb">echo</span> <span class="nv">$userinput</span> | bc
+Bash floating point calculations
+</pre></table></code></div></div><hr /><h1 id="redirections">Redirections</h1><hr /><h2 id="stdout-from-bash-script-to-stderr"><code class="language-plaintext highlighter-rouge">STDOUT</code> from bash script to <code class="language-plaintext highlighter-rouge">STDERR</code></h2><pre><code class="language-BASH">#!/bin/bash
+echo "Redirect this STDOUT to STDERR" 1&gt;&amp;2
+# To prove that STDOUT is redirected to STDERR we can redirect script's output to file:
+</code></pre><hr /><h2 id="stderr-from-bash-script-to-stdout"><code class="language-plaintext highlighter-rouge">STDERR</code> from bash script to <code class="language-plaintext highlighter-rouge">STDOUT</code></h2><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>#!/bin/bash
+cat $1 2&gt;&amp;1
+To prove that STDERR is redirected to STDOUT we can redirect script's output to file:
+</pre></table></code></div></div><hr /><h2 id="stdout-to-screen"><code class="language-plaintext highlighter-rouge">stdout</code> to screen</h2><p>The simple way to redirect a standard output ( stdout ) is to simply use any command, because by default stdout is automatically redirected to screen. First create a file “file1”:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="c"># $ touch file1</span>
+<span class="nv">$ </span><span class="nb">ls </span>file1
+file1
+</pre></table></code></div></div><p>As you can see from the example above execution of ls command produces STDOUT which by default is redirected to screen.</p><hr /><h2 id="stdout-to-file"><code class="language-plaintext highlighter-rouge">stdout</code> to file</h2><p>The override the default behavior of STDOUT we can use “&gt;” to redirect this output to file:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">ls </span>file1 <span class="o">&gt;</span> STDOUT
+<span class="c"># $ cat STDOUT</span>
+<span class="c"># file1</span>
+</pre></table></code></div></div><hr /><h2 id="stderr-to-file"><code class="language-plaintext highlighter-rouge">stderr</code> to file</h2><p>By default STDERR is displayed on the screen:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">ls
+</span>file1  STDOUT
+<span class="nv">$ </span><span class="nb">ls </span>file2
+<span class="nb">ls</span>: cannot access file2: No such file or directory
+
+redirect the standard error <span class="o">(</span> stderr <span class="o">)</span> to a file and stdout to a screen as default.
+STDOUT is displayed on the screen, however STDERR is redirected to a file called STDERR:
+
+<span class="nv">$ </span><span class="nb">ls </span>file1 file2 2&gt; STDERR
+file1
+<span class="nv">$ </span><span class="nb">cat </span>STDERR
+<span class="nb">ls</span>: cannot access file2: No such file or directory
+</pre></table></code></div></div><hr /><h2 id="stdout-to-stderr"><code class="language-plaintext highlighter-rouge">stdout</code> to <code class="language-plaintext highlighter-rouge">stderr</code></h2><p>It is also possible to redirect STDOUT and STDERR to the same file. In the next example we will redirect STDOUT to the same descriptor as STDERR. Both STDOUT and STDERR will be redirected to file “STDERR_STDOUT”.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">ls
+</span>file1  STDERR  STDOUT
+
+<span class="nv">$ </span><span class="nb">ls </span>file1 file2 2&gt; STDERR_STDOUT 1&gt;&amp;2
+
+<span class="nv">$ </span><span class="nb">cat </span>STDERR_STDOUT
+<span class="nb">ls</span>: cannot access file2: No such file or directory
+file1
+<span class="c"># File STDERR_STDOUT now contains STDOUT and STDERR.</span>
+</pre></table></code></div></div><hr /><h2 id="stderr-to-stdout"><code class="language-plaintext highlighter-rouge">stderr</code> to <code class="language-plaintext highlighter-rouge">stdout</code></h2><p>redirecting STDERR to the same descriptor as SDTOUT:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">ls
+</span>file1  STDERR  STDOUT
+
+<span class="nv">$ </span><span class="nb">ls </span>file1 file2 <span class="o">&gt;</span> STDERR_STDOUT 2&gt;&amp;1
+
+<span class="nv">$ </span><span class="nb">cat </span>STDERR_STDOUT
+<span class="nb">ls</span>: cannot access file2: No such file or directory
+file1
+</pre></table></code></div></div><hr /><h2 id="stderr-and-stdout-to-file"><code class="language-plaintext highlighter-rouge">stderr</code> and <code class="language-plaintext highlighter-rouge">stdout</code> to file</h2><p>Previous two examples redirected both STDOUT and STDERR to a file. Another way to achieve the same effect is illustrated below:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">ls
+</span>file1  STDERR  STDOUT
+
+<span class="nv">$ </span><span class="nb">ls </span>file1 file2 &amp;&gt; STDERR_STDOUT
+<span class="nv">$ </span><span class="nb">ls </span>file1 file2 <span class="o">&gt;</span>&amp; STDERR_STDOUT
+
+<span class="nv">$ </span><span class="nb">cat </span>STDERR_STDOUT
+<span class="c"># ls: cannot access file2: No such file or directory</span>
+<span class="c"># file1</span>
+</pre></table></code></div></div><hr /><p>ref:</p><ul><li><a href="https://linuxconfig.org/bash-scripting-tutorial">bash-scripting-tutorial</a><li><a href="https://linuxhint.com/bash_stdin_stderr_stdout/">stdin, stderr and stdout</a><li><a href="https://www.computerhope.com/unix/bash/exec.htm#:~:text=On%20Unix%2Dlike%20operating%20systems,by%20the%20command%20you%20specify.">exec</a><li><a href="https://www.computerhope.com/unix/ubash.htm#opening-file-descriptors">bash</a><li><a href="https://www.youtube.com/watch?v=icuV2CR3Ghg">Stderr Stdout and Stdin - How to Redirect them - Commands for Linux</a></ul></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/05codenote/'>05CodeNote</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/script/" class="post-tag no-text-decoration" >Script</a> <a href="/tags/bash/" class="post-tag no-text-decoration" >Bash</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Bash Note - Grace&url=https://ocholuo.github.io//posts/bash/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Bash Note - Grace&u=https://ocholuo.github.io//posts/bash/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Bash Note - Grace&url=https://ocholuo.github.io//posts/bash/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ocholuo.github.io//posts/bash/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/CI-CD/">CI/CD - Continuous Integration & Continous Delivery</a><li><a href="/posts/Github-Action-example/">CI/CD - Github Action Template</a><li><a href="/posts/CloudMap/">AWS - EKS - Cloud Map</a><li><a href="/posts/DataWrangler/">AWS - ML - Data Wrangler</a><li><a href="/posts/0CodePipeline/">AWS - CodeDevelop - CodePipeline</a><li><a href="/posts/1CodeCommit/">AWS - CodeDevelop - CodeCommit</a><li><a href="/posts/2CodeBuild/">AWS - CodeDevelop - CodeBuild</a><li><a href="/posts/2CodeBuildTemplate-buildspec/">AWS - CodeDevelop - CodeBuild - buildspec.yml Template</a><li><a href="/posts/ElasticBeanstalk/">AWS - CodeDevelop - ElasticBeanstalk</a><li><a href="/posts/CourseREADME/">Course - Learning Path</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/CPP-setup/"><div class="card-body"> <span class="timeago small" > May 25, 2017 <i class="unloaded">2017-05-25T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>C++</h3><div class="text-muted small"><p> [toc] C++ C++ basic 一种中级语言， 由 Bjarne Stroustrup 于 1979 年在贝尔实验室开始设计开发的。 C++ 进一步扩充和完善了 C 语言，是一种面向对象的程序设计语言。 C++ 可运行于多种平台上，如 Windows、MAC 操作系统以及 UNIX 的各种版本。 面向对象程序设计 C++ 完全支持面向对象的程序设计...</p></div></div></a></div><div class="card"> <a href="/posts/shell/"><div class="card-body"> <span class="timeago small" > Sep 25, 2020 <i class="unloaded">2020-09-25T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>SHELL Note</h3><div class="text-muted small"><p> [toc] Shell grammar Simple Commands A simple command is an optional sequence of variable assignments followed by blank-separated words and redirections, and terminated by a control operator. ...</p></div></div></a></div><div class="card"> <a href="/posts/shellscripts/"><div class="card-body"> <span class="timeago small" > Jul 16, 2020 <i class="unloaded">2020-07-16T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>ShellScripts</h3><div class="text-muted small"><p> Writing Shell Scripts [toc] What are Shell Scripts? ref http://linuxcommand.org/lc3_wss0140.php With the thousands of commands available for the command line user, how can you remember them all...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Web-Authentication-concept/" class="btn btn-outline-primary" prompt="Older"><p>Web Authentication - Concept Explained</p></a> <a href="/posts/emoji/" class="btn btn-outline-primary" prompt="Newer"><p>Emoji</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//https-ocholuo-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'Bash Note'; this.page.url = 'https://ocholuo.github.io//posts/bash/'; this.page.identifier = '/posts/bash/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ocholuo">Grace JyL</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ocholuo.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

