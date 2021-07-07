@@ -7,7 +7,11 @@ toc: true
 image:
 ---
 
-[toc]
+- [AWS ElasticBeanstalk     ￼￼](#aws-elasticbeanstalk-----)
+  - [basics](#basics)
+  - [benefits](#benefits)
+  - [Blue/green deployment](#bluegreen-deployment)
+  - [Elastic Beanstalk for docker](#elastic-beanstalk-for-docker)
 
 ---
 
@@ -16,9 +20,6 @@ image:
 
 ![ElasticBeanstalk](https://i.imgur.com/poyMxI7.png)
 
-
-
----
 
 
 ## basics

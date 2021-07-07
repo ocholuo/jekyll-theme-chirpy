@@ -7,7 +7,18 @@ toc: true
 image:
 ---
 
-[toc]
+- [CodePipeline](#codepipeline)
+  - [basic](#basic)
+  - [Components of AWS Data Pipeline](#components-of-aws-data-pipeline)
+  - [Accessing AWS Data Pipeline](#accessing-aws-data-pipeline)
+  - [Related Services](#related-services)
+  - [Pipeline Components, Instances, and Attempts](#pipeline-components-instances-and-attempts)
+  - [Pipeline Definition](#pipeline-definition)
+  - [Pipeline Components](#pipeline-components)
+    - [Data Nodes](#data-nodes)
+  - [setup](#setup)
+    - [CodePipeline: CodeCommit - ManualAppove - CloudFormation](#codepipeline-codecommit---manualappove---cloudformation)
+    - [CodePipeline: S3 - CodeDeploy - CloudFormation](#codepipeline-s3---codedeploy---cloudformation)
 
 ---
 

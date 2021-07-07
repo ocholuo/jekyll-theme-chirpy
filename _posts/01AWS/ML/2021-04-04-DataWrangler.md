@@ -7,8 +7,29 @@ toc: true
 image:
 ---
 
+- [Data Wrangler](#data-wrangler)
+  - [basic](#basic)
+  - [benefit](#benefit)
+  - [Prerequisites](#prerequisites)
+  - [Access Data Wrangler](#access-data-wrangler)
+  - [Update Data Wrangler](#update-data-wrangler)
+- [Demo](#demo)
+  - [Demo: Data Wrangler Titanic Dataset Walkthrough](#demo-data-wrangler-titanic-dataset-walkthrough)
+    - [Upload Dataset to S3 and Import](#upload-dataset-to-s3-and-import)
+    - [Data Flow](#data-flow)
+      - [Prepare and Visualize](#prepare-and-visualize)
+        - [Data Exploration](#data-exploration)
+        - [Drop Unused Columns](#drop-unused-columns)
+        - [Clean up Missing Values](#clean-up-missing-values)
+        - [Custom Pandas: Encode](#custom-pandas-encode)
+      - [Custom SQL: SELECT Columns](#custom-sql-select-columns)
+    - [Export](#export)
+      - [Export to Data Wrangler Job Notebook](#export-to-data-wrangler-job-notebook)
+      - [Training XGBoost Classifier](#training-xgboost-classifier)
+      - [Shut down Data Wrangler](#shut-down-data-wrangler)
 
-[toc]
+
+---
 
 # Data Wrangler
 

@@ -7,7 +7,9 @@ toc: true
 image:
 ---
 
-[toc]
+- [CI/CD - Github Action Template](#cicd---github-action-template)
+  - [exmple 1](#exmple-1)
+  - [exmple 2: build a website](#exmple-2-build-a-website)
 
 ---
 

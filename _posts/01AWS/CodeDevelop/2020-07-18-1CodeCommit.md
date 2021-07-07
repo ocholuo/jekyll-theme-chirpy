@@ -7,7 +7,10 @@ toc: true
 image:
 ---
 
-[toc]
+- [CodeCommit](#codecommit)
+  - [basic](#basic)
+  - [work flow](#work-flow)
+  - [setup](#setup)
 
 ---
 
